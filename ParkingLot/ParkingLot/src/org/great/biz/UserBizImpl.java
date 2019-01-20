@@ -46,5 +46,9 @@ public class UserBizImpl implements UserBiz {
 	}
 
 
+	public User getUser(User user) {
+
+		return userMapper.getUser(user);
+	}
 
 }

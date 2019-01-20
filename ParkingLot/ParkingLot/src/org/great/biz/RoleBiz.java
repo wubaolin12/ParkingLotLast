@@ -11,10 +11,7 @@ import org.great.bean.Role;
  */
 public interface RoleBiz {
 
-	/**
-	 * 查找全部角色
-	 * @return
-	 */
+	public List getPRole(int id);
+	
 	public List<Role> findAll();
-
 }

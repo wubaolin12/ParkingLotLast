@@ -11,6 +11,10 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface UserMapper {
 
+	//通过用户名获得一个用户对象
+	
+	public User getUser(User user);
+	
 	// 查找用户ID
 	public RoleRel FindbyID(int id);
 

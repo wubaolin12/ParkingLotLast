@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN" 
+"http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
+
+
+<mapper namespace="org.great.mapper.Mapper">
+		<select id="getColname" parameterType="String" resultType="String" > 
+		
+		SELECT COLUMN_NAME FROM USER_TAB_COLS WHERE TABLE_NAME =#{tb_name} order by rownum desc
+		</select>
+
+<!-- 		<select id="pageList" parameterType="String" resultType="map" > 
+			 select * from dual where TABLE_NAME
+			  <![CDATA[#{t}]]>
+			
+		</select>  -->
+	<insert id="interObject" parameterType="String">
+		${value}
+	</insert>
+	
+	
+		
+</mapper>

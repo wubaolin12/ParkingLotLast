@@ -13,6 +13,9 @@ import org.great.bean.User;
  */
 public interface UserBiz {
 
+
+	public User getUser(User user) ;
+	
 	//登录验证返回用户
 	public Object findUserByName(User user);
 

@@ -20,5 +20,7 @@ public interface RoleMapper {
 	 * @author 吴宝林
 	 */
 	public List<Role> findAll();
+	
+	public List findElse(String id);
 
 }
