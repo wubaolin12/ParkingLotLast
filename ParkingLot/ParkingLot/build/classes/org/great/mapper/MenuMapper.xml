@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN" 
+"http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
+
+
+<mapper namespace="org.great.mapper.MenuMapper">
+
+	<!-- 根据角色查找菜单 -->
+	<select id="findMenu" parameterType="int"
+		resultType="org.great.bean.Menu">
+		
+		select * from tb_menu where menu_id in 
+			(select menu_id from role_menu where role_id = #{role_id})
+	</select>
+
+	<!-- 根据角色查找未分配菜单 -->
+	<select id="findUnallot" parameterType="int"
+		resultType="org.great.bean.Menu">
+		
+		select * from tb_menu where menu_id not in 
+		(select menu_id from role_menu where role_id = #{role_id}) or menu_pid=0
+	</select>
+
+	<!-- 查找子目录是否存在 -->
+	<select id="getCount" parameterType="org.great.bean.RoleMenu"
+		resultType="int">
+		
+		select count(*) from role_menu rm where rm.menu_id in 
+		(select menu_id from tb_menu where menu_pid= #{menu_id} ) 
+		and rm.role_id= #{role_id}
+	</select>
+
+</mapper>

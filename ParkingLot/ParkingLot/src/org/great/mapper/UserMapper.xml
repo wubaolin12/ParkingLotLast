@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN" 
+"http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
+
+
+<mapper namespace="org.great.mapper.UserMapper">
+
+	<delete id="delete" parameterType="int">
+
+		delete from tb_file where
+		f_id=#{ID}
+
+	</delete>
+
+	<select id="FindStaffRole" parameterType="int"
+		resultType="org.great.bean.RoleRel">
+		select role_id from staff_rel where u_id = #{id}
+	</select>
+
+	<select id="GetRole" resultType="org.great.bean.Role">
+
+		select * from tb_role
+
+	</select>
+
+	<select id="findUserByName" parameterType="org.great.bean.User"
+		resultType="org.great.bean.User">
+		select * from tb_user where u_name = #{u_name} and u_pwd =
+		#{u_pwd}
+	</select>
+
+
+	<select id="FindbyID" parameterType="java.lang.Integer"
+		resultMap="roleMap">
+
+		select r.role_name,s.*,u.u_name from staff_rel s,tb_role r ,
+		tb_user u where
+		u.u_id = s.u_id and r.role_id = s.role_id and u.u_id =
+		#{id}
+	</select>
+
+
+	<resultMap type="org.great.bean.RoleRel" id="roleMap">
+
+		<id property="sr_id" column="SR_ID"></id>
+		<result property="u_id" column="U_ID" />
+		<result property="role_id" column="ROLE_ID" />
+		<association property="role" column="ROLE_ID"
+			javaType="org.great.bean.Role">
+			<id property="role_id" column="ROLE_ID" />
+			<result property="role_name" column="ROLE_NAME" />
+		</association>
+		<association property="user" column="U_ID"
+			javaType="org.great.bean.User">
+			<id property="u_id" column="U_ID" />
+			<result property="u_name" column="U_NAME" />
+		</association>
+
+	</resultMap>
+
+</mapper>

@@ -1,0 +1,92 @@
+@charset "UTF-8";
+/*
+ * 	权限管理的设置，
+*/
+#menu_limit {
+	border: #06F 2px solid;
+	float: left;
+	width: 100%;
+	margin-top: 1%;
+	display: none;
+}
+
+#menu_limit h4 {
+	background-color: #06F;
+	color: #FFF;
+	margin-top: 0px
+}
+
+#role_select {
+	width: 25%;
+	height: 500px;
+	float: left;
+	border: #09F 1px solid;
+	text-align: center;
+	font-size:30px
+}
+
+#own_menu {
+	width: 30%;
+	height: 500px;
+	float: left;
+	border: #09F 1px solid;
+	text-align: center
+}
+
+#own_menu ul {
+	margin: 0px auto;
+	font-size: 36px
+}
+
+#own_menu li {
+	font-size: 24px
+}
+
+#btn_select {
+	width: 13%;
+	height: 500px;
+	float: left;
+	border: #09F 1px solid;
+	text-align: center
+}
+
+#menu_select {
+	width: 30%;
+	height: 500px;
+	float: left;
+	border: #09F 1px solid;
+	text-align: center
+}
+
+#menu_select ul {
+	margin: 0px auto
+}
+
+.limitbtn {
+	width: 100px;
+	height: 25px;
+	background: #09C;
+	border: 1px solid #eee;
+	border-radius: 15px;
+	margin:10px;
+}
+
+#index {
+	border-bottom: #09F 2px solid;
+	width: 100%;
+	float: left;
+}
+
+#index ul {
+	list-style-type: none;
+	width: 100%;
+	margin: 0px;
+	font-size: 20px;
+	color: #09F;
+}
+
+#index ul li {
+	float: left;
+	padding-bottom: 0px;
+	margin: 0px
+}

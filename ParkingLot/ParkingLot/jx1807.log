@@ -1,0 +1,41 @@
+2019-01-16 14:37:10main AbstractApplicationContext.java DEBUG Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@12bb4df8
+2019-01-16 22:32:54main AbstractApplicationContext.java DEBUG Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@77468bd9
+2019-01-16 22:33:23main AbstractApplicationContext.java DEBUG Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@77468bd9
+2019-01-16 22:33:58main AbstractApplicationContext.java DEBUG Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@77468bd9
+2019-01-16 22:34:11main AbstractApplicationContext.java DEBUG Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@77468bd9
+2019-01-16 22:35:19main AbstractApplicationContext.java DEBUG Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@77468bd9
+2019-01-16 22:36:27main AbstractApplicationContext.java DEBUG Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@77468bd9
+2019-01-16 22:41:05main AbstractApplicationContext.java DEBUG Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@77468bd9
+2019-01-16 22:48:50main AbstractApplicationContext.java DEBUG Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@77468bd9
+2019-01-16 22:48:51main ClassPathScanningCandidateComponentProvider.java DEBUG Identified candidate component class: file [F:\eclipse-workspace\ParkingLot\build\classes\org\great\bean\Menu.class]
+2019-01-16 22:48:51main ClassPathScanningCandidateComponentProvider.java DEBUG Identified candidate component class: file [F:\eclipse-workspace\ParkingLot\build\classes\org\great\bean\RoleAuthority.class]
+2019-01-16 22:48:51main ClassPathScanningCandidateComponentProvider.java DEBUG Identified candidate component class: file [F:\eclipse-workspace\ParkingLot\build\classes\org\great\bean\RoleRel.class]
+2019-01-16 22:48:51main ClassPathScanningCandidateComponentProvider.java DEBUG Identified candidate component class: file [F:\eclipse-workspace\ParkingLot\build\classes\org\great\bean\User.class]
+2019-01-16 22:48:51main ClassPathScanningCandidateComponentProvider.java DEBUG Identified candidate component class: file [F:\eclipse-workspace\ParkingLot\build\classes\org\great\biz\UserBizImpl.class]
+2019-01-16 22:48:51main ClassPathScanningCandidateComponentProvider.java DEBUG Identified candidate component class: file [F:\eclipse-workspace\ParkingLot\build\classes\org\great\handler\AdminHandler.class]
+2019-01-16 22:48:51main ClassPathScanningCandidateComponentProvider.java DEBUG Identified candidate component class: file [F:\eclipse-workspace\ParkingLot\build\classes\org\great\handler\PermissionManageHandler.class]
+2019-01-16 22:48:51main ClassPathScanningCandidateComponentProvider.java DEBUG Identified candidate component class: file [F:\eclipse-workspace\ParkingLot\build\classes\org\great\log\SystemLogAspect.class]
+2019-01-16 22:48:51main ClassPathScanningCandidateComponentProvider.java DEBUG Identified candidate component class: file [F:\eclipse-workspace\ParkingLot\build\classes\org\great\log\UserLog.class]
+2019-01-16 22:48:51main ClassPathScanningCandidateComponentProvider.java DEBUG Ignored because not a concrete top-level class: file [F:\eclipse-workspace\ParkingLot\build\classes\org\great\mapper\UserMapper.class]
+2019-01-16 22:48:51main XmlBeanDefinitionReader.java DEBUG Loaded 17 bean definitions from class path resource [applicationContext.xml]
+2019-01-16 22:48:51main DefaultSingletonBeanRegistry.java DEBUG Creating shared instance of singleton bean 'org.springframework.context.annotation.internalConfigurationAnnotationProcessor'
+2019-01-16 22:48:51main DefaultSingletonBeanRegistry.java DEBUG Creating shared instance of singleton bean 'org.mybatis.spring.mapper.MapperScannerConfigurer#0'
+2019-01-16 22:48:51main DefaultSingletonBeanRegistry.java DEBUG Creating shared instance of singleton bean 'sqlSessionFactory'
+2019-01-16 22:48:51main JakartaCommonsLoggingImpl.java DEBUG Logging initialized using 'class org.apache.ibatis.logging.commons.JakartaCommonsLoggingImpl' adapter.
+2019-01-16 22:48:51main DefaultSingletonBeanRegistry.java DEBUG Creating shared instance of singleton bean 'mydatasuroce'
+2019-01-16 22:48:51main JakartaCommonsLoggingImpl.java DEBUG Property 'configLocation' not specified, using default MyBatis Configuration
+2019-01-16 22:48:51main JakartaCommonsLoggingImpl.java DEBUG Parsed mapper file: 'file [F:\eclipse-workspace\ParkingLot\build\classes\org\great\mapper\UserMapper.xml]'
+2019-01-16 22:48:51main ClassPathScanningCandidateComponentProvider.java DEBUG Identified candidate component class: file [F:\eclipse-workspace\ParkingLot\build\classes\org\great\mapper\UserMapper.class]
+2019-01-16 22:48:51main ClassPathMapperScanner.java DEBUG Creating MapperFactoryBean with name 'userMapper' and 'org.great.mapper.UserMapper' mapperInterface
+2019-01-16 22:48:51main DefaultSingletonBeanRegistry.java DEBUG Creating shared instance of singleton bean 'org.springframework.context.event.internalEventListenerProcessor'
+2019-01-16 22:48:51main DefaultSingletonBeanRegistry.java DEBUG Creating shared instance of singleton bean 'org.springframework.context.event.internalEventListenerFactory'
+2019-01-16 22:48:51main DefaultSingletonBeanRegistry.java DEBUG Creating shared instance of singleton bean 'org.springframework.context.annotation.internalAutowiredAnnotationProcessor'
+2019-01-16 22:48:51main DefaultSingletonBeanRegistry.java DEBUG Creating shared instance of singleton bean 'org.springframework.context.annotation.internalCommonAnnotationProcessor'
+2019-01-16 22:48:51main DefaultSingletonBeanRegistry.java DEBUG Creating shared instance of singleton bean 'menu'
+2019-01-16 22:48:51main DefaultSingletonBeanRegistry.java DEBUG Creating shared instance of singleton bean 'roleAuthority'
+2019-01-16 22:48:51main DefaultSingletonBeanRegistry.java DEBUG Creating shared instance of singleton bean 'roleRel'
+2019-01-16 22:48:51main DefaultSingletonBeanRegistry.java DEBUG Creating shared instance of singleton bean 'user'
+2019-01-16 22:48:51main DefaultSingletonBeanRegistry.java DEBUG Creating shared instance of singleton bean 'userBiz'
+2019-01-16 22:48:51main DefaultSingletonBeanRegistry.java DEBUG Creating shared instance of singleton bean 'userMapper'
+2019-01-16 22:48:51main DefaultSingletonBeanRegistry.java DEBUG Creating shared instance of singleton bean 'systemLogAspect'
+2019-01-16 22:48:51main DefaultSingletonBeanRegistry.java DEBUG Creating shared instance of singleton bean 'userLog'

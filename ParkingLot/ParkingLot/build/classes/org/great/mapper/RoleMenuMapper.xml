@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN" 
+"http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
+
+
+<mapper namespace="org.great.mapper.RoleMenuMapper">
+
+	<!-- 移除权限 -->
+	<delete id="del" parameterType="org.great.bean.RoleMenu">
+		delete from role_menu where 
+		menu_id= #{menu_id} and role_id= #{role_id}
+	</delete>
+
+	<!-- 添加权限 -->
+	<insert id="insert" parameterType="org.great.bean.RoleMenu">
+		insert into role_menu(role_id,menu_id)
+		values( #{role_id}, #{menu_id})
+	</insert>
+
+</mapper>
