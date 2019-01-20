@@ -49,6 +49,7 @@
       okCode: '200',//与后端返回数据code值一致时执行成功回调，不配置默认200
       successFunc: function(res) {
         console.log('成功回调', res);
+        location.href="<%=path%>LicensePlate/CarAdmissionDisplay.action";
       },//上传成功回调函数
       errorFunc: function(res) {
         console.log('失败回调', res);

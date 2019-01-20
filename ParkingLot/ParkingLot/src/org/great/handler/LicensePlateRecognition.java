@@ -10,9 +10,12 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.great.bean.Car;
 import org.great.bean.Stopcartime;
@@ -46,6 +49,7 @@ public class LicensePlateRecognition {
 	private String serverFilePatn;//车牌图片服务器地址
 	private String path;//上传文件地址
 	private boolean flag;//标记
+	private Map<String,String> result = new HashMap();
 	@Resource
 	private Car car;
 	@Resource
@@ -73,18 +77,30 @@ public class LicensePlateRecognition {
 	 * 跳转到上传车牌界面 孔大爷
 	 */
 
+	
 	@RequestMapping("/LicensePlateUp.action")
 	public String JumpLicensePlate() {
 
 		return "LicensePlateUpLoad";
+	}
+	
+	/**
+	 * 跳转到LED显示界面
+	 * 孔大帅
+	 */
+	@RequestMapping("/CarAdmissionDisplay.action")
+	public String JumpCarAdmissionDisplay() {
+		
+		return "CarAdmissionDisplay";
 	}
 
 	/**
 	 * 车辆入场扫描 孔大爷
 	 */
 	
+	@ResponseBody
 	@RequestMapping(value = "/CarAdmission.action", method = RequestMethod.POST)
-	public String LicensePlates(HttpServletRequest request, MultipartFile myfile) {
+	public Map LicensePlates(HttpServletRequest request, MultipartFile myfile) {
 
 		// 获得文件名字
 		String filename = myfile.getOriginalFilename();
@@ -184,18 +200,34 @@ public class LicensePlateRecognition {
 		String currendate = df.format(currenime);
 		
 		Stopcartime sct = new Stopcartime(car.getC_id(),currendate);
-		//记录停车时间
-		flag = stopcartimeBiz.AddStopBeginTime(sct);
 		
-		if(flag) {
+		//先查询该车是否在停车了，如果在停车了就不要重复添加数据
+		List<Stopcartime> sctlist =stopcartimeBiz.FindSctByNumber(car.getC_id());
+		
+		System.out.println(car.getC_id()+"ID下的所有停车记录："+sctlist);
+		
+		for (Stopcartime stopcartime : sctlist) {
 			
-			System.out.println("执行成功停车");
-			
+			if(stopcartime.getPm_id()==2) {
+				
+				//记录停车时间
+				flag = stopcartimeBiz.AddStopBeginTime(sct);
+				
+				if(flag) {
+					
+					System.out.println("执行成功停车");
+					
+				}
+			}
 		}
-		request.setAttribute("Carkxj", car);
 		
+		HttpSession session = request.getSession();
+	
+		session.setAttribute("Carkxj", car);
 		
-		return "CarAdmissionDisplay";
+		 result.put("code","200");
+		
+		return result;
 	}
 
 	

@@ -10,5 +10,8 @@
 insert into tb_stopcartime(sct_starttime,c_id,pm_id) values (#{sct_starttime},#{c_id},1)
 </insert>
 
+<select id="FindSctByNumber" parameterType="int" resultType="org.great.bean.Stopcartime">
+select * from tb_stopcartime where c_id = #{id}
+</select>
 
 </mapper>
