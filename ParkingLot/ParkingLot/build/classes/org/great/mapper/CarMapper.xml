@@ -5,6 +5,15 @@
 
 <mapper namespace="org.great.mapper.CarMapper">
 
+	<!-- 通过车牌找到车信息 -->
+<select id="FindByCarNumber" parameterType="String" resultType="org.great.bean.Car">
+select * from tb_car where c_num =#{number}
+</select>
+	
+	<!-- 增加临时车信息 -->
+	<insert id="AddCarMsg" parameterType="String">
+	insert into tb_car(cust_id,pm_id,c_num) values (null,14,#{number})
+	</insert>
 	
 
 </mapper>

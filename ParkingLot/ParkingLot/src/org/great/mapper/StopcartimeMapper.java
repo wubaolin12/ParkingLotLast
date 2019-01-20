@@ -1,5 +1,6 @@
 package org.great.mapper;
 
+import org.great.bean.Stopcartime;
 import org.springframework.stereotype.Repository;
 
 /**
@@ -11,4 +12,6 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface StopcartimeMapper {
 
+	//添加停车开始时间
+	public int AddStopBeginTime(Stopcartime sct);
 }

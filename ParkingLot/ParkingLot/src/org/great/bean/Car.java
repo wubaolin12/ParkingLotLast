@@ -2,11 +2,14 @@ package org.great.bean;
 
 import java.io.Serializable;
 
+import org.springframework.stereotype.Component;
+
 /**
  * 车辆表
  * @author 野比欣之助
  *
  */
+@Component
 public class Car implements Serializable {
 	/**
 	 * 

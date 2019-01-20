@@ -1,5 +1,7 @@
 package org.great.biz;
 
+import org.great.bean.Stopcartime;
+
 /**
  * 停车时间表BIZ					
  * @author 野比欣之助
@@ -7,4 +9,6 @@ package org.great.biz;
  */
 public interface StopcartimeBiz {
 
+	//添加停车开始时间
+			public boolean AddStopBeginTime(Stopcartime sct);
 }

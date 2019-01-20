@@ -4,4 +4,11 @@
 
 <mapper namespace="org.great.mapper.StopcartimeMapper">
 
+
+<!-- 增加车辆开始停车时间 -->
+<insert id="AddStopBeginTime" parameterType="org.great.bean.Stopcartime" >
+insert into tb_stopcartime(sct_starttime,c_id,pm_id) values (#{sct_starttime},#{c_id},1)
+</insert>
+
+
 </mapper>
