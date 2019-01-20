@@ -45,4 +45,29 @@ public class StopcartimeBizImpl implements StopcartimeBiz{
 		return stopcartimeMapper.FindSctByNumber(number);
 	}
 
+	//修改出场时间
+	@Override
+	public boolean UpdateSctTimeandState(Stopcartime sct) {
+		
+		int count = stopcartimeMapper.UpdateSctTimeandState(sct);
+
+		if (count > 0) {
+
+			flag = true;
+		} else {
+
+			flag = false;
+		}
+		
+		return flag;
+	}
+
+	//通过主键ID找到该停车表的信息
+	@Override
+	public Stopcartime FindByID(int id) {
+		
+		
+		return stopcartimeMapper.FindByID(id);
+	}
+
 }

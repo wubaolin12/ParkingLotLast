@@ -2,6 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN" 
 "http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
 
+<!-- 孔大帅的停车信息表 -->
 <mapper namespace="org.great.mapper.StopcartimeMapper">
 
 
@@ -9,9 +10,19 @@
 <insert id="AddStopBeginTime" parameterType="org.great.bean.Stopcartime" >
 insert into tb_stopcartime(sct_starttime,c_id,pm_id) values (#{sct_starttime},#{c_id},1)
 </insert>
-
+<!-- 通过车ID找到该车所有停车信息 -->
 <select id="FindSctByNumber" parameterType="int" resultType="org.great.bean.Stopcartime">
 select * from tb_stopcartime where c_id = #{id}
+</select>
+
+<!-- 修改停车状态和停车时间 -->
+<update id="UpdateSctTimeandState" parameterType="org.great.bean.Stopcartime">
+update tb_stopcartime set sct_overtime =#{sct_overtime},pm_id=2 where sct_id = #{sct_id}
+</update>
+
+<!-- 通过主键ID查找该停车表的信息 -->
+<select id="FindByID" parameterType="int" resultType="org.great.bean.Stopcartime">
+select * from tb_stopcartime where sct_id = #{id}
 </select>
 
 </mapper>
