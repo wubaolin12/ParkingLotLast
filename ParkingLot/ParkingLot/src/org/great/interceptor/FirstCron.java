@@ -16,10 +16,10 @@ import org.springframework.stereotype.Component;
 public class FirstCron {
 	private static final Logger logger = LoggerFactory.getLogger(FirstCron.class);
 
-	@Scheduled(cron = "0/5 * * * * ?")
+	@Scheduled(cron = "0 00 22 * * ?")
 	public void cron() {
-		logger.info("----------定时任务进行中.......");
-		System.out.println();
+		logger.info("----------该交日报了！！.......");
+		System.out.println("----------该交日报了！！.......");
 	}
 
 }
