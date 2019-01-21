@@ -19,7 +19,7 @@ public interface Mapper
 	
 	//获取某个表的类名
 	/**
-	 * 获取表字段名的方法，表名必须为大写
+	 * 获取表字段名的方法
 	 * @param sql
 	 * @return
 	 */
@@ -31,4 +31,6 @@ public interface Mapper
 	public int updateObject(String sql);
 	
 	public int delObject(String sql);
+	//获取记录数
+	public int getCordnum(String sql);
 }

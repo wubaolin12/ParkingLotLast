@@ -14,5 +14,9 @@ public interface BaseBiz {
 	public int updateObject(String tb_name, Map map, String key, int keyid);
 	
 	public int delObject(String tb_name,String colname,int id);
+	
+	public int getCordnum(String sql);
+
+	public String creatSQL(String tb_name, Map map);
 
 }

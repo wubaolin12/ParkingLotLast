@@ -45,6 +45,51 @@
 		#{id}
 	</select>
 
+	<!-- 使用嵌套查询，当查出一条员工数据时，也关联查询出对应的部门信息 -->
+
+	<select id="findList" parameterType="String"
+		resultMap="userMap">
+	${value}
+	</select>
+
+	<select id="selectParam" parameterType="org.great.bean.User"
+		resultType="org.great.bean.Param">
+		select * from 	tb_param where pm_id =#{pm_id}
+	</select>
+	
+	
+ 	<select id="Selectstaff_rel" parameterType="org.great.bean.User"
+		resultMap="roleMap2">
+		select * from 	staff_rel where u_id =#{u_id}
+	</select>
+	
+	 <select id="selectR" parameterType="org.great.bean.Staff_rel"
+		resultType="org.great.bean.Role">
+		select * from 	tb_role where role_id =#{role_id}
+	</select>
+	
+  	<resultMap type="org.great.bean.Staff_rel" id="roleMap2">	
+		<association property="role" column="role_id"
+			javaType="org.great.bean.Role" select="selectR">			
+		</association>		
+	</resultMap>  
+	 
+
+
+	<resultMap type="org.great.bean.User" id="userMap">
+	
+		<association property="param" column="pm_id"
+			javaType="org.great.bean.Param" select="selectParam">						
+		</association>
+		
+		<association property="sf" column="role_id"
+			javaType="org.great.bean.Staff_rel" select="Selectstaff_rel">						
+		</association>
+	</resultMap>
+
+
+
+
 
 	<resultMap type="org.great.bean.RoleRel" id="roleMap">
 

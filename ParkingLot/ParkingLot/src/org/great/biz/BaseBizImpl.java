@@ -13,6 +13,7 @@ import java.util.Set;
 
 import javax.annotation.Resource;
 
+import org.apache.ibatis.session.RowBounds;
 import org.great.mapper.Mapper;
 import org.springframework.stereotype.Service;
 @Service("basebiz")
@@ -34,17 +35,23 @@ public class BaseBizImpl implements BaseBiz{
 		if(map !=null) {
 			Set set=map.keySet();
 			List list=new ArrayList<>(set);
+			for(int i = 0; i < list.size(); i++) {
+				if(map.get(list.get(i))==null||map.get(list.get(i))=="") {
+					list.remove(list.get(i));
+				}
+			}
 			if (list.size() > 0) {
 				for (int i = 0; i < list.size(); i++) {
 					if (i != list.size() - 1) {
-
-						sql=sql+list.get(i)+",";
-						sql2=sql2+map.get(list.get(i))+"','";
+						
+							sql=sql+list.get(i)+",";
+							sql2=sql2+map.get(list.get(i))+"','";
 						
 					} else {
 						
-						sql=sql+list.get(i)+")";
-						sql2=sql2+map.get(list.get(i))+"')";
+							sql=sql+list.get(i)+")";
+							sql2=sql2+map.get(list.get(i))+"')";
+						
 					}
 				}
 				String sql3=sql+sql2;
@@ -97,6 +104,8 @@ public class BaseBizImpl implements BaseBiz{
 				num=mapper.updateObject(sql3);
 				System.out.println("biznum"+num);
 				
+				
+				
 			}
 		}
 		
@@ -119,6 +128,47 @@ public class BaseBizImpl implements BaseBiz{
 		String sql="delete from "+tb_name+" where "+colname+" ='"+id+"'" ;
 		num=mapper.delObject(sql);
 		System.out.println("---delsql="+sql);
+		return num;
+	}
+
+	//生成查询sql语句的方法
+	@Override
+	public String creatSQL(String tb_name, Map map)
+	{
+		
+		
+		String sql="select * from "+tb_name+" where  ";		
+		//List collist=mm.getColname(tb_name);
+		if(map!=null){
+			Set set=map.keySet();
+			List list=new ArrayList<>(set);
+			if(list.size()>0){
+				for(int i=0;i<list.size();i++){
+					
+					if(i==0) {
+						sql=sql+list.get(i)+" like '%"+map.get(list.get(i))+"%'";
+					}else {
+						sql=sql+" or "+list.get(i)+" like '%"+map.get(list.get(i))+"%'";
+					}	
+			
+				}
+			}
+		
+		}else{
+			sql="select * from "+tb_name;
+		}
+		System.out.println("----BaseBizImpl:findListSql"+sql);
+		return sql;
+	}
+	
+	@Override
+	public int getCordnum(String sql) {
+		// TODO Auto-generated method stub
+		
+		String getcSQL="select count(*) from ("+sql+") a";
+		
+		System.out.println("getCordnumSQL---"+getcSQL);
+		int num =mapper.getCordnum(getcSQL);
 		return num;
 	}
 }

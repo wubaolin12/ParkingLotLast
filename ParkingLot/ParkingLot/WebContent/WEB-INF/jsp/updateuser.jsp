@@ -1,6 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
-<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%
 	String path = request.getContextPath();
 	String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort()
@@ -11,13 +10,13 @@
 <head>
 <base href="<%=basePath%>">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<title>增加用户页面</title>
+<title>修改用户页面</title>
 <style type="text/css">
 	.table{margin:2% auto;}
 .top { color:#333333; text-align:center; width:100%; font:italic bold 40px Georgia, "Times New Roman", Times, serif}
 </style>
 <script src="js/jquery.min.js"></script>
-<script type="text/javascript" src="<%=basePath %>lib/jquery/1.9.1/jquery.min.js"></script> 
+<script type="text/javascript" src="<%=basePath %>static/lib/jquery/1.9.1/jquery.min.js"></script> 
 <script src="js/jquery.validate.min.js"></script>
 <script src="js/jquery.validate.cn.js"></script>
 <script type="text/javascript">
@@ -127,8 +126,8 @@ function check_ename(){
 </script>
 </head>
 	<body>
-<div class="top">增加用户</div>
-<form id="register" action="emp/addemp.action" onSubmit="return checkData()">
+<div class="top">修改用户</div>
+<form id="register" action="emp/updateUser.action" onSubmit="return checkData()">
 <table border="10" width="500px" height="300px" class="table">
 <!-- 	<tr>
 	     <td colspan="2"> 账号</td>
@@ -136,15 +135,27 @@ function check_ename(){
 				     </td>
         </tr> -->
      <tr>
-	     <td > 姓名</td>
-	     <td> <input type="text" name="u_name" id="uname" />
+	     <td > 用户名</td>
+	     <td> <input type="text" name="u_name" id="uname" value="${updateuser.u_name}" readonly="readonly" />
 				     </td>
     </tr>   
          
 
+	
+	<tr>
+	     <td > 密码</td>
+	     <td> <input type="password" name="u_pwd" id="upwd"  />
+	     <span id="checkPwdresult"></span>  </td>
+ 	 </tr>
+ 	 <tr>
+	     <td >重复密码</td>
+	     <td> <input type="password"  id="rupwd"  onblur="checkrPwd()"/>
+	     <span id="checkrPwdresult"></span>  </td>
+ 	 </tr>
 	 <tr>
 	     <td>性别</td>
 	     <td ><select name="u_sex" id="usex">
+	     	<option value ="${updateuser.u_sex}">男</option>
 		    <option value ="男">男</option>
 	        <option value ="女">女</option>
             </select>
@@ -153,25 +164,13 @@ function check_ename(){
 
      <tr>
 	     <td  > 手机号</td>
-	     <td> <input type="text" name="u_phone" id="phnum" onblur="checknum()"/>
-			<span id="checknum">	    
-		 </td>
+	     <td> <input type="text" name="u_phone" id="phnum" value="${updateuser.u_phone}" onblur="checknum()"/>
+			<span id="checknum">	     </td>
     </tr> 
-	<tr>
-		<td  > 角色</td>
-		<td>			
-			<select name="role_id" id="role_id">
-	    		 <c:forEach items="${rlist}" var="rl" varStatus="rr">
-		    		<option value ="${rl.role_id}">${rl.role_name}</option>	        
-	        	</c:forEach>
-            </select>
-		</td>
-	
-	</tr>
-	
+
 	
 	<tr>
-	     <td colspan="3"> <input type="submit" value="增加">
+	     <td colspan="3"> <input type="submit" value="修改">
 		    <input type="reset" value="取消">		
                                           </td>	    
       </tr>

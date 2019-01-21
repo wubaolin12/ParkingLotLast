@@ -1,9 +1,13 @@
 package org.great.biz;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
+import java.util.Set;
 
 import javax.annotation.Resource;
 
+import org.apache.ibatis.session.RowBounds;
 import org.great.bean.Role;
 import org.great.bean.RoleRel;
 import org.great.bean.User;
@@ -50,5 +54,21 @@ public class UserBizImpl implements UserBiz {
 
 		return userMapper.getUser(user);
 	}
+
+	/**
+	 * yf
+	 * 用户表分页业务
+	 */
+	@Override
+	public List findList(String sql,int offset,int rownum) {
+		// TODO Auto-generated method stub
+		RowBounds rb = new RowBounds(offset,rownum);
+		System.out.println("---UserBizImpl:findList=---");
+		
+		List list=userMapper.findList(sql,rb);
+		return list;
+	
+	}
+
 
 }

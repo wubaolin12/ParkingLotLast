@@ -19,5 +19,16 @@
 	</insert>
 	
 	
+	<update id="delObject" parameterType="String" >
+			${value} 
+	</update>
+		
+	<update id="updateObject" parameterType="String" >
+			${value} 
+	</update>
+	
+	<select id="getCordnum"  resultType="java.lang.Integer" > 
+		${value} 
+	</select>
 		
 </mapper>
