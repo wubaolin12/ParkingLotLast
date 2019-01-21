@@ -218,6 +218,7 @@ public class LicensePlateRecognition {
 					System.out.println("执行成功停车");
 					
 				}
+				break;
 			}
 		}
 		
