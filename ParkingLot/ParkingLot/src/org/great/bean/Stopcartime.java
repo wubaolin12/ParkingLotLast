@@ -35,6 +35,21 @@ public class Stopcartime {
 		this.sct_overtime = sct_overtime;
 		this.sct_money = sct_money;
 	}
+	
+	
+	public Stopcartime(int c_id, String sct_starttime) {
+		super();
+		this.c_id = c_id;
+		this.sct_starttime = sct_starttime;
+	}
+
+
+	public Stopcartime(int pm_id, String sct_overtime, int sct_id) {
+		super();
+		this.pm_id = pm_id;
+		this.sct_overtime = sct_overtime;
+		this.sct_id = sct_id;
+	}
 
 	@Override
 	public String toString() {
