@@ -2,9 +2,48 @@
 <!DOCTYPE mapper PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN" 
 "http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
 
-
+<!-- select * from  tb_cust cc LEFT JOIN tb_car c on cc.cust_id=c.cust_id where cc.cust_id=1 -->
 <mapper namespace="org.great.mapper.CustMapper">
+	<!-- 查询所有客户 -->
+	<select id="findCustAllX" parameterType="org.great.bean.Param"
+		resultMap="findCustAllMap">
+		select * from tb_cust c LEFT JOIN tb_param pm ON c.pm_id =
+		pm.pm_id
+	</select>
+	<resultMap type="org.great.bean.Cust" id="findCustAllMap">
+		<id property="cust_id" column="cust_id" />
+		<result property="pm_id" column="pm_id" />
+		<result property="cust_acc" column="cust_acc" />
+		<result property="cust_pwd" column="cust_pwd" />
+		<result property="cust_sex" column="cust_sex" />
+		<result property="cust_age" column="cust_age" />
+		<result property="cust_phone" column="cust_phone" />
+		<result property="cust_money" column="cust_money" />
+		<result property="cus_null1" column="cus_null1" />
+		<result property="cus_null2" column="cus_null2" />
+		<result property="cus_null3" column="cus_null3" />
 
-	
+		<collection property="param" column="pm_id"
+			javaType="org.great.bean.Param">
+			<id property="pm_id" column="pm_id" />
+			<result property="pm_name" column="pm_name" />
+			<result property="pm_type" column="pm_type" />
+
+		</collection>
+	</resultMap>
+	<!-- 添加客户账号添加 -->
+	<insert id="AddCustX" parameterType="org.great.bean.Cust">
+		insert into
+		tb_cust(pm_id,cust_acc,cust_pwd,cust_sex,cust_age,cust_phone,cust_money)
+		values
+		(3,#{cust_acc},#{cust_pwd},#{cust_sex},#{cust_age},#{cust_phone},#{cust_money})
+	</insert>
+
+	<!-- 通过手机号找到客户信息 -->
+	<select id="FindByPhoneX" parameterType="String"
+		resultType="org.great.bean.Cust">
+		select * from tb_cust where cust_phone =#{Pnumber}
+	</select>
+
 
 </mapper>

@@ -39,3 +39,1017 @@
 2019-01-16 22:48:51main DefaultSingletonBeanRegistry.java DEBUG Creating shared instance of singleton bean 'userMapper'
 2019-01-16 22:48:51main DefaultSingletonBeanRegistry.java DEBUG Creating shared instance of singleton bean 'systemLogAspect'
 2019-01-16 22:48:51main DefaultSingletonBeanRegistry.java DEBUG Creating shared instance of singleton bean 'userLog'
+2019-01-21 19:21:52main AbstractApplicationContext.java DEBUG Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@3f3afe78
+2019-01-21 19:21:54main ClassPathScanningCandidateComponentProvider.java DEBUG Identified candidate component class: file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\bean\Car.class]
+2019-01-21 19:21:54main ClassPathScanningCandidateComponentProvider.java DEBUG Identified candidate component class: file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\bean\Param.class]
+2019-01-21 19:21:54main ClassPathScanningCandidateComponentProvider.java DEBUG Identified candidate component class: file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\bean\RoleRel.class]
+2019-01-21 19:21:54main ClassPathScanningCandidateComponentProvider.java DEBUG Identified candidate component class: file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\biz\CarBizImpl.class]
+2019-01-21 19:21:54main ClassPathScanningCandidateComponentProvider.java DEBUG Identified candidate component class: file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\biz\CarMsgBizImpl.class]
+2019-01-21 19:21:54main ClassPathScanningCandidateComponentProvider.java DEBUG Identified candidate component class: file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\biz\ComboBizImpl.class]
+2019-01-21 19:21:54main ClassPathScanningCandidateComponentProvider.java DEBUG Identified candidate component class: file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\biz\CountrulesBziImpl.class]
+2019-01-21 19:21:54main ClassPathScanningCandidateComponentProvider.java DEBUG Identified candidate component class: file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\biz\CustBizImpl.class]
+2019-01-21 19:21:54main ClassPathScanningCandidateComponentProvider.java DEBUG Identified candidate component class: file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\biz\LogBizImpl.class]
+2019-01-21 19:21:54main ClassPathScanningCandidateComponentProvider.java DEBUG Identified candidate component class: file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\biz\MenuBizImpl.class]
+2019-01-21 19:21:54main ClassPathScanningCandidateComponentProvider.java DEBUG Identified candidate component class: file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\biz\ParamBizImpl.class]
+2019-01-21 19:21:54main ClassPathScanningCandidateComponentProvider.java DEBUG Identified candidate component class: file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\biz\ParkBizImpl.class]
+2019-01-21 19:21:54main ClassPathScanningCandidateComponentProvider.java DEBUG Identified candidate component class: file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\biz\ReceiptBizImpl.class]
+2019-01-21 19:21:54main ClassPathScanningCandidateComponentProvider.java DEBUG Identified candidate component class: file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\biz\RoleBizImpl.class]
+2019-01-21 19:21:54main ClassPathScanningCandidateComponentProvider.java DEBUG Identified candidate component class: file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\biz\RoleMenuBizImpl.class]
+2019-01-21 19:21:54main ClassPathScanningCandidateComponentProvider.java DEBUG Identified candidate component class: file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\biz\RoleRelBizImpl.class]
+2019-01-21 19:21:54main ClassPathScanningCandidateComponentProvider.java DEBUG Identified candidate component class: file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\biz\ScheBizImpl.class]
+2019-01-21 19:21:54main ClassPathScanningCandidateComponentProvider.java DEBUG Identified candidate component class: file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\biz\SchestateBizImpl.class]
+2019-01-21 19:21:54main ClassPathScanningCandidateComponentProvider.java DEBUG Identified candidate component class: file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\biz\StopcartimeBizImpl.class]
+2019-01-21 19:21:54main ClassPathScanningCandidateComponentProvider.java DEBUG Identified candidate component class: file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\biz\UserBizImpl.class]
+2019-01-21 19:21:54main ClassPathScanningCandidateComponentProvider.java DEBUG Identified candidate component class: file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\biz\UserMsgBizImpl.class]
+2019-01-21 19:21:54main ClassPathScanningCandidateComponentProvider.java DEBUG Identified candidate component class: file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\biz\VipBizImpl.class]
+2019-01-21 19:21:54main ClassPathScanningCandidateComponentProvider.java DEBUG Identified candidate component class: file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\handler\AppearanceLicensePlateRecognition.class]
+2019-01-21 19:21:54main ClassPathScanningCandidateComponentProvider.java DEBUG Identified candidate component class: file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\handler\CustManageHandler.class]
+2019-01-21 19:21:54main ClassPathScanningCandidateComponentProvider.java DEBUG Identified candidate component class: file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\handler\ExitHandler.class]
+2019-01-21 19:21:54main ClassPathScanningCandidateComponentProvider.java DEBUG Identified candidate component class: file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\handler\LicensePlateRecognition.class]
+2019-01-21 19:21:54main ClassPathScanningCandidateComponentProvider.java DEBUG Identified candidate component class: file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\handler\LoginHandler.class]
+2019-01-21 19:21:54main ClassPathScanningCandidateComponentProvider.java DEBUG Identified candidate component class: file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\handler\MainHandler.class]
+2019-01-21 19:21:54main ClassPathScanningCandidateComponentProvider.java DEBUG Identified candidate component class: file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\handler\PermissionMenuHandler.class]
+2019-01-21 19:21:54main ClassPathScanningCandidateComponentProvider.java DEBUG Identified candidate component class: file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\interceptor\FirstCron.class]
+2019-01-21 19:21:54main ClassPathScanningCandidateComponentProvider.java DEBUG Identified candidate component class: file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\log\SystemLogAspect.class]
+2019-01-21 19:21:54main ClassPathScanningCandidateComponentProvider.java DEBUG Identified candidate component class: file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\log\UserLog.class]
+2019-01-21 19:21:54main ClassPathScanningCandidateComponentProvider.java DEBUG Ignored because not a concrete top-level class: file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\mapper\CarMapper.class]
+2019-01-21 19:21:54main ClassPathScanningCandidateComponentProvider.java DEBUG Ignored because not a concrete top-level class: file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\mapper\CarMsgMapper.class]
+2019-01-21 19:21:54main ClassPathScanningCandidateComponentProvider.java DEBUG Ignored because not a concrete top-level class: file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\mapper\ComboMapper.class]
+2019-01-21 19:21:54main ClassPathScanningCandidateComponentProvider.java DEBUG Ignored because not a concrete top-level class: file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\mapper\CountrulesMapper.class]
+2019-01-21 19:21:54main ClassPathScanningCandidateComponentProvider.java DEBUG Ignored because not a concrete top-level class: file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\mapper\CustMapper.class]
+2019-01-21 19:21:54main ClassPathScanningCandidateComponentProvider.java DEBUG Ignored because not a concrete top-level class: file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\mapper\LogMapper.class]
+2019-01-21 19:21:54main ClassPathScanningCandidateComponentProvider.java DEBUG Ignored because not a concrete top-level class: file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\mapper\MenuMapper.class]
+2019-01-21 19:21:54main ClassPathScanningCandidateComponentProvider.java DEBUG Ignored because not a concrete top-level class: file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\mapper\ParamMapper.class]
+2019-01-21 19:21:54main ClassPathScanningCandidateComponentProvider.java DEBUG Ignored because not a concrete top-level class: file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\mapper\ParkMapper.class]
+2019-01-21 19:21:54main ClassPathScanningCandidateComponentProvider.java DEBUG Ignored because not a concrete top-level class: file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\mapper\ReceiptMapper.class]
+2019-01-21 19:21:55main ClassPathScanningCandidateComponentProvider.java DEBUG Ignored because not a concrete top-level class: file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\mapper\RoleMapper.class]
+2019-01-21 19:21:55main ClassPathScanningCandidateComponentProvider.java DEBUG Ignored because not a concrete top-level class: file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\mapper\RoleMenuMapper.class]
+2019-01-21 19:21:55main ClassPathScanningCandidateComponentProvider.java DEBUG Ignored because not a concrete top-level class: file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\mapper\ScheMapper.class]
+2019-01-21 19:21:55main ClassPathScanningCandidateComponentProvider.java DEBUG Ignored because not a concrete top-level class: file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\mapper\SchestateMapper.class]
+2019-01-21 19:21:55main ClassPathScanningCandidateComponentProvider.java DEBUG Ignored because not a concrete top-level class: file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\mapper\StopcartimeMapper.class]
+2019-01-21 19:21:55main ClassPathScanningCandidateComponentProvider.java DEBUG Ignored because not a concrete top-level class: file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\mapper\UserMapper.class]
+2019-01-21 19:21:55main ClassPathScanningCandidateComponentProvider.java DEBUG Ignored because not a concrete top-level class: file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\mapper\UserMsgMapper.class]
+2019-01-21 19:21:55main ClassPathScanningCandidateComponentProvider.java DEBUG Ignored because not a concrete top-level class: file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\mapper\VipMapper.class]
+2019-01-21 19:21:55main XmlBeanDefinitionReader.java DEBUG Loaded 40 bean definitions from class path resource [applicationContext.xml]
+2019-01-21 19:21:55main DefaultSingletonBeanRegistry.java DEBUG Creating shared instance of singleton bean 'org.springframework.context.annotation.internalConfigurationAnnotationProcessor'
+2019-01-21 19:21:55main DefaultSingletonBeanRegistry.java DEBUG Creating shared instance of singleton bean 'org.mybatis.spring.mapper.MapperScannerConfigurer#0'
+2019-01-21 19:21:56main DefaultSingletonBeanRegistry.java DEBUG Creating shared instance of singleton bean 'sqlSessionFactory'
+2019-01-21 19:21:56main LogFactory.java DEBUG Logging initialized using 'class org.apache.ibatis.logging.slf4j.Slf4jImpl' adapter.
+2019-01-21 19:21:56main DefaultSingletonBeanRegistry.java DEBUG Creating shared instance of singleton bean 'mydatasuroce'
+2019-01-21 19:21:56main SqlSessionFactoryBean.java DEBUG Property 'configLocation' not specified, using default MyBatis Configuration
+2019-01-21 19:21:57main SqlSessionFactoryBean.java DEBUG Parsed mapper file: 'file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\mapper\CarMapper.xml]'
+2019-01-21 19:21:57main SqlSessionFactoryBean.java DEBUG Parsed mapper file: 'file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\mapper\CarMsgMapper.xml]'
+2019-01-21 19:21:57main SqlSessionFactoryBean.java DEBUG Parsed mapper file: 'file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\mapper\ComboMapper.xml]'
+2019-01-21 19:21:57main SqlSessionFactoryBean.java DEBUG Parsed mapper file: 'file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\mapper\CountrulesMapper.xml]'
+2019-01-21 19:21:57main SqlSessionFactoryBean.java DEBUG Parsed mapper file: 'file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\mapper\CustMapper.xml]'
+2019-01-21 19:21:57main SqlSessionFactoryBean.java DEBUG Parsed mapper file: 'file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\mapper\LogMapper.xml]'
+2019-01-21 19:21:57main SqlSessionFactoryBean.java DEBUG Parsed mapper file: 'file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\mapper\MenuMapper.xml]'
+2019-01-21 19:21:57main SqlSessionFactoryBean.java DEBUG Parsed mapper file: 'file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\mapper\ParamMapper.xml]'
+2019-01-21 19:21:57main SqlSessionFactoryBean.java DEBUG Parsed mapper file: 'file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\mapper\ParkMapper.xml]'
+2019-01-21 19:21:57main SqlSessionFactoryBean.java DEBUG Parsed mapper file: 'file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\mapper\ReceiptMapper.xml]'
+2019-01-21 19:21:57main SqlSessionFactoryBean.java DEBUG Parsed mapper file: 'file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\mapper\RoleMapper.xml]'
+2019-01-21 19:21:57main SqlSessionFactoryBean.java DEBUG Parsed mapper file: 'file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\mapper\RoleMenuMapper.xml]'
+2019-01-21 19:21:57main SqlSessionFactoryBean.java DEBUG Parsed mapper file: 'file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\mapper\ScheMapper.xml]'
+2019-01-21 19:21:57main SqlSessionFactoryBean.java DEBUG Parsed mapper file: 'file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\mapper\SchestateMapper.xml]'
+2019-01-21 19:21:57main SqlSessionFactoryBean.java DEBUG Parsed mapper file: 'file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\mapper\StopcartimeMapper.xml]'
+2019-01-21 19:21:57main SqlSessionFactoryBean.java DEBUG Parsed mapper file: 'file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\mapper\UserMapper.xml]'
+2019-01-21 19:21:57main SqlSessionFactoryBean.java DEBUG Parsed mapper file: 'file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\mapper\UserMsgMapper.xml]'
+2019-01-21 19:21:57main SqlSessionFactoryBean.java DEBUG Parsed mapper file: 'file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\mapper\VipMapper.xml]'
+2019-01-21 19:21:57main ClassPathScanningCandidateComponentProvider.java DEBUG Identified candidate component class: file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\mapper\CarMapper.class]
+2019-01-21 19:21:57main ClassPathScanningCandidateComponentProvider.java DEBUG Identified candidate component class: file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\mapper\CarMsgMapper.class]
+2019-01-21 19:21:57main ClassPathScanningCandidateComponentProvider.java DEBUG Identified candidate component class: file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\mapper\ComboMapper.class]
+2019-01-21 19:21:57main ClassPathScanningCandidateComponentProvider.java DEBUG Identified candidate component class: file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\mapper\CountrulesMapper.class]
+2019-01-21 19:21:57main ClassPathScanningCandidateComponentProvider.java DEBUG Identified candidate component class: file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\mapper\CustMapper.class]
+2019-01-21 19:21:57main ClassPathScanningCandidateComponentProvider.java DEBUG Identified candidate component class: file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\mapper\LogMapper.class]
+2019-01-21 19:21:57main ClassPathScanningCandidateComponentProvider.java DEBUG Identified candidate component class: file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\mapper\MenuMapper.class]
+2019-01-21 19:21:57main ClassPathScanningCandidateComponentProvider.java DEBUG Identified candidate component class: file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\mapper\ParamMapper.class]
+2019-01-21 19:21:57main ClassPathScanningCandidateComponentProvider.java DEBUG Identified candidate component class: file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\mapper\ParkMapper.class]
+2019-01-21 19:21:57main ClassPathScanningCandidateComponentProvider.java DEBUG Identified candidate component class: file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\mapper\ReceiptMapper.class]
+2019-01-21 19:21:57main ClassPathScanningCandidateComponentProvider.java DEBUG Identified candidate component class: file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\mapper\RoleMapper.class]
+2019-01-21 19:21:57main ClassPathScanningCandidateComponentProvider.java DEBUG Identified candidate component class: file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\mapper\RoleMenuMapper.class]
+2019-01-21 19:21:57main ClassPathScanningCandidateComponentProvider.java DEBUG Identified candidate component class: file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\mapper\ScheMapper.class]
+2019-01-21 19:21:57main ClassPathScanningCandidateComponentProvider.java DEBUG Identified candidate component class: file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\mapper\SchestateMapper.class]
+2019-01-21 19:21:57main ClassPathScanningCandidateComponentProvider.java DEBUG Identified candidate component class: file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\mapper\StopcartimeMapper.class]
+2019-01-21 19:21:57main ClassPathScanningCandidateComponentProvider.java DEBUG Identified candidate component class: file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\mapper\UserMapper.class]
+2019-01-21 19:21:57main ClassPathScanningCandidateComponentProvider.java DEBUG Identified candidate component class: file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\mapper\UserMsgMapper.class]
+2019-01-21 19:21:57main ClassPathScanningCandidateComponentProvider.java DEBUG Identified candidate component class: file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\mapper\VipMapper.class]
+2019-01-21 19:21:57main ClassPathMapperScanner.java DEBUG Creating MapperFactoryBean with name 'carMapper' and 'org.great.mapper.CarMapper' mapperInterface
+2019-01-21 19:21:57main ClassPathMapperScanner.java DEBUG Creating MapperFactoryBean with name 'carMsgMapper' and 'org.great.mapper.CarMsgMapper' mapperInterface
+2019-01-21 19:21:57main ClassPathMapperScanner.java DEBUG Creating MapperFactoryBean with name 'comboMapper' and 'org.great.mapper.ComboMapper' mapperInterface
+2019-01-21 19:21:57main ClassPathMapperScanner.java DEBUG Creating MapperFactoryBean with name 'countrulesMapper' and 'org.great.mapper.CountrulesMapper' mapperInterface
+2019-01-21 19:21:57main ClassPathMapperScanner.java DEBUG Creating MapperFactoryBean with name 'custMapper' and 'org.great.mapper.CustMapper' mapperInterface
+2019-01-21 19:21:57main ClassPathMapperScanner.java DEBUG Creating MapperFactoryBean with name 'logMapper' and 'org.great.mapper.LogMapper' mapperInterface
+2019-01-21 19:21:57main ClassPathMapperScanner.java DEBUG Creating MapperFactoryBean with name 'menuMapper' and 'org.great.mapper.MenuMapper' mapperInterface
+2019-01-21 19:21:57main ClassPathMapperScanner.java DEBUG Creating MapperFactoryBean with name 'paramMapper' and 'org.great.mapper.ParamMapper' mapperInterface
+2019-01-21 19:21:57main ClassPathMapperScanner.java DEBUG Creating MapperFactoryBean with name 'parkMapper' and 'org.great.mapper.ParkMapper' mapperInterface
+2019-01-21 19:21:57main ClassPathMapperScanner.java DEBUG Creating MapperFactoryBean with name 'receiptMapper' and 'org.great.mapper.ReceiptMapper' mapperInterface
+2019-01-21 19:21:57main ClassPathMapperScanner.java DEBUG Creating MapperFactoryBean with name 'roleMapper' and 'org.great.mapper.RoleMapper' mapperInterface
+2019-01-21 19:21:57main ClassPathMapperScanner.java DEBUG Creating MapperFactoryBean with name 'roleMenuMapper' and 'org.great.mapper.RoleMenuMapper' mapperInterface
+2019-01-21 19:21:57main ClassPathMapperScanner.java DEBUG Creating MapperFactoryBean with name 'scheMapper' and 'org.great.mapper.ScheMapper' mapperInterface
+2019-01-21 19:21:57main ClassPathMapperScanner.java DEBUG Creating MapperFactoryBean with name 'schestateMapper' and 'org.great.mapper.SchestateMapper' mapperInterface
+2019-01-21 19:21:57main ClassPathMapperScanner.java DEBUG Creating MapperFactoryBean with name 'stopcartimeMapper' and 'org.great.mapper.StopcartimeMapper' mapperInterface
+2019-01-21 19:21:57main ClassPathMapperScanner.java DEBUG Creating MapperFactoryBean with name 'userMapper' and 'org.great.mapper.UserMapper' mapperInterface
+2019-01-21 19:21:57main ClassPathMapperScanner.java DEBUG Creating MapperFactoryBean with name 'userMsgMapper' and 'org.great.mapper.UserMsgMapper' mapperInterface
+2019-01-21 19:21:57main ClassPathMapperScanner.java DEBUG Creating MapperFactoryBean with name 'vipMapper' and 'org.great.mapper.VipMapper' mapperInterface
+2019-01-21 19:21:57main DefaultSingletonBeanRegistry.java DEBUG Creating shared instance of singleton bean 'org.springframework.context.event.internalEventListenerProcessor'
+2019-01-21 19:21:57main DefaultSingletonBeanRegistry.java DEBUG Creating shared instance of singleton bean 'org.springframework.context.event.internalEventListenerFactory'
+2019-01-21 19:21:57main DefaultSingletonBeanRegistry.java DEBUG Creating shared instance of singleton bean 'org.springframework.context.annotation.internalAutowiredAnnotationProcessor'
+2019-01-21 19:21:57main DefaultSingletonBeanRegistry.java DEBUG Creating shared instance of singleton bean 'org.springframework.context.annotation.internalCommonAnnotationProcessor'
+2019-01-21 19:21:57main DefaultSingletonBeanRegistry.java DEBUG Creating shared instance of singleton bean 'car'
+2019-01-21 19:21:57main DefaultSingletonBeanRegistry.java DEBUG Creating shared instance of singleton bean 'param'
+2019-01-21 19:21:57main DefaultSingletonBeanRegistry.java DEBUG Creating shared instance of singleton bean 'roleRel'
+2019-01-21 19:21:57main DefaultSingletonBeanRegistry.java DEBUG Creating shared instance of singleton bean 'carBiz'
+2019-01-21 19:21:57main DefaultSingletonBeanRegistry.java DEBUG Creating shared instance of singleton bean 'carMapper'
+2019-01-21 19:21:58main DefaultSingletonBeanRegistry.java DEBUG Creating shared instance of singleton bean 'carMsgBiz'
+2019-01-21 19:21:58main DefaultSingletonBeanRegistry.java DEBUG Creating shared instance of singleton bean 'comboBiz'
+2019-01-21 19:21:58main DefaultSingletonBeanRegistry.java DEBUG Creating shared instance of singleton bean 'countrulesBzi'
+2019-01-21 19:21:58main DefaultSingletonBeanRegistry.java DEBUG Creating shared instance of singleton bean 'custBiz'
+2019-01-21 19:21:58main DefaultSingletonBeanRegistry.java DEBUG Creating shared instance of singleton bean 'custMapper'
+2019-01-21 19:21:58main DefaultSingletonBeanRegistry.java DEBUG Creating shared instance of singleton bean 'logBiz'
+2019-01-21 19:21:58main DefaultSingletonBeanRegistry.java DEBUG Creating shared instance of singleton bean 'menuBiz'
+2019-01-21 19:21:58main DefaultSingletonBeanRegistry.java DEBUG Creating shared instance of singleton bean 'menuMapper'
+2019-01-21 19:21:58main DefaultSingletonBeanRegistry.java DEBUG Creating shared instance of singleton bean 'paramBiz'
+2019-01-21 19:21:58main DefaultSingletonBeanRegistry.java DEBUG Creating shared instance of singleton bean 'paramMapper'
+2019-01-21 19:21:58main DefaultSingletonBeanRegistry.java DEBUG Creating shared instance of singleton bean 'parkBiz'
+2019-01-21 19:21:58main DefaultSingletonBeanRegistry.java DEBUG Creating shared instance of singleton bean 'receiptBiz'
+2019-01-21 19:21:58main DefaultSingletonBeanRegistry.java DEBUG Creating shared instance of singleton bean 'roleBiz'
+2019-01-21 19:21:58main DefaultSingletonBeanRegistry.java DEBUG Creating shared instance of singleton bean 'roleMapper'
+2019-01-21 19:21:58main DefaultSingletonBeanRegistry.java DEBUG Creating shared instance of singleton bean 'roleMenuBiz'
+2019-01-21 19:21:58main DefaultSingletonBeanRegistry.java DEBUG Creating shared instance of singleton bean 'roleMenuMapper'
+2019-01-21 19:21:58main DefaultSingletonBeanRegistry.java DEBUG Creating shared instance of singleton bean 'roleRelBiz'
+2019-01-21 19:21:58main DefaultSingletonBeanRegistry.java DEBUG Creating shared instance of singleton bean 'scheBiz'
+2019-01-21 19:21:58main DefaultSingletonBeanRegistry.java DEBUG Creating shared instance of singleton bean 'schestateBiz'
+2019-01-21 19:21:58main DefaultSingletonBeanRegistry.java DEBUG Creating shared instance of singleton bean 'stopcartimeBiz'
+2019-01-21 19:21:58main DefaultSingletonBeanRegistry.java DEBUG Creating shared instance of singleton bean 'stopcartimeMapper'
+2019-01-21 19:21:58main DefaultSingletonBeanRegistry.java DEBUG Creating shared instance of singleton bean 'userBiz'
+2019-01-21 19:21:58main DefaultSingletonBeanRegistry.java DEBUG Creating shared instance of singleton bean 'userMapper'
+2019-01-21 19:21:58main DefaultSingletonBeanRegistry.java DEBUG Creating shared instance of singleton bean 'userMsgBiz'
+2019-01-21 19:21:58main DefaultSingletonBeanRegistry.java DEBUG Creating shared instance of singleton bean 'vipBiz'
+2019-01-21 19:21:58main DefaultSingletonBeanRegistry.java DEBUG Creating shared instance of singleton bean 'firstCron'
+2019-01-21 19:21:58main DefaultSingletonBeanRegistry.java DEBUG Creating shared instance of singleton bean 'systemLogAspect'
+2019-01-21 19:21:58main DefaultSingletonBeanRegistry.java DEBUG Creating shared instance of singleton bean 'userLog'
+2019-01-21 19:21:58main DefaultSingletonBeanRegistry.java DEBUG Creating shared instance of singleton bean 'carMsgMapper'
+2019-01-21 19:21:58main DefaultSingletonBeanRegistry.java DEBUG Creating shared instance of singleton bean 'comboMapper'
+2019-01-21 19:21:58main DefaultSingletonBeanRegistry.java DEBUG Creating shared instance of singleton bean 'countrulesMapper'
+2019-01-21 19:21:58main DefaultSingletonBeanRegistry.java DEBUG Creating shared instance of singleton bean 'logMapper'
+2019-01-21 19:21:58main DefaultSingletonBeanRegistry.java DEBUG Creating shared instance of singleton bean 'parkMapper'
+2019-01-21 19:21:58main DefaultSingletonBeanRegistry.java DEBUG Creating shared instance of singleton bean 'receiptMapper'
+2019-01-21 19:21:58main DefaultSingletonBeanRegistry.java DEBUG Creating shared instance of singleton bean 'scheMapper'
+2019-01-21 19:21:58main DefaultSingletonBeanRegistry.java DEBUG Creating shared instance of singleton bean 'schestateMapper'
+2019-01-21 19:21:58main DefaultSingletonBeanRegistry.java DEBUG Creating shared instance of singleton bean 'userMsgMapper'
+2019-01-21 19:21:58main DefaultSingletonBeanRegistry.java DEBUG Creating shared instance of singleton bean 'vipMapper'
+2019-01-21 19:21:58main SqlSessionUtils.java DEBUG Creating a new SqlSession
+2019-01-21 19:21:58main SqlSessionUtils.java DEBUG SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@52b1beb6] was not registered for synchronization because synchronization is not active
+2019-01-21 19:21:58main DataSourceUtils.java DEBUG Fetching JDBC Connection from DataSource
+2019-01-21 19:21:59main SpringManagedTransaction.java DEBUG JDBC Connection [jdbc:mysql://45.40.255.33:3306/parkinglot?characterEncoding=utf-8, UserName=root@117.28.98.168, MySQL Connector Java] will not be managed by Spring
+2019-01-21 19:22:00main BaseJdbcLogger.java DEBUG ooo Using Connection [jdbc:mysql://45.40.255.33:3306/parkinglot?characterEncoding=utf-8, UserName=root@117.28.98.168, MySQL Connector Java]
+2019-01-21 19:22:00main BaseJdbcLogger.java DEBUG ==>  Preparing: select * from tb_cust c LEFT JOIN tb_param pm ON c.pm_id = pm.pm_id 
+2019-01-21 19:22:00main BaseJdbcLogger.java DEBUG ==> Parameters: 
+2019-01-21 19:22:00main BaseJdbcLogger.java DEBUG <==      Total: 4
+2019-01-21 19:22:00main SqlSessionUtils.java DEBUG Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@52b1beb6]
+2019-01-21 19:22:00main DataSourceUtils.java DEBUG Returning JDBC Connection to DataSource
+2019-01-21 19:22:58main AbstractApplicationContext.java DEBUG Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@3f3afe78
+2019-01-21 19:22:58main ClassPathScanningCandidateComponentProvider.java DEBUG Identified candidate component class: file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\bean\Car.class]
+2019-01-21 19:22:58main ClassPathScanningCandidateComponentProvider.java DEBUG Identified candidate component class: file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\bean\Param.class]
+2019-01-21 19:22:58main ClassPathScanningCandidateComponentProvider.java DEBUG Identified candidate component class: file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\bean\RoleRel.class]
+2019-01-21 19:22:58main ClassPathScanningCandidateComponentProvider.java DEBUG Identified candidate component class: file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\biz\CarBizImpl.class]
+2019-01-21 19:22:58main ClassPathScanningCandidateComponentProvider.java DEBUG Identified candidate component class: file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\biz\CarMsgBizImpl.class]
+2019-01-21 19:22:58main ClassPathScanningCandidateComponentProvider.java DEBUG Identified candidate component class: file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\biz\ComboBizImpl.class]
+2019-01-21 19:22:58main ClassPathScanningCandidateComponentProvider.java DEBUG Identified candidate component class: file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\biz\CountrulesBziImpl.class]
+2019-01-21 19:22:58main ClassPathScanningCandidateComponentProvider.java DEBUG Identified candidate component class: file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\biz\CustBizImpl.class]
+2019-01-21 19:22:58main ClassPathScanningCandidateComponentProvider.java DEBUG Identified candidate component class: file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\biz\LogBizImpl.class]
+2019-01-21 19:22:58main ClassPathScanningCandidateComponentProvider.java DEBUG Identified candidate component class: file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\biz\MenuBizImpl.class]
+2019-01-21 19:22:58main ClassPathScanningCandidateComponentProvider.java DEBUG Identified candidate component class: file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\biz\ParamBizImpl.class]
+2019-01-21 19:22:58main ClassPathScanningCandidateComponentProvider.java DEBUG Identified candidate component class: file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\biz\ParkBizImpl.class]
+2019-01-21 19:22:58main ClassPathScanningCandidateComponentProvider.java DEBUG Identified candidate component class: file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\biz\ReceiptBizImpl.class]
+2019-01-21 19:22:58main ClassPathScanningCandidateComponentProvider.java DEBUG Identified candidate component class: file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\biz\RoleBizImpl.class]
+2019-01-21 19:22:58main ClassPathScanningCandidateComponentProvider.java DEBUG Identified candidate component class: file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\biz\RoleMenuBizImpl.class]
+2019-01-21 19:22:58main ClassPathScanningCandidateComponentProvider.java DEBUG Identified candidate component class: file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\biz\RoleRelBizImpl.class]
+2019-01-21 19:22:58main ClassPathScanningCandidateComponentProvider.java DEBUG Identified candidate component class: file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\biz\ScheBizImpl.class]
+2019-01-21 19:22:58main ClassPathScanningCandidateComponentProvider.java DEBUG Identified candidate component class: file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\biz\SchestateBizImpl.class]
+2019-01-21 19:22:58main ClassPathScanningCandidateComponentProvider.java DEBUG Identified candidate component class: file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\biz\StopcartimeBizImpl.class]
+2019-01-21 19:22:58main ClassPathScanningCandidateComponentProvider.java DEBUG Identified candidate component class: file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\biz\UserBizImpl.class]
+2019-01-21 19:22:58main ClassPathScanningCandidateComponentProvider.java DEBUG Identified candidate component class: file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\biz\UserMsgBizImpl.class]
+2019-01-21 19:22:58main ClassPathScanningCandidateComponentProvider.java DEBUG Identified candidate component class: file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\biz\VipBizImpl.class]
+2019-01-21 19:22:58main ClassPathScanningCandidateComponentProvider.java DEBUG Identified candidate component class: file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\handler\AppearanceLicensePlateRecognition.class]
+2019-01-21 19:22:58main ClassPathScanningCandidateComponentProvider.java DEBUG Identified candidate component class: file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\handler\CustManageHandler.class]
+2019-01-21 19:22:58main ClassPathScanningCandidateComponentProvider.java DEBUG Identified candidate component class: file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\handler\ExitHandler.class]
+2019-01-21 19:22:58main ClassPathScanningCandidateComponentProvider.java DEBUG Identified candidate component class: file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\handler\LicensePlateRecognition.class]
+2019-01-21 19:22:58main ClassPathScanningCandidateComponentProvider.java DEBUG Identified candidate component class: file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\handler\LoginHandler.class]
+2019-01-21 19:22:58main ClassPathScanningCandidateComponentProvider.java DEBUG Identified candidate component class: file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\handler\MainHandler.class]
+2019-01-21 19:22:58main ClassPathScanningCandidateComponentProvider.java DEBUG Identified candidate component class: file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\handler\PermissionMenuHandler.class]
+2019-01-21 19:22:58main ClassPathScanningCandidateComponentProvider.java DEBUG Identified candidate component class: file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\interceptor\FirstCron.class]
+2019-01-21 19:22:58main ClassPathScanningCandidateComponentProvider.java DEBUG Identified candidate component class: file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\log\SystemLogAspect.class]
+2019-01-21 19:22:58main ClassPathScanningCandidateComponentProvider.java DEBUG Identified candidate component class: file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\log\UserLog.class]
+2019-01-21 19:22:58main ClassPathScanningCandidateComponentProvider.java DEBUG Ignored because not a concrete top-level class: file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\mapper\CarMapper.class]
+2019-01-21 19:22:58main ClassPathScanningCandidateComponentProvider.java DEBUG Ignored because not a concrete top-level class: file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\mapper\CarMsgMapper.class]
+2019-01-21 19:22:58main ClassPathScanningCandidateComponentProvider.java DEBUG Ignored because not a concrete top-level class: file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\mapper\ComboMapper.class]
+2019-01-21 19:22:58main ClassPathScanningCandidateComponentProvider.java DEBUG Ignored because not a concrete top-level class: file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\mapper\CountrulesMapper.class]
+2019-01-21 19:22:58main ClassPathScanningCandidateComponentProvider.java DEBUG Ignored because not a concrete top-level class: file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\mapper\CustMapper.class]
+2019-01-21 19:22:58main ClassPathScanningCandidateComponentProvider.java DEBUG Ignored because not a concrete top-level class: file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\mapper\LogMapper.class]
+2019-01-21 19:22:58main ClassPathScanningCandidateComponentProvider.java DEBUG Ignored because not a concrete top-level class: file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\mapper\MenuMapper.class]
+2019-01-21 19:22:58main ClassPathScanningCandidateComponentProvider.java DEBUG Ignored because not a concrete top-level class: file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\mapper\ParamMapper.class]
+2019-01-21 19:22:58main ClassPathScanningCandidateComponentProvider.java DEBUG Ignored because not a concrete top-level class: file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\mapper\ParkMapper.class]
+2019-01-21 19:22:58main ClassPathScanningCandidateComponentProvider.java DEBUG Ignored because not a concrete top-level class: file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\mapper\ReceiptMapper.class]
+2019-01-21 19:22:58main ClassPathScanningCandidateComponentProvider.java DEBUG Ignored because not a concrete top-level class: file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\mapper\RoleMapper.class]
+2019-01-21 19:22:58main ClassPathScanningCandidateComponentProvider.java DEBUG Ignored because not a concrete top-level class: file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\mapper\RoleMenuMapper.class]
+2019-01-21 19:22:58main ClassPathScanningCandidateComponentProvider.java DEBUG Ignored because not a concrete top-level class: file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\mapper\ScheMapper.class]
+2019-01-21 19:22:58main ClassPathScanningCandidateComponentProvider.java DEBUG Ignored because not a concrete top-level class: file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\mapper\SchestateMapper.class]
+2019-01-21 19:22:58main ClassPathScanningCandidateComponentProvider.java DEBUG Ignored because not a concrete top-level class: file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\mapper\StopcartimeMapper.class]
+2019-01-21 19:22:58main ClassPathScanningCandidateComponentProvider.java DEBUG Ignored because not a concrete top-level class: file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\mapper\UserMapper.class]
+2019-01-21 19:22:58main ClassPathScanningCandidateComponentProvider.java DEBUG Ignored because not a concrete top-level class: file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\mapper\UserMsgMapper.class]
+2019-01-21 19:22:58main ClassPathScanningCandidateComponentProvider.java DEBUG Ignored because not a concrete top-level class: file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\mapper\VipMapper.class]
+2019-01-21 19:22:58main XmlBeanDefinitionReader.java DEBUG Loaded 40 bean definitions from class path resource [applicationContext.xml]
+2019-01-21 19:22:59main DefaultSingletonBeanRegistry.java DEBUG Creating shared instance of singleton bean 'org.springframework.context.annotation.internalConfigurationAnnotationProcessor'
+2019-01-21 19:22:59main DefaultSingletonBeanRegistry.java DEBUG Creating shared instance of singleton bean 'org.mybatis.spring.mapper.MapperScannerConfigurer#0'
+2019-01-21 19:22:59main DefaultSingletonBeanRegistry.java DEBUG Creating shared instance of singleton bean 'sqlSessionFactory'
+2019-01-21 19:22:59main LogFactory.java DEBUG Logging initialized using 'class org.apache.ibatis.logging.slf4j.Slf4jImpl' adapter.
+2019-01-21 19:22:59main DefaultSingletonBeanRegistry.java DEBUG Creating shared instance of singleton bean 'mydatasuroce'
+2019-01-21 19:22:59main SqlSessionFactoryBean.java DEBUG Property 'configLocation' not specified, using default MyBatis Configuration
+2019-01-21 19:22:59main SqlSessionFactoryBean.java DEBUG Parsed mapper file: 'file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\mapper\CarMapper.xml]'
+2019-01-21 19:22:59main SqlSessionFactoryBean.java DEBUG Parsed mapper file: 'file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\mapper\CarMsgMapper.xml]'
+2019-01-21 19:22:59main SqlSessionFactoryBean.java DEBUG Parsed mapper file: 'file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\mapper\ComboMapper.xml]'
+2019-01-21 19:22:59main SqlSessionFactoryBean.java DEBUG Parsed mapper file: 'file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\mapper\CountrulesMapper.xml]'
+2019-01-21 19:22:59main SqlSessionFactoryBean.java DEBUG Parsed mapper file: 'file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\mapper\CustMapper.xml]'
+2019-01-21 19:22:59main SqlSessionFactoryBean.java DEBUG Parsed mapper file: 'file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\mapper\LogMapper.xml]'
+2019-01-21 19:22:59main SqlSessionFactoryBean.java DEBUG Parsed mapper file: 'file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\mapper\MenuMapper.xml]'
+2019-01-21 19:22:59main SqlSessionFactoryBean.java DEBUG Parsed mapper file: 'file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\mapper\ParamMapper.xml]'
+2019-01-21 19:22:59main SqlSessionFactoryBean.java DEBUG Parsed mapper file: 'file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\mapper\ParkMapper.xml]'
+2019-01-21 19:22:59main SqlSessionFactoryBean.java DEBUG Parsed mapper file: 'file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\mapper\ReceiptMapper.xml]'
+2019-01-21 19:22:59main SqlSessionFactoryBean.java DEBUG Parsed mapper file: 'file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\mapper\RoleMapper.xml]'
+2019-01-21 19:22:59main SqlSessionFactoryBean.java DEBUG Parsed mapper file: 'file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\mapper\RoleMenuMapper.xml]'
+2019-01-21 19:22:59main SqlSessionFactoryBean.java DEBUG Parsed mapper file: 'file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\mapper\ScheMapper.xml]'
+2019-01-21 19:22:59main SqlSessionFactoryBean.java DEBUG Parsed mapper file: 'file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\mapper\SchestateMapper.xml]'
+2019-01-21 19:22:59main SqlSessionFactoryBean.java DEBUG Parsed mapper file: 'file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\mapper\StopcartimeMapper.xml]'
+2019-01-21 19:22:59main SqlSessionFactoryBean.java DEBUG Parsed mapper file: 'file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\mapper\UserMapper.xml]'
+2019-01-21 19:23:00main SqlSessionFactoryBean.java DEBUG Parsed mapper file: 'file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\mapper\UserMsgMapper.xml]'
+2019-01-21 19:23:00main SqlSessionFactoryBean.java DEBUG Parsed mapper file: 'file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\mapper\VipMapper.xml]'
+2019-01-21 19:23:00main ClassPathScanningCandidateComponentProvider.java DEBUG Identified candidate component class: file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\mapper\CarMapper.class]
+2019-01-21 19:23:00main ClassPathScanningCandidateComponentProvider.java DEBUG Identified candidate component class: file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\mapper\CarMsgMapper.class]
+2019-01-21 19:23:00main ClassPathScanningCandidateComponentProvider.java DEBUG Identified candidate component class: file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\mapper\ComboMapper.class]
+2019-01-21 19:23:00main ClassPathScanningCandidateComponentProvider.java DEBUG Identified candidate component class: file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\mapper\CountrulesMapper.class]
+2019-01-21 19:23:00main ClassPathScanningCandidateComponentProvider.java DEBUG Identified candidate component class: file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\mapper\CustMapper.class]
+2019-01-21 19:23:00main ClassPathScanningCandidateComponentProvider.java DEBUG Identified candidate component class: file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\mapper\LogMapper.class]
+2019-01-21 19:23:00main ClassPathScanningCandidateComponentProvider.java DEBUG Identified candidate component class: file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\mapper\MenuMapper.class]
+2019-01-21 19:23:00main ClassPathScanningCandidateComponentProvider.java DEBUG Identified candidate component class: file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\mapper\ParamMapper.class]
+2019-01-21 19:23:00main ClassPathScanningCandidateComponentProvider.java DEBUG Identified candidate component class: file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\mapper\ParkMapper.class]
+2019-01-21 19:23:00main ClassPathScanningCandidateComponentProvider.java DEBUG Identified candidate component class: file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\mapper\ReceiptMapper.class]
+2019-01-21 19:23:00main ClassPathScanningCandidateComponentProvider.java DEBUG Identified candidate component class: file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\mapper\RoleMapper.class]
+2019-01-21 19:23:00main ClassPathScanningCandidateComponentProvider.java DEBUG Identified candidate component class: file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\mapper\RoleMenuMapper.class]
+2019-01-21 19:23:00main ClassPathScanningCandidateComponentProvider.java DEBUG Identified candidate component class: file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\mapper\ScheMapper.class]
+2019-01-21 19:23:00main ClassPathScanningCandidateComponentProvider.java DEBUG Identified candidate component class: file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\mapper\SchestateMapper.class]
+2019-01-21 19:23:00main ClassPathScanningCandidateComponentProvider.java DEBUG Identified candidate component class: file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\mapper\StopcartimeMapper.class]
+2019-01-21 19:23:00main ClassPathScanningCandidateComponentProvider.java DEBUG Identified candidate component class: file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\mapper\UserMapper.class]
+2019-01-21 19:23:00main ClassPathScanningCandidateComponentProvider.java DEBUG Identified candidate component class: file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\mapper\UserMsgMapper.class]
+2019-01-21 19:23:00main ClassPathScanningCandidateComponentProvider.java DEBUG Identified candidate component class: file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\mapper\VipMapper.class]
+2019-01-21 19:23:00main ClassPathMapperScanner.java DEBUG Creating MapperFactoryBean with name 'carMapper' and 'org.great.mapper.CarMapper' mapperInterface
+2019-01-21 19:23:00main ClassPathMapperScanner.java DEBUG Creating MapperFactoryBean with name 'carMsgMapper' and 'org.great.mapper.CarMsgMapper' mapperInterface
+2019-01-21 19:23:00main ClassPathMapperScanner.java DEBUG Creating MapperFactoryBean with name 'comboMapper' and 'org.great.mapper.ComboMapper' mapperInterface
+2019-01-21 19:23:00main ClassPathMapperScanner.java DEBUG Creating MapperFactoryBean with name 'countrulesMapper' and 'org.great.mapper.CountrulesMapper' mapperInterface
+2019-01-21 19:23:00main ClassPathMapperScanner.java DEBUG Creating MapperFactoryBean with name 'custMapper' and 'org.great.mapper.CustMapper' mapperInterface
+2019-01-21 19:23:00main ClassPathMapperScanner.java DEBUG Creating MapperFactoryBean with name 'logMapper' and 'org.great.mapper.LogMapper' mapperInterface
+2019-01-21 19:23:00main ClassPathMapperScanner.java DEBUG Creating MapperFactoryBean with name 'menuMapper' and 'org.great.mapper.MenuMapper' mapperInterface
+2019-01-21 19:23:00main ClassPathMapperScanner.java DEBUG Creating MapperFactoryBean with name 'paramMapper' and 'org.great.mapper.ParamMapper' mapperInterface
+2019-01-21 19:23:00main ClassPathMapperScanner.java DEBUG Creating MapperFactoryBean with name 'parkMapper' and 'org.great.mapper.ParkMapper' mapperInterface
+2019-01-21 19:23:00main ClassPathMapperScanner.java DEBUG Creating MapperFactoryBean with name 'receiptMapper' and 'org.great.mapper.ReceiptMapper' mapperInterface
+2019-01-21 19:23:00main ClassPathMapperScanner.java DEBUG Creating MapperFactoryBean with name 'roleMapper' and 'org.great.mapper.RoleMapper' mapperInterface
+2019-01-21 19:23:00main ClassPathMapperScanner.java DEBUG Creating MapperFactoryBean with name 'roleMenuMapper' and 'org.great.mapper.RoleMenuMapper' mapperInterface
+2019-01-21 19:23:00main ClassPathMapperScanner.java DEBUG Creating MapperFactoryBean with name 'scheMapper' and 'org.great.mapper.ScheMapper' mapperInterface
+2019-01-21 19:23:00main ClassPathMapperScanner.java DEBUG Creating MapperFactoryBean with name 'schestateMapper' and 'org.great.mapper.SchestateMapper' mapperInterface
+2019-01-21 19:23:00main ClassPathMapperScanner.java DEBUG Creating MapperFactoryBean with name 'stopcartimeMapper' and 'org.great.mapper.StopcartimeMapper' mapperInterface
+2019-01-21 19:23:00main ClassPathMapperScanner.java DEBUG Creating MapperFactoryBean with name 'userMapper' and 'org.great.mapper.UserMapper' mapperInterface
+2019-01-21 19:23:00main ClassPathMapperScanner.java DEBUG Creating MapperFactoryBean with name 'userMsgMapper' and 'org.great.mapper.UserMsgMapper' mapperInterface
+2019-01-21 19:23:00main ClassPathMapperScanner.java DEBUG Creating MapperFactoryBean with name 'vipMapper' and 'org.great.mapper.VipMapper' mapperInterface
+2019-01-21 19:23:00main DefaultSingletonBeanRegistry.java DEBUG Creating shared instance of singleton bean 'org.springframework.context.event.internalEventListenerProcessor'
+2019-01-21 19:23:00main DefaultSingletonBeanRegistry.java DEBUG Creating shared instance of singleton bean 'org.springframework.context.event.internalEventListenerFactory'
+2019-01-21 19:23:00main DefaultSingletonBeanRegistry.java DEBUG Creating shared instance of singleton bean 'org.springframework.context.annotation.internalAutowiredAnnotationProcessor'
+2019-01-21 19:23:00main DefaultSingletonBeanRegistry.java DEBUG Creating shared instance of singleton bean 'org.springframework.context.annotation.internalCommonAnnotationProcessor'
+2019-01-21 19:23:00main DefaultSingletonBeanRegistry.java DEBUG Creating shared instance of singleton bean 'car'
+2019-01-21 19:23:00main DefaultSingletonBeanRegistry.java DEBUG Creating shared instance of singleton bean 'param'
+2019-01-21 19:23:00main DefaultSingletonBeanRegistry.java DEBUG Creating shared instance of singleton bean 'roleRel'
+2019-01-21 19:23:00main DefaultSingletonBeanRegistry.java DEBUG Creating shared instance of singleton bean 'carBiz'
+2019-01-21 19:23:00main DefaultSingletonBeanRegistry.java DEBUG Creating shared instance of singleton bean 'carMapper'
+2019-01-21 19:23:00main DefaultSingletonBeanRegistry.java DEBUG Creating shared instance of singleton bean 'carMsgBiz'
+2019-01-21 19:23:00main DefaultSingletonBeanRegistry.java DEBUG Creating shared instance of singleton bean 'comboBiz'
+2019-01-21 19:23:00main DefaultSingletonBeanRegistry.java DEBUG Creating shared instance of singleton bean 'countrulesBzi'
+2019-01-21 19:23:00main DefaultSingletonBeanRegistry.java DEBUG Creating shared instance of singleton bean 'custBiz'
+2019-01-21 19:23:00main DefaultSingletonBeanRegistry.java DEBUG Creating shared instance of singleton bean 'custMapper'
+2019-01-21 19:23:00main DefaultSingletonBeanRegistry.java DEBUG Creating shared instance of singleton bean 'logBiz'
+2019-01-21 19:23:00main DefaultSingletonBeanRegistry.java DEBUG Creating shared instance of singleton bean 'menuBiz'
+2019-01-21 19:23:00main DefaultSingletonBeanRegistry.java DEBUG Creating shared instance of singleton bean 'menuMapper'
+2019-01-21 19:23:00main DefaultSingletonBeanRegistry.java DEBUG Creating shared instance of singleton bean 'paramBiz'
+2019-01-21 19:23:00main DefaultSingletonBeanRegistry.java DEBUG Creating shared instance of singleton bean 'paramMapper'
+2019-01-21 19:23:00main DefaultSingletonBeanRegistry.java DEBUG Creating shared instance of singleton bean 'parkBiz'
+2019-01-21 19:23:00main DefaultSingletonBeanRegistry.java DEBUG Creating shared instance of singleton bean 'receiptBiz'
+2019-01-21 19:23:00main DefaultSingletonBeanRegistry.java DEBUG Creating shared instance of singleton bean 'roleBiz'
+2019-01-21 19:23:00main DefaultSingletonBeanRegistry.java DEBUG Creating shared instance of singleton bean 'roleMapper'
+2019-01-21 19:23:00main DefaultSingletonBeanRegistry.java DEBUG Creating shared instance of singleton bean 'roleMenuBiz'
+2019-01-21 19:23:00main DefaultSingletonBeanRegistry.java DEBUG Creating shared instance of singleton bean 'roleMenuMapper'
+2019-01-21 19:23:00main DefaultSingletonBeanRegistry.java DEBUG Creating shared instance of singleton bean 'roleRelBiz'
+2019-01-21 19:23:00main DefaultSingletonBeanRegistry.java DEBUG Creating shared instance of singleton bean 'scheBiz'
+2019-01-21 19:23:00main DefaultSingletonBeanRegistry.java DEBUG Creating shared instance of singleton bean 'schestateBiz'
+2019-01-21 19:23:00main DefaultSingletonBeanRegistry.java DEBUG Creating shared instance of singleton bean 'stopcartimeBiz'
+2019-01-21 19:23:00main DefaultSingletonBeanRegistry.java DEBUG Creating shared instance of singleton bean 'stopcartimeMapper'
+2019-01-21 19:23:00main DefaultSingletonBeanRegistry.java DEBUG Creating shared instance of singleton bean 'userBiz'
+2019-01-21 19:23:00main DefaultSingletonBeanRegistry.java DEBUG Creating shared instance of singleton bean 'userMapper'
+2019-01-21 19:23:00main DefaultSingletonBeanRegistry.java DEBUG Creating shared instance of singleton bean 'userMsgBiz'
+2019-01-21 19:23:00main DefaultSingletonBeanRegistry.java DEBUG Creating shared instance of singleton bean 'vipBiz'
+2019-01-21 19:23:00main DefaultSingletonBeanRegistry.java DEBUG Creating shared instance of singleton bean 'firstCron'
+2019-01-21 19:23:00main DefaultSingletonBeanRegistry.java DEBUG Creating shared instance of singleton bean 'systemLogAspect'
+2019-01-21 19:23:00main DefaultSingletonBeanRegistry.java DEBUG Creating shared instance of singleton bean 'userLog'
+2019-01-21 19:23:00main DefaultSingletonBeanRegistry.java DEBUG Creating shared instance of singleton bean 'carMsgMapper'
+2019-01-21 19:23:00main DefaultSingletonBeanRegistry.java DEBUG Creating shared instance of singleton bean 'comboMapper'
+2019-01-21 19:23:00main DefaultSingletonBeanRegistry.java DEBUG Creating shared instance of singleton bean 'countrulesMapper'
+2019-01-21 19:23:00main DefaultSingletonBeanRegistry.java DEBUG Creating shared instance of singleton bean 'logMapper'
+2019-01-21 19:23:00main DefaultSingletonBeanRegistry.java DEBUG Creating shared instance of singleton bean 'parkMapper'
+2019-01-21 19:23:00main DefaultSingletonBeanRegistry.java DEBUG Creating shared instance of singleton bean 'receiptMapper'
+2019-01-21 19:23:00main DefaultSingletonBeanRegistry.java DEBUG Creating shared instance of singleton bean 'scheMapper'
+2019-01-21 19:23:00main DefaultSingletonBeanRegistry.java DEBUG Creating shared instance of singleton bean 'schestateMapper'
+2019-01-21 19:23:00main DefaultSingletonBeanRegistry.java DEBUG Creating shared instance of singleton bean 'userMsgMapper'
+2019-01-21 19:23:00main DefaultSingletonBeanRegistry.java DEBUG Creating shared instance of singleton bean 'vipMapper'
+2019-01-21 19:23:00main SqlSessionUtils.java DEBUG Creating a new SqlSession
+2019-01-21 19:23:00main SqlSessionUtils.java DEBUG SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@52b1beb6] was not registered for synchronization because synchronization is not active
+2019-01-21 19:23:00main DataSourceUtils.java DEBUG Fetching JDBC Connection from DataSource
+2019-01-21 19:23:01main SpringManagedTransaction.java DEBUG JDBC Connection [jdbc:mysql://45.40.255.33:3306/parkinglot?characterEncoding=utf-8, UserName=root@117.28.98.168, MySQL Connector Java] will not be managed by Spring
+2019-01-21 19:23:01main BaseJdbcLogger.java DEBUG ooo Using Connection [jdbc:mysql://45.40.255.33:3306/parkinglot?characterEncoding=utf-8, UserName=root@117.28.98.168, MySQL Connector Java]
+2019-01-21 19:23:01main BaseJdbcLogger.java DEBUG ==>  Preparing: select * from tb_cust c LEFT JOIN tb_param pm ON c.pm_id = pm.pm_id 
+2019-01-21 19:23:01main BaseJdbcLogger.java DEBUG ==> Parameters: 
+2019-01-21 19:23:01main BaseJdbcLogger.java DEBUG <==      Total: 4
+2019-01-21 19:23:01main SqlSessionUtils.java DEBUG Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@52b1beb6]
+2019-01-21 19:23:01main DataSourceUtils.java DEBUG Returning JDBC Connection to DataSource
+2019-01-21 19:24:19main AbstractApplicationContext.java DEBUG Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@3f3afe78
+2019-01-21 19:24:20main ClassPathScanningCandidateComponentProvider.java DEBUG Identified candidate component class: file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\bean\Car.class]
+2019-01-21 19:24:20main ClassPathScanningCandidateComponentProvider.java DEBUG Identified candidate component class: file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\bean\Param.class]
+2019-01-21 19:24:20main ClassPathScanningCandidateComponentProvider.java DEBUG Identified candidate component class: file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\bean\RoleRel.class]
+2019-01-21 19:24:20main ClassPathScanningCandidateComponentProvider.java DEBUG Identified candidate component class: file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\biz\CarBizImpl.class]
+2019-01-21 19:24:20main ClassPathScanningCandidateComponentProvider.java DEBUG Identified candidate component class: file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\biz\CarMsgBizImpl.class]
+2019-01-21 19:24:20main ClassPathScanningCandidateComponentProvider.java DEBUG Identified candidate component class: file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\biz\ComboBizImpl.class]
+2019-01-21 19:24:20main ClassPathScanningCandidateComponentProvider.java DEBUG Identified candidate component class: file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\biz\CountrulesBziImpl.class]
+2019-01-21 19:24:20main ClassPathScanningCandidateComponentProvider.java DEBUG Identified candidate component class: file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\biz\CustBizImpl.class]
+2019-01-21 19:24:20main ClassPathScanningCandidateComponentProvider.java DEBUG Identified candidate component class: file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\biz\LogBizImpl.class]
+2019-01-21 19:24:20main ClassPathScanningCandidateComponentProvider.java DEBUG Identified candidate component class: file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\biz\MenuBizImpl.class]
+2019-01-21 19:24:20main ClassPathScanningCandidateComponentProvider.java DEBUG Identified candidate component class: file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\biz\ParamBizImpl.class]
+2019-01-21 19:24:20main ClassPathScanningCandidateComponentProvider.java DEBUG Identified candidate component class: file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\biz\ParkBizImpl.class]
+2019-01-21 19:24:20main ClassPathScanningCandidateComponentProvider.java DEBUG Identified candidate component class: file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\biz\ReceiptBizImpl.class]
+2019-01-21 19:24:20main ClassPathScanningCandidateComponentProvider.java DEBUG Identified candidate component class: file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\biz\RoleBizImpl.class]
+2019-01-21 19:24:20main ClassPathScanningCandidateComponentProvider.java DEBUG Identified candidate component class: file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\biz\RoleMenuBizImpl.class]
+2019-01-21 19:24:20main ClassPathScanningCandidateComponentProvider.java DEBUG Identified candidate component class: file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\biz\RoleRelBizImpl.class]
+2019-01-21 19:24:20main ClassPathScanningCandidateComponentProvider.java DEBUG Identified candidate component class: file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\biz\ScheBizImpl.class]
+2019-01-21 19:24:20main ClassPathScanningCandidateComponentProvider.java DEBUG Identified candidate component class: file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\biz\SchestateBizImpl.class]
+2019-01-21 19:24:20main ClassPathScanningCandidateComponentProvider.java DEBUG Identified candidate component class: file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\biz\StopcartimeBizImpl.class]
+2019-01-21 19:24:20main ClassPathScanningCandidateComponentProvider.java DEBUG Identified candidate component class: file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\biz\UserBizImpl.class]
+2019-01-21 19:24:20main ClassPathScanningCandidateComponentProvider.java DEBUG Identified candidate component class: file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\biz\UserMsgBizImpl.class]
+2019-01-21 19:24:20main ClassPathScanningCandidateComponentProvider.java DEBUG Identified candidate component class: file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\biz\VipBizImpl.class]
+2019-01-21 19:24:20main ClassPathScanningCandidateComponentProvider.java DEBUG Identified candidate component class: file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\handler\AppearanceLicensePlateRecognition.class]
+2019-01-21 19:24:20main ClassPathScanningCandidateComponentProvider.java DEBUG Identified candidate component class: file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\handler\CustManageHandler.class]
+2019-01-21 19:24:20main ClassPathScanningCandidateComponentProvider.java DEBUG Identified candidate component class: file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\handler\ExitHandler.class]
+2019-01-21 19:24:20main ClassPathScanningCandidateComponentProvider.java DEBUG Identified candidate component class: file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\handler\LicensePlateRecognition.class]
+2019-01-21 19:24:20main ClassPathScanningCandidateComponentProvider.java DEBUG Identified candidate component class: file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\handler\LoginHandler.class]
+2019-01-21 19:24:20main ClassPathScanningCandidateComponentProvider.java DEBUG Identified candidate component class: file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\handler\MainHandler.class]
+2019-01-21 19:24:20main ClassPathScanningCandidateComponentProvider.java DEBUG Identified candidate component class: file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\handler\PermissionMenuHandler.class]
+2019-01-21 19:24:20main ClassPathScanningCandidateComponentProvider.java DEBUG Identified candidate component class: file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\interceptor\FirstCron.class]
+2019-01-21 19:24:20main ClassPathScanningCandidateComponentProvider.java DEBUG Identified candidate component class: file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\log\SystemLogAspect.class]
+2019-01-21 19:24:20main ClassPathScanningCandidateComponentProvider.java DEBUG Identified candidate component class: file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\log\UserLog.class]
+2019-01-21 19:24:20main ClassPathScanningCandidateComponentProvider.java DEBUG Ignored because not a concrete top-level class: file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\mapper\CarMapper.class]
+2019-01-21 19:24:20main ClassPathScanningCandidateComponentProvider.java DEBUG Ignored because not a concrete top-level class: file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\mapper\CarMsgMapper.class]
+2019-01-21 19:24:20main ClassPathScanningCandidateComponentProvider.java DEBUG Ignored because not a concrete top-level class: file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\mapper\ComboMapper.class]
+2019-01-21 19:24:20main ClassPathScanningCandidateComponentProvider.java DEBUG Ignored because not a concrete top-level class: file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\mapper\CountrulesMapper.class]
+2019-01-21 19:24:20main ClassPathScanningCandidateComponentProvider.java DEBUG Ignored because not a concrete top-level class: file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\mapper\CustMapper.class]
+2019-01-21 19:24:20main ClassPathScanningCandidateComponentProvider.java DEBUG Ignored because not a concrete top-level class: file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\mapper\LogMapper.class]
+2019-01-21 19:24:20main ClassPathScanningCandidateComponentProvider.java DEBUG Ignored because not a concrete top-level class: file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\mapper\MenuMapper.class]
+2019-01-21 19:24:20main ClassPathScanningCandidateComponentProvider.java DEBUG Ignored because not a concrete top-level class: file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\mapper\ParamMapper.class]
+2019-01-21 19:24:20main ClassPathScanningCandidateComponentProvider.java DEBUG Ignored because not a concrete top-level class: file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\mapper\ParkMapper.class]
+2019-01-21 19:24:20main ClassPathScanningCandidateComponentProvider.java DEBUG Ignored because not a concrete top-level class: file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\mapper\ReceiptMapper.class]
+2019-01-21 19:24:20main ClassPathScanningCandidateComponentProvider.java DEBUG Ignored because not a concrete top-level class: file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\mapper\RoleMapper.class]
+2019-01-21 19:24:20main ClassPathScanningCandidateComponentProvider.java DEBUG Ignored because not a concrete top-level class: file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\mapper\RoleMenuMapper.class]
+2019-01-21 19:24:20main ClassPathScanningCandidateComponentProvider.java DEBUG Ignored because not a concrete top-level class: file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\mapper\ScheMapper.class]
+2019-01-21 19:24:20main ClassPathScanningCandidateComponentProvider.java DEBUG Ignored because not a concrete top-level class: file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\mapper\SchestateMapper.class]
+2019-01-21 19:24:20main ClassPathScanningCandidateComponentProvider.java DEBUG Ignored because not a concrete top-level class: file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\mapper\StopcartimeMapper.class]
+2019-01-21 19:24:20main ClassPathScanningCandidateComponentProvider.java DEBUG Ignored because not a concrete top-level class: file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\mapper\UserMapper.class]
+2019-01-21 19:24:20main ClassPathScanningCandidateComponentProvider.java DEBUG Ignored because not a concrete top-level class: file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\mapper\UserMsgMapper.class]
+2019-01-21 19:24:20main ClassPathScanningCandidateComponentProvider.java DEBUG Ignored because not a concrete top-level class: file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\mapper\VipMapper.class]
+2019-01-21 19:24:20main XmlBeanDefinitionReader.java DEBUG Loaded 40 bean definitions from class path resource [applicationContext.xml]
+2019-01-21 19:24:20main DefaultSingletonBeanRegistry.java DEBUG Creating shared instance of singleton bean 'org.springframework.context.annotation.internalConfigurationAnnotationProcessor'
+2019-01-21 19:24:20main DefaultSingletonBeanRegistry.java DEBUG Creating shared instance of singleton bean 'org.mybatis.spring.mapper.MapperScannerConfigurer#0'
+2019-01-21 19:24:20main DefaultSingletonBeanRegistry.java DEBUG Creating shared instance of singleton bean 'sqlSessionFactory'
+2019-01-21 19:24:20main LogFactory.java DEBUG Logging initialized using 'class org.apache.ibatis.logging.slf4j.Slf4jImpl' adapter.
+2019-01-21 19:24:20main DefaultSingletonBeanRegistry.java DEBUG Creating shared instance of singleton bean 'mydatasuroce'
+2019-01-21 19:24:20main SqlSessionFactoryBean.java DEBUG Property 'configLocation' not specified, using default MyBatis Configuration
+2019-01-21 19:24:21main SqlSessionFactoryBean.java DEBUG Parsed mapper file: 'file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\mapper\CarMapper.xml]'
+2019-01-21 19:24:21main SqlSessionFactoryBean.java DEBUG Parsed mapper file: 'file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\mapper\CarMsgMapper.xml]'
+2019-01-21 19:24:21main SqlSessionFactoryBean.java DEBUG Parsed mapper file: 'file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\mapper\ComboMapper.xml]'
+2019-01-21 19:24:21main SqlSessionFactoryBean.java DEBUG Parsed mapper file: 'file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\mapper\CountrulesMapper.xml]'
+2019-01-21 19:24:21main SqlSessionFactoryBean.java DEBUG Parsed mapper file: 'file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\mapper\CustMapper.xml]'
+2019-01-21 19:24:21main SqlSessionFactoryBean.java DEBUG Parsed mapper file: 'file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\mapper\LogMapper.xml]'
+2019-01-21 19:24:21main SqlSessionFactoryBean.java DEBUG Parsed mapper file: 'file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\mapper\MenuMapper.xml]'
+2019-01-21 19:24:21main SqlSessionFactoryBean.java DEBUG Parsed mapper file: 'file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\mapper\ParamMapper.xml]'
+2019-01-21 19:24:21main SqlSessionFactoryBean.java DEBUG Parsed mapper file: 'file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\mapper\ParkMapper.xml]'
+2019-01-21 19:24:21main SqlSessionFactoryBean.java DEBUG Parsed mapper file: 'file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\mapper\ReceiptMapper.xml]'
+2019-01-21 19:24:21main SqlSessionFactoryBean.java DEBUG Parsed mapper file: 'file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\mapper\RoleMapper.xml]'
+2019-01-21 19:24:21main SqlSessionFactoryBean.java DEBUG Parsed mapper file: 'file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\mapper\RoleMenuMapper.xml]'
+2019-01-21 19:24:21main SqlSessionFactoryBean.java DEBUG Parsed mapper file: 'file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\mapper\ScheMapper.xml]'
+2019-01-21 19:24:21main SqlSessionFactoryBean.java DEBUG Parsed mapper file: 'file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\mapper\SchestateMapper.xml]'
+2019-01-21 19:24:21main SqlSessionFactoryBean.java DEBUG Parsed mapper file: 'file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\mapper\StopcartimeMapper.xml]'
+2019-01-21 19:24:21main SqlSessionFactoryBean.java DEBUG Parsed mapper file: 'file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\mapper\UserMapper.xml]'
+2019-01-21 19:24:21main SqlSessionFactoryBean.java DEBUG Parsed mapper file: 'file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\mapper\UserMsgMapper.xml]'
+2019-01-21 19:24:21main SqlSessionFactoryBean.java DEBUG Parsed mapper file: 'file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\mapper\VipMapper.xml]'
+2019-01-21 19:24:21main ClassPathScanningCandidateComponentProvider.java DEBUG Identified candidate component class: file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\mapper\CarMapper.class]
+2019-01-21 19:24:21main ClassPathScanningCandidateComponentProvider.java DEBUG Identified candidate component class: file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\mapper\CarMsgMapper.class]
+2019-01-21 19:24:21main ClassPathScanningCandidateComponentProvider.java DEBUG Identified candidate component class: file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\mapper\ComboMapper.class]
+2019-01-21 19:24:21main ClassPathScanningCandidateComponentProvider.java DEBUG Identified candidate component class: file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\mapper\CountrulesMapper.class]
+2019-01-21 19:24:21main ClassPathScanningCandidateComponentProvider.java DEBUG Identified candidate component class: file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\mapper\CustMapper.class]
+2019-01-21 19:24:21main ClassPathScanningCandidateComponentProvider.java DEBUG Identified candidate component class: file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\mapper\LogMapper.class]
+2019-01-21 19:24:21main ClassPathScanningCandidateComponentProvider.java DEBUG Identified candidate component class: file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\mapper\MenuMapper.class]
+2019-01-21 19:24:21main ClassPathScanningCandidateComponentProvider.java DEBUG Identified candidate component class: file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\mapper\ParamMapper.class]
+2019-01-21 19:24:21main ClassPathScanningCandidateComponentProvider.java DEBUG Identified candidate component class: file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\mapper\ParkMapper.class]
+2019-01-21 19:24:21main ClassPathScanningCandidateComponentProvider.java DEBUG Identified candidate component class: file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\mapper\ReceiptMapper.class]
+2019-01-21 19:24:21main ClassPathScanningCandidateComponentProvider.java DEBUG Identified candidate component class: file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\mapper\RoleMapper.class]
+2019-01-21 19:24:21main ClassPathScanningCandidateComponentProvider.java DEBUG Identified candidate component class: file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\mapper\RoleMenuMapper.class]
+2019-01-21 19:24:21main ClassPathScanningCandidateComponentProvider.java DEBUG Identified candidate component class: file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\mapper\ScheMapper.class]
+2019-01-21 19:24:21main ClassPathScanningCandidateComponentProvider.java DEBUG Identified candidate component class: file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\mapper\SchestateMapper.class]
+2019-01-21 19:24:21main ClassPathScanningCandidateComponentProvider.java DEBUG Identified candidate component class: file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\mapper\StopcartimeMapper.class]
+2019-01-21 19:24:21main ClassPathScanningCandidateComponentProvider.java DEBUG Identified candidate component class: file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\mapper\UserMapper.class]
+2019-01-21 19:24:21main ClassPathScanningCandidateComponentProvider.java DEBUG Identified candidate component class: file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\mapper\UserMsgMapper.class]
+2019-01-21 19:24:21main ClassPathScanningCandidateComponentProvider.java DEBUG Identified candidate component class: file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\mapper\VipMapper.class]
+2019-01-21 19:24:21main ClassPathMapperScanner.java DEBUG Creating MapperFactoryBean with name 'carMapper' and 'org.great.mapper.CarMapper' mapperInterface
+2019-01-21 19:24:21main ClassPathMapperScanner.java DEBUG Creating MapperFactoryBean with name 'carMsgMapper' and 'org.great.mapper.CarMsgMapper' mapperInterface
+2019-01-21 19:24:21main ClassPathMapperScanner.java DEBUG Creating MapperFactoryBean with name 'comboMapper' and 'org.great.mapper.ComboMapper' mapperInterface
+2019-01-21 19:24:21main ClassPathMapperScanner.java DEBUG Creating MapperFactoryBean with name 'countrulesMapper' and 'org.great.mapper.CountrulesMapper' mapperInterface
+2019-01-21 19:24:21main ClassPathMapperScanner.java DEBUG Creating MapperFactoryBean with name 'custMapper' and 'org.great.mapper.CustMapper' mapperInterface
+2019-01-21 19:24:21main ClassPathMapperScanner.java DEBUG Creating MapperFactoryBean with name 'logMapper' and 'org.great.mapper.LogMapper' mapperInterface
+2019-01-21 19:24:21main ClassPathMapperScanner.java DEBUG Creating MapperFactoryBean with name 'menuMapper' and 'org.great.mapper.MenuMapper' mapperInterface
+2019-01-21 19:24:21main ClassPathMapperScanner.java DEBUG Creating MapperFactoryBean with name 'paramMapper' and 'org.great.mapper.ParamMapper' mapperInterface
+2019-01-21 19:24:21main ClassPathMapperScanner.java DEBUG Creating MapperFactoryBean with name 'parkMapper' and 'org.great.mapper.ParkMapper' mapperInterface
+2019-01-21 19:24:21main ClassPathMapperScanner.java DEBUG Creating MapperFactoryBean with name 'receiptMapper' and 'org.great.mapper.ReceiptMapper' mapperInterface
+2019-01-21 19:24:21main ClassPathMapperScanner.java DEBUG Creating MapperFactoryBean with name 'roleMapper' and 'org.great.mapper.RoleMapper' mapperInterface
+2019-01-21 19:24:21main ClassPathMapperScanner.java DEBUG Creating MapperFactoryBean with name 'roleMenuMapper' and 'org.great.mapper.RoleMenuMapper' mapperInterface
+2019-01-21 19:24:21main ClassPathMapperScanner.java DEBUG Creating MapperFactoryBean with name 'scheMapper' and 'org.great.mapper.ScheMapper' mapperInterface
+2019-01-21 19:24:21main ClassPathMapperScanner.java DEBUG Creating MapperFactoryBean with name 'schestateMapper' and 'org.great.mapper.SchestateMapper' mapperInterface
+2019-01-21 19:24:21main ClassPathMapperScanner.java DEBUG Creating MapperFactoryBean with name 'stopcartimeMapper' and 'org.great.mapper.StopcartimeMapper' mapperInterface
+2019-01-21 19:24:21main ClassPathMapperScanner.java DEBUG Creating MapperFactoryBean with name 'userMapper' and 'org.great.mapper.UserMapper' mapperInterface
+2019-01-21 19:24:21main ClassPathMapperScanner.java DEBUG Creating MapperFactoryBean with name 'userMsgMapper' and 'org.great.mapper.UserMsgMapper' mapperInterface
+2019-01-21 19:24:21main ClassPathMapperScanner.java DEBUG Creating MapperFactoryBean with name 'vipMapper' and 'org.great.mapper.VipMapper' mapperInterface
+2019-01-21 19:24:21main DefaultSingletonBeanRegistry.java DEBUG Creating shared instance of singleton bean 'org.springframework.context.event.internalEventListenerProcessor'
+2019-01-21 19:24:21main DefaultSingletonBeanRegistry.java DEBUG Creating shared instance of singleton bean 'org.springframework.context.event.internalEventListenerFactory'
+2019-01-21 19:24:21main DefaultSingletonBeanRegistry.java DEBUG Creating shared instance of singleton bean 'org.springframework.context.annotation.internalAutowiredAnnotationProcessor'
+2019-01-21 19:24:21main DefaultSingletonBeanRegistry.java DEBUG Creating shared instance of singleton bean 'org.springframework.context.annotation.internalCommonAnnotationProcessor'
+2019-01-21 19:24:21main DefaultSingletonBeanRegistry.java DEBUG Creating shared instance of singleton bean 'car'
+2019-01-21 19:24:21main DefaultSingletonBeanRegistry.java DEBUG Creating shared instance of singleton bean 'param'
+2019-01-21 19:24:21main DefaultSingletonBeanRegistry.java DEBUG Creating shared instance of singleton bean 'roleRel'
+2019-01-21 19:24:21main DefaultSingletonBeanRegistry.java DEBUG Creating shared instance of singleton bean 'carBiz'
+2019-01-21 19:24:21main DefaultSingletonBeanRegistry.java DEBUG Creating shared instance of singleton bean 'carMapper'
+2019-01-21 19:24:21main DefaultSingletonBeanRegistry.java DEBUG Creating shared instance of singleton bean 'carMsgBiz'
+2019-01-21 19:24:21main DefaultSingletonBeanRegistry.java DEBUG Creating shared instance of singleton bean 'comboBiz'
+2019-01-21 19:24:21main DefaultSingletonBeanRegistry.java DEBUG Creating shared instance of singleton bean 'countrulesBzi'
+2019-01-21 19:24:21main DefaultSingletonBeanRegistry.java DEBUG Creating shared instance of singleton bean 'custBiz'
+2019-01-21 19:24:21main DefaultSingletonBeanRegistry.java DEBUG Creating shared instance of singleton bean 'custMapper'
+2019-01-21 19:24:21main DefaultSingletonBeanRegistry.java DEBUG Creating shared instance of singleton bean 'logBiz'
+2019-01-21 19:24:21main DefaultSingletonBeanRegistry.java DEBUG Creating shared instance of singleton bean 'menuBiz'
+2019-01-21 19:24:21main DefaultSingletonBeanRegistry.java DEBUG Creating shared instance of singleton bean 'menuMapper'
+2019-01-21 19:24:21main DefaultSingletonBeanRegistry.java DEBUG Creating shared instance of singleton bean 'paramBiz'
+2019-01-21 19:24:21main DefaultSingletonBeanRegistry.java DEBUG Creating shared instance of singleton bean 'paramMapper'
+2019-01-21 19:24:21main DefaultSingletonBeanRegistry.java DEBUG Creating shared instance of singleton bean 'parkBiz'
+2019-01-21 19:24:21main DefaultSingletonBeanRegistry.java DEBUG Creating shared instance of singleton bean 'receiptBiz'
+2019-01-21 19:24:21main DefaultSingletonBeanRegistry.java DEBUG Creating shared instance of singleton bean 'roleBiz'
+2019-01-21 19:24:21main DefaultSingletonBeanRegistry.java DEBUG Creating shared instance of singleton bean 'roleMapper'
+2019-01-21 19:24:21main DefaultSingletonBeanRegistry.java DEBUG Creating shared instance of singleton bean 'roleMenuBiz'
+2019-01-21 19:24:21main DefaultSingletonBeanRegistry.java DEBUG Creating shared instance of singleton bean 'roleMenuMapper'
+2019-01-21 19:24:21main DefaultSingletonBeanRegistry.java DEBUG Creating shared instance of singleton bean 'roleRelBiz'
+2019-01-21 19:24:21main DefaultSingletonBeanRegistry.java DEBUG Creating shared instance of singleton bean 'scheBiz'
+2019-01-21 19:24:21main DefaultSingletonBeanRegistry.java DEBUG Creating shared instance of singleton bean 'schestateBiz'
+2019-01-21 19:24:21main DefaultSingletonBeanRegistry.java DEBUG Creating shared instance of singleton bean 'stopcartimeBiz'
+2019-01-21 19:24:21main DefaultSingletonBeanRegistry.java DEBUG Creating shared instance of singleton bean 'stopcartimeMapper'
+2019-01-21 19:24:21main DefaultSingletonBeanRegistry.java DEBUG Creating shared instance of singleton bean 'userBiz'
+2019-01-21 19:24:21main DefaultSingletonBeanRegistry.java DEBUG Creating shared instance of singleton bean 'userMapper'
+2019-01-21 19:24:21main DefaultSingletonBeanRegistry.java DEBUG Creating shared instance of singleton bean 'userMsgBiz'
+2019-01-21 19:24:21main DefaultSingletonBeanRegistry.java DEBUG Creating shared instance of singleton bean 'vipBiz'
+2019-01-21 19:24:21main DefaultSingletonBeanRegistry.java DEBUG Creating shared instance of singleton bean 'firstCron'
+2019-01-21 19:24:21main DefaultSingletonBeanRegistry.java DEBUG Creating shared instance of singleton bean 'systemLogAspect'
+2019-01-21 19:24:21main DefaultSingletonBeanRegistry.java DEBUG Creating shared instance of singleton bean 'userLog'
+2019-01-21 19:24:21main DefaultSingletonBeanRegistry.java DEBUG Creating shared instance of singleton bean 'carMsgMapper'
+2019-01-21 19:24:21main DefaultSingletonBeanRegistry.java DEBUG Creating shared instance of singleton bean 'comboMapper'
+2019-01-21 19:24:21main DefaultSingletonBeanRegistry.java DEBUG Creating shared instance of singleton bean 'countrulesMapper'
+2019-01-21 19:24:21main DefaultSingletonBeanRegistry.java DEBUG Creating shared instance of singleton bean 'logMapper'
+2019-01-21 19:24:21main DefaultSingletonBeanRegistry.java DEBUG Creating shared instance of singleton bean 'parkMapper'
+2019-01-21 19:24:21main DefaultSingletonBeanRegistry.java DEBUG Creating shared instance of singleton bean 'receiptMapper'
+2019-01-21 19:24:21main DefaultSingletonBeanRegistry.java DEBUG Creating shared instance of singleton bean 'scheMapper'
+2019-01-21 19:24:21main DefaultSingletonBeanRegistry.java DEBUG Creating shared instance of singleton bean 'schestateMapper'
+2019-01-21 19:24:21main DefaultSingletonBeanRegistry.java DEBUG Creating shared instance of singleton bean 'userMsgMapper'
+2019-01-21 19:24:21main DefaultSingletonBeanRegistry.java DEBUG Creating shared instance of singleton bean 'vipMapper'
+2019-01-21 19:24:21main SqlSessionUtils.java DEBUG Creating a new SqlSession
+2019-01-21 19:24:21main SqlSessionUtils.java DEBUG SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@52b1beb6] was not registered for synchronization because synchronization is not active
+2019-01-21 19:24:21main DataSourceUtils.java DEBUG Fetching JDBC Connection from DataSource
+2019-01-21 19:24:22main SpringManagedTransaction.java DEBUG JDBC Connection [jdbc:mysql://45.40.255.33:3306/parkinglot?characterEncoding=utf-8, UserName=root@117.28.98.168, MySQL Connector Java] will not be managed by Spring
+2019-01-21 19:24:23main BaseJdbcLogger.java DEBUG ooo Using Connection [jdbc:mysql://45.40.255.33:3306/parkinglot?characterEncoding=utf-8, UserName=root@117.28.98.168, MySQL Connector Java]
+2019-01-21 19:24:23main BaseJdbcLogger.java DEBUG ==>  Preparing: select * from tb_cust c LEFT JOIN tb_param pm ON c.pm_id = pm.pm_id 
+2019-01-21 19:24:23main BaseJdbcLogger.java DEBUG ==> Parameters: 
+2019-01-21 19:24:23main BaseJdbcLogger.java DEBUG <==      Total: 4
+2019-01-21 19:24:23main SqlSessionUtils.java DEBUG Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@52b1beb6]
+2019-01-21 19:24:23main DataSourceUtils.java DEBUG Returning JDBC Connection to DataSource
+2019-01-21 23:36:14main AbstractApplicationContext.java DEBUG Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@3f3afe78
+2019-01-21 23:36:14main ClassPathScanningCandidateComponentProvider.java DEBUG Identified candidate component class: file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\bean\Car.class]
+2019-01-21 23:36:14main ClassPathScanningCandidateComponentProvider.java DEBUG Identified candidate component class: file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\bean\Param.class]
+2019-01-21 23:36:14main ClassPathScanningCandidateComponentProvider.java DEBUG Identified candidate component class: file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\bean\RoleRel.class]
+2019-01-21 23:36:14main ClassPathScanningCandidateComponentProvider.java DEBUG Identified candidate component class: file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\biz\CarBizImpl.class]
+2019-01-21 23:36:14main ClassPathScanningCandidateComponentProvider.java DEBUG Identified candidate component class: file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\biz\CarMsgBizImpl.class]
+2019-01-21 23:36:14main ClassPathScanningCandidateComponentProvider.java DEBUG Identified candidate component class: file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\biz\ComboBizImpl.class]
+2019-01-21 23:36:14main ClassPathScanningCandidateComponentProvider.java DEBUG Identified candidate component class: file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\biz\CountrulesBziImpl.class]
+2019-01-21 23:36:15main ClassPathScanningCandidateComponentProvider.java DEBUG Identified candidate component class: file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\biz\CustBizImpl.class]
+2019-01-21 23:36:15main ClassPathScanningCandidateComponentProvider.java DEBUG Identified candidate component class: file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\biz\LogBizImpl.class]
+2019-01-21 23:36:15main ClassPathScanningCandidateComponentProvider.java DEBUG Identified candidate component class: file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\biz\MenuBizImpl.class]
+2019-01-21 23:36:15main ClassPathScanningCandidateComponentProvider.java DEBUG Identified candidate component class: file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\biz\ParamBizImpl.class]
+2019-01-21 23:36:15main ClassPathScanningCandidateComponentProvider.java DEBUG Identified candidate component class: file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\biz\ParkBizImpl.class]
+2019-01-21 23:36:15main ClassPathScanningCandidateComponentProvider.java DEBUG Identified candidate component class: file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\biz\ReceiptBizImpl.class]
+2019-01-21 23:36:15main ClassPathScanningCandidateComponentProvider.java DEBUG Identified candidate component class: file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\biz\RoleBizImpl.class]
+2019-01-21 23:36:15main ClassPathScanningCandidateComponentProvider.java DEBUG Identified candidate component class: file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\biz\RoleMenuBizImpl.class]
+2019-01-21 23:36:15main ClassPathScanningCandidateComponentProvider.java DEBUG Identified candidate component class: file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\biz\RoleRelBizImpl.class]
+2019-01-21 23:36:15main ClassPathScanningCandidateComponentProvider.java DEBUG Identified candidate component class: file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\biz\ScheBizImpl.class]
+2019-01-21 23:36:15main ClassPathScanningCandidateComponentProvider.java DEBUG Identified candidate component class: file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\biz\SchestateBizImpl.class]
+2019-01-21 23:36:15main ClassPathScanningCandidateComponentProvider.java DEBUG Identified candidate component class: file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\biz\StopcartimeBizImpl.class]
+2019-01-21 23:36:15main ClassPathScanningCandidateComponentProvider.java DEBUG Identified candidate component class: file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\biz\UserBizImpl.class]
+2019-01-21 23:36:15main ClassPathScanningCandidateComponentProvider.java DEBUG Identified candidate component class: file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\biz\UserMsgBizImpl.class]
+2019-01-21 23:36:15main ClassPathScanningCandidateComponentProvider.java DEBUG Identified candidate component class: file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\biz\VipBizImpl.class]
+2019-01-21 23:36:15main ClassPathScanningCandidateComponentProvider.java DEBUG Identified candidate component class: file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\handler\AppearanceLicensePlateRecognition.class]
+2019-01-21 23:36:15main ClassPathScanningCandidateComponentProvider.java DEBUG Identified candidate component class: file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\handler\CustManageHandler.class]
+2019-01-21 23:36:15main ClassPathScanningCandidateComponentProvider.java DEBUG Identified candidate component class: file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\handler\ExitHandler.class]
+2019-01-21 23:36:15main ClassPathScanningCandidateComponentProvider.java DEBUG Identified candidate component class: file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\handler\LicensePlateRecognition.class]
+2019-01-21 23:36:15main ClassPathScanningCandidateComponentProvider.java DEBUG Identified candidate component class: file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\handler\LoginHandler.class]
+2019-01-21 23:36:15main ClassPathScanningCandidateComponentProvider.java DEBUG Identified candidate component class: file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\handler\MainHandler.class]
+2019-01-21 23:36:15main ClassPathScanningCandidateComponentProvider.java DEBUG Identified candidate component class: file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\handler\PermissionMenuHandler.class]
+2019-01-21 23:36:15main ClassPathScanningCandidateComponentProvider.java DEBUG Identified candidate component class: file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\interceptor\FirstCron.class]
+2019-01-21 23:36:15main ClassPathScanningCandidateComponentProvider.java DEBUG Identified candidate component class: file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\log\SystemLogAspect.class]
+2019-01-21 23:36:15main ClassPathScanningCandidateComponentProvider.java DEBUG Identified candidate component class: file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\log\UserLog.class]
+2019-01-21 23:36:15main ClassPathScanningCandidateComponentProvider.java DEBUG Ignored because not a concrete top-level class: file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\mapper\CarMapper.class]
+2019-01-21 23:36:15main ClassPathScanningCandidateComponentProvider.java DEBUG Ignored because not a concrete top-level class: file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\mapper\CarMsgMapper.class]
+2019-01-21 23:36:15main ClassPathScanningCandidateComponentProvider.java DEBUG Ignored because not a concrete top-level class: file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\mapper\ComboMapper.class]
+2019-01-21 23:36:15main ClassPathScanningCandidateComponentProvider.java DEBUG Ignored because not a concrete top-level class: file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\mapper\CountrulesMapper.class]
+2019-01-21 23:36:15main ClassPathScanningCandidateComponentProvider.java DEBUG Ignored because not a concrete top-level class: file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\mapper\CustMapper.class]
+2019-01-21 23:36:15main ClassPathScanningCandidateComponentProvider.java DEBUG Ignored because not a concrete top-level class: file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\mapper\LogMapper.class]
+2019-01-21 23:36:15main ClassPathScanningCandidateComponentProvider.java DEBUG Ignored because not a concrete top-level class: file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\mapper\MenuMapper.class]
+2019-01-21 23:36:15main ClassPathScanningCandidateComponentProvider.java DEBUG Ignored because not a concrete top-level class: file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\mapper\ParamMapper.class]
+2019-01-21 23:36:15main ClassPathScanningCandidateComponentProvider.java DEBUG Ignored because not a concrete top-level class: file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\mapper\ParkMapper.class]
+2019-01-21 23:36:15main ClassPathScanningCandidateComponentProvider.java DEBUG Ignored because not a concrete top-level class: file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\mapper\ReceiptMapper.class]
+2019-01-21 23:36:15main ClassPathScanningCandidateComponentProvider.java DEBUG Ignored because not a concrete top-level class: file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\mapper\RoleMapper.class]
+2019-01-21 23:36:15main ClassPathScanningCandidateComponentProvider.java DEBUG Ignored because not a concrete top-level class: file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\mapper\RoleMenuMapper.class]
+2019-01-21 23:36:15main ClassPathScanningCandidateComponentProvider.java DEBUG Ignored because not a concrete top-level class: file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\mapper\ScheMapper.class]
+2019-01-21 23:36:15main ClassPathScanningCandidateComponentProvider.java DEBUG Ignored because not a concrete top-level class: file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\mapper\SchestateMapper.class]
+2019-01-21 23:36:15main ClassPathScanningCandidateComponentProvider.java DEBUG Ignored because not a concrete top-level class: file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\mapper\StopcartimeMapper.class]
+2019-01-21 23:36:15main ClassPathScanningCandidateComponentProvider.java DEBUG Ignored because not a concrete top-level class: file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\mapper\UserMapper.class]
+2019-01-21 23:36:15main ClassPathScanningCandidateComponentProvider.java DEBUG Ignored because not a concrete top-level class: file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\mapper\UserMsgMapper.class]
+2019-01-21 23:36:15main ClassPathScanningCandidateComponentProvider.java DEBUG Ignored because not a concrete top-level class: file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\mapper\VipMapper.class]
+2019-01-21 23:36:15main XmlBeanDefinitionReader.java DEBUG Loaded 40 bean definitions from class path resource [applicationContext.xml]
+2019-01-21 23:36:15main DefaultSingletonBeanRegistry.java DEBUG Creating shared instance of singleton bean 'org.springframework.context.annotation.internalConfigurationAnnotationProcessor'
+2019-01-21 23:36:15main DefaultSingletonBeanRegistry.java DEBUG Creating shared instance of singleton bean 'org.mybatis.spring.mapper.MapperScannerConfigurer#0'
+2019-01-21 23:36:15main DefaultSingletonBeanRegistry.java DEBUG Creating shared instance of singleton bean 'sqlSessionFactory'
+2019-01-21 23:36:15main LogFactory.java DEBUG Logging initialized using 'class org.apache.ibatis.logging.slf4j.Slf4jImpl' adapter.
+2019-01-21 23:36:15main DefaultSingletonBeanRegistry.java DEBUG Creating shared instance of singleton bean 'mydatasuroce'
+2019-01-21 23:36:15main SqlSessionFactoryBean.java DEBUG Property 'configLocation' not specified, using default MyBatis Configuration
+2019-01-21 23:36:15main SqlSessionFactoryBean.java DEBUG Parsed mapper file: 'file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\mapper\CarMapper.xml]'
+2019-01-21 23:36:15main SqlSessionFactoryBean.java DEBUG Parsed mapper file: 'file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\mapper\CarMsgMapper.xml]'
+2019-01-21 23:36:15main SqlSessionFactoryBean.java DEBUG Parsed mapper file: 'file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\mapper\ComboMapper.xml]'
+2019-01-21 23:36:15main SqlSessionFactoryBean.java DEBUG Parsed mapper file: 'file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\mapper\CountrulesMapper.xml]'
+2019-01-21 23:36:16main SqlSessionFactoryBean.java DEBUG Parsed mapper file: 'file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\mapper\CustMapper.xml]'
+2019-01-21 23:36:16main SqlSessionFactoryBean.java DEBUG Parsed mapper file: 'file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\mapper\LogMapper.xml]'
+2019-01-21 23:36:16main SqlSessionFactoryBean.java DEBUG Parsed mapper file: 'file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\mapper\MenuMapper.xml]'
+2019-01-21 23:36:16main SqlSessionFactoryBean.java DEBUG Parsed mapper file: 'file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\mapper\ParamMapper.xml]'
+2019-01-21 23:36:16main SqlSessionFactoryBean.java DEBUG Parsed mapper file: 'file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\mapper\ParkMapper.xml]'
+2019-01-21 23:36:16main SqlSessionFactoryBean.java DEBUG Parsed mapper file: 'file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\mapper\ReceiptMapper.xml]'
+2019-01-21 23:36:16main SqlSessionFactoryBean.java DEBUG Parsed mapper file: 'file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\mapper\RoleMapper.xml]'
+2019-01-21 23:36:16main SqlSessionFactoryBean.java DEBUG Parsed mapper file: 'file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\mapper\RoleMenuMapper.xml]'
+2019-01-21 23:36:16main SqlSessionFactoryBean.java DEBUG Parsed mapper file: 'file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\mapper\ScheMapper.xml]'
+2019-01-21 23:36:16main SqlSessionFactoryBean.java DEBUG Parsed mapper file: 'file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\mapper\SchestateMapper.xml]'
+2019-01-21 23:36:16main SqlSessionFactoryBean.java DEBUG Parsed mapper file: 'file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\mapper\StopcartimeMapper.xml]'
+2019-01-21 23:36:16main SqlSessionFactoryBean.java DEBUG Parsed mapper file: 'file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\mapper\UserMapper.xml]'
+2019-01-21 23:36:16main SqlSessionFactoryBean.java DEBUG Parsed mapper file: 'file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\mapper\UserMsgMapper.xml]'
+2019-01-21 23:36:16main SqlSessionFactoryBean.java DEBUG Parsed mapper file: 'file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\mapper\VipMapper.xml]'
+2019-01-21 23:36:16main ClassPathScanningCandidateComponentProvider.java DEBUG Identified candidate component class: file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\mapper\CarMapper.class]
+2019-01-21 23:36:16main ClassPathScanningCandidateComponentProvider.java DEBUG Identified candidate component class: file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\mapper\CarMsgMapper.class]
+2019-01-21 23:36:16main ClassPathScanningCandidateComponentProvider.java DEBUG Identified candidate component class: file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\mapper\ComboMapper.class]
+2019-01-21 23:36:16main ClassPathScanningCandidateComponentProvider.java DEBUG Identified candidate component class: file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\mapper\CountrulesMapper.class]
+2019-01-21 23:36:16main ClassPathScanningCandidateComponentProvider.java DEBUG Identified candidate component class: file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\mapper\CustMapper.class]
+2019-01-21 23:36:16main ClassPathScanningCandidateComponentProvider.java DEBUG Identified candidate component class: file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\mapper\LogMapper.class]
+2019-01-21 23:36:16main ClassPathScanningCandidateComponentProvider.java DEBUG Identified candidate component class: file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\mapper\MenuMapper.class]
+2019-01-21 23:36:16main ClassPathScanningCandidateComponentProvider.java DEBUG Identified candidate component class: file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\mapper\ParamMapper.class]
+2019-01-21 23:36:16main ClassPathScanningCandidateComponentProvider.java DEBUG Identified candidate component class: file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\mapper\ParkMapper.class]
+2019-01-21 23:36:16main ClassPathScanningCandidateComponentProvider.java DEBUG Identified candidate component class: file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\mapper\ReceiptMapper.class]
+2019-01-21 23:36:16main ClassPathScanningCandidateComponentProvider.java DEBUG Identified candidate component class: file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\mapper\RoleMapper.class]
+2019-01-21 23:36:16main ClassPathScanningCandidateComponentProvider.java DEBUG Identified candidate component class: file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\mapper\RoleMenuMapper.class]
+2019-01-21 23:36:16main ClassPathScanningCandidateComponentProvider.java DEBUG Identified candidate component class: file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\mapper\ScheMapper.class]
+2019-01-21 23:36:16main ClassPathScanningCandidateComponentProvider.java DEBUG Identified candidate component class: file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\mapper\SchestateMapper.class]
+2019-01-21 23:36:16main ClassPathScanningCandidateComponentProvider.java DEBUG Identified candidate component class: file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\mapper\StopcartimeMapper.class]
+2019-01-21 23:36:16main ClassPathScanningCandidateComponentProvider.java DEBUG Identified candidate component class: file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\mapper\UserMapper.class]
+2019-01-21 23:36:16main ClassPathScanningCandidateComponentProvider.java DEBUG Identified candidate component class: file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\mapper\UserMsgMapper.class]
+2019-01-21 23:36:16main ClassPathScanningCandidateComponentProvider.java DEBUG Identified candidate component class: file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\mapper\VipMapper.class]
+2019-01-21 23:36:16main ClassPathMapperScanner.java DEBUG Creating MapperFactoryBean with name 'carMapper' and 'org.great.mapper.CarMapper' mapperInterface
+2019-01-21 23:36:16main ClassPathMapperScanner.java DEBUG Creating MapperFactoryBean with name 'carMsgMapper' and 'org.great.mapper.CarMsgMapper' mapperInterface
+2019-01-21 23:36:16main ClassPathMapperScanner.java DEBUG Creating MapperFactoryBean with name 'comboMapper' and 'org.great.mapper.ComboMapper' mapperInterface
+2019-01-21 23:36:16main ClassPathMapperScanner.java DEBUG Creating MapperFactoryBean with name 'countrulesMapper' and 'org.great.mapper.CountrulesMapper' mapperInterface
+2019-01-21 23:36:16main ClassPathMapperScanner.java DEBUG Creating MapperFactoryBean with name 'custMapper' and 'org.great.mapper.CustMapper' mapperInterface
+2019-01-21 23:36:16main ClassPathMapperScanner.java DEBUG Creating MapperFactoryBean with name 'logMapper' and 'org.great.mapper.LogMapper' mapperInterface
+2019-01-21 23:36:16main ClassPathMapperScanner.java DEBUG Creating MapperFactoryBean with name 'menuMapper' and 'org.great.mapper.MenuMapper' mapperInterface
+2019-01-21 23:36:16main ClassPathMapperScanner.java DEBUG Creating MapperFactoryBean with name 'paramMapper' and 'org.great.mapper.ParamMapper' mapperInterface
+2019-01-21 23:36:16main ClassPathMapperScanner.java DEBUG Creating MapperFactoryBean with name 'parkMapper' and 'org.great.mapper.ParkMapper' mapperInterface
+2019-01-21 23:36:16main ClassPathMapperScanner.java DEBUG Creating MapperFactoryBean with name 'receiptMapper' and 'org.great.mapper.ReceiptMapper' mapperInterface
+2019-01-21 23:36:16main ClassPathMapperScanner.java DEBUG Creating MapperFactoryBean with name 'roleMapper' and 'org.great.mapper.RoleMapper' mapperInterface
+2019-01-21 23:36:16main ClassPathMapperScanner.java DEBUG Creating MapperFactoryBean with name 'roleMenuMapper' and 'org.great.mapper.RoleMenuMapper' mapperInterface
+2019-01-21 23:36:16main ClassPathMapperScanner.java DEBUG Creating MapperFactoryBean with name 'scheMapper' and 'org.great.mapper.ScheMapper' mapperInterface
+2019-01-21 23:36:16main ClassPathMapperScanner.java DEBUG Creating MapperFactoryBean with name 'schestateMapper' and 'org.great.mapper.SchestateMapper' mapperInterface
+2019-01-21 23:36:16main ClassPathMapperScanner.java DEBUG Creating MapperFactoryBean with name 'stopcartimeMapper' and 'org.great.mapper.StopcartimeMapper' mapperInterface
+2019-01-21 23:36:16main ClassPathMapperScanner.java DEBUG Creating MapperFactoryBean with name 'userMapper' and 'org.great.mapper.UserMapper' mapperInterface
+2019-01-21 23:36:16main ClassPathMapperScanner.java DEBUG Creating MapperFactoryBean with name 'userMsgMapper' and 'org.great.mapper.UserMsgMapper' mapperInterface
+2019-01-21 23:36:16main ClassPathMapperScanner.java DEBUG Creating MapperFactoryBean with name 'vipMapper' and 'org.great.mapper.VipMapper' mapperInterface
+2019-01-21 23:36:16main DefaultSingletonBeanRegistry.java DEBUG Creating shared instance of singleton bean 'org.springframework.context.event.internalEventListenerProcessor'
+2019-01-21 23:36:16main DefaultSingletonBeanRegistry.java DEBUG Creating shared instance of singleton bean 'org.springframework.context.event.internalEventListenerFactory'
+2019-01-21 23:36:16main DefaultSingletonBeanRegistry.java DEBUG Creating shared instance of singleton bean 'org.springframework.context.annotation.internalAutowiredAnnotationProcessor'
+2019-01-21 23:36:16main DefaultSingletonBeanRegistry.java DEBUG Creating shared instance of singleton bean 'org.springframework.context.annotation.internalCommonAnnotationProcessor'
+2019-01-21 23:36:16main DefaultSingletonBeanRegistry.java DEBUG Creating shared instance of singleton bean 'car'
+2019-01-21 23:36:16main DefaultSingletonBeanRegistry.java DEBUG Creating shared instance of singleton bean 'param'
+2019-01-21 23:36:16main DefaultSingletonBeanRegistry.java DEBUG Creating shared instance of singleton bean 'roleRel'
+2019-01-21 23:36:16main DefaultSingletonBeanRegistry.java DEBUG Creating shared instance of singleton bean 'carBiz'
+2019-01-21 23:36:16main DefaultSingletonBeanRegistry.java DEBUG Creating shared instance of singleton bean 'carMapper'
+2019-01-21 23:36:16main DefaultSingletonBeanRegistry.java DEBUG Creating shared instance of singleton bean 'carMsgBiz'
+2019-01-21 23:36:16main DefaultSingletonBeanRegistry.java DEBUG Creating shared instance of singleton bean 'comboBiz'
+2019-01-21 23:36:16main DefaultSingletonBeanRegistry.java DEBUG Creating shared instance of singleton bean 'countrulesBzi'
+2019-01-21 23:36:16main DefaultSingletonBeanRegistry.java DEBUG Creating shared instance of singleton bean 'custBiz'
+2019-01-21 23:36:16main DefaultSingletonBeanRegistry.java DEBUG Creating shared instance of singleton bean 'custMapper'
+2019-01-21 23:36:16main DefaultSingletonBeanRegistry.java DEBUG Creating shared instance of singleton bean 'logBiz'
+2019-01-21 23:36:16main DefaultSingletonBeanRegistry.java DEBUG Creating shared instance of singleton bean 'menuBiz'
+2019-01-21 23:36:16main DefaultSingletonBeanRegistry.java DEBUG Creating shared instance of singleton bean 'menuMapper'
+2019-01-21 23:36:16main DefaultSingletonBeanRegistry.java DEBUG Creating shared instance of singleton bean 'paramBiz'
+2019-01-21 23:36:16main DefaultSingletonBeanRegistry.java DEBUG Creating shared instance of singleton bean 'paramMapper'
+2019-01-21 23:36:16main DefaultSingletonBeanRegistry.java DEBUG Creating shared instance of singleton bean 'parkBiz'
+2019-01-21 23:36:16main DefaultSingletonBeanRegistry.java DEBUG Creating shared instance of singleton bean 'receiptBiz'
+2019-01-21 23:36:16main DefaultSingletonBeanRegistry.java DEBUG Creating shared instance of singleton bean 'roleBiz'
+2019-01-21 23:36:16main DefaultSingletonBeanRegistry.java DEBUG Creating shared instance of singleton bean 'roleMapper'
+2019-01-21 23:36:16main DefaultSingletonBeanRegistry.java DEBUG Creating shared instance of singleton bean 'roleMenuBiz'
+2019-01-21 23:36:16main DefaultSingletonBeanRegistry.java DEBUG Creating shared instance of singleton bean 'roleMenuMapper'
+2019-01-21 23:36:16main DefaultSingletonBeanRegistry.java DEBUG Creating shared instance of singleton bean 'roleRelBiz'
+2019-01-21 23:36:16main DefaultSingletonBeanRegistry.java DEBUG Creating shared instance of singleton bean 'scheBiz'
+2019-01-21 23:36:16main DefaultSingletonBeanRegistry.java DEBUG Creating shared instance of singleton bean 'schestateBiz'
+2019-01-21 23:36:16main DefaultSingletonBeanRegistry.java DEBUG Creating shared instance of singleton bean 'stopcartimeBiz'
+2019-01-21 23:36:16main DefaultSingletonBeanRegistry.java DEBUG Creating shared instance of singleton bean 'stopcartimeMapper'
+2019-01-21 23:36:16main DefaultSingletonBeanRegistry.java DEBUG Creating shared instance of singleton bean 'userBiz'
+2019-01-21 23:36:16main DefaultSingletonBeanRegistry.java DEBUG Creating shared instance of singleton bean 'userMapper'
+2019-01-21 23:36:16main DefaultSingletonBeanRegistry.java DEBUG Creating shared instance of singleton bean 'userMsgBiz'
+2019-01-21 23:36:16main DefaultSingletonBeanRegistry.java DEBUG Creating shared instance of singleton bean 'vipBiz'
+2019-01-21 23:36:16main DefaultSingletonBeanRegistry.java DEBUG Creating shared instance of singleton bean 'firstCron'
+2019-01-21 23:36:16main DefaultSingletonBeanRegistry.java DEBUG Creating shared instance of singleton bean 'systemLogAspect'
+2019-01-21 23:36:16main DefaultSingletonBeanRegistry.java DEBUG Creating shared instance of singleton bean 'userLog'
+2019-01-21 23:36:16main DefaultSingletonBeanRegistry.java DEBUG Creating shared instance of singleton bean 'carMsgMapper'
+2019-01-21 23:36:16main DefaultSingletonBeanRegistry.java DEBUG Creating shared instance of singleton bean 'comboMapper'
+2019-01-21 23:36:16main DefaultSingletonBeanRegistry.java DEBUG Creating shared instance of singleton bean 'countrulesMapper'
+2019-01-21 23:36:16main DefaultSingletonBeanRegistry.java DEBUG Creating shared instance of singleton bean 'logMapper'
+2019-01-21 23:36:16main DefaultSingletonBeanRegistry.java DEBUG Creating shared instance of singleton bean 'parkMapper'
+2019-01-21 23:36:16main DefaultSingletonBeanRegistry.java DEBUG Creating shared instance of singleton bean 'receiptMapper'
+2019-01-21 23:36:16main DefaultSingletonBeanRegistry.java DEBUG Creating shared instance of singleton bean 'scheMapper'
+2019-01-21 23:36:16main DefaultSingletonBeanRegistry.java DEBUG Creating shared instance of singleton bean 'schestateMapper'
+2019-01-21 23:36:16main DefaultSingletonBeanRegistry.java DEBUG Creating shared instance of singleton bean 'userMsgMapper'
+2019-01-21 23:36:16main DefaultSingletonBeanRegistry.java DEBUG Creating shared instance of singleton bean 'vipMapper'
+2019-01-21 23:36:16main SqlSessionUtils.java DEBUG Creating a new SqlSession
+2019-01-21 23:36:16main SqlSessionUtils.java DEBUG SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@52b1beb6] was not registered for synchronization because synchronization is not active
+2019-01-21 23:36:16main DataSourceUtils.java DEBUG Fetching JDBC Connection from DataSource
+2019-01-21 23:36:18main SpringManagedTransaction.java DEBUG JDBC Connection [jdbc:mysql://45.40.255.33:3306/parkinglot?characterEncoding=utf-8, UserName=root@110.87.111.35, MySQL Connector Java] will not be managed by Spring
+2019-01-21 23:36:18main BaseJdbcLogger.java DEBUG ooo Using Connection [jdbc:mysql://45.40.255.33:3306/parkinglot?characterEncoding=utf-8, UserName=root@110.87.111.35, MySQL Connector Java]
+2019-01-21 23:36:18main BaseJdbcLogger.java DEBUG ==>  Preparing: select * from tb_cust c LEFT JOIN tb_param pm ON c.pm_id = pm.pm_id 
+2019-01-21 23:36:18main BaseJdbcLogger.java DEBUG ==> Parameters: 
+2019-01-21 23:36:18main BaseJdbcLogger.java DEBUG <==      Total: 5
+2019-01-21 23:36:18main SqlSessionUtils.java DEBUG Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@52b1beb6]
+2019-01-21 23:36:18main DataSourceUtils.java DEBUG Returning JDBC Connection to DataSource
+2019-01-21 23:50:38main AbstractApplicationContext.java DEBUG Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@3f3afe78
+2019-01-21 23:50:39main ClassPathScanningCandidateComponentProvider.java DEBUG Identified candidate component class: file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\bean\Car.class]
+2019-01-21 23:50:39main ClassPathScanningCandidateComponentProvider.java DEBUG Identified candidate component class: file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\bean\Param.class]
+2019-01-21 23:50:39main ClassPathScanningCandidateComponentProvider.java DEBUG Identified candidate component class: file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\bean\RoleRel.class]
+2019-01-21 23:50:39main ClassPathScanningCandidateComponentProvider.java DEBUG Identified candidate component class: file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\biz\CarBizImpl.class]
+2019-01-21 23:50:39main ClassPathScanningCandidateComponentProvider.java DEBUG Identified candidate component class: file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\biz\CarMsgBizImpl.class]
+2019-01-21 23:50:39main ClassPathScanningCandidateComponentProvider.java DEBUG Identified candidate component class: file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\biz\ComboBizImpl.class]
+2019-01-21 23:50:39main ClassPathScanningCandidateComponentProvider.java DEBUG Identified candidate component class: file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\biz\CountrulesBziImpl.class]
+2019-01-21 23:50:39main ClassPathScanningCandidateComponentProvider.java DEBUG Identified candidate component class: file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\biz\CustBizImpl.class]
+2019-01-21 23:50:39main ClassPathScanningCandidateComponentProvider.java DEBUG Identified candidate component class: file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\biz\LogBizImpl.class]
+2019-01-21 23:50:39main ClassPathScanningCandidateComponentProvider.java DEBUG Identified candidate component class: file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\biz\MenuBizImpl.class]
+2019-01-21 23:50:39main ClassPathScanningCandidateComponentProvider.java DEBUG Identified candidate component class: file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\biz\ParamBizImpl.class]
+2019-01-21 23:50:39main ClassPathScanningCandidateComponentProvider.java DEBUG Identified candidate component class: file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\biz\ParkBizImpl.class]
+2019-01-21 23:50:39main ClassPathScanningCandidateComponentProvider.java DEBUG Identified candidate component class: file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\biz\ReceiptBizImpl.class]
+2019-01-21 23:50:39main ClassPathScanningCandidateComponentProvider.java DEBUG Identified candidate component class: file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\biz\RoleBizImpl.class]
+2019-01-21 23:50:39main ClassPathScanningCandidateComponentProvider.java DEBUG Identified candidate component class: file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\biz\RoleMenuBizImpl.class]
+2019-01-21 23:50:39main ClassPathScanningCandidateComponentProvider.java DEBUG Identified candidate component class: file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\biz\RoleRelBizImpl.class]
+2019-01-21 23:50:39main ClassPathScanningCandidateComponentProvider.java DEBUG Identified candidate component class: file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\biz\ScheBizImpl.class]
+2019-01-21 23:50:39main ClassPathScanningCandidateComponentProvider.java DEBUG Identified candidate component class: file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\biz\SchestateBizImpl.class]
+2019-01-21 23:50:39main ClassPathScanningCandidateComponentProvider.java DEBUG Identified candidate component class: file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\biz\StopcartimeBizImpl.class]
+2019-01-21 23:50:39main ClassPathScanningCandidateComponentProvider.java DEBUG Identified candidate component class: file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\biz\UserBizImpl.class]
+2019-01-21 23:50:39main ClassPathScanningCandidateComponentProvider.java DEBUG Identified candidate component class: file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\biz\UserMsgBizImpl.class]
+2019-01-21 23:50:39main ClassPathScanningCandidateComponentProvider.java DEBUG Identified candidate component class: file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\biz\VipBizImpl.class]
+2019-01-21 23:50:39main ClassPathScanningCandidateComponentProvider.java DEBUG Identified candidate component class: file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\handler\AppearanceLicensePlateRecognition.class]
+2019-01-21 23:50:39main ClassPathScanningCandidateComponentProvider.java DEBUG Identified candidate component class: file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\handler\CustManageHandler.class]
+2019-01-21 23:50:39main ClassPathScanningCandidateComponentProvider.java DEBUG Identified candidate component class: file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\handler\ExitHandler.class]
+2019-01-21 23:50:39main ClassPathScanningCandidateComponentProvider.java DEBUG Identified candidate component class: file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\handler\LicensePlateRecognition.class]
+2019-01-21 23:50:39main ClassPathScanningCandidateComponentProvider.java DEBUG Identified candidate component class: file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\handler\LoginHandler.class]
+2019-01-21 23:50:39main ClassPathScanningCandidateComponentProvider.java DEBUG Identified candidate component class: file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\handler\MainHandler.class]
+2019-01-21 23:50:39main ClassPathScanningCandidateComponentProvider.java DEBUG Identified candidate component class: file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\handler\PermissionMenuHandler.class]
+2019-01-21 23:50:39main ClassPathScanningCandidateComponentProvider.java DEBUG Identified candidate component class: file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\interceptor\FirstCron.class]
+2019-01-21 23:50:39main ClassPathScanningCandidateComponentProvider.java DEBUG Identified candidate component class: file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\log\SystemLogAspect.class]
+2019-01-21 23:50:39main ClassPathScanningCandidateComponentProvider.java DEBUG Identified candidate component class: file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\log\UserLog.class]
+2019-01-21 23:50:39main ClassPathScanningCandidateComponentProvider.java DEBUG Ignored because not a concrete top-level class: file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\mapper\CarMapper.class]
+2019-01-21 23:50:39main ClassPathScanningCandidateComponentProvider.java DEBUG Ignored because not a concrete top-level class: file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\mapper\CarMsgMapper.class]
+2019-01-21 23:50:39main ClassPathScanningCandidateComponentProvider.java DEBUG Ignored because not a concrete top-level class: file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\mapper\ComboMapper.class]
+2019-01-21 23:50:39main ClassPathScanningCandidateComponentProvider.java DEBUG Ignored because not a concrete top-level class: file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\mapper\CountrulesMapper.class]
+2019-01-21 23:50:39main ClassPathScanningCandidateComponentProvider.java DEBUG Ignored because not a concrete top-level class: file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\mapper\CustMapper.class]
+2019-01-21 23:50:39main ClassPathScanningCandidateComponentProvider.java DEBUG Ignored because not a concrete top-level class: file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\mapper\LogMapper.class]
+2019-01-21 23:50:39main ClassPathScanningCandidateComponentProvider.java DEBUG Ignored because not a concrete top-level class: file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\mapper\MenuMapper.class]
+2019-01-21 23:50:39main ClassPathScanningCandidateComponentProvider.java DEBUG Ignored because not a concrete top-level class: file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\mapper\ParamMapper.class]
+2019-01-21 23:50:39main ClassPathScanningCandidateComponentProvider.java DEBUG Ignored because not a concrete top-level class: file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\mapper\ParkMapper.class]
+2019-01-21 23:50:39main ClassPathScanningCandidateComponentProvider.java DEBUG Ignored because not a concrete top-level class: file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\mapper\ReceiptMapper.class]
+2019-01-21 23:50:39main ClassPathScanningCandidateComponentProvider.java DEBUG Ignored because not a concrete top-level class: file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\mapper\RoleMapper.class]
+2019-01-21 23:50:39main ClassPathScanningCandidateComponentProvider.java DEBUG Ignored because not a concrete top-level class: file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\mapper\RoleMenuMapper.class]
+2019-01-21 23:50:39main ClassPathScanningCandidateComponentProvider.java DEBUG Ignored because not a concrete top-level class: file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\mapper\ScheMapper.class]
+2019-01-21 23:50:39main ClassPathScanningCandidateComponentProvider.java DEBUG Ignored because not a concrete top-level class: file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\mapper\SchestateMapper.class]
+2019-01-21 23:50:39main ClassPathScanningCandidateComponentProvider.java DEBUG Ignored because not a concrete top-level class: file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\mapper\StopcartimeMapper.class]
+2019-01-21 23:50:39main ClassPathScanningCandidateComponentProvider.java DEBUG Ignored because not a concrete top-level class: file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\mapper\UserMapper.class]
+2019-01-21 23:50:39main ClassPathScanningCandidateComponentProvider.java DEBUG Ignored because not a concrete top-level class: file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\mapper\UserMsgMapper.class]
+2019-01-21 23:50:39main ClassPathScanningCandidateComponentProvider.java DEBUG Ignored because not a concrete top-level class: file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\mapper\VipMapper.class]
+2019-01-21 23:50:39main XmlBeanDefinitionReader.java DEBUG Loaded 40 bean definitions from class path resource [applicationContext.xml]
+2019-01-21 23:50:40main DefaultSingletonBeanRegistry.java DEBUG Creating shared instance of singleton bean 'org.springframework.context.annotation.internalConfigurationAnnotationProcessor'
+2019-01-21 23:50:40main DefaultSingletonBeanRegistry.java DEBUG Creating shared instance of singleton bean 'org.mybatis.spring.mapper.MapperScannerConfigurer#0'
+2019-01-21 23:50:40main DefaultSingletonBeanRegistry.java DEBUG Creating shared instance of singleton bean 'sqlSessionFactory'
+2019-01-21 23:50:40main LogFactory.java DEBUG Logging initialized using 'class org.apache.ibatis.logging.slf4j.Slf4jImpl' adapter.
+2019-01-21 23:50:40main DefaultSingletonBeanRegistry.java DEBUG Creating shared instance of singleton bean 'mydatasuroce'
+2019-01-21 23:50:40main SqlSessionFactoryBean.java DEBUG Property 'configLocation' not specified, using default MyBatis Configuration
+2019-01-21 23:50:40main SqlSessionFactoryBean.java DEBUG Parsed mapper file: 'file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\mapper\CarMapper.xml]'
+2019-01-21 23:50:40main SqlSessionFactoryBean.java DEBUG Parsed mapper file: 'file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\mapper\CarMsgMapper.xml]'
+2019-01-21 23:50:40main SqlSessionFactoryBean.java DEBUG Parsed mapper file: 'file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\mapper\ComboMapper.xml]'
+2019-01-21 23:50:40main SqlSessionFactoryBean.java DEBUG Parsed mapper file: 'file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\mapper\CountrulesMapper.xml]'
+2019-01-21 23:50:40main SqlSessionFactoryBean.java DEBUG Parsed mapper file: 'file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\mapper\CustMapper.xml]'
+2019-01-21 23:50:40main SqlSessionFactoryBean.java DEBUG Parsed mapper file: 'file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\mapper\LogMapper.xml]'
+2019-01-21 23:50:41main SqlSessionFactoryBean.java DEBUG Parsed mapper file: 'file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\mapper\MenuMapper.xml]'
+2019-01-21 23:50:41main SqlSessionFactoryBean.java DEBUG Parsed mapper file: 'file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\mapper\ParamMapper.xml]'
+2019-01-21 23:50:41main SqlSessionFactoryBean.java DEBUG Parsed mapper file: 'file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\mapper\ParkMapper.xml]'
+2019-01-21 23:50:41main SqlSessionFactoryBean.java DEBUG Parsed mapper file: 'file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\mapper\ReceiptMapper.xml]'
+2019-01-21 23:50:41main SqlSessionFactoryBean.java DEBUG Parsed mapper file: 'file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\mapper\RoleMapper.xml]'
+2019-01-21 23:50:41main SqlSessionFactoryBean.java DEBUG Parsed mapper file: 'file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\mapper\RoleMenuMapper.xml]'
+2019-01-21 23:50:41main SqlSessionFactoryBean.java DEBUG Parsed mapper file: 'file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\mapper\ScheMapper.xml]'
+2019-01-21 23:50:41main SqlSessionFactoryBean.java DEBUG Parsed mapper file: 'file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\mapper\SchestateMapper.xml]'
+2019-01-21 23:50:41main SqlSessionFactoryBean.java DEBUG Parsed mapper file: 'file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\mapper\StopcartimeMapper.xml]'
+2019-01-21 23:50:41main SqlSessionFactoryBean.java DEBUG Parsed mapper file: 'file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\mapper\UserMapper.xml]'
+2019-01-21 23:50:41main SqlSessionFactoryBean.java DEBUG Parsed mapper file: 'file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\mapper\UserMsgMapper.xml]'
+2019-01-21 23:50:41main SqlSessionFactoryBean.java DEBUG Parsed mapper file: 'file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\mapper\VipMapper.xml]'
+2019-01-21 23:50:41main ClassPathScanningCandidateComponentProvider.java DEBUG Identified candidate component class: file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\mapper\CarMapper.class]
+2019-01-21 23:50:41main ClassPathScanningCandidateComponentProvider.java DEBUG Identified candidate component class: file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\mapper\CarMsgMapper.class]
+2019-01-21 23:50:41main ClassPathScanningCandidateComponentProvider.java DEBUG Identified candidate component class: file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\mapper\ComboMapper.class]
+2019-01-21 23:50:41main ClassPathScanningCandidateComponentProvider.java DEBUG Identified candidate component class: file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\mapper\CountrulesMapper.class]
+2019-01-21 23:50:41main ClassPathScanningCandidateComponentProvider.java DEBUG Identified candidate component class: file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\mapper\CustMapper.class]
+2019-01-21 23:50:41main ClassPathScanningCandidateComponentProvider.java DEBUG Identified candidate component class: file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\mapper\LogMapper.class]
+2019-01-21 23:50:41main ClassPathScanningCandidateComponentProvider.java DEBUG Identified candidate component class: file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\mapper\MenuMapper.class]
+2019-01-21 23:50:41main ClassPathScanningCandidateComponentProvider.java DEBUG Identified candidate component class: file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\mapper\ParamMapper.class]
+2019-01-21 23:50:41main ClassPathScanningCandidateComponentProvider.java DEBUG Identified candidate component class: file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\mapper\ParkMapper.class]
+2019-01-21 23:50:41main ClassPathScanningCandidateComponentProvider.java DEBUG Identified candidate component class: file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\mapper\ReceiptMapper.class]
+2019-01-21 23:50:41main ClassPathScanningCandidateComponentProvider.java DEBUG Identified candidate component class: file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\mapper\RoleMapper.class]
+2019-01-21 23:50:41main ClassPathScanningCandidateComponentProvider.java DEBUG Identified candidate component class: file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\mapper\RoleMenuMapper.class]
+2019-01-21 23:50:41main ClassPathScanningCandidateComponentProvider.java DEBUG Identified candidate component class: file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\mapper\ScheMapper.class]
+2019-01-21 23:50:41main ClassPathScanningCandidateComponentProvider.java DEBUG Identified candidate component class: file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\mapper\SchestateMapper.class]
+2019-01-21 23:50:41main ClassPathScanningCandidateComponentProvider.java DEBUG Identified candidate component class: file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\mapper\StopcartimeMapper.class]
+2019-01-21 23:50:41main ClassPathScanningCandidateComponentProvider.java DEBUG Identified candidate component class: file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\mapper\UserMapper.class]
+2019-01-21 23:50:41main ClassPathScanningCandidateComponentProvider.java DEBUG Identified candidate component class: file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\mapper\UserMsgMapper.class]
+2019-01-21 23:50:41main ClassPathScanningCandidateComponentProvider.java DEBUG Identified candidate component class: file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\mapper\VipMapper.class]
+2019-01-21 23:50:41main ClassPathMapperScanner.java DEBUG Creating MapperFactoryBean with name 'carMapper' and 'org.great.mapper.CarMapper' mapperInterface
+2019-01-21 23:50:41main ClassPathMapperScanner.java DEBUG Creating MapperFactoryBean with name 'carMsgMapper' and 'org.great.mapper.CarMsgMapper' mapperInterface
+2019-01-21 23:50:41main ClassPathMapperScanner.java DEBUG Creating MapperFactoryBean with name 'comboMapper' and 'org.great.mapper.ComboMapper' mapperInterface
+2019-01-21 23:50:41main ClassPathMapperScanner.java DEBUG Creating MapperFactoryBean with name 'countrulesMapper' and 'org.great.mapper.CountrulesMapper' mapperInterface
+2019-01-21 23:50:41main ClassPathMapperScanner.java DEBUG Creating MapperFactoryBean with name 'custMapper' and 'org.great.mapper.CustMapper' mapperInterface
+2019-01-21 23:50:41main ClassPathMapperScanner.java DEBUG Creating MapperFactoryBean with name 'logMapper' and 'org.great.mapper.LogMapper' mapperInterface
+2019-01-21 23:50:41main ClassPathMapperScanner.java DEBUG Creating MapperFactoryBean with name 'menuMapper' and 'org.great.mapper.MenuMapper' mapperInterface
+2019-01-21 23:50:41main ClassPathMapperScanner.java DEBUG Creating MapperFactoryBean with name 'paramMapper' and 'org.great.mapper.ParamMapper' mapperInterface
+2019-01-21 23:50:41main ClassPathMapperScanner.java DEBUG Creating MapperFactoryBean with name 'parkMapper' and 'org.great.mapper.ParkMapper' mapperInterface
+2019-01-21 23:50:41main ClassPathMapperScanner.java DEBUG Creating MapperFactoryBean with name 'receiptMapper' and 'org.great.mapper.ReceiptMapper' mapperInterface
+2019-01-21 23:50:41main ClassPathMapperScanner.java DEBUG Creating MapperFactoryBean with name 'roleMapper' and 'org.great.mapper.RoleMapper' mapperInterface
+2019-01-21 23:50:41main ClassPathMapperScanner.java DEBUG Creating MapperFactoryBean with name 'roleMenuMapper' and 'org.great.mapper.RoleMenuMapper' mapperInterface
+2019-01-21 23:50:41main ClassPathMapperScanner.java DEBUG Creating MapperFactoryBean with name 'scheMapper' and 'org.great.mapper.ScheMapper' mapperInterface
+2019-01-21 23:50:41main ClassPathMapperScanner.java DEBUG Creating MapperFactoryBean with name 'schestateMapper' and 'org.great.mapper.SchestateMapper' mapperInterface
+2019-01-21 23:50:41main ClassPathMapperScanner.java DEBUG Creating MapperFactoryBean with name 'stopcartimeMapper' and 'org.great.mapper.StopcartimeMapper' mapperInterface
+2019-01-21 23:50:41main ClassPathMapperScanner.java DEBUG Creating MapperFactoryBean with name 'userMapper' and 'org.great.mapper.UserMapper' mapperInterface
+2019-01-21 23:50:41main ClassPathMapperScanner.java DEBUG Creating MapperFactoryBean with name 'userMsgMapper' and 'org.great.mapper.UserMsgMapper' mapperInterface
+2019-01-21 23:50:41main ClassPathMapperScanner.java DEBUG Creating MapperFactoryBean with name 'vipMapper' and 'org.great.mapper.VipMapper' mapperInterface
+2019-01-21 23:50:41main DefaultSingletonBeanRegistry.java DEBUG Creating shared instance of singleton bean 'org.springframework.context.event.internalEventListenerProcessor'
+2019-01-21 23:50:41main DefaultSingletonBeanRegistry.java DEBUG Creating shared instance of singleton bean 'org.springframework.context.event.internalEventListenerFactory'
+2019-01-21 23:50:41main DefaultSingletonBeanRegistry.java DEBUG Creating shared instance of singleton bean 'org.springframework.context.annotation.internalAutowiredAnnotationProcessor'
+2019-01-21 23:50:41main DefaultSingletonBeanRegistry.java DEBUG Creating shared instance of singleton bean 'org.springframework.context.annotation.internalCommonAnnotationProcessor'
+2019-01-21 23:50:41main DefaultSingletonBeanRegistry.java DEBUG Creating shared instance of singleton bean 'car'
+2019-01-21 23:50:41main DefaultSingletonBeanRegistry.java DEBUG Creating shared instance of singleton bean 'param'
+2019-01-21 23:50:41main DefaultSingletonBeanRegistry.java DEBUG Creating shared instance of singleton bean 'roleRel'
+2019-01-21 23:50:41main DefaultSingletonBeanRegistry.java DEBUG Creating shared instance of singleton bean 'carBiz'
+2019-01-21 23:50:41main DefaultSingletonBeanRegistry.java DEBUG Creating shared instance of singleton bean 'carMapper'
+2019-01-21 23:50:41main DefaultSingletonBeanRegistry.java DEBUG Creating shared instance of singleton bean 'carMsgBiz'
+2019-01-21 23:50:41main DefaultSingletonBeanRegistry.java DEBUG Creating shared instance of singleton bean 'comboBiz'
+2019-01-21 23:50:41main DefaultSingletonBeanRegistry.java DEBUG Creating shared instance of singleton bean 'countrulesBzi'
+2019-01-21 23:50:41main DefaultSingletonBeanRegistry.java DEBUG Creating shared instance of singleton bean 'custBiz'
+2019-01-21 23:50:41main DefaultSingletonBeanRegistry.java DEBUG Creating shared instance of singleton bean 'custMapper'
+2019-01-21 23:50:41main DefaultSingletonBeanRegistry.java DEBUG Creating shared instance of singleton bean 'logBiz'
+2019-01-21 23:50:41main DefaultSingletonBeanRegistry.java DEBUG Creating shared instance of singleton bean 'menuBiz'
+2019-01-21 23:50:41main DefaultSingletonBeanRegistry.java DEBUG Creating shared instance of singleton bean 'menuMapper'
+2019-01-21 23:50:41main DefaultSingletonBeanRegistry.java DEBUG Creating shared instance of singleton bean 'paramBiz'
+2019-01-21 23:50:41main DefaultSingletonBeanRegistry.java DEBUG Creating shared instance of singleton bean 'paramMapper'
+2019-01-21 23:50:41main DefaultSingletonBeanRegistry.java DEBUG Creating shared instance of singleton bean 'parkBiz'
+2019-01-21 23:50:41main DefaultSingletonBeanRegistry.java DEBUG Creating shared instance of singleton bean 'receiptBiz'
+2019-01-21 23:50:41main DefaultSingletonBeanRegistry.java DEBUG Creating shared instance of singleton bean 'roleBiz'
+2019-01-21 23:50:41main DefaultSingletonBeanRegistry.java DEBUG Creating shared instance of singleton bean 'roleMapper'
+2019-01-21 23:50:41main DefaultSingletonBeanRegistry.java DEBUG Creating shared instance of singleton bean 'roleMenuBiz'
+2019-01-21 23:50:41main DefaultSingletonBeanRegistry.java DEBUG Creating shared instance of singleton bean 'roleMenuMapper'
+2019-01-21 23:50:41main DefaultSingletonBeanRegistry.java DEBUG Creating shared instance of singleton bean 'roleRelBiz'
+2019-01-21 23:50:41main DefaultSingletonBeanRegistry.java DEBUG Creating shared instance of singleton bean 'scheBiz'
+2019-01-21 23:50:41main DefaultSingletonBeanRegistry.java DEBUG Creating shared instance of singleton bean 'schestateBiz'
+2019-01-21 23:50:41main DefaultSingletonBeanRegistry.java DEBUG Creating shared instance of singleton bean 'stopcartimeBiz'
+2019-01-21 23:50:41main DefaultSingletonBeanRegistry.java DEBUG Creating shared instance of singleton bean 'stopcartimeMapper'
+2019-01-21 23:50:41main DefaultSingletonBeanRegistry.java DEBUG Creating shared instance of singleton bean 'userBiz'
+2019-01-21 23:50:41main DefaultSingletonBeanRegistry.java DEBUG Creating shared instance of singleton bean 'userMapper'
+2019-01-21 23:50:41main DefaultSingletonBeanRegistry.java DEBUG Creating shared instance of singleton bean 'userMsgBiz'
+2019-01-21 23:50:41main DefaultSingletonBeanRegistry.java DEBUG Creating shared instance of singleton bean 'vipBiz'
+2019-01-21 23:50:41main DefaultSingletonBeanRegistry.java DEBUG Creating shared instance of singleton bean 'firstCron'
+2019-01-21 23:50:41main DefaultSingletonBeanRegistry.java DEBUG Creating shared instance of singleton bean 'systemLogAspect'
+2019-01-21 23:50:41main DefaultSingletonBeanRegistry.java DEBUG Creating shared instance of singleton bean 'userLog'
+2019-01-21 23:50:41main DefaultSingletonBeanRegistry.java DEBUG Creating shared instance of singleton bean 'carMsgMapper'
+2019-01-21 23:50:41main DefaultSingletonBeanRegistry.java DEBUG Creating shared instance of singleton bean 'comboMapper'
+2019-01-21 23:50:41main DefaultSingletonBeanRegistry.java DEBUG Creating shared instance of singleton bean 'countrulesMapper'
+2019-01-21 23:50:41main DefaultSingletonBeanRegistry.java DEBUG Creating shared instance of singleton bean 'logMapper'
+2019-01-21 23:50:41main DefaultSingletonBeanRegistry.java DEBUG Creating shared instance of singleton bean 'parkMapper'
+2019-01-21 23:50:41main DefaultSingletonBeanRegistry.java DEBUG Creating shared instance of singleton bean 'receiptMapper'
+2019-01-21 23:50:41main DefaultSingletonBeanRegistry.java DEBUG Creating shared instance of singleton bean 'scheMapper'
+2019-01-21 23:50:41main DefaultSingletonBeanRegistry.java DEBUG Creating shared instance of singleton bean 'schestateMapper'
+2019-01-21 23:50:41main DefaultSingletonBeanRegistry.java DEBUG Creating shared instance of singleton bean 'userMsgMapper'
+2019-01-21 23:50:41main DefaultSingletonBeanRegistry.java DEBUG Creating shared instance of singleton bean 'vipMapper'
+2019-01-21 23:50:41main SqlSessionUtils.java DEBUG Creating a new SqlSession
+2019-01-21 23:50:41main SqlSessionUtils.java DEBUG SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@52b1beb6] was not registered for synchronization because synchronization is not active
+2019-01-21 23:50:41main DataSourceUtils.java DEBUG Fetching JDBC Connection from DataSource
+2019-01-21 23:50:43main SpringManagedTransaction.java DEBUG JDBC Connection [jdbc:mysql://45.40.255.33:3306/parkinglot?characterEncoding=utf-8, UserName=root@110.87.111.35, MySQL Connector Java] will not be managed by Spring
+2019-01-21 23:50:43main BaseJdbcLogger.java DEBUG ooo Using Connection [jdbc:mysql://45.40.255.33:3306/parkinglot?characterEncoding=utf-8, UserName=root@110.87.111.35, MySQL Connector Java]
+2019-01-21 23:50:43main BaseJdbcLogger.java DEBUG ==>  Preparing: select * from tb_param pm LEFT JOIN tb_cust c ON pm.pm_id = c.pm_id 
+2019-01-21 23:50:43main BaseJdbcLogger.java DEBUG ==> Parameters: 
+2019-01-21 23:50:43main BaseJdbcLogger.java DEBUG <==      Total: 15
+2019-01-21 23:50:43main SqlSessionUtils.java DEBUG Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@52b1beb6]
+2019-01-21 23:50:43main DataSourceUtils.java DEBUG Returning JDBC Connection to DataSource
+2019-01-21 23:58:22main AbstractApplicationContext.java DEBUG Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@37918c79
+2019-01-21 23:58:23main ClassPathScanningCandidateComponentProvider.java DEBUG Identified candidate component class: file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\bean\Car.class]
+2019-01-21 23:58:23main ClassPathScanningCandidateComponentProvider.java DEBUG Identified candidate component class: file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\bean\Param.class]
+2019-01-21 23:58:23main ClassPathScanningCandidateComponentProvider.java DEBUG Identified candidate component class: file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\bean\RoleRel.class]
+2019-01-21 23:58:23main ClassPathScanningCandidateComponentProvider.java DEBUG Identified candidate component class: file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\biz\CarBizImpl.class]
+2019-01-21 23:58:23main ClassPathScanningCandidateComponentProvider.java DEBUG Identified candidate component class: file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\biz\CarMsgBizImpl.class]
+2019-01-21 23:58:23main ClassPathScanningCandidateComponentProvider.java DEBUG Identified candidate component class: file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\biz\ComboBizImpl.class]
+2019-01-21 23:58:23main ClassPathScanningCandidateComponentProvider.java DEBUG Identified candidate component class: file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\biz\CountrulesBziImpl.class]
+2019-01-21 23:58:23main ClassPathScanningCandidateComponentProvider.java DEBUG Identified candidate component class: file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\biz\CustBizImpl.class]
+2019-01-21 23:58:23main ClassPathScanningCandidateComponentProvider.java DEBUG Identified candidate component class: file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\biz\LogBizImpl.class]
+2019-01-21 23:58:23main ClassPathScanningCandidateComponentProvider.java DEBUG Identified candidate component class: file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\biz\MenuBizImpl.class]
+2019-01-21 23:58:23main ClassPathScanningCandidateComponentProvider.java DEBUG Identified candidate component class: file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\biz\ParamBizImpl.class]
+2019-01-21 23:58:23main ClassPathScanningCandidateComponentProvider.java DEBUG Identified candidate component class: file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\biz\ParkBizImpl.class]
+2019-01-21 23:58:23main ClassPathScanningCandidateComponentProvider.java DEBUG Identified candidate component class: file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\biz\ReceiptBizImpl.class]
+2019-01-21 23:58:23main ClassPathScanningCandidateComponentProvider.java DEBUG Identified candidate component class: file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\biz\RoleBizImpl.class]
+2019-01-21 23:58:23main ClassPathScanningCandidateComponentProvider.java DEBUG Identified candidate component class: file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\biz\RoleMenuBizImpl.class]
+2019-01-21 23:58:23main ClassPathScanningCandidateComponentProvider.java DEBUG Identified candidate component class: file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\biz\RoleRelBizImpl.class]
+2019-01-21 23:58:23main ClassPathScanningCandidateComponentProvider.java DEBUG Identified candidate component class: file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\biz\ScheBizImpl.class]
+2019-01-21 23:58:23main ClassPathScanningCandidateComponentProvider.java DEBUG Identified candidate component class: file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\biz\SchestateBizImpl.class]
+2019-01-21 23:58:23main ClassPathScanningCandidateComponentProvider.java DEBUG Identified candidate component class: file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\biz\StopcartimeBizImpl.class]
+2019-01-21 23:58:23main ClassPathScanningCandidateComponentProvider.java DEBUG Identified candidate component class: file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\biz\UserBizImpl.class]
+2019-01-21 23:58:23main ClassPathScanningCandidateComponentProvider.java DEBUG Identified candidate component class: file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\biz\UserMsgBizImpl.class]
+2019-01-21 23:58:23main ClassPathScanningCandidateComponentProvider.java DEBUG Identified candidate component class: file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\biz\VipBizImpl.class]
+2019-01-21 23:58:23main ClassPathScanningCandidateComponentProvider.java DEBUG Identified candidate component class: file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\handler\AppearanceLicensePlateRecognition.class]
+2019-01-21 23:58:23main ClassPathScanningCandidateComponentProvider.java DEBUG Identified candidate component class: file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\handler\CustManageHandler.class]
+2019-01-21 23:58:23main ClassPathScanningCandidateComponentProvider.java DEBUG Identified candidate component class: file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\handler\ExitHandler.class]
+2019-01-21 23:58:23main ClassPathScanningCandidateComponentProvider.java DEBUG Identified candidate component class: file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\handler\LicensePlateRecognition.class]
+2019-01-21 23:58:23main ClassPathScanningCandidateComponentProvider.java DEBUG Identified candidate component class: file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\handler\LoginHandler.class]
+2019-01-21 23:58:23main ClassPathScanningCandidateComponentProvider.java DEBUG Identified candidate component class: file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\handler\MainHandler.class]
+2019-01-21 23:58:23main ClassPathScanningCandidateComponentProvider.java DEBUG Identified candidate component class: file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\handler\PermissionMenuHandler.class]
+2019-01-21 23:58:23main ClassPathScanningCandidateComponentProvider.java DEBUG Identified candidate component class: file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\interceptor\FirstCron.class]
+2019-01-21 23:58:23main ClassPathScanningCandidateComponentProvider.java DEBUG Identified candidate component class: file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\log\SystemLogAspect.class]
+2019-01-21 23:58:23main ClassPathScanningCandidateComponentProvider.java DEBUG Identified candidate component class: file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\log\UserLog.class]
+2019-01-21 23:58:23main ClassPathScanningCandidateComponentProvider.java DEBUG Ignored because not a concrete top-level class: file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\mapper\CarMapper.class]
+2019-01-21 23:58:23main ClassPathScanningCandidateComponentProvider.java DEBUG Ignored because not a concrete top-level class: file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\mapper\CarMsgMapper.class]
+2019-01-21 23:58:23main ClassPathScanningCandidateComponentProvider.java DEBUG Ignored because not a concrete top-level class: file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\mapper\ComboMapper.class]
+2019-01-21 23:58:23main ClassPathScanningCandidateComponentProvider.java DEBUG Ignored because not a concrete top-level class: file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\mapper\CountrulesMapper.class]
+2019-01-21 23:58:23main ClassPathScanningCandidateComponentProvider.java DEBUG Ignored because not a concrete top-level class: file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\mapper\CustMapper.class]
+2019-01-21 23:58:23main ClassPathScanningCandidateComponentProvider.java DEBUG Ignored because not a concrete top-level class: file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\mapper\LogMapper.class]
+2019-01-21 23:58:23main ClassPathScanningCandidateComponentProvider.java DEBUG Ignored because not a concrete top-level class: file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\mapper\MenuMapper.class]
+2019-01-21 23:58:23main ClassPathScanningCandidateComponentProvider.java DEBUG Ignored because not a concrete top-level class: file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\mapper\ParamMapper.class]
+2019-01-21 23:58:23main ClassPathScanningCandidateComponentProvider.java DEBUG Ignored because not a concrete top-level class: file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\mapper\ParkMapper.class]
+2019-01-21 23:58:23main ClassPathScanningCandidateComponentProvider.java DEBUG Ignored because not a concrete top-level class: file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\mapper\ReceiptMapper.class]
+2019-01-21 23:58:23main ClassPathScanningCandidateComponentProvider.java DEBUG Ignored because not a concrete top-level class: file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\mapper\RoleMapper.class]
+2019-01-21 23:58:23main ClassPathScanningCandidateComponentProvider.java DEBUG Ignored because not a concrete top-level class: file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\mapper\RoleMenuMapper.class]
+2019-01-21 23:58:23main ClassPathScanningCandidateComponentProvider.java DEBUG Ignored because not a concrete top-level class: file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\mapper\ScheMapper.class]
+2019-01-21 23:58:23main ClassPathScanningCandidateComponentProvider.java DEBUG Ignored because not a concrete top-level class: file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\mapper\SchestateMapper.class]
+2019-01-21 23:58:23main ClassPathScanningCandidateComponentProvider.java DEBUG Ignored because not a concrete top-level class: file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\mapper\StopcartimeMapper.class]
+2019-01-21 23:58:23main ClassPathScanningCandidateComponentProvider.java DEBUG Ignored because not a concrete top-level class: file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\mapper\UserMapper.class]
+2019-01-21 23:58:23main ClassPathScanningCandidateComponentProvider.java DEBUG Ignored because not a concrete top-level class: file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\mapper\UserMsgMapper.class]
+2019-01-21 23:58:23main ClassPathScanningCandidateComponentProvider.java DEBUG Ignored because not a concrete top-level class: file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\mapper\VipMapper.class]
+2019-01-21 23:58:24main XmlBeanDefinitionReader.java DEBUG Loaded 40 bean definitions from class path resource [applicationContext.xml]
+2019-01-21 23:58:24main DefaultSingletonBeanRegistry.java DEBUG Creating shared instance of singleton bean 'org.springframework.context.annotation.internalConfigurationAnnotationProcessor'
+2019-01-21 23:58:24main DefaultSingletonBeanRegistry.java DEBUG Creating shared instance of singleton bean 'org.mybatis.spring.mapper.MapperScannerConfigurer#0'
+2019-01-21 23:58:25main DefaultSingletonBeanRegistry.java DEBUG Creating shared instance of singleton bean 'sqlSessionFactory'
+2019-01-21 23:58:25main LogFactory.java DEBUG Logging initialized using 'class org.apache.ibatis.logging.slf4j.Slf4jImpl' adapter.
+2019-01-21 23:58:25main DefaultSingletonBeanRegistry.java DEBUG Creating shared instance of singleton bean 'mydatasuroce'
+2019-01-21 23:58:25main SqlSessionFactoryBean.java DEBUG Property 'configLocation' not specified, using default MyBatis Configuration
+2019-01-21 23:58:26main SqlSessionFactoryBean.java DEBUG Parsed mapper file: 'file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\mapper\CarMapper.xml]'
+2019-01-21 23:58:26main SqlSessionFactoryBean.java DEBUG Parsed mapper file: 'file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\mapper\CarMsgMapper.xml]'
+2019-01-21 23:58:26main SqlSessionFactoryBean.java DEBUG Parsed mapper file: 'file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\mapper\ComboMapper.xml]'
+2019-01-21 23:58:26main SqlSessionFactoryBean.java DEBUG Parsed mapper file: 'file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\mapper\CountrulesMapper.xml]'
+2019-01-21 23:58:26main SqlSessionFactoryBean.java DEBUG Parsed mapper file: 'file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\mapper\CustMapper.xml]'
+2019-01-21 23:58:26main SqlSessionFactoryBean.java DEBUG Parsed mapper file: 'file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\mapper\LogMapper.xml]'
+2019-01-21 23:58:26main SqlSessionFactoryBean.java DEBUG Parsed mapper file: 'file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\mapper\MenuMapper.xml]'
+2019-01-21 23:58:26main SqlSessionFactoryBean.java DEBUG Parsed mapper file: 'file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\mapper\ParamMapper.xml]'
+2019-01-21 23:58:26main SqlSessionFactoryBean.java DEBUG Parsed mapper file: 'file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\mapper\ParkMapper.xml]'
+2019-01-21 23:58:26main SqlSessionFactoryBean.java DEBUG Parsed mapper file: 'file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\mapper\ReceiptMapper.xml]'
+2019-01-21 23:58:26main SqlSessionFactoryBean.java DEBUG Parsed mapper file: 'file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\mapper\RoleMapper.xml]'
+2019-01-21 23:58:26main SqlSessionFactoryBean.java DEBUG Parsed mapper file: 'file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\mapper\RoleMenuMapper.xml]'
+2019-01-21 23:58:26main SqlSessionFactoryBean.java DEBUG Parsed mapper file: 'file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\mapper\ScheMapper.xml]'
+2019-01-21 23:58:26main SqlSessionFactoryBean.java DEBUG Parsed mapper file: 'file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\mapper\SchestateMapper.xml]'
+2019-01-21 23:58:26main SqlSessionFactoryBean.java DEBUG Parsed mapper file: 'file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\mapper\StopcartimeMapper.xml]'
+2019-01-21 23:58:26main SqlSessionFactoryBean.java DEBUG Parsed mapper file: 'file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\mapper\UserMapper.xml]'
+2019-01-21 23:58:26main SqlSessionFactoryBean.java DEBUG Parsed mapper file: 'file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\mapper\UserMsgMapper.xml]'
+2019-01-21 23:58:26main SqlSessionFactoryBean.java DEBUG Parsed mapper file: 'file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\mapper\VipMapper.xml]'
+2019-01-21 23:58:27main ClassPathScanningCandidateComponentProvider.java DEBUG Identified candidate component class: file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\mapper\CarMapper.class]
+2019-01-21 23:58:27main ClassPathScanningCandidateComponentProvider.java DEBUG Identified candidate component class: file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\mapper\CarMsgMapper.class]
+2019-01-21 23:58:27main ClassPathScanningCandidateComponentProvider.java DEBUG Identified candidate component class: file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\mapper\ComboMapper.class]
+2019-01-21 23:58:27main ClassPathScanningCandidateComponentProvider.java DEBUG Identified candidate component class: file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\mapper\CountrulesMapper.class]
+2019-01-21 23:58:27main ClassPathScanningCandidateComponentProvider.java DEBUG Identified candidate component class: file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\mapper\CustMapper.class]
+2019-01-21 23:58:27main ClassPathScanningCandidateComponentProvider.java DEBUG Identified candidate component class: file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\mapper\LogMapper.class]
+2019-01-21 23:58:27main ClassPathScanningCandidateComponentProvider.java DEBUG Identified candidate component class: file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\mapper\MenuMapper.class]
+2019-01-21 23:58:27main ClassPathScanningCandidateComponentProvider.java DEBUG Identified candidate component class: file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\mapper\ParamMapper.class]
+2019-01-21 23:58:27main ClassPathScanningCandidateComponentProvider.java DEBUG Identified candidate component class: file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\mapper\ParkMapper.class]
+2019-01-21 23:58:27main ClassPathScanningCandidateComponentProvider.java DEBUG Identified candidate component class: file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\mapper\ReceiptMapper.class]
+2019-01-21 23:58:27main ClassPathScanningCandidateComponentProvider.java DEBUG Identified candidate component class: file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\mapper\RoleMapper.class]
+2019-01-21 23:58:27main ClassPathScanningCandidateComponentProvider.java DEBUG Identified candidate component class: file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\mapper\RoleMenuMapper.class]
+2019-01-21 23:58:27main ClassPathScanningCandidateComponentProvider.java DEBUG Identified candidate component class: file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\mapper\ScheMapper.class]
+2019-01-21 23:58:27main ClassPathScanningCandidateComponentProvider.java DEBUG Identified candidate component class: file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\mapper\SchestateMapper.class]
+2019-01-21 23:58:27main ClassPathScanningCandidateComponentProvider.java DEBUG Identified candidate component class: file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\mapper\StopcartimeMapper.class]
+2019-01-21 23:58:27main ClassPathScanningCandidateComponentProvider.java DEBUG Identified candidate component class: file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\mapper\UserMapper.class]
+2019-01-21 23:58:27main ClassPathScanningCandidateComponentProvider.java DEBUG Identified candidate component class: file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\mapper\UserMsgMapper.class]
+2019-01-21 23:58:27main ClassPathScanningCandidateComponentProvider.java DEBUG Identified candidate component class: file [C:\Users\Administrator\Desktop\work\ParkingLotLast\ParkingLot\ParkingLot\build\classes\org\great\mapper\VipMapper.class]
+2019-01-21 23:58:27main ClassPathMapperScanner.java DEBUG Creating MapperFactoryBean with name 'carMapper' and 'org.great.mapper.CarMapper' mapperInterface
+2019-01-21 23:58:27main ClassPathMapperScanner.java DEBUG Creating MapperFactoryBean with name 'carMsgMapper' and 'org.great.mapper.CarMsgMapper' mapperInterface
+2019-01-21 23:58:27main ClassPathMapperScanner.java DEBUG Creating MapperFactoryBean with name 'comboMapper' and 'org.great.mapper.ComboMapper' mapperInterface
+2019-01-21 23:58:27main ClassPathMapperScanner.java DEBUG Creating MapperFactoryBean with name 'countrulesMapper' and 'org.great.mapper.CountrulesMapper' mapperInterface
+2019-01-21 23:58:27main ClassPathMapperScanner.java DEBUG Creating MapperFactoryBean with name 'custMapper' and 'org.great.mapper.CustMapper' mapperInterface
+2019-01-21 23:58:27main ClassPathMapperScanner.java DEBUG Creating MapperFactoryBean with name 'logMapper' and 'org.great.mapper.LogMapper' mapperInterface
+2019-01-21 23:58:27main ClassPathMapperScanner.java DEBUG Creating MapperFactoryBean with name 'menuMapper' and 'org.great.mapper.MenuMapper' mapperInterface
+2019-01-21 23:58:27main ClassPathMapperScanner.java DEBUG Creating MapperFactoryBean with name 'paramMapper' and 'org.great.mapper.ParamMapper' mapperInterface
+2019-01-21 23:58:27main ClassPathMapperScanner.java DEBUG Creating MapperFactoryBean with name 'parkMapper' and 'org.great.mapper.ParkMapper' mapperInterface
+2019-01-21 23:58:27main ClassPathMapperScanner.java DEBUG Creating MapperFactoryBean with name 'receiptMapper' and 'org.great.mapper.ReceiptMapper' mapperInterface
+2019-01-21 23:58:27main ClassPathMapperScanner.java DEBUG Creating MapperFactoryBean with name 'roleMapper' and 'org.great.mapper.RoleMapper' mapperInterface
+2019-01-21 23:58:27main ClassPathMapperScanner.java DEBUG Creating MapperFactoryBean with name 'roleMenuMapper' and 'org.great.mapper.RoleMenuMapper' mapperInterface
+2019-01-21 23:58:27main ClassPathMapperScanner.java DEBUG Creating MapperFactoryBean with name 'scheMapper' and 'org.great.mapper.ScheMapper' mapperInterface
+2019-01-21 23:58:27main ClassPathMapperScanner.java DEBUG Creating MapperFactoryBean with name 'schestateMapper' and 'org.great.mapper.SchestateMapper' mapperInterface
+2019-01-21 23:58:27main ClassPathMapperScanner.java DEBUG Creating MapperFactoryBean with name 'stopcartimeMapper' and 'org.great.mapper.StopcartimeMapper' mapperInterface
+2019-01-21 23:58:27main ClassPathMapperScanner.java DEBUG Creating MapperFactoryBean with name 'userMapper' and 'org.great.mapper.UserMapper' mapperInterface
+2019-01-21 23:58:27main ClassPathMapperScanner.java DEBUG Creating MapperFactoryBean with name 'userMsgMapper' and 'org.great.mapper.UserMsgMapper' mapperInterface
+2019-01-21 23:58:27main ClassPathMapperScanner.java DEBUG Creating MapperFactoryBean with name 'vipMapper' and 'org.great.mapper.VipMapper' mapperInterface
+2019-01-21 23:58:27main DefaultSingletonBeanRegistry.java DEBUG Creating shared instance of singleton bean 'org.springframework.context.event.internalEventListenerProcessor'
+2019-01-21 23:58:27main DefaultSingletonBeanRegistry.java DEBUG Creating shared instance of singleton bean 'org.springframework.context.event.internalEventListenerFactory'
+2019-01-21 23:58:27main DefaultSingletonBeanRegistry.java DEBUG Creating shared instance of singleton bean 'org.springframework.context.annotation.internalAutowiredAnnotationProcessor'
+2019-01-21 23:58:27main DefaultSingletonBeanRegistry.java DEBUG Creating shared instance of singleton bean 'org.springframework.context.annotation.internalCommonAnnotationProcessor'
+2019-01-21 23:58:27main DefaultSingletonBeanRegistry.java DEBUG Creating shared instance of singleton bean 'car'
+2019-01-21 23:58:27main DefaultSingletonBeanRegistry.java DEBUG Creating shared instance of singleton bean 'param'
+2019-01-21 23:58:27main DefaultSingletonBeanRegistry.java DEBUG Creating shared instance of singleton bean 'roleRel'
+2019-01-21 23:58:27main DefaultSingletonBeanRegistry.java DEBUG Creating shared instance of singleton bean 'carBiz'
+2019-01-21 23:58:27main DefaultSingletonBeanRegistry.java DEBUG Creating shared instance of singleton bean 'carMapper'
+2019-01-21 23:58:27main DefaultSingletonBeanRegistry.java DEBUG Creating shared instance of singleton bean 'carMsgBiz'
+2019-01-21 23:58:27main DefaultSingletonBeanRegistry.java DEBUG Creating shared instance of singleton bean 'comboBiz'
+2019-01-21 23:58:27main DefaultSingletonBeanRegistry.java DEBUG Creating shared instance of singleton bean 'countrulesBzi'
+2019-01-21 23:58:27main DefaultSingletonBeanRegistry.java DEBUG Creating shared instance of singleton bean 'custBiz'
+2019-01-21 23:58:27main DefaultSingletonBeanRegistry.java DEBUG Creating shared instance of singleton bean 'custMapper'
+2019-01-21 23:58:27main DefaultSingletonBeanRegistry.java DEBUG Creating shared instance of singleton bean 'logBiz'
+2019-01-21 23:58:27main DefaultSingletonBeanRegistry.java DEBUG Creating shared instance of singleton bean 'menuBiz'
+2019-01-21 23:58:27main DefaultSingletonBeanRegistry.java DEBUG Creating shared instance of singleton bean 'menuMapper'
+2019-01-21 23:58:27main DefaultSingletonBeanRegistry.java DEBUG Creating shared instance of singleton bean 'paramBiz'
+2019-01-21 23:58:27main DefaultSingletonBeanRegistry.java DEBUG Creating shared instance of singleton bean 'paramMapper'
+2019-01-21 23:58:27main DefaultSingletonBeanRegistry.java DEBUG Creating shared instance of singleton bean 'parkBiz'
+2019-01-21 23:58:27main DefaultSingletonBeanRegistry.java DEBUG Creating shared instance of singleton bean 'receiptBiz'
+2019-01-21 23:58:27main DefaultSingletonBeanRegistry.java DEBUG Creating shared instance of singleton bean 'roleBiz'
+2019-01-21 23:58:27main DefaultSingletonBeanRegistry.java DEBUG Creating shared instance of singleton bean 'roleMapper'
+2019-01-21 23:58:27main DefaultSingletonBeanRegistry.java DEBUG Creating shared instance of singleton bean 'roleMenuBiz'
+2019-01-21 23:58:27main DefaultSingletonBeanRegistry.java DEBUG Creating shared instance of singleton bean 'roleMenuMapper'
+2019-01-21 23:58:27main DefaultSingletonBeanRegistry.java DEBUG Creating shared instance of singleton bean 'roleRelBiz'
+2019-01-21 23:58:27main DefaultSingletonBeanRegistry.java DEBUG Creating shared instance of singleton bean 'scheBiz'
+2019-01-21 23:58:27main DefaultSingletonBeanRegistry.java DEBUG Creating shared instance of singleton bean 'schestateBiz'
+2019-01-21 23:58:27main DefaultSingletonBeanRegistry.java DEBUG Creating shared instance of singleton bean 'stopcartimeBiz'
+2019-01-21 23:58:27main DefaultSingletonBeanRegistry.java DEBUG Creating shared instance of singleton bean 'stopcartimeMapper'
+2019-01-21 23:58:27main DefaultSingletonBeanRegistry.java DEBUG Creating shared instance of singleton bean 'userBiz'
+2019-01-21 23:58:27main DefaultSingletonBeanRegistry.java DEBUG Creating shared instance of singleton bean 'userMapper'
+2019-01-21 23:58:27main DefaultSingletonBeanRegistry.java DEBUG Creating shared instance of singleton bean 'userMsgBiz'
+2019-01-21 23:58:27main DefaultSingletonBeanRegistry.java DEBUG Creating shared instance of singleton bean 'vipBiz'
+2019-01-21 23:58:27main DefaultSingletonBeanRegistry.java DEBUG Creating shared instance of singleton bean 'firstCron'
+2019-01-21 23:58:27main DefaultSingletonBeanRegistry.java DEBUG Creating shared instance of singleton bean 'systemLogAspect'
+2019-01-21 23:58:27main DefaultSingletonBeanRegistry.java DEBUG Creating shared instance of singleton bean 'userLog'
+2019-01-21 23:58:27main DefaultSingletonBeanRegistry.java DEBUG Creating shared instance of singleton bean 'carMsgMapper'
+2019-01-21 23:58:27main DefaultSingletonBeanRegistry.java DEBUG Creating shared instance of singleton bean 'comboMapper'
+2019-01-21 23:58:27main DefaultSingletonBeanRegistry.java DEBUG Creating shared instance of singleton bean 'countrulesMapper'
+2019-01-21 23:58:27main DefaultSingletonBeanRegistry.java DEBUG Creating shared instance of singleton bean 'logMapper'
+2019-01-21 23:58:27main DefaultSingletonBeanRegistry.java DEBUG Creating shared instance of singleton bean 'parkMapper'
+2019-01-21 23:58:27main DefaultSingletonBeanRegistry.java DEBUG Creating shared instance of singleton bean 'receiptMapper'
+2019-01-21 23:58:27main DefaultSingletonBeanRegistry.java DEBUG Creating shared instance of singleton bean 'scheMapper'
+2019-01-21 23:58:27main DefaultSingletonBeanRegistry.java DEBUG Creating shared instance of singleton bean 'schestateMapper'
+2019-01-21 23:58:27main DefaultSingletonBeanRegistry.java DEBUG Creating shared instance of singleton bean 'userMsgMapper'
+2019-01-21 23:58:27main DefaultSingletonBeanRegistry.java DEBUG Creating shared instance of singleton bean 'vipMapper'
+2019-01-21 23:58:27main SqlSessionUtils.java DEBUG Creating a new SqlSession
+2019-01-21 23:58:27main SqlSessionUtils.java DEBUG SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@b672aa8] was not registered for synchronization because synchronization is not active
+2019-01-21 23:58:27main DataSourceUtils.java DEBUG Fetching JDBC Connection from DataSource
+2019-01-21 23:58:30main SpringManagedTransaction.java DEBUG JDBC Connection [jdbc:mysql://45.40.255.33:3306/parkinglot?characterEncoding=utf-8, UserName=root@110.87.111.35, MySQL Connector Java] will not be managed by Spring
+2019-01-21 23:58:30main BaseJdbcLogger.java DEBUG ooo Using Connection [jdbc:mysql://45.40.255.33:3306/parkinglot?characterEncoding=utf-8, UserName=root@110.87.111.35, MySQL Connector Java]
+2019-01-21 23:58:30main BaseJdbcLogger.java DEBUG ==>  Preparing: select * from tb_cust c LEFT JOIN tb_param pm ON c.pm_id = pm.pm_id 
+2019-01-21 23:58:31main BaseJdbcLogger.java DEBUG ==> Parameters: 
+2019-01-21 23:58:31main BaseJdbcLogger.java DEBUG <==      Total: 5
+2019-01-21 23:58:31main SqlSessionUtils.java DEBUG Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@b672aa8]
+2019-01-21 23:58:31main DataSourceUtils.java DEBUG Returning JDBC Connection to DataSource

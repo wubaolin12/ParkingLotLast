@@ -1,5 +1,11 @@
 package org.great.biz;
 
+import java.util.List;
+
+import javax.annotation.Resource;
+
+import org.great.bean.Param;
+import org.great.mapper.ParamMapper;
 import org.springframework.stereotype.Service;
 
 /**
@@ -9,5 +15,7 @@ import org.springframework.stereotype.Service;
  */
 @Service("paramBiz")
 public class ParamBizImpl implements ParamBiz{
+	@Resource
+	private ParamMapper paramMapper;
 
 }
