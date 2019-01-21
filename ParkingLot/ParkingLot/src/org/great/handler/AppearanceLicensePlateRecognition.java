@@ -197,6 +197,8 @@ public class AppearanceLicensePlateRecognition {
 		
 		System.out.println(car.getC_id()+"ID下的所有停车记录："+sctlist);
 		
+		 result.put("code","200");//失败回调
+		
 		for (Stopcartime stopcartime : sctlist) {
 			
 			if(stopcartime.getPm_id()==1) {
@@ -214,6 +216,8 @@ public class AppearanceLicensePlateRecognition {
 					//该信息传输到页面
 					session.setAttribute("Stopkxj", sct2);
 					
+					 result.put("code","200");
+					
 					System.out.println("——————————————修改出场时间成功————————————————————————");
 					
 				}
@@ -224,7 +228,7 @@ public class AppearanceLicensePlateRecognition {
 	
 		session.setAttribute("Carkxj", car);
 		
-		 result.put("code","200");
+		
 		
 		return result;
 	}
