@@ -206,27 +206,52 @@ public class LicensePlateRecognition {
 		
 		System.out.println(car.getC_id()+"ID下的所有停车记录："+sctlist);
 		
+		boolean ret =false;//表示
+		
+		 result.put("code","200");//上传返回值
+		
 		for (Stopcartime stopcartime : sctlist) {
 			
-			if(stopcartime.getPm_id()==2) {
+			if(stopcartime.getPm_id()==1) {
 				
-				//记录停车时间
-				flag = stopcartimeBiz.AddStopBeginTime(sct);
-				
-				if(flag) {
-					
-					System.out.println("执行成功停车");
-					
-				}
-				break;
+				ret=true;
+				System.out.println("什么都不做");
+				 result.put("code","300");//上传返回值
+			
 			}
+//			else {
+//			
+//				
+//				//记录停车时间
+//				flag = stopcartimeBiz.AddStopBeginTime(sct);
+//				
+//				if(flag) {
+//					
+//					System.out.println("执行成功停车");
+//					
+//				}
+//				break;
+//			}
 		}
 		
+		if(!ret) {
+			
+			//记录停车时间
+			flag = stopcartimeBiz.AddStopBeginTime(sct);
+			
+			if(flag) {
+				
+				System.out.println("执行成功停车");
+				
+			}
+			
+		}
+			
 		HttpSession session = request.getSession();
 	
 		session.setAttribute("Carkxj", car);
 		
-		 result.put("code","200");
+		
 		
 		return result;
 	}

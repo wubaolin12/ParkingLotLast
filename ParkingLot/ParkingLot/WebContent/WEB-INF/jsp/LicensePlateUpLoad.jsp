@@ -52,6 +52,7 @@
         location.href="<%=path%>LicensePlate/CarAdmissionDisplay.action";
       },//上传成功回调函数
       errorFunc: function(res) {
+    	  alert("车已在停车场内！");
         console.log('失败回调', res);
       },//上传失败回调函数
       deleteFunc: function(res) {
