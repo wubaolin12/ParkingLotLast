@@ -47,7 +47,7 @@
 	<table class="table table-border table-bordered table-hover table-bg table-sort">
 		<thead>
 			<tr class="text-c">
-				<th width="25"><input type="checkbox" name="" value=""></th>
+<!-- 				<th width="25"><input type="checkbox" name="" value=""></th> -->
 				<th width="80">ID</th>
 				<th width="100">车牌号</th>
 				<th width="100">用户名</th>
@@ -62,7 +62,7 @@
 			    <c:forEach items="${writeList}" var="write" >
 			    <c:forEach items="${write.cars }" var="car" >
 			<tr class="text-c">
-				<td><input type="checkbox" value="1" name=""></td>
+<!-- 				<td><input type="checkbox" value="1" name=""></td> -->
 				<td>${car.rownum}</td>
 				<td>${car.c_num }</td>
 				<td><u style="cursor:pointer" class="text-primary" onclick="member_show('张三','member-show.html','10001','360','400')">${write.cust_acc }</u></td>
@@ -95,11 +95,11 @@
 
 function cancle(carId){
 
-		if(confirm("确定取消会员吗？") == true){		
-			alert("ddddddddddddd");
+		if(confirm("确定取消白名单资格吗？") == true){		
+			
 			window.location.href="${path}/writeList/cancleVip.action?c_id="+carId;
 		}else{
-			alert("ddddddddddd??????????????");
+			
 			return false;
 		}
 }
