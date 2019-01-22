@@ -27,7 +27,7 @@ from (select @rownum:=0)aaa , tb_cust c ,tb_car car where c.cust_id = car.cust_i
 <!-- 	</collection> -->
 	<collection property="cars"  ofType="org.great.bean.Car" >
 		<id property="c_id" column="c_id"/>
-<!-- 		<result property="cust_id" column="cust_id"/> -->
+<!-- 	<result property="cust_id" column="cust_id"/> -->
 		<result property="pm_id" column="pm_id"/>
 		<result property="c_num" column="c_num"/>
 		<result property="c_null1" column="c_null1"/>
