@@ -51,7 +51,11 @@ public class Test222 {
 		System.out.println(ulist.toString());
 		
 		Map dataMap=new HashMap<>();
-		mm.insertData(dataMap, "tb_user");
+		dataMap.put("u_name", "张5");
+		dataMap.put("u_phone", "11155554444");
+		
+		int i=mm.insertData(dataMap, "tb_user");
+		System.out.println("-----i"+i);
 	}
 	
 	
