@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN" 
+"http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
+
+
+<mapper namespace="org.great.mapper.CustCarMapper">
+
+	<select id="findWriteList" 
+		resultMap="WriteListMap">     
+select (@rownum:=@rownum+1) as rownum, c.cust_id,c.cust_acc,c.cust_pwd,c.cust_sex,c.cust_age,c.cust_phone,car.c_id,car.c_num,car.pm_id 
+from (select @rownum:=0)aaa , tb_cust c ,tb_car car where c.cust_id = car.cust_id AND car.pm_id = 5
+	</select>
+	<resultMap type="org.great.bean.Cust" id="WriteListMap">	
+<!-- 	杂类中具体类的字段跟属性 -->
+<!-- 	<collection property="cust" column="cust_id" javaType="org.great.bean.Cust"> -->
+		<id property="cust_id" column="cust_id"/>
+<!-- 		<result property="pm_id" column="pm_id"/> -->
+		<result property="cust_acc" column="cust_acc"/>
+		<result property="cust_pwd" column="cust_pwd"/>
+		<result property="cust_sex" column="cust_sex"/>
+		<result property="cust_age" column="cust_age"/>
+		<result property="cust_phone" column="cust_phone"/>
+		<result property="cust_money" column="cust_money"/>
+		<result property="cus_null1" column="cus_null1"/>
+		<result property="cus_null2" column="cus_null2"/>
+		<result property="cus_null3" column="cus_null3"/>
+<!-- 	</collection> -->
+	<collection property="cars"  ofType="org.great.bean.Car" >
+		<id property="c_id" column="c_id"/>
+<!-- 		<result property="cust_id" column="cust_id"/> -->
+		<result property="pm_id" column="pm_id"/>
+		<result property="c_num" column="c_num"/>
+		<result property="c_null1" column="c_null1"/>
+		<result property="rownum" column="rownum"/>
+	</collection>
+	</resultMap>
+	
+<!-- 	传入值为int 无所谓，#{} 里的昵称随便写-->
+	 <update id="cancleVip" parameterType="int"> 
+	 update tb_car set pm_id = 14 where c_id = #{c_id} 
+	 </update>
+
+
+
+</mapper>
