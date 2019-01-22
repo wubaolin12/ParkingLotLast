@@ -27,5 +27,20 @@ public interface CustMapper {
 	 * @return
 	 */
 	public List<Cust> FindByPhoneX(String Pnumber);
+
+	/**
+	 * 查询客户所有
+	 * 
+	 * @return
+	 */
 	public List<Cust> findCustAllX();
+
+	/**
+	 * 查询该客户下的车辆信息
+	 * 
+	 * @param Pnumber
+	 * @return
+	 */
+	public List<Cust> findCustCarX(String Pnumber);
+
 }

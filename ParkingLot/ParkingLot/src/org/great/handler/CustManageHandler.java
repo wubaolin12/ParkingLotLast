@@ -71,7 +71,16 @@ public class CustManageHandler {
 		}
 		return flag;
 	}
-
+	/**
+	 * 跳转到月缴办理界面
+	 * 
+	 * @param request
+	 * @return
+	 */
+	@RequestMapping("/CustCarJsp.action")
+	public String CustCarJsp() {
+		return "charge/CustSetCar";
+	}
 	/**
 	 * AJKS添加用户Cust
 	 * 
@@ -84,5 +93,19 @@ public class CustManageHandler {
 		System.out.println("cust=" + cust);
 		flag = custBiz.AddCustX(cust);
 		return flag;
+	}
+
+	/**
+	 * AJKS查询用户Cust的车辆信息
+	 * 
+	 * @param request
+	 * @return
+	 */
+	@RequestMapping("/FindCustCar.action")
+	public @ResponseBody List<Cust> FindCustCar(Cust cust) {
+		System.out.println("cust=" + cust);
+		List<Cust> CustCarList = custBiz.findCustCarX(cust.getCust_phone());
+		System.out.println("CustCarList=" + CustCarList);
+		return CustCarList;
 	}
 }

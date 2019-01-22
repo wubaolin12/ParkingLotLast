@@ -23,6 +23,7 @@ public class Cust {
 	private String cus_null2;// 空字段
 	private String cus_null3;// 空字段
 	private Param param;// 参数表
+	private Car car;// 车辆表
 
 	public Cust() {
 		super();
@@ -46,6 +47,23 @@ public class Cust {
 		this.cus_null1 = cus_null1;
 		this.cus_null2 = cus_null2;
 		this.cus_null3 = cus_null3;
+	}
+
+	public Cust(int cust_id, int pm_id, String cust_acc, String cust_pwd, String cust_sex, int cust_age,
+			String cust_phone, int cust_money, String cus_null1, String cus_null2, String cus_null3, Car car) {
+		super();
+		this.cust_id = cust_id;
+		this.pm_id = pm_id;
+		this.cust_acc = cust_acc;
+		this.cust_pwd = cust_pwd;
+		this.cust_sex = cust_sex;
+		this.cust_age = cust_age;
+		this.cust_phone = cust_phone;
+		this.cust_money = cust_money;
+		this.cus_null1 = cus_null1;
+		this.cus_null2 = cus_null2;
+		this.cus_null3 = cus_null3;
+		this.car = car;
 	}
 
 	public Cust(int cust_id, int pm_id, String cust_acc, String cust_pwd, String cust_sex, int cust_age,
@@ -86,7 +104,7 @@ public class Cust {
 		return "Cust [cust_id=" + cust_id + ", pm_id=" + pm_id + ", cust_acc=" + cust_acc + ", cust_pwd=" + cust_pwd
 				+ ", cust_sex=" + cust_sex + ", cust_age=" + cust_age + ", cust_phone=" + cust_phone + ", cust_money="
 				+ cust_money + ", cus_null1=" + cus_null1 + ", cus_null2=" + cus_null2 + ", cus_null3=" + cus_null3
-				+ ", param=" + param + "]";
+				+ ", param=" + param + ", car=" + car + "]";
 	}
 
 	public int getCust_id() {
@@ -183,6 +201,14 @@ public class Cust {
 
 	public void setParam(Param param) {
 		this.param = param;
+	}
+
+	public Car getCar() {
+		return car;
+	}
+
+	public void setCar(Car car) {
+		this.car = car;
 	}
 
 }

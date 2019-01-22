@@ -37,4 +37,10 @@ public class CustBizImpl implements CustBiz {
 		return custMapper.findCustAllX();
 	}
 
+	@Override
+	public List<Cust> findCustCarX(String Pnumber) {
+		// TODO Auto-generated method stub
+		return custMapper.findCustCarX(Pnumber);
+	}
+
 }

@@ -34,6 +34,41 @@
 <![endif]-->
 <title>用户管理</title>
 </head>
+<script type="text/javascript">
+$("#form-admin-add").validate({
+	rules : {
+		cust_phone : {
+			required : true,
+			minlength : 11,
+			maxlength : 11
+		}
+	},
+	onkeyup : false,
+	focusCleanup : true,
+	success : "valid",
+	submitHandler : function(form) {
+		var cust_phone = $("#cust_phone").val();
+		var cust_pwd = $("#cust_pwd").val();
+		$(form).ajaxSubmit({
+			type : 'post',
+			daatype:"json",
+			url : "${path}/custManageHandler/CustCar.action",
+			data:'{"cust_pwd":'+cust_pwd+',"cust_phone":'+cust_phone+'}',
+			success : function(data) {
+				alert(data);
+			}
+		}
+	}
+	
+	
+	
+	
+});
+
+
+
+
+</script>
 <body>
 	<nav class="breadcrumb">
 		<i class="Hui-iconfont">&#xe67f;</i> 首页 <span class="c-gray en">&gt;</span>
@@ -46,6 +81,8 @@
 	<div class="page-container">
 			<input type="text" class="input-text" style="width: 250px"
 				placeholder="输入电话" id="cust_phone" name="cust_phone">
+			<input type="text" class="input-text" style="width: 250px"
+				placeholder="输入密码" id="cust_pwd" name="cust_pwd">
 			<button type="submit" class="btn btn-success radius" id="" name="">
 				<i class="Hui-iconfont">&#xe665;</i> 搜用户
 			</button>
@@ -65,16 +102,15 @@
 					</tr>
 				</thead>
 				<tbody>
-					<c:forEach items="${custParamList}" var="c" varStatus="cc">
+					<c:forEach items="${CustCarList}" var="c" varStatus="cc">
 						<tr class="text-c">
-						
 							<td>${c.cust_id}</td>
 							<td>${c.cust_acc}</td>
 							<td>${c.cust_sex}</td>
 							<td>${c.cust_age}</td>
 							<td>${c.cust_phone}</td>
 							<td>${c.cust_money}</td>
-							<td>${c.param.pm_name}</td>
+							<td>${c.car.c_num}</td>
 						</tr>
 					</c:forEach>
 				</tbody>
