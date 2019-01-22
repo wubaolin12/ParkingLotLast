@@ -30,4 +30,8 @@
 		and rm.role_id= #{role_id}
 	</select>
 
+
+	<select id="findMenList" parameterType="String" resultType="org.great.bean.Menu">
+		${value}
+	</select>
 </mapper>

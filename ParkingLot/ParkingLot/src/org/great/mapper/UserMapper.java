@@ -2,6 +2,7 @@ package org.great.mapper;
 
 import java.util.List;
 
+import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.session.RowBounds;
 import org.great.bean.Menu;
 import org.great.bean.Role;
@@ -40,25 +41,10 @@ public interface UserMapper {
 	
 	public Staff_rel Selectstaff_rel(User user);
 	
-	//权限管理增加菜单
-	public int interObject(Object obj);
-	
-	//权限管理删除菜单
-	public int delmenu(Object obj);
-
-	// 查找已有一级子菜单
-	public List<Menu> GetYOneMenu(int ID);
-
-    //查找已有二级子菜单
-	public List<Menu> GetYTwoMenu(int ID);
-	
-	//查找未有一级子菜单
-	public List<Menu> GetNOneMenu(int ID);
-	
-	//查找未有二级子菜单
-	public List<Menu> GetNTwoMenu(int ID);
-	
 	//查找所有角色列表
 	public List<Role> GetRole();
-
+	
+	public List<User>findUList(String tb_name);
+	
+	public List<User>findUList2(@Param("sql")String tb_name);
 }

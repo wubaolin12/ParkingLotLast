@@ -30,5 +30,30 @@
 	<select id="getCordnum"  resultType="java.lang.Integer" > 
 		${value} 
 	</select>
+	
+
+	<update id="updateInventoryBatch"  parameterType="java.util.Map">
+   	 <foreach item="key"  collection="inventoryMap.keys" separator=";" >
+      UPDATE yanxuan_inventory_transfer
+        SET
+        inventory = #{inventoryMap[${key}]},
+        is_inventory='1',
+        create_time=sysdate()
+      where
+        sku_id=#{key}
+   	 </foreach>
+	</update>
+
+	<insert id="insertData" parameterType="java.util.Map">
+        insert into ${tb_name}
+        <foreach collection="dataMap.keys" separator="," item="key" open="(" close=")">
+            ${key}
+        </foreach>
+        values
+        <foreach collection="dataMap.keys" item="key" separator="," open="(" close=")">
+            #{dataMap[${key}]}
+        </foreach>
+    </insert>
+
 		
 </mapper>

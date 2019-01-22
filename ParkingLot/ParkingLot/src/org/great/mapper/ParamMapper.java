@@ -1,5 +1,8 @@
 package org.great.mapper;
 
+import java.util.List;
+
+import org.great.bean.Param;
 import org.springframework.stereotype.Repository;
 
 /**

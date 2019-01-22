@@ -1,5 +1,7 @@
 package org.great.biz;
 
+import java.util.List;
+
 import javax.annotation.Resource;
 
 import org.great.bean.Stopcartime;
@@ -34,6 +36,38 @@ public class StopcartimeBizImpl implements StopcartimeBiz{
 		}
 		
 		return flag;
+	}
+
+	//通过车的ID找到该车的所有停车记录
+	@Override
+	public List<Stopcartime> FindSctByNumber(int number) {
+		
+		return stopcartimeMapper.FindSctByNumber(number);
+	}
+
+	//修改出场时间
+	@Override
+	public boolean UpdateSctTimeandState(Stopcartime sct) {
+		
+		int count = stopcartimeMapper.UpdateSctTimeandState(sct);
+
+		if (count > 0) {
+
+			flag = true;
+		} else {
+
+			flag = false;
+		}
+		
+		return flag;
+	}
+
+	//通过主键ID找到该停车表的信息
+	@Override
+	public Stopcartime FindByID(int id) {
+		
+		
+		return stopcartimeMapper.FindByID(id);
 	}
 
 }

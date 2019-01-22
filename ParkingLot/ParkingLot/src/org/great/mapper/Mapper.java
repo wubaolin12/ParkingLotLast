@@ -1,8 +1,9 @@
 package org.great.mapper;
 
 import java.util.List;
+import java.util.Map;
 
-
+import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 
 /**
@@ -33,4 +34,6 @@ public interface Mapper
 	public int delObject(String sql);
 	//获取记录数
 	public int getCordnum(String sql);
+	
+	public int insertData(@Param("dataMap") Map<String, String> dataMap,@Param("tb_name")String tb_name);
 }

@@ -60,7 +60,7 @@
 	
  	<select id="Selectstaff_rel" parameterType="org.great.bean.User"
 		resultMap="roleMap2">
-		select * from 	staff_rel where u_id =#{u_id}
+		select * from staff_rel where u_id =#{u_id}
 	</select>
 	
 	 <select id="selectR" parameterType="org.great.bean.Staff_rel"
@@ -80,7 +80,7 @@
 	
 		<association property="param" column="pm_id"
 			javaType="org.great.bean.Param" select="selectParam">						
-		</association>
+		</association> 
 		
 		<association property="sf" column="role_id"
 			javaType="org.great.bean.Staff_rel" select="Selectstaff_rel">						
@@ -108,5 +108,14 @@
 		</association>
 
 	</resultMap>
+
+
+	<select id="findUList" parameterType="String" resultType="org.great.bean.User">
+		select * from ${value}
+	</select>
+	
+	<select id="findUList2" resultType="org.great.bean.User">
+		select * from ${sql}
+	</select>
 
 </mapper>

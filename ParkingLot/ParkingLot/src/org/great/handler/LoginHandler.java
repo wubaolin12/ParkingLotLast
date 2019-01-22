@@ -3,6 +3,7 @@ package org.great.handler;
 import java.io.IOException;
 import java.security.MessageDigest;
 import java.util.List;
+import java.util.UUID;
 
 import javax.annotation.Resource;
 import javax.servlet.ServletException;
@@ -89,27 +90,19 @@ public class LoginHandler {
 		} else {
 
 			if (users != null) {
-
-				System.out.println("lalalala");
+				
+				//角色关系
 				RoleRel re = userBiz.FindStaffRole(users.getU_id());
-//
-//				List<Menu> MenuOnelist = userBiz.GetYOneMenu(re.getRole_id());
-//
-//				List<Menu> MenuTwolist = userBiz.GetYTwoMenu(re.getRole_id());
-//
-//				ss.setAttribute("MenuOnelist", MenuOnelist);
-//				ss.setAttribute("MenuTwolist", MenuTwolist);
 
 				List<Menu> menuList = menuBiz.findMenu(re.getRole_id());
 				ss.setAttribute("menuList", menuList);
-				
 				
 				ss.setAttribute("User", users);
 				result = "success";
 				System.out.println("验证成功");
 
+//				UUID.randomUUID();
 			} else {
-
 				result = "usererror";
 				System.out.println("用户名错误");
 			}

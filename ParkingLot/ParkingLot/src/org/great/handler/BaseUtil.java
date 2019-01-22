@@ -6,7 +6,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Scope;
 
 /**
- * UTIL父类
+ * UTIL父类,提供共有属性给子类继承
  * @author yf
  *
  */
