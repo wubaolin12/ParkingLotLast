@@ -2,6 +2,7 @@ package org.great.mapper;
 
 import java.util.List;
 
+import org.apache.ibatis.session.RowBounds;
 import org.great.bean.Menu;
 import org.great.bean.RoleMenu;
 import org.springframework.stereotype.Repository;
@@ -37,4 +38,12 @@ public interface MenuMapper {
 	 * @return
 	 */
 	public int getCount(RoleMenu rm);
+	
+	/**
+	 * 获取菜单列表
+	 * @param sql
+	 * @param rb
+	 * @return
+	 */
+	public List<Menu> findMenList(String sql,RowBounds rb);
 }

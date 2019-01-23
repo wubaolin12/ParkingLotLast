@@ -37,4 +37,9 @@ public interface MenuBiz {
 	 */
 	public int getCount(RoleMenu rm);
 
+	/**
+	 * 获取菜单列表显示
+	 * @return  List
+	 */
+	public List<Menu> getMenuList(String sql,int startnum,int rownum);
 }

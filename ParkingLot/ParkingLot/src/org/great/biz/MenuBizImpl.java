@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.annotation.Resource;
 
+import org.apache.ibatis.session.RowBounds;
 import org.great.bean.Menu;
 import org.great.bean.RoleMenu;
 import org.great.mapper.MenuMapper;
@@ -42,5 +43,15 @@ public class MenuBizImpl implements MenuBiz {
 		int count = menuMapper.getCount(rm);
 		return count;
 	}
+
+	@Override
+	public List<Menu> getMenuList(String sql, int startnum, int rownum) {
+		// TODO Auto-generated method stub
+		RowBounds rb = new RowBounds(startnum,rownum);
+		List<Menu> list=menuMapper.findMenList(sql, rb);
+		return null;
+	}
+	
+	
 
 }

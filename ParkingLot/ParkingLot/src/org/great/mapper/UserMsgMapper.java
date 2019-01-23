@@ -1,5 +1,8 @@
 package org.great.mapper;
 
+import java.util.List;
+
+import org.great.bean.vo.UserMsg;
 import org.springframework.stereotype.Repository;
 
 /**
@@ -11,4 +14,9 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface UserMsgMapper {
 
+	/**
+	 * yf获取用户信息
+	 * @return
+	 */
+	public List<UserMsg> findUserMsg(UserMsg user);
 }

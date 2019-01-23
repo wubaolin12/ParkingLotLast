@@ -16,7 +16,8 @@ public class User {
 	private int pm_id;// 参数表_员工状态ID（外键）
 	private String u_null1;// 空字段
 	private String code;// 验证码
-
+	private Param param;
+	private Staff_rel sf;
 	public User() {
 		super();
 	}
@@ -59,6 +60,24 @@ public class User {
 	public String toString() {
 		return "User [u_id=" + u_id + ", u_name=" + u_name + ", u_pwd=" + u_pwd + ", u_sex=" + u_sex + ", u_phone="
 				+ u_phone + ", pm_id=" + pm_id + ", u_null1=" + u_null1 + ", code=" + code + "]";
+	}
+
+	
+	
+	public Staff_rel getSf() {
+		return sf;
+	}
+
+	public void setSf(Staff_rel sf) {
+		this.sf = sf;
+	}
+
+	public Param getParam() {
+		return param;
+	}
+
+	public void setParam(Param param) {
+		this.param = param;
 	}
 
 	public int getU_id() {

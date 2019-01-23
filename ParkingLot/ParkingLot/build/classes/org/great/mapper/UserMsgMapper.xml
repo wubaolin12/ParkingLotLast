@@ -4,7 +4,33 @@
 
 
 <mapper namespace="org.great.mapper.UserMsgMapper">
-
-	
+		<select id="findUserMsg" resultMap="msgMap" parameterType="org.great.bean.vo.UserMsg">
+			select tb2.*,p.pm_name from (select tb1.*, r.role_name from
+			(select u.*,s.role_id from tb_user u LEFT JOIN staff_rel s on u.u_id=s.u_id) tb1
+ 			LEFT JOIN tb_role r on tb1.role_id=r.role_id)tb2 LEFT JOIN tb_param p on tb2.pm_id= p.pm_id
+ 			where 1=1 
+			
+		</select>
+		<select id=""></select>
+		<resultMap type="org.great.bean.vo.UserMsg" id="msgMap">
+			<association property="user" javaType="org.great.bean.User">
+				<result property="u_id" column="u_id"/>
+				<result property="u_name" column="u_name"/>
+				<result property="u_pwd" column="u_pwd"/>
+				<result property="u_phone" column="u_phone"/>
+				<result property="pm_id" column="pm_id"/>
+			</association>
+			<association property="role" javaType="org.great.bean.Role">
+				<result property="role_id" column="role_id"/>
+				<result property="role_name" column="role_name"/>
+				
+			</association>
+			<association property="param" javaType="org.great.bean.Param">
+				<result property="pm_id" column="pm_id"/>
+				<result property="pm_name" column="pm_name" />
+				<result property="pm_type" column="pm_type" />
+			</association>	
+		</resultMap>
+		
 
 </mapper>

@@ -1,12 +1,13 @@
 package org.great.bean.vo;
 
+import org.great.bean.Param;
 import org.great.bean.Role;
 import org.great.bean.User;
 
-import com.mysql.fabric.xmlrpc.base.Param;
+
 
 /**
- * 员工表，角色表，参数表
+ * 	员工表，角色表，参数表
  * 
  * @author Administrator
  *
