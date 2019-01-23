@@ -6,14 +6,157 @@
 <mapper namespace="org.great.mapper.CarMapper">
 
 	<!-- 通过车牌找到车信息 -->
-<select id="FindByCarNumber" parameterType="String" resultType="org.great.bean.Car">
-select * from tb_car where c_num =#{number}
-</select>
-	
+	<select id="FindByCarNumber" parameterType="String"
+		resultType="org.great.bean.Car">
+		select * from tb_car where c_num =#{number}
+	</select>
+	<!-- 根据车牌号更改车辆角色 -->
+	<update id="chagerPmIDByCarNumberX"
+		parameterType="org.great.bean.Car">
+		update tb_car set pm_id= #{pm_id} where c_num =
+		#{c_num}
+	</update>
+
+
+
+
 	<!-- 增加临时车信息 -->
 	<insert id="AddCarMsg" parameterType="String">
-	insert into tb_car(cust_id,pm_id,c_num) values (null,14,#{number})
+		insert into
+		tb_car(cust_id,pm_id,c_num) values (null,14,#{number})
 	</insert>
-	
+	<!-- 增加车信息 -->
+	<insert id="AddCarCX" parameterType="org.great.bean.Car">
+		insert into
+		tb_car(cust_id,pm_id,c_num) values (${cust_id},${pm_id},#{c_num})
+	</insert>
 
+	<!-- 通过车牌找到车Vip表信息 -->
+	<select id="FindVipByCarNumberX" parameterType="String"
+		resultMap="findCarVipMap">
+		select * from tb_car c LEFT JOIN tb_vip v on c.c_id = v.c_id
+		where c_num = #{number} and v.pm_id = 15
+	</select>
+	<resultMap type="org.great.bean.Car" id="findCarVipMap">
+		<id property="c_id" column="c_id" />
+		<result property="cust_id" column="cust_id" />
+		<result property="pm_id" column="pm_id" />
+		<result property="c_num" column="c_num" />
+		<result property="c_null1" column="c_null1" />
+		<collection property="vip" column="v_id"
+			javaType="org.great.bean.Vip">
+			<id property="v_id" column="v_id" />
+			<result property="co_id" column="co_id" />
+			<result property="c_id" column="c_id" />
+			<result property="v_starttime" column="v_starttime" />
+			<result property="v_overtime" column="v_overtime" />
+		</collection>
+	</resultMap>
+
+
+	<!-- 根据手机号查询该用户名下车辆信息 -->
+	<select id="findCustCarX" parameterType="org.great.bean.Cust"
+		resultMap="findCustCarMap">
+		select * from (select cc.cust_id,cc.pm_id ccpmid,cc.cust_acc
+		,
+		cc.cust_pwd ,cc.cust_sex ,cc.cust_phone ,cc.cust_money ,cc.cus_null1
+		,cc.cus_null2
+		,cc.cus_null3 ,c.c_id ,c.pm_id cpmid,c.c_num ,c.c_null1
+		from tb_cust cc LEFT JOIN
+		tb_car c on
+		cc.cust_id=c.cust_id where
+		cc.cust_phone=#{cust_phone} and cc.pm_id = '3')
+		c2 LEFT JOIN tb_param
+		pm on c2.cpmid = pm.pm_id
+	</select>
+	<resultMap type="org.great.bean.Car" id="findCustCarMap">
+		<id property="c_id" column="c_id" />
+		<result property="cust_id" column="cust_id" />
+		<result property="pm_id" column="ccpmid" />
+		<result property="c_num" column="c_num" />
+		<result property="c_null1" column="c_null1" />
+		<collection property="cust" column="cust_id"
+			javaType="org.great.bean.Cust">
+			<id property="cust_id" column="cust_id" />
+			<result property="pm_id" column="cpmid" />
+			<result property="cust_acc" column="cust_acc" />
+			<result property="cust_pwd" column="cust_pwd" />
+			<result property="cust_sex" column="cust_sex" />
+			<result property="cust_age" column="cust_age" />
+			<result property="cust_phone" column="cust_phone" />
+			<result property="cust_money" column="cust_money" />
+			<result property="cus_null1" column="cus_null1" />
+			<result property="cus_null2" column="cus_null2" />
+			<result property="cus_null3" column="cus_null3" />
+		</collection>
+		<collection property="param" column="pm_id"
+			javaType="org.great.bean.Param">
+			<id property="pm_id" column="pm_id" />
+			<result property="pm_name" column="pm_name" />
+			<result property="pm_type" column="pm_type" />
+		</collection>
+	</resultMap>
+	<!-- 根据车牌号查询车辆信息车辆信息 -->
+	<select id="findCustCarNumberByPhoneX" parameterType="String"
+		resultMap="findCustCarNumberByPhoneMap">
+		select * from tb_cust cc LEFT JOIN
+		tb_car c on
+		cc.cust_id=c.cust_id where
+		c.c_num =
+		#{Number}
+	</select>
+	<resultMap type="org.great.bean.Car"
+		id="findCustCarNumberByPhoneMap">
+		<id property="c_id" column="c_id" />
+		<result property="cust_id" column="cust_id" />
+		<result property="pm_id" column="pm_id" />
+		<result property="c_num" column="c_num" />
+		<result property="c_null1" column="c_null1" />
+		<collection property="cust" column="cust_id"
+			javaType="org.great.bean.Cust">
+			<id property="cust_id" column="cust_id" />
+			<result property="pm_id" column="pm_id" />
+			<result property="cust_acc" column="cust_acc" />
+			<result property="cust_pwd" column="cust_pwd" />
+			<result property="cust_sex" column="cust_sex" />
+			<result property="cust_age" column="cust_age" />
+			<result property="cust_phone" column="cust_phone" />
+			<result property="cust_money" column="cust_money" />
+			<result property="cus_null1" column="cus_null1" />
+			<result property="cus_null2" column="cus_null2" />
+			<result property="cus_null3" column="cus_null3" />
+		</collection>
+	</resultMap>
+
+	<!-- 根据车ID查询车辆信息和用户信息 -->
+	<select id="findCustCarNumberByCarIDX" parameterType="int"
+		resultMap="findCustCarNumberByCarIDMap">
+		select * from tb_cust cc LEFT JOIN
+		tb_car c on
+		cc.cust_id=c.cust_id where
+		c.c_id =
+		#{cid}
+	</select>
+	<resultMap type="org.great.bean.Car"
+		id="findCustCarNumberByCarIDMap">
+		<id property="c_id" column="c_id" />
+		<result property="cust_id" column="cust_id" />
+		<result property="pm_id" column="pm_id" />
+		<result property="c_num" column="c_num" />
+		<result property="c_null1" column="c_null1" />
+		<collection property="cust" column="cust_id"
+			javaType="org.great.bean.Cust">
+			<id property="cust_id" column="cust_id" />
+			<result property="pm_id" column="pm_id" />
+			<result property="cust_acc" column="cust_acc" />
+			<result property="cust_pwd" column="cust_pwd" />
+			<result property="cust_sex" column="cust_sex" />
+			<result property="cust_age" column="cust_age" />
+			<result property="cust_phone" column="cust_phone" />
+			<result property="cust_money" column="cust_money" />
+			<result property="cus_null1" column="cus_null1" />
+			<result property="cus_null2" column="cus_null2" />
+			<result property="cus_null3" column="cus_null3" />
+		</collection>
+	</resultMap>
 </mapper>

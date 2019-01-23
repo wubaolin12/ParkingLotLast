@@ -17,6 +17,12 @@ public class Stopcartime {
 		super();
 	}
 
+	public Stopcartime(int sct_id, int sct_money) {
+		super();
+		this.sct_id = sct_id;
+		this.sct_money = sct_money;
+	}
+
 	public Stopcartime(int c_id, int pm_id, String sct_starttime, String sct_overtime, int sct_money) {
 		super();
 		this.c_id = c_id;

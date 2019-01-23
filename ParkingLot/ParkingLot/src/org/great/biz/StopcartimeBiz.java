@@ -22,4 +22,11 @@ public interface StopcartimeBiz {
 			
 			//通过主键ID查找该停车表的信息
 			public Stopcartime FindByID(int id);
+			
+			/**修改停车金额
+			 * 
+			 * @param sct
+			 * @return
+			 */
+			public boolean UpdateSctMoneyX(Stopcartime sct);
 }

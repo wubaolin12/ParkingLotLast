@@ -20,6 +20,12 @@ public interface CustMapper {
 	 * @return
 	 */
 	public boolean AddCustX(Cust cust);
+	/**修改余额
+	 * 
+	 * @param cust
+	 * @return
+	 */
+	public boolean chageCustMoneyByIDX(Cust cust);
 
 	/**
 	 * 通过手机号找到客户信息
@@ -35,12 +41,5 @@ public interface CustMapper {
 	 */
 	public List<Cust> findCustAllX();
 
-	/**
-	 * 查询该客户下的车辆信息
-	 * 
-	 * @param Pnumber
-	 * @return
-	 */
-	public List<Cust> findCustCarX(String Pnumber);
 
 }

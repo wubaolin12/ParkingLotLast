@@ -1,5 +1,9 @@
 package org.great.biz;
 
+import javax.annotation.Resource;
+
+import org.great.bean.Vip;
+import org.great.mapper.VipMapper;
 import org.springframework.stereotype.Service;
 
 /**
@@ -9,5 +13,17 @@ import org.springframework.stereotype.Service;
  */
 @Service("vipBiz")
 public class VipBizImpl implements VipBiz{
+	@Resource
+	VipMapper VipMapper;
+	@Override
+	public boolean AddvipX(Vip vip) {
+		// TODO Auto-generated method stub
+		return VipMapper.AddvipX(vip);
+	}
+	@Override
+	public boolean chageOvertimeByVidX(Vip vip) {
+		// TODO Auto-generated method stub
+		return VipMapper.chageOvertimeByVidX(vip);
+	}
 
 }

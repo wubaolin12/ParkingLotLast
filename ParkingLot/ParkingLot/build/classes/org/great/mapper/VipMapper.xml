@@ -4,7 +4,14 @@
 
 
 <mapper namespace="org.great.mapper.VipMapper">
-
-	
-
+	<!-- 添加一个车辆VIP -->
+	<insert id="AddvipX" parameterType="org.great.bean.Vip">
+		insert into
+		tb_vip(co_id,c_id,v_starttime,v_overtime) values
+		(#{co_id},#{c_id},#{v_starttime},#{v_overtime})
+	</insert>
+<!-- 	根据video更改结束时间即续费包月 -->
+	<update id="chageOvertimeByVidX"  parameterType="org.great.bean.Vip">
+		update tb_vip set v_overtime = #{v_overtime} where v_id = #{v_id}
+	</update>
 </mapper>

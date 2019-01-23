@@ -5,6 +5,19 @@
 
 <mapper namespace="org.great.mapper.CountrulesMapper">
 
-	
+	<select id="findCountrulRoleX" parameterType="Map"
+		resultType="org.great.bean.Countrules">
+		select * from tb_countrules where cr_starttime = #{time}
+		and cr_overtime >=#{time} and pm_id = (select pm_id from
+		tb_param where
+		pm_type = #{pmtype} and pm_name = #{pmname} )
+	</select>
+	<select id="findCountrulRoleEqualsX" parameterType="Map"
+		resultType="org.great.bean.Countrules">
+		select * from tb_countrules where cr_starttime =
+		cr_overtime and pm_id = (select pm_id from
+		tb_param where pm_type =
+		#{pmtype} and pm_name = #{pmname} )
+	</select>
 
 </mapper>

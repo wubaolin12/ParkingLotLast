@@ -70,4 +70,10 @@ public class StopcartimeBizImpl implements StopcartimeBiz{
 		return stopcartimeMapper.FindByID(id);
 	}
 
+	@Override
+	public boolean UpdateSctMoneyX(Stopcartime sct) {
+		// TODO Auto-generated method stub
+		return stopcartimeMapper.UpdateSctMoneyX(sct);
+	}
+
 }
