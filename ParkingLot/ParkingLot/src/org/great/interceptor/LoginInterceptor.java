@@ -12,6 +12,7 @@ import org.springframework.web.servlet.ModelAndView;
  * @author 吴宝林
  *
  */
+
 public class LoginInterceptor implements HandlerInterceptor {
 
 	@Override
