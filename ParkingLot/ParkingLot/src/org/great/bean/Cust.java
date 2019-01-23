@@ -33,6 +33,12 @@ public class Cust {
 		super();
 	}
 
+	public Cust(int cust_id, int cust_money) {
+		super();
+		this.cust_id = cust_id;
+		this.cust_money = cust_money;
+	}
+
 	public Cust(String cust_pwd, String cust_phone) {
 		super();
 		this.cust_pwd = cust_pwd;
