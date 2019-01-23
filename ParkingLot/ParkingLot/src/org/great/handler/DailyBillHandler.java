@@ -2,6 +2,7 @@ package org.great.handler;
 
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
+import java.io.FileOutputStream;
 import java.io.InputStream;
 import java.util.List;
 
@@ -29,6 +30,7 @@ import org.springframework.stereotype.Controller;
 public class DailyBillHandler {
 
 //	@Scheduled(cron = "0 53 20 * * ?")
+//	@Scheduled(cron = "*/10 * * * * ?")
 
 	@Resource
 	ReceiptBiz receiptBiz;
@@ -39,7 +41,9 @@ public class DailyBillHandler {
 	@Scheduled(cron = "0 53 20 * * ?")
 	public void cron() throws Exception {
 
-		String date = DateTool.getDate(); // 获取当天日期
+//		String date = DateTool.getDate(); // 获取当天日期
+		String date = "2019-01-22";
+		
 		receipt.setRe_time(date);
 
 		List<Receipt> list = receiptBiz.findDailyRecp(receipt);// 取得数据
@@ -94,15 +98,19 @@ public class DailyBillHandler {
 				row.createCell(4).setCellValue(re.getRe_time());// 时间
 			}
 
-			// 第七步，将文件输出
-			ByteArrayOutputStream baos = new ByteArrayOutputStream();
+			// 第七步，将文件输出到服务器
+//			ByteArrayOutputStream baos = new ByteArrayOutputStream();
+			FileOutputStream fos = new FileOutputStream("D:/file_file/demo/recipt-"+date+".xls");//指定路径与名字和格式
 			try {
-				workbook.write(baos);
+				workbook.write(fos);
+				fos.flush();
 			} catch (Exception e) {
 				e.printStackTrace();
+			}finally {
+				fos.close();
+				
 			}
-			byte[] by = baos.toByteArray();
-			InputStream is = new ByteArrayInputStream(by);
+			
 			
 			
 			
