@@ -14,10 +14,12 @@ public class Park {
 	private String p_state;// 维护状态  ，有“维护”、“开放”
 	private String p_null2;// 空字段
 	private String p_null3;// 空字段
-	
-	
-	
-	
+	private Car car;
+	private Param param;
+	private String c_num;
+	public Park() {
+		super();
+	}
 	public Park(int pm_id, String p_fore, int p_num, String p_state) {
 		super();
 		this.pm_id = pm_id;
@@ -25,8 +27,11 @@ public class Park {
 		this.p_num = p_num;
 		this.p_state = p_state;
 	}
-	public Park() {
+	
+	public Park(int p_id, String p_state) {
 		super();
+		this.p_id = p_id;
+		this.p_state = p_state;
 	}
 	public Park(int p_id, int pm_id, int c_id, String p_fore, int p_num, String p_state, String p_null2,
 			String p_null3) {
@@ -39,6 +44,37 @@ public class Park {
 		this.p_state = p_state;
 		this.p_null2 = p_null2;
 		this.p_null3 = p_null3;
+	}
+	
+	public Park(int pm_id, String p_fore, int p_num, String p_state, String c_num) {
+		super();
+		this.pm_id = pm_id;
+		this.p_fore = p_fore;
+		this.p_num = p_num;
+		this.p_state = p_state;
+		this.c_num = c_num;
+	}
+	public Park(int p_id, int pm_id, int c_id, String p_fore, int p_num, String p_state, String p_null2, String p_null3,
+			Car car, Param param, String c_num) {
+		super();
+		this.p_id = p_id;
+		this.pm_id = pm_id;
+		this.c_id = c_id;
+		this.p_fore = p_fore;
+		this.p_num = p_num;
+		this.p_state = p_state;
+		this.p_null2 = p_null2;
+		this.p_null3 = p_null3;
+		this.car = car;
+		this.param = param;
+		this.c_num = c_num;
+	}
+	
+	public String getC_num() {
+		return c_num;
+	}
+	public void setC_num(String c_num) {
+		this.c_num = c_num;
 	}
 	public int getP_id() {
 		return p_id;
@@ -88,11 +124,25 @@ public class Park {
 	public void setP_null3(String p_null3) {
 		this.p_null3 = p_null3;
 	}
+	
+	public Car getCar() {
+		return car;
+	}
+	public void setCar(Car car) {
+		this.car = car;
+	}
+	public Param getParam() {
+		return param;
+	}
+	public void setParam(Param param) {
+		this.param = param;
+	}
 	@Override
 	public String toString() {
 		return "Park [p_id=" + p_id + ", pm_id=" + pm_id + ", c_id=" + c_id + ", p_fore=" + p_fore + ", p_num=" + p_num
-				+ ", p_state=" + p_state + ", p_null2=" + p_null2 + ", p_null3=" + p_null3 + "]";
+				+ ", p_state=" + p_state + ", p_null2=" + p_null2 + ", p_null3=" + p_null3 + ", car=" + car + ", param="
+				+ param + ", c_num=" + c_num + "]";
 	}
-
+	
 	
 }
