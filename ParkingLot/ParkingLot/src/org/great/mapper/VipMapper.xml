@@ -14,4 +14,8 @@
 	<update id="chageOvertimeByVidX"  parameterType="org.great.bean.Vip">
 		update tb_vip set v_overtime = #{v_overtime} where v_id = #{v_id}
 	</update>
+	
+	
+	
+	
 </mapper>

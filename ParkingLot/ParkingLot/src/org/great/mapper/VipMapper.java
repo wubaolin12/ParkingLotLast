@@ -21,11 +21,19 @@ public interface VipMapper {
 	public boolean AddvipX(Vip vip);
 
 	/**
-	 * 根据video更改结束时间即续费包月
+	 * 根据video更改结束时间即续费包月--续费
 	 * 
 	 * @param vip
 	 * @return
 	 */
 	public boolean chageOvertimeByVidX(Vip vip);
 
+	/**
+	 * 	更改月缴状态
+	 * @return
+	 * @author 吴宝林
+	 * 
+	 */
+	public int updateVipStu();
+	
 }
