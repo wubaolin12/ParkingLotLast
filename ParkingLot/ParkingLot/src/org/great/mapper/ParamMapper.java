@@ -13,5 +13,9 @@ import org.springframework.stereotype.Repository;
  */
 @Repository
 public interface ParamMapper {
-
+	/**根据类型和名字查询ID
+	 * 
+	 * @return
+	 */
+	public Param GetPmIDByTypeNmaeX(Param param);
 }
