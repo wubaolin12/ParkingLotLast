@@ -32,6 +32,15 @@ public class Vip {
 		this.v_overtime = v_overtime;
 	}
 
+	public Vip(int co_id, int c_id, String v_starttime, String v_overtime, int pm_id) {
+		super();
+		this.co_id = co_id;
+		this.c_id = c_id;
+		this.v_starttime = v_starttime;
+		this.v_overtime = v_overtime;
+		this.pm_id = pm_id;
+	}
+
 	public Vip(int v_id, int co_id, int c_id, String v_starttime, String v_overtime) {
 		super();
 		this.v_id = v_id;

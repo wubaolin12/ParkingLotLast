@@ -273,7 +273,7 @@ public class CustManageHandler {
 		}
 
 		System.out.println("anyX==" + anyX);
-		System.out.println("str");
+		System.out.println("str="+str);
 		return str;
 	}
 

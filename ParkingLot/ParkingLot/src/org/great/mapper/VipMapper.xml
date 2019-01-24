@@ -7,8 +7,8 @@
 	<!-- 添加一个车辆VIP -->
 	<insert id="AddvipX" parameterType="org.great.bean.Vip">
 		insert into
-		tb_vip(co_id,c_id,v_starttime,v_overtime) values
-		(#{co_id},#{c_id},#{v_starttime},#{v_overtime})
+		tb_vip(co_id,c_id,v_starttime,v_overtime,pm_id) values
+		(#{co_id},#{c_id},#{v_starttime},#{v_overtime},#{pm_id})
 	</insert>
 <!-- 	根据video更改结束时间即续费包月 -->
 	<update id="chageOvertimeByVidX"  parameterType="org.great.bean.Vip">

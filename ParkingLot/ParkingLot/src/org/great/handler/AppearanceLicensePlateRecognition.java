@@ -208,10 +208,11 @@ public class AppearanceLicensePlateRecognition {
 
 				// 修改出场时间
 				flag = stopcartimeBiz.UpdateSctTimeandState(sct);
-
+				
 				Stopcartime stopct = stopcartimeBiz.FindByID(stopcartime.getSct_id());
-				String fTime = stopcartime.getSct_starttime();
-				String oTime = stopcartime.getSct_overtime();
+				System.err.println("stopct="+stopct);
+				String fTime = stopct.getSct_starttime();
+				String oTime = stopct.getSct_overtime();
 				System.out.println("fTime=" + fTime + "oTime=" + oTime);
 				// 计算时间停车时间
 				SimpleDateFormat myFormatter = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
@@ -242,6 +243,7 @@ public class AppearanceLicensePlateRecognition {
 				int money = countrules.getCr_fristmoney() + (t - ftime) * countrules.getCr_addmoney();
 				System.out.println("money=" + money);
 				Stopcartime sctz = new Stopcartime(stopcartime.getSct_id(), money);
+				System.out.println("sctz=" + sctz);
 				flag = stopcartimeBiz.UpdateSctMoneyX(sctz);
 				if (flag) {
 					// 查询该出场车辆的信息

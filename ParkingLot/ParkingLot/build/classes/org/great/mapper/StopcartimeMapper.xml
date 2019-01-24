@@ -22,7 +22,7 @@ update tb_stopcartime set sct_overtime =#{sct_overtime},pm_id=2 where sct_id = #
 
 <!-- 修改停车费用 -->
 <update id="UpdateSctMoneyX" parameterType="org.great.bean.Stopcartime">
-update tb_stopcartime sct_money = #{sct_money} where sct_id = #{sct_id}
+	update tb_stopcartime set sct_money = #{sct_money} where sct_id = #{sct_id}
 </update>
 
 <!-- 通过主键ID查找该停车表的信息 -->
