@@ -18,5 +18,11 @@ public interface BaseBiz {
 	public int getCordnum(String sql);
 
 	public String creatSQL(String tb_name, Map map);
+	
+	public int insertData(String tb_name,Map map,Map keymap);
+	
+	public int updateData(String tb_name,Map map,String keykol,String i);
+	
+	public int delData(String tb_name,Map map);
 
 }

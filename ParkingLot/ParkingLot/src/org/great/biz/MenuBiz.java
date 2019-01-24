@@ -1,6 +1,7 @@
 package org.great.biz;
 
 import java.util.List;
+import java.util.Map;
 
 import org.great.bean.Menu;
 import org.great.bean.Role;
@@ -41,5 +42,16 @@ public interface MenuBiz {
 	 * 获取菜单列表显示
 	 * @return  List
 	 */
-	public List<Menu> getMenuList(String sql,int startnum,int rownum);
+	public List<Menu> getMenuList();
+	
+	/**
+	 * 查询菜单
+	 * @param map
+	 * @return
+	 * @author yf
+	 */
+	public List<Menu> seachMenu(Map map);
+	
+	public Menu getMenuObject(String id);
+	
 }

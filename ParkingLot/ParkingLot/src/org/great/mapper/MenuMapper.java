@@ -1,7 +1,9 @@
 package org.great.mapper;
 
 import java.util.List;
+import java.util.Map;
 
+import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.session.RowBounds;
 import org.great.bean.Menu;
 import org.great.bean.RoleMenu;
@@ -46,4 +48,20 @@ public interface MenuMapper {
 	 * @return
 	 */
 	public List<Menu> findMenList(String sql,RowBounds rb);
+	
+	/**
+	 *  获取菜单列表
+	 * @return
+	 * @author yf
+	 */
+	public List<Menu> getMenuList();
+	
+	public List<Menu>seachMenu(@Param("dataMap")Map map);
+	
+	/**
+	 * 获取一个对象
+	 * @param id
+	 * @return
+	 */
+	public Menu getMenuObject(@Param("menu_id")String id);
 }

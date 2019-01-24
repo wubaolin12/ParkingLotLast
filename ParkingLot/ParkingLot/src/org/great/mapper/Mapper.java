@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Map;
 
 import org.apache.ibatis.annotations.Param;
+import org.great.bean.User;
 import org.springframework.stereotype.Repository;
 
 /**
@@ -35,5 +36,18 @@ public interface Mapper
 	//获取记录数
 	public int getCordnum(String sql);
 	
-	public int insertData(@Param("dataMap") Map<String, String> dataMap,@Param("tb_name")String tb_name);
+	//获取记录数
+	public int selectCordNum(@Param("sql")String sql);
+	
+	
+	
+	//删除记录
+	public int delData(@Param("dataMap") Map<String, String> dataMap,@Param("tb_name")String tb_name);
+	
+	//修改记录
+	public int updateData(@Param("dataMap") Map<String, String> dataMap,
+			@Param("tb_name")String tb_name,@Param("keycol")String keykol,@Param("keyid")String id);
+
+	//插入记录
+	public int insertData(@Param("dataMap") Map<String,String> dataMap,@Param("dataMap2") Map<String,String> dataMap2,@Param("tb_name")String tb_namel);
 }

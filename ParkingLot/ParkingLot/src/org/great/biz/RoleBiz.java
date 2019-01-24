@@ -14,4 +14,6 @@ public interface RoleBiz {
 	public List getPRole(int id);
 	
 	public List<Role> findAll();
+	
+	
 }

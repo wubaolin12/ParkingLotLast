@@ -137,7 +137,7 @@ public class BaseBizImpl implements BaseBiz{
 	{
 		
 		
-		String sql="select * from "+tb_name+" where  ";		
+		String sql="select * from "+tb_name;		
 		//List collist=mm.getColname(tb_name);
 		if(map!=null){
 			Set set=map.keySet();
@@ -146,7 +146,7 @@ public class BaseBizImpl implements BaseBiz{
 				for(int i=0;i<list.size();i++){
 					
 					if(i==0) {
-						sql=sql+list.get(i)+" like '%"+map.get(list.get(i))+"%'";
+						sql=sql+" where  "+list.get(i)+" like '%"+map.get(list.get(i))+"%'";
 					}else {
 						sql=sql+" or "+list.get(i)+" like '%"+map.get(list.get(i))+"%'";
 					}	
@@ -171,4 +171,24 @@ public class BaseBizImpl implements BaseBiz{
 		int num =mapper.getCordnum(getcSQL);
 		return num;
 	}
+
+	@Override
+	public int insertData(String tb_name, Map map,Map keymap) {
+		// TODO Auto-generated method stub
+		return mapper.insertData(map,keymap, tb_name);
+	}
+
+	@Override
+	public int updateData(String tb_name, Map map,String keykol,String id) {
+		// TODO Auto-generated method stub
+		return mapper.updateData(map, tb_name, keykol, id);
+	}
+
+	@Override
+	public int delData(String tb_name, Map map) {
+		// TODO Auto-generated method stub
+		return mapper.delData(map, tb_name);
+	}
+	
+	
 }

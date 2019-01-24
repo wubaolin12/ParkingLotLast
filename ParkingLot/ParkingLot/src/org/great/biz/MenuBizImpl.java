@@ -1,6 +1,7 @@
 package org.great.biz;
 
 import java.util.List;
+import java.util.Map;
 
 import javax.annotation.Resource;
 
@@ -45,11 +46,23 @@ public class MenuBizImpl implements MenuBiz {
 	}
 
 	@Override
-	public List<Menu> getMenuList(String sql, int startnum, int rownum) {
+	public List<Menu> getMenuList() {
 		// TODO Auto-generated method stub
-		RowBounds rb = new RowBounds(startnum,rownum);
-		List<Menu> list=menuMapper.findMenList(sql, rb);
-		return null;
+		
+		List<Menu> list=menuMapper.getMenuList();
+		return list;
+	}
+
+	@Override
+	public List<Menu> seachMenu(Map map) {
+		// TODO Auto-generated method stub
+		return menuMapper.seachMenu(map);
+	}
+
+	@Override
+	public Menu getMenuObject(String id) {
+		// TODO Auto-generated method stub
+		return menuMapper.getMenuObject(id);
 	}
 	
 	

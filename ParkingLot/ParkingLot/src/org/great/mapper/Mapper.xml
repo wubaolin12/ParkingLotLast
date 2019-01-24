@@ -4,10 +4,10 @@
 
 
 <mapper namespace="org.great.mapper.Mapper">
-		<select id="getColname" parameterType="String" resultType="String" > 
+<!-- 		<select id="getColname" parameterType="String" resultType="String" > 
 		
 		SELECT COLUMN_NAME FROM USER_TAB_COLS WHERE TABLE_NAME =#{tb_name} order by rownum desc
-		</select>
+		</select> -->
 
 <!-- 		<select id="pageList" parameterType="String" resultType="map" > 
 			 select * from dual where TABLE_NAME
@@ -32,28 +32,44 @@
 	</select>
 	
 
-	<update id="updateInventoryBatch"  parameterType="java.util.Map">
-   	 <foreach item="key"  collection="inventoryMap.keys" separator=";" >
-      UPDATE yanxuan_inventory_transfer
-        SET
-        inventory = #{inventoryMap[${key}]},
-        is_inventory='1',
-        create_time=sysdate()
-      where
-        sku_id=#{key}
-   	 </foreach>
+	<update id="updateData"  parameterType="java.util.Map">
+   		UPDATE ${tb_name} set		
+ 	      	 <foreach collection="dataMap.keys" separator="," item="key" >      	    
+         	  	 ${key}= #{dataMap[${key}]}       	    
+        	 </foreach>  	  		
+   		 where ${keycol}=${keyid}
 	</update>
+
 
 	<insert id="insertData" parameterType="java.util.Map">
         insert into ${tb_name}
-        <foreach collection="dataMap.keys" separator="," item="key" open="(" close=")">
-            ${key}
+       
+        <foreach collection="dataMap.keys" separator=","  item="key" open="(" close=")">        
+          
+            ${key}   
+              	
         </foreach>
         values
         <foreach collection="dataMap.keys" item="key" separator="," open="(" close=")">
             #{dataMap[${key}]}
         </foreach>
+        
+        <selectKey  keyProperty="dataMap2.id" resultType="int" order="AFTER">
+			select LAST_INSERT_ID() 
+		</selectKey>
+        
     </insert>
 
+	<update id="delData"  parameterType="java.util.Map">
+		delete from ${tb_name} where  
+		 <foreach collection="dataMap.keys" separator="," item="key" >      	    
+         	  	 ${key}= #{dataMap[${key}]}       	    
+      	 </foreach>      	           	  
+	</update>
 		
+	<select id="selectCordNum"  >
+		select count(*) from (${sql})		
+	</select>
+	
+
 </mapper>

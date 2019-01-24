@@ -18,17 +18,19 @@ public interface UserMapper {
 	
 	public User getUser(User user);
 	/**
-	 * yf
+	 * 查找用户ID
 	 * @param id
 	 * @return
+	 * @author yf
 	 */
-	// 查找用户ID
+	// 
 	public RoleRel FindbyID(int id);
 
 	/**
-	 * yf
+	 * 
 	 * 分页方法
 	 * @return
+	 * @author yf
 	 */
 	public List findList(String sql,RowBounds rb);
 	

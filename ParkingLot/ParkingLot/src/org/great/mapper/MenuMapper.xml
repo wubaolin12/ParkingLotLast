@@ -34,4 +34,43 @@
 	<select id="findMenList" parameterType="String" resultType="org.great.bean.Menu">
 		${value}
 	</select>
+	
+	<!-- 加载全部菜单列表 -->
+	<select id="getMenuList" resultType="org.great.bean.Menu">
+		select * from tb_menu ORDER BY '' DESC 
+	</select>
+	<!-- 查询获取列表 -->
+	<select id="seachMenu"  resultType="org.great.bean.Menu" parameterType="java.util.Map">
+			<if test="dataMap!=null">
+			 select cc.* from
+			</if>			
+				(select * from tb_menu ORDER BY '' DESC )
+ 			<if test="dataMap!=null">
+ 				cc
+ 			</if>
+ 			<where>
+ 				<if test="dataMap!=null">				
+				<foreach collection="dataMap.keys"  item="key" separator="or"  >      	    
+         	  	 ${key} like  "%"#{dataMap[${key}]}"%"
+        		   
+        		 </foreach>    		
+        		 </if>
+        	 </where> 	
+		</select>
+		
+<!-- 				
+		<resultMap type="org.great.bean.Menu" id="menuMap">
+			<association property="user" javaType="org.great.bean.User">
+				<result property="u_id" column="u_id"/>
+				<result property="u_name" column="u_name"/>
+				<result property="u_pwd" column="u_pwd"/>
+				<result property="u_phone" column="u_phone"/>
+				<result property="pm_id" column="pm_id"/>
+			</association>
+
+		</resultMap> -->
+		
+		<select id="getMenuObject" resultType="org.great.bean.Menu">
+			select * from tb_menu where menu_id=${menu_id}
+		</select>
 </mapper>

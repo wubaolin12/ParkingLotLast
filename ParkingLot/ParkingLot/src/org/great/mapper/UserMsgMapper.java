@@ -1,7 +1,9 @@
 package org.great.mapper;
 
 import java.util.List;
+import java.util.Map;
 
+import org.apache.ibatis.annotations.Param;
 import org.great.bean.vo.UserMsg;
 import org.springframework.stereotype.Repository;
 
@@ -18,5 +20,7 @@ public interface UserMsgMapper {
 	 * yf获取用户信息
 	 * @return
 	 */
-	public List<UserMsg> findUserMsg(UserMsg user);
+	public List<UserMsg> findUserMsg(@Param("dataMap")Map map);
+	
+	public int getCountNum(@Param("dataMap")Map map);
 }

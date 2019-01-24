@@ -42,20 +42,53 @@ public class Test222 {
 		}*/
 
 		UserMsgMapper UMM=(UserMsgMapper)conf.getBean("userMsgMapper", UserMsgMapper.class);
-		List<UserMsg>list=UMM.findUserMsg(null);
+		Map dataMap=new HashMap<>();
+		dataMap.put("u_name", "张6");
+		dataMap.put("u_phone", "张6");
+		//dataMap.put("u_phone", "11155554444");
+		List<UserMsg>list=UMM.findUserMsg(dataMap);
+		//System.out.println(list.get(0).getRole().getRole_name());
 		for(UserMsg m:list) {
-			//System.out.println(m);
+			System.out.println("----"+m.getParam().getPm_name());
 		}
-		
-		List<User>ulist=um.findUList2("tb_user");
+		System.out.println("-+++--"+list.toString());
+//		int b=UMM.getCountNum(dataMap);
+//		System.out.println("------umsgnum="+b);
+/*		List<User>ulist=um.findUList2("tb_user");
 		System.out.println(ulist.toString());
 		
 		Map dataMap=new HashMap<>();
-		dataMap.put("u_name", "张5");
+		dataMap.put("u_name", "张6");
 		dataMap.put("u_phone", "11155554444");
 		
-		int i=mm.insertData(dataMap, "tb_user");
-		System.out.println("-----i"+i);
+		//int i=mm.insertData(dataMap, "tb_user");
+		int i=mm.updateData(dataMap, "tb_user","u_id",""+4);
+		System.out.println("-----i"+i);*/
+		Map map2=new HashMap<>();
+		map2.put("u_id", 7);
+		map2.put("u_id2", 7);
+		//int a=mm.delData(map2, "tb_user");
+		
+		Map map3=new HashMap<>();
+		map3.put("test", map2.get("u_id"));
+		map2.remove("u_id");
+		
+		dataMap.put("u_name", "张11");
+		dataMap.put("u_phone", "11155554444");
+		dataMap.put("u_sex", "男");
+		//dataMap.put("id", null);
+		System.out.println(map3);
+		System.out.println(map2);
+		Map map4=new HashMap<>();
+		map4.put("id", null);
+		int id=0;
+		User user2=new User();
+		String keycol=null;
+		int i=mm.insertData(dataMap,map4,"tb_user");
+		System.out.println("-----i="+i+", u_id="+id+"datamap"+dataMap.toString()+" map4"+map4.toString());
+		System.out.println(keycol);
+		
+		
 	}
 	
 	
