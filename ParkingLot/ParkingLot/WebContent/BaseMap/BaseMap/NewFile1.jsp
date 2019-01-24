@@ -633,7 +633,7 @@
   		var layer1 = new esmap.ESLayer("textMarker");
   		var tm = new esmap.ESTextMarker({
   			//x: gpos.x - 30,
-  			y : gpos.y - 30,
+  			y : gpos.y - 200,
   			name : "出售胡红旗",
   			fontsize : 34,
   			fillcolor : "72，61，139", //填充色
