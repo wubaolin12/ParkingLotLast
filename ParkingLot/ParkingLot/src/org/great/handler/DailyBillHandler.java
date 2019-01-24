@@ -16,7 +16,7 @@ import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.apache.poi.ss.usermodel.HorizontalAlignment;
 import org.great.bean.Receipt;
 import org.great.biz.ReceiptBiz;
-import org.great.tools.DateTool;
+import org.great.util.DateTool;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Controller;
 
@@ -110,10 +110,7 @@ public class DailyBillHandler {
 				fos.close();
 				
 			}
-			
-			
-			
-			
+						
 		} catch (Exception e) {
 			e.printStackTrace();
 			throw new Exception("导出信息失败！");

@@ -1,4 +1,4 @@
-package org.great.handler;
+package org.great.util;
 
 import java.awt.Color;
 import java.awt.Font;
@@ -18,7 +18,7 @@ import com.sun.image.codec.jpeg.JPEGImageEncoder;
 /**
 * @ClassName: CaptchaUtil 
 * @Description: 关于验证码的工具类
-* @author 无名
+* @author 孔大帅
 * @date 2016-5-7 上午8:33:08 
 * @version 1.0
  */

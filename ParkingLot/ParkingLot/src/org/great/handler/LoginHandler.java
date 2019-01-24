@@ -16,6 +16,8 @@ import org.great.bean.RoleRel;
 import org.great.bean.User;
 import org.great.biz.MenuBiz;
 import org.great.biz.UserBiz;
+import org.great.util.BaseUtil;
+import org.great.util.CaptchaUtil;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -73,7 +75,7 @@ public class LoginHandler {
 		HttpSession ss = request.getSession();
 
 		// 转换MD5密码
-		user.setU_pwd(getStrrMD5(user.getU_pwd()));
+		user.setU_pwd(BaseUtil.getStrrMD5(user.getU_pwd()));
 
 		String code1 = (String) ss.getAttribute("Code");
 
@@ -135,33 +137,5 @@ public class LoginHandler {
 		}
 	}
 
-	/**
-	 * 	测试MD5
-	 * @param 密码
-	 * @return MD5
-	 * 
-	 */
-	public static String getStrrMD5(String password) {
-
-		char hexDigits[] = { '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'a', 'b', 'c', 'd', 'e', 'f' };
-		try {
-			byte strTemp[] = password.getBytes("UTF-8");
-			MessageDigest mdTemp = MessageDigest.getInstance("MD5");
-			mdTemp.update(strTemp);
-			byte md[] = mdTemp.digest();
-			int j = md.length;
-			char str[] = new char[j * 2];
-			int k = 0;
-			for (int i = 0; i < j; i++) {
-				byte byte0 = md[i];
-				str[k++] = hexDigits[byte0 >>> 4 & 15];
-				str[k++] = hexDigits[byte0 & 15];
-			}
-
-			return new String(str);
-		} catch (Exception e) {
-			return null;
-		}
-	}
 
 }
