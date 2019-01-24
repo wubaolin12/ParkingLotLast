@@ -25,5 +25,12 @@ public class VipBizImpl implements VipBiz{
 		// TODO Auto-generated method stub
 		return VipMapper.chageOvertimeByVidX(vip);
 	}
+	@Override
+	public boolean updateVipStu(String date) {
+		
+		boolean flag = VipMapper.updateVipStu(date);
+		
+		return flag;
+	}
 
 }

@@ -43,6 +43,7 @@ public class LoginInterceptor implements HandlerInterceptor {
 		//转发到登录
 		request.getRequestDispatcher("/WEB-INF/jsp/login.jsp").forward(request, response);
 		return false;
+//		return true;
 	}
 	
 }

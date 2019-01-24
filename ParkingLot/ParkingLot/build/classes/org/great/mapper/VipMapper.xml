@@ -10,12 +10,18 @@
 		tb_vip(co_id,c_id,v_starttime,v_overtime,pm_id) values
 		(#{co_id},#{c_id},#{v_starttime},#{v_overtime},#{pm_id})
 	</insert>
+	
 <!-- 	根据video更改结束时间即续费包月 -->
 	<update id="chageOvertimeByVidX"  parameterType="org.great.bean.Vip">
 		update tb_vip set v_overtime = #{v_overtime} where v_id = #{v_id}
 	</update>
 	
-	
-	
+	<!-- 自动判断月缴到期后，更改状态为已过期 -->
+	<update id="updateVipStu" parameterType="java.lang.String">
+	update tb_vip v set v.pm_id = 
+	(select pm_id from tb_param where pm_name="已过期")  
+		where v.v_overtime=#{date}
+
+	</update>
 	
 </mapper>

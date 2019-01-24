@@ -23,4 +23,10 @@ public interface VipBiz {
 	 */
 	public boolean chageOvertimeByVidX(Vip vip);
 
+	/**
+	 * 	自动判断是否到期
+	 * @param date
+	 * @return
+	 */
+	public boolean updateVipStu(String date);
 }

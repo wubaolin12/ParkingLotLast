@@ -32,8 +32,9 @@ public interface VipMapper {
 	 * 	更改月缴状态
 	 * @return
 	 * @author 吴宝林
+	 * @param date
 	 * 
 	 */
-	public int updateVipStu();
+	public boolean updateVipStu(String date);
 	
 }

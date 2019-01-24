@@ -39,6 +39,7 @@
 }
 </style>
 <script>
+
   		//window.setTimeout(showfh,3000); 
   		var timer;
   		
@@ -658,6 +659,14 @@
 	<script type="text/javascript" src="${path}/static/login/keypad/js/keypad.js"></script>
 	<script type="text/javascript" src="${path}/static/login/keypad/js/framework.js"></script>
 	<!-- 软键盘控件end -->
+	
+	<!-- 登录拦截返回登录页面时全屏 -->
+	<script type="text/javascript">
+    if (window != top)
+    {
+        top.location.href = location.href;
+    }
+</script>
 </body>
 
 </html>
