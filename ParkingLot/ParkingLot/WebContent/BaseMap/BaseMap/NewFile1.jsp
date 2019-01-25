@@ -633,13 +633,28 @@
   		var layer1 = new esmap.ESLayer("textMarker");
   		var tm = new esmap.ESTextMarker({
   			//x: gpos.x - 30,
-  			y : gpos.y - 200,
+  			y : gpos.y - 30,
   			name : "出售胡红旗",
   			fontsize : 34,
   			fillcolor : "72，61，139", //填充色
   			fontsize : "12.0", //字体大小
   			strokecolor : "255,255,0" //边框色
   		});
+  		
+  		
+  		 marker3 = new esmap.ESWebViewMarker({
+				url: 'https://www.esmap.cn/sdk-demo/player/player.html',
+				x: gpos.x,
+	  			y : gpos.y,
+				height: 1,
+				size: {
+					w:20,
+					h: 14
+				},
+				childWidth: 512,
+			})
+  		layer1.addMarker(marker3);
+  		 
   		layer1.addMarker(tm);
   		floorLayer.addLayer(layer1);
 
@@ -651,6 +666,51 @@
   	   
   		//改变方块房子颜色,id,name二选择一，都可以是数组, fnum可选择，参数color:'#FF0000'
   	    map.changeModelColor({id:[70136],fnum:[1],color:'#FF0000'}) 
+  	    
+  	    
+  	
+  	    
+  	    
+  	    
+  	    
+  	   var lm = new esmap.ESLocationMarker({
+           url: 'image/pointer.png',
+           size: 150,
+           height: 30
+       });
+       map.addLocationMarker(lm);
+       lm.setPosition({
+           x: gpos.x + 36,
+           y: gpos.y +15,
+           floornum: 2,
+           zOffset: 1 //离地面的偏移量
+       });
+                  	//添加信息窗
+		var popMarker1 = new esmap.ESPopMarker({
+			mapCoord: {
+				//设置弹框的x轴
+				x: gpos.x + 36,
+				//设置弹框的y轴
+				y: gpos.y +15,
+				height: 1, //控制信息窗的高度
+				//设置弹框位于的楼层
+				fnum: 2
+			},
+			//设置弹框的宽度
+			width: 200,
+			//设置弹框的高度
+			height:70,
+			marginTop: 1,
+			//设置弹框的内容
+			content: '您的当前位置',
+			closeCallBack: function () {
+				//信息窗点击关闭操作
+				// alert('信息窗关闭了！');
+			},
+			created: function () {}
+		});
+  
+
   	
   	});
 
