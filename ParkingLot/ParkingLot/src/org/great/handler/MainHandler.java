@@ -1,7 +1,16 @@
 package org.great.handler;
 
-import javax.servlet.http.HttpServletRequest;
+import java.util.List;
 
+import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
+import org.great.bean.Menu;
+import org.great.bean.RoleRel;
+import org.great.bean.User;
+import org.great.biz.MenuBiz;
+import org.great.biz.UserBiz;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -16,6 +25,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("/main")
 public class MainHandler {
 
+	@Resource
+	public UserBiz userBiz;
+	@Resource
+	private MenuBiz menuBiz;
 	
 	/**
 	 * 	跳转到管理端首页
@@ -23,7 +36,14 @@ public class MainHandler {
 	@RequestMapping("/main.action")
 	public String mainJsp(HttpServletRequest request) {
 		
+		HttpSession session = request.getSession(); 
+		User users = (User) session.getAttribute("User");
 		
+		// 角色关系
+		RoleRel re = userBiz.FindStaffRole(users.getU_id());
+
+		List<Menu> menuList = menuBiz.findMenu(re.getRole_id());
+		session.setAttribute("menuList", menuList);
 		return "main";
 	}
 }

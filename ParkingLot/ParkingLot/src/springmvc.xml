@@ -18,9 +18,9 @@
 		http://www.springframework.org/schema/tx/spring-tx-3.2.xsd 
 		http://www.springframework.org/schema/task 
 		http://www.springframework.org/schema/task/spring-task-3.0.xsd">
-		
-		
-        <context:component-scan base-package="org.great"></context:component-scan>
+
+    	
+        <context:component-scan base-package="org.great"/>
 		
 		<!-- mvc的注解驱动，通过它可以省去上面的两行bean的配置 -->
 		<mvc:annotation-driven></mvc:annotation-driven>
@@ -55,8 +55,8 @@
 			</mvc:interceptor>
 		</mvc:interceptors>
 		
+		
 		<!-- 定时任务 -->
 		<task:annotation-driven/>
-		
 
 </beans>		

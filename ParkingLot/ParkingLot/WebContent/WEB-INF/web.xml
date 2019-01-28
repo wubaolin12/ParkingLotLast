@@ -1,13 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd" id="WebApp_ID" version="3.0">
   <display-name>ParkingLot</display-name>
+
   <welcome-file-list>
     <welcome-file>/login/login.action</welcome-file>
   </welcome-file-list>
+    
   <session-config>
     <session-timeout>30</session-timeout>
   </session-config>
- 
+  
+   <context-param>
+		<param-name>spring.profiles.active</param-name> 
+		<param-value>dev</param-value> 
+   </context-param> 
+   <context-param> 
+       <param-name>spring.profiles.default</param-name> 
+       <param-value>dev</param-value> 
+   </context-param>
+   <context-param> 
+       <param-name>spring.liveBeansView.mbeanDomain</param-name> 
+       <param-value>dev</param-value> 
+   </context-param>
+  
   <!-- 监听 -->
   <listener>
     <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
@@ -16,6 +31,8 @@
     <param-name>contextConfigLocation</param-name>
     <param-value>classpath:applicationContext.xml</param-value>
   </context-param>
+
+  
   <servlet>
     <servlet-name>springmvc</servlet-name>
     <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
@@ -28,7 +45,27 @@
     <servlet-name>springmvc</servlet-name>
     <url-pattern>*.action</url-pattern>
   </servlet-mapping>
+
+
+
+
+
   
+  <!-- spring session代理filter的配置 -->
+  
+<!-- 	<filter> -->
+<!-- 		<filter-name>springSessionRepositoryFilter</filter-name> -->
+<!-- 		<filter-class>org.springframework.web.filter.DelegatingFilterProxy</filter-class> -->
+<!-- 	</filter> -->
+<!-- 	<filter-mapping> -->
+<!-- 		<filter-name>springSessionRepositoryFilter</filter-name> -->
+<!-- 		<url-pattern>/*</url-pattern> -->
+<!-- 		<dispatcher>REQUEST</dispatcher> -->
+<!--     	<dispatcher>ERROR</dispatcher> -->
+<!-- 	</filter-mapping> -->
+  
+  
+    
     <!-- 配置post请求乱码问题 -->
     <filter>
 		<filter-name>CharacterEncodingFilter</filter-name>
