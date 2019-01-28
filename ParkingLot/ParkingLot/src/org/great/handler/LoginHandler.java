@@ -16,7 +16,6 @@ import org.great.util.BaseUtil;
 import org.great.util.CaptchaUtil;
 import org.great.util.CookieUtils;
 import org.great.util.JedisClient;
-import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -26,7 +25,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.google.gson.JsonObject;
 
 import net.sf.json.JSONObject;
-import net.sf.json.util.JSONUtils;
 
 /**
  * 人员登录
@@ -35,7 +33,6 @@ import net.sf.json.util.JSONUtils;
  *
  */
 @Controller
-@Scope("prototype")
 @RequestMapping("/login")
 public class LoginHandler {
 
@@ -83,7 +80,7 @@ public class LoginHandler {
 
 		// 判断验证码
 		String code1 = (String) session.getAttribute("Code");
-		if (!user.getCode().equalsIgnoreCase(code1)) {
+		if (!code1.equalsIgnoreCase(user.getCode())) {
 			result = "codeerror";
 			System.out.println("验证码错误");
 			return result;
@@ -102,7 +99,8 @@ public class LoginHandler {
 		}
 
 
-		session.setAttribute("User", users);
+		request.setAttribute("User", users);
+//		session.setAttribute("User", users);
 		result = "success";
 		System.out.println("验证成功");
 

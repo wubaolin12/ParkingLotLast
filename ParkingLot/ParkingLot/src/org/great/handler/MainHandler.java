@@ -36,14 +36,14 @@ public class MainHandler {
 	@RequestMapping("/main.action")
 	public String mainJsp(HttpServletRequest request) {
 		
-		HttpSession session = request.getSession(); 
-		User users = (User) session.getAttribute("User");
+//		HttpSession session = request.getSession(); 
+		User users = (User) request.getAttribute("User");
 		
 		// 角色关系
 		RoleRel re = userBiz.FindStaffRole(users.getU_id());
 
 		List<Menu> menuList = menuBiz.findMenu(re.getRole_id());
-		session.setAttribute("menuList", menuList);
+		request.setAttribute("menuList", menuList);
 		return "main";
 	}
 }

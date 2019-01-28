@@ -49,7 +49,6 @@ public class LoginInterceptor implements HandlerInterceptor {
 		String json = jedisClient.get("USER_SESSION:"+token);
 
 		if (json != null && json.length()>0) {
-//			String json = jedisClient.get("USER_SESSION:"+token);
 			
 			//重置过期时间
 			jedisClient.expire("USER_SESSION:"+token, 1800);
@@ -59,8 +58,9 @@ public class LoginInterceptor implements HandlerInterceptor {
 			User user = (User) JSONObject.toBean(jsonObject,User.class);
 			System.out.println(user.toString());
 			
-			HttpSession session = request.getSession();
-			session.setAttribute("User", user);
+//			HttpSession session = request.getSession();
+//			session.setAttribute("User", user);
+			request.setAttribute("User", user);
 			
 			return true;
 		}
@@ -72,7 +72,6 @@ public class LoginInterceptor implements HandlerInterceptor {
 		// 转发到登录
 		request.getRequestDispatcher("/WEB-INF/jsp/login.jsp").forward(request, response);
 		return false;
-//		return true;
 	}
 
 }

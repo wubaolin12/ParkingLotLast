@@ -34,7 +34,7 @@
 	<p class="error-info">您可以：
 		<a href="javascript:;" onclick="history.go(-1)" class="c-primary">&lt; 返回上一页</a>
 		<span class="ml-20">|</span>
-		<a href="${path}/Main.jsp" class="c-primary ml-20">去首页 &gt;</a>
+		<a href="${path}/web/welcome.action" class="c-primary ml-20">去首页 &gt;</a>
 	</p>
 </section>
 </body>
