@@ -22,8 +22,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.google.gson.JsonObject;
-
 import net.sf.json.JSONObject;
 
 /**
@@ -117,7 +115,7 @@ public class LoginHandler {
 		
 		// 返回登录成功，token写入到cookie
 		CookieUtils.setCookie(request, response, "PL_TOKEN", token);
-		
+	
 		return result;
 	}
 

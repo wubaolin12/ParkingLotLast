@@ -47,12 +47,13 @@ public class LoginInterceptor implements HandlerInterceptor {
 		// 判断是否是已经登录，登录放行，否则跳转到登录界面
 		String token = CookieUtils.getCookieValue(request, "PL_TOKEN");
 		String json = jedisClient.get("USER_SESSION:"+token);
+		
+		System.out.println("----登录拦截-----json=="+token);
 
 		if (json != null && json.length()>0) {
 			
 			//重置过期时间
 			jedisClient.expire("USER_SESSION:"+token, 1800);
-			System.out.println("----登录拦截-----json=="+json);
 			
 			JSONObject jsonObject = JSONObject.fromObject(json);
 			User user = (User) JSONObject.toBean(jsonObject,User.class);
