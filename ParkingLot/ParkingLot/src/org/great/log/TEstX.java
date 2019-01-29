@@ -1,5 +1,6 @@
 package org.great.log;
 
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
@@ -10,10 +11,14 @@ import java.util.Map;
 import org.great.bean.Car;
 import org.great.bean.Countrules;
 import org.great.bean.Cust;
+import org.great.bean.Param;
 import org.great.bean.Vip;
 import org.great.biz.CustBiz;
+import org.great.biz.ParamBiz;
+import org.great.biz.VipBiz;
 import org.great.mapper.CarMapper;
 import org.great.mapper.CountrulesMapper;
+import org.great.mapper.ParamMapper;
 import org.junit.Test;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
@@ -21,6 +26,20 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 public class TEstX {
 	@Test
 	public void ttt() {
+		
+		SimpleDateFormat myFormatter = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
+		float mm = 0;
+		try {
+			float m = myFormatter.parse("2019-01-25 02:07:51").getTime() - myFormatter.parse("2019-01-25 01:27:51").getTime();
+			mm = m / (60 * 60 * 1000);
+		} catch (ParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		System.out.println("相差的秒数: " + mm);
+		
+		
+		
 //		Date day = new Date();
 //		SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd");
 //		System.out.println(df.format(day));
@@ -51,18 +70,33 @@ public class TEstX {
 		
 		
 //		System.out.println("*******************");
-		ApplicationContext ct = new ClassPathXmlApplicationContext("applicationContext.xml");
+//		ApplicationContext ct = new ClassPathXmlApplicationContext("applicationContext.xml");
 //		CustBiz custBiz = (CustBiz) ct.getBean("custBiz");
-		CountrulesMapper countrulesMapper =(CountrulesMapper) ct.getBean("countrulesMapper");
+//		CountrulesMapper countrulesMapper =(CountrulesMapper) ct.getBean("countrulesMapper");
 //		Car car2 = new Car(1, 7, "冀B120N4");
-		System.out.println("***********");
-		Map<String, String> map = new HashMap<String, String>();
-		String time = "" +5 ;
-		map.put("time", time);
-		map.put("pmtype", "规则状态");
-		map.put("pmname", "启用");
-	Countrules countrules = countrulesMapper.findCountrulRoleX(map);
+//		System.out.println("***********");
+//		ParamBiz paramBiz  =(ParamBiz) ct.getBean("paramBiz");
+//		ParamMapper paramMapper =(ParamMapper) ct.getBean("paramMapper");
+//		Param param3 = new Param("包月套餐", "车辆角色");
+//		Param param33 = paramBiz.GetPmIDByTypeNmaeX(param3);
+//		Param param4 = new Param("临时车辆", "车辆角色");
+//		Param param = new Param("白名单", "车辆角色");
+//		Param param = new Param("生效中","月缴状态");
+//		Param param2 = new Param("注册会员", "车辆角色");
+//		Param param22 = paramBiz.GetPmIDByTypeNmaeX(param);
+//		System.out.println("param22="+param22);
+//		System.out.println("paramMapper="+paramMapper);
+//		System.out.println("param1="+paramMapper.GetPmIDByTypeNmaeX(param));
+//		VipBiz vipBiz  =(VipBiz) ct.getBean("vipBiz");
+//		List<Vip> list = vipBiz.findVipPmIDX(20,"月缴状态","生效中");
+//		System.out.println("list="+list);
+//		Map<String, String> map = new HashMap<String, String>();
+//		String time = "" +5 ;
+//		map.put("time", time);
+//		map.put("pmtype", "规则状态");
+//		map.put("pmname", "启用");
+//	Countrules countrules = countrulesMapper.findCountrulRoleX(map);
 //		System.out.println("list="+list.size());
-		System.out.println("countrules="+countrules);
+//		System.out.println("countrules="+countrules);
 	}
 }

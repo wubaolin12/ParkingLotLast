@@ -4,6 +4,7 @@
 
 
 <mapper namespace="org.great.mapper.ParamMapper">
+<<<<<<< HEAD
 	<select id="paramList" resultType="org.great.bean.Param">
 		select * from tb_param 
 	</select>
@@ -12,4 +13,13 @@
 		select * from tb_param where pm_id=${pm_id}
 	</select>
 		
+=======
+	<!-- 根据类型和名字查询ID -->
+	<select id="GetPmIDByTypeNmaeX"
+		parameterType="org.great.bean.Param" resultType="org.great.bean.Param">
+		select * from tb_param
+		where pm_type = #{pm_type} and pm_name =#{pm_name}
+	</select>
+
+>>>>>>> a24c4ecf6084e038638e38f0ce04d91681ca2d41
 </mapper>

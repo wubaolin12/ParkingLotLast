@@ -5,7 +5,7 @@ import java.util.Date;
 /**
  * 日志实体
  * 
- * @author zx
+ * @author 吴宝林
  * 
  */
 public class SystemLog {

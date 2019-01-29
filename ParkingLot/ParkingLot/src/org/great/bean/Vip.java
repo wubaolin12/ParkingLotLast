@@ -13,6 +13,10 @@ public class Vip {
 	private String v_starttime;// 开始服务时间
 	private String v_overtime;// 结束服务时间
 	private int pm_id;// 月缴状态
+	/**参数表2019-01-25
+	 * 
+	 */
+	private Param param;
 
 	public Vip() {
 		super();
@@ -22,6 +26,12 @@ public class Vip {
 		super();
 		this.v_id = v_id;
 		this.v_overtime = v_overtime;
+	}
+
+	public Vip(int c_id, Param param) {
+		super();
+		this.c_id = c_id;
+		this.param = param;
 	}
 
 	public Vip(int co_id, int c_id, String v_starttime, String v_overtime) {
@@ -60,10 +70,21 @@ public class Vip {
 		this.pm_id = pm_id;
 	}
 
+	public Vip(int v_id, int co_id, int c_id, String v_starttime, String v_overtime, int pm_id, Param param) {
+		super();
+		this.v_id = v_id;
+		this.co_id = co_id;
+		this.c_id = c_id;
+		this.v_starttime = v_starttime;
+		this.v_overtime = v_overtime;
+		this.pm_id = pm_id;
+		this.param = param;
+	}
+
 	@Override
 	public String toString() {
 		return "Vip [v_id=" + v_id + ", co_id=" + co_id + ", c_id=" + c_id + ", v_starttime=" + v_starttime
-				+ ", v_overtime=" + v_overtime + ", pm_id=" + pm_id + "]";
+				+ ", v_overtime=" + v_overtime + ", pm_id=" + pm_id + ", param=" + param + "]";
 	}
 
 	public int getV_id() {
@@ -112,6 +133,14 @@ public class Vip {
 
 	public void setPm_id(int pm_id) {
 		this.pm_id = pm_id;
+	}
+
+	public Param getParam() {
+		return param;
+	}
+
+	public void setParam(Param param) {
+		this.param = param;
 	}
 
 }

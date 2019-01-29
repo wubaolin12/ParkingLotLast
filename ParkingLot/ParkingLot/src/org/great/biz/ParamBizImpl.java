@@ -18,6 +18,7 @@ public class ParamBizImpl implements ParamBiz{
 	@Resource
 	private ParamMapper paramMapper;
 
+
 	/**参数列表
 	 * @author ASUS yf
 	 */
@@ -35,6 +36,13 @@ public class ParamBizImpl implements ParamBiz{
 	public Param getParamObject(String id) {
 		// TODO Auto-generated method stub
 		return paramMapper.getParamObject(id);
+	}
+	
+	@Override
+	public Param GetPmIDByTypeNmaeX(Param param) {
+		// TODO Auto-generated method stub
+		return paramMapper.GetPmIDByTypeNmaeX(param);
+
 	}
 
 }

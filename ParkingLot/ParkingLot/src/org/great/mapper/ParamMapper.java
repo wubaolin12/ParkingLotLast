@@ -14,6 +14,7 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface ParamMapper {
 
+
 	/**
 	 * 参数列表
 	 * @return
@@ -22,5 +23,11 @@ public interface ParamMapper {
 	public List<Param> paramList();
 	
 	public Param getParamObject(@org.apache.ibatis.annotations.Param("pm_id")String id);
-	
+
+	/**根据类型和名字查询ID
+	 * 
+	 * @return
+	 */
+	public Param GetPmIDByTypeNmaeX(Param param);
+
 }

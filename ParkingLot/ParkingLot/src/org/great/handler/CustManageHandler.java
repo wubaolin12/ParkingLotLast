@@ -111,6 +111,7 @@ public class CustManageHandler {
 	public @ResponseBody boolean CustAdd(Cust cust) {
 		System.out.println("--------------------------------------");
 		System.out.println("cust=" + cust);
+		
 		flag = custBiz.AddCustX(cust);
 		return flag;
 	}
@@ -185,6 +186,8 @@ public class CustManageHandler {
 		// 得到车辆表信息
 		Car car1 = carBiz.FindByCarNumber(anyX.getCarnum());
 		System.out.println("car1="+car1);
+		Param param = new Param("生效中","月缴状态");
+		Param param1 =paramBiz.GetPmIDByTypeNmaeX(param);
 		// 得到套餐ID
 		int co_id = Integer.parseInt(anyX.getAdminRole());
 		Map<String, String> map = new HashMap<>();
@@ -211,7 +214,8 @@ public class CustManageHandler {
 				flag = carBiz.AddCarCX(car2);
 				System.out.println("Cflag="+flag);
 				car2 =carBiz.FindByCarNumber(anyX.getCarnum());
-				Vip vip = new Vip(co_id, car2.getC_id(), map.get("today"), map.get("finday"));
+				
+				Vip vip = new Vip(co_id, car2.getC_id(), map.get("today"), map.get("finday"),param1.getPm_id());
 				System.out.println("vip="+vip);
 				flag = vipBiz.AddvipX(vip);
 				System.out.println("Vflag="+flag);
@@ -228,7 +232,8 @@ public class CustManageHandler {
 					System.err.println("car3="+car3);
 					flag = carBiz.chagerPmIDByCarNumberX(car3);
 					System.err.println("cflag="+flag);
-					Vip vip = new Vip(co_id, car1.getC_id(), map.get("today"), map.get("finday"));
+					
+					Vip vip = new Vip(co_id, car1.getC_id(), map.get("today"), map.get("finday"),param1.getPm_id());
 					System.err.println("vip="+vip);
 					flag = vipBiz.AddvipX(vip);
 					System.err.println("vip123=="+vip);

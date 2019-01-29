@@ -39,6 +39,7 @@
 }
 </style>
 <script>
+
   		//window.setTimeout(showfh,3000); 
   		var timer;
   		
@@ -151,126 +152,6 @@
 				</div>
 			</div>
 		</div>
-		<!-- 注册 -->
-		<div id="windows2" style="display: none;">
-			<div id="loginbox">
-				<form action="demo/regiest.action" method="post" name="loginForm" id="loginForm">
-					<div class="control-group normal_text">
-						<h3>
-							<img src="login/logo.png" alt="Logo" />
-						</h3>
-					</div>
-					<div class="control-group">
-						<div class="controls">
-							<div class="main_input_box">
-								<span class="add-on bg_lg"> <i>用户</i>
-								</span><input type="text" name="user.u_name" id="USERNAME" value=""
-									placeholder="请输入用户名" />
-							</div>
-						</div>
-					</div>
-					<div class="control-group">
-						<div class="controls">
-							<div class="main_input_box">
-								<span class="add-on bg_ly"> <i>密码</i>
-								</span><input type="password" name="user.u_pwd" id="PASSWORD"
-									placeholder="请输入密码" class="keypad" keypadMode="full"
-									allowKeyboard="true" value="" />
-							</div>
-						</div>
-					</div>
-					<div class="control-group">
-						<div class="controls">
-							<div class="main_input_box">
-								<span class="add-on bg_ly"> <i>重输</i>
-								</span><input type="password" name="upwd" id="chkpwd"
-									placeholder="请重新输入密码" class="keypad" keypadMode="full"
-									allowKeyboard="true" value="" />
-							</div>
-						</div>
-					</div>
-					
-					<div class="control-group">
-						<div class="controls">
-							<div class="main_input_box">
-								<span class="add-on bg_lg"> <i>性别</i>
-								</span><input type="radio" name="user.u_sex" id="sex" value="男"
-									checked="checked" style="width:120px;height:20px;"/><font style="color:red;font-size:20px;">男</font><input type="radio"  style="width:120px;height:20px;" name="user.u_sex" id="sex" value="女"
-									/><font style="color:red;font-size:20px;">女</font>
-							</div>
-						</div>
-					</div>
-					
-				
-				
-					<div class="control-group">
-						<div class="controls">
-							<div class="main_input_box">
-								<span class="add-on bg_lg"> <i>学历</i>
-								</span><select name="user.u_education" id="education" style="width: 300px; height: 37px;">
-									<option value="高中" id="department1">高中</option>
-									<option value="大专" id="department2">大专</option>
-																<option value="本科" id="department2">本科</option>
-																<option value="研究生" id="department2">研究生</option>
-							
-							
-								</select>
-							</div>
-						</div>
-					</div>
-					<div class="control-group">
-						<div class="controls">
-							<div class="main_input_box">
-								<span class="add-on bg_lg"> <i>工作</i>
-								</span><select name="user.u_job" id="job" style="width: 300px; height: 37px;">
-									<option value="销售" id="role1">销售</option>
-									<option value="文员" id="role2">文员</option>
-								</select>
-							</div>
-						</div>
-					</div>
-					
-						<div class="control-group">
-					<div class="controls">
-						<div class="main_input_box">
-							<span class="add-on bg_lg"  style="width:40px;">
-							<i>手机号</i>
-							</span><input type="text" onkeyup="value=value.replace(/[^0-9]/g,'')" name="user.u_tel" id="tel"  placeholder="请输入手机号" />
-						</div>
-					</div>
-				</div>
-					
-						<div class="control-group">
-					<div class="controls">
-						<div class="main_input_box">
-							<span class="add-on bg_lg">
-							<i>邮箱</i>
-							</span><input type="text" name="user.u_email" id="EMAIL" value="" placeholder="请输入邮箱" />
-						</div>
-					</div>
-				</div>
-					<div class="form-actions">
-						<div style="width: 86%; padding-left: 8%;">
-
-							<input type="hidden" name="user.u_score" value="10">
-							<span class="pull-right" style="padding-right: 3%;"><a
-								href="javascript:changepage(2);" class="btn btn-success">取消</a></span>
-							 <span class="pull-right"><a onclick="register();"
-								class="flip-link btn btn-info" id="to-recover">提交</a></span> 
-						
-						<!--<span class="pull-right"><input type="submit" 
-								class="flip-link btn btn-info" id="to-recover" value="注册"></a></span>-->
-						</div>
-					</div>
-				</form>
-				<div class="controls">
-					<div class="main_input_box">
-						<font color="white"><span id="nameerr">Copyright ©
-								传一科技 2019</span></font>
-					</div>
-				</div>
-			</div>
-		</div>
 
 	</div>
 	<div id="templatemo_banner_slide" class="container_wapper">
@@ -303,7 +184,6 @@
 	  				 dataType:"text",
 					cache: false,
 					success: function(res){
-						//if("success" == data.result){
 							switch(res){
 							
 							case "success":
@@ -315,7 +195,6 @@
 							break;
 							
 							case "usererror" :
-						//}else if("usererror" == data.result){
 							$("#loginname").tips({
 								side : 1,
 								msg : "用户名或密码有误",
@@ -334,7 +213,6 @@
 								break;
 							
 							case "codeerror" :
-						//}else if("codeerror" == data.result){
 							$("#code").tips({
 								side : 1,
 								msg : "验证码输入有误",
@@ -347,7 +225,6 @@
 							break;
 							
 							default:
-						//}else{
 							$("#loginname").tips({
 								side : 1,
 								msg : "用户名或密码有误",
@@ -471,177 +348,7 @@
 				$("#code").focus();
 			}
 		});
-		
-		//登录注册页面切换
-		function changepage(value) {
-			if(value == 1){
-				$("#windows1").hide();
-				$("#windows2").show();
-				changeCode2();
-			}else{
-				$("#windows2").hide();
-				$("#windows1").show();
-				changeCode1();
-			}
-		}
-		
-		//注册
-		function rcheck(){
-			if($("#USERNAME").val()==""){
-				$("#USERNAME").tips({
-					side:3,
-		            msg:'输入用户名',
-		            bg:'#AE81FF',
-		            time:2
-		        });
-				$("#USERNAME").focus();
-				$("#USERNAME").val('');
-				return false;
-			}else{
-				$("#USERNAME").val(jQuery.trim($('#USERNAME').val()));
-			}
-			if($("#PASSWORD").val()==""){
-				$("#PASSWORD").tips({
-					side:3,
-		            msg:'输入密码',
-		            bg:'#AE81FF',
-		            time:2
-		        });
-				$("#PASSWORD").focus();
-				return false;
-			}
-			if($("#PASSWORD").val()!=$("#chkpwd").val()){
-				$("#chkpwd").tips({
-					side:3,
-		            msg:'两次密码不相同',
-		            bg:'#AE81FF',
-		            time:3
-		        });
-				$("#chkpwd").focus();
-				return false;
-			}
-			if($("#name").val()==""){
-				$("#name").tips({
-					side:3,
-		            msg:'输入姓名',
-		            bg:'#AE81FF',
-		            time:3
-		        });
-				$("#name").focus();
-				return false;
-			}
-			if($("#EMAIL").val()==""){
-				$("#EMAIL").tips({
-					side:3,
-		            msg:'输入邮箱',
-		            bg:'#AE81FF',
-		            time:3
-		        });
-				$("#EMAIL").focus();
-				return false;
-			}else if(!ismail($("#EMAIL").val())){
-				$("#EMAIL").tips({
-					side:3,
-		            msg:'邮箱格式不正确',
-		            bg:'#AE81FF',
-		            time:3
-		        });
-				$("#EMAIL").focus();
-				return false;
-			}
-			if ($("#rcode").val() == "") {
-				$("#rcode").tips({
-					side : 1,
-					msg : '验证码不得为空',
-					bg : '#AE81FF',
-					time : 3
-				});
-				$("#rcode").focus();
-				return false;
-			}
-			if ($("#tel").val() == "") {
-				$("#tel").tips({
-					side : 1,
-					msg : '手机号不得为空',
-					bg : '#AE81FF',
-					time : 3
-				});
-				$("#tel").focus();
-				return false;
-			}
-			return true;
-		}
-	//提交注册
-	function register(){
-		if(rcheck()){
-			//var nowtime = date2str(new Date(),"yyyyMMdd");
-			//,FKEY:$.md5('USERNAME'+nowtime+',fh,'),tm:new Date().getTime()
-			$.ajax({
-				type: "post",
-				url: '${path}/demo/RegiestAjax.action',
-					data : {
-						"user.u_name" : $("#USERNAME").val(),
-						"user.u_pwd" : $("#PASSWORD").val(),
-						"user.u_sex" : $("#sex").val(),
-						"user.u_education" : $("#education").val(),
-						"user.u_job" : $("#job").val(),
-						"user.u_tel" : $("#tel").val(),
-						"user.u_email" : $("#EMAIL").val()
-					},
-					dataType : 'json',
-					cache : false,
-					success : function(data) {
-						
-						switch (data) {
-						//if("00" == data.result){
-						case "00":
-							$("#windows2").hide();
-							$("#windows1").show();
-							$("#loginbox").tips({
-								side : 1,
-								msg : '注册成功,请登录',
-								bg : '#68B500',
-								time : 3
-							});
-							changeCode1();
-							break;
-						case "04":
-							//}else if("04" == data.result){
-							$("#USERNAME").tips({
-								side : 1,
-								msg : "用户名已存在",
-								bg : '#FF5080',
-								time : 15
-							});
-							showfh();
-							$("#USERNAME").focus();
-							break;
-						case "06":
-							//	}else if("06" == data.result){
-							$("#rcode").tips({
-								side : 1,
-								msg : "验证码输入有误",
-								bg : '#FF5080',
-								time : 15
-							});
-							showfh();
-							$("#rcode").focus();
-							break;
-						}
 
-					}
-
-				});
-			}
-		}
-
-		//邮箱格式校验
-		function ismail(mail) {
-			return (new RegExp(
-					/^(?:[a-zA-Z0-9]+[_\-\+\.]?)*[a-zA-Z0-9]+@(?:([a-zA-Z0-9]+[_\-]?)*[a-zA-Z0-9]+\.)+([a-zA-Z]{2,})+$/)
-					.test(mail));
-		}
-		//js  日期格式
 	</script>
 	<script src="${path}/static/login/js/bootstrap.min.js"></script>
 	<script src="${path}/static/js/jquery-1.7.2.js"></script>
@@ -658,8 +365,14 @@
 	<script type="text/javascript" src="${path}/static/login/keypad/js/keypad.js"></script>
 	<script type="text/javascript" src="${path}/static/login/keypad/js/framework.js"></script>
 	<!-- 软键盘控件end -->
+	
+	<!-- 登录拦截返回登录页面时全屏 -->
+	<script type="text/javascript">
+    if (window != top)
+    {
+        top.location.href = location.href;
+    }
+</script>
 </body>
 
-</html>
-</body>
 </html>
