@@ -29,11 +29,11 @@ public interface CustBiz {
 	 * @return
 	 */
 	public List<Cust> findCustAllX();
-	/**
-	 * 查询该客户下的车辆信息
+	
+	/**修改余额
 	 * 
-	 * @param Pnumber
+	 * @param cust
 	 * @return
 	 */
-	public List<Cust> findCustCarX(String Pnumber);
+	public boolean chageCustMoneyByIDX(Cust cust);
 }

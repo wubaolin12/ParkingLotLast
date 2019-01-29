@@ -13,7 +13,11 @@ import org.aspectj.lang.annotation.Pointcut;
 import org.springframework.stereotype.Component;
 
 
-//������
+/**
+ * 日志切面
+ * @author Administrator
+ *
+ */
 @Aspect
 @Component
 public class SystemLogAspect {

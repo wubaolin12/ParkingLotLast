@@ -4,7 +4,7 @@
 
 
 <mapper namespace="org.great.mapper.CustCarMapper">
-
+	
 	<select id="findWriteList" 
 		resultMap="WriteListMap">     
 select (@rownum:=@rownum+1) as rownum, c.cust_id,c.cust_acc,c.cust_pwd,c.cust_sex,c.cust_age,c.cust_phone,car.c_id,car.c_num,car.pm_id 

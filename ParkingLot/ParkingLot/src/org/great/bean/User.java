@@ -1,6 +1,5 @@
 package org.great.bean;
 
-import org.springframework.stereotype.Component;
 
 /**
  * 员工表(tb_user)								

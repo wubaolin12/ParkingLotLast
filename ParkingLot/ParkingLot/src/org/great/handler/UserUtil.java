@@ -1,6 +1,5 @@
 package org.great.handler;
 
-import java.security.MessageDigest;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -15,10 +14,10 @@ import org.great.bean.User;
 import org.great.biz.BaseBiz;
 import org.great.biz.RoleBiz;
 import org.great.biz.UserBiz;
+import org.great.util.BaseUtil;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -436,35 +435,4 @@ public class UserUtil extends BaseUtil{
 		result="user-list";
 		return result;
 	}
-	
-
-	/**
-	 * 	测试MD5
-	 * @param 密码
-	 * @return MD5
-	 * 
-	 */
-	public static String getStrrMD5(String password) {
-
-		char hexDigits[] = { '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'a', 'b', 'c', 'd', 'e', 'f' };
-		try {
-			byte strTemp[] = password.getBytes("UTF-8");
-			MessageDigest mdTemp = MessageDigest.getInstance("MD5");
-			mdTemp.update(strTemp);
-			byte md[] = mdTemp.digest();
-			int j = md.length;
-			char str[] = new char[j * 2];
-			int k = 0;
-			for (int i = 0; i < j; i++) {
-				byte byte0 = md[i];
-				str[k++] = hexDigits[byte0 >>> 4 & 15];
-				str[k++] = hexDigits[byte0 & 15];
-			}
-
-			return new String(str);
-		} catch (Exception e) {
-			return null;
-		}
-	}
-	
 }

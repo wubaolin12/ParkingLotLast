@@ -14,6 +14,11 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
 <title>车辆出场LED效果</title>
+
+<link rel="stylesheet" type="text/css" href="<%=path%>static/css/normalize.css" />
+<link rel="stylesheet" type="text/css" href="<%=path%>static/css/demo.css">
+<link rel="stylesheet" href="<%=path%>static/dist/jquery.vidbacking.css" type="text/css">
+<link rel="stylesheet" href="<%=path%>static/css/style2.css" type="text/css">
 </head>
 <body>
 <TABLE border=0 cellSpacing=0 cellPadding=0 width=1000 
@@ -67,5 +72,25 @@
 		</TR>
 		</TBODY>
 		</TABLE>
+		
+			<div   align="center">			
+		<img src="<%=path%>static/img/1.gif"></img>
+		</div>
+		
+		
+		<video poster="<%=path%>static/images/screenshot1.jpg" autoplay muted loop class="vidbacking">
+		<source src="<%=path%>static/images/Rallye.mp4" type="video/mp4">
+</video>
+
+
+<script src="<%=path%>static/js/jquery-1.11.0.min.js" type="text/javascript"></script>
+<script src="<%=path%>static/dist/jquery.vidbacking.js" type="text/javascript"></script>
+<script type="text/javascript">
+	$(function(){
+		$('body').vidbacking({
+			'masked': true
+		});
+	});
+</script>
 </body>
 </html>

@@ -20,6 +20,11 @@ select * from tb_stopcartime where c_id = #{id}
 update tb_stopcartime set sct_overtime =#{sct_overtime},pm_id=2 where sct_id = #{sct_id}
 </update>
 
+<!-- 修改停车费用 -->
+<update id="UpdateSctMoneyX" parameterType="org.great.bean.Stopcartime">
+	update tb_stopcartime set sct_money = #{sct_money} where sct_id = #{sct_id}
+</update>
+
 <!-- 通过主键ID查找该停车表的信息 -->
 <select id="FindByID" parameterType="int" resultType="org.great.bean.Stopcartime">
 select * from tb_stopcartime where sct_id = #{id}

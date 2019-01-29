@@ -4,7 +4,106 @@
 
 
 <mapper namespace="org.great.mapper.ParkMapper">
-
+ 	 <!--   添加车位 -->
+	<insert id="AddPark" parameterType="org.great.bean.Park" >
+	insert into tb_park(pm_id,p_fore,p_num,p_state) values (#{pm_id},#{p_fore},#{p_num},#{p_state})
+	</insert>
 	
+	<!-- 初始多表查询 -->
+		<select id="FindAll" parameterType="org.great.bean.Park"
+		resultMap="FindAllMap">
+	select a.*,c.c_num from(select p.p_id,p.pm_id,p.c_id,p.p_fore,p.p_num,p.p_state,pm.pm_name,pm.pm_type
+	 from (select * from tb_park where 1=1
+	  <if test="p_fore!=null"> and p_fore = #{p_fore} </if>
+	 <if test="p_state!=null"> and p_state = #{p_state} </if>
+	 <if test="pm_id!=0"> and pm_id = #{pm_id} </if>
+	  <if test="p_num!=0"> and p_num = #{p_num} </if>
+	 )p left join tb_param pm on p.pm_id=pm.pm_id)a left join  
+	 tb_car c on  a.c_id=c.c_id 
+	</select>
+	<resultMap type="org.great.bean.Park" id="FindAllMap">
+		<id property="p_id" column="p_id"></id>
+		<result property="pm_id" column="pm_id" />
+		<result property="c_id" column="c_id" />
+		<result property="p_fore" column="p_fore" />
+		<result property="p_num" column="p_num" />
+		<result property="p_state" column="p_state" />
+		
+		<association property="param" column="pm_id"
+			javaType="org.great.bean.Param">
+			<id property="pm_id" column="pm_id" />
+			<result property="pm_name" column="pm_name" />
+			<result property="pm_type" column="pm_type" />
+		</association>
+		<association property="car" column="c_id"
+			javaType="org.great.bean.Car">
+			<id property="c_id" column="c_id" />
+			<result property="c_num" column="c_num" />
+		</association>
 
+	</resultMap>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<!-- 有条件的多表查询 -->
+		<select id="FindList" parameterType="org.great.bean.Park"
+		resultMap="parkMap">
+	<if test='c_num!="x"'>select a.*,c.c_num from(
+	select p.p_id,p.pm_id,p.c_id,p.p_fore,p.p_num,p.p_state,pm.pm_name,pm.pm_type
+	 from (select * from tb_park where 1=1
+	  <if test="p_fore!=null"> and p_fore = #{p_fore} </if>
+	 <if test="p_state!=null"> and p_state = #{p_state} </if>
+	 <if test="pm_id!=0"> and pm_id = #{pm_id} </if>
+	  <if test="p_num!=0"> and p_num = #{p_num} </if>
+	 ) 
+	 p left join tb_param pm on p.pm_id=pm.pm_id 
+	 )a right join 
+	 (select * from tb_car where c_num = #{c_num}
+	 )c on a.c_id=c.c_id </if>
+	 
+	 <if test='c_num=="x"'>
+	select p.p_id,p.pm_id,p.c_id,p.p_fore,p.p_num,p.p_state,pm.pm_name,pm.pm_type
+	 from (select * from tb_park where c_id is null
+	  <if test="p_fore!=null"> and p_fore = #{p_fore} </if>
+	 <if test="p_state!=null"> and p_state = #{p_state} </if>
+	 <if test="pm_id!=0"> and pm_id = #{pm_id} </if>
+	  <if test="p_num!=0"> and p_num = #{p_num} </if>
+	 )p left join tb_param pm on p.pm_id=pm.pm_id</if>
+	 </select>
+	<resultMap type="org.great.bean.Park" id="parkMap">
+		<id property="p_id" column="p_id"></id>
+		<result property="pm_id" column="pm_id" />
+		<result property="c_id" column="c_id" />
+		<result property="p_fore" column="p_fore" />
+		<result property="p_num" column="p_num" />
+		<result property="p_state" column="p_state" />
+		
+		<association property="param" column="pm_id"
+			javaType="org.great.bean.Param">
+			<id property="pm_id" column="pm_id" />
+			<result property="pm_name" column="pm_name" />
+			<result property="pm_type" column="pm_type" />
+		</association>
+		<association property="car" column="c_id"
+			javaType="org.great.bean.Car">
+			<id property="c_id" column="c_id" />
+			<result property="c_num" column="c_num" />
+		</association>
+
+	</resultMap>
+	
+	
+	<update id="setState" parameterType="org.great.bean.Park">
+	update tb_park set p_state=#{p_state} where p_id=#{p_id}
+	</update>
+	
+	
+	
 </mapper>

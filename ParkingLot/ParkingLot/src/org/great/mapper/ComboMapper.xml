@@ -5,6 +5,13 @@
 
 <mapper namespace="org.great.mapper.ComboMapper">
 
-	
+		<!-- 所有套餐信息 -->
+	<select id="FindCombo" resultType="org.great.bean.Combo">
+		select * from tb_combo
+	</select>
+		<!-- 根据主键查套餐信息 -->
+	<select id="FindComboByIDX"  parameterType="int" resultType="org.great.bean.Combo">
+		select * from tb_combo where co_id = #{id}
+	</select>
 
 </mapper>

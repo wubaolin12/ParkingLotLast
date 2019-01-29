@@ -81,7 +81,7 @@ p {
 
 	height: 450px;
 
-	background: url('${path}/css/img/background.png');
+	background: url('${path}/static/css/img/background.png');
 
 	position: relative;
 
@@ -129,7 +129,7 @@ p {
 
 	width: 40px;
 
-	background: url('${path}/css/img/bird_Sprite.png');
+	background: url('${path}/static/css/img/bird_Sprite.png');
 
 	position: absolute;
 
@@ -185,7 +185,7 @@ p {
 
 .pipe .topHalf {
 
-	background: url('${path}/css/img/pipe.png') bottom;
+	background: url('${path}/static/css/img/pipe.png') bottom;
 
 	position: absolute;
 
@@ -199,7 +199,7 @@ p {
 
 .pipe .bottomHalf {
 
-	background: url('${path}/css/img/pipe.png') top;
+	background: url('${path}/static/css/img/pipe.png') top;
 
 	position: absolute;
 
@@ -213,7 +213,7 @@ p {
 
 
 
-    <script src="${path}/js/prefixfree.min.js"></script>
+    <script src="${path}/static/js/prefixfree.min.js"></script>
 
 
 
@@ -248,10 +248,10 @@ p {
 </div>
 
 
-<script src="${path}/css/jquery.min.js"></script>
+<script src="${path}/static/css/jquery.min.js"></script>
 
 
-  <script src="${path}/js/index.js"></script>
+  <script src="${path}/static/js/index.js"></script>
 
 
 

@@ -38,9 +38,9 @@ public class CustBizImpl implements CustBiz {
 	}
 
 	@Override
-	public List<Cust> findCustCarX(String Pnumber) {
+	public boolean chageCustMoneyByIDX(Cust cust) {
 		// TODO Auto-generated method stub
-		return custMapper.findCustCarX(Pnumber);
+		return custMapper.chageCustMoneyByIDX(cust);
 	}
 
 }

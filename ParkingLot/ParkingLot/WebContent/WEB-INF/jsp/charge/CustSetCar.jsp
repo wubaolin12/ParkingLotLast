@@ -34,41 +34,6 @@
 <![endif]-->
 <title>用户管理</title>
 </head>
-<script type="text/javascript">
-$("#form-admin-add").validate({
-	rules : {
-		cust_phone : {
-			required : true,
-			minlength : 11,
-			maxlength : 11
-		}
-	},
-	onkeyup : false,
-	focusCleanup : true,
-	success : "valid",
-	submitHandler : function(form) {
-		var cust_phone = $("#cust_phone").val();
-		var cust_pwd = $("#cust_pwd").val();
-		$(form).ajaxSubmit({
-			type : 'post',
-			daatype:"json",
-			url : "${path}/custManageHandler/CustCar.action",
-			data:'{"cust_pwd":'+cust_pwd+',"cust_phone":'+cust_phone+'}',
-			success : function(data) {
-				alert(data);
-			}
-		}
-	}
-	
-	
-	
-	
-});
-
-
-
-
-</script>
 <body>
 	<nav class="breadcrumb">
 		<i class="Hui-iconfont">&#xe67f;</i> 首页 <span class="c-gray en">&gt;</span>
@@ -79,13 +44,23 @@ $("#form-admin-add").validate({
 			class="Hui-iconfont">&#xe68f;</i></a>
 	</nav>
 	<div class="page-container">
-			<input type="text" class="input-text" style="width: 250px"
-				placeholder="输入电话" id="cust_phone" name="cust_phone">
-			<input type="text" class="input-text" style="width: 250px"
-				placeholder="输入密码" id="cust_pwd" name="cust_pwd">
-			<button type="submit" class="btn btn-success radius" id="" name="">
-				<i class="Hui-iconfont">&#xe665;</i> 搜用户
-			</button>
+		<div class="page-container">
+			<form class="form form-horizontal" id="form-admin-find"
+				 action="${path}/custManageHandler/FindCustCar.action">
+				<input type="text" class="input-text" style="width: 250px"
+					placeholder="输入电话" id="cust_phone" name="cust_phone"> 
+				<button type="submit" class="btn btn-success radius" id="" name="">
+					<i class="Hui-iconfont">&#xe665;</i> 搜用户
+				</button>
+			</form>
+		</div>
+		<div class="cl pd-5 bg-1 bk-gray mt-20">
+			<span class="l"> <a href="javascript:;"
+				onclick="member_add('添加车辆','${path}/custManageHandler/CarAddJsp.action','','510')"
+				class="btn btn-primary radius"><i class="Hui-iconfont">&#xe600;</i>
+					添加车辆</a></span> <span class="r">共有数据：<strong>${fn:length(CustCarList)}</strong>
+				条
+			</span>
 		</div>
 		<div class="mt-20">
 			<table
@@ -97,20 +72,22 @@ $("#form-admin-add").validate({
 						<th width="80">性别</th>
 						<th width="80">年龄</th>
 						<th width="150">电话</th>
-						<th width="75">余额</th>
-						<th width="60">状态</th>
+						<th width="75">车辆ID</th>
+						<th width="60">车牌号</th>
+						<th width="60">车辆角色</th>
 					</tr>
 				</thead>
 				<tbody>
 					<c:forEach items="${CustCarList}" var="c" varStatus="cc">
 						<tr class="text-c">
 							<td>${c.cust_id}</td>
-							<td>${c.cust_acc}</td>
-							<td>${c.cust_sex}</td>
-							<td>${c.cust_age}</td>
-							<td>${c.cust_phone}</td>
-							<td>${c.cust_money}</td>
-							<td>${c.car.c_num}</td>
+							<td>${c.cust.cust_acc}</td>
+							<td>${c.cust.cust_sex}</td>
+							<td>${c.cust.cust_age}</td>
+							<td>${c.cust.cust_phone}</td>
+							<td>${c.c_id}</td>
+							<td>${c.c_num}</td>
+							<td>${c.param.pm_name}</td>
 						</tr>
 					</c:forEach>
 				</tbody>
@@ -130,6 +107,12 @@ $("#form-admin-add").validate({
 
 	<!--请在下方写此页面业务相关的脚本-->
 	<script type="text/javascript"
+		src="${path}/static/lib/jquery.validation/1.14.0/jquery.validate.js"></script>
+	<script type="text/javascript"
+		src="${path}/static/lib/jquery.validation/1.14.0/validate-methods.js"></script>
+	<script type="text/javascript"
+		src="${path}/static/lib/jquery.validation/1.14.0/messages_zh.js"></script>
+	<script type="text/javascript"
 		src="${path}/static/lib/My97DatePicker/4.8/WdatePicker.js"></script>
 	<script type="text/javascript"
 		src="${path}/static/lib/datatables/1.10.0/jquery.dataTables.min.js"></script>
@@ -137,6 +120,22 @@ $("#form-admin-add").validate({
 		src="${path}/static/lib/laypage/1.2/laypage.js"></script>
 	<script type="text/javascript">
 		$(function() {
+			$("#form-admin-find").validate({
+				rules : {
+					cust_phone : {
+						required : true,
+						minlength : 11,
+						maxlength : 11
+					},
+					cust_pwd : {
+						required : true
+					}
+				},
+				onkeyup : false,
+				focusCleanup : true,
+				success : "valid",
+			});
+
 			$('.table-sort').dataTable({
 				"aaSorting" : [ [ 1, "desc" ] ],//默认第几个排序
 				"bStateSave" : true,//状态保存

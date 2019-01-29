@@ -7,6 +7,7 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.text.DateFormat;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
@@ -18,9 +19,17 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.great.bean.Car;
+import org.great.bean.Countrules;
+import org.great.bean.Cust;
+import org.great.bean.Param;
 import org.great.bean.Stopcartime;
+import org.great.bean.Vip;
 import org.great.biz.CarBiz;
+import org.great.biz.CountrulesBiz;
+import org.great.biz.CustBiz;
+import org.great.biz.ParamBiz;
 import org.great.biz.StopcartimeBiz;
+import org.great.biz.VipBiz;
 import org.json.JSONObject;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
@@ -41,19 +50,26 @@ import com.baidu.aip.ocr.AipOcr;
 @Scope("prototype")
 @RequestMapping("/AppearanceLicensePlate")
 public class AppearanceLicensePlateRecognition {
-
+	@Resource
+	CountrulesBiz countrulesBiz;
+	@Resource
+	ParamBiz paramBiz;
 	// 设置APPID/AK/SK
 	public static final String APP_ID = "15429813";
 	public static final String API_KEY = "mEMqLxA8KSG7U69GpMjwlSOU";
 	public static final String SECRET_KEY = "2bqK1oVuECWry3FvNDpwHTirPlFCV5Rm";
-	private String serverFilePatn;//车牌图片服务器地址
-	private String path;//上传文件地址
-	private boolean flag;//标记
-	private Map<String,String> result = new HashMap();
+	private String serverFilePatn;// 车牌图片服务器地址
+	private String path;// 上传文件地址
+	private boolean flag;// 标记
+	private Map<String, String> result = new HashMap();
 	@Resource
 	private Car car;
 	@Resource
-	private CarBiz carBiz;//调用Mybatis调用数据库
+	private CarBiz carBiz;// 调用Mybatis调用数据库
+	@Resource
+	private VipBiz vipBiz;// 调用Mybatis调用数据库
+	@Resource
+	private CustBiz custBiz;// 调用Mybatis调用数据库
 	@Resource
 	private StopcartimeBiz stopcartimeBiz;
 
@@ -77,27 +93,25 @@ public class AppearanceLicensePlateRecognition {
 	 * 跳转到上传车牌界面 孔大爷
 	 */
 
-	
 	@RequestMapping("/AppearanceLicensePlateUp.action")
 	public String JumpLicensePlate() {
 
 		return "AppearanceLicensePlateUpLoad";
 	}
-	
+
 	/**
-	 * 跳转到LED显示界面
-	 * 孔大帅
+	 * 跳转到LED显示界面 孔大帅
 	 */
 	@RequestMapping("/AppearanceCarAdmissionDisplay.action")
 	public String JumpCarAdmissionDisplay() {
-		
+
 		return "AppearanceCarAdmissionDisplay";
 	}
 
 	/**
 	 * 车辆入场扫描 孔大爷
 	 */
-	
+
 	@ResponseBody
 	@RequestMapping(value = "/AppearanceCarAdmission.action", method = RequestMethod.POST)
 	public Map LicensePlates(HttpServletRequest request, MultipartFile myfile) {
@@ -116,7 +130,7 @@ public class AppearanceLicensePlateRecognition {
 			/**
 			 * 上传文件绝对路径
 			 */
-			 path = request.getSession().getServletContext().getRealPath("/upload/");
+			path = request.getSession().getServletContext().getRealPath("/upload/");
 
 			System.out.println("服务器地址路径=" + projectServerPath + "上传文件绝对路径=" + path);
 
@@ -136,7 +150,7 @@ public class AppearanceLicensePlateRecognition {
 			 * 返回服务器文件地址
 			 */
 
-			 serverFilePatn = projectServerPath + filename;
+			serverFilePatn = projectServerPath + filename;
 
 			System.out.println("服务器文件地址=" + serverFilePatn);
 
@@ -153,8 +167,8 @@ public class AppearanceLicensePlateRecognition {
 		options.put("multi_detect", "true");
 
 		// 参数为本地路径
-	//	String image = "C:\\Users\\Administrator\\Desktop\\timg.jpg";
-		JSONObject res = client.plateLicense(path+filename, options);
+		// String image = "C:\\Users\\Administrator\\Desktop\\timg.jpg";
+		JSONObject res = client.plateLicense(path + filename, options);
 		System.out.println(res.toString(2));
 
 		// 参数为二进制数组
@@ -178,66 +192,143 @@ public class AppearanceLicensePlateRecognition {
 		String number = str.substring(1, 8);
 
 		System.out.println(number);
-		
-		//查找该车牌是否已经有记录
-		 car = carBiz.FindByCarNumber(number);
-		System.out.println("找到的车记录"+car);
-		
-		
-		//获取当前时间算出场时间
+
+		// 查找该车牌是否已经有记录
+		car = carBiz.FindByCarNumber(number);
+		System.out.println("找到的车记录" + car);
+
+		// 获取当前时间算出场时间
 		DateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 		Date currenime = new Date();
 		String currendate = df.format(currenime);
-		
-		
-		//先查询该车的正在停车的那条数据，然后改变状态成出场
-		List<Stopcartime> sctlist =stopcartimeBiz.FindSctByNumber(car.getC_id());
-		
-		HttpSession session = request.getSession();//获取session
-		
-		System.out.println(car.getC_id()+"ID下的所有停车记录："+sctlist);
-		
-		 result.put("code","200");//失败回调
-		
+
+		// 先查询该车的正在停车的那条数据，然后改变状态成出场
+		List<Stopcartime> sctlist = stopcartimeBiz.FindSctByNumber(car.getC_id());
+
+		HttpSession session = request.getSession();// 获取session
+
+		System.out.println(car.getC_id() + "ID下的所有停车记录：" + sctlist);
+
+		result.put("code", "200");// 失败回调
+
 		for (Stopcartime stopcartime : sctlist) {
-			
-			if(stopcartime.getPm_id()==1) {
-				
-				Stopcartime sct = new Stopcartime(2,currendate,stopcartime.getSct_id());
-				
-				//修改出场时间
+
+			if (stopcartime.getPm_id() == 1) {
+
+				Stopcartime sct = new Stopcartime(2, currendate, stopcartime.getSct_id());
+
+				// 修改出场时间
 				flag = stopcartimeBiz.UpdateSctTimeandState(sct);
-				
-				if(flag) {
-					
-					//查询该出场车辆的信息
+
+				Stopcartime stopct = stopcartimeBiz.FindByID(stopcartime.getSct_id());
+				System.err.println("stopct=" + stopct);
+				String fTime = stopct.getSct_starttime();
+				String oTime = stopct.getSct_overtime();
+				System.out.println("fTime=" + fTime + "oTime=" + oTime);
+				// 计算时间停车时间
+				SimpleDateFormat myFormatter = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
+				float m1 = 0;
+//				long mm = 0;
+				try {
+					float m2 = myFormatter.parse(oTime).getTime() - myFormatter.parse(fTime).getTime();
+					m1 = m2 / (60 * 60 * 1000);
+//					if(m1>=0&&m1<=0.5) {
+//						m1 = 0;
+//					}else if(m1>0.5&&m1<=1) {
+//						m1 = 1;
+//					}else {
+//						long m = myFormatter.parse(oTime).getTime() - myFormatter.parse(fTime).getTime();
+//						mm = m / (60 * 60 * 1000);
+//						m1 = mm;
+//					}
+				} catch (ParseException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				int i = (int)(m1+0.5);
+				System.out.println("相差时间: " + i);
+				Map<String, String> map = new HashMap<String, String>();
+				String time = "" + i;
+				System.out.println("time="+time);
+				map.put("time", time);
+				map.put("pmtype", "规则状态");
+				map.put("pmname", "启用");
+
+				// 查询计费规则
+				Countrules countrules = countrulesBiz.findCountrulRoleX(map);
+				if (countrules == null) {
+					countrules = countrulesBiz.findCountrulRoleEqualsX(map);
+				}
+				System.out.println("countrules=" + countrules);
+				// 根据查询的计费规则计算费用
+				int t = Integer.parseInt(time);
+				System.out.println("t=" + t);
+				String statime =""+0;
+				if(countrules.getCr_starttime().equals("0.5")) {
+					statime = ""+0;
+				}else {
+					statime = countrules.getCr_starttime();
+				}
+				int ftime = Integer.parseInt(statime);
+				System.out.println("ftime=" + ftime);
+				int money = countrules.getCr_fristmoney() + (t - ftime) * countrules.getCr_addmoney();
+				System.out.println("money=" + money);
+				Stopcartime sctz = new Stopcartime(stopcartime.getSct_id(), money);
+				System.out.println("sctz=" + sctz);
+				flag = stopcartimeBiz.UpdateSctMoneyX(sctz);
+				if (flag) {
+					Param param = new Param("白名单", "车辆角色");
+					Param param1 = paramBiz.GetPmIDByTypeNmaeX(param);
+					Param param2 = new Param("注册会员", "车辆角色");
+					Param param22 = paramBiz.GetPmIDByTypeNmaeX(param2);
+					Param param3 = new Param("包月套餐", "车辆角色");
+					Param param33 = paramBiz.GetPmIDByTypeNmaeX(param3);
+					Param param4 = new Param("临时车辆", "车辆角色");
+					Param param44 = paramBiz.GetPmIDByTypeNmaeX(param4);
+					// 查找该车牌是否已经有记录
+					Car car1 = carBiz.FindByCarNumber(number);
+					System.out.println("查询车辆信息" + car1);
+					if (car1.getPm_id() == param1.getPm_id()) {
+						System.out.println("-------这货是白名单，放他走!!!-------");
+					} else if (car1.getPm_id() == param22.getPm_id()) {
+						Car car2 = carBiz.findCustCarNumberByCarIDX(car1.getC_id());
+						List<Vip> Viplist = vipBiz.findVipX(20);
+						if (Viplist != null && Viplist.size() != 0) {
+							System.out.println("-------这货曾经是月缴会员快提醒他续费充值!!!-------");
+						} else {
+							System.out.println("-------这货没充过月缴会员，你也可以提醒他充值哦!!!-------");
+						}
+						if (car2.getCust().getCust_money() >= money) {
+							int money2 = car2.getCust().getCust_money() - money;
+							Cust cust = new Cust(car2.getCust().getCust_id(), money2);
+							boolean flag2 = custBiz.chageCustMoneyByIDX(cust);
+							System.out.println("flag2=" + flag2);
+							if (flag2 == true) {
+								System.out.println("-------这货是注册会员卡里有钱自动扣掉，放他走!!!-------");
+							} else {
+								System.out.println("-------这货是注册会员卡里有钱自动扣掉的时候发生了以外，扣除失败了!!!-------");
+							}
+						} else {
+							System.out.println("-------这货是注册会员卡里钱不够 ，不放!!!-------");
+						}
+					} else if (car1.getPm_id() == param33.getPm_id()) {
+						System.out.println("-------这货是月缴会员，放他走!!!-------");
+					} else if (car1.getPm_id() == param44.getPm_id()) {
+						System.out.println("-------这货要交钱的 ，不放!!!-------");
+					}
+					// 查询该出场车辆的信息
 					Stopcartime sct2 = stopcartimeBiz.FindByID(stopcartime.getSct_id());
-					
-					//该信息传输到页面
+					// 该信息传输到页面
 					session.setAttribute("Stopkxj", sct2);
-					
-					 result.put("code","200");
-					
+					result.put("code", "200");
 					System.out.println("——————————————修改出场时间成功————————————————————————");
-					
 				}
 			}
 		}
-		
-		
-	
 		session.setAttribute("Carkxj", car);
-		
-		
-		
 		return result;
 	}
 
-	
-	
-	
-	
-	
 	/**
 	 * 根据文件路径读取byte[] 数组
 	 */

@@ -18,4 +18,10 @@ public class ParamBizImpl implements ParamBiz{
 	@Resource
 	private ParamMapper paramMapper;
 
+	@Override
+	public Param GetPmIDByTypeNmaeX(Param param) {
+		// TODO Auto-generated method stub
+		return paramMapper.GetPmIDByTypeNmaeX(param);
+	}
+
 }

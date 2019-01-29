@@ -14,7 +14,6 @@ public class Param {
 	private int pm_id;// id(主键)
 	private String pm_name;// 参数名称
 	private String pm_type;// 参数类型
-	private Cust cust;// 客户CUST表
 
 	public Param() {
 		super();
@@ -33,17 +32,9 @@ public class Param {
 		this.pm_type = pm_type;
 	}
 
-	public Param(int pm_id, String pm_name, String pm_type, Cust cust) {
-		super();
-		this.pm_id = pm_id;
-		this.pm_name = pm_name;
-		this.pm_type = pm_type;
-		this.cust = cust;
-	}
-
 	@Override
 	public String toString() {
-		return "Param [pm_id=" + pm_id + ", pm_name=" + pm_name + ", pm_type=" + pm_type + ", cust=" + cust + "]";
+		return "Param [pm_id=" + pm_id + ", pm_name=" + pm_name + ", pm_type=" + pm_type + "]";
 	}
 
 	public int getPm_id() {
@@ -70,11 +61,4 @@ public class Param {
 		this.pm_type = pm_type;
 	}
 
-	public Cust getCust() {
-		return cust;
-	}
-
-	public void setCust(Cust cust) {
-		this.cust = cust;
-	}
 }
