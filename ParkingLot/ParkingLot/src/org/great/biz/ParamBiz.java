@@ -10,4 +10,8 @@ import org.great.bean.Param;
  *
  */
 public interface ParamBiz {
+	
+	public List<Param> getParamList();
+	
+	public Param getParamObject(String id);
 }

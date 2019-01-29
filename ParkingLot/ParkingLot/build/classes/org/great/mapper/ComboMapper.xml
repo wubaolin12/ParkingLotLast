@@ -14,4 +14,26 @@
 		select * from tb_combo where co_id = #{id}
 	</select>
 
+	<select id="getComboObject"  parameterType="String" resultType="org.great.bean.Combo">
+		select * from tb_combo where co_id = #{id}
+	</select>
+
+	<select id="seachCombo"  resultType="org.great.bean.Combo" parameterType="java.util.Map">
+			<if test="dataMap!=null">
+			 select cc.* from
+			</if>			
+				(select * from tb_combo ORDER BY '' DESC )
+ 			<if test="dataMap!=null">
+ 				cc
+ 			</if>
+ 			<where>
+ 				<if test="dataMap!=null">				
+				<foreach collection="dataMap.keys"  item="key" separator="or"  >      	    
+         	  	 ${key} like  "%"#{dataMap[${key}]}"%"
+        		   
+        		 </foreach>    		
+        		 </if>
+        	 </where> 	
+		</select>
+
 </mapper>

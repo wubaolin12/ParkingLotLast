@@ -5,6 +5,27 @@
 
 <mapper namespace="org.great.mapper.LogMapper">
 
-	
+	<select id="logList" resultType="org.great.bean.Log">
+		select * from tb_log
+	</select>
 
+
+
+		<select id="seachLog"  resultType="org.great.bean.Log" parameterType="java.util.Map">
+			<if test="dataMap!=null">
+			 select cc.* from
+			</if>			
+				(select * from tb_log ORDER BY '' DESC )
+ 			<if test="dataMap!=null">
+ 				cc
+ 			</if>
+ 			<where>
+ 				<if test="dataMap!=null">				
+				<foreach collection="dataMap.keys"  item="key" separator="or"  >      	    
+         	  	 ${key} like  "%"#{dataMap[${key}]}"%"
+        		   
+        		 </foreach>    		
+        		 </if>
+        	 </where> 	
+		</select>
 </mapper>

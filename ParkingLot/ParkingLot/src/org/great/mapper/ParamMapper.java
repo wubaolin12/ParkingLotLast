@@ -14,4 +14,13 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface ParamMapper {
 
+	/**
+	 * 参数列表
+	 * @return
+	 * @author ASUS yf
+	 */
+	public List<Param> paramList();
+	
+	public Param getParamObject(@org.apache.ibatis.annotations.Param("pm_id")String id);
+	
 }

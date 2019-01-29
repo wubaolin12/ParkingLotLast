@@ -30,17 +30,17 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <script type="text/javascript" src="lib/DD_belatedPNG_0.0.8a-min.js" ></script>
 <script>DD_belatedPNG.fix('*');</script>
 <![endif]-->
-<title>菜单管理</title>
+<title>角色管理</title>
 </head>
 <body>
 <nav class="breadcrumb"><i class="Hui-iconfont">&#xe67f;</i> 首页 <span class="c-gray en">&gt;</span> 用户中心 <span class="c-gray en">&gt;</span> 用户管理 <a class="btn btn-success radius r" style="line-height:1.6em;margin-top:3px" href="javascript:location.replace(location.href);" title="刷新" ><i class="Hui-iconfont">&#xe68f;</i></a></nav>
 <div class="page-container">
-	<form action="seachmenuList.action">
+	<form action="seachroleList.action">
 		<input type="text" class="input-text" style="width:250px" placeholder="输入菜单名称/ID/路径" id="" name="seachword">
 		<button type="submit" class="btn btn-success radius" id="" name=""><i class="Hui-iconfont">&#xe665;</i> 搜菜单</button>
 	</form>
 	</div>
-	<div class="cl pd-5 bg-1 bk-gray mt-20"> <span class="l"><a href="javascript:;" onclick="datadel()" class="btn btn-danger radius"><i class="Hui-iconfont">&#xe6e2;</i> 批量删除</a> <a href="javascript:;" onclick="member_add('添加用户','toInsertMenu.action','','510')" class="btn btn-primary radius"><i class="Hui-iconfont">&#xe600;</i> 添加菜单</a></span> </div>
+	<div class="cl pd-5 bg-1 bk-gray mt-20"> <span class="l"><a href="javascript:;" onclick="datadel()" class="btn btn-danger radius"><i class="Hui-iconfont">&#xe6e2;</i> 批量删除</a> <a href="javascript:;" onclick="member_add('添加用户','toInsertRole.action','','510')" class="btn btn-primary radius"><i class="Hui-iconfont">&#xe600;</i> 添加菜单</a></span> </div>
 	<div class="mt-20">
 	<table class="table table-border table-bordered table-hover table-bg table-sort">
 		<thead>
@@ -48,35 +48,32 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			<tr class="text-c">
 				<th width="25"><input type="checkbox" name="" value=""></th>
 				<th width="40">ID</th>
-				<th width="90">菜单名</th>
-				<th width="150">菜单路径</th>
-				<th width="90">上级菜单id</th>
+				<th width="90">角色名</th>
+			
+				
 
 				<th width="100">操作</th>
 			</tr>
 		</thead>
 		<tbody>
-		<c:forEach items="${mlist}" var="ul" varStatus="uu">
+		<c:forEach items="${rlist}" var="ul" varStatus="uu">
 			<tr class="text-c">
 				<td><input type="checkbox" value="1" name=""></td>
-				<td>${ul.menu_id}</td>
-				<td>${ul.menu_name}</td>
-				<td>${ul.menu_link}</td>
-				<td>${ul.menu_pid}</td>
-				
+				<td>${ul.role_id}</td>
+				<td>${ul.role_name}</td>
+	
 				<td class="td-manage">
 				
-				<a title="编辑" href="javascript:;" onclick="admin_edit('菜单编辑','toUpdateMenu.action?menu_id=${ul.menu_id}','${ul.menu_id}','800','500')" class="ml-5" style="text-decoration:none"><i class="Hui-iconfont">&#xe6df;</i></a>
-<%-- 				<c:if test="">
+				<a title="编辑" href="javascript:;" onclick="admin_edit('菜单编辑','toUpdateRole.action?role_id=${ul.role_id}','${ul.role_id}','800','500')" class="ml-5" style="text-decoration:none"><i class="Hui-iconfont">&#xe6df;</i></a>
+				 <c:if test="${ul.role_name!='收费员'}">
 					 <a title="删除" href="javascript:;" onclick="admin_del(this,'1')" class="ml-5" style="text-decoration:none"><i class="Hui-iconfont">&#xe6e2;</i></a>
-					
-				</c:if> --%>
-				 
+				 </c:if>
+				<c:if test="${ul.role_name!='管理员'}">
+					 <a title="删除" href="javascript:;" onclick="admin_del(this,'1')" class="ml-5" style="text-decoration:none"><i class="Hui-iconfont">&#xe6e2;</i></a>
+				 </c:if>
 				 
 				 </td>
-			
- 				
- 				</tr>
+			</tr>
 		</c:forEach>
 		</tbody>
 		

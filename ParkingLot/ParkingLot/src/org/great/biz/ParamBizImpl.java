@@ -18,4 +18,23 @@ public class ParamBizImpl implements ParamBiz{
 	@Resource
 	private ParamMapper paramMapper;
 
+	/**参数列表
+	 * @author ASUS yf
+	 */
+	@Override
+	public List<Param> getParamList() {
+		// TODO Auto-generated method stub
+		return paramMapper.paramList();
+	}
+
+	
+	/**获取参数对象
+	 * @author ASUS yf
+	 */
+	@Override
+	public Param getParamObject(String id) {
+		// TODO Auto-generated method stub
+		return paramMapper.getParamObject(id);
+	}
+
 }

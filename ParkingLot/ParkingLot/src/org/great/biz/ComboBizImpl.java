@@ -1,6 +1,7 @@
 package org.great.biz;
 
 import java.util.List;
+import java.util.Map;
 
 import javax.annotation.Resource;
 
@@ -27,6 +28,16 @@ public class ComboBizImpl implements ComboBiz{
 	public Combo FindComboByIDX(int id) {
 		// TODO Auto-generated method stub
 		return comBoMapper.FindComboByIDX(id);
+	}
+	@Override
+	public Combo getComboObject(String id) {
+		// TODO Auto-generated method stub
+		return comBoMapper.getComboObject(id);
+	}
+	@Override
+	public List<Combo> seachCombo(Map map) {
+		// TODO Auto-generated method stub
+		return comBoMapper.seachCombo(map);
 	}
 
 }

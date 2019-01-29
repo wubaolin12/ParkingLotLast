@@ -11,36 +11,30 @@ import javax.servlet.http.HttpServletResponse;
 import org.great.bean.Menu;
 import org.great.bean.Role;
 import org.great.biz.BaseBiz;
-import org.great.biz.MenuBiz;
 import org.great.biz.RoleBiz;
-import org.great.util.BaseUtil;
+import org.great.util.BizCup;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-
 /**
- * 菜单管理handle
- * @author yf
+ * 角色管理类型
+ * @author ASUS_yf
  *
  */
 @Controller
 @Scope("prototype")
-@RequestMapping("/menumanage")
-public class MenuHandler extends BaseUtil{
-	
-	
-	@Resource
-	private BaseBiz bbiz;
-	@Resource
-	private MenuBiz mbiz;
+@RequestMapping("/rolemanage")
+public class RoleHandler {
 	@Resource
 	private RoleBiz rbiz;
+	@Resource
+	private BaseBiz bbiz;
+	@Value("tb_role")
+	private String tb_name;
 	
 	private String result;
-	@Value("tb_menu")
-	private String tb_name;
 	
 	/**
 	 * 跳转修改菜单页面
@@ -48,17 +42,19 @@ public class MenuHandler extends BaseUtil{
 	 * @return
 	 * @author ASUS——yf
 	 */
-	@RequestMapping("/toUpdateMenu.action")
+	@RequestMapping("/toUpdateRole.action")
 	public String toUpdateMenu(HttpServletRequest request) 
 	{
 		
-		String id=request.getParameter("menu_id");
-		System.out.println("-----MenuHandler,toUpdateMenu++ID="+id);
+		String id=request.getParameter("role_id");
+		System.out.println("-----MenuHandler,toUpdaterole++ID="+id);
 		
-		Menu menu=mbiz.getMenuObject(id);
-		request.setAttribute("menuObject", menu);			
+	//	Menu menu=mbiz.getMenuObject(id);
+	//	request.setAttribute("menuObject", menu);			
 		
-		result="update-menu";
+		Role role=rbiz.getRoleObject(id);
+		request.setAttribute("roleObject", role);
+		result="update-role";
 		return result;
 		
 	}
@@ -69,17 +65,12 @@ public class MenuHandler extends BaseUtil{
 	 * @return
 	 * @author ASUS——yf
 	 */	
-	@RequestMapping("/toInsertMenu.action")
+	@RequestMapping("/toInsertRole.action")
 	public String toInsertMenu(HttpServletRequest request) 
 	{
-		
-		String id=request.getParameter("menu_id");
-		System.out.println("-----MenuHandler,toInsertMenu");
-		
-		List<Role> rlist=rbiz.findAll();
-		request.setAttribute("rlist", rlist);
-		
-		result="add-menu";
+		System.out.println("-----MenuHandler,toInsertrole");
+
+		result="add-role";
 		return result;
 		
 	}
@@ -92,16 +83,16 @@ public class MenuHandler extends BaseUtil{
 	 * @return
 	 * @author ASUSyf
 	 */
-	@RequestMapping("/menuList.action")
-	public String menuList(HttpServletRequest request, HttpServletResponse resp) 
+	@RequestMapping("/roleList.action")
+	public String roleList(HttpServletRequest request, HttpServletResponse resp) 
 	{
-		System.out.println("-----MenuHandler,ulist");
+		System.out.println("-----RoleHandler,rlist");
 		
-		List<Menu> mlist=mbiz.getMenuList();
+		List<Role> rlist=rbiz.findAll();
 		
-		request.setAttribute("mlist", mlist);
+		request.setAttribute("rlist", rlist);
 		
-		result="menu-list";
+		result="role-list";
 		return result;
 		
 	}
@@ -113,19 +104,18 @@ public class MenuHandler extends BaseUtil{
 	 * @return
 	 * @author ASUS_YF
 	 */
-	@RequestMapping("/seachmenuList.action")
+	@RequestMapping("/seachroleList.action")
 	public String seachmenuList(HttpServletRequest request,@RequestParam Map<String,String> map) 
 	{
-		System.out.println("-----MenuHandler,seachmenuList");
+		System.out.println("-----roleHandler,seachmenuList");
 		
-		map.put("menu_id", map.get("seachword"));
-		map.put("menu_name", map.get("seachword"));
-		map.put("menu_link", map.get("seachword"));
+		map.put("role_name", map.get("seachword"));
+		
 		map.remove("seachword");
 		
-		List<Menu> mlist=mbiz.seachMenu(map);
+		//List<Menu> mlist=mbiz.seachMenu(map);
 		
-		request.setAttribute("mlist", mlist);
+		//request.setAttribute("mlist", mlist);
 		
 		result="menu-list";
 		return result;
@@ -139,26 +129,16 @@ public class MenuHandler extends BaseUtil{
 	 * @return
 	 * @author ASUS_yf
 	 */
-	@RequestMapping("/insertMenu.action")
+	@RequestMapping("/insertRole.action")
 	public String insertMenu(HttpServletRequest request,@RequestParam Map<String,String> map) 
 	{
-		System.out.println("-----MenuHandler,insertMenu");
+		System.out.println("-----roleHandler,insertMenu");
 		
-		Map rmap=new HashMap<>();
-		rmap.put("role_id", map.get("role_id"));
-		map.remove("role_id");
-		
-		Map kmap=new HashMap<>();
-		kmap.put("id", null);
-		
-		int num =bbiz.insertData(tb_name, map,kmap);
-		
-		rmap.put("menu_id",kmap.get("id"));
-		System.out.println("--------MEnu getMenuID"+kmap);
-		int num2=bbiz.insertData("role_menu", rmap,null);	
+
+		int num=bbiz.insertData(tb_name, map,null);	
 		
 		
-		if(num>0&&num2>0) {
+		if(num>0) {
 			result="success";
 		}else {
 			result="error";
@@ -174,13 +154,13 @@ public class MenuHandler extends BaseUtil{
 	 * @return
 	 * @author ASUS_YF
 	 */
-	@RequestMapping("/updateMenu.action")
+	@RequestMapping("/updateRole.action")
 	public String updateMenu(HttpServletRequest request,@RequestParam Map<String,String> map) 
 	{
-		String id=request.getParameter("menu_id");
-		System.out.println("-----MenuHandler,updateMenu"+id);
+		String id=request.getParameter("role_id");
+		System.out.println("-----roleHandler,updaterole"+id);
 		
-		int num=bbiz.updateData(tb_name, map, "menu_id", id);
+		int num=bbiz.updateData(tb_name, map, "role_id", id);
 					
 		
 		if(num>0) {
@@ -198,13 +178,13 @@ public class MenuHandler extends BaseUtil{
 	 * @return
 	 * @author ASUS_yf
 	 */
-	@RequestMapping("/delMenu.action")
+	@RequestMapping("/delRole.action")
 	public String delMenu(HttpServletRequest request) 
 	{
-		System.out.println("-----MenuHandler,delMenu");
-		String id=request.getParameter("menu_id");
+		System.out.println("-----roleHandler,delrole");
+		String id=request.getParameter("role_id");
 		Map map=new HashMap<>();
-		map.put("menu_id", id);
+		map.put("role_id", id);
 		
 		int num=bbiz.delData(tb_name, map);
 					

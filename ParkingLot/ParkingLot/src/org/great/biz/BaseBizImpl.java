@@ -172,18 +172,30 @@ public class BaseBizImpl implements BaseBiz{
 		return num;
 	}
 
+	/**
+	 * 插入数据的方法2.0
+	 * @author ASUS yf
+	 */
 	@Override
 	public int insertData(String tb_name, Map map,Map keymap) {
 		// TODO Auto-generated method stub
 		return mapper.insertData(map,keymap, tb_name);
 	}
 
+	/**
+	 * 更新数据的方法2.0
+	 * @author ASUS yf
+	 */
 	@Override
 	public int updateData(String tb_name, Map map,String keykol,String id) {
 		// TODO Auto-generated method stub
 		return mapper.updateData(map, tb_name, keykol, id);
 	}
 
+	/**
+	 *删除数据的方法2.0
+	 * @author ASUS yf
+	 */
 	@Override
 	public int delData(String tb_name, Map map) {
 		// TODO Auto-generated method stub

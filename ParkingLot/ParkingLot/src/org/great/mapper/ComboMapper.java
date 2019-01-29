@@ -1,7 +1,9 @@
 package org.great.mapper;
 
 import java.util.List;
+import java.util.Map;
 
+import org.apache.ibatis.annotations.Param;
 import org.great.bean.Combo;
 import org.springframework.stereotype.Repository;
 
@@ -23,4 +25,8 @@ public interface ComboMapper {
 	 * 根据主键查套餐信息 -->
 	 */
 	public Combo  FindComboByIDX(int id);
+	
+	public Combo  getComboObject(String id);
+	
+	public List<Combo> seachCombo(@Param("dataMap")Map map);
 }

@@ -43,4 +43,10 @@ public class RoleBizImpl implements RoleBiz{
 		return roleList;
 	}
 
+	@Override
+	public Role getRoleObject(String id) {
+		// TODO Auto-generated method stub
+		return roleMapper.getRoleObject(id);
+	}
+
 }
