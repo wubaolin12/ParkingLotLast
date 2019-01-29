@@ -42,12 +42,6 @@ public class Car implements Serializable {
 	public Car() {
 		super();
 	}
-<<<<<<< HEAD
-	public Car(String c_num) {
-		super();
-		this.c_num = c_num;
-	}
-=======
 
 	public Car(int pm_id, String c_num) {
 		super();
@@ -62,7 +56,6 @@ public class Car implements Serializable {
 		this.c_num = c_num;
 	}
 
->>>>>>> a24c4ecf6084e038638e38f0ce04d91681ca2d41
 	public Car(int c_id, int cust_id, int pm_id, String c_num, String c_null1, String rownum) {
 		super();
 		this.c_id = c_id;
