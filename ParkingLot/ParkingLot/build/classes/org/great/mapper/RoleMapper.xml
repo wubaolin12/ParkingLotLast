@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN" 
+"http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
+
+
+<mapper namespace="org.great.mapper.RoleMapper">
+
+	<select id="findAll" resultType="org.great.bean.Role">
+		select * from tb_role
+	</select>
+
+	<select id=" getRole" parameterType="String" resultType="org.great.bean.Role">
+ 		${value}
+	</select>
+	
+	<select id="findElse" parameterType="String" resultType="org.great.bean.Role">
+		SELECT a.* FROM tb_role a LEFT JOIN  (SELECT * from staff_rel where u_id=#{id})  b ON a.role_id =b.role_id WHERE b.role_id IS NULL 
+	</select>
+
+</mapper>

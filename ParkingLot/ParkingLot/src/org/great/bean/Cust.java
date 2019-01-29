@@ -1,5 +1,6 @@
 package org.great.bean;
 
+import java.io.Serializable;
 import java.util.List;
 
 import org.springframework.stereotype.Component;
@@ -11,7 +12,7 @@ import org.springframework.stereotype.Component;
  *
  */
 @Component
-public class Cust {
+public class Cust implements Serializable{
 
 	private int cust_id;// id(主键)
 	private int pm_id;// 用户状态
