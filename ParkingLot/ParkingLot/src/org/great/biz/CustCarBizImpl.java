@@ -33,5 +33,24 @@ public class CustCarBizImpl implements CustCarBiz {
 		// TODO Auto-generated method stub
 		return custCarMapper.cancleVip(c_id);
 	}
+	
+	//检索车辆添加白名单-检查
+	@Override
+	public Car selectNum(String carNum) {
+		// TODO Auto-generated method stub
+		return custCarMapper.selectNum(carNum);
+	}
+	//检索车辆添加白名单-添加
+	@Override
+	public boolean addWriteCar(String carNum) {
+		// TODO Auto-generated method stub
+		return custCarMapper.addWriteCar(carNum);
+	}
+
+	@Override
+	public List<Cust> queryWriteList(String c_num) {
+		// TODO Auto-generated method stub
+		return custCarMapper.queryWriteList(c_num);
+	}
 
 }

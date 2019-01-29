@@ -25,6 +25,10 @@ public class Car implements Serializable {
 	public Car() {
 		super();
 	}
+	public Car(String c_num) {
+		super();
+		this.c_num = c_num;
+	}
 	public Car(int c_id, int cust_id, int pm_id, String c_num, String c_null1, String rownum) {
 		super();
 		this.c_id = c_id;
