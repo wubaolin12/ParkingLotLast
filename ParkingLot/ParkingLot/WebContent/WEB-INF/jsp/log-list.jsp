@@ -52,6 +52,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				<th width="90">用户ID</th>
 				<th width="90">日期</th>
 				<th width="100">事件</th>
+				<th width="90">操作类型</th>
+				<th width="90">操作IP</th>
 			</tr>
 		</thead>
 		<tbody>
@@ -62,7 +64,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				<td>${ul.u_id}</td>
 				<td>${ul.log_date}</td>
 				<td>${ul.log_event}</td>
-				<td>${ul.u_id}</td>
+				<td>${ul.log_type}</td>
+				<td>${ul.log_ip}</td>
 
 			</tr>
 		</c:forEach>

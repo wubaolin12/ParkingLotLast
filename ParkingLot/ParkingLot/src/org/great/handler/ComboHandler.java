@@ -33,7 +33,7 @@ public class ComboHandler {
 	
 	@Resource
 	private BaseBiz bbiz;
-	@Value("tb_comno")
+	@Value("tb_combo")
 	private String tb_name;
 	
 	private String result;
@@ -53,7 +53,7 @@ public class ComboHandler {
 
 		Combo combo=cbiz.getComboObject(id);
 		request.setAttribute("comboObject", combo);
-		result="update-combo";
+		result="combo/update-combo";
 		return result;
 		
 	}
@@ -69,7 +69,7 @@ public class ComboHandler {
 	{
 		System.out.println("-----ComboHandler,toInsertCombo");
 
-		result="add-combo";
+		result="combo/add-combo";
 		return result;
 		
 	}
@@ -91,7 +91,7 @@ public class ComboHandler {
 		
 		request.setAttribute("clist", clist);
 		
-		result="combo-list";
+		result="combo/combo-list";
 		return result;
 		
 	}
@@ -115,7 +115,7 @@ public class ComboHandler {
 		map.remove("seachword");
 
 		
-		result="combo-list";
+		result="combo/combo-list";
 		return result;
 		
 	}
@@ -155,7 +155,7 @@ public class ComboHandler {
 	@RequestMapping("/updateCombo.action")
 	public String updateCombo(HttpServletRequest request,@RequestParam Map<String,String> map) 
 	{
-		String id=request.getParameter("role_id");
+		String id=request.getParameter("co_id");
 		System.out.println("-----updateComboHandler,updateCombo"+id);
 		
 		int num=bbiz.updateData(tb_name, map, "co_id", id);
