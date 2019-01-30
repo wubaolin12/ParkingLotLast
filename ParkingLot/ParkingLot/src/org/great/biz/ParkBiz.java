@@ -14,4 +14,13 @@ public interface ParkBiz {
 	public List<Park> FindList(Park park);
 	public List<Park> FindAll(Park park);
 	public boolean setState(Park park);
+	public List<Park> FindGroup();
+	public List<Park> FindMapID(String id);
+	public List<Park> FindForeAndNum(Park park);
+	public Park FindByID(String id);
+	public boolean UpdatePark(Park park);
+	public int EmptyCount(String p_fore);
+	public int OccupiedCount(String p_fore);
+	public int EmptyCount_close(String p_fore);
+
 }
