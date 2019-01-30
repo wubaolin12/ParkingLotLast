@@ -12,8 +12,8 @@ public class Park {
 	private String p_fore;// 车位前缀
 	private int p_num;// 车位号码
 	private String p_state;// 维护状态  ，有“维护”、“开放”
-	private String p_null2;// 空字段
-	private String p_null3;// 空字段
+	private String p_mapid;// 地图id
+	private String p_imgpath;// 图片地址
 	private Car car;
 	private Param param;
 	private String c_num;
@@ -33,8 +33,8 @@ public class Park {
 		this.p_id = p_id;
 		this.p_state = p_state;
 	}
-	public Park(int p_id, int pm_id, int c_id, String p_fore, int p_num, String p_state, String p_null2,
-			String p_null3) {
+	public Park(int p_id, int pm_id, int c_id, String p_fore, int p_num, String p_state, String p_mapid,
+			String p_imgpath) {
 		super();
 		this.p_id = p_id;
 		this.pm_id = pm_id;
@@ -42,8 +42,8 @@ public class Park {
 		this.p_fore = p_fore;
 		this.p_num = p_num;
 		this.p_state = p_state;
-		this.p_null2 = p_null2;
-		this.p_null3 = p_null3;
+		this.p_mapid = p_mapid;
+		this.p_imgpath = p_imgpath;
 	}
 	
 	public Park(int pm_id, String p_fore, int p_num, String p_state, String c_num) {
@@ -54,7 +54,7 @@ public class Park {
 		this.p_state = p_state;
 		this.c_num = c_num;
 	}
-	public Park(int p_id, int pm_id, int c_id, String p_fore, int p_num, String p_state, String p_null2, String p_null3,
+	public Park(int p_id, int pm_id, int c_id, String p_fore, int p_num, String p_state, String p_mapid, String p_imgpath,
 			Car car, Param param, String c_num) {
 		super();
 		this.p_id = p_id;
@@ -63,8 +63,8 @@ public class Park {
 		this.p_fore = p_fore;
 		this.p_num = p_num;
 		this.p_state = p_state;
-		this.p_null2 = p_null2;
-		this.p_null3 = p_null3;
+		this.p_mapid = p_mapid;
+		this.p_imgpath = p_imgpath;
 		this.car = car;
 		this.param = param;
 		this.c_num = c_num;
@@ -112,17 +112,17 @@ public class Park {
 	public void setP_state(String p_state) {
 		this.p_state = p_state;
 	}
-	public String getP_null2() {
-		return p_null2;
+	public String getP_mapid() {
+		return p_mapid;
 	}
-	public void setP_null2(String p_null2) {
-		this.p_null2 = p_null2;
+	public void setP_mapid(String p_mapid) {
+		this.p_mapid = p_mapid;
 	}
-	public String getP_null3() {
-		return p_null3;
+	public String getP_imgpath() {
+		return p_imgpath;
 	}
-	public void setP_null3(String p_null3) {
-		this.p_null3 = p_null3;
+	public void setP_imgpath(String p_imgpath) {
+		this.p_imgpath = p_imgpath;
 	}
 	
 	public Car getCar() {
@@ -140,7 +140,7 @@ public class Park {
 	@Override
 	public String toString() {
 		return "Park [p_id=" + p_id + ", pm_id=" + pm_id + ", c_id=" + c_id + ", p_fore=" + p_fore + ", p_num=" + p_num
-				+ ", p_state=" + p_state + ", p_null2=" + p_null2 + ", p_null3=" + p_null3 + ", car=" + car + ", param="
+				+ ", p_state=" + p_state + ", p_mapid=" + p_mapid + ", p_imgpath=" + p_imgpath + ", car=" + car + ", param="
 				+ param + ", c_num=" + c_num + "]";
 	}
 	

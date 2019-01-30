@@ -22,5 +22,17 @@ public interface ParkMapper {
 	 * 初始化查询所有列表
 	 */
 	public List<Park> FindAll(Park park);
-	public int setState(Park park);
+	public int SetState(Park park);
+	/*
+	 * 找车区分组
+	 */
+	public List<Park> FindGroup();
+	public List<Park> FindMapID(String id);
+	public List<Park> FindForeAndNum(Park park);
+	public Park FindByID(String id);
+	
+	public int UpdatePark(Park park);
+	public int EmptyCount(String p_fore);
+	public int OccupiedCount(String p_fore);
+	public int EmptyCount_close(String p_fore);
 }

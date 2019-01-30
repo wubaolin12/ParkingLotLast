@@ -48,7 +48,8 @@ public class LoginInterceptor implements HandlerInterceptor {
 		String token = CookieUtils.getCookieValue(request, "PL_TOKEN");
 		String json = jedisClient.get("USER_SESSION:"+token);
 		
-		System.out.println("----登录拦截-----json=="+token);
+		System.out.println("----登录拦截-----token=="+token);
+		System.out.println("----登录拦截-----json=="+json);
 
 		if (json != null && json.length()>0) {
 			

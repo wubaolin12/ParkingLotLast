@@ -35,12 +35,12 @@ String path=request.getScheme()+"://"+request.getServerName()+":"+
 <script type="text/javascript" src="lib/DD_belatedPNG_0.0.8a-min.js" ></script>
 <script>DD_belatedPNG.fix('*');</script>
 <![endif]-->
-<title>车位管理</title>
+<title>停车场车辆查看</title>
 </head>
 <body>
 	<nav class="breadcrumb">
 		<i class="Hui-iconfont">&#xe67f;</i> 首页 <span class="c-gray en">&gt;</span>
-		用户中心 <span class="c-gray en">&gt;</span> 车位管理 <a
+		用户中心 <span class="c-gray en">&gt;</span> 停车场车辆查看 <a
 			class="btn btn-success radius r"
 			style="line-height: 1.6em; margin-top: 3px"
 			href="javascript:location.replace(location.href);" title="刷新"><i
@@ -75,22 +75,24 @@ String path=request.getScheme()+"://"+request.getServerName()+":"+
 			</select>
 			</span> </div>
 		</div>
-
+		<div>
+		<label class="form-label col-xs-4 col-sm-3">车牌号：</label>
+		
+		<input type="text" class="input-text" style="width: 250px"
+				placeholder="只输入一个x 视为空车牌" id="c_num" name="c_num"></div>
 			<div>		
 		<label class="form-label col-xs-4 col-sm-3">车位号：</label>
 		
 		<input type="text" class="input-text" style="width: 250px"
 				placeholder="输入车位号(纯数字)" id="p_num" name="p_num"></div>
 			<div align="right">
-			<button type="submit" class="btn btn-success radius" id="findPark" name="findPark" onclick="findPark()">
-				
-				<i class="Hui-iconfont">&#xe665;</i> 搜车位
-			</button></div>
-			<br/>
-			<div class="col-xs-8 col-sm-9 col-xs-offset-4 col-sm-offset-3" align="right">
-			<input class="btn btn-primary radius" type="button" value="增加车位" onclick="addPark()">
+				<button type="submit" class="btn btn-success radius" id="findPark" name="findPark" onclick="findPark()">
+					
+					<i class="Hui-iconfont">&#xe665;</i> 搜车位
+				</button>
 			</div>
 			<br/>
+			
 		</div>
 		
 		<div class="mt-20">
@@ -103,7 +105,6 @@ String path=request.getScheme()+"://"+request.getServerName()+":"+
 						<th width="101">车辆车牌号</th>
 						<th width="102">车位区号</th>
 						<th width="150">车位号</th>
-						<th width="150">地图ID</th>
 						<th width="149">维护状态</th>
 						<th width="314">选项</th>
 					</tr>
@@ -119,13 +120,9 @@ String path=request.getScheme()+"://"+request.getServerName()+":"+
 							    <c:if test="${ c.car!=null}">${c.car.c_num}</c:if></td>
 							<td>${c.p_fore}</td>
 							<td>${c.p_num}</td>
-							<td>${c.p_mapid}</td>
 							<td>${c.p_state}</td>
 							<td>
-							<c:if test="${c.p_state.equals('开放')&&c.car==null}"><a href="javascript:SetParkState('维护',${c.p_id})">维护</a></c:if>
-							<c:if test="${c.p_state.equals('维护')}"><a href="javascript:SetParkState('开放',${c.p_id})">开放</a></c:if>
-							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-							<a href="javascript:updatePark(${c.p_id})">修改</a>
+							<a href="javascript:look(${c.p_imgpath})">查看图片</a>
 							</td>
 						</tr>
 					</c:forEach>
@@ -276,30 +273,16 @@ String path=request.getScheme()+"://"+request.getServerName()+":"+
 			var p_stateV=document.getElementById("p_state").value;
 			var p_foreV=document.getElementById("p_fore").value;
 			var p_numV=document.getElementById("p_num").value;
+			var c_numV=document.getElementById("c_num").value;
 			
 			if(p_numV==''){
 				p_numV=parseInt('0');
 			}
-			location.href='<%=path%>park/findPark.action?p_num='+p_numV+
-					'&p_fore='+p_foreV+'&p_state='+p_stateV;
+			location.href='<%=path%>ParkView/findPark.action?p_num='+p_numV+
+					'&p_fore='+p_foreV+'&p_state='+p_stateV+'&c_num='+c_numV;
 		}
 		
-		function SetParkState(want,id){
-			  if(confirm("你确定要"+want+"此车位吗？")==true){
-					location.href='<%=path%>park/setState.action?p_id='+id+
-					'&want='+want;
-			}
-		}
 		
-		function addPark(){
-			location.href='<%=path%>park/jumpAdd.action';
-
-		}
-		function updatePark(id){
-			 if(confirm("你确定要修改此车位吗？")==true){
-					location.href='<%=path%>park/jumpUpdate.action?p_id='+id;
-			}
-		}
 	</script>
 </body>
 </html>
