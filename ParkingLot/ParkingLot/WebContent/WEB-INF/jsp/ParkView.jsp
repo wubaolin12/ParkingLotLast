@@ -92,10 +92,7 @@ String path=request.getScheme()+"://"+request.getServerName()+":"+
 				</button>
 			</div>
 			<br/>
-			<div class="col-xs-8 col-sm-9 col-xs-offset-4 col-sm-offset-3" align="right">
-				<input class="btn btn-primary radius" type="button" value="停车场实时状态查看" onclick="findState()">
-			</div>
-			<br/>
+			
 		</div>
 		
 		<div class="mt-20">
@@ -285,9 +282,7 @@ String path=request.getScheme()+"://"+request.getServerName()+":"+
 					'&p_fore='+p_foreV+'&p_state='+p_stateV+'&c_num='+c_numV;
 		}
 		
-		function findState(){
-			location.href='<%=path%>ParkView/jumpState.action';
-		}
+		
 	</script>
 </body>
 </html>

@@ -67,13 +67,7 @@ String path=request.getScheme()+"://"+request.getServerName()+":"+
 				</button>
 			</div>
 			<br/>
-			<div class="row cl" align="right">
-				<div class="col-xs-8 col-sm-9 col-xs-offset-4 col-sm-offset-3">
-					<input class="btn btn-primary radius" type="button"
-						value="&nbsp;&nbsp;返回&nbsp;&nbsp;" onclick="backList()">
-				</div>
-			</div>
-			<br/>
+			
 		</div>
 		
 		<div class="mt-20">
@@ -245,9 +239,7 @@ String path=request.getScheme()+"://"+request.getServerName()+":"+
 		}
 		
 		
-		function backList(){
-			location.href='<%=path%>ParkView/allList.action';
-		}
+	
 		
 	</script>
 </body>
