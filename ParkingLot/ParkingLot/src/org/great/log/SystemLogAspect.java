@@ -1,115 +1,194 @@
 package org.great.log;
 
 import java.lang.reflect.Method;
-import java.lang.reflect.Modifier;
-import java.util.Date;
-import java.util.UUID;
+import java.net.InetAddress;
 
+import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
+import org.apache.log4j.Logger;
 import org.aspectj.lang.JoinPoint;
+import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.After;
+import org.aspectj.lang.annotation.AfterThrowing;
+import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
 import org.aspectj.lang.annotation.Pointcut;
+import org.great.bean.Log;
+import org.great.bean.User;
+import org.great.biz.LogBiz;
+import org.great.util.DateTool;
 import org.springframework.stereotype.Component;
-
+import org.springframework.stereotype.Controller;
+import org.springframework.web.context.request.RequestContextHolder;
+import org.springframework.web.context.request.ServletRequestAttributes;
 
 /**
  * 日志切面
- * @author Administrator
+ * 
+ * @author 吴宝林
  *
  */
 @Aspect
 @Component
 public class SystemLogAspect {
+	
+	@Resource
+	LogBiz logBiz;
 
-	//�е�
-	@Pointcut("execution(* org.great.log..*.*(..))")
-	public void Controll(){
-		
-		
+	private static Logger logger = Logger.getLogger("zxtest");
+
+	/**
+	 * 切点，这里只拦截handler里面的操作
+	 */
+	@Pointcut("execution (* org.great.handler..*.*(..))")
+	public void controller() {
+	}
+
+	/**
+	 * 前置通知 用于拦截Controller层记录用户的操作
+	 * 
+	 * @param joinPoint 切点
+	 */
+	@Before("controller()")
+	public void doBefore(JoinPoint joinPoint) {
+		System.out.println("==========执行controller前置通知===============");
+
+		if (logger.isInfoEnabled()) {
+			logger.info("before " + joinPoint);
+		}
+	}
+
+	/**
+	 * 后置通知，记录日志
+	 * 
+	 * @param joinPoint
+	 */
+	@After("controller()")
+	public void after(JoinPoint joinPoint) {
+
+		HttpServletRequest request = ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes())
+				.getRequest();
+//		HttpSession session = request.getSession();
+
+		// 获取当前操作人
+//		User user = (User) session.getAttribute("User");
+		User user = (User) request.getAttribute("User");
+		// 获取操作人ip地址
+//		String ip = request.getRemoteAddr();
+
+		try {
+			// 获取操作人ip地址
+			InetAddress inet = InetAddress.getLocalHost();
+			String ip = inet.getHostAddress();
+			
+			//操作的类名
+			String targetName = joinPoint.getTarget().getClass().getName();
+			//操作的方法名
+			String methodName = joinPoint.getSignature().getName();
+			Object[] arguments = joinPoint.getArgs();
+			System.out.println(targetName + "~~~" + methodName + "~~~~" + arguments);
+			
+			//通过类名反射，获取类实例
+			Class targetclass = Class.forName(targetName);
+			Method[] methods = targetclass.getMethods();
+			String operationType = "";
+			String operationName = "";
+
+			for (Method method : methods) {
+				if (method.getName().equals(methodName)) {
+					Class[] clazzs = method.getParameterTypes();
+
+					if (clazzs.length == arguments.length) {
+						OperationLog operationLog = method.getAnnotation(OperationLog.class);
+						
+						//不需要记录操作记录的直接返回
+						if(operationLog==null) {
+							System.out.println("---该方法没有记录日志---");
+							return;
+						}
+						
+						operationType = operationLog.operationType();
+						operationName = operationLog.operationName();
+						break;
+					}
+				}
+				System.out.println("操作类型=" + operationType + "操作名=" + operationName);
+			}
+
+			// *========日志存储到数据库=========*//
+			Log log = new Log();
+			log.setLog_event(operationName);
+			log.setLog_type(operationType+ "." + 
+					(joinPoint.getTarget().getClass().getName() + "." 
+							+ joinPoint.getSignature().getName() + "()"));
+			log.setLog_ip(ip);
+			log.setU_id(user.getU_id());
+			log.setLog_date(DateTool.getTime());
+			
+			// 插入数据库
+			logBiz.addLog(log);  
+			System.out.println("=====controller记录日志成功=====");
+
+		} catch (Exception e) {
+			System.out.println("---------日志操作失败-------------");
+			e.printStackTrace();
+		}
 	}
 	
-	//��ǿǰ��֪ͨ
-	@Before("controll()")
-	  public void beforeMethod(JoinPoint joinPoint){
-		
-		System.out.println("Ŀ�귽����Ϊ:" + joinPoint.getSignature().getName());
-        System.out.println("Ŀ�귽��������ļ�����:" +        joinPoint.getSignature().getDeclaringType().getSimpleName());
-        System.out.println("Ŀ�귽�������������:" + joinPoint.getSignature().getDeclaringTypeName());
-        System.out.println("Ŀ�귽����������:" + Modifier.toString(joinPoint.getSignature().getModifiers()));
-        //��ȡ����Ŀ�귽���Ĳ���
-        Object[] args = joinPoint.getArgs();
-        for (int i = 0; i < args.length; i++) {
-            System.out.println("��" + (i+1) + "������Ϊ:" + args[i]);
-        }
-        System.out.println("������Ķ���:" + joinPoint.getTarget());
-        System.out.println("��������Լ�:" + joinPoint.getThis());
-	}
 	
-	//������ǿ
-	@After("controll()")
-	public void after(JoinPoint joinPoint){
+	@Around("controller()")
+	public Object around(ProceedingJoinPoint joinPoint) {
+		System.out.println("==========开始执行controller环绕通知===============");
+		long start = System.currentTimeMillis();
+
+		String methodName = joinPoint.getSignature().getName();
+
+		try {
+			long end = System.currentTimeMillis();
+			if (logger.isInfoEnabled()) {
+				logger.info("around " + joinPoint + "\tUse time : " + (end - start) + " ms!");
+			}
+			System.out.println("==========结束执行controller环绕通知===============");
+		} catch (Throwable e) {
+			System.out.println("环绕通知中的异常--------------------------------" + methodName + "-------" + e.getMessage());
+			long end = System.currentTimeMillis();
+			if (logger.isInfoEnabled()) {
+				logger.info("around " + joinPoint + "\tUse time : " + (end - start) + " ms with exception : "
+						+ e.getMessage());
+			}
+		}
+		Object result = null;
+		try {
+			result = joinPoint.proceed();
+		} catch (Throwable e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return result;
+	}
+
+
+
+	/**
+	 * 异常通知 用于拦截记录异常日志
+	 * 
+	 * @param joinPoint
+	 * @param e
+	 */
+	@AfterThrowing(pointcut = "controller()", throwing = "e")
+	public void doAfterThrowing(JoinPoint joinPoint, Throwable e) throws Throwable {
+		/*
+		 * HttpServletRequest request = ((ServletRequestAttributes)
+		 * RequestContextHolder.getRequestAttributes()).getRequest(); HttpSession
+		 * session = request.getSession(); //读取session中的用户 User user = (User)
+		 * session.getAttribute(WebConstants.CURRENT_USER); //获取请求ip String ip =
+		 * request.getRemoteAddr();
+		 */
+		// 获取用户请求方法的参数并序列化为JSON格式字符串
+		System.out.println("异常通知开始------------------------------------------");
 		
-		 /* HttpServletRequest request = ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes()).getRequest();  
-        HttpSession session = request.getSession();  */
-        //��ȡsession�е��û�  
-       // User user = (User) session.getAttribute("user");  
-        //�����IP  
-        //String ip = request.getRemoteAddr();
-		
-		User user = new User();
-		user.setId(1);
-		user.setName("�״�ү");
-		 String ip = "127.0.0.1";
-		 try {
-		 
-		 String targetName = joinPoint.getTarget().getClass().getName();
-		 String methodName = joinPoint.getSignature().getName();
-		 Object[] arguments = joinPoint.getArgs();
-		 System.out.println(targetName+"~~~"+methodName+"~~~~"+arguments);
-		 Class targetclass = Class.forName(targetName);
-		 Method[] methods = targetclass.getMethods();
-		 String operationType = "";
-         String operationName = "";
-         
-         for(Method method:methods){
-        	 if(method.getName().equals(methodName)){
-        		 Class[] clazzs = method.getParameterTypes();
-        		 
-        		 if(clazzs.length==arguments.length){
-        			 
-        			 operationType=method.getAnnotation(Log.class).operationType();
-        			 operationName=method.getAnnotation(Log.class).operationName();
-        			 break;
-        		 }
-        	 }
-        	 System.out.println("����="+operationType+"����="+operationName);
-         }
-         //*========����̨���=========*//  
-         System.out.println("=====controller����֪ͨ��ʼ=====");  
-         System.out.println("���󷽷�:" + (joinPoint.getTarget().getClass().getName() + "." + joinPoint.getSignature().getName() + "()")+"."+operationType);  
-         System.out.println("��������:" + operationName);  
-         System.out.println("������:" + user.getName());  
-         System.out.println("����IP:" + ip);  
-         //*========���ݿ���־=========*//  
-         SystemLog log = new SystemLog();  
-         log.setId(UUID.randomUUID().toString());
-         log.setDescription(operationName);  
-         log.setMethod((joinPoint.getTarget().getClass().getName() + "." + joinPoint.getSignature().getName() + "()")+"."+operationType);  
-         log.setLogType((long)0);  
-         log.setRequestIp(ip);  
-         log.setExceptioncode( null);  
-         log.setExceptionDetail( null);  
-         log.setParams( null);  
-         log.setCreateBy(user.getName());  
-         log.setCreateDate(new Date());  
-         //�������ݿ�  
-//         systemLogService.insert(log);  
-         System.out.println("=====controller����֪ͨ����=====");  
-		
-		 } catch (ClassNotFoundException e) {
-			 // TODO Auto-generated catch block
-			 e.printStackTrace();
-		 }
 	}
 }

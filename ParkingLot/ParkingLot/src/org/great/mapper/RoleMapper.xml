@@ -17,28 +17,4 @@
 		SELECT a.* FROM tb_role a LEFT JOIN  (SELECT * from staff_rel where u_id=#{id})  b ON a.role_id =b.role_id WHERE b.role_id IS NULL 
 	</select>
 
-		<!-- 查询获取列表 -->
-	<select id="seachRole"  resultType="org.great.bean.Role" parameterType="java.util.Map">
-			<if test="dataMap!=null">
-			 select cc.* from
-			</if>			
-				(select * from tb_role ORDER BY '' DESC )
- 			<if test="dataMap!=null">
- 				cc
- 			</if>
- 			<where>
- 				<if test="dataMap!=null">				
-				<foreach collection="dataMap.keys"  item="key" separator="or"  >      	    
-         	  	 ${key} like  "%"#{dataMap[${key}]}"%"
-        		   
-        		 </foreach>    		
-        		 </if>
-        	 </where> 	
-		</select>
-
-
-				
-		<select id="getRoleObject" resultType="org.great.bean.Role">
-			select * from tb_role where role_id=${role_id}
-		</select>
 </mapper>

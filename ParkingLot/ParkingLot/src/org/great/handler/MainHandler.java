@@ -11,6 +11,7 @@ import org.great.bean.RoleRel;
 import org.great.bean.User;
 import org.great.biz.MenuBiz;
 import org.great.biz.UserBiz;
+import org.great.log.OperationLog;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -34,9 +35,11 @@ public class MainHandler {
 	 * 	跳转到管理端首页
 	 */
 	@RequestMapping("/main.action")
+	@OperationLog(operationType = "登录操作", operationName = "进入主页")
 	public String mainJsp(HttpServletRequest request) {
 		
 //		HttpSession session = request.getSession(); 
+//		User users = (User) session.getAttribute("User");
 		User users = (User) request.getAttribute("User");
 		
 		// 角色关系

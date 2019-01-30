@@ -58,5 +58,8 @@
 		
 		<!-- 定时任务 -->
 		<task:annotation-driven/>
+		
+		<!-- 配置使Spring采用CGLIB代理 -->
+		<aop:aspectj-autoproxy proxy-target-class="true" />
 
 </beans>		

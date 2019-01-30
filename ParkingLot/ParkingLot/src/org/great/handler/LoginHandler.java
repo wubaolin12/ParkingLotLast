@@ -50,6 +50,7 @@ public class LoginHandler {
 	@RequestMapping("/login.action")
 	public String login() {
 
+		System.out.println("跳转到登录页面--------");
 		return "login";
 	}
 

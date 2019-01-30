@@ -8,7 +8,6 @@
 	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/aip-java-sdk-4.1.1.jar"/>
 	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/aip-java-sdk-4.8.0.jar"/>
 	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/aopalliance-1.0.jar"/>
-	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/aspectjweaver-1.7.0.jar"/>
 	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/commons-beanutils-1.8.3.jar"/>
 	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/commons-collections-3.2.1.jar"/>
 	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/commons-dbcp-1.2.2.jar"/>
@@ -61,6 +60,8 @@
 	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/commons-pool2-2.3.jar"/>
 	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/jedis-2.7.0.jar"/>
 	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/commons-pool.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/aspectjweaver-1.9.2.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/aspectjrt-1.9.2.jar"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/4"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>

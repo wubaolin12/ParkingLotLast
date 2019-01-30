@@ -15,4 +15,12 @@ public interface LogBiz {
 	public List<Log> logList();
 	
 	public List<Log> searchLog(Map map);
+	
+	/**
+	 * 	记录日志biz接口
+	 * @param log
+	 * @return
+	 * @author 吴宝林
+	 */
+	public int addLog(Log log);
 }
