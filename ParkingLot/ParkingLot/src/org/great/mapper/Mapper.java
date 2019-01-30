@@ -41,13 +41,31 @@ public interface Mapper
 	
 	
 	
-	//删除记录
+	/**删除记录
+	 * 
+	 * @param dataMap
+	 * @param tb_name
+	 * @return
+	 */
 	public int delData(@Param("dataMap") Map<String, String> dataMap,@Param("tb_name")String tb_name);
 	
-	//修改记录
+	/**修改记录
+	 * 
+	 * @param dataMap
+	 * @param tb_name
+	 * @param keykol
+	 * @param id
+	 * @return
+	 */
 	public int updateData(@Param("dataMap") Map<String, String> dataMap,
 			@Param("tb_name")String tb_name,@Param("keycol")String keykol,@Param("keyid")String id);
 
-	//插入记录
+	/**插入记录
+	 * 
+	 * @param dataMap
+	 * @param dataMap2
+	 * @param tb_namel
+	 * @return
+	 */
 	public int insertData(@Param("dataMap") Map<String,String> dataMap,@Param("dataMap2") Map<String,String> dataMap2,@Param("tb_name")String tb_namel);
 }

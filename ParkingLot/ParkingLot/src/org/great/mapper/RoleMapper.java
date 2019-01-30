@@ -23,7 +23,11 @@ public interface RoleMapper {
 	 * @author 吴宝林
 	 */
 	public List<Role> findAll();
-	
+	/**
+	 * 获取未分配的角色
+	 * @param id
+	 * @return
+	 */
 	public List<Role> findElse(String id);
 	
 	
@@ -36,7 +40,7 @@ public interface RoleMapper {
 	
 		
 	/**
-	 * 获取一个对象
+	 * 获取一个角色对象
 	 * @param id
 	 * @return
 	 */

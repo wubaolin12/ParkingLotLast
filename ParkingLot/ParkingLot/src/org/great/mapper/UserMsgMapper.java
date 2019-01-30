@@ -22,5 +22,13 @@ public interface UserMsgMapper {
 	 */
 	public List<UserMsg> findUserMsg(@Param("dataMap")Map map);
 	
-	public int getCountNum(@Param("dataMap")Map map);
+	/**
+	 * 获取一个用户对象
+	 * @param id
+	 * @return
+	 */
+	public UserMsg getUserObject (@Param("u_id")String u_id);
+	
+	
+	//public int getCountNum(@Param("dataMap")Map map);
 }

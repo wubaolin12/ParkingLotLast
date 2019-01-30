@@ -56,6 +56,11 @@ public interface MenuMapper {
 	 */
 	public List<Menu> getMenuList();
 	
+	/**
+	 * 查询菜单
+	 * @param map
+	 * @return
+	 */
 	public List<Menu>seachMenu(@Param("dataMap")Map map);
 	
 	/**

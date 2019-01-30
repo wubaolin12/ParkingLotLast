@@ -46,7 +46,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	</div>
 	<div class="cl pd-5 bg-1 bk-gray mt-20"> <span class="l">
 	<a href="javascript:;" onclick="datadel()" class="btn btn-danger radius"><i class="Hui-iconfont">&#xe6e2;</i> 批量删除</a> 
-	<a href="javascript:;" onclick="member_add('添加用户','<%=basePath %>adduser.jsp','','510')" class="btn btn-primary radius"><i class="Hui-iconfont">&#xe600;</i> 添加用户</a></span> 
+	<a href="javascript:;" onclick="member_add('添加用户','addEmpPage.action','','510')" class="btn btn-primary radius"><i class="Hui-iconfont">&#xe600;</i> 添加用户</a></span> 
 	<span class="r">共有数据：<strong>${pageel.cordnum}</strong> 条</span> </div>
 	<div class="mt-20">
 	<table class="table table-border table-bordered table-hover table-bg table-sort">
@@ -81,7 +81,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				<a style="text-decoration:none" onClick="member_start(this,'${ul.user.u_id}','${pageel.currentpage}')" href="javascript:;" title="启用"><i class="Hui-iconfont">&#xe6e1;</i></a> 
 				</c:if>
 				<a title="重置密码" href="javascript:;" onclick="member_resetpwd(this,'${ul.user.u_id}')" class="ml-5" style="text-decoration:none"><i class="Hui-iconfont">&#xe6df;</i></a> 
-				<a style="text-decoration:none" class="ml-5" href="<%=basePath %>emp/toUpadatePage.action?u_id=${ul.user.u_id}&u_name=${ul.user.u_name}&currentpage=${pageel.currentpage}" title="修改">修改</a>
+				<a style="text-decoration:none" class="ml-5" onclick="admin_edit('菜单编辑','toUpadatePage.action?u_id=${ul.user.u_id}','${ul.user.u_id}','800','500')" title="修改">修改</a>
 				<a title="删除" href="javascript:;" onclick="member_del(this,'${ul.user.u_id}','${pageel.currentpage}')" class="ml-5" >删除</a>
 				</td>
 			</tr>
@@ -194,7 +194,7 @@ function member_start(obj,id,page){
 	});
 }
 /*用户-编辑*/
-function member_edit(title,url,id,w,h){
+function admin_edit(title,url,id,w,h){
 	layer_show(title,url,w,h);
 }
 /*密码-修改*/

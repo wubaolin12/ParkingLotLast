@@ -10,10 +10,13 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.great.bean.PageElement;
+import org.great.bean.Role;
 import org.great.bean.User;
+import org.great.bean.vo.UserMsg;
 import org.great.biz.BaseBiz;
 import org.great.biz.RoleBiz;
 import org.great.biz.UserBiz;
+import org.great.biz.UserMsgBiz;
 import org.great.util.BaseUtil;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Scope;
@@ -39,6 +42,8 @@ public class UserHandler extends BaseUtil{
 	private UserBiz ubiz;
 	@Resource
 	private RoleBiz rbiz;
+	@Resource
+	private UserMsgBiz umbiz;
 	
 	@Value("tb_user")
 	private String tb_name;
@@ -56,7 +61,8 @@ public class UserHandler extends BaseUtil{
 		System.out.println("----进行用户启用..."+id);
 		Map map=new HashMap<>();
 		map.put("pm_id", 3);
-		int num=bbiz.updateObject(tb_name, map, "u_id", id);
+		//int num=bbiz.updateObject(tb_name, map, "u_id", id);
+		int num=bbiz.updateData(tb_name, map, "u_id", ""+id);
 		if(num>0) {
 			System.out.println("-----启用成功");
 		}
@@ -72,7 +78,8 @@ public class UserHandler extends BaseUtil{
 		System.out.println("----进行用户禁用..."+id);
 		Map map=new HashMap<>();
 		map.put("pm_id", 4);
-		int num=bbiz.updateObject(tb_name, map, "u_id", id);
+		//int num=bbiz.updateObject(tb_name, map, "u_id", id);
+		int num=bbiz.updateData(tb_name, map, "u_id", ""+id);
 		if(num>0) {
 			System.out.println("-----禁用成功");
 		}
@@ -89,15 +96,16 @@ public class UserHandler extends BaseUtil{
 	@RequestMapping("/toUpadatePage.action")
 	public String toUpadatePage(HttpServletRequest request,User user) {
 		System.out.println("----UserUtil：跳转修改用户页面方法");
-		currentpage=Integer.valueOf(request.getParameter("currentpage"));
-		HttpSession session = request.getSession();
 		
 		System.out.println("-----UserUtil：update user="+user.toString());
-		user=ubiz.getUser(user);
-		session.setAttribute("currentpage", currentpage);
+		//user=ubiz.getUser(user);
+		UserMsg upateuser=umbiz.getUserObject(""+user.getU_id());
+
+		request.setAttribute("updateuser", upateuser);
 		
-		session.setAttribute("updateuser", user);
-		return "updateuser";
+		List<Role> rlist=rbiz.findAll();
+		request.setAttribute("rlist", rlist);
+		return "user/update-user";
 	}
 	
 	/**
@@ -111,34 +119,19 @@ public class UserHandler extends BaseUtil{
 	public String updateUser(HttpServletRequest request, HttpServletResponse resp,@RequestParam Map<String,String> map,User user) {
 		System.out.println("----------UserUtil：修改用户信息");
 		//int id=Integer.valueOf(request.getParameter("u_id"));
-		HttpSession session = request.getSession();
-		user=(User)session.getAttribute("updateuser");
-		System.out.println("----------UserUtil:update "+user.toString());
+		String id=request.getParameter("u_id");
+		Map rolemap=new HashMap<>();
+		rolemap.put("role_id", map.get("role_id"));
+		map.remove("role_id");
 		
-		currentpage=Integer.valueOf((Integer) session.getAttribute("currentpage"));
-		System.out.println("----------UserUtil:currentpage "+currentpage);
-
-		Map usmap=(Map)session.getAttribute("userseachmap");
-		String pwd=getStrrMD5(map.get("u_pwd"));
-		map.put("u_pwd", pwd);
-		int num=bbiz.updateObject(tb_name, map, "u_id", user.getU_id());
-		if(num>0) {
-			
-			startNum    =currentpage*rownum-rownum;		
-			String listSql=bbiz.creatSQL(tb_name, usmap);		
-			List ulist    =ubiz.findList(listSql, startNum, rownum);
-			
-			
-			cordnum  =bbiz.getCordnum(listSql);
-			totalpage=getPage(cordnum, rownum);
-			session.setAttribute("ulist", ulist);
-			PageElement pe=new PageElement(currentpage, totalpage, cordnum);
-			session.setAttribute("pageel", pe);
-			
-			
-			
-			result="user-list";
+		int num=bbiz.updateData("staff_rel", rolemap, "u_id", id);
+		
+		int num1=bbiz.updateData(tb_name, map, "u_id", id);
+		
+		if(num>0&&num1>0) {
+			result="success";
 		}
+		
 		return result;
 	}
 	
@@ -165,11 +158,10 @@ public class UserHandler extends BaseUtil{
 		Map map=new HashMap<>();
 		String pwd=getStrrMD5("123456");
 		map.put("u_pwd", pwd);
-		int num=bbiz.updateObject(tb_name, map, "u_id", u_id);
+		//int num=bbiz.updateObject(tb_name, map, "u_id", u_id);
+		int num=bbiz.updateData(tb_name, map, "u_id",""+u_id);
 		if(num>0) {
-			
-			
-			
+		
 			result="success";
 		}
 		return result;
@@ -221,11 +213,14 @@ public class UserHandler extends BaseUtil{
 		System.out.println("----------UserUtil：删除用户");
 		//currentpage=Integer.valueOf(request.getParameter("currentpage"));
 		int id=Integer.valueOf(request.getParameter("u_id"));
-		HttpSession session = request.getSession();
-		Map usmap=(Map)session.getAttribute("userseachmap");
-
-		int num2=bbiz.delObject("staff_rel", "u_id", id);
-		int num=bbiz.delObject(tb_name, "u_id", id);
+/*		HttpSession session = request.getSession();
+		Map usmap=(Map)session.getAttribute("userseachmap");*/
+		Map map=new HashMap<>();
+		map.put("u_id", id);
+		
+		int num2=bbiz.delData("staff_rel", map);
+		int num=bbiz.delData(tb_name, map);
+		
 		if(num>0&&num2>0) {
 
 			result="success";
@@ -287,12 +282,10 @@ public class UserHandler extends BaseUtil{
 	@RequestMapping("/addEmpPage.action")
 	public String empPage(HttpServletRequest request) {
 		System.out.println("----UserUtil：跳转增加用户页面方法  ");
-		HttpSession session = request.getSession();
-		List rlist=rbiz.findAll();
-		System.out.println("-------UserUtil：跳转增加用户页面方法 "+rlist.toString());
-		session.setAttribute("rlist", rlist);
+		List<Role> rlist=rbiz.findAll();
+		request.setAttribute("rlist", rlist);
 		
-		return "adduser";
+		return "user/add-user";
 	}
 	
 	@RequestMapping("/addemp.action")
@@ -303,51 +296,30 @@ public class UserHandler extends BaseUtil{
 		String pwd="123456";
 		pwd=getStrrMD5(pwd);
 		map.put("u_pwd", pwd);
-		Map staffmap=new HashMap();
-		staffmap.put("role_id", map.get("role_id"));
-		map.put("role_id", null);
+		Map rolemap=new HashMap();
 		
+		//用以获取刚插入的数据的主键
+		Map idmap=new HashMap();
+		idmap.put("id",null);
 		
-		num=bbiz.insertObject(tb_name, map);
-		user=ubiz.getUser(user);
-		staffmap.put("u_id", user.getU_id());
-		int num2=bbiz.insertObject("staff_rel", staffmap);
-		result="success";
+		rolemap.put("role_id", map.get("role_id"));
+		map.remove("role_id");
 		
-		System.out.println("----USER"+user.toString());
-//		HttpSession session = request.getSession();
-//		session.setAttribute("newuser", user);
+		//执行插入后，idmap.get("id")可获取主键
+		num=bbiz.insertData(tb_name, map, idmap);
+
 		
-/*		
-		if(num>0) {
-			result="giverole";
-			List rlist=rbiz.getPRole(user.getU_id());
-			session.setAttribute("prlist", rlist);
-		}*/
-		
-		
+		rolemap.put("u_id", idmap.get("id"));
+		//int num2=bbiz.insertObject("staff_rel", staffmap);
+		int num2=bbiz.insertData("staff_rel", rolemap, null);
+		if(num>0&&num2>0){
+			result="success";			
+		}
+
 		return result;
 	}
 	
-	/**
-	 * 赋予用户角色
-	 * @param request
-	 * @param resp
-	 * @param user
-	 * @param map
-	 * @return
-	 */
-	@RequestMapping("/giverole.action")
-	public String giveRole(HttpServletRequest request, HttpServletResponse resp,User user,@RequestParam Map<String,String> map) {
-		System.out.println("----UserUtil：赋予角色"+map.get("role_id"));
 
-		//List ulist=ubiz.findList(tb_name, null, currentpage, rownum);
-		int num=bbiz.insertObject("staff_rel", map);
-		if(num>0) {
-			result="success";
-		}
-		return result;
-	}
 	
 	/**
 	 * 获取用户列表
@@ -359,80 +331,12 @@ public class UserHandler extends BaseUtil{
 	public String userList(HttpServletRequest request, HttpServletResponse resp) {
 		System.out.println("-------UserUtil：用户列表");
 
-		String listSql=bbiz.creatSQL(tb_name, null);
-		
-		
-		List ulist=ubiz.findList(listSql, 0, rownum);
-		System.out.println("------UserUtil："+ulist.toString());
-		System.out.println();
-		
-		HttpSession session = request.getSession();
-		session.setAttribute("ulist", ulist);
-		
-		cordnum=bbiz.getCordnum(listSql);
-		totalpage=getPage(cordnum, rownum);
-		PageElement pe=new PageElement(currentpage, totalpage, cordnum);
-		session.setAttribute("pageel", pe);
-		result="user-list";
+		List<UserMsg>ulist=umbiz.userList(null);
+		request.setAttribute("ulist", ulist);
+		result="user/user-list";
 		return result;
 	}
-	
-	/**
-	 * 上一页
-	 * @param request
-	 * @param resp
-	 * @return
-	 */
-	@RequestMapping("/prev.action")
-	public String prev(HttpServletRequest request, HttpServletResponse resp) {
-		System.out.println("----------UserUtil：上一页");
-		currentpage=Integer.valueOf(request.getParameter("currentpage"));
-		HttpSession session = request.getSession();
-		Map usmap=(Map)session.getAttribute("userseachmap");
-		
-		currentpage-=1;
-		startNum    =currentpage*rownum-rownum;
-		
-		String listSql=bbiz.creatSQL(tb_name, usmap);		
-		List ulist    =ubiz.findList(listSql, startNum, rownum);
-		System.out.println("------UserUtil："+ulist.toString());		
-		
-		cordnum  =bbiz.getCordnum(listSql);
-		totalpage=getPage(cordnum, rownum);
-		session.setAttribute("ulist", ulist);
-		PageElement pe=new PageElement(currentpage, totalpage, cordnum);
-		session.setAttribute("pageel", pe);
-		result="user-list";
-		return result;
-	}
-	
-	
-	/**
-	 * 下一页
-	 * @param request
-	 * @param resp
-	 * @return
-	 */
-	
-	@RequestMapping("/next.action")
-	public String next(HttpServletRequest request, HttpServletResponse resp) {
-		System.out.println("----------UserUtil：下一页");
 
-		currentpage=Integer.valueOf(request.getParameter("currentpage"));
-		HttpSession session = request.getSession();
-		Map usmap=(Map)session.getAttribute("userseachmap");
-		String listSql=bbiz.creatSQL(tb_name, usmap);	
-		
-		startNum  =currentpage*rownum;
-		List ulist=ubiz.findList(listSql, startNum, rownum);
-		currentpage+=1;
-		
-		cordnum  =bbiz.getCordnum(listSql);
-		totalpage=getPage(cordnum, rownum);
-		session.setAttribute("ulist", ulist);
-		PageElement pe=new PageElement(currentpage, totalpage, cordnum);
-		session.setAttribute("pageel", pe);
-		result="user-list";
-		return result;
-	}
+	
+
 }

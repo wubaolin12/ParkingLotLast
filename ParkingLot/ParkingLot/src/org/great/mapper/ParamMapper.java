@@ -21,7 +21,11 @@ public interface ParamMapper {
 	 * @author ASUS yf
 	 */
 	public List<Param> paramList();
-	
+	/**
+	 * 获取参数对象（修改参数用）
+	 * @param id
+	 * @return
+	 */
 	public Param getParamObject(@org.apache.ibatis.annotations.Param("pm_id")String id);
 
 	/**根据类型和名字查询ID
