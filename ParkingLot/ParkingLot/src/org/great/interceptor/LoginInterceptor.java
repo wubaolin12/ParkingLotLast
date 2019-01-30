@@ -59,8 +59,9 @@ public class LoginInterceptor implements HandlerInterceptor {
 			User user = (User) JSONObject.toBean(jsonObject,User.class);
 			System.out.println(user.toString());
 			
-			HttpSession session = request.getSession();
-			session.setAttribute("User", user);
+//			HttpSession session = request.getSession();
+//			session.setAttribute("User", user);
+			request.setAttribute("User", user);
 			
 			return true;
 		}

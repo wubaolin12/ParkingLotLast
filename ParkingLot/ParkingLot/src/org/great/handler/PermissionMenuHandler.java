@@ -111,7 +111,7 @@ public class PermissionMenuHandler {
 	 */
 	@ResponseBody
 	@RequestMapping(value="/removemenu.action", method = RequestMethod.POST, produces = "application/json;charset=utf-8")
-	@OperationLog(operationType = "权限操作", operationName = "添加权限菜单")
+	@OperationLog(operationType = "权限操作", operationName = "移除权限菜单")
 	public String removeMenu( @RequestBody RoleMenu rm) {
 		String ret="请选择要移除的权限！";
 		System.out.println("-----"+rm.toString()+"---"+ret+"----");

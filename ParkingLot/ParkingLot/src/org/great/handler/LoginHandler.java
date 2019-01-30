@@ -98,8 +98,8 @@ public class LoginHandler {
 		}
 
 
-//		request.setAttribute("User", users);
-		session.setAttribute("User", users);
+		request.setAttribute("User", users);
+//		session.setAttribute("User", users);
 		result = "success";
 		System.out.println("验证成功");
 

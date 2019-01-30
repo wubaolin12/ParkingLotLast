@@ -71,10 +71,11 @@ public class SystemLogAspect {
 
 		HttpServletRequest request = ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes())
 				.getRequest();
-		HttpSession session = request.getSession();
+//		HttpSession session = request.getSession();
 
 		// 获取当前操作人
-		User user = (User) session.getAttribute("User");
+//		User user = (User) session.getAttribute("User");
+		User user = (User) request.getAttribute("User");
 		// 获取操作人ip地址
 //		String ip = request.getRemoteAddr();
 

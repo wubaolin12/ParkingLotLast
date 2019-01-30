@@ -38,8 +38,9 @@ public class MainHandler {
 	@OperationLog(operationType = "登录操作", operationName = "进入主页")
 	public String mainJsp(HttpServletRequest request) {
 		
-		HttpSession session = request.getSession(); 
-		User users = (User) session.getAttribute("User");
+//		HttpSession session = request.getSession(); 
+//		User users = (User) session.getAttribute("User");
+		User users = (User) request.getAttribute("User");
 		
 		// 角色关系
 		RoleRel re = userBiz.FindStaffRole(users.getU_id());
