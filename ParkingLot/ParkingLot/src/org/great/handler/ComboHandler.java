@@ -12,6 +12,7 @@ import org.great.bean.Combo;
 import org.great.bean.Role;
 import org.great.biz.BaseBiz;
 import org.great.biz.ComboBiz;
+import org.great.log.OperationLog;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
@@ -127,6 +128,7 @@ public class ComboHandler {
 	 * @return
 	 * @author ASUS_yf
 	 */
+	@OperationLog(operationType = "收费管理", operationName = "增加套餐")
 	@RequestMapping("/insertCombo.action")
 	public String insertCombo(HttpServletRequest request,@RequestParam Map<String,String> map) 
 	{

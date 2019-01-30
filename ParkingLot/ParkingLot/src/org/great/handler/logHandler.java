@@ -23,7 +23,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 @Controller
 @Scope("prototype")
 @RequestMapping("/logmanage")
-public class logHangdler {
+public class logHandler {
 	
 	@Resource
 	private LogBiz lbiz;
