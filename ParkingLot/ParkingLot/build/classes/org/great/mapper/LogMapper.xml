@@ -28,4 +28,12 @@
         		 </if>
         	 </where> 	
 		</select>
+		
+		<!-- 添加日志记录 -->
+		<insert id="addLog" parameterType="org.great.bean.Log">
+			insert into tb_log(u_id,log_date,log_event,log_type,log_ip)
+			values(#{u_id},#{log_date},#{log_event},#{log_type},#{log_ip})
+		</insert>
+			
+		
 </mapper>

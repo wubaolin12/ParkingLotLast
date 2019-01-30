@@ -50,6 +50,7 @@ public class LoginHandler {
 	@RequestMapping("/login.action")
 	public String login() {
 
+		System.out.println("跳转到登录页面--------");
 		return "login";
 	}
 
@@ -97,8 +98,8 @@ public class LoginHandler {
 		}
 
 
-		request.setAttribute("User", users);
-//		session.setAttribute("User", users);
+//		request.setAttribute("User", users);
+		session.setAttribute("User", users);
 		result = "success";
 		System.out.println("验证成功");
 

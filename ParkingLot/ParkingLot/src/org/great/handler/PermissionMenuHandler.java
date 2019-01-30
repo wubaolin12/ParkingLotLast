@@ -15,6 +15,7 @@ import org.great.bean.RoleMenu;
 import org.great.biz.MenuBiz;
 import org.great.biz.RoleBiz;
 import org.great.biz.RoleMenuBiz;
+import org.great.log.OperationLog;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -66,6 +67,7 @@ public class PermissionMenuHandler {
 	 */
 	@ResponseBody
 	@RequestMapping(value="/addmenu.action", method = RequestMethod.POST, produces = "application/json;charset=utf-8")
+	@OperationLog(operationType = "权限操作", operationName = "添加权限菜单")
 	public String addMenu(@RequestBody RoleMenu rm,HttpServletRequest request) {
 		String ret="请选择要添加的权限！";
 		System.out.println("-----"+rm.toString()+"---"+ret+"----");
@@ -109,6 +111,7 @@ public class PermissionMenuHandler {
 	 */
 	@ResponseBody
 	@RequestMapping(value="/removemenu.action", method = RequestMethod.POST, produces = "application/json;charset=utf-8")
+	@OperationLog(operationType = "权限操作", operationName = "添加权限菜单")
 	public String removeMenu( @RequestBody RoleMenu rm) {
 		String ret="请选择要移除的权限！";
 		System.out.println("-----"+rm.toString()+"---"+ret+"----");

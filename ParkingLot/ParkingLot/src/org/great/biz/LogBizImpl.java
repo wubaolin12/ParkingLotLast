@@ -32,5 +32,11 @@ public class LogBizImpl implements LogBiz{
 		return logmapper.seachLog(map);
 	}
 
+	@Override
+	public int addLog(Log log) {
+		int ret = logmapper.addLog(log);
+		return ret;
+	}
+
 	
 }

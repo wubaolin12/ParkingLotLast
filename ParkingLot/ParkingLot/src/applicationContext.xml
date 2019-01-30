@@ -56,5 +56,5 @@
 		<constructor-arg name="port" value="6379"/>	
 	</bean>
 	<bean id="jedisClientPool" class="org.great.util.JedisClientPool"/>
-		
+			
 </beans>

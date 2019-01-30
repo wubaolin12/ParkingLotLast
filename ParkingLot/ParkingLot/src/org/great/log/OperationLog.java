@@ -14,10 +14,10 @@ import java.lang.annotation.Target;
 @Target({ElementType.PARAMETER,ElementType.METHOD})
 @Retention(RetentionPolicy.RUNTIME)
 @Documented
-public @interface Log {
+public @interface OperationLog {
 	
 	/**
-	 * 要执行的操作类型  比如：增加操作
+	 * 要执行的操作类型  比如：操作用户
 	 * @return
 	 */
 	public String operationType() default "";
