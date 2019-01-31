@@ -22,5 +22,10 @@ public interface ParkBiz {
 	public int EmptyCount(String p_fore);
 	public int OccupiedCount(String p_fore);
 	public int EmptyCount_close(String p_fore);
-
+	
+	/**
+	 * 添加车位当前照片
+	 * @param park
+	 */
+	public int addPicture(Park park);
 }
