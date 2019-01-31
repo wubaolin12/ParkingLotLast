@@ -255,21 +255,6 @@ function gologin(){
    	window.location.href="${path}/login/login.action";
    }
 
-/*
- * 解决cookie跨域问题
- */
-$(function(){
-	
-	var ck = $.cookie("PL_TOKEN");
-	if(!ck){
-		return;
-	}
-	$.ajax({
-		url:"http://127.0.0.1:8888/",
-		
-	});
-	
-});
 
 </script> 
 

@@ -36,17 +36,32 @@ String path=request.getScheme()+"://"+request.getServerName()+":"+
 <script>DD_belatedPNG.fix('*');</script>
 <![endif]-->
 <title>停车场车辆查看</title>
+<link href="${path}/static/lib/lightbox2/2.8.1/css/lightbox.css" rel="stylesheet" type="text/css" >
 </head>
 <body>
 	<nav class="breadcrumb">
 		<i class="Hui-iconfont">&#xe67f;</i> 首页 <span class="c-gray en">&gt;</span>
-		用户中心 <span class="c-gray en">&gt;</span> 停车场车辆查看 <a
+		车辆管理 <span class="c-gray en">&gt;</span> 停车场车辆查看 <a
 			class="btn btn-success radius r"
 			style="line-height: 1.6em; margin-top: 3px"
 			href="javascript:location.replace(location.href);" title="刷新"><i
 			class="Hui-iconfont">&#xe68f;</i></a>
 	</nav>
-	<div class="page-container">
+	<!-- 上传图片 -->
+	<div id = "uploader" style="display:none">
+		<form action="${path}/upload/picture.action" 
+		method="post" enctype="multipart/form-data">
+		<label>车位号：<span id="pnum"></span></label>
+		<br>
+		<input id="p_id" name="p_id" type="hidden">
+		<input name="picture" type="file">
+		<input type="submit" value="上传">
+			
+		</form>
+	</div>
+	
+	<!-- 显示停车场车辆情况 -->
+	<div id="parklist" class="page-container">
 		<div class="text-c"> 
 			
 			<div class="row cl">
@@ -122,7 +137,9 @@ String path=request.getScheme()+"://"+request.getServerName()+":"+
 							<td>${c.p_num}</td>
 							<td>${c.p_state}</td>
 							<td>
-							<a href="javascript:look(${c.p_imgpath})">查看图片</a>
+							<a href="/picture/${c.p_imgpath}" data-lightbox="gallery" data-title="客厅1">
+							查看图片</a>
+							<a href="javascript:upload('${c.p_id}','${c.p_fore}','${c.p_num}')">上传图片</a>
 							</td>
 						</tr>
 					</c:forEach>
@@ -148,7 +165,18 @@ String path=request.getScheme()+"://"+request.getServerName()+":"+
 		src="${path}/static/lib/datatables/1.10.0/jquery.dataTables.min.js"></script>
 	<script type="text/javascript"
 		src="${path}/static/lib/laypage/1.2/laypage.js"></script>
+	
+<script type="text/javascript" src="${path}/static/lib/lightbox2/2.8.1/js/lightbox.min.js"></script> 
 	<script type="text/javascript">
+	
+		/*-显示上传图片-*/
+		function upload(pid,pfore,pnum){
+			document.getElementById("pnum").innerHTML=pfore+pnum;
+			document.getElementById("parklist").style.display="none";
+			document.getElementById("uploader").style.display="block";
+			document.getElementById("p_id").value=pid;
+		}
+	
 		$(function() {
 			$('.table-sort').dataTable({
 				"aaSorting" : [ [ 1, "desc" ] ],//默认第几个排序
