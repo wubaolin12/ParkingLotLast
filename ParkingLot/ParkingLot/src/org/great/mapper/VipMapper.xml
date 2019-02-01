@@ -53,4 +53,9 @@
 			<result property="pm_type" column="pm_type" />
 		</collection>
 	</resultMap>
+	<!-- 	根据V_id删除信息记录 -->
+	<delete id="VipReturnX" parameterType="int">
+		DELETE  FROM tb_vip where v_id = #{v_id}
+	</delete>
+	
 </mapper>

@@ -52,7 +52,48 @@
 			<result property="v_overtime" column="v_overtime" />
 		</collection>
 	</resultMap>
-
+	<!-- 根据手机号查询该用户名下车辆VIP信息 -->
+	<select id="findCustCarVipStateX"
+		resultMap="findCustCarVipStateMap">
+		SELECT * from (
+		select c1.cust_id ,
+		c1.cust_acc,c1.cust_sex,c1.cust_age,c1.cust_phone,c1.cust_money,c2.c_id,c2.c_num
+		FROM tb_cust c1 LEFT JOIN tb_car c2
+		on c1.cust_id = c2.cust_id where
+		c1.cust_phone = #{cust_phone} and c2.pm_id = #{cpm_id}) c3
+		LEFT JOIN
+		tb_vip v on c3.c_id =
+		v.c_id where v.pm_id = (SELECT pm_id
+		from tb_param
+		where pm_type =
+		#{pm_type} and pm_name =#{pm_name})
+	</select>
+	<resultMap type="org.great.bean.Car"
+		id="findCustCarVipStateMap">
+		<id property="c_id" column="c_id" />
+		<result property="c_num" column="c_num" />
+		<collection property="cust" column="cust_id"
+			javaType="org.great.bean.Cust">
+			<id property="cust_id" column="cust_id" />
+			<result property="cust_acc" column="cust_acc" />
+			<result property="cust_sex" column="cust_sex" />
+			<result property="cust_age" column="cust_age" />
+			<result property="cust_phone" column="cust_phone" />
+			<result property="cust_money" column="cust_money" />
+			<result property="cus_null1" column="cus_null1" />
+			<result property="cus_null2" column="cus_null2" />
+			<result property="cus_null3" column="cus_null3" />
+		</collection>
+		<collection property="vip" column="v_id"
+			javaType="org.great.bean.Vip">
+			<id property="v_id" column="v_id" />
+			<result property="co_id" column="co_id" />
+			<result property="c_id" column="c_id" />
+			<result property="v_starttime" column="v_starttime" />
+			<result property="v_overtime" column="v_overtime" />
+			<result property="pm_id" column="pm_id" />
+		</collection>
+	</resultMap>
 
 	<!-- 根据手机号查询该用户名下车辆信息 -->
 	<select id="findCustCarX" parameterType="org.great.bean.Cust"
@@ -159,4 +200,32 @@
 			<result property="cus_null3" column="cus_null3" />
 		</collection>
 	</resultMap>
+
+	<!-- 根据车牌号号查询车辆VIP信息 -->
+	<select id="findCarVipStateX" parameterType="String"
+		resultMap="findCarVipStateXMap">
+		select c.c_id,c.cust_id,c.pm_id ,c.c_num,c.c_null1,v.v_id,v.co_id,v.c_id
+		vcid,v.v_starttime,v.v_overtime,v.pm_id vpmid from tb_car c LEFT JOIN
+		tb_vip v on c.c_id = v.c_id
+		where c.c_num
+		=#{c_num}
+	</select>
+	<resultMap type="org.great.bean.Car" id="findCarVipStateXMap">
+		<id property="c_id" column="c_id" />
+		<result property="cust_id" column="cust_id" />
+		<result property="pm_id" column="pm_id" />
+		<result property="c_num" column="c_num" />
+		<result property="c_null1" column="c_null1" />
+		<collection property="vip" column="v_id"
+			javaType="org.great.bean.Vip">
+			<id property="v_id" column="v_id" />
+			<result property="co_id" column="co_id" />
+			<result property="c_id" column="c_id" />
+			<result property="v_starttime" column="v_starttime" />
+			<result property="v_overtime" column="v_overtime" />
+			<result property="pm_id" column="vpmid" />
+		</collection>
+	</resultMap>
+
+
 </mapper>

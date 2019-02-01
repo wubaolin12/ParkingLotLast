@@ -83,4 +83,16 @@ public class CarBizImpl implements CarBiz {
 		// TODO Auto-generated method stub
 		return carMapper.findCustCarNumberByCarIDX(cid);
 	}
+
+	@Override
+	public List<Car> findCustCarVipStateX(String cust_phone, int cpm_id, String pm_type, String pm_name) {
+		// TODO Auto-generated method stub
+		return carMapper.findCustCarVipStateX(cust_phone, cpm_id, pm_type, pm_name);
+	}
+
+	@Override
+	public List<Car> findCarVipStateX(String cust_phone) {
+		// TODO Auto-generated method stub
+		return carMapper.findCarVipStateX(cust_phone);
+	}
 }

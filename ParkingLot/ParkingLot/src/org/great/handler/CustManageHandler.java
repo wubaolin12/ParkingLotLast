@@ -111,7 +111,7 @@ public class CustManageHandler {
 	public @ResponseBody boolean CustAdd(Cust cust) {
 		System.out.println("--------------------------------------");
 		System.out.println("cust=" + cust);
-		
+
 		flag = custBiz.AddCustX(cust);
 		return flag;
 	}
@@ -128,12 +128,12 @@ public class CustManageHandler {
 		System.out.println("carnum=" + carnum);
 		System.out.println("cust_phone=" + cust_phone);
 		Car car1 = carBiz.findCustCarNumberByPhoneX(carnum);
-		System.out.println("car1="+car1);
+		System.out.println("car1=" + car1);
 		if (car1 == null) {
 			flag = true;
-		} else if (car1!=null&&!car1.getCust().getCust_phone().equals(cust_phone)) {
+		} else if (car1 != null && !car1.getCust().getCust_phone().equals(cust_phone)) {
 			flag = false;
-		} else if (car1!=null&&car1.getCust().getCust_phone().equals(cust_phone)){
+		} else if (car1 != null && car1.getCust().getCust_phone().equals(cust_phone)) {
 			flag = true;
 		}
 		return flag;
@@ -185,9 +185,9 @@ public class CustManageHandler {
 		int pid = 0;
 		// 得到车辆表信息
 		Car car1 = carBiz.FindByCarNumber(anyX.getCarnum());
-		System.out.println("car1="+car1);
-		Param param = new Param("生效中","月缴状态");
-		Param param1 =paramBiz.GetPmIDByTypeNmaeX(param);
+		System.out.println("car1=" + car1);
+		Param param = new Param("待生效", "月缴状态");
+		Param param1 = paramBiz.GetPmIDByTypeNmaeX(param);
 		// 得到套餐ID
 		int co_id = Integer.parseInt(anyX.getAdminRole());
 		Map<String, String> map = new HashMap<>();
@@ -208,17 +208,17 @@ public class CustManageHandler {
 			} else if (anyX.getPm_id().equals("包月会员")) {
 				pid = 7;
 				List<Cust> list = custBiz.FindByPhoneX(anyX.getCust_phone());
-				System.out.println("list="+list);
+				System.out.println("list=" + list);
 				Car car2 = new Car(list.get(0).getCust_id(), pid, anyX.getCarnum());
-				System.out.println("car2="+car2);
+				System.out.println("car2=" + car2);
 				flag = carBiz.AddCarCX(car2);
-				System.out.println("Cflag="+flag);
-				car2 =carBiz.FindByCarNumber(anyX.getCarnum());
-				
-				Vip vip = new Vip(co_id, car2.getC_id(), map.get("today"), map.get("finday"),param1.getPm_id());
-				System.out.println("vip="+vip);
+				System.out.println("Cflag=" + flag);
+				car2 = carBiz.FindByCarNumber(anyX.getCarnum());
+
+				Vip vip = new Vip(co_id, car2.getC_id(), map.get("today"), map.get("finday"), param1.getPm_id());
+				System.out.println("vip=" + vip);
 				flag = vipBiz.AddvipX(vip);
-				System.out.println("Vflag="+flag);
+				System.out.println("Vflag=" + flag);
 				str = "添加成为包月会员车辆了";
 				System.err.println("**************************************");
 			}
@@ -229,15 +229,15 @@ public class CustManageHandler {
 				} else if (anyX.getPm_id().equals("包月会员")) {
 					pid = 7;
 					Car car3 = new Car(pid, anyX.getCarnum());
-					System.err.println("car3="+car3);
+					System.err.println("car3=" + car3);
 					flag = carBiz.chagerPmIDByCarNumberX(car3);
-					System.err.println("cflag="+flag);
-					
-					Vip vip = new Vip(co_id, car1.getC_id(), map.get("today"), map.get("finday"),param1.getPm_id());
-					System.err.println("vip="+vip);
+					System.err.println("cflag=" + flag);
+
+					Vip vip = new Vip(co_id, car1.getC_id(), map.get("today"), map.get("finday"), param1.getPm_id());
+					System.err.println("vip=" + vip);
 					flag = vipBiz.AddvipX(vip);
-					System.err.println("vip123=="+vip);
-					System.err.println("vflag="+flag);
+					System.err.println("vip123==" + vip);
+					System.err.println("vflag=" + flag);
 					str = "添加成为包月会员车辆了";
 					System.err.println("***************");
 				}
@@ -278,7 +278,7 @@ public class CustManageHandler {
 		}
 
 		System.out.println("anyX==" + anyX);
-		System.out.println("str="+str);
+		System.out.println("str=" + str);
 		return str;
 	}
 
@@ -287,19 +287,122 @@ public class CustManageHandler {
 		// 获得系统时间
 		Date day = new Date();
 		SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd");
-		String today = df.format(day);
-		System.out.println("today=" + today);
 		Calendar calendar = Calendar.getInstance();
+		Calendar calendar1 = Calendar.getInstance();
 		calendar.setTime(day);
+		calendar1.setTime(day);
 		// 今天的日期
 		System.out.println(calendar.get(Calendar.DAY_OF_MONTH));
+		calendar1.set(Calendar.DAY_OF_MONTH, calendar.get(Calendar.DAY_OF_MONTH) + 1);// 让日期加1
 		// 添加完的日期
 		calendar.set(Calendar.DAY_OF_MONTH, calendar.get(Calendar.DAY_OF_MONTH) + dauNum - 1);// 让日期加1
 		Date dt2 = calendar.getTime();
+		Date dt3 = calendar1.getTime();
 		String finday = df.format(dt2);
+		String today = df.format(dt3);
+		System.out.println("today=" + today);
 		System.out.println("finday=" + finday);
 		map.put("today", today);
 		map.put("finday", finday);
 		return map;
+	}
+
+	/**
+	 * 跳转到添加月缴退费查看界面
+	 * 
+	 * @param request
+	 * @return
+	 */
+	@RequestMapping("/VipReturnsJsp.action")
+	public String VipReturnsJsp() {
+		return "charge/VipReturns";
+	}
+	/**
+	 * 跳转到添加月缴退费查看界面并根据手机号查询月缴车辆
+	 * 
+	 * @param request
+	 * @return
+	 */
+	@RequestMapping("/VipReturnsReadJSP.action")
+	public ModelAndView VipReturnsReadJSP(String cust_phone, HttpServletRequest request) {
+		System.out.println("cust_phone=" + cust_phone);
+		List<Car> CustCarList = carBiz.findCustCarVipStateX(cust_phone, 7, "月缴状态", "待生效");
+		System.out.println("==CustCarList=" + CustCarList + "==================");
+		request.setAttribute("CustCarList", CustCarList);
+		ModelAndView mav = new ModelAndView();
+		mav.setViewName("charge/VipReturns");
+		return mav;
+
+	}
+
+	/**
+	 * 跳转到添加月缴退费确定界面
+	 * 
+	 * @param request
+	 * @return
+	 */
+	@RequestMapping("/VipReturnThisJsp.action")
+	public String VipReturnThisJsp() {
+		return "charge/VipReturnThis";
+	}
+
+	/**
+	 * AJKS验证车牌号是否可以退月缴会员
+	 * 
+	 * @param request
+	 * @return
+	 */
+	@RequestMapping("/CarNumVIPReturn.action")
+	public @ResponseBody boolean CarNumVIPReturn(String carnum, String cust_phone) {
+		System.out.println("--------------------------------------");
+		System.out.println("carnum=" + carnum);
+		System.out.println("cust_phone=" + cust_phone);
+		List<Car> car1List = carBiz.findCarVipStateX(carnum);
+		System.out.println("car1List=" + car1List);
+		if (car1List == null || car1List.size() == 0) {
+			flag = false;
+		} else if (car1List.get(0).getPm_id() == 5) {
+			flag = false;
+		} else if (car1List.get(0).getPm_id() == 6) {
+			flag = false;
+		} else if (car1List.get(0).getPm_id() == 7) {
+			if (car1List.get(0).getVip().getPm_id() == 18) {
+				flag = true;
+			} else {
+				flag = false;
+			}
+		} else if (car1List.get(0).getPm_id() == 14) {
+			flag = false;
+		}
+		return flag;
+	}
+
+	/**
+	 * 月缴退费办理中
+	 * 
+	 * @param anyX
+	 * @return
+	 */
+	@RequestMapping("/CarVipReturn.action")
+	public @ResponseBody String CarVipReturn(AnyX anyX) {
+		System.out.println("--------------------------------------");
+		System.out.println("anyX=" + anyX);
+		String str = "";
+		List<Car> car1List = carBiz.findCarVipStateX(anyX.getCarnum());
+		System.out.println("car1List=" + car1List);
+		flag = vipBiz.VipReturnX(car1List.get(0).getVip().getV_id());
+		if (flag == true) {
+			int pid = 6;
+			Car car1 = new Car(pid,car1List.get(0).getC_num());
+			boolean flag1 =carBiz.chagerPmIDByCarNumberX(car1);
+			if(flag1==true) {
+				str = "退费成功！！";
+			}else {
+				str = "退费失败！！";
+			}
+		} else {
+			str = "退费失败！！";
+		}
+		return str;
 	}
 }

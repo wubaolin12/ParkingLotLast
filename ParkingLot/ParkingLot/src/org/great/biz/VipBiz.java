@@ -45,5 +45,11 @@ public interface VipBiz {
 	 * @return
 	 */
 	public List<Vip> findVipX(int c_id);
-
+	/**
+	 * 根据V_id删除信息记录
+	 * 
+	 * @param v_id
+	 * @return
+	 */
+	public boolean VipReturnX(int v_id);
 }
