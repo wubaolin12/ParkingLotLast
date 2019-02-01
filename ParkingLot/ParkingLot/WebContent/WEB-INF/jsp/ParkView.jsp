@@ -8,6 +8,9 @@
 String path=request.getScheme()+"://"+request.getServerName()+":"+
 		request.getServerPort()+request.getContextPath()+"/";
 %>
+
+
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -47,18 +50,9 @@ String path=request.getScheme()+"://"+request.getServerName()+":"+
 			href="javascript:location.replace(location.href);" title="刷新"><i
 			class="Hui-iconfont">&#xe68f;</i></a>
 	</nav>
+	
 	<!-- 上传图片 -->
-	<div id = "uploader" style="display:none">
-		<form action="${path}/upload/picture.action" 
-		method="post" enctype="multipart/form-data">
-		<label>车位号：<span id="pnum"></span></label>
-		<br>
-		<input id="p_id" name="p_id" type="hidden">
-		<input name="picture" type="file">
-		<input type="submit" value="上传">
-			
-		</form>
-	</div>
+	<c:import url="test-upload.jsp"></c:import>
 	
 	<!-- 显示停车场车辆情况 -->
 	<div id="parklist" class="page-container">
@@ -171,9 +165,9 @@ String path=request.getScheme()+"://"+request.getServerName()+":"+
 	
 		/*-显示上传图片-*/
 		function upload(pid,pfore,pnum){
-			document.getElementById("pnum").innerHTML=pfore+pnum;
+			document.getElementById("parkLocal").innerHTML=pfore+pnum;
 			document.getElementById("parklist").style.display="none";
-			document.getElementById("uploader").style.display="block";
+			document.getElementById("img-upload").style.display="block";
 			document.getElementById("p_id").value=pid;
 		}
 	

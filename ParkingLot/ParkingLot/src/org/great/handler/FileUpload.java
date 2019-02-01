@@ -18,6 +18,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 /**
  * 上传图片
+ * 
  * @author 吴宝林
  *
  */
@@ -28,34 +29,59 @@ public class FileUpload {
 	public ParkBiz parkBiz;
 
 	/**
-	 * 	上传图片
+	 * 上传图片
+	 * 
 	 * @param picture
 	 * @param park
 	 * @return
 	 */
 	@RequestMapping("/picture")
-	public ModelAndView uploadPic(MultipartFile picture,Park park,
-			HttpServletRequest request,HttpServletResponse response) {
-		// 获取图片名
-		String orgFilename = picture.getOriginalFilename();
+	public void uploadPic(MultipartFile file,HttpServletRequest request,
+			HttpServletResponse response) {
+		System.out.println("-------------上传文件---------");
 		
-		//给一个图片新名称==车位号id
-		String newFilename = park.getP_id()+ orgFilename.substring(orgFilename.lastIndexOf("."));
+		// 获取图片名
+		String orgFilename = file.getOriginalFilename();
 
-		//图片存放路径
-		String path = "D:\\file_file\\test\\upload\\" + newFilename;
+		// 图片存放路径
+		String path = "D:\\file_file\\test\\upload\\" + orgFilename;
 		try {
-			picture.transferTo(new File(path));
+			file.transferTo(new File(path));
 		} catch (IllegalStateException e) {
 			e.printStackTrace();
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		
-		park.setP_imgpath(newFilename);
+		return ;
+	}
+	
+	/**
+	 * 上传图片
+	 * 
+	 * @param picture
+	 * @param park
+	 * @return
+	 */
+	@RequestMapping("/save")
+	public ModelAndView savePic(Park park,HttpServletRequest request,
+			HttpServletResponse response) {
+		System.out.println("-------------图片路径保存---------"+park.getP_id());
 		int ret = parkBiz.addPicture(park);
 
-		ModelAndView modelAndView = new ModelAndView("redirect:/ParkView/allList.action");//重定向
+		ModelAndView modelAndView = new ModelAndView("redirect:/ParkView/allList.action");// 重定向
 		return modelAndView;
 	}
+
+
+	/**
+	 * 上传图片
+	 * 
+	 * 
+	 */
+	@RequestMapping("/test")
+	public String uploadTest() {
+
+		return "test-upload";
+	}
+
 }
