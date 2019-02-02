@@ -4,32 +4,9 @@
 
 
 <mapper namespace="org.great.mapper.Mapper">
-<!-- 		<select id="getColname" parameterType="String" resultType="String" > 
-		
-		SELECT COLUMN_NAME FROM USER_TAB_COLS WHERE TABLE_NAME =#{tb_name} order by rownum desc
-		</select> -->
 
-<!-- 		<select id="pageList" parameterType="String" resultType="map" > 
-			 select * from dual where TABLE_NAME
-			  <![CDATA[#{t}]]>
-			
-		</select>  -->
-	<insert id="interObject" parameterType="String">
-		${value}
-	</insert>
-	
-	
-	<update id="delObject" parameterType="String" >
-			${value} 
-	</update>
-		
-	<update id="updateObject" parameterType="String" >
-			${value} 
-	</update>
-	
-	<select id="getCordnum"  resultType="java.lang.Integer" > 
-		${value} 
-	</select>
+
+
 	
 
 	<update id="updateData"  parameterType="java.util.Map">
@@ -67,9 +44,6 @@
       	 </foreach>      	           	  
 	</update>
 		
-	<select id="selectCordNum"  >
-		select count(*) from (${sql})		
-	</select>
-	
+
 
 </mapper>

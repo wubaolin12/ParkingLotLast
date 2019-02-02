@@ -17,13 +17,16 @@ import org.great.biz.BaseBiz;
 import org.great.biz.RoleBiz;
 import org.great.biz.UserBiz;
 import org.great.biz.UserMsgBiz;
+import org.great.log.OperationLog;
 import org.great.util.BaseUtil;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 /**
  * 人员管理
@@ -51,10 +54,89 @@ public class UserHandler extends BaseUtil{
 	private String result;
 	
 	private int startNum;
+
+	/**
+	 * 用户修改密码
+	 * @param request
+	 * @param resp
+	 * @return
+	 * @author ASUS yf
+	 */
+	@OperationLog(operationType = "系统管理", operationName = "修改密码")	
+	@RequestMapping("/updateUserPwd.action")
+	public String updateUserPwd(HttpServletRequest request, HttpServletResponse resp) {
+		System.out.println("----------UserUtil：修改用户密码");
+		//int id=Integer.valueOf(request.getParameter("u_id"));
+		String newpwd=request.getParameter("newpwd");
+		Map map=new HashMap<>();
+		map.put("u_pwd", BaseUtil.getStrrMD5(newpwd));
+		HttpSession session = request.getSession();
+		User loginuser=(User)session.getAttribute("loginuser");
+		if(loginuser!=null) {
+		
+		int num1=bbiz.updateData(tb_name, map, "u_id",""+loginuser.getU_id());
+		
+		if(num1>0) {
+			result="success";
+		}
+		}
+		return result;
+	}
+	
+	/**
+	 * 跳转修改密码方法
+	 * @return 
+	 */
+	@RequestMapping("/toUpadatePWDPage.action")
+	public String toUpadatePWDPage(HttpServletRequest request) {
+		System.out.println("----UserUtil：跳转修改密码页面方法");
+
+		return "user/update-pwd";
+	}
+	
+	/**
+	 * 验证旧密码
+	 * @param response
+	 * @param request
+	 * @return
+	 * @author ASUS yf
+	 */
+	@ResponseBody
+	@RequestMapping(value = "/PWDcheckAjax.action", method = RequestMethod.POST, produces = "application/json;charset=utf-8")
+	public String PWDcheckAjax(HttpServletResponse response,HttpServletRequest request) 
+	{
+		String oldpwd=request.getParameter("checkpwd");
+		System.out.println("--------PWDcheckAjax："+oldpwd);
+		
+		HttpSession session = request.getSession();
+		User loginuser=(User)session.getAttribute("loginuser");
+		if(loginuser!=null) {
+		System.out.println("----loginuser"+loginuser.toString());
+		// 转换MD5密码
+		User user=new User();
+		user.setU_pwd(BaseUtil.getStrrMD5(oldpwd));
+		user.setU_name(loginuser.getU_name());
+		User users = (User) ubiz.findUserByName(user);
+		System.out.println("找到的用户=" + users);
+
+		//如果用户不存在输入的旧密码不正确
+		if (users == null) {
+			result = "usererror";
+			System.out.println("用户名错误");
+		}else {
+			result ="旧密码正确";
+		}
+		
+		}
+		return result;
+		
+	}
+	
 	
 	/**
 	 * 用户启用
 	 */
+	//@OperationLog(operationType = "系统管理", operationName = "用户启用")	
 	@RequestMapping(value="/userOn.action", method=RequestMethod.POST, produces="application/json;charset=utf-8")
 	public String userOn(HttpServletRequest request){	
 		int id=Integer.valueOf(request.getParameter("u_id"));
@@ -68,10 +150,13 @@ public class UserHandler extends BaseUtil{
 		}
 		return "success";
 	}
+	
+	
 	/**
 	 * 用户禁用
-	 * @param user
+	 * 
 	 */
+	//@OperationLog(operationType = "系统管理", operationName = "用户禁用")	
 	@RequestMapping(value="/userOff.action", method=RequestMethod.POST, produces="application/json;charset=utf-8")
 	public String userOff(HttpServletRequest request){	
 		int id=Integer.valueOf(request.getParameter("u_id"));
@@ -115,6 +200,7 @@ public class UserHandler extends BaseUtil{
 	 * @param map
 	 * @return
 	 */
+	@OperationLog(operationType = "系统管理", operationName = "修改员工信息")	
 	@RequestMapping("/updateUser.action")
 	public String updateUser(HttpServletRequest request, HttpServletResponse resp,@RequestParam Map<String,String> map,User user) {
 		System.out.println("----------UserUtil：修改用户信息");
@@ -167,9 +253,7 @@ public class UserHandler extends BaseUtil{
 		return result;
 	}
 
-	
-	
-	
+
 	
 	/**
 	 * 查询用户
@@ -193,7 +277,7 @@ public class UserHandler extends BaseUtil{
 			List ulist    =ubiz.findList(listSql, startNum, rownum);
 			
 			
-			cordnum  =bbiz.getCordnum(listSql);
+			
 			totalpage=getPage(cordnum, rownum);
 			session.setAttribute("ulist", ulist);
 			PageElement pe=new PageElement(currentpage, totalpage, cordnum);
@@ -202,12 +286,15 @@ public class UserHandler extends BaseUtil{
 		
 		return result;
 	}
+	
+	
 	/**
 	 * 删除用户
 	 * @param request
 	 * @param resp
 	 * @return
 	 */
+	@OperationLog(operationType = "系统管理", operationName = "删除员工")	
 	@RequestMapping("/delUser.action")
 	public String delUser(HttpServletRequest request, HttpServletResponse resp) {
 		System.out.println("----------UserUtil：删除用户");
@@ -254,7 +341,6 @@ public class UserHandler extends BaseUtil{
 			List ulist    =ubiz.findList(listSql, startNum, rownum);
 			
 			
-			cordnum  =bbiz.getCordnum(listSql);
 			totalpage=getPage(cordnum, rownum);
 			session.setAttribute("ulist", ulist);
 			PageElement pe=new PageElement(currentpage, totalpage, cordnum);
@@ -265,15 +351,6 @@ public class UserHandler extends BaseUtil{
 	}
 	
 	
-	
-	/**
-	 * 增加用户方法
-	 * @param request
-	 * @param resp
-	 * @param user
-	 * @param map
-	 * @return 增加成功跳转到赋予角色界面
-	 */
 	
 	/**
 	 * 跳转增加用户页面方法
@@ -288,6 +365,15 @@ public class UserHandler extends BaseUtil{
 		return "user/add-user";
 	}
 	
+	/**
+	 * 增加用户
+	 * @param request
+	 * @param resp
+	 * @param user
+	 * @param map
+	 * @return
+	 */
+	@OperationLog(operationType = "系统管理", operationName = "增加员工")	
 	@RequestMapping("/addemp.action")
 	public String addemp(HttpServletRequest request, HttpServletResponse resp,User user,@RequestParam Map<String,String> map) {
 		System.out.println("----UserUtil：增加用户方法"+user.getU_name());

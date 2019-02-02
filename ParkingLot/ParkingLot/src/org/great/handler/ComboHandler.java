@@ -84,7 +84,7 @@ public class ComboHandler {
 	 * @author ASUS yf
 	 */
 	@RequestMapping("/comboList.action")
-	public String comboLis(HttpServletRequest request, HttpServletResponse resp) 
+	public String comboList(HttpServletRequest request, HttpServletResponse resp) 
 	{
 		System.out.println("-----comboLisHandler,comboLis");
 		
@@ -128,7 +128,7 @@ public class ComboHandler {
 	 * @return
 	 * @author ASUS_yf
 	 */
-	@OperationLog(operationType = "收费管理", operationName = "增加套餐")
+	@OperationLog(operationType = "收支管理", operationName = "增加套餐")
 	@RequestMapping("/insertCombo.action")
 	public String insertCombo(HttpServletRequest request,@RequestParam Map<String,String> map) 
 	{
@@ -154,6 +154,7 @@ public class ComboHandler {
 	 * @return
 	 * @author ASUS_YF
 	 */
+	@OperationLog(operationType = "收支管理", operationName = "修改套餐")
 	@RequestMapping("/updateCombo.action")
 	public String updateCombo(HttpServletRequest request,@RequestParam Map<String,String> map) 
 	{
@@ -178,6 +179,7 @@ public class ComboHandler {
 	 * @return
 	 * @author ASUS_yf
 	 */
+	@OperationLog(operationType = "收支管理", operationName = "删除套餐")
 	@RequestMapping("/delCombo.action")
 	public String delCombo(HttpServletRequest request) 
 	{

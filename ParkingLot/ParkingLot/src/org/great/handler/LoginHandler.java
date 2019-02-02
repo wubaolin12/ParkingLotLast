@@ -99,6 +99,7 @@ public class LoginHandler {
 
 
 		request.setAttribute("User", users);
+		session.setAttribute("loginuser", users);
 //		session.setAttribute("User", users);
 		result = "success";
 		System.out.println("验证成功");

@@ -9,9 +9,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.great.bean.Param;
-import org.great.bean.Role;
 import org.great.biz.BaseBiz;
 import org.great.biz.ParamBiz;
+import org.great.log.OperationLog;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
@@ -29,8 +29,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 public class ParamHandler {
 
 	@Resource
-	private ParamBiz pbiz;
-	
+	private ParamBiz pbiz;	
 	@Resource
 	private BaseBiz bbiz;
 	@Value("tb_param")
@@ -127,6 +126,7 @@ public class ParamHandler {
 	 * @return
 	 * @author ASUS_yf
 	 */
+	@OperationLog(operationType = "系统管理", operationName = "增加参数")	
 	@RequestMapping("/insertParam.action")
 	public String insertParam(HttpServletRequest request,@RequestParam Map<String,String> map) 
 	{
@@ -152,6 +152,7 @@ public class ParamHandler {
 	 * @return
 	 * @author ASUS_YF
 	 */
+	@OperationLog(operationType = "系统管理", operationName = "修改参数")	
 	@RequestMapping("/updatePram.action")
 	public String updateParam(HttpServletRequest request,@RequestParam Map<String,String> map) 
 	{
@@ -176,6 +177,7 @@ public class ParamHandler {
 	 * @return
 	 * @author ASUS_yf
 	 */
+	@OperationLog(operationType = "系统管理", operationName = "删除参数")	
 	@RequestMapping("/delParam.action")
 	public String delParam(HttpServletRequest request) 
 	{

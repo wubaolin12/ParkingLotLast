@@ -12,6 +12,7 @@ import org.great.bean.Menu;
 import org.great.bean.Role;
 import org.great.biz.BaseBiz;
 import org.great.biz.RoleBiz;
+import org.great.log.OperationLog;
 import org.great.util.BizCup;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Scope;
@@ -54,7 +55,7 @@ public class RoleHandler {
 		
 		Role role=rbiz.getRoleObject(id);
 		request.setAttribute("roleObject", role);
-		result="update-role";
+		result="role/update-role";
 		return result;
 		
 	}
@@ -92,7 +93,7 @@ public class RoleHandler {
 		
 		request.setAttribute("rlist", rlist);
 		
-		result="role-list";
+		result="role/role-list";
 		return result;
 		
 	}
@@ -112,12 +113,8 @@ public class RoleHandler {
 		map.put("role_name", map.get("seachword"));
 		
 		map.remove("seachword");
-		
-		//List<Menu> mlist=mbiz.seachMenu(map);
-		
-		//request.setAttribute("mlist", mlist);
-		
-		result="menu-list";
+
+		result="role/role-list";
 		return result;
 		
 	}
@@ -129,6 +126,7 @@ public class RoleHandler {
 	 * @return
 	 * @author ASUS_yf
 	 */
+	@OperationLog(operationType = "系统管理", operationName = "增加角色")	
 	@RequestMapping("/insertRole.action")
 	public String insertMenu(HttpServletRequest request,@RequestParam Map<String,String> map) 
 	{
@@ -154,6 +152,7 @@ public class RoleHandler {
 	 * @return
 	 * @author ASUS_YF
 	 */
+	@OperationLog(operationType = "系统管理", operationName = "修改角色")	
 	@RequestMapping("/updateRole.action")
 	public String updateMenu(HttpServletRequest request,@RequestParam Map<String,String> map) 
 	{
@@ -178,6 +177,7 @@ public class RoleHandler {
 	 * @return
 	 * @author ASUS_yf
 	 */
+	@OperationLog(operationType = "系统管理", operationName = "删除角色")	
 	@RequestMapping("/delRole.action")
 	public String delMenu(HttpServletRequest request) 
 	{

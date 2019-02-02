@@ -13,6 +13,7 @@ import org.great.bean.Role;
 import org.great.biz.BaseBiz;
 import org.great.biz.MenuBiz;
 import org.great.biz.RoleBiz;
+import org.great.log.OperationLog;
 import org.great.util.BaseUtil;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Scope;
@@ -58,7 +59,7 @@ public class MenuHandler extends BaseUtil{
 		Menu menu=mbiz.getMenuObject(id);
 		request.setAttribute("menuObject", menu);			
 		
-		result="update-menu";
+		result="menu/update-menu";
 		return result;
 		
 	}
@@ -79,7 +80,7 @@ public class MenuHandler extends BaseUtil{
 		List<Role> rlist=rbiz.findAll();
 		request.setAttribute("rlist", rlist);
 		
-		result="add-menu";
+		result="menu/add-menu";
 		return result;
 		
 	}
@@ -101,7 +102,7 @@ public class MenuHandler extends BaseUtil{
 		
 		request.setAttribute("mlist", mlist);
 		
-		result="menu-list";
+		result="menu/menu-list";
 		return result;
 		
 	}
@@ -127,7 +128,7 @@ public class MenuHandler extends BaseUtil{
 		
 		request.setAttribute("mlist", mlist);
 		
-		result="menu-list";
+		result="menu/menu-list";
 		return result;
 		
 	}
@@ -139,6 +140,7 @@ public class MenuHandler extends BaseUtil{
 	 * @return
 	 * @author ASUS_yf
 	 */
+	@OperationLog(operationType = "系统管理", operationName = "增加菜单")	
 	@RequestMapping("/insertMenu.action")
 	public String insertMenu(HttpServletRequest request,@RequestParam Map<String,String> map) 
 	{
@@ -174,6 +176,7 @@ public class MenuHandler extends BaseUtil{
 	 * @return
 	 * @author ASUS_YF
 	 */
+	@OperationLog(operationType = "系统管理", operationName = "修改菜单")	
 	@RequestMapping("/updateMenu.action")
 	public String updateMenu(HttpServletRequest request,@RequestParam Map<String,String> map) 
 	{
@@ -198,6 +201,7 @@ public class MenuHandler extends BaseUtil{
 	 * @return
 	 * @author ASUS_yf
 	 */
+	@OperationLog(operationType = "系统管理", operationName = "删除菜单")	
 	@RequestMapping("/delMenu.action")
 	public String delMenu(HttpServletRequest request) 
 	{
