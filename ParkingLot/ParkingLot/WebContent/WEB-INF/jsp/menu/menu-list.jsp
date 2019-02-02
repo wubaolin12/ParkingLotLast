@@ -35,10 +35,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <body>
 <nav class="breadcrumb"><i class="Hui-iconfont">&#xe67f;</i> 首页 <span class="c-gray en">&gt;</span> 用户中心 <span class="c-gray en">&gt;</span> 用户管理 <a class="btn btn-success radius r" style="line-height:1.6em;margin-top:3px" href="javascript:location.replace(location.href);" title="刷新" ><i class="Hui-iconfont">&#xe68f;</i></a></nav>
 <div class="page-container">
-	<form action="seachmenuList.action">
+<!-- 	<form action="seachmenuList.action">
 		<input type="text" class="input-text" style="width:250px" placeholder="输入菜单名称/ID/路径" id="" name="seachword">
 		<button type="submit" class="btn btn-success radius" id="" name=""><i class="Hui-iconfont">&#xe665;</i> 搜菜单</button>
-	</form>
+	</form> -->
 	</div>
 	<div class="cl pd-5 bg-1 bk-gray mt-20"> <span class="l"><a href="javascript:;" onclick="datadel()" class="btn btn-danger radius"><i class="Hui-iconfont">&#xe6e2;</i> 批量删除</a> <a href="javascript:;" onclick="member_add('添加用户','toInsertMenu.action','','510')" class="btn btn-primary radius"><i class="Hui-iconfont">&#xe600;</i> 添加菜单</a></span> </div>
 	<div class="mt-20">

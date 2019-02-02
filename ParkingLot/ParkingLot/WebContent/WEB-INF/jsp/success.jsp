@@ -21,6 +21,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   </head>
   
   <body>
-    登录成功，<a href="testAction.action?name=tologin">点击此处</a>返回登录页 <br>
+    操作成功，<a href="testAction.action?name=tologin">点击此处</a>返回 <br>
   </body>
 </html>
