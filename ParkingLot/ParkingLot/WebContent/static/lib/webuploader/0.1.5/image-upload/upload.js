@@ -1,3 +1,12 @@
+function getRootPath() {  
+    var pathName = window.location.pathname.substring(1);  
+    var webName = pathName == '' ? '' : pathName.substring(0, pathName.indexOf('/'));  
+    
+    var path=window.location.protocol + '//' + window.location.host + '/' + webName + '/';
+    console.log(path);
+	return path;
+} 
+
 (function( $ ){
     // 当domReady的时候开始初始化
     $(function() {
@@ -151,7 +160,7 @@
             swf: '../Uploader.swf',
             chunked: false,
             chunkSize: 512 * 1024,
-            server: '../server/fileupload.php',
+            server: getRootPath()+'/upload/picture.action',
             // runtimeOrder: 'flash',
 
             // accept: {
@@ -162,7 +171,7 @@
 
             // 禁掉全局的拖拽功能。这样不会出现图片拖进页面的时候，把图片打开。
             disableGlobalDnd: true,
-            fileNumLimit: 300,
+            fileNumLimit: 1,
             fileSizeLimit: 200 * 1024 * 1024,    // 200 M
             fileSingleSizeLimit: 50 * 1024 * 1024    // 50 M
         });
@@ -200,11 +209,12 @@
         //     });
         // });
 
+        /*
         // 添加“添加文件”的按钮，
         uploader.addButton({
             id: '#filePicker2',
             label: '继续添加'
-        });
+        });*/
 
         uploader.on('ready', function() {
             window.uploader = uploader;
@@ -343,22 +353,7 @@
                     });
                 } else {
                     $wrap.css( 'filter', 'progid:DXImageTransform.Microsoft.BasicImage(rotation='+ (~~((file.rotation/90)%4 + 4)%4) +')');
-                    // use jquery animate to rotation
-                    // $({
-                    //     rotation: rotation
-                    // }).animate({
-                    //     rotation: file.rotation
-                    // }, {
-                    //     easing: 'linear',
-                    //     step: function( now ) {
-                    //         now = now * Math.PI / 180;
 
-                    //         var cos = Math.cos( now ),
-                    //             sin = Math.sin( now );
-
-                    //         $wrap.css( 'filter', "progid:DXImageTransform.Microsoft.Matrix(M11=" + cos + ",M12=" + (-sin) + ",M21=" + sin + ",M22=" + cos + ",SizingMethod='auto expand')");
-                    //     }
-                    // });
                 }
 
 
@@ -475,6 +470,9 @@
                     stats = uploader.getStats();
                     if ( stats.successNum ) {
                         alert( '上传成功' );
+                       //显示提交按钮
+                       document.getElementById("submit").style.display="block";
+                       document.getElementById("startUpload").style.display="none";
                     } else {
                         // 没有成功的图片，重设
                         state = 'done';
@@ -507,6 +505,11 @@
             addFile( file );
             setState( 'ready' );
             updateTotalProgress();
+            var orgFilename=file.name;
+            var newname = document.getElementById("p_id").value;
+            file.name=newname+ orgFilename.substring(orgFilename.lastIndexOf("."));
+            document.getElementById("p_imgpath").value=file.name;
+            console.log(file.name);
         };
 
         uploader.onFileDequeued = function( file ) {

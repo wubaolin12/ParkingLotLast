@@ -4,12 +4,6 @@
 <c:set value="${pageContext.request.contextPath}" var="path"
 	scope="page" />
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
-<%
-String path=request.getScheme()+"://"+request.getServerName()+":"+
-		request.getServerPort()+request.getContextPath()+"/";
-%>
-
-
 
 <!DOCTYPE html>
 <html>
@@ -38,103 +32,58 @@ String path=request.getScheme()+"://"+request.getServerName()+":"+
 <script type="text/javascript" src="lib/DD_belatedPNG_0.0.8a-min.js" ></script>
 <script>DD_belatedPNG.fix('*');</script>
 <![endif]-->
-<title>停车场车辆查看</title>
-<link href="${path}/static/lib/lightbox2/2.8.1/css/lightbox.css" rel="stylesheet" type="text/css" >
+<title>用户管理</title>
 </head>
 <body>
 	<nav class="breadcrumb">
 		<i class="Hui-iconfont">&#xe67f;</i> 首页 <span class="c-gray en">&gt;</span>
-		车辆管理 <span class="c-gray en">&gt;</span> 停车场车辆查看 <a
+		用户中心 <span class="c-gray en">&gt;</span> 用户管理 <a
 			class="btn btn-success radius r"
 			style="line-height: 1.6em; margin-top: 3px"
 			href="javascript:location.replace(location.href);" title="刷新"><i
 			class="Hui-iconfont">&#xe68f;</i></a>
 	</nav>
-	
-	<!-- 上传图片 -->
-	<c:import url="test-upload.jsp"></c:import>
-	
-	<!-- 显示停车场车辆情况 -->
-	<div id="parklist" class="page-container">
-		<div class="text-c"> 
-			
-			<div class="row cl">
-		<label class="form-label col-xs-4 col-sm-3">车位区号：</label>
-		
-		<div class="formControls col-xs-8 col-sm-9"> <span class="select-box" style="width:150px;">
-			<select class="select" name="p_fore" size="1" id="p_fore">
-				<option value="所有">所有</option>
-				<c:forEach items="${pForeList}" var="d" varStatus="dd">
-				<option value="${d.p_fore}">${d.p_fore}区</option>
-				</c:forEach>
-			</select>
-			</span> </div>
-		</div>
-		
-		
-			
-		<div class="row cl">
-		<label class="form-label col-xs-4 col-sm-3">维护状态：</label>
-		
-		<div class="formControls col-xs-8 col-sm-9"> <span class="select-box" style="width:150px;">
-			<select class="select" name="p_state" size="1" id="p_state">
-				<option value="所有">所有</option>
-				<option value="开放">开放</option>
-				<option value="维护">维护</option>
-			</select>
-			</span> </div>
-		</div>
-		<div>
-		<label class="form-label col-xs-4 col-sm-3">车牌号：</label>
-		
-		<input type="text" class="input-text" style="width: 250px"
-				placeholder="只输入一个x 视为空车牌" id="c_num" name="c_num"></div>
-			<div>		
-		<label class="form-label col-xs-4 col-sm-3">车位号：</label>
-		
-		<input type="text" class="input-text" style="width: 250px"
-				placeholder="输入车位号(纯数字)" id="p_num" name="p_num"></div>
-			<div align="right">
-				<button type="submit" class="btn btn-success radius" id="findPark" name="findPark" onclick="findPark()">
-					
-					<i class="Hui-iconfont">&#xe665;</i> 搜车位
+	<div class="page-container">
+		<div class="page-container">
+			<form class="form form-horizontal" id="form-admin-find"
+				 action="${path}/custManageHandler/VipReturnsReadJSP.action">
+				<input type="text" class="input-text" style="width: 250px"
+					placeholder="输入电话" id="cust_phone" name="cust_phone"> 
+				<button type="submit" class="btn btn-success radius" id="" name="">
+					<i class="Hui-iconfont">&#xe665;</i> 搜用户
 				</button>
-			</div>
-			<br/>
-			
+			</form>
 		</div>
-		
+		<div class="cl pd-5 bg-1 bk-gray mt-20">
+			<span class="l"> <a href="javascript:;"
+				onclick="member_add('月缴退费','${path}/custManageHandler/VipReturnThisJsp.action','','510')"
+				class="btn btn-primary radius"><i class="Hui-iconfont">&#xe600;</i>
+					月缴退费</a></span> <span class="r">共有数据：<strong>${fn:length(CustCarList)}</strong>
+				条
+			</span>
+		</div>
 		<div class="mt-20">
 			<table
 				class="table table-border table-bordered table-hover table-bg table-sort">
 				<thead>
 					<tr class="text-c">
-						<th width="91">车位ID</th>
-						<th width="102">车位状态</th>
-						<th width="101">车辆车牌号</th>
-						<th width="102">车位区号</th>
-						<th width="150">车位号</th>
-						<th width="149">维护状态</th>
-						<th width="314">选项</th>
+						<th width="80">客户ID</th>
+						<th width="100">客户用户名</th>
+						<th width="150">电话</th>
+						<th width="150">余额</th>
+						<th width="75">车辆ID</th>
+						<th width="60">车牌号</th>
 					</tr>
 				</thead>
 				<tbody>
-					<c:forEach items="${parkList}" var="c" varStatus="cc">
+					<c:forEach items="${CustCarList}" var="c" varStatus="cc">
 						<tr class="text-c">
-						
-							<td>${c.p_id}</td>
-							<td>${c.param.pm_name}</td>
-							<td>
-								<c:if test="${ c.car==null}"></c:if>
-							    <c:if test="${ c.car!=null}">${c.car.c_num}</c:if></td>
-							<td>${c.p_fore}</td>
-							<td>${c.p_num}</td>
-							<td>${c.p_state}</td>
-							<td>
-							<a href="/picture/${c.p_imgpath}" data-lightbox="gallery" data-title="客厅1">
-							查看图片</a>
-							<a href="javascript:upload('${c.p_id}','${c.p_fore}','${c.p_num}')">上传图片</a>
-							</td>
+							<td>${c.cust_id}</td>
+							<td>${c.cust.cust_acc}</td>
+							<td>${c.cust.cust_phone}</td>
+							<td>${c.cust.cust_money}</td>
+							<td>${c.c_id}</td>
+							<td>${c.c_num}</td>
 						</tr>
 					</c:forEach>
 				</tbody>
@@ -154,24 +103,35 @@ String path=request.getScheme()+"://"+request.getServerName()+":"+
 
 	<!--请在下方写此页面业务相关的脚本-->
 	<script type="text/javascript"
+		src="${path}/static/lib/jquery.validation/1.14.0/jquery.validate.js"></script>
+	<script type="text/javascript"
+		src="${path}/static/lib/jquery.validation/1.14.0/validate-methods.js"></script>
+	<script type="text/javascript"
+		src="${path}/static/lib/jquery.validation/1.14.0/messages_zh.js"></script>
+	<script type="text/javascript"
 		src="${path}/static/lib/My97DatePicker/4.8/WdatePicker.js"></script>
 	<script type="text/javascript"
 		src="${path}/static/lib/datatables/1.10.0/jquery.dataTables.min.js"></script>
 	<script type="text/javascript"
 		src="${path}/static/lib/laypage/1.2/laypage.js"></script>
-	
-<script type="text/javascript" src="${path}/static/lib/lightbox2/2.8.1/js/lightbox.min.js"></script> 
 	<script type="text/javascript">
-	
-		/*-显示上传图片-*/
-		function upload(pid,pfore,pnum){
-			document.getElementById("parkLocal").innerHTML=pfore+pnum;
-			document.getElementById("parklist").style.display="none";
-			document.getElementById("img-upload").style.display="block";
-			document.getElementById("p_id").value=pid;
-		}
-	
 		$(function() {
+			$("#form-admin-find").validate({
+				rules : {
+					cust_phone : {
+						required : true,
+						minlength : 11,
+						maxlength : 11
+					},
+					cust_pwd : {
+						required : true
+					}
+				},
+				onkeyup : false,
+				focusCleanup : true,
+				success : "valid",
+			});
+
 			$('.table-sort').dataTable({
 				"aaSorting" : [ [ 1, "desc" ] ],//默认第几个排序
 				"bStateSave" : true,//状态保存
@@ -290,21 +250,6 @@ String path=request.getScheme()+"://"+request.getServerName()+":"+
 				});
 			});
 		}
-		
-		function findPark(){
-			var p_stateV=document.getElementById("p_state").value;
-			var p_foreV=document.getElementById("p_fore").value;
-			var p_numV=document.getElementById("p_num").value;
-			var c_numV=document.getElementById("c_num").value;
-			
-			if(p_numV==''){
-				p_numV=parseInt('0');
-			}
-			location.href='<%=path%>ParkView/findPark.action?p_num='+p_numV+
-					'&p_fore='+p_foreV+'&p_state='+p_stateV+'&c_num='+c_numV;
-		}
-		
-		
 	</script>
 </body>
 </html>

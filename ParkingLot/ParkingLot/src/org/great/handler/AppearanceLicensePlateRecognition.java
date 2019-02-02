@@ -22,12 +22,15 @@ import org.great.bean.Car;
 import org.great.bean.Countrules;
 import org.great.bean.Cust;
 import org.great.bean.Param;
+import org.great.bean.RoleRel;
 import org.great.bean.Stopcartime;
+import org.great.bean.User;
 import org.great.bean.Vip;
 import org.great.biz.CarBiz;
 import org.great.biz.CountrulesBiz;
 import org.great.biz.CustBiz;
 import org.great.biz.ParamBiz;
+import org.great.biz.RoleRelBiz;
 import org.great.biz.StopcartimeBiz;
 import org.great.biz.VipBiz;
 import org.json.JSONObject;
@@ -50,6 +53,8 @@ import com.baidu.aip.ocr.AipOcr;
 @Scope("prototype")
 @RequestMapping("/AppearanceLicensePlate")
 public class AppearanceLicensePlateRecognition {
+	@Resource
+	private RoleRelBiz roleRelBiz;
 	@Resource
 	CountrulesBiz countrulesBiz;
 	@Resource
@@ -312,7 +317,33 @@ public class AppearanceLicensePlateRecognition {
 							System.out.println("-------这货是注册会员卡里钱不够 ，不放!!!-------");
 						}
 					} else if (car1.getPm_id() == param33.getPm_id()) {
-						System.out.println("-------这货是月缴会员，放他走!!!-------");
+
+						Param param5 = new Param("待生效", "月缴状态");
+						Param param55 = paramBiz.GetPmIDByTypeNmaeX(param5);
+						Car car2 = carBiz.findCustCarNumberByCarIDX(car1.getC_id());
+						List<Vip> Viplist1 = vipBiz.findVipX(car2.getC_id());
+						if (Viplist1 != null && Viplist1.size() != 0) {
+							for (int j = 0; j < Viplist1.size(); j++) {
+								if (Viplist1.get(0).getPm_id() == param55.getPm_id()) {
+									if (car2.getCust().getCust_money() >= money) {
+										int money2 = car2.getCust().getCust_money() - money;
+										Cust cust = new Cust(car2.getCust().getCust_id(), money2);
+										boolean flag2 = custBiz.chageCustMoneyByIDX(cust);
+										System.out.println("flag2=" + flag2);
+										if (flag2 == true) {
+											System.out.println("-------这货是会员还未生效，卡里有钱自动扣掉，放他走!!!-------");
+										} else {
+											System.out.println("-------这货是会员还未生效，卡里钱自动扣掉的时候发生了意外，扣除失败了!!!-------");
+										}
+									} else {
+										System.out.println("-------这货是会员还未生效，卡里钱不够 ，不放!!!-------");
+									}
+								} else {
+
+									System.out.println("-------这货是月缴会员，放他走!!!-------");
+								}
+							}
+						}
 					} else if (car1.getPm_id() == param44.getPm_id()) {
 						System.out.println("-------这货要交钱的 ，不放!!!-------");
 					}
@@ -320,6 +351,15 @@ public class AppearanceLicensePlateRecognition {
 					Stopcartime sct2 = stopcartimeBiz.FindByID(stopcartime.getSct_id());
 					// 该信息传输到页面
 					session.setAttribute("Stopkxj", sct2);
+					User user = (User) request.getAttribute("User");
+					List<RoleRel> RoleRelList = roleRelBiz.FindRoleIDbyUserIDX(user.getU_id());
+					if (RoleRelList != null && RoleRelList.size() != 0) {
+						if (RoleRelList.get(0).getRole().getRole_name().equals("收费员")) {
+							result.put("code", "300");
+						} else {
+							result.put("code", "200");
+						}
+					}
 					result.put("code", "200");
 					System.out.println("——————————————修改出场时间成功————————————————————————");
 				}
@@ -364,4 +404,13 @@ public class AppearanceLicensePlateRecognition {
 			}
 		}
 	}
+	
+	/**跳到月缴退费的界面
+	 * 
+	 * @return
+	 */
+	@RequestMapping("/VipReturnsJsp.action")
+	public String  VipReturnsJsp() {
+		return "charge/VipReturns";
+	} 
 }

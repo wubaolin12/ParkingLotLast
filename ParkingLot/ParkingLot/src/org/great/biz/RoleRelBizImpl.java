@@ -3,7 +3,11 @@ package org.great.biz;
 import java.util.List;
 import java.util.Map;
 
+import javax.annotation.Resource;
+
 import org.great.bean.Role;
+import org.great.bean.RoleRel;
+import org.great.mapper.RoleRelMapper;
 import org.great.util.BizCup;
 import org.springframework.stereotype.Service;
 
@@ -15,6 +19,8 @@ import org.springframework.stereotype.Service;
 @Service("roleRelBiz")
 public class RoleRelBizImpl implements RoleRelBiz{
 
+	@Resource
+	private RoleRelMapper roleRelMapper;
 	
 	@Override
 	public List<Role> seachRole(Map map) {
@@ -27,5 +33,9 @@ public class RoleRelBizImpl implements RoleRelBiz{
 		// TODO Auto-generated method stub
 		return null;
 	}
-
+	@Override
+	public List<RoleRel> FindRoleIDbyUserIDX(int id) {
+		// TODO Auto-generated method stub
+		return roleRelMapper.FindRoleIDbyUserIDX(id);
+	}
 }

@@ -57,4 +57,19 @@ public interface CarBiz {
 	 * @return
 	 */
 	public Car findCustCarNumberByCarIDX(int cid);
+	/**
+	 * 根据手机号查询该用户名下车辆VIP信息
+	 * 
+	 * @param cust
+	 * @return
+	 */
+	public List<Car> findCustCarVipStateX(@Param("cust_phone") String cust_phone, @Param("cpm_id") int cpm_id,
+			@Param("pm_type") String pm_type, @Param("pm_name") String pm_name);
+
+	/**
+	 * 根据车牌号号查询车辆VIP信息
+	 * 
+	 * @return
+	 */
+	public List<Car> findCarVipStateX(String cust_phone);
 }

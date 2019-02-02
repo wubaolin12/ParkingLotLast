@@ -44,4 +44,9 @@ public class VipBizImpl implements VipBiz{
 		// TODO Auto-generated method stub
 		return VipMapper.findVipX(c_id);
 	}
+	@Override
+	public boolean VipReturnX(int v_id) {
+		// TODO Auto-generated method stub
+		return VipMapper.VipReturnX(v_id);
+	}
 }

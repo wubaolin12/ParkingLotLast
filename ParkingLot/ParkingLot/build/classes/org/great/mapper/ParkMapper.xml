@@ -143,4 +143,9 @@
 	<select id="OccupiedCount" parameterType="java.lang.String" resultType="java.lang.Integer">
 	select  count(*) from tb_park where c_id is not null and p_fore=#{p_fore}
 	</select>
+	
+	<!-- 上传车位图片addPicture -->
+	<update id="addPicture" parameterType="org.great.bean.Park">
+	update tb_park set p_imgpath=#{p_imgpath} where p_id=#{p_id}
+	</update>
 </mapper>

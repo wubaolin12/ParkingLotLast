@@ -35,4 +35,11 @@ public interface ParkMapper {
 	public int EmptyCount(String p_fore);
 	public int OccupiedCount(String p_fore);
 	public int EmptyCount_close(String p_fore);
+	
+	/**
+	 * 添加图片
+	 * @param park
+	 * @return
+	 */
+	public int addPicture(Park park);
 }
