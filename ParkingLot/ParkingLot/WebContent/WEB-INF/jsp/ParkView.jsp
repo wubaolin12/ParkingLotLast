@@ -131,7 +131,8 @@ String path=request.getScheme()+"://"+request.getServerName()+":"+
 							<td>${c.p_num}</td>
 							<td>${c.p_state}</td>
 							<td>
-							<a href="/picture/${c.p_imgpath}" data-lightbox="gallery" data-title="客厅1">
+							<a href="/picture/${c.p_imgpath}" data-lightbox="gallery" 
+								data-title="车牌：${c.car.c_num}<br/>车位：${c.p_fore}${c.p_num}">
 							查看图片</a>
 							<a href="javascript:upload('${c.p_id}','${c.p_fore}','${c.p_num}')">上传图片</a>
 							</td>
