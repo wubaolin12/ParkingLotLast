@@ -37,20 +37,7 @@
 				<input type="text" style="display: none;" value=""><input type="text" class="input-text" value="" placeholder="" id="" name="menu_name">
 			</div>
 		</div>
-<!-- 		<div class="row cl">
-			<label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>分类栏目：</label>
-			<div class="formControls col-xs-8 col-sm-9">
-				<span class="select-box">
-				<select name="" class="select">
-					<option value="0">全部栏目</option>
-					<option value="1">新闻资讯</option>
-					<option value="11">├行业动态</option>
-					<option value="12">├行业资讯</option>
-					<option value="13">├行业新闻</option>
-				</select>
-				</span>
-			</div>
-		</div> -->
+
 
 
 		<div class="row cl">

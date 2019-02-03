@@ -49,4 +49,7 @@ public class MainHandler {
 		request.setAttribute("menuList", menuList);
 		return "main";
 	}
+	
+
+	
 }
