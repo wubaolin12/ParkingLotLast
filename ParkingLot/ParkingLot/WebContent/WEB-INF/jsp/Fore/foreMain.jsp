@@ -19,10 +19,10 @@ String path=request.getScheme()+"://"+request.getServerName()+":"+
 <link href="https://fonts.googleapis.com/css?family=Baloo+Bhaijaan" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css?family=Didact+Gothic" rel="stylesheet">
 <!-- CSS -->
-<link rel="stylesheet" href="css/bootstrap.css" type="text/css" media="screen">
-<link rel="stylesheet" href="css/bootstrap-responsive.css" type="text/css" media="screen">
-<link rel="stylesheet" href="css/style.css" type="text/css" media="screen">
-<link rel="stylesheet" href="css/font-awesome.css" type="text/css" media="screen">
+<link rel="stylesheet" href="${path}/static/fore-static/css/bootstrap.css" type="text/css" media="screen">
+<link rel="stylesheet" href="${path}/static/fore-static/css/bootstrap-responsive.css" type="text/css" media="screen">
+<link rel="stylesheet" href="${path}/static/fore-static/css/style.css" type="text/css" media="screen">
+<link rel="stylesheet" href="${path}/static/fore-static/css/font-awesome.css" type="text/css" media="screen">
 <!--[if lt IE 8]>
 	<div><a href="http://www.microsoft.com/windows/internet-explorer/default.aspx?ocid=ie6_countdown_bannercode"><img src="http://www.theie6countdown.com/images/upgrade.jpg"border="0"></a></div>  
 <![endif]-->
@@ -58,7 +58,7 @@ String path=request.getScheme()+"://"+request.getServerName()+":"+
 				</div>
 			</div>
 			<div class="cloud"></div>
-			<div class="hot-air-balloon"><img src="images/bicycle.png" alt=""></div>
+			<div class="hot-air-balloon"><img src="${path}/static/fore-static/images/bicycle.png" alt=""></div>
 		</div>
 	</div>
 	<!-- END MOUNTAIN EFFECT -->
@@ -71,7 +71,7 @@ String path=request.getScheme()+"://"+request.getServerName()+":"+
 							<header>
 								<!-- START LOGO -->
 								<div class="logo_wrapper">
-									<a href="index.html" class="logo"><img src="images/logo.png" alt="Kinder Garten Logo"></a>
+									<a href="index.html" class="logo"><img src="${path}/static/fore-static/images/logo.png" alt="Kinder Garten Logo"></a>
 								</div>
 								<!-- END LOGO -->
 							</header>
@@ -106,12 +106,12 @@ String path=request.getScheme()+"://"+request.getServerName()+":"+
 								<a class="next1" href="index.html#"></a>
 								<ul id="caroufredsel_slider1" class="clearfix">
 									<li>
-										<div class="caroufredsel_slide1"> <img src="images/slider/遮车布.png" alt="Slider2" class="img"  >
+										<div class="caroufredsel_slide1"> <img src="${path}/static/fore-static/images/slider/遮车布.png" alt="Slider2" class="img"  >
 											<div class="txt1">办理三个月以上套餐送遮车布</div>
 										</div>
 									</li>
 									<li>
-										<div class="caroufredsel_slide1"> <img src="images/slider/摇头狗.png" alt="Slider2" class="img"  onclick="window.open('https://detail.tmall.com/item.htm?spm=a230r.1.14.22.69ae651e0tKjc1&id=584172873947&ns=1&abbucket=15')"
+										<div class="caroufredsel_slide1"> <img src="${path}/static/fore-static/images/slider/摇头狗.png" alt="Slider2" class="img"  onclick="window.open('https://detail.tmall.com/item.htm?spm=a230r.1.14.22.69ae651e0tKjc1&id=584172873947&ns=1&abbucket=15')"
 
 >
 											<div class="txt1">淘宝广告：卖萌摇头狗</div>
@@ -146,13 +146,13 @@ String path=request.getScheme()+"://"+request.getServerName()+":"+
 	</div>
 
 <!-- JS -->
-<script type="text/javascript" src="js/jquery.js"></script>
-<script type="text/javascript" src="js/jquery.easing.1.3.js"></script>
-<script type="text/javascript" src="js/superfish.js"></script>
-<script type="text/javascript" src="js/jquery.ui.totop.js"></script>
-<script type="text/javascript" src="js/jquery.caroufredsel.js"></script>
-<script type="text/javascript" src="js/jquery.touchSwipe.min.js"></script>
-<script type="text/javascript" src="js/bootstrap.js"></script>
+<script type="text/javascript" src="${path}/static/fore-static/js/jquery.js"></script>
+<script type="text/javascript" src="${path}/static/fore-static/js/jquery.easing.1.3.js"></script>
+<script type="text/javascript" src="${path}/static/fore-static/js/superfish.js"></script>
+<script type="text/javascript" src="${path}/static/fore-static/js/jquery.ui.totop.js"></script>
+<script type="text/javascript" src="${path}/static/fore-static/js/jquery.caroufredsel.js"></script>
+<script type="text/javascript" src="${path}/static/fore-static/js/jquery.touchSwipe.min.js"></script>
+<script type="text/javascript" src="${path}/static/fore-static/js/bootstrap.js"></script>
 <script>
 	// CAROUFSEDSEL SLIDER 
 	$(document).ready(function () {

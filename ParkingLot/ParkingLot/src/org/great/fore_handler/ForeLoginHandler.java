@@ -50,10 +50,10 @@ public class ForeLoginHandler {
 	 *  跳转前端界面1测试
 	 */
 	
-	@RequestMapping("/success1.action")
+	@RequestMapping("/success1.do")
 	public String success1() {
 		System.out.println("1111");
-		return "foreMain";
+		return "Fore/foreMain";
 	}
 	/**
 	 * 	跳转前端界面2测试
@@ -62,7 +62,7 @@ public class ForeLoginHandler {
 	@RequestMapping("/success2.action")
 	public String success2() {
 		System.out.println("2222");
-		return "Fore\\foreMain";
+		return "Fore/foreMain";
 	}
 	
 }
