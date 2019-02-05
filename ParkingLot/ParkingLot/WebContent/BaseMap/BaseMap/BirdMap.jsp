@@ -642,8 +642,8 @@
   		});
   		
   		
-  		 marker3 = new esmap.ESWebViewMarker({
-				url: 'https://www.esmap.cn/sdk-demo/player/player.html',
+  	/* 	 marker3 = new esmap.ESWebViewMarker({
+				url: 'https://www.baidu.com/',
 				x: gpos.x,
 	  			y : gpos.y,
 				height: 1,
@@ -653,10 +653,10 @@
 				},
 				childWidth: 512,
 			})
-  		layer1.addMarker(marker3);
+  		layer1.addMarker(marker3); */
   		 
-  		layer1.addMarker(tm);
-  		floorLayer.addLayer(layer1);
+  		//layer1.addMarker(tm);
+  		//floorLayer.addLayer(layer1);
 
   		 var results = esmap.ESMapUtil.searchModel({
   	        key:"ID",    
@@ -710,7 +710,7 @@
 			created: function () {}
 		});
   
-
+		
   	
   	});
 
