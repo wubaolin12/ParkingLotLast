@@ -1,6 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
     %>
 
+    <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<c:set value="${pageContext.request.contextPath}" var="path" scope="page" />
+
+<%
+	String path = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort()
+			+ request.getContextPath() + "/";
+%>
+
 <!DOCTYPE html>
 <html>
 
@@ -8,9 +16,9 @@
   <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
   <meta charset="UTF-8">
   <title>孔大帅的停车场</title>
-   <link href="../lib/bootstrap.min.css" rel="stylesheet">
-<link href="css/common.css" rel="stylesheet">
-<link href="css/iconfont/iconfont.css" rel="stylesheet">
+   <link href="<%=path%>BaseMap/lib/bootstrap.min.css" rel="stylesheet">
+<link href="<%=path%>BaseMap/BaseMap/css/common.css" rel="stylesheet">
+<link href="<%=path%>BaseMap/BaseMap/css/iconfont/iconfont.css" rel="stylesheet">
 </head>
 <style type="text/css">
   #pannel {

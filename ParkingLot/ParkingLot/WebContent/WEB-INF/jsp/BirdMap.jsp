@@ -1,6 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
     %>
 
+    <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<c:set value="${pageContext.request.contextPath}" var="path" scope="page" />
+
+<%
+	String path = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort()
+			+ request.getContextPath() + "/";
+%>
+
 <!DOCTYPE html>
 <html>
 
@@ -8,9 +16,9 @@
   <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
   <meta charset="UTF-8">
   <title>孔大帅的停车场</title>
-   <link href="../lib/bootstrap.min.css" rel="stylesheet">
-<link href="css/common.css" rel="stylesheet">
-<link href="css/iconfont/iconfont.css" rel="stylesheet">
+   <link href="<%=path%>BaseMap/lib/bootstrap.min.css" rel="stylesheet">
+<link href="<%=path%>BaseMap/BaseMap/css/common.css" rel="stylesheet">
+<link href="<%=path%>BaseMap/BaseMap/css/iconfont/iconfont.css" rel="stylesheet">
 </head>
 <style type="text/css">
   #pannel {
@@ -219,7 +227,7 @@
   <div class="viewmode-floor btn-floor-vertical" data-toggle="buttons">
     <button id="btn2D" class="btn btn-default">2D</button>
     <button id="btn3D" class="btn btn-default">3D</button>
-    <button id="displaySearch" class="btn btn-default" onclick="hidde()">隐藏搜索信息</button>
+    <button id="displaySearch" class="btn btn-default" style="margin-right: 70%" onclick="hidde()">隐藏搜索信息</button>
   </div>
   
   
@@ -340,14 +348,14 @@
 	</div>
   
   
- 	<script src="../lib/esmap.min.js"></script>
-	<script src="../lib/jquery-2.1.4.min.js"></script>
-	<script src="../lib/jquery.qrcode.min.js"></script>
-	<script src="../lib/tips_controls.js"></script>
-	<script src="../lib/bootstrap.min.js"></script>
+ 	<script src="<%=path%>BaseMap/lib/esmap.min.js"></script>
+	<script src="<%=path%>BaseMap/lib/jquery-2.1.4.min.js"></script>
+	<script src="<%=path%>BaseMap/lib/jquery.qrcode.min.js"></script>
+	<script src="<%=path%>BaseMap/lib/tips_controls.js"></script>
+	<script src="<%=path%>BaseMap/lib/bootstrap.min.js"></script>
 	<!-- 信息控件，基于Jquery库   -->
-	<script src="../lib/js/layerFloor.js"></script>
-	<script src="../lib/config.js"></script>
+	<script src="<%=path%>BaseMap/lib/js/layerFloor.js"></script>
+	<script src="<%=path%>BaseMap/lib/config.js"></script>
 	
 	
   <script type="text/javascript">
@@ -372,7 +380,7 @@
       // 楼层控制控件配置参数
       var ctlOpt = new esmap.ESControlOptions({
         position: esmap.ESControlPositon.RIGHT_TOP,
-        imgURL: 'image/wedgets/'
+        imgURL: '<%=path%>BaseMap/BaseMap/image/wedgets/'
         // allLayer: true
         // size:"normal"
       })
@@ -384,13 +392,13 @@
           x: 20,
           y: 70
         },
-        imgURL: 'image/wedgets/'
+        imgURL: '<%=path%>BaseMap/BaseMap/image/wedgets/'
       })
 			var container = document.getElementById('map-container');
       map = new esmap.ESMap({
         container:container, // 渲染dom
-        mapDataSrc: "../data", //地图数据位置
-        mapThemeSrc: "../data/theme", //主题数据位置
+        mapDataSrc: "<%=path%>BaseMap/data", //地图数据位置
+        mapThemeSrc: "<%=path%>BaseMap/data/theme", //主题数据位置
 
         focusAlphaMode: false, //对不可见图层启用透明设置 默认为true
         focusAnimateMode: true, //开启聚焦层切换的动画显示
@@ -459,7 +467,7 @@
               y: coord.y,
               fnum: fnum,
               height: h,
-              url: 'image/start.png',
+              url: '<%=path%>BaseMap/BaseMap/image/start.png',
               size: 64
             });
           } else if (clickCount == 1) { //添加终点并画路线
@@ -473,7 +481,7 @@
               y: coord.y,
               fnum: fnum,
               height: h,
-              url: 'image/end.png',
+              url: '<%=path%>BaseMap/BaseMap/image/end.png',
               size: 64
             });
             // 画导航线
@@ -588,7 +596,7 @@
           im = new esmap.ESImageMarker({
               x: x,
               y: y,
-              url: 'image/user.png',
+              url: '<%=path%>BaseMap/BaseMap/image/user.png',
               size: 64,
               id: 1,
               name: 'myMarker',
@@ -674,7 +682,7 @@
   	    
   	    
   	   var lm = new esmap.ESLocationMarker({
-           url: 'image/pointer.png',
+           url: '<%=path%>BaseMap/BaseMap/image/pointer.png',
            size: 150,
            height: 30
        });
@@ -803,7 +811,7 @@
         //初始化导航对象
         navi = new esmap.ESNavigation({
           map: map,
-          locationMarkerUrl: 'image/pointer.png',
+          locationMarkerUrl: '<%=path%>BaseMap/BaseMap/image/pointer.png',
           locationMarkerSize: 150,
           speed: 1,
           followAngle: true,
