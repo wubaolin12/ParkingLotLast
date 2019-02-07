@@ -184,6 +184,7 @@ public class ComboHandler {
 	 * @param map
 	 * @return
 	 */
+	@OperationLog(operationType = "收支管理", operationName = "修改套餐")
 	@ResponseBody
 	@RequestMapping(value = "/updateComboAjax.action", method = RequestMethod.POST, produces = "application/json;charset=utf-8")
 	public String updateComboAjax(HttpServletResponse response,HttpServletRequest request,@RequestParam Map<String,String> map) 

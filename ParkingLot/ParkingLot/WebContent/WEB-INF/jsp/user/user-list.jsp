@@ -35,7 +35,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <body>
 <nav class="breadcrumb"><i class="Hui-iconfont">&#xe67f;</i> 首页 <span class="c-gray en">&gt;</span> 用户中心 <span class="c-gray en">&gt;</span> 用户管理 <a class="btn btn-success radius r" style="line-height:1.6em;margin-top:3px" href="javascript:location.replace(location.href);" title="刷新" ><i class="Hui-iconfont">&#xe68f;</i></a></nav>
 <div class="page-container">
-	<div class="text-c"> 日期范围：
+<%-- 	<div class="text-c"> 日期范围：
 	<form action="<%=basePath %>emp/seachUser.action?currentpage=${pageel.currentpage}">
 		<input type="text" onfocus="WdatePicker({ maxDate:'#F{$dp.$D(\'datemax\')||\'%y-%M-%d\'}' })" id="datemin" class="input-text Wdate" style="width:120px;">
 		-
@@ -43,7 +43,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		<input type="text" class="input-text" style="width:250px" placeholder="输入用户名称/用户Id/电话" id="" name="searchword">
 		<button type="submit" class="btn btn-success radius" id="" name=""><i class="Hui-iconfont">&#xe665;</i> 搜用户</button>
 	</form>
-	</div>
+	</div> --%>
 	<div class="cl pd-5 bg-1 bk-gray mt-20"> <span class="l">
 	<a href="javascript:;" onclick="datadel()" class="btn btn-danger radius"><i class="Hui-iconfont">&#xe6e2;</i> 批量删除</a> 
 	<a href="javascript:;" onclick="member_add('添加用户','addEmpPage.action','','510')" class="btn btn-primary radius"><i class="Hui-iconfont">&#xe600;</i> 添加用户</a></span> 
@@ -55,9 +55,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				<th width="25"><input type="checkbox" name="" value=""></th>
 				<th width="30">ID</th>
 				<th width="50">用户名</th>
-				<!-- <th width="40">性别</th> -->
-				<th width="90">手机</th>
-				<th width="70">状态</th>
+				 <th width="40">性别</th>
+				<th width="70">手机</th>
+				<th width="50">状态</th>
 				<th width="50">角色</th>
 				<th width="80">操作</th>
 			</tr>
@@ -65,14 +65,14 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		<tbody>
 		<%-- ------${ulist}-----${currentpage} --%>
 		<c:forEach items="${ulist}" var="ul" varStatus="uu">
-			<tr class="text-c">
+			<tr class="text-c" id="${ul.user.u_id}">
 				<td><input type="checkbox" value="1" name=""></td>
 				<td>${ul.user.u_id}</td>
-				<td><u style="cursor:pointer" class="text-primary" onclick="member_show('张三','member-show.html','10001','360','400')">${ul.user.u_name}</u></td>
-				<!-- <td>男</td> -->
-				<td>${ul.user.u_phone}</td>
+				<td class="u_name"><u style="cursor:pointer" class="text-primary" >${ul.user.u_name}</u></td>
+				<td class="u_sex">${ul.user.u_sex}</td>
+				<td class="u_phone">${ul.user.u_phone}</td>
 				<td class="td-status"><span class="label label-success radius">${ul.param.pm_name}</span></td>
-				<td>${ul.role.role_name}</td>
+				<td class="role_id">${ul.role.role_name}</td>
 				<td class="td-manage">
 				<c:if test="${ul.param.pm_name=='启用'}">
 				<a style="text-decoration:none" onClick="member_stop(this,'${ul.user.u_id}','${pageel.currentpage}')" href="javascript:;" title="禁用"><i class="Hui-iconfont">&#xe631;</i></a> 

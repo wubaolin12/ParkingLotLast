@@ -45,7 +45,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<table class="table table-border table-bordered table-hover table-bg table-sort">
 		<thead>
 
-			<tr class="text-c">
+			<tr class="text-c" >
 				<th width="25"><input type="checkbox" name="" value=""></th>
 				<th width="40">ID</th>
 				<th width="90">参数名</th>
@@ -57,11 +57,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		</thead>
 		<tbody>
 		<c:forEach items="${plist}" var="ul" varStatus="uu">
-			<tr class="text-c">
+			<tr class="text-c" id="${ul.pm_id}">
 				<td><input type="checkbox" value="1" name=""></td>
-				<td>${ul.pm_id}</td>
-				<td>${ul.pm_name}</td>
-				<td>${ul.pm_type}</td>
+				<td >${ul.pm_id}</td>
+				<td class="pm_name">${ul.pm_name}</td>
+				<td class="pm_type">${ul.pm_type}</td>
 				<td class="td-manage">
 				
 				<a title="编辑" href="javascript:;" onclick="admin_edit('参数编辑','toUpdateParam.action?pm_id=${ul.pm_id}','${ul.pm_id}','800','500')" class="ml-5" style="text-decoration:none"><i class="Hui-iconfont">&#xe6df;</i></a>

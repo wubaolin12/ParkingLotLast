@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.great.bean.Menu;
 import org.great.bean.PageElement;
 import org.great.bean.Role;
 import org.great.bean.User;
@@ -27,6 +28,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+
+import net.sf.json.JSONObject;
 
 /**
  * 人员管理
@@ -220,6 +223,39 @@ public class UserHandler extends BaseUtil{
 		
 		return result;
 	}
+	
+	/**
+	 * 修改用户信息
+	 * @param response
+	 * @param request
+	 * @param map
+	 * @return
+	 */
+	@OperationLog(operationType = "系统管理", operationName = "修改员工信息")	
+	@ResponseBody
+	@RequestMapping(value = "/updateUserAjax.action", method = RequestMethod.POST, produces = "application/json;charset=utf-8")
+	public String updateUserAjax(HttpServletResponse response,HttpServletRequest request,@RequestParam Map<String,String> map) 
+	{
+		System.out.println("--------updateUserAjax");
+		System.out.println(map.toString());
+		
+		Map rolemap=new HashMap<>();
+		rolemap.put("role_id", map.get("role_id"));
+		map.remove("role_id");
+		int num=bbiz.updateData(tb_name, map, "u_id", map.get("u_id"));	
+		int num2=bbiz.updateData("staff_rel", rolemap, "u_id", map.get("u_id"));
+
+		if(num>0&&num2>0) {
+			UserMsg upateuser=umbiz.getUserObject(map.get("u_id"));
+			JSONObject json = JSONObject.fromObject(upateuser);
+			String jstr=json.toString();
+			
+			result=jstr;
+		}
+		return result;
+		
+	}
+	
 	
 	/**
 	 * 重置密码

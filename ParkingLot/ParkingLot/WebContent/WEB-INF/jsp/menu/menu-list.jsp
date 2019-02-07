@@ -40,7 +40,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		<button type="submit" class="btn btn-success radius" id="" name=""><i class="Hui-iconfont">&#xe665;</i> 搜菜单</button>
 	</form> -->
 	</div>
-	<div class="cl pd-5 bg-1 bk-gray mt-20"> <span class="l"><a href="javascript:;" onclick="datadel()" class="btn btn-danger radius"><i class="Hui-iconfont">&#xe6e2;</i> 批量删除</a> <a href="javascript:;" onclick="member_add('添加用户','toInsertMenu.action','','510')" class="btn btn-primary radius"><i class="Hui-iconfont">&#xe600;</i> 添加菜单</a></span> </div>
+	<div class="cl pd-5 bg-1 bk-gray mt-20"> <span class="l"><a href="javascript:;" onclick="datadel()" class="btn btn-danger radius"><i class="Hui-iconfont">&#xe6e2;</i> 批量删除</a> <a href="javascript:;" onclick="member_add('添加菜单','toInsertMenu.action','','510')" class="btn btn-primary radius"><i class="Hui-iconfont">&#xe600;</i> 添加菜单</a></span> </div>
 	<div class="mt-20">
 	<table class="table table-border table-bordered table-hover table-bg table-sort">
 		<thead>
@@ -50,19 +50,19 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				<th width="40">ID</th>
 				<th width="90">菜单名</th>
 				<th width="150">菜单路径</th>
-				<th width="90">上级菜单id</th>
+				<th width="90">上级菜单</th>
 
 				<th width="100">操作</th>
 			</tr>
 		</thead>
 		<tbody>
 		<c:forEach items="${mlist}" var="ul" varStatus="uu">
-			<tr class="text-c">
+			<tr class="text-c" id="${ul.menu_id}">
 				<td><input type="checkbox" value="1" name=""></td>
 				<td>${ul.menu_id}</td>
-				<td>${ul.menu_name}</td>
-				<td>${ul.menu_link}</td>
-				<td>${ul.menu_pid}</td>
+				<td class="menu_name">${ul.menu_name}</td>
+				<td class="menu_link">${ul.menu_link}</td>
+				<td class="menu_pid">${ul.fmenu.menu_name}</td>
 				
 				<td class="td-manage">
 				

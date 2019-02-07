@@ -34,13 +34,13 @@
 		<div class="row cl">
 			<label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>用户名：</label>
 			<div class="formControls col-xs-8 col-sm-9">
-				<input type="text" style="display: none;" value=""><input type="text" class="input-text" value="${updateuser.user.u_name}" placeholder="" id="" name="u_name">
+				<input type="text" style="display: none;" id="u_id" value="${updateuser.user.u_id}"><input type="text" class="input-text" value="${updateuser.user.u_name}" placeholder="" id="u_name" name="u_name">
 			</div>
 		</div>
 		<div class="row cl">
 			<label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>用户性别：</label>
 			<div class="formControls col-xs-8 col-sm-9">
-					<select name="u_sex">	
+					<select name="u_sex" id="u_sex">	
 							<option value="${updateuser.user.u_sex}">${updateuser.user.u_sex}</option>				
 							<option value="男">男</option>
 							<option value="女">女</option>
@@ -52,7 +52,7 @@
 		<div class="row cl">
 			<label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>电话：</label>
 			<div class="formControls col-xs-8 col-sm-9">
-				<input type="text" class="input-text" value="${updateuser.user.u_phone}" placeholder="" id="" name="u_phone">
+				<input type="text" class="input-text" value="${updateuser.user.u_phone}" placeholder="" id="u_phone" name="u_phone">
 			</div>
 		</div>
 
@@ -60,7 +60,7 @@
 		<div class="row cl">
 			<label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>所属角色：</label>
 			<div class="formControls col-xs-8 col-sm-9">
-					<select name="role_id">
+					<select name="role_id" id="role_id">
 							<option value="${updateuser.role.role_id}">${updateuser.role.role_name}</option>
 						<c:forEach items="${rlist}" varStatus="rr" var="rl">
 							<option value="${rl.role_id}">${rl.role_name}</option>
@@ -71,7 +71,7 @@
 		
 		<div class="row cl">
 			<div class="col-xs-8 col-sm-9 col-xs-offset-4 col-sm-offset-2">
-				<button onClick="article_save_submit();" class="btn btn-primary radius" type="submit"><i class="Hui-iconfont">&#xe632;</i> 提交</button>
+				<button id="bt1" class="btn btn-primary radius" type="button"><i class="Hui-iconfont">&#xe632;</i> 提交</button>
 <!-- 				<button onClick="article_save();" class="btn btn-secondary radius" type="button"><i class="Hui-iconfont">&#xe632;</i> 保存草稿</button> -->
 				<button onClick="layer_close();" class="btn btn-default radius" type="button">&nbsp;&nbsp;取消&nbsp;&nbsp;</button>
 			</div>
@@ -96,6 +96,42 @@ function article_save(){
 	alert("刷新父级的时候会自动关闭弹层。")
 	window.parent.location.reload();
 }
+
+$('#bt1').on('click', function(){
+	/* alert(11111); */
+	var index = parent.layer.getFrameIndex(window.name); 
+  	var u_name=document.getElementById("u_name").value;
+	var u_sex=document.getElementById("u_sex").value;
+  	var u_phone=document.getElementById("u_phone").value;
+  	var role_id=document.getElementById("role_id").value; 	
+  	var u_id=document.getElementById("u_id").value; 
+	var utr="#"+u_id;
+
+	if(u_name!=''&&u_name!=null&&u_sex!=''&&u_sex!=null&&u_phone!=''&&u_phone!=null){
+		
+	    $.ajax({
+			url :"updateUserAjax.action" ,
+			type :"post",
+			dataType:"json", 
+			data :{"u_name":u_name,"u_sex":u_sex,"u_phone":u_phone,"role_id":role_id,"u_id":u_id},
+			success:function(redata){
+	/* 			alert(redata.co_price); */	
+				parent.$(utr).find(".u_name").empty();
+				parent.$(utr).find(".u_name").prepend(redata.user.u_name);
+				parent.$(utr).find(".u_sex").empty();
+				parent.$(utr).find(".u_sex").prepend(redata.user.u_sex);
+				parent.$(utr).find(".u_phone").empty();
+				parent.$(utr).find(".u_phone").prepend(redata.user.u_phone);
+				parent.$(utr).find(".role_id").empty();
+				parent.$(utr).find(".role_id").prepend(redata.role.role_name);
+				parent.layer.close(index);
+			}
+		});
+
+	}else{
+		alert("请填入数据");
+	}
+});
 
 $(function(){
 	$('.skin-minimal input').iCheck({

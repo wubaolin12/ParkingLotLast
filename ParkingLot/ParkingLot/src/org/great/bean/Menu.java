@@ -16,7 +16,8 @@ public class Menu implements Serializable {
 	private int menu_pid;// 上一级lid
 	private String menu_name;// 菜单名
 	private String menu_link;// 菜单URL
-
+	private Menu fmenu;
+	
 	public Menu() {
 		super();
 	}
@@ -40,6 +41,16 @@ public class Menu implements Serializable {
 	public String toString() {
 		return "Menu [menu_id=" + menu_id + ", menu_pid=" + menu_pid + ", menu_name=" + menu_name + ", menu_link="
 				+ menu_link + "]";
+	}
+
+	
+	
+	public Menu getFmenu() {
+		return fmenu;
+	}
+
+	public void setFmenu(Menu fmenu) {
+		this.fmenu = fmenu;
 	}
 
 	public int getMenu_id() {

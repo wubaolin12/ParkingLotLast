@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.great.bean.Param;
+import org.great.bean.Role;
 import org.great.biz.BaseBiz;
 import org.great.biz.ParamBiz;
 import org.great.log.OperationLog;
@@ -16,7 +17,11 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
+
+import net.sf.json.JSONObject;
 
 /**
  * 参数管理
@@ -170,6 +175,33 @@ public class ParamHandler {
 		return result;
 		
 	}
+	
+	/**
+	 * 修改参数的方法
+	 * @param response
+	 * @param request
+	 * @param map
+	 * @return
+	 */
+	@OperationLog(operationType = "系统管理", operationName = "修改参数")	
+	@ResponseBody
+	@RequestMapping(value = "/updateParamAjax.action", method = RequestMethod.POST, produces = "application/json;charset=utf-8")
+	public String updateParamAjax(HttpServletResponse response,HttpServletRequest request,@RequestParam Map<String,String> map) 
+	{
+		System.out.println("--------updateParamAjax");
+		System.out.println(map.toString());
+		int num=bbiz.updateData(tb_name, map, "pm_id", map.get("pm_id"));		
+		if(num>0) {
+			Param param=pbiz.getParamObject(map.get("pm_id"));
+			JSONObject json = JSONObject.fromObject(param);
+			String jstr=json.toString();
+			
+			result=jstr;
+		}
+		return result;
+		
+	}
+	
 	
 	/**
 	 * 删除菜单

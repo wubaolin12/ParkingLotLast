@@ -36,9 +36,20 @@
 	</select>
 	
 	<!-- 加载全部菜单列表 -->
-	<select id="getMenuList" resultType="org.great.bean.Menu">
+	<select id="getMenuList" resultMap="menuMap">
 		select * from tb_menu ORDER BY '' DESC 
 	</select>
+	
+	<select id="getFmenu" parameterType="org.great.bean.Menu" resultType="org.great.bean.Menu">
+		select * from tb_menu where menu_id=#{menu_pid}
+	</select>	
+		
+  	<resultMap type="org.great.bean.Menu" id="menuMap">	
+		<association property="fmenu" column="menu_pid"
+			javaType="org.great.bean.Menu" select="getFmenu">			
+		</association>		
+	</resultMap> 
+	
 	<!-- 查询获取列表 -->
 	<select id="seachMenu"  resultType="org.great.bean.Menu" parameterType="java.util.Map">
 			<if test="dataMap!=null">
@@ -70,7 +81,9 @@
 
 		</resultMap> -->
 		
-		<select id="getMenuObject" resultType="org.great.bean.Menu">
+		<select id="getMenuObject" resultMap="menuMap">
 			select * from tb_menu where menu_id=${menu_id}
 		</select>
+		
+		
 </mapper>

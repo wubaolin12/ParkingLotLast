@@ -49,9 +49,15 @@
 		
 		
 		<div class="row cl">
-			<label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>上级菜单id：</label>
+			<label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>上级菜单：</label>
 			<div class="formControls col-xs-8 col-sm-9">
-				<input type="text" class="input-text" value="" placeholder="" id="" name="menu_pid">
+				<!-- <input type="text" class="input-text" value="" placeholder="" id="" name="menu_pid"> -->
+				<select id="menu_pid" name="menu_pid">
+					<c:forEach items="${fmlist}" varStatus="ff" var="fl">
+						<option value="${fl.menu_id}">${fl.menu_name}</option>
+					</c:forEach>
+					<option value="0">系统</option>
+				</select>
 			</div>
 		</div>
 

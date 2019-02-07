@@ -38,8 +38,14 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <script type="text/javascript">
 
 function article_save(){
-	alert("刷新父级的时候会自动关闭弹层。")
-	window.parent.location.reload();
+	alert("combo-success。")
+	/* parent.replace(location.href); */
+		parent.location.reload(); 
+
+ 	var index = parent.layer.getFrameIndex(window.name); 
+	parent.layer.close(index); 
+
+	
 }
 
 

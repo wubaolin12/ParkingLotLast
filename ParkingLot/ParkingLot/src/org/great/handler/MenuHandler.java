@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.great.bean.Menu;
+import org.great.bean.Param;
 import org.great.bean.Role;
 import org.great.biz.BaseBiz;
 import org.great.biz.MenuBiz;
@@ -19,7 +20,11 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
+
+import net.sf.json.JSONObject;
 
 /**
  * 菜单管理handle
@@ -57,7 +62,12 @@ public class MenuHandler extends BaseUtil{
 		System.out.println("-----MenuHandler,toUpdateMenu++ID="+id);
 		
 		Menu menu=mbiz.getMenuObject(id);
-		request.setAttribute("menuObject", menu);			
+		request.setAttribute("menuObject", menu);	
+		//获取一级菜单列表
+		Map map=new HashMap<>();
+		map.put("menu_pid", "0");
+		List<Menu>fmlist=mbiz.seachMenu(map);
+		request.setAttribute("fmlist", fmlist);
 		
 		result="menu/update-menu";
 		return result;
@@ -79,6 +89,12 @@ public class MenuHandler extends BaseUtil{
 		
 		List<Role> rlist=rbiz.findAll();
 		request.setAttribute("rlist", rlist);
+		
+		//获取一级菜单列表
+		Map map=new HashMap<>();
+		map.put("menu_pid", "0");
+		List<Menu>fmlist=mbiz.seachMenu(map);
+		request.setAttribute("fmlist", fmlist);
 		
 		result="menu/add-menu";
 		return result;
@@ -190,6 +206,32 @@ public class MenuHandler extends BaseUtil{
 			result="success";
 		}else {
 			result="error";
+		}
+		return result;
+		
+	}
+	
+	/**
+	 * 修改菜单方法
+	 * @param response
+	 * @param request
+	 * @param map
+	 * @return
+	 */
+	@OperationLog(operationType = "系统管理", operationName = "修改菜单")	
+	@ResponseBody
+	@RequestMapping(value = "/updateMenuAjax.action", method = RequestMethod.POST, produces = "application/json;charset=utf-8")
+	public String updateMenuAjax(HttpServletResponse response,HttpServletRequest request,@RequestParam Map<String,String> map) 
+	{
+		System.out.println("--------updateMenuAjax");
+		System.out.println(map.toString());
+		int num=bbiz.updateData(tb_name, map, "menu_id", map.get("menu_id"));		
+		if(num>0) {
+			Menu menu=mbiz.getMenuObject(map.get("menu_id"));
+			JSONObject json = JSONObject.fromObject(menu);
+			String jstr=json.toString();
+			
+			result=jstr;
 		}
 		return result;
 		

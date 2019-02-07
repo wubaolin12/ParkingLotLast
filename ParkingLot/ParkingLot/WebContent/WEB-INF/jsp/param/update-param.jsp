@@ -34,7 +34,7 @@
 		<div class="row cl">
 			<label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>参数名：</label>
 			<div class="formControls col-xs-8 col-sm-9">
-				<input type="text" style="display: none;" value=""><input type="text" class="input-text" value="${paramObject.pm_name}" placeholder="" id="" name="pm_name">
+				<input type="text" style="display: none;" id="pm_id" value="${paramObject.pm_id}"><input type="text" class="input-text" value="${paramObject.pm_name}" placeholder="" id="pm_name" name="pm_name">
 			</div>
 		</div>
 
@@ -42,7 +42,7 @@
 		<div class="row cl">
 			<label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>参数类型：</label>
 			<div class="formControls col-xs-8 col-sm-9">
-				<input type="text" class="input-text" value="${paramObject.pm_type}" placeholder="" id="" name="pm_type">
+				<input type="text" class="input-text" value="${paramObject.pm_type}" placeholder="" id="pm_type" name="pm_type">
 			</div>
 		</div>
 		
@@ -51,7 +51,7 @@
 		
 		<div class="row cl">
 			<div class="col-xs-8 col-sm-9 col-xs-offset-4 col-sm-offset-2">
-				<button onClick="article_save_submit();" class="btn btn-primary radius" type="submit"><i class="Hui-iconfont">&#xe632;</i> 提交</button>
+				<button id="bt1" class="btn btn-primary radius" type="button"><i class="Hui-iconfont">&#xe632;</i> 提交</button>
 <!-- 				<button onClick="article_save();" class="btn btn-secondary radius" type="button"><i class="Hui-iconfont">&#xe632;</i> 保存草稿</button> -->
 				<button onClick="layer_close();" class="btn btn-default radius" type="button">&nbsp;&nbsp;取消&nbsp;&nbsp;</button>
 			</div>
@@ -76,6 +76,36 @@ function article_save(){
 	alert("刷新父级的时候会自动关闭弹层。")
 	window.parent.location.reload();
 }
+
+$('#bt1').on('click', function(){
+	/* alert(11111); */
+	var index = parent.layer.getFrameIndex(window.name); 
+  	var pm_name=document.getElementById("pm_name").value;
+	var pm_type=document.getElementById("pm_type").value;
+  	var pm_id=document.getElementById("pm_id").value;
+	var utr="#"+pm_id;
+
+	if(pm_name!=''&&pm_name!=null&&pm_type!=''&&pm_type!=null){
+		
+	    $.ajax({
+			url :"updateParamAjax.action" ,
+			type :"post",
+			dataType:"json", 
+			data :{"pm_name":pm_name,"pm_type":pm_type,"pm_id":pm_id},
+			success:function(redata){
+	/* 			alert(redata.co_price); */	
+				parent.$(utr).find(".pm_name").empty();
+				parent.$(utr).find(".pm_name").prepend(redata.pm_name);
+				parent.$(utr).find(".pm_type").empty();
+				parent.$(utr).find(".pm_type").prepend(redata.pm_type);
+				parent.layer.close(index);
+			}
+		});
+
+	}else{
+		alert("请填入数据");
+	}
+});
 
 $(function(){
 	$('.skin-minimal input').iCheck({

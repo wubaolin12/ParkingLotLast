@@ -34,43 +34,37 @@
 		<div class="row cl">
 			<label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>菜单名：</label>
 			<div class="formControls col-xs-8 col-sm-9">
-				<input type="text" style="display: none;" value=""><input type="text" class="input-text" value="${menuObject.menu_name}" placeholder="" id="" name="menu_name">
+				<input type="text" style="display: none;" id="menu_id" value="${menuObject.menu_id}"><input type="text" class="input-text" value="${menuObject.menu_name}" placeholder="" id="menu_name" name="menu_name">
 			</div>
 		</div>
-<!-- 		<div class="row cl">
-			<label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>分类栏目：</label>
-			<div class="formControls col-xs-8 col-sm-9">
-				<span class="select-box">
-				<select name="" class="select">
-					<option value="0">全部栏目</option>
-					<option value="1">新闻资讯</option>
-					<option value="11">├行业动态</option>
-					<option value="12">├行业资讯</option>
-					<option value="13">├行业新闻</option>
-				</select>
-				</span>
-			</div>
-		</div> -->
+
 
 
 		<div class="row cl">
 			<label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>菜单路径：</label>
 			<div class="formControls col-xs-8 col-sm-9">
-				<input type="text" class="input-text" value="${menuObject.menu_link}" placeholder="" id="" name="menu_link">
+				<input type="text" class="input-text" value="${menuObject.menu_link}" placeholder="" id="menu_link" name="menu_link">
 			</div>
 		</div>
 		
 		
 		<div class="row cl">
-			<label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>上级菜单id：</label>
+			<label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>上级菜单：</label>
 			<div class="formControls col-xs-8 col-sm-9">
-				<input type="text" class="input-text" value="${menuObject.menu_pid}" placeholder="" id="" name="menu_pid">
+				<%-- <input type="text" class="input-text" value="${menuObject.fmenu.menu_name}" placeholder="" id="menu_pid" name="menu_pid"> --%>
+				<select id="menu_pid" name="menu_pid">
+					<option value="${menuObject.fmenu.menu_id}">${menuObject.fmenu.menu_name}</option>
+					<c:forEach items="${fmlist}" varStatus="ff" var="fl">
+						<option value="${fl.menu_id}">${fl.menu_name}</option>
+					</c:forEach>
+					<option value="0">系统</option>
+				</select>
 			</div>
 		</div>
 
 		<div class="row cl">
 			<div class="col-xs-8 col-sm-9 col-xs-offset-4 col-sm-offset-2">
-				<button onClick="article_save_submit();" class="btn btn-primary radius" type="submit"><i class="Hui-iconfont">&#xe632;</i> 提交修改</button>
+				<button id="bt1" class="btn btn-primary radius" type="button"><i class="Hui-iconfont">&#xe632;</i> 提交修改</button>
 <!-- 				<button onClick="article_save();" class="btn btn-secondary radius" type="button"><i class="Hui-iconfont">&#xe632;</i> 保存草稿</button>
  -->				<button onClick="layer_close();" class="btn btn-default radius" type="button">&nbsp;&nbsp;取消&nbsp;&nbsp;</button>
 			</div>
@@ -95,6 +89,40 @@ function article_save(){
 	alert("刷新父级的时候会自动关闭弹层。")
 	window.parent.location.reload();
 }
+
+$('#bt1').on('click', function(){
+	/* alert(11111); */
+	var index = parent.layer.getFrameIndex(window.name); 
+  	var menu_name=document.getElementById("menu_name").value;
+	var menu_link=document.getElementById("menu_link").value;
+  	var menu_pid=document.getElementById("menu_pid").value;
+  	var menu_id=document.getElementById("menu_id").value; 	
+  	
+	var utr="#"+menu_id;
+
+	if(menu_name!=''&&menu_name!=null&&menu_link!=''&&menu_link!=null&&menu_pid!=''&&menu_pid!=null){
+		
+	    $.ajax({
+			url :"updateMenuAjax.action" ,
+			type :"post",
+			dataType:"json", 
+			data :{"menu_name":menu_name,"menu_link":menu_link,"menu_pid":menu_pid,"menu_id":menu_id},
+			success:function(redata){
+	/* 			alert(redata.co_price); */	
+				parent.$(utr).find(".menu_name").empty();
+				parent.$(utr).find(".menu_name").prepend(redata.menu_name);
+				parent.$(utr).find(".menu_link").empty();
+				parent.$(utr).find(".menu_link").prepend(redata.menu_link);
+				parent.$(utr).find(".menu_pid").empty();
+				parent.$(utr).find(".menu_pid").prepend(redata.fmenu.menu_name);
+				parent.layer.close(index);
+			}
+		});
+
+	}else{
+		alert("请填入数据");
+	}
+});
 
 $(function(){
 	$('.skin-minimal input').iCheck({

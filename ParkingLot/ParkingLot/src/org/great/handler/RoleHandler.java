@@ -176,6 +176,7 @@ public class RoleHandler {
 		
 	}
 	
+	@OperationLog(operationType = "系统管理", operationName = "修改角色")	
 	@ResponseBody
 	@RequestMapping(value = "/updateRoleAjax.action", method = RequestMethod.POST, produces = "application/json;charset=utf-8")
 	public String updateRoleAjax(HttpServletResponse response,HttpServletRequest request,@RequestParam Map<String,String> map) 
