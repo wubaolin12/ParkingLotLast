@@ -45,13 +45,26 @@
 		
 		<!-- 配置拦截器 -->
 		<mvc:interceptors>
+<!-- 			<mvc:interceptor> -->
+<!-- 				拦截请求所有路径 -->
+<!-- 				<mvc:mapping path="/**"/> -->
+				
+<!-- 				不拦截的资源 -->
+<!-- 				<mvc:exclude-mapping path="/**/*login*"/> -->
+<!-- 				<mvc:exclude-mapping path="/**/*.action"/> -->
+				
+<!-- 				指定拦截器位置 -->
+<!-- 			</mvc:interceptor> -->
 			<mvc:interceptor>
 				<!-- 拦截请求所有路径 -->
 				<mvc:mapping path="/**"/>
-				<!-- 指定位置 -->
-				<bean class="org.great.interceptor.LoginInterceptor">
-					
-				</bean>
+				
+				<!-- 不拦截的资源 -->
+				<mvc:exclude-mapping path="/**/*login*"/>
+				<mvc:exclude-mapping path="/**/*.do"/>
+				
+				<!-- 指定拦截器位置 -->
+				<bean class="org.great.interceptor.LoginInterceptor"/>
 			</mvc:interceptor>
 		</mvc:interceptors>
 		
