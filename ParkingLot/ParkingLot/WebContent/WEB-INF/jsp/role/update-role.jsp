@@ -34,14 +34,14 @@
 		<div class="row cl">
 			<label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>角色名：</label>
 			<div class="formControls col-xs-8 col-sm-9">
-				<input type="text" style="display: none;" value=""><input type="text" class="input-text" value="${roleObject.role_name}" placeholder="" id="" name="role_name">
+				<input type="text" style="display: none;" id="role_id" value="${roleObject.role_id}"><input type="text" class="input-text" value="${roleObject.role_name}" placeholder="" id="role_name" name="role_name">
 			</div>
 		</div>
 
 		
 		<div class="row cl">
 			<div class="col-xs-8 col-sm-9 col-xs-offset-4 col-sm-offset-2">
-				<button onClick="article_save_submit();" class="btn btn-primary radius" type="submit"><i class="Hui-iconfont">&#xe632;</i> 提交</button>
+				<button  class="btn btn-primary radius"  id="bt1" type="button"><i class="Hui-iconfont">&#xe632;</i> 提交</button>
 <!-- 				<button onClick="article_save();" class="btn btn-secondary radius" type="button"><i class="Hui-iconfont">&#xe632;</i> 保存草稿</button> -->
 				<button onClick="layer_close();" class="btn btn-default radius" type="button">&nbsp;&nbsp;取消&nbsp;&nbsp;</button>
 			</div>
@@ -66,6 +66,36 @@ function article_save(){
 	alert("刷新父级的时候会自动关闭弹层。")
 	window.parent.location.reload();
 }
+
+
+$('#bt1').on('click', function(){
+	/* alert(11111); */
+	var index = parent.layer.getFrameIndex(window.name); 
+  	var role_name=document.getElementById("role_name").value;
+  	var role_id=document.getElementById("role_id").value;
+	var utr="#"+role_id;
+
+	if(role_name!=''&&role_name!=null){
+		
+	    $.ajax({
+			url :"updateRoleAjax.action" ,
+			type :"post",
+			dataType:"json", 
+			data :{"role_name":role_name,"role_id":role_id},
+			success:function(redata){
+	/* 			alert(redata.co_price); */	
+				parent.$(utr).find(".role_name").empty();
+				parent.$(utr).find(".role_name").prepend(redata.role_name);
+				parent.layer.close(index);
+			}
+		});
+		
+	}else{
+		alert("请填入数据");
+	}
+});
+
+
 
 $(function(){
 	$('.skin-minimal input').iCheck({

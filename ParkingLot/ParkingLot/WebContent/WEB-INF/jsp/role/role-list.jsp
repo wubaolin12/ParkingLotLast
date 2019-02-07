@@ -57,20 +57,20 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		</thead>
 		<tbody>
 		<c:forEach items="${rlist}" var="ul" varStatus="uu">
-			<tr class="text-c">
+			<tr class="text-c" id="${ul.role_id}">
 				<td><input type="checkbox" value="1" name=""></td>
 				<td>${ul.role_id}</td>
-				<td>${ul.role_name}</td>
+				<td class="role_name">${ul.role_name}</td>
 	
 				<td class="td-manage">
 				
 				<a title="编辑" href="javascript:;" onclick="admin_edit('菜单编辑','toUpdateRole.action?role_id=${ul.role_id}','${ul.role_id}','800','500')" class="ml-5" style="text-decoration:none"><i class="Hui-iconfont">&#xe6df;</i></a>
-				 <c:if test="${ul.role_name!='收费员'}">
+				 <c:if test="${ul.role_name!='收费员'&&ul.role_name!='管理员'}">
 					 <a title="删除" href="javascript:;" onclick="admin_del(this,'1')" class="ml-5" style="text-decoration:none"><i class="Hui-iconfont">&#xe6e2;</i></a>
 				 </c:if>
-				<c:if test="${ul.role_name!='管理员'}">
+<%-- 				<c:if test="${ul.role_name!='管理员'}">
 					 <a title="删除" href="javascript:;" onclick="admin_del(this,'1')" class="ml-5" style="text-decoration:none"><i class="Hui-iconfont">&#xe6e2;</i></a>
-				 </c:if>
+				 </c:if> --%>
 				 
 				 </td>
 			</tr>

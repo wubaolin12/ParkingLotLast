@@ -149,6 +149,6 @@ public class LoginHandler {
 	@RequestMapping("/tosuccess.action")
 	public String toSuccess(HttpServletRequest request) {
 		System.out.println("---------跳转成功界面");
-		return "success";
+		return "combo/success";
 	}
 }

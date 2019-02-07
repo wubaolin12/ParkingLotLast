@@ -34,7 +34,7 @@
 		<div class="row cl">
 			<label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>套餐规格/天：</label>
 			<div class="formControls col-xs-8 col-sm-9">
-				<input type="text" style="display: none;" value=""><input type="text" class="input-text" value="${comboObject.co_standard}" placeholder="" id="" name="co_standard">
+				<input type="text" id="co_id" style="display: none;" value="${comboObject.co_id}"><input type="text" class="input-text" value="${comboObject.co_standard}" placeholder="" id="co_standard" name="co_standard">
 			</div>
 		</div>
 
@@ -42,16 +42,16 @@
 		<div class="row cl">
 			<label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>套餐价格/元：</label>
 			<div class="formControls col-xs-8 col-sm-9">
-				<input type="text" class="input-text" value="${comboObject.co_price}" placeholder="" id="" name="co_price">
+				<input type="text" class="input-text" value="${comboObject.co_price}" placeholder="" id="co_price" name="co_price">
 			</div>
 		</div>
 
 		
 		<div class="row cl">
 			<div class="col-xs-8 col-sm-9 col-xs-offset-4 col-sm-offset-2">
-				<button onClick="article_save_submit();" class="btn btn-primary radius" type="submit"><i class="Hui-iconfont">&#xe632;</i> 提交</button>
-<!-- 				<button onClick="article_save();" class="btn btn-secondary radius" type="button"><i class="Hui-iconfont">&#xe632;</i> 保存草稿</button> -->
-				<button onClick="layer_close();" class="btn btn-default radius" type="button">&nbsp;&nbsp;取消&nbsp;&nbsp;</button>
+				<button id="bt1" class="btn btn-primary radius" type="button"><i class="Hui-iconfont">&#xe632;</i> 提交</button>
+<!--  				<button id="bt1" class="btn btn-secondary radius" type="button"><i class="Hui-iconfont">&#xe632;</i> 保存草稿</button> 
+ -->				<button onClick="layer_close();" class="btn btn-default radius" type="button">&nbsp;&nbsp;取消&nbsp;&nbsp;</button>
 			</div>
 		</div>
 	</form>
@@ -70,6 +70,41 @@
 <script type="text/javascript" src="${path}/static/lib/jquery.validation/1.14.0/messages_zh.js"></script> 
 <script type="text/javascript" src="${path}/static/lib/webuploader/0.1.5/webuploader.min.js"></script> 
 <script type="text/javascript">
+
+$('#bt1').on('click', function(){
+	/* alert(11111); */
+	var index = parent.layer.getFrameIndex(window.name); 
+    parent.$('#parentIframe').text('我被改变了');
+  	var co_standard=document.getElementById("co_standard").value;
+	var co_price=document.getElementById("co_price").value;
+  	var co_id=document.getElementById("co_id").value;
+	var utr="#"+co_id;
+
+	if(co_standard!=''&&co_standard!=null&&co_price!=''&&co_price!=null){
+		if(co_standard>0&&co_price>0){
+	    $.ajax({
+			url :"updateComboAjax.action" ,
+			type :"post",
+			dataType:"json", 
+			data :{"co_standard":co_standard,"co_price":co_price,"co_id":co_id},
+			success:function(redata){
+	/* 			alert(redata.co_price); */	
+				parent.$(utr).find(".co_standard").empty();
+				parent.$(utr).find(".co_standard").prepend(redata.co_standard);
+				parent.$(utr).find(".co_price").empty();
+				parent.$(utr).find(".co_price").prepend(redata.co_price);
+				parent.layer.close(index);
+			}
+		});
+		}else{
+			alert("套餐的价格或者天数不能小于0");
+		}
+	}else{
+		alert("请填入数据");
+	}
+});
+
+
 function article_save(){
 	alert("刷新父级的时候会自动关闭弹层。")
 	window.parent.location.reload();

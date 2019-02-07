@@ -8,6 +8,7 @@ import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.great.bean.Combo;
 import org.great.bean.Menu;
 import org.great.bean.Role;
 import org.great.biz.BaseBiz;
@@ -18,7 +19,11 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
+
+import net.sf.json.JSONObject;
 /**
  * 角色管理类型
  * @author ASUS_yf
@@ -48,7 +53,7 @@ public class RoleHandler {
 	{
 		
 		String id=request.getParameter("role_id");
-		System.out.println("-----MenuHandler,toUpdaterole++ID="+id);
+		System.out.println("-----RoleHandler,toUpdaterole++ID="+id);
 		
 	//	Menu menu=mbiz.getMenuObject(id);
 	//	request.setAttribute("menuObject", menu);			
@@ -166,6 +171,25 @@ public class RoleHandler {
 			result="success";
 		}else {
 			result="error";
+		}
+		return result;
+		
+	}
+	
+	@ResponseBody
+	@RequestMapping(value = "/updateRoleAjax.action", method = RequestMethod.POST, produces = "application/json;charset=utf-8")
+	public String updateRoleAjax(HttpServletResponse response,HttpServletRequest request,@RequestParam Map<String,String> map) 
+	{
+		System.out.println("--------updateRoleAjax");
+		System.out.println(map.toString());
+		int num=bbiz.updateData(tb_name, map, "role_id", map.get("role_id"));
+		
+		if(num>0) {
+			Role role=rbiz.getRoleObject(map.get("role_id"));	
+			JSONObject json = JSONObject.fromObject(role);
+			String jstr=json.toString();
+			
+			result=jstr;
 		}
 		return result;
 		

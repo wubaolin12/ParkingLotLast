@@ -17,7 +17,11 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
+
+import net.sf.json.JSONObject;
 
 /**
  * 套餐业务类
@@ -139,7 +143,7 @@ public class ComboHandler {
 		
 		
 		if(num>0) {
-			result="success";
+			result="combo/success";
 		}else {
 			result="error";
 		}
@@ -165,13 +169,37 @@ public class ComboHandler {
 					
 		
 		if(num>0) {
-			result="success";
+			result="combo/success";
 		}else {
 			result="error";
 		}
 		return result;
 		
 	}
+	
+	/**
+	 * 用ajax的方式进行修改菜单
+	 * @param response
+	 * @param request
+	 * @param map
+	 * @return
+	 */
+	@ResponseBody
+	@RequestMapping(value = "/updateComboAjax.action", method = RequestMethod.POST, produces = "application/json;charset=utf-8")
+	public String updateComboAjax(HttpServletResponse response,HttpServletRequest request,@RequestParam Map<String,String> map) 
+	{
+		System.out.println("--------updateComboAjax");
+		System.out.println(map.toString());
+		int num=bbiz.updateData(tb_name, map, "co_id", map.get("co_id"));
+		Combo combo=cbiz.getComboObject(map.get("co_id"));
+		JSONObject json = JSONObject.fromObject(combo);
+		String jstr=json.toString();
+		
+		result=jstr;
+		return result;
+		
+	}
+	
 	
 	/**
 	 * 删除菜单
@@ -192,7 +220,7 @@ public class ComboHandler {
 					
 		
 		if(num>0) {
-			result="success";
+			result="combo/success";
 		}else {
 			result="error";
 		}
