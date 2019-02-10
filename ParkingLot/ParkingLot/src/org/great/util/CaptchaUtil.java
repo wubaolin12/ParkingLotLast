@@ -76,7 +76,8 @@ public final class CaptchaUtil
         response.setContentType("image/jpeg");
 
         String randomString = getRandomString();
-        request.getSession(true).setAttribute("Code", randomString);
+        CookieUtils.setCookie(request, response, "Code", randomString);
+//        request.getSession(true).setAttribute("Code", randomString);
         
         //打印验证码
         System.out.println("-----------验证码：="+randomString+"---------");

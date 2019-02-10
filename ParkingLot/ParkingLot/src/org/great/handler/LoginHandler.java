@@ -78,7 +78,8 @@ public class LoginHandler {
 		HttpSession session = request.getSession();
 
 		// 判断验证码
-		String code1 = (String) session.getAttribute("Code");
+//		String code1 = (String) session.getAttribute("Code");
+		String code1 = CookieUtils.getCookieValue(request, "Code");
 		if (!code1.equalsIgnoreCase(user.getCode())) {
 			result = "codeerror";
 			System.out.println("验证码错误");
@@ -145,10 +146,4 @@ public class LoginHandler {
 		}
 	}
 
-	
-	@RequestMapping("/tosuccess.action")
-	public String toSuccess(HttpServletRequest request) {
-		System.out.println("---------跳转成功界面");
-		return "combo/success";
-	}
 }

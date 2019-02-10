@@ -206,7 +206,7 @@ public final class CookieUtils {
             final int end = serverName.indexOf("/");
             serverName = serverName.substring(0, end);
             final String[] domains = serverName.split("\\.");
-            int len = domains.length;
+//            int len = domains.length;
 //            if (len > 3) {
 //                // www.xxx.com.cn
 //                domainName = "." + domains[len - 3] + "." + domains[len - 2] + "." + domains[len - 1];
