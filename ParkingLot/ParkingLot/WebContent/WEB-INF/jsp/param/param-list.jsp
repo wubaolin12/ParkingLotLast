@@ -40,7 +40,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		<button type="submit" class="btn btn-success radius" id="" name=""><i class="Hui-iconfont">&#xe665;</i> 搜参数</button>
 	</form> -->
 	</div>
-	<div class="cl pd-5 bg-1 bk-gray mt-20"> <span class="l"><a href="javascript:;" onclick="datadel()" class="btn btn-danger radius"><i class="Hui-iconfont">&#xe6e2;</i> 批量删除</a> <a href="javascript:;" onclick="member_add('添加用户','toInsertParam.action','','510')" class="btn btn-primary radius"><i class="Hui-iconfont">&#xe600;</i> 添加参数</a></span> </div>
+	<div class="cl pd-5 bg-1 bk-gray mt-20"> <span class="l"><a href="javascript:;" onclick="datadel()" class="btn btn-danger radius"><i class="Hui-iconfont">&#xe6e2;</i> 批量删除</a> <a href="javascript:;" onclick="member_add('添加参数','toInsertParam.action','','510')" class="btn btn-primary radius"><i class="Hui-iconfont">&#xe600;</i> 添加参数</a></span> </div>
 	<div class="mt-20">
 	<table class="table table-border table-bordered table-hover table-bg table-sort">
 		<thead>
@@ -101,7 +101,23 @@ $(function(){
 });
 /*用户-添加*/
 function member_add(title,url,w,h){
-	layer_show(title,url,w,h);
+	/* layer_show(title,url,w,h); */
+
+		  parent.layer.open({
+		        type: 2,
+		        title: title,
+		        shadeClose: false, //点击遮罩关闭
+		        shade: 0.8,
+		        area: ['50%', '70%'],
+		        maxmin: true,
+		        closeBtn: 1,
+		         content: '${path}/parammanage/toInsertParam.action',  //iframe的url，yes是否有滚动条
+		        end: function () {
+		        
+		            location.reload();
+		        }
+		    });
+
 }
 /*用户-查看*/
 function member_show(title,url,id,w,h){

@@ -104,7 +104,21 @@ $(function(){
 });
 /*用户-添加*/
 function member_add(title,url,w,h){
-	layer_show(title,url,w,h);
+	/* layer_show(title,url,w,h); */
+	  parent.layer.open({
+	        type: 2,
+	        title: title,
+	        shadeClose: false, //点击遮罩关闭
+	        shade: 0.8,
+	        area: ['50%', '70%'],
+	        maxmin: true,
+	        closeBtn: 1,
+	         content: '${path}/rolemanage/toInsertRole.action',  //iframe的url，yes是否有滚动条
+	        end: function () {
+	        
+	            location.reload();
+	        }
+	    });
 }
 /*用户-查看*/
 function member_show(title,url,id,w,h){

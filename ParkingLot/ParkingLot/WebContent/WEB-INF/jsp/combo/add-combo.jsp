@@ -30,11 +30,11 @@
 </head>
 <body>
 <div class="page-container">
-	<form  id="form-article-add" action="insertCombo.action" method="post">
+	<form  id="form-article-add" action="insertCombo.action" onsubmit="return checkform()" method="post">
 		<div class="row cl">
 			<label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>套餐规格/天：</label>
 			<div class="formControls col-xs-8 col-sm-9">
-				<input type="text" style="display: none;" value=""><input type="text" class="input-text" value="" placeholder="" id="" name="co_standard">
+				<input type="text" style="display: none;" value=""><input type="text" class="input-text" value="" placeholder="" id="co_standard" name="co_standard">
 			</div>
 		</div>
 
@@ -42,15 +42,15 @@
 		<div class="row cl">
 			<label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>套餐价格/元：</label>
 			<div class="formControls col-xs-8 col-sm-9">
-				<input type="text" class="input-text" value="" placeholder="" id="" name="co_price">
+				<input type="text" class="input-text" value="" placeholder="" id="co_price" name="co_price">
 			</div>
 		</div>
 
 		
 		<div class="row cl">
 			<div class="col-xs-8 col-sm-9 col-xs-offset-4 col-sm-offset-2">
-				<button onClick="article_save_submit();" class="btn btn-primary radius" type="submit"><i class="Hui-iconfont">&#xe632;</i> 提交</button>
- 				<button onClick="article_save();" class="btn btn-secondary radius" type="button"><i class="Hui-iconfont">&#xe632;</i> 保存草稿</button> 
+				 <button  class="btn btn-primary radius" type="submit"><i class="Hui-iconfont">&#xe632;</i> 提交</button> 
+ 				<!-- <button onClick="article_save();" class="btn btn-secondary radius" type="button"><i class="Hui-iconfont">&#xe632;</i> 保存草稿</button>  -->
 				<button onClick="layer_close();" class="btn btn-default radius" type="button">&nbsp;&nbsp;取消&nbsp;&nbsp;</button>
 			</div>
 		</div>
@@ -79,6 +79,27 @@ function article_save(){
 /* 	parent.location.reload(); 
  	var index = parent.layer.getFrameIndex(window.name); 
 	parent.layer.close(index);  */
+}
+
+function checkform(){
+	
+ 	var co_standard=document.getElementById("co_standard").value;
+	var co_price=document.getElementById("co_price").value;
+
+	if(co_standard!=''&&co_standard!=null&&co_price!=''&&co_price!=null){
+		if(co_standard>0&&co_price>0){
+			return true;
+		}else{
+			alert("数据不能小于0");
+			return false;
+
+		}
+		
+	}else{
+		alert("请填入信息");
+		return false;
+	}
+
 }
 
 $(function(){
