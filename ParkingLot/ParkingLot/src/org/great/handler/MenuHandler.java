@@ -251,7 +251,8 @@ public class MenuHandler extends BaseUtil{
 		String id=request.getParameter("menu_id");
 		Map map=new HashMap<>();
 		map.put("menu_id", id);
-		
+		System.out.println("++++++++"+id);
+		int num0=bbiz.delData("role_menu", map);
 		int num=bbiz.delData(tb_name, map);
 					
 		

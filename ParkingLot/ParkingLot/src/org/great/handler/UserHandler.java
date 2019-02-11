@@ -135,6 +135,35 @@ public class UserHandler extends BaseUtil{
 		
 	}
 	
+	/**
+	 * 验证用户名是否存在
+	 * @param response
+	 * @param request
+	 * @return
+	 */
+	@ResponseBody
+	@RequestMapping(value = "/UnamecheckAjax.action", method = RequestMethod.POST, produces = "application/json;charset=utf-8")
+	public String UnamecheckAjax(HttpServletResponse response,HttpServletRequest request) 
+	{
+		String uname=request.getParameter("u_name");
+		System.out.println("--------UnamecheckAjax："+uname);
+
+		Map map=new HashMap<>();
+		map.put("u_name", uname);
+		List<User>list=ubiz.checkUname(map);
+
+		//如果用户不存在输入的旧密码不正确
+		if (list.size()>0) {
+			result = "用户名存在";
+		}else {
+			result ="用户名可以使用";
+		}
+		
+		
+		return result;
+		
+	}
+	
 	
 	/**
 	 * 用户启用

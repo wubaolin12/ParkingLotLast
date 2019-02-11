@@ -30,11 +30,11 @@
 </head>
 <body>
 <div class="page-container">
-	<form  id="form-article-add" action="insertMenu.action" method="post">
+	<form  id="form-article-add" onsubmit="return checkform()" action="insertMenu.action" method="post">
 		<div class="row cl">
 			<label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>菜单名：</label>
 			<div class="formControls col-xs-8 col-sm-9">
-				<input type="text" style="display: none;" value=""><input type="text" class="input-text" value="" placeholder="" id="" name="menu_name">
+				<input type="text" style="display: none;" value=""><input type="text" class="input-text" value="" placeholder="" id="menu_name" name="menu_name">
 			</div>
 		</div>
 
@@ -43,7 +43,7 @@
 		<div class="row cl">
 			<label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>菜单路径：</label>
 			<div class="formControls col-xs-8 col-sm-9">
-				<input type="text" class="input-text" value="" placeholder="" id="" name="menu_link">
+				<input type="text" class="input-text" value="" placeholder="" id="menu_link" name="menu_link">
 			</div>
 		</div>
 		
@@ -99,6 +99,20 @@
 function article_save(){
 	alert("刷新父级的时候会自动关闭弹层。")
 	window.parent.location.reload();
+}
+
+function checkform(){
+	
+ 	var menu_name=document.getElementById("menu_name").value;
+	var menu_link=document.getElementById("menu_link").value;
+
+	if(menu_name!=''&&menu_name!=null&&menu_link!=''&&menu_link!=null){
+		return true;
+	}else{
+		alert("请填入信息");
+		return false;
+	}
+
 }
 
 $(function(){

@@ -1,6 +1,7 @@
 package org.great.mapper;
 
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.session.RowBounds;
@@ -49,4 +50,11 @@ public interface UserMapper {
 	public List<User>findUList(String tb_name);
 	
 	public List<User>findUList2(@Param("sql")String tb_name);
+	
+	/**
+	 * 查询用户
+	 * @param map
+	 * @return
+	 */
+	public List<User>checkUser(@Param("dataMap")Map map);
 }

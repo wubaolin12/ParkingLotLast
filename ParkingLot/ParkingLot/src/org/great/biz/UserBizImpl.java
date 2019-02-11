@@ -70,5 +70,16 @@ public class UserBizImpl implements UserBiz {
 	
 	}
 
+	/**
+	 * 验证用户名
+	 */
+	@Override
+	public List<User> checkUname(Map map) {
+		// TODO Auto-generated method stub
+		List<User> list=userMapper.checkUser(map);
+		
+		return list;
+	}
+
 
 }

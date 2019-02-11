@@ -41,7 +41,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	</form> -->
 	</div>
 	<div class="cl pd-5 bg-1 bk-gray mt-20"> <span class="l"><a href="javascript:;" onclick="datadel()" class="btn btn-danger radius"><i class="Hui-iconfont">&#xe6e2;</i> 批量删除</a> <a href="javascript:;" onclick="member_add('添加套餐','toInsertCombo.action','','510')" class="btn btn-primary radius"><i class="Hui-iconfont">&#xe600;</i> 添加套餐</a></span>
-	<a id="parentIframe">layer测试</a>
+	<!-- <a id="parentIframe">layer测试</a> -->
 	 </div>
 	<div class="mt-20">
 	<table class="table table-border table-bordered table-hover table-bg table-sort">
@@ -67,6 +67,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				<td class="td-manage">
 			
 				<a title="编辑" href="javascript:;" onclick="admin_edit('套餐编辑','toUpdateCombo.action?co_id=${ul.co_id}','${ul.co_id}','800','500')" class="ml-5" style="text-decoration:none"><i class="Hui-iconfont">&#xe6df;</i></a>
+				<a title="删除" href="javascript:;" onclick="member_del(this,'${ul.co_id}')" class="ml-5" style="text-decoration:none"><i class="Hui-iconfont">&#xe6e2;</i></a>
 
 				 
 				 </td>
@@ -161,11 +162,14 @@ function member_del(obj,id){
 	layer.confirm('确认要删除吗？',function(index){
 		$.ajax({
 			type: 'POST',
-			url: '',
-			dataType: 'json',
+			url: 'delCombo.action',
+			dataType: 'text',
+			data :"co_id="+id,
 			success: function(data){
-				$(obj).parents("tr").remove();
+/* 				$(obj).parents("tr").remove();*/
 				layer.msg('已删除!',{icon:1,time:1000});
+			 	location.href="comboList.action"
+
 			},
 			error:function(data) {
 				console.log(data.msg);

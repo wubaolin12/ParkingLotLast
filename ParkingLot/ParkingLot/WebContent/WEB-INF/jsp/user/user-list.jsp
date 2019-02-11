@@ -91,12 +91,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	</div>
 </div>
 
-<div style="  width:100%; height:30px;text-align: center;0 " >
+<%-- <div style="  width:100%; height:30px;text-align: center;0 " >
 	<a  href="<%=basePath %>emp/prev.action?currentpage=${pageel.currentpage}" onclick="return checkPage()">上一页</a>
 	<input type="hidden"  name="currentpage" id="currentpage"  >${pageel.currentpage}
 	/<input type="hidden" name="totalpage" id="totalpage"  >${pageel.totalpage}
 	<a  href="<%=basePath %>emp/next.action?currentpage=${pageel.currentpage}" onclick="return checkNextPage()">下一页</a>
-</div>
+</div> --%>
 <!--_footer 作为公共模版分离出去-->
 <script type="text/javascript" src="<%=basePath %>static/lib/jquery/1.9.1/jquery.min.js"></script> 
 <script type="text/javascript" src="<%=basePath %>static/lib/layer/2.4/layer.js"></script>
@@ -122,6 +122,9 @@ $(function(){
 /*用户-添加*/
 function member_add(title,url,w,h){
 	layer_show(title,url,w,h);
+    end: function () {
+        location.reload();
+    }
 }
 /*用户-查看*/
 function member_show(title,url,id,w,h){
@@ -163,7 +166,7 @@ function member_stop(obj,id,page){
 			data :"u_id="+id,
 			success: function(data){
 		
-				location.href="<%=basePath %>emp/refreshUlist.action?currentpage="+pnum+"&u_id="+id
+				location.href="userlist.action?currentpage="+pnum+"&u_id="+id
 			},
 			error:function(data) {
 				console.log(data.msg);
@@ -185,7 +188,7 @@ function member_start(obj,id,page){
 			data :"u_id="+id,
 			success: function(data){
 
-				location.href="<%=basePath %>emp/refreshUlist.action?currentpage="+pnum+"&u_id="+id
+				location.href="userlist.action?currentpage="+pnum+"&u_id="+id
 			},
 			error:function(data) {
 				console.log(data.msg);
@@ -207,13 +210,13 @@ function member_del(obj,id,page){
 	layer.confirm('确认要删除吗？',function(index){
 		$.ajax({
 			type: 'POST',
-			url: '<%=basePath %>emp/delUser.action',
+			url: 'delUser.action',
 			dataType: 'text',
 			data :"u_id="+id,
 			success: function(data){
-/* 				$(obj).parents("tr").remove();
-				layer.msg('已删除!',{icon:1,time:1000}); */
-				location.href="<%=basePath %>emp/refreshUlist.action?currentpage="+pnum+"&u_id="+id
+/* 				$(obj).parents("tr").remove();*/
+				layer.msg('已删除!',{icon:1,time:1000}); 
+				location.href="userlist.action"
 
 			},
 			error:function(data) {

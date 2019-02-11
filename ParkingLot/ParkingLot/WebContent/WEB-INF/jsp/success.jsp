@@ -38,7 +38,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <script type="text/javascript">
 
 function article_save(){
-	alert("combo-success。")
+	/* alert("combo-success。") */
 	/* parent.replace(location.href); */
 		parent.location.reload(); 
 

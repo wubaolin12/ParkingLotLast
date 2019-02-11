@@ -64,6 +64,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				<td class="pm_type">${ul.pm_type}</td>
 				<td class="td-manage">
 				
+				 <a title="删除" href="javascript:;" onclick="member_del(this,'${ul.pm_id}')" class="ml-5" style="text-decoration:none"><i class="Hui-iconfont">&#xe6e2;</i></a>
+				
 				<a title="编辑" href="javascript:;" onclick="admin_edit('参数编辑','toUpdateParam.action?pm_id=${ul.pm_id}','${ul.pm_id}','800','500')" class="ml-5" style="text-decoration:none"><i class="Hui-iconfont">&#xe6df;</i></a>
 
 				 
@@ -159,11 +161,14 @@ function member_del(obj,id){
 	layer.confirm('确认要删除吗？',function(index){
 		$.ajax({
 			type: 'POST',
-			url: '',
-			dataType: 'json',
+			url: 'delParam.action',
+			dataType: 'text',
+			data :"pm_id="+id,
 			success: function(data){
-				$(obj).parents("tr").remove();
+/* 				$(obj).parents("tr").remove();*/
 				layer.msg('已删除!',{icon:1,time:1000});
+			 	location.href="paramlist.action"
+
 			},
 			error:function(data) {
 				console.log(data.msg);

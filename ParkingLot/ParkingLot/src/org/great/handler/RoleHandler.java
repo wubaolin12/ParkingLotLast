@@ -76,7 +76,7 @@ public class RoleHandler {
 	{
 		System.out.println("-----MenuHandler,toInsertrole");
 
-		result="add-role";
+		result="role/add-role";
 		return result;
 		
 	}
@@ -204,7 +204,7 @@ public class RoleHandler {
 	 */
 	@OperationLog(operationType = "系统管理", operationName = "删除角色")	
 	@RequestMapping("/delRole.action")
-	public String delMenu(HttpServletRequest request) 
+	public String delRole(HttpServletRequest request) 
 	{
 		System.out.println("-----roleHandler,delrole");
 		String id=request.getParameter("role_id");

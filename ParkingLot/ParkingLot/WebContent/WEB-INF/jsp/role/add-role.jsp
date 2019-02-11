@@ -28,13 +28,13 @@
 <title>增加角色</title>
 <link href="${path}/static/lib/webuploader/0.1.5/webuploader.css" rel="stylesheet" type="text/css" />
 </head>
-<body>
+<body  >
 <div class="page-container">
-	<form  id="form-article-add" action="insertRole.action" method="post">
+	<form  id="form-article-add" onsubmit="return checkform()" action="insertRole.action" method="post">
 		<div class="row cl">
 			<label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>角色名：</label>
 			<div class="formControls col-xs-8 col-sm-9">
-				<input type="text" style="display: none;" value=""><input type="text" class="input-text" value="" placeholder="" id="" name="role_name">
+				<input type="text" style="display: none;" value=""><input type="text" class="input-text" value="" placeholder="" id="role_name" name="role_name">
 			</div>
 		</div>
 
@@ -65,6 +65,21 @@
 function article_save(){
 	alert("刷新父级的时候会自动关闭弹层。")
 	window.parent.location.reload();
+}
+
+
+
+function checkform(){
+	
+  	var role_name=document.getElementById("role_name").value;
+
+	if(role_name!=null&&role_name!=''){
+		return true;
+	}else{
+		alert("请填入信息");
+		return false;
+	}
+
 }
 
 $(function(){

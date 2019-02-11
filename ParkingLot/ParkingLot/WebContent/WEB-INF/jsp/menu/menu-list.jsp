@@ -67,10 +67,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				<td class="td-manage">
 				
 				<a title="编辑" href="javascript:;" onclick="admin_edit('菜单编辑','toUpdateMenu.action?menu_id=${ul.menu_id}','${ul.menu_id}','800','500')" class="ml-5" style="text-decoration:none"><i class="Hui-iconfont">&#xe6df;</i></a>
-<%-- 				<c:if test="">
-					 <a title="删除" href="javascript:;" onclick="admin_del(this,'1')" class="ml-5" style="text-decoration:none"><i class="Hui-iconfont">&#xe6e2;</i></a>
-					
-				</c:if> --%>
+				
+				 <a title="删除" href="javascript:;" onclick="member_del(this,'${ul.menu_id}')" class="ml-5" style="text-decoration:none"><i class="Hui-iconfont">&#xe6e2;</i></a>
+				
 				 
 				 
 				 </td>
@@ -133,25 +132,7 @@ function member_stop(obj,id){
 	});
 }
 
-/*用户-启用*/
-function member_start(obj,id){
-	layer.confirm('确认要启用吗？',function(index){
-		$.ajax({
-			type: 'POST',
-			url: '',
-			dataType: 'json',
-			success: function(data){
-				$(obj).parents("tr").find(".td-manage").prepend('<a style="text-decoration:none" onClick="member_stop(this,id)" href="javascript:;" title="停用"><i class="Hui-iconfont">&#xe631;</i></a>');
-				$(obj).parents("tr").find(".td-status").html('<span class="label label-success radius">已启用</span>');
-				$(obj).remove();
-				layer.msg('已启用!',{icon: 6,time:1000});
-			},
-			error:function(data) {
-				console.log(data.msg);
-			},
-		});
-	});
-}
+
 /*用户-编辑*/
 function admin_edit(title,url,id,w,h){
 	var id=id;
@@ -167,11 +148,14 @@ function member_del(obj,id){
 	layer.confirm('确认要删除吗？',function(index){
 		$.ajax({
 			type: 'POST',
-			url: '',
-			dataType: 'json',
+			url: 'delMenu.action',
+			dataType: 'text',
+			data :"menu_id="+id,
 			success: function(data){
-				$(obj).parents("tr").remove();
-				layer.msg('已删除!',{icon:1,time:1000});
+			 	/* $(obj).parents("tr").remove(); */
+ 				
+			 	layer.msg('已删除!',{icon:1,time:1000});
+			 	location.href="menuList.action"
 			},
 			error:function(data) {
 				console.log(data.msg);

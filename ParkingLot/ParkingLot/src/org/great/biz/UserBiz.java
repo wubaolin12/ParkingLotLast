@@ -31,4 +31,6 @@ public interface UserBiz {
 	
 	//分页显示方法sql通过basebiz获得
 	public List findList(String sql,int offset,int rownum);
+	
+	public List<User>checkUname(Map map);
 }

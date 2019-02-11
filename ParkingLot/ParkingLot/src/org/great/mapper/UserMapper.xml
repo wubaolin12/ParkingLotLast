@@ -118,4 +118,23 @@
 		select * from ${sql}
 	</select>
 
+
+
+	<select id="checkUser"  resultType="org.great.bean.User" parameterType="java.util.Map">
+			<if test="dataMap!=null">
+			 select cc.* from
+			</if>			
+				(select * from tb_user ORDER BY '' DESC )
+ 			<if test="dataMap!=null">
+ 				cc
+ 			</if>
+ 			<where>
+ 				<if test="dataMap!=null">				
+				<foreach collection="dataMap.keys"  item="key" separator="or"  >      	    
+         	  	 ${key} =  #{dataMap[${key}]}
+        		   
+        		 </foreach>    		
+        		 </if>
+        	 </where> 	
+		</select>
 </mapper>

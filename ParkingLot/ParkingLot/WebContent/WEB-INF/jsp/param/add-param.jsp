@@ -30,11 +30,11 @@
 </head>
 <body>
 <div class="page-container">
-	<form  id="form-article-add" action="insertParam.action" method="post">
+	<form  id="form-article-add" onsubmit="return checkform()" action="insertParam.action" method="post">
 		<div class="row cl">
 			<label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>参数名：</label>
 			<div class="formControls col-xs-8 col-sm-9">
-				<input type="text" style="display: none;" value=""><input type="text" class="input-text" value="" placeholder="" id="" name="pm_name">
+				<input type="text" style="display: none;" value=""><input type="text" class="input-text" value="" placeholder="" id="pm_name" name="pm_name">
 			</div>
 		</div>
 
@@ -42,7 +42,7 @@
 		<div class="row cl">
 			<label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>参数类型：</label>
 			<div class="formControls col-xs-8 col-sm-9">
-				<input type="text" class="input-text" value="" placeholder="" id="" name="pm_type">
+				<input type="text" class="input-text" value="" placeholder="" id="pm_type" name="pm_type">
 			</div>
 		</div>
 		
@@ -75,6 +75,20 @@
 function article_save(){
 	alert("刷新父级的时候会自动关闭弹层。")
 	window.parent.location.reload();
+}
+
+function checkform(){
+	
+  	var pm_name=document.getElementById("pm_name").value;
+	var pm_type=document.getElementById("pm_type").value;
+
+	if(pm_name!=''&&pm_name!=null&&pm_type!=''&&pm_type!=null){
+		return true;
+	}else{
+		alert("请填入信息");
+		return false;
+	}
+
 }
 
 $(function(){

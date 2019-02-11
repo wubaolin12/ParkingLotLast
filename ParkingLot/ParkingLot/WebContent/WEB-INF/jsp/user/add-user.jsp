@@ -30,17 +30,19 @@
 </head>
 <body>
 <div class="page-container">
-	<form  id="form-article-add" action="addemp.action" method="post">
+	<form  id="form-article-add" onsubmit="return checkform()" action="addemp.action" method="post">
 		<div class="row cl">
 			<label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>用户名：</label>
 			<div class="formControls col-xs-8 col-sm-9">
-				<input type="text" style="display: none;" value=""><input type="text" class="input-text" value="" placeholder="" id="" name="u_name">
+				<input type="text" style="display: none;" id="tip3" value="">
+				<input type="text" class="input-text" value="" placeholder="" id="u_name" name="u_name" style="width: 200px;">
+				<span id="tip"></span>				
 			</div>
 		</div>
 		<div class="row cl">
 			<label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>用户性别：</label>
 			<div class="formControls col-xs-8 col-sm-9">
-					<select name="u_sex">					
+					<select name="u_sex" id="u_sex">					
 							<option value="男">男</option>
 							<option value="女">女</option>
 					</select>						
@@ -51,7 +53,7 @@
 		<div class="row cl">
 			<label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>电话：</label>
 			<div class="formControls col-xs-8 col-sm-9">
-				<input type="text" class="input-text" value="" placeholder="" id="" name="u_phone">
+				<input type="text" class="input-text" value="" placeholder="" id="u_phone" name="u_phone" style="width: 200px;">
 			</div>
 		</div>
 
@@ -94,6 +96,49 @@ function article_save(){
 	alert("刷新父级的时候会自动关闭弹层。")
 	window.parent.location.reload();
 }
+
+function checkform(){
+  	var u_name=document.getElementById("u_name").value;
+	var u_sex=document.getElementById("u_sex").value;
+  	var u_phone=document.getElementById("u_phone").value;
+  	var tip3=document.getElementById("tip3").value;
+
+
+	if(u_name!=''&&u_name!=null&&u_phone!=''&&u_phone!=null){
+		if(tip3=="用户名可以使用"){
+			return true;
+		}else{
+			alert("用户名已存在，请换一个用户名");
+			return false;
+		}		
+	}else{
+		alert("请填入信息");
+		return false;
+	}
+
+}
+
+
+$(function() {
+	$("#u_name").on("blur",function(){
+
+	  	var u_name=document.getElementById("u_name").value;
+
+		
+		$.ajax({
+			url :"UnamecheckAjax.action" ,
+			type :"post",
+			dataType:"text", 
+			data :"u_name="+u_name,
+			success:function(redata){
+				
+				document.getElementById("tip").innerHTML =redata;
+				document.getElementById("tip3").value=redata;
+			}
+		});
+	});		
+});
+
 
 $(function(){
 	$('.skin-minimal input').iCheck({
