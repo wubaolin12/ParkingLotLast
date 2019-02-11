@@ -36,4 +36,18 @@ public interface CustBiz {
 	 * @return
 	 */
 	public boolean chageCustMoneyByIDX(Cust cust);
+	
+	/**
+	 * 前端登录 宏琪大哥
+	 * 
+	 * @return
+	 */
+	public List<Cust> ForeLogin(Cust cust);
+	
+	/**
+	 * 判断有没有重复 用户名  宏琪大哥
+	 * 
+	 * @return
+	 */
+	public List<Cust> FindByAcc(String cust_acc);
 }
