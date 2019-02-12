@@ -112,7 +112,7 @@
 	$(function() {
 		$("#oldpwd").on("blur",function(){
 		
-			alert(11111111);
+		
 			var pwd=document.getElementById("oldpwd").value;
 			
 			$.ajax({

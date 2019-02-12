@@ -138,7 +138,7 @@ function member_add(title,url,w,h){
         //    alert(layero);
         //},
         end: function () {
-        	alert("oooooo");
+        	
             location.reload();
         }
     });
