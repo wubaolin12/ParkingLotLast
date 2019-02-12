@@ -43,4 +43,16 @@ public class CustBizImpl implements CustBiz {
 		return custMapper.chageCustMoneyByIDX(cust);
 	}
 
+	@Override
+	public List<Cust> ForeLogin(Cust cust) {
+		// TODO Auto-generated method stub
+		return custMapper.ForeLogin(cust);
+	}
+
+	@Override
+	public List<Cust> FindByAcc(String cust_acc) {
+		// TODO Auto-generated method stub
+		return custMapper.FindByAcc(cust_acc);
+	}
+
 }
