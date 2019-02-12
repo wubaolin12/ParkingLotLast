@@ -48,8 +48,9 @@ public class ForeLoginHandler {
 //	public List<Park>pForeList;//车位区号列表;
 		
 	
+	
 	/**
-	 *  跳转前端界面1测试
+	 *  登录成功跳转
 	 */
 	
 	@RequestMapping("/success1.do")

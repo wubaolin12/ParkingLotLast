@@ -87,7 +87,7 @@ String path=request.getScheme()+"://"+request.getServerName()+":"+
 													<li><a href="about.html">反向寻车<span class="over1"></span></a></li>
 													<li><a href="services.html">个人资料<span class="over1"></span></a></li>
                                                     <li><a href="contact.html">个人设置<span class="over1"></span></a></li>
-													<li><a href="${path}/pay/toRecharge.do">余额充值<span class="over1"></span></a></li>
+													<li class="active"><a href="${path}/pay/toRecharge.do">余额充值<span class="over1"></span></a></li>
                                                     <li><a href="javascript:exitUser()">退出<span class="over1"></span></a></li>
 												</ul>
 											</div>
@@ -127,7 +127,45 @@ String path=request.getScheme()+"://"+request.getServerName()+":"+
 				</div>
 			</div>
 		</div>
-	
+	<div class="pages_wrapper" >
+			<div class="container">
+				<div class="row">
+					<div class="span8">
+					   <!-- START CONTACT US -->
+						<div class="pages">
+							<!-- START COMMENT -->
+							<h3>余额充值</h3>
+                            <h5>您的当前余额：${ForeUser.cust_money}元</h5>
+							<div id="note"></div>
+							<div id="fields">
+							<form name="ajax-contact-form" action="${path}/alipay.trade.page.pay.jsp" method=post
+			target="_blank" id="ajax-contact-form" class="form-horizontal" onSubmit="return Recharge()">
+										<div class="block3">
+											<div class="control-group">
+												<div class="controls">
+													<input type="text" id="WIDtotal_amount" name="WIDtotal_amount" value="充值数量" onBlur="if(this.value=='') this.value='充值数量'" onFocus="if(this.value =='充值数量' ) this.value=''"
+													 onkeyup="this.value=this.value.replace(/\D/g,'')" onafterpaste="this.value=this.value.replace(/\D/g,'')">元</div>
+											</div>
+										<button type="submit" class="submit">充值</button>	
+											<!-- 下面的input为隐藏区域 -->
+											<div style="display:none">
+											订单名称:<input id="WIDsubject" name="WIDsubject" />
+											商户订单号:<input id="WIDout_trade_no" name="WIDout_trade_no" />
+											商品描述:<input id="WIDbody" name="WIDbody" />
+											</div>
+										
+									</div>
+						    </form>
+						    
+							</div>
+							<!-- END COMMENT -->
+						</div>
+						<!-- END CONTACT US -->
+					</div>
+				
+				 </div>
+			</div>
+		</div>
 		
 		<!-- START FOOTER -->
 		<footer>
@@ -198,6 +236,39 @@ String path=request.getScheme()+"://"+request.getServerName()+":"+
 				location.href='<%=path%>fore/foreExit.do';
 		}
 	}
+	
+	function GetDateNow() {
+		var vNow = new Date();
+		var sNow = "";
+		sNow += String(vNow.getFullYear());
+		sNow += String(vNow.getMonth() + 1);
+		sNow += String(vNow.getDate());
+		sNow += String(vNow.getHours());
+		sNow += String(vNow.getMinutes());
+		sNow += String(vNow.getSeconds());
+		sNow += String(vNow.getMilliseconds());
+		document.getElementById("WIDout_trade_no").value =  sNow;
+		document.getElementById("WIDsubject").value = "传一智能停车场系统个人充值";
+	}
+	GetDateNow();
+	//充值提交
+	function Recharge(){
+		var flag=false;
+		var number= document.getElementById('WIDtotal_amount').value;
+		var str="你确定要充值"+number+"元吗？";
+		if(number>0){
+			 if(confirm(str)==true){
+				 flag=true;
+				 //var form = document.getElementById('alipayment');
+					//form.submit();
+			}
+		}else{
+			alert("请输入大于0的数字");
+		}
+		return flag;
+	}
+	
+	
 </script>
 </body>
 
