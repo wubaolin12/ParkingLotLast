@@ -13,7 +13,7 @@ import org.springframework.stereotype.Service;
  * @author 健哥
  *
  */
-@Service("countrulesBzi")
+@Service("countrulesBiz")
 public class CountrulesBziImpl implements CountrulesBiz{
 	@Resource
 	private CountrulesMapper countrulesMapper;

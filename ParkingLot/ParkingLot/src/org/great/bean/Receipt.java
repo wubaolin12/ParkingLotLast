@@ -27,6 +27,12 @@ public class Receipt {
 		super();
 	}
 
+	public Receipt(int u_id, String re_time) {
+		super();
+		this.u_id = u_id;
+		this.re_time = re_time;
+	}
+
 	public Receipt(int u_id, int c_id, String re_thing, int re_money, String re_time, String re_null2,
 			String re_null3) {
 		super();
@@ -37,6 +43,21 @@ public class Receipt {
 		this.re_time = re_time;
 		this.re_null2 = re_null2;
 		this.re_null3 = re_null3;
+	}
+
+	public Receipt(int re_id, int u_id, int c_id, String re_thing, int re_money, String re_time, String re_null2,
+			String re_null3, Car car, User user) {
+		super();
+		this.re_id = re_id;
+		this.u_id = u_id;
+		this.c_id = c_id;
+		this.re_thing = re_thing;
+		this.re_money = re_money;
+		this.re_time = re_time;
+		this.re_null2 = re_null2;
+		this.re_null3 = re_null3;
+		this.car = car;
+		this.user = user;
 	}
 
 	public int getRe_id() {

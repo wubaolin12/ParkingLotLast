@@ -95,4 +95,10 @@ public class CarBizImpl implements CarBiz {
 		// TODO Auto-generated method stub
 		return carMapper.findCarVipStateX(cust_phone);
 	}
+
+	@Override
+	public List<Car> FindByCarcustidX(int number) {
+		// TODO Auto-generated method stub
+		return carMapper.FindByCarcustidX(number);
+	}
 }

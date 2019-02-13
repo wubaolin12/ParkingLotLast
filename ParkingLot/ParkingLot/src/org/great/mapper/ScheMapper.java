@@ -1,5 +1,8 @@
 package org.great.mapper;
 
+import java.util.List;
+
+import org.great.bean.Sche;
 import org.springframework.stereotype.Repository;
 
 /**
@@ -10,5 +13,9 @@ import org.springframework.stereotype.Repository;
  */
 @Repository
 public interface ScheMapper {
-
+	/**根据员工ID查询排班
+	 * 
+	 * @return
+	 */
+	public List<Sche> getScheByUserID(int uid);
 }

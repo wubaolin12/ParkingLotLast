@@ -33,4 +33,11 @@ public interface UserBiz {
 	public List findList(String sql,int offset,int rownum);
 	
 	public List<User>checkUname(Map map);
+	
+	/**
+	 * 查询所有员工
+	 * 
+	 * @return
+	 */
+	public List<User> getUserListAllX();
 }

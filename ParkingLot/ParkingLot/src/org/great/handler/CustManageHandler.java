@@ -15,12 +15,15 @@ import org.great.bean.Car;
 import org.great.bean.Combo;
 import org.great.bean.Cust;
 import org.great.bean.Param;
+import org.great.bean.Receipt;
+import org.great.bean.User;
 import org.great.bean.Vip;
 import org.great.bean.vo.AnyX;
 import org.great.biz.CarBiz;
 import org.great.biz.ComboBiz;
 import org.great.biz.CustBiz;
 import org.great.biz.ParamBiz;
+import org.great.biz.ReceiptBiz;
 import org.great.biz.VipBiz;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
@@ -34,6 +37,8 @@ import org.springframework.web.servlet.ModelAndView;
 public class CustManageHandler {
 	@Resource
 	ComboBiz comboBiz;
+	@Resource
+	ReceiptBiz receiptBiz;
 	@Resource
 	ParamBiz paramBiz;
 	@Resource
@@ -404,5 +409,39 @@ public class CustManageHandler {
 			str = "退费失败！！";
 		}
 		return str;
+	}
+	/**
+	   *生成日结单
+	 * 
+	 * @param request
+	 * @return
+	 */
+	@RequestMapping("/DailyMailJSP.action")
+	public String DailyMailJSP() {
+		return "charge/DailyStatement";
+	}
+	/**
+	   *生成日结单
+	 * 
+	 * @param request
+	 * @return
+	 */
+	@RequestMapping("/DailyMail.action")
+	public ModelAndView DailyMail(HttpServletRequest request) {
+		Date day=new Date();    
+		SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd"); 
+		System.out.println(df.format(day));  
+		String time= "%"+df.format(day)+"%";
+		System.out.println(time);
+		User user = (User) request.getAttribute("User");
+		System.out.println("user="+user);
+		Receipt re = new Receipt(user.getU_id(),time);
+		 List<Receipt> receiptList=receiptBiz.findDailyRecp(re);
+		 System.out.println("receiptList="+receiptList);
+		 request.setAttribute("receiptList", receiptList);
+		ModelAndView mav = new ModelAndView();
+		mav.setViewName("charge/DailyStatement");
+//		要打印接下去写
+		return mav;
 	}
 }

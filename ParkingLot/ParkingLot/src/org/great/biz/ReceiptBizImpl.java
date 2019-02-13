@@ -28,4 +28,5 @@ public class ReceiptBizImpl implements ReceiptBiz{
 		return receiptMapper.findDailyRecp(re);
 	}
 
+
 }

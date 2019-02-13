@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.annotation.Resource;
 
+import org.apache.ibatis.annotations.Param;
 import org.great.bean.Car;
 import org.great.bean.Park;
 import org.great.mapper.CarMapper;
@@ -112,6 +113,16 @@ public class ParkBizImpl implements ParkBiz{
 		
 		int ret = parkMapper.addPicture(park);
 		return ret;
+	}
+	@Override
+	public List<Park> FindAllCanStopX(String p_state, int pm_id) {
+		// TODO Auto-generated method stub
+		return parkMapper.FindAllCanStopX(p_state, pm_id);
+	}
+	@Override
+	public boolean SetCarParkX(Park park) {
+		// TODO Auto-generated method stub
+		return parkMapper.SetCarParkX(park);
 	}
 	
 }

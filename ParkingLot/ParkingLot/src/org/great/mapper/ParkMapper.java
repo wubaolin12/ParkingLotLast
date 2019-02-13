@@ -2,6 +2,7 @@ package org.great.mapper;
 
 import java.util.List;
 
+import org.apache.ibatis.annotations.Param;
 import org.great.bean.Park;
 import org.springframework.stereotype.Repository;
 
@@ -22,6 +23,12 @@ public interface ParkMapper {
 	 * 初始化查询所有列表
 	 */
 	public List<Park> FindAll(Park park);
+	
+	/**
+	 * 查询可以停车的车位
+	 */
+	public List<Park> FindAllCanStopX(@Param("p_state")String p_state,@Param("pm_id")int pm_id);
+	
 	public int SetState(Park park);
 	/*
 	 * 找车区分组
@@ -42,4 +49,12 @@ public interface ParkMapper {
 	 * @return
 	 */
 	public int addPicture(Park park);
+	
+	/**
+	 * 修改车id 车位状态ID
+	 * @param park
+	 * @return
+	 */
+	public boolean SetCarParkX(Park park);
+	
 }

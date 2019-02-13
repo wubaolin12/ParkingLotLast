@@ -17,9 +17,15 @@ public class Park {
 	private Car car;
 	private Param param;
 	private String c_num;
+	
 	public Park() {
 		super();
 	}
+	
+
+
+
+
 	public Park(int pm_id, String p_fore, int p_num, String p_state) {
 		super();
 		this.pm_id = pm_id;
@@ -28,6 +34,18 @@ public class Park {
 		this.p_state = p_state;
 	}
 	
+	
+	public Park(int p_id, int pm_id, int c_id) {
+		super();
+		this.p_id = p_id;
+		this.pm_id = pm_id;
+		this.c_id = c_id;
+	}
+
+
+
+
+
 	public Park(int p_id, String p_state) {
 		super();
 		this.p_id = p_id;

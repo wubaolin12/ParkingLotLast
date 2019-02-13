@@ -5,6 +5,13 @@
 
 <mapper namespace="org.great.mapper.CarMapper">
 
+	<!-- 通过用户CustID找到车信息 -->
+	<select id="FindByCarcustidX" parameterType="int"
+		resultType="org.great.bean.Car">
+		select * from tb_car where cust_id =#{number}  and c_id  not in  (SELECT c_id from tb_appointment )
+	</select>
+
+
 	<!-- 通过车牌找到车信息 -->
 	<select id="FindByCarNumber" parameterType="String"
 		resultType="org.great.bean.Car">

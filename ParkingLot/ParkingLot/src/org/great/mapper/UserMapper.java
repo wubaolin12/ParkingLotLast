@@ -57,4 +57,11 @@ public interface UserMapper {
 	 * @return
 	 */
 	public List<User>checkUser(@Param("dataMap")Map map);
+	
+	/**
+	 * 查询所有员工
+	 * 
+	 * @return
+	 */
+	public List<User> getUserListAllX();
 }

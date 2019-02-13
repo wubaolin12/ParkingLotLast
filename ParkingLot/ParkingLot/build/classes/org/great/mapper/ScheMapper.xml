@@ -5,6 +5,10 @@
 
 <mapper namespace="org.great.mapper.ScheMapper">
 
-	
+	<!-- 	根据员工ID查询排班 -->
+	<select id="getScheByUserID" parameterType="int"
+		resultType="org.great.bean.Sche">
+		select * from tb_sche where u_id = #{uid}
+	</select>
 
 </mapper>

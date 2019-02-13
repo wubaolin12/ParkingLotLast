@@ -9,6 +9,10 @@
 		resultType="org.great.bean.User">
 		select * from tb_user where u_name = #{u_name} 
 	</select>
+<!-- 查询所有员工 -->
+	<select id="getUserListAllX" resultType="org.great.bean.User">
+		select * from tb_user
+	</select>
 
 
 	<delete id="delete" parameterType="int">

@@ -2,6 +2,7 @@ package org.great.biz;
 
 import java.util.List;
 
+import org.apache.ibatis.annotations.Param;
 import org.great.bean.Park;
 
 /**
@@ -28,4 +29,15 @@ public interface ParkBiz {
 	 * @param park
 	 */
 	public int addPicture(Park park);
+	
+	/**
+	 * 查询可以停车的车位
+	 */
+	public List<Park> FindAllCanStopX(@Param("p_state")String p_state,@Param("pm_id")int pm_id);
+	/**
+	 * 修改车id 车位状态ID
+	 * @param park
+	 * @return
+	 */
+	public boolean SetCarParkX(Park park);
 }

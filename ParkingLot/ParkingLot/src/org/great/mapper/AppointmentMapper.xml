@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN" 
+"http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
+
+
+<mapper namespace="org.great.mapper.AppointmentMapper">
+
+	<!-- 添加预约记录 -->
+	<insert id="AddAppointmentX"
+		parameterType="org.great.bean.Appointment">
+		insert into tb_appointment (cust_id,c_id,app_time)
+		values
+		(#{cust_id},#{c_id},#{app_time})
+	</insert>
+
+	<!-- 根据用户ID查询该用户名下预约信息 -->
+	<select id="findCustCarAppoinmentX" parameterType="int"
+		resultMap="findCustCarAppoinmentXMap">
+
+		select * from
+		tb_appointment
+		app LEFT JOIN tb_car c on
+		app.c_id = c.c_id where
+		app.cust_id = #{cust_id}
+	</select>
+	<resultMap type="org.great.bean.Appointment"
+		id="findCustCarAppoinmentXMap">
+		<id property="app_id" column="app_id" />
+		<result property="cust_id" column="cust_id" />
+		<result property="c_id" column="c_id" />
+		<result property="app_time" column="app_time" />
+		<collection property="car" column="car"
+			javaType="org.great.bean.Car">
+			<id property="c_id" column="c_id" />
+			<result property="c_num" column="c_num" />
+			<result property="c_null1" column="c_null1" />
+		</collection>
+	</resultMap>
+<!-- 	删除一条预约表记录根据车牌号 -->
+	<delete id="delAppointmentByCnumX" parameterType="String">
+		DELETE FROM tb_appointment where c_id = (SELECT c_id FROM tb_car where c_num
+		=#{c_num})
+	</delete>
+</mapper>

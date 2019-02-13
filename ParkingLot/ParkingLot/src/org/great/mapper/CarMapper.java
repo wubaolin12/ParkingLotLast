@@ -78,4 +78,8 @@ public interface CarMapper {
 	 * @return
 	 */
 	public List<Car> findCarVipStateX(String cust_phone);
+	/**
+	 *  通过用户CustID找到车信息
+	 */
+	public List<Car> FindByCarcustidX(int number);
 }

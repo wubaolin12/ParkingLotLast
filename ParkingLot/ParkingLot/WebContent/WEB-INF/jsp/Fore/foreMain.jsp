@@ -83,7 +83,7 @@ String path=request.getScheme()+"://"+request.getServerName()+":"+
 											<a class="btn btn-navbar btn-navbar_" data-toggle="collapse" data-target=".nav-collapse_"> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </a>
 											<div class="nav-collapse nav-collapse_ collapse">
 												<ul class="nav sf-menu clearfix">
-													<li ><a href="index.html">预约停车<span class="over1"></span></a></li>
+													<li ><a href="${path}/appointmentParkLotHandler/appointmentParkLotJsp.do">预约停车<span class="over1"></span></a></li>
 													<li><a href="about.html">反向寻车<span class="over1"></span></a></li>
 													<li><a href="services.html">个人资料<span class="over1"></span></a></li>
                                                     <li><a href="contact.html">个人设置<span class="over1"></span></a></li>

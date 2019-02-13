@@ -38,6 +38,10 @@ public class MainHandler {
 	@OperationLog(operationType = "登录操作", operationName = "进入主页")
 	public String mainJsp(HttpServletRequest request) {
 		
+		
+		char ch = 'a';
+		String a1 =""+ch;
+		
 //		HttpSession session = request.getSession(); 
 //		User users = (User) session.getAttribute("User");
 		User users = (User) request.getAttribute("User");

@@ -81,5 +81,11 @@ public class UserBizImpl implements UserBiz {
 		return list;
 	}
 
+	@Override
+	public List<User> getUserListAllX() {
+		// TODO Auto-generated method stub
+		return userMapper.getUserListAllX();
+	}
+
 
 }
