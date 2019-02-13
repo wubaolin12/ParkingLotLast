@@ -8,8 +8,8 @@ package org.great.bean;
 public class Countrules {
 	private int cr_id;// id(主键)
 	private int pm_id;// 规则类型
-	private String cr_starttime;// 开始时间
-	private String cr_overtime;// 结束时间
+	private double cr_starttime;// 开始时间
+	private double cr_overtime;// 结束时间
 	private int cr_fristmoney;// 起步价
 	private int cr_addmoney;// 自增价格
 	private int crpm_id;// 规则状态
@@ -18,18 +18,22 @@ public class Countrules {
 		super();
 	}
 
-	public Countrules(int pm_id, String cr_starttime, String cr_overtime, int cr_fristmoney, int cr_addmoney,
-			int crpm_id) {
+
+
+	public Countrules(int cr_id, int pm_id, double cr_starttime, double cr_overtime, int cr_fristmoney,
+			int cr_addmoney) {
 		super();
+		this.cr_id = cr_id;
 		this.pm_id = pm_id;
 		this.cr_starttime = cr_starttime;
 		this.cr_overtime = cr_overtime;
 		this.cr_fristmoney = cr_fristmoney;
 		this.cr_addmoney = cr_addmoney;
-		this.crpm_id = crpm_id;
 	}
 
-	public Countrules(int cr_id, int pm_id, String cr_starttime, String cr_overtime, int cr_fristmoney, int cr_addmoney,
+
+
+	public Countrules(int cr_id, int pm_id, double cr_starttime, double cr_overtime, int cr_fristmoney, int cr_addmoney,
 			int crpm_id) {
 		super();
 		this.cr_id = cr_id;
@@ -40,6 +44,8 @@ public class Countrules {
 		this.cr_addmoney = cr_addmoney;
 		this.crpm_id = crpm_id;
 	}
+
+
 
 	@Override
 	public String toString() {
@@ -64,21 +70,6 @@ public class Countrules {
 		this.pm_id = pm_id;
 	}
 
-	public String getCr_starttime() {
-		return cr_starttime;
-	}
-
-	public void setCr_starttime(String cr_starttime) {
-		this.cr_starttime = cr_starttime;
-	}
-
-	public String getCr_overtime() {
-		return cr_overtime;
-	}
-
-	public void setCr_overtime(String cr_overtime) {
-		this.cr_overtime = cr_overtime;
-	}
 
 	public int getCr_fristmoney() {
 		return cr_fristmoney;
@@ -102,6 +93,30 @@ public class Countrules {
 
 	public void setCrpm_id(int crpm_id) {
 		this.crpm_id = crpm_id;
+	}
+
+
+
+	public double getCr_starttime() {
+		return cr_starttime;
+	}
+
+
+
+	public void setCr_starttime(double cr_starttime) {
+		this.cr_starttime = cr_starttime;
+	}
+
+
+
+	public double getCr_overtime() {
+		return cr_overtime;
+	}
+
+
+
+	public void setCr_overtime(double cr_overtime) {
+		this.cr_overtime = cr_overtime;
 	}
 
 }

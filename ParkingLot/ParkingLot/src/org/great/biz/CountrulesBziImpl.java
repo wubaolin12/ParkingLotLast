@@ -20,13 +20,13 @@ public class CountrulesBziImpl implements CountrulesBiz{
 
 	private boolean flag;
 	@Override
-	public Countrules findCountrulRoleX(Map<String, String> map) {
+	public Countrules findCountrulRoleX(Map<String, Object> map) {
 		// TODO Auto-generated method stub
 		 return countrulesMapper.findCountrulRoleX(map);
 	}
 
 	@Override
-	public Countrules findCountrulRoleEqualsX(Map<String, String> map) {
+	public Countrules findCountrulRoleEqualsX(Map<String, Object> map) {
 		// TODO Auto-generated method stub
 		return countrulesMapper.findCountrulRoleEqualsX(map);
 	}

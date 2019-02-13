@@ -232,33 +232,20 @@ public class AppearanceLicensePlateRecognition {
 				System.out.println("fTime=" + fTime + "oTime=" + oTime);
 				// 计算时间停车时间
 				SimpleDateFormat myFormatter = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
-				float m1 = 0;
-//				long mm = 0;
+				double m1 = 0;
 				try {
-					float m2 = myFormatter.parse(oTime).getTime() - myFormatter.parse(fTime).getTime();
+					double m2 = myFormatter.parse(oTime).getTime() - myFormatter.parse(fTime).getTime();
 					m1 = m2 / (60 * 60 * 1000);
-//					if(m1>=0&&m1<=0.5) {
-//						m1 = 0;
-//					}else if(m1>0.5&&m1<=1) {
-//						m1 = 1;
-//					}else {
-//						long m = myFormatter.parse(oTime).getTime() - myFormatter.parse(fTime).getTime();
-//						mm = m / (60 * 60 * 1000);
-//						m1 = mm;
-//					}
 				} catch (ParseException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
-				int i = (int)(m1+0.5);
-				System.out.println("相差时间: " + i);
-				Map<String, String> map = new HashMap<String, String>();
-				String time = "" + i;
-				System.out.println("time="+time);
-				map.put("time", time);
+				System.out.println("相差时间: " + m1);
+				Map<String, Object> map = new HashMap<String, Object>();
+				map.put("time",m1);
 				map.put("pmtype", "规则状态");
 				map.put("pmname", "启用");
-
+				//在此处查询该车辆是不是预约车辆。。。做一个判断
 				// 查询计费规则
 				Countrules countrules = countrulesBiz.findCountrulRoleX(map);
 				if (countrules == null) {
@@ -266,17 +253,17 @@ public class AppearanceLicensePlateRecognition {
 				}
 				System.out.println("countrules=" + countrules);
 				// 根据查询的计费规则计算费用
-				int t = Integer.parseInt(time);
-				System.out.println("t=" + t);
-				String statime =""+0;
-				if(countrules.getCr_starttime().equals("0.5")) {
-					statime = ""+0;
+//				int t = Integer.parseInt(time);
+//				System.out.println("t=" + t);
+				int t = 0;
+				if(countrules.getCr_starttime()<0.5) {
+					t = 0;
 				}else {
-					statime = countrules.getCr_starttime();
+					t = (int) countrules.getCr_starttime();
 				}
-				int ftime = Integer.parseInt(statime);
-				System.out.println("ftime=" + ftime);
-				int money = countrules.getCr_fristmoney() + (t - ftime) * countrules.getCr_addmoney();
+				int tt = (int) m1;
+				System.out.println(t);
+				int money = countrules.getCr_fristmoney() + (tt - t) * countrules.getCr_addmoney();
 				System.out.println("money=" + money);
 				Stopcartime sctz = new Stopcartime(stopcartime.getSct_id(), money);
 				System.out.println("sctz=" + sctz);
