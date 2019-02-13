@@ -11,7 +11,7 @@ String path=request.getScheme()+"://"+request.getServerName()+":"+
 <html lang="zxx">
 
 <head>
-<title>Home</title>
+<title>余额充值</title>
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -138,8 +138,8 @@ String path=request.getScheme()+"://"+request.getServerName()+":"+
                             <h5>您的当前余额：${ForeUser.cust_money}元</h5>
 							<div id="note"></div>
 							<div id="fields">
-							<form name="ajax-contact-form" action="${path}/alipay.trade.page.pay.jsp" method=post
-			target="_blank" id="ajax-contact-form" class="form-horizontal" onSubmit="return Recharge()">
+							<form name="ajax-contact-form" action="${path}/pay/moneyTo_recharge.do" method=post
+			 id="ajax-contact-form" class="form-horizontal" onSubmit="return Recharge()">
 										<div class="block3">
 											<div class="control-group">
 												<div class="controls">

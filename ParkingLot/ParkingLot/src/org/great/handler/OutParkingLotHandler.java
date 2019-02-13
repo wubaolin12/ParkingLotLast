@@ -1,4 +1,4 @@
-package org.great.fore_handler;
+package org.great.handler;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -29,15 +29,15 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 /**
- * 后端充值
+ * 前端出场 缴费
  * 
  * @author 宏琪大哥
  *
  */
 @Controller
 @Scope("prototype")
-@RequestMapping("/pay")
-public class PayHandler {
+@RequestMapping("/outPay")
+public class OutParkingLotHandler {
 
 	@Resource
 	public CustBiz custBiz;  //用户dao接口
@@ -48,20 +48,12 @@ public class PayHandler {
 //	public List<Park>pForeList;//车位区号列表;
 		
 	
-	/**
-	 *  跳转个人充值界面
-	 */
-	
-	@RequestMapping("/toRecharge.do")
-	public String toRecharge() {
-		return "Fore/Recharge";
-	}
 	
 	/**
-	 *  跳转提交金额到二维码（充值）
+	 *  跳转提交金额到二维码（出场缴费//套餐缴费）
 	 */
 	
-	@RequestMapping("/moneyTo_recharge.do")
+	@RequestMapping("/moneyTo_out.action")
 	public String moneyTo_recharge(HttpServletRequest request,HttpServletResponse response,String WIDsubject, String WIDout_trade_no,String WIDbody,String WIDtotal_amount) {
 		System.out.println("订单名称="+WIDsubject);
 		System.out.println("商户订单号="+WIDout_trade_no);
@@ -71,9 +63,7 @@ public class PayHandler {
 		request.setAttribute("WIDout_trade_no", WIDout_trade_no);
 		request.setAttribute("WIDbody", WIDbody);
 		request.setAttribute("WIDtotal_amount", WIDtotal_amount);
-		
-		request.getSession().setAttribute("PayType", "充值");
-		
+		request.getSession().setAttribute("PayType", "出场缴费");
 		response.setContentType("text/html;charset=utf-8");
 		String path=request.getScheme()+"://"+request.getServerName()+":"+
 				request.getServerPort()+request.getContextPath()+"/";
@@ -82,25 +72,18 @@ public class PayHandler {
 	
 	
 	/**
-	 *   支付成功后，跳转回个人充值界面
+	 *   支付成功后，跳转开闸界面
 	 */
 	
-	@RequestMapping("/successToRecharge.do")
+	@RequestMapping("/successToOut.action")
 	public String successToRecharge(HttpServletRequest request,HttpServletResponse response,String out_trade_no,String trade_no ,String total_amount) {
 		System.out.println("成功");
 		System.out.println("商户订单号="+out_trade_no);
 		System.out.println("支付宝交易号="+trade_no);
 		System.out.println("付款金额="+total_amount);
-		//改变session里面foreuser的余额
-		String str = total_amount.substring(0, total_amount.indexOf(".")) + total_amount.substring(total_amount.indexOf(".") + 1);
-		int total_amount_int=Integer.parseInt(str)/100;
-		System.out.println("金额="+total_amount_int);
-		Cust cust=(Cust)request.getSession().getAttribute("ForeUser");
-		cust.setCust_money(cust.getCust_money()+total_amount_int);
-		System.out.println(cust);
-		//修改数据库的余额
-		custBiz.chageCustMoneyByIDX(cust);
-		return "Fore/Recharge";
+		
+		request.getSession().setAttribute("moneyFlag", 0);
+		return "AppearanceCarAdmissionDisplay";
 	}
 	
 	/**
@@ -108,8 +91,8 @@ public class PayHandler {
 	 */
 	
 	@RequestMapping("/failedToRecharge.do")
-	public String failedToRecharge() {
+	public String failedToRecharge(HttpServletRequest request,HttpServletResponse response) {
 		System.out.println("失败");
-		return "Fore/Recharge";
+		return "AppearanceCarAdmissionDisplay";
 	}
 }

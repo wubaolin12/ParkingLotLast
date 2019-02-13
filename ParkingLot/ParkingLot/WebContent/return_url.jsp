@@ -40,7 +40,7 @@ String path=request.getScheme()+"://"+request.getServerName()+":"+
 		}
 		//乱码解决，这段代码在出现乱码时使用
 		valueStr = new String(valueStr.getBytes("ISO-8859-1"), "utf-8");
-		System.out.println("name="+name+"||||value="+valueStr);
+		//System.out.println("name="+name+"||||value="+valueStr);
 		params.put(name, valueStr);
 	}
 	
@@ -56,8 +56,15 @@ String path=request.getScheme()+"://"+request.getServerName()+":"+
 	
 		//付款金额
 		String total_amount = new String(request.getParameter("total_amount").getBytes("ISO-8859-1"),"UTF-8");
-		
-		response.sendRedirect(path+"pay/successToRecharge.do?out_trade_no="+out_trade_no+"&trade_no="+trade_no+"&total_amount="+total_amount);
+		System.out.println("类型======"+session.getAttribute("PayType")); 
+		String PayType=(String)session.getAttribute("PayType");
+		if(PayType.equals("充值")){
+			response.sendRedirect(path+"pay/successToRecharge.do?out_trade_no="+out_trade_no+"&trade_no="+trade_no+"&total_amount="+total_amount);
+		}else if(PayType.equals("出场缴费")){
+			response.sendRedirect(path+"outPay/successToOut.action?out_trade_no="+out_trade_no+"&trade_no="+trade_no+"&total_amount="+total_amount);
+		}else if(PayType.equals("套餐缴费")){
+			response.sendRedirect(path+"pay/successToRecharge.do?out_trade_no="+out_trade_no+"&trade_no="+trade_no+"&total_amount="+total_amount);
+		}
 		//out.println("trade_no:"+trade_no+"<br/>out_trade_no:"+out_trade_no+"<br/>total_amount:"+total_amount);
 	}else {
 		out.println("验签失败");

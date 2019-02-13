@@ -281,6 +281,8 @@ public class AppearanceLicensePlateRecognition {
 				Stopcartime sctz = new Stopcartime(stopcartime.getSct_id(), money);
 				System.out.println("sctz=" + sctz);
 				flag = stopcartimeBiz.UpdateSctMoneyX(sctz);
+				//宏琪  需要缴费的标识  0是不用缴费 1 是要跳转二维码支付
+				int moneyFlag=0;
 				if (flag) {
 					Param param = new Param("白名单", "车辆角色");
 					Param param1 = paramBiz.GetPmIDByTypeNmaeX(param);
@@ -297,7 +299,7 @@ public class AppearanceLicensePlateRecognition {
 						System.out.println("-------这货是白名单，放他走!!!-------");
 					} else if (car1.getPm_id() == param22.getPm_id()) {
 						Car car2 = carBiz.findCustCarNumberByCarIDX(car1.getC_id());
-						List<Vip> Viplist = vipBiz.findVipX(20);
+						List<Vip> Viplist = vipBiz.findVipX(car1.getC_id());//宏琪 改了此处 car1.getC_id() 原来为20
 						if (Viplist != null && Viplist.size() != 0) {
 							System.out.println("-------这货曾经是月缴会员快提醒他续费充值!!!-------");
 						} else {
@@ -312,8 +314,10 @@ public class AppearanceLicensePlateRecognition {
 								System.out.println("-------这货是注册会员卡里有钱自动扣掉，放他走!!!-------");
 							} else {
 								System.out.println("-------这货是注册会员卡里有钱自动扣掉的时候发生了以外，扣除失败了!!!-------");
+								moneyFlag=1;
 							}
 						} else {
+							moneyFlag=1;
 							System.out.println("-------这货是注册会员卡里钱不够 ，不放!!!-------");
 						}
 					} else if (car1.getPm_id() == param33.getPm_id()) {
@@ -337,6 +341,7 @@ public class AppearanceLicensePlateRecognition {
 										}
 									} else {
 										System.out.println("-------这货是会员还未生效，卡里钱不够 ，不放!!!-------");
+										moneyFlag=1;
 									}
 								} else {
 
@@ -346,11 +351,14 @@ public class AppearanceLicensePlateRecognition {
 						}
 					} else if (car1.getPm_id() == param44.getPm_id()) {
 						System.out.println("-------这货要交钱的 ，不放!!!-------");
+						moneyFlag=1;
 					}
 					// 查询该出场车辆的信息
 					Stopcartime sct2 = stopcartimeBiz.FindByID(stopcartime.getSct_id());
 					// 该信息传输到页面
 					session.setAttribute("Stopkxj", sct2);
+					//宏琪 session 存放缴费标记
+					session.setAttribute("moneyFlag", moneyFlag);
 					User user = (User) request.getAttribute("User");
 					List<RoleRel> RoleRelList = roleRelBiz.FindRoleIDbyUserIDX(user.getU_id());
 					if (RoleRelList != null && RoleRelList.size() != 0) {

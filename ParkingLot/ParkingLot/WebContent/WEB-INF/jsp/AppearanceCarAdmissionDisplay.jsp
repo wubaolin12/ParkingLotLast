@@ -61,7 +61,7 @@
 					setInterval("getCurDate()",100); 
 		  </script>
 		  </TD>
-          <TD width=850>
+           <TD width=850>
 		  <MARQUEE 
             style="FILTER: glow(color=red); LINE-HEIGHT: 60px; WIDTH: 100%; FONT-FAMILY: '黑体','黑体_GB2312','黑体';
 			 COLOR: #ffff00; FONT-SIZE: 50px; text-shadow: #ff0000 1px 1px 0px" 
@@ -69,20 +69,46 @@
             face=Verdana>车牌：${Carkxj.c_num} 本次费用：${Stopkxj.sct_money}元 入场时间：${Stopkxj.sct_starttime} 出场时间：${Stopkxj.sct_overtime}   谢谢惠顾！</FONT></B>
 			</MARQUEE>
 		  </TD>
+		  
+		  <%int moneyFlag=(int)session.getAttribute("moneyFlag");
+          System.out.println("moneyFlag="+moneyFlag);  
+		  if (moneyFlag==0){ %>
+		   <TD width=850>
+		  <MARQUEE 
+            style="FILTER: glow(color=red); LINE-HEIGHT: 60px; WIDTH: 100%; FONT-FAMILY: '黑体','黑体_GB2312','黑体';
+			 COLOR: #ffff00; FONT-SIZE: 50px; text-shadow: #ff0000 1px 1px 0px" 
+            scrollAmount=8><B><FONT 
+            face=Verdana>开闸！</FONT></B>
+			</MARQUEE>
+		  </TD>
+		  <%} %>
 		</TR>
 		</TBODY>
 		</TABLE>
+		  <%
+		  if (moneyFlag==1){ %>
+		  <input type="button"  value="缴费即可开闸" id="hqbutton" name="hqbutton" onclick="toPay(${Stopkxj.sct_money})"/>
+		  <% }%>
+		
 		
 			<div   align="center">			
 		<img src="<%=path%>static/img/1.gif"></img>
 		</div>
 		
-		
 		<video poster="<%=path%>static/images/screenshot1.jpg" autoplay muted loop class="vidbacking">
 		<source src="<%=path%>static/images/Rallye.mp4" type="video/mp4">
 </video>
-
-
+<div style="display:none">
+	<form name="alipayment" action="<%=path%>outPay/moneyTo_out.action" method=post
+			 id="alipayment" >
+			<div id="body1"  name="divcontent">
+					商户订单号 ：<input id="WIDout_trade_no" name="WIDout_trade_no" />
+					订单名称 ：<input id="WIDsubject" name="WIDsubject" />
+					付款金额 ：<input id="WIDtotal_amount" name="WIDtotal_amount" />
+					商品描述：<input id="WIDbody" name="WIDbody" />
+			</div>
+		</form>
+	</div>
 <script src="<%=path%>static/js/jquery-1.11.0.min.js" type="text/javascript"></script>
 <script src="<%=path%>static/dist/jquery.vidbacking.js" type="text/javascript"></script>
 <script type="text/javascript">
@@ -91,6 +117,27 @@
 			'masked': true
 		});
 	});
+	function GetDateNow() {
+		var vNow = new Date();
+		var sNow = "";
+		sNow += String(vNow.getFullYear());
+		sNow += String(vNow.getMonth() + 1);
+		sNow += String(vNow.getDate());
+		sNow += String(vNow.getHours());
+		sNow += String(vNow.getMinutes());
+		sNow += String(vNow.getSeconds());
+		sNow += String(vNow.getMilliseconds());
+		document.getElementById("WIDout_trade_no").value =  sNow;
+		document.getElementById("WIDsubject").value = "传一智能停车场系统出场缴费";
+	}
+	GetDateNow();
+	function toPay(money){
+		
+		alert("缴费"+money+"元");
+		document.getElementById("WIDtotal_amount").value = money;
+		var form = document.getElementById('alipayment');
+		form.submit();
+	}
 </script>
 </body>
 </html>
