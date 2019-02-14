@@ -35,6 +35,7 @@ import org.great.biz.ParkBiz;
 import org.great.biz.RoleRelBiz;
 import org.great.biz.StopcartimeBiz;
 import org.great.biz.VipBiz;
+import org.great.util.BaseUtil;
 import org.json.JSONObject;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
@@ -63,6 +64,8 @@ public class AppearanceLicensePlateRecognition {
 	ParamBiz paramBiz;
 	@Resource
 	ParkBiz parkBiz;
+	@Resource
+	BaseUtil baseUtil;
 	// 设置APPID/AK/SK
 	public static final String APP_ID = "15429813";
 	public static final String API_KEY = "mEMqLxA8KSG7U69GpMjwlSOU";
@@ -235,40 +238,42 @@ public class AppearanceLicensePlateRecognition {
 				String oTime = stopct.getSct_overtime();
 				System.out.println("fTime=" + fTime + "oTime=" + oTime);
 				// 计算时间停车时间
-				SimpleDateFormat myFormatter = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
-				double m1 = 0;
-				try {
-					double m2 = myFormatter.parse(oTime).getTime() - myFormatter.parse(fTime).getTime();
-					m1 = m2 / (60 * 60 * 1000);
-				} catch (ParseException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-				System.out.println("相差时间: " + m1);
-				Map<String, Object> map = new HashMap<String, Object>();
-				map.put("time", m1);
-				map.put("pmtype", "规则状态");
-				map.put("pmname", "启用");
-				// 在此处查询该车辆是不是预约车辆。。。做一个判断
-				// 查询计费规则
-				Countrules countrules = countrulesBiz.findCountrulRoleX(map);
-				if (countrules == null) {
-					countrules = countrulesBiz.findCountrulRoleEqualsX(map);
-				}
-				System.out.println("countrules=" + countrules);
-				// 根据查询的计费规则计算费用
-//				int t = Integer.parseInt(time);
-//				System.out.println("t=" + t);
-				int t = 0;
-				if (countrules.getCr_starttime() < 0.5) {
-					t = 0;
-				} else {
-					t = (int) countrules.getCr_starttime();
-				}
-				int tt = (int) m1;
-				System.out.println(t);
-				int money = countrules.getCr_fristmoney() + (tt - t) * countrules.getCr_addmoney();
-				System.out.println("money=" + money);
+//				SimpleDateFormat myFormatter = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
+//				double m1 = 0;
+//				try {
+//					double m2 = myFormatter.parse(oTime).getTime() - myFormatter.parse(fTime).getTime();
+//					m1 = m2 / (60 * 60 * 1000);
+//				} catch (ParseException e) {
+//					// TODO Auto-generated catch block
+//					e.printStackTrace();
+//				}
+//				System.out.println("相差时间: " + m1);
+//				Map<String, Object> map = new HashMap<String, Object>();
+//				map.put("time", m1);
+//				map.put("pmtype", "规则状态");
+//				map.put("pmname", "启用");
+//				// 在此处查询该车辆是不是预约车辆。。。做一个判断
+//				// 查询计费规则
+//				Countrules countrules = countrulesBiz.findCountrulRoleX(map);
+//				if (countrules == null) {
+//					countrules = countrulesBiz.findCountrulRoleEqualsX(map);
+//				}
+//				System.out.println("countrules=" + countrules);
+//				// 根据查询的计费规则计算费用
+////				int t = Integer.parseInt(time);
+////				System.out.println("t=" + t);
+//				int t = 0;
+//				if (countrules.getCr_starttime() < 0.5) {
+//					t = 0;
+//				} else {
+//					t = (int) countrules.getCr_starttime();
+//				}
+//				int tt = (int) m1;
+//				System.out.println(t);
+//				int money = countrules.getCr_fristmoney() + (tt - t) * countrules.getCr_addmoney();
+//				System.out.println("money=" + money);
+				
+				int money=baseUtil.count(fTime, oTime);
 				Stopcartime sctz = new Stopcartime(stopcartime.getSct_id(), money);
 				System.out.println("sctz=" + sctz);
 				flag = stopcartimeBiz.UpdateSctMoneyX(sctz);
