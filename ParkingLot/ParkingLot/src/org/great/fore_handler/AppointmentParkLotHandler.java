@@ -86,6 +86,11 @@ public class AppointmentParkLotHandler {
 //		获得系统时间
 		Date day = new Date();
 		SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd " + time2 + ":00:00");
+		if(time2<10) {
+			 df = new SimpleDateFormat("yyyy-MM-dd " + "0"+time2 + ":00:00");
+		}else {
+			 df = new SimpleDateFormat("yyyy-MM-dd " + time2 + ":00:00");
+		}
 		System.out.println(df.format(day));
 		String time = df.format(day);
 		System.out.println("time=" + time);

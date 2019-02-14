@@ -101,4 +101,10 @@ public class CarBizImpl implements CarBiz {
 		// TODO Auto-generated method stub
 		return carMapper.FindByCarcustidX(number);
 	}
+
+	@Override
+	public boolean chagerPmIDCustIDByCarNumberX(Car car) {
+		// TODO Auto-generated method stub
+		return carMapper.chagerPmIDCustIDByCarNumberX(car);
+	}
 }

@@ -78,4 +78,9 @@ public interface CarBiz {
 	 *  通过用户CustID找到车信息
 	 */
 	public List<Car> FindByCarcustidX(int number);
+	/**根据车牌号更改车辆角色和车主ID
+	 * 
+	 * @return
+	 */
+	public boolean chagerPmIDCustIDByCarNumberX(Car car);
 }

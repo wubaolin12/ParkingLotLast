@@ -128,7 +128,7 @@ public class BaseUtil {
 		System.out.println(t);
 		int money = countrules.getCr_fristmoney() + (tt - t) * countrules.getCr_addmoney();
 		System.out.println("money=" + money);
-
+		
 		return money;
 	}
 

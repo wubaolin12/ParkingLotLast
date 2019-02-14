@@ -44,4 +44,12 @@ public interface StopcartimeMapper {
 	public boolean delStopcartimeByCnumX(@Param("c_num") String c_num, @Param("pm_type") String pm_type,
 			@Param("pm_name") String pm_name);
 
+	/**
+	 * 通过车牌查找该停车表停车中的信息
+	 * 
+	 * @param id
+	 * @return
+	 */
+	public Stopcartime FindByCarIDX(@Param("c_id") int c_id, @Param("pm_id") int pm_id);
+	
 }
