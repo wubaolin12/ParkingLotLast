@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.annotation.Resource;
 
+import org.apache.ibatis.annotations.Param;
 import org.great.bean.Stopcartime;
 import org.great.mapper.StopcartimeMapper;
 import org.springframework.stereotype.Service;
@@ -79,5 +80,12 @@ public class StopcartimeBizImpl implements StopcartimeBiz {
 	public boolean delStopcartimeByCnumX(String c_num, String pm_type, String pm_name) {
 		return stopcartimeMapper.delStopcartimeByCnumX(c_num, pm_type, pm_name);
 	}
+
+	@Override
+	public Stopcartime FindByCarIDX(int c_id, int pm_id) {
+		// TODO Auto-generated method stub
+		return stopcartimeMapper.FindByCarIDX(c_id,pm_id);
+	}
+
 
 }

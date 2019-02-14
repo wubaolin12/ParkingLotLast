@@ -213,7 +213,11 @@ public class AppearanceLicensePlateRecognition {
 		DateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 		Date currenime = new Date();
 		String currendate = df.format(currenime);
-
+		// 查询该车这次的停车记录的那条数据 ————by 野比欣之助
+		Param par = new Param("停车结束", "停车状态");
+		Param par1 = paramBiz.GetPmIDByTypeNmaeX(par);
+		System.out.println(par1);
+		Stopcartime sct12 = stopcartimeBiz.FindByCarIDX(car.getC_id(), par1.getPm_id());
 		// 先查询该车的正在停车的那条数据，然后改变状态成出场
 		List<Stopcartime> sctlist = stopcartimeBiz.FindSctByNumber(car.getC_id());
 
@@ -222,23 +226,27 @@ public class AppearanceLicensePlateRecognition {
 		System.out.println(car.getC_id() + "ID下的所有停车记录：" + sctlist);
 
 		result.put("code", "200");// 失败回调
-
+//		记录是否为预约车辆的标志 根据参数表 1 是停车中 2是停车结束 19 是预约车辆停车中
+		int carflag = sct12.getPm_id();
 		for (Stopcartime stopcartime : sctlist) {
-
-			if (stopcartime.getPm_id() == 1) {
-
+			// 修改为不等于2 原来是等于一判断车是否在停车
+			if (stopcartime.getPm_id() != 2) {
 				Stopcartime sct = new Stopcartime(2, currendate, stopcartime.getSct_id());
-
 				// 修改出场时间
 				flag = stopcartimeBiz.UpdateSctTimeandState(sct);
-
 				Stopcartime stopct = stopcartimeBiz.FindByID(stopcartime.getSct_id());
 				System.err.println("stopct=" + stopct);
 				String fTime = stopct.getSct_starttime();
 				String oTime = stopct.getSct_overtime();
 				System.out.println("fTime=" + fTime + "oTime=" + oTime);
-				//调用公共计算停车费方法
-				int money=baseUtil.count(fTime, oTime);
+				// 调用公共计算停车费方法
+				int money = baseUtil.count(fTime, oTime);
+				// 判断是否为预约车辆如果是就加十元停车费用
+				Param param333 = new Param("预约停车中", "停车状态");
+				Param param233 = paramBiz.GetPmIDByTypeNmaeX(param333);
+				if (carflag == param233.getPm_id()) {
+					money = money + 10;
+				}
 				System.out.println("money=" + money);
 				Stopcartime sctz = new Stopcartime(stopcartime.getSct_id(), money);
 				System.out.println("sctz=" + sctz);

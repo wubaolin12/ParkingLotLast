@@ -8,7 +8,8 @@
 	<!-- 通过用户CustID找到车信息 -->
 	<select id="FindByCarcustidX" parameterType="int"
 		resultType="org.great.bean.Car">
-		select * from tb_car where cust_id =#{number}  and c_id  not in  (SELECT c_id from tb_appointment )
+		select * from tb_car where cust_id =#{number} and c_id not
+		in (SELECT c_id from tb_appointment )
 	</select>
 
 
@@ -21,6 +22,13 @@
 	<update id="chagerPmIDByCarNumberX"
 		parameterType="org.great.bean.Car">
 		update tb_car set pm_id= #{pm_id} where c_num =
+		#{c_num}
+	</update>
+	<!-- 根据车牌号更改车辆角色和车主ID -->
+	<update id="chagerPmIDCustIDByCarNumberX"
+		parameterType="org.great.bean.Car">
+		update tb_car set cust_id=#{cust_id}, pm_id= #{pm_id}
+		where c_num =
 		#{c_num}
 	</update>
 
@@ -211,7 +219,8 @@
 	<!-- 根据车牌号号查询车辆VIP信息 -->
 	<select id="findCarVipStateX" parameterType="String"
 		resultMap="findCarVipStateXMap">
-		select c.c_id,c.cust_id,c.pm_id ,c.c_num,c.c_null1,v.v_id,v.co_id,v.c_id
+		select c.c_id,c.cust_id,c.pm_id
+		,c.c_num,c.c_null1,v.v_id,v.co_id,v.c_id
 		vcid,v.v_starttime,v.v_overtime,v.pm_id vpmid from tb_car c LEFT JOIN
 		tb_vip v on c.c_id = v.c_id
 		where c.c_num

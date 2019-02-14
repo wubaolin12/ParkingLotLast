@@ -11,7 +11,7 @@
 		parameterType="org.great.bean.Stopcartime">
 		insert into tb_stopcartime(sct_starttime,c_id,pm_id)
 		values
-		(#{sct_starttime},#{c_id},1)
+		(#{sct_starttime},#{c_id},#{pm_id})
 	</insert>
 	<!-- 通过车ID找到该车所有停车信息 -->
 	<select id="FindSctByNumber" parameterType="int"
@@ -40,13 +40,21 @@
 		select * from tb_stopcartime where sct_id = #{id}
 	</select>
 	<!-- 删除一条停车时间表记录根据车牌号 -->
-	<delete id="delStopcartimeByCnumX" >
+	<delete id="delStopcartimeByCnumX">
 		DELETE FROM
-		tb_stopcartime where c_id = (SELECT c_id FROM tb_car where c_num
-		=#{c_num}) and pm_id = (SELECT pm_id from tb_param
+		tb_stopcartime
+		where c_id = (SELECT c_id FROM tb_car where c_num
+		=#{c_num}) and pm_id
+		= (SELECT pm_id from tb_param
 		where pm_type =
-		#{pm_type} and pm_name =#{pm_name})
+		#{pm_type} and pm_name
+		=#{pm_name})
 
 	</delete>
-
+	<!-- 通过车牌查找该停车表停车中的信息 -->
+	<select id="FindByCarIDX"
+		resultType="org.great.bean.Stopcartime">
+		select * from tb_stopcartime where c_id = #{c_id} and pm_id <![CDATA[ <> ]]>
+		#{pm_id}
+	</select>
 </mapper>

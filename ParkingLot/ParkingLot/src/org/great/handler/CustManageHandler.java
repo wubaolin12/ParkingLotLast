@@ -203,6 +203,7 @@ public class CustManageHandler {
 			map = VipTime(dauNum);
 		}
 //		判断车辆有无被注册
+		// 什么都没有的车辆
 		if (car1 == null) {
 			if (anyX.getPm_id().equals("注册会员")) {
 				pid = 6;
@@ -227,7 +228,34 @@ public class CustManageHandler {
 				str = "添加成为包月会员车辆了";
 				System.err.println("**************************************");
 			}
-		} else {
+		} // 临时车辆
+		else if (car1.getCust_id() == 0) {
+			if (anyX.getPm_id().equals("注册会员")) {
+				pid = 6;
+				List<Cust> list = custBiz.FindByPhoneX(anyX.getCust_phone());
+				Car car2 = new Car(list.get(0).getCust_id(), pid, anyX.getCarnum());
+				System.out.println("car2="+car2);
+				flag = carBiz.chagerPmIDCustIDByCarNumberX(car2);
+				str = "临时车辆添加成为注册车辆了";
+			} else if (anyX.getPm_id().equals("包月会员")) {
+				pid = 7;
+				List<Cust> list = custBiz.FindByPhoneX(anyX.getCust_phone());
+				System.out.println("list=" + list);
+				Car car2 = new Car(list.get(0).getCust_id(), pid, anyX.getCarnum());
+				System.out.println("car2=" + car2);
+				flag = carBiz.chagerPmIDCustIDByCarNumberX(car2);
+				System.out.println("Cflag=" + flag);
+				car2 = carBiz.FindByCarNumber(anyX.getCarnum());
+
+				Vip vip = new Vip(co_id, car2.getC_id(), map.get("today"), map.get("finday"), param1.getPm_id());
+				System.out.println("vip=" + vip);
+				flag = vipBiz.AddvipX(vip);
+				System.out.println("Vflag=" + flag);
+				str = "临时车辆添加成为包月会员车辆了";
+				System.err.println("**************************************");
+			}
+		} // 注册会员车辆
+		else {
 			if (car1.getPm_id() == 6) {
 				if (anyX.getPm_id().equals("注册会员")) {
 					str = "已经是注册会员了";
@@ -322,6 +350,7 @@ public class CustManageHandler {
 	public String VipReturnsJsp() {
 		return "charge/VipReturns";
 	}
+
 	/**
 	 * 跳转到添加月缴退费查看界面并根据手机号查询月缴车辆
 	 * 
@@ -398,11 +427,11 @@ public class CustManageHandler {
 		flag = vipBiz.VipReturnX(car1List.get(0).getVip().getV_id());
 		if (flag == true) {
 			int pid = 6;
-			Car car1 = new Car(pid,car1List.get(0).getC_num());
-			boolean flag1 =carBiz.chagerPmIDByCarNumberX(car1);
-			if(flag1==true) {
+			Car car1 = new Car(pid, car1List.get(0).getC_num());
+			boolean flag1 = carBiz.chagerPmIDByCarNumberX(car1);
+			if (flag1 == true) {
 				str = "退费成功！！";
-			}else {
+			} else {
 				str = "退费失败！！";
 			}
 		} else {
@@ -410,8 +439,9 @@ public class CustManageHandler {
 		}
 		return str;
 	}
+
 	/**
-	   *生成日结单
+	 * 生成日结单
 	 * 
 	 * @param request
 	 * @return
@@ -420,25 +450,26 @@ public class CustManageHandler {
 	public String DailyMailJSP() {
 		return "charge/DailyStatement";
 	}
+
 	/**
-	   *生成日结单
+	 * 生成日结单
 	 * 
 	 * @param request
 	 * @return
 	 */
 	@RequestMapping("/DailyMail.action")
 	public ModelAndView DailyMail(HttpServletRequest request) {
-		Date day=new Date();    
-		SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd"); 
-		System.out.println(df.format(day));  
-		String time= "%"+df.format(day)+"%";
+		Date day = new Date();
+		SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd");
+		System.out.println(df.format(day));
+		String time = "%" + df.format(day) + "%";
 		System.out.println(time);
 		User user = (User) request.getAttribute("User");
-		System.out.println("user="+user);
-		Receipt re = new Receipt(user.getU_id(),time);
-		 List<Receipt> receiptList=receiptBiz.findDailyRecp(re);
-		 System.out.println("receiptList="+receiptList);
-		 request.setAttribute("receiptList", receiptList);
+		System.out.println("user=" + user);
+		Receipt re = new Receipt(user.getU_id(), time);
+		List<Receipt> receiptList = receiptBiz.findDailyRecp(re);
+		System.out.println("receiptList=" + receiptList);
+		request.setAttribute("receiptList", receiptList);
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("charge/DailyStatement");
 //		要打印接下去写

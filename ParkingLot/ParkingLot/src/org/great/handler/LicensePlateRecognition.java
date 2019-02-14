@@ -19,10 +19,12 @@ import javax.servlet.http.HttpSession;
 
 import org.great.bean.Appointment;
 import org.great.bean.Car;
+import org.great.bean.Param;
 import org.great.bean.Park;
 import org.great.bean.Stopcartime;
 import org.great.biz.AppointmentBiz;
 import org.great.biz.CarBiz;
+import org.great.biz.ParamBiz;
 import org.great.biz.ParkBiz;
 import org.great.biz.StopcartimeBiz;
 import org.json.JSONObject;
@@ -64,6 +66,8 @@ public class LicensePlateRecognition {
 	private ParkBiz parkBiz;
 	@Resource
 	private AppointmentBiz appointmentBiz;
+	@Resource
+	private ParamBiz paramBiz;
 
 	static AipOcr client = null;
 	static {
@@ -205,8 +209,21 @@ public class LicensePlateRecognition {
 		DateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 		Date currenime = new Date();
 		String currendate = df.format(currenime);
-
-		Stopcartime sct = new Stopcartime(car.getC_id(), currendate);
+		int pm_id = 1;
+		// 查询车牌出是否为预约车辆
+		List<Appointment> AppointmentList = appointmentBiz.findCarAppoinmentX();
+		System.out.println("AppointmentList=" + AppointmentList);
+		System.out.println("AppointmentList大小=" + AppointmentList.size());
+		Param param = new Param("停车中", "停车状态");
+		Param param2 = new Param("预约停车中", "停车状态");
+		Param param1 = paramBiz.GetPmIDByTypeNmaeX(param);
+		Param param22 = paramBiz.GetPmIDByTypeNmaeX(param2);
+		if (AppointmentList != null && AppointmentList.size() != 0) {
+			pm_id = param22.getPm_id();
+		}else {
+			pm_id=param1.getPm_id();
+		}
+		Stopcartime sct = new Stopcartime(car.getC_id(),pm_id, currendate);
 
 		// 先查询该车是否在停车了，如果在停车了就不要重复添加数据
 		List<Stopcartime> sctlist = stopcartimeBiz.FindSctByNumber(car.getC_id());
@@ -261,9 +278,7 @@ public class LicensePlateRecognition {
 		List<Park> ParkList = parkBiz.FindAllCanStopX("开放", 9);
 		System.out.println("ParkList=" + ParkList);
 		System.out.println("ParkList大小=" + ParkList.size());
-		List<Appointment> AppointmentList = appointmentBiz.findCarAppoinmentX();
-		System.out.println("AppointmentList=" + AppointmentList);
-		System.out.println("AppointmentList大小=" + AppointmentList.size());
+
 		List<Appointment> AppointmentList2 = appointmentBiz.findCarAppoinmentByCarIDX(car.getC_id());
 		if (AppointmentList2 != null && AppointmentList2.size() != 0) {
 			if (ParkList.size() > 0) {
@@ -271,6 +286,9 @@ public class LicensePlateRecognition {
 				Park park = new Park(ParkList.get(0).getP_id(), 8, car.getC_id());
 				System.out.println("park=" + park);
 				boolean flag = parkBiz.SetCarParkX(park);
+				System.out.println("flag=" + flag);
+				// 删除选车为成功预约表记录
+				flag = appointmentBiz.delAppointmentByCnumX(car.getC_num());
 				System.out.println("flag=" + flag);
 				flagPark = 1;
 			} else {
@@ -292,6 +310,7 @@ public class LicensePlateRecognition {
 					System.out.println("park=" + park);
 					boolean flag = parkBiz.SetCarParkX(park);
 					System.out.println("flag=" + flag);
+
 					flagPark = 1;
 				}
 			}
