@@ -31,6 +31,8 @@ public class BirdMap {
 		
 		 List<Park> parklist = parkBiz.FindAllCanStopX("开放", 9);
 		 
+		 System.out.println("所有车位信息"+parklist);
+		 
 		 request.setAttribute("ParkList",parklist);
 		
 		return "BirdMap";
