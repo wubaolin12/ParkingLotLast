@@ -19,6 +19,7 @@ import org.great.bean.User;
 import org.great.biz.MenuBiz;
 import org.great.biz.ParkBiz;
 import org.great.biz.UserBiz;
+import org.great.log.OperationLog;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -75,6 +76,7 @@ public class ParkHandler {
 	 * @return
 	 */
 	//@RequestMapping()(value = "/findPark.action", method = RequestMethod.POST, produces = "application/json;charset=utf-8")
+	@OperationLog(operationType = "车位配置", operationName = "修改维护状态")	
 	@RequestMapping("/setState.action")
 	public String setState(HttpServletRequest request, int p_id,String want) {
 		//修改状态
@@ -115,7 +117,6 @@ public class ParkHandler {
 	/**
 	 * 	跳转增加车位界面
 	 */
-	
 	@RequestMapping("/jumpAdd.action")
 	public String jumpAdd() {
 		return "ParkAdd";
@@ -124,7 +125,7 @@ public class ParkHandler {
 	 * 	增加车位
 	 * @throws IOException 
 	 */
-	
+	@OperationLog(operationType = "车位配置", operationName = "增加车位")	
 	@RequestMapping("/addPark.action")
 	public String addPark(HttpServletRequest request,HttpServletResponse response,Park addPark) throws IOException {
 		System.out.println("添加的车位是"+addPark);
@@ -176,7 +177,7 @@ public class ParkHandler {
 	 * 	修改车位
 	 * @throws IOException 
 	 */
-	
+	@OperationLog(operationType = "车位配置", operationName = "修改车位")	
 	@RequestMapping("/updatePark.action")
 	public String updatePark(HttpServletRequest request,HttpServletResponse response,Park addPark) throws IOException {
 		System.out.println("添加的车位是"+addPark);
