@@ -110,5 +110,9 @@ public class DailyBillHandler {
 		 */
 		
 	}
+	
+	/**
+	 * 第三件事情，半小时判断一次车位预约失效
+	 */
 
 }

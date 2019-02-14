@@ -44,11 +44,7 @@
 		resultType="org.great.bean.Cust">
 		select * from tb_cust where cust_phone =#{Pnumber}
 	</select>
-	<!-- 通过手机号找到客户信息 -->
-	<select id="FindByPhone" parameterType="String"
-		resultType="org.great.bean.Cust">
-		select * from tb_cust where cust_phone =#{Pnumber}
-	</select>
+
 	<!-- 前端登录 （手机+密码） -->
 	<select id="ForeLogin" parameterType="org.great.bean.Cust"
 		resultType="org.great.bean.Cust">
@@ -60,10 +56,7 @@
 		select * from tb_cust where cust_acc =#{cust_acc}
 	</select>
 	
-	<select id="checkUser" parameterType="org.great.bean.Cust"
-		resultType="org.great.bean.Cust">
-		select * from tb_cust where cust_acc =#{cust_phone} and cust_pwd=#{cust_pwd}
-	</select>
+
 	
 		<!-- 通过id找到客户信息 -->
 	<select id="FindByID" parameterType="org.great.bean.Cust"

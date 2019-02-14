@@ -19,7 +19,7 @@
 </head>
 <body>
 <header>
-<img src="${path}/static/headlib/images/rpw_back_n.png">
+<a href="#" onClick="javascript :history.back(-1);"><img src="${path}/static/headlib/images/rpw_back_n.png"></a>
 <span>修改密码</span>
 <div class="clear"></div>
 </header>

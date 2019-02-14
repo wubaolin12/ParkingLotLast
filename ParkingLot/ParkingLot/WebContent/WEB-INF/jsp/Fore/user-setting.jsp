@@ -19,7 +19,7 @@
 </head>
 <body>
 <header>
-<img src="${path}/static/headlib/images/rpw_back_n.png">
+<a href="${path}/fore/success1.do"><img src="${path}/static/headlib/images/rpw_back_n.png"></a>
 <span>个人设置</span>
 <div class="clear"></div>
 </header>

@@ -19,7 +19,7 @@
 </head>
 <body>
 <header>
-<img src="${path}/static/headlib/images/rpw_back_n.png"> 
+<a href="#" onClick="javascript :history.back(-1);"><img src="${path}/static/headlib/images/rpw_back_n.png"></a>
 <span>个人信息</span>
 <div class="clear"></div>
 </header>
@@ -58,7 +58,7 @@
 	   <div class="right">
 		 <input value="${ FuserInf.cust_acc}" id="cust_acc" name="cust_acc">
 		 <span id="nametip" style="font-size: 1.8rem"></span>
-	  	<input type="text"  id="namekey" style="display: none;">
+	  	<input type="text"  id="namekey" style="display: none;" value="该昵称可以使用">
 	  	<input type="text" value="${ FuserInf.cust_acc}" style="display: none;" id="oldname">
 	   </div>
 	   <div class="clear"></div>
@@ -86,8 +86,8 @@
 	   	  	<input type="text" value="${ FuserInf.cust_phone}" style="display: none;" id="oldphone">
 	   	  		   
 		   <input value="${ FuserInf.cust_phone}" id="cust_phone" name="cust_phone" onkeyup="this.value=this.value.replace(/\D/g,'')"
-				onafterpaste="this.value=this.value.replace(/\D/g,'')" maxlength="11"><span id="phonetip" style="font-size: 1.8rem">
-	   	  	<input type="text" style="display: none;" id="phonekey">
+				onafterpaste="this.value=this.value.replace(/\D/g,'')" maxlenaigth="11"><span id="phonetip" style="font-size: 1.8rem">
+	   	  	<input type="text" style="display: none;" id="phonekey" value="该号码可以使用">
 	   </div>
 	   <div class="clear"></div>
    </li>
