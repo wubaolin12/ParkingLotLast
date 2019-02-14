@@ -34,8 +34,8 @@
 		 旧密码:
 	   </div>
 	   <div class="right">
-		 <input value="" id="oldpwd">
-		 <span id="pwdtip"></span>
+		 <input type="password" value="" id="oldpwd">
+		 <span id="pwdtip" style="font-size: 1.8rem"></span>
 		 <input id="pwdtip3" type="hidden" value="0">
 	   </div>
 	   <div class="clear"></div>
@@ -45,7 +45,7 @@
 		  新密码:
 	   </div>
 	   <div class="right">
-		   <input value="" id="newpwd">
+		   <input value="" id="newpwd" type="password">
 	   </div>
 	   <div class="clear"></div>
    </li>
@@ -54,8 +54,8 @@
 		  重复密码:
 	   </div>
 	   <div class="right">
-		   <input value="" id="cpwd" onblur="checkpwd()">
-		   <span id="pwdtip2" value="1">
+		   <input value="" id="cpwd" onblur="checkpwd()" type="password">
+		   <span id="pwdtip2" value="1"  style="font-size: 1.8rem">
 	   </div>
 	   <div class="clear"></div>
    </li>
@@ -65,7 +65,7 @@
 </ul>
 </article>
 <article class="btn-1">
-<button type="submit">确认修改</button>
+<button type="button" id="bt1">确认修改</button>
 </article>
 </form>
 
@@ -76,7 +76,61 @@
 <script src="${path}/static/headlib/js/iscroll-zoom.js"></script>
 <script src="${path}/static/headlib/js/hammer.js"></script>
 <script src="${path}/static/headlib/js/jquery.photoClip.js"></script>
+<script type="text/javascript" src="${path}/static/lib/laypage/1.2/laypage.js"></script>
+<script type="text/javascript" src="${path}/static/lib/layer/2.4/layer.js"></script>
+<script type="text/javascript" src="${path}/static/lib/jquery/1.9.1/jquery.min.js"></script> 
+<script type="text/javascript" src="${path}/static/lib/layer/2.4/layer.js"></script>
+<script type="text/javascript" src="${path}/static/static/h-ui/js/H-ui.min.js"></script> 
+<script type="text/javascript" src="${path}/static/static/h-ui.admin/js/H-ui.admin.js"></script> <!--/_footer 作为公共模版分离出去-->
+
+<!--请在下方写此页面业务相关的脚本-->
+<script type="text/javascript" src="${path}/static/lib/My97DatePicker/4.8/WdatePicker.js"></script> 
+<script type="text/javascript" src="${path}/static/lib/datatables/1.10.0/jquery.dataTables.min.js"></script> 
+<script type="text/javascript" src="${path}/static/lib/laypage/1.2/laypage.js"></script>
 <script>
+
+$('#bt1').on('click', function(){
+	/* alert(11111); */
+	var pwd1 = document.getElementById("newpwd").value;
+	var pwd2 = document.getElementById("cpwd").value;
+	var tip  = document.getElementById("pwdtip3").value;
+	var word;
+	
+	if(pwd1!=""&&pwd1!=null&&pwd2!=""&&pwd2!=null){
+		if(pwd1==pwd2){
+			if(tip=="旧密码正确"){	
+			
+				$.ajax({
+					url :"UpdateFUserPWD.do" ,
+					type :"post",
+					dataType:"text", 
+					data :"cust_pwd="+pwd1,
+					success:function(redata){
+						
+						
+						layer.confirm(redata,function(index)
+						{
+							location.href="${path}/fore/foreLogin.do";
+						});
+						
+					}				
+				});	
+			
+			}else{
+				alert("请输入正确旧密码");
+			}
+		
+		}else{
+			alert("两次密码不一致");
+		}
+	}else{
+		
+		document.getElementById("pwdtip2").innerHTML = "提示：密码为空";
+		
+	}
+	
+
+});
 
 function check(){
 	

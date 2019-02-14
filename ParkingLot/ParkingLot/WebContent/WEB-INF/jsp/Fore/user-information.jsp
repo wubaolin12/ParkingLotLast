@@ -23,7 +23,7 @@
 <span>个人信息</span>
 <div class="clear"></div>
 </header>
-<form action="${path}/userinformation/addPicture.action" theme="simple" method="post" enctype="multipart/form-data">
+<form action="${path}/userinformation/toUpdateUserInformation.do" theme="simple" method="post" enctype="multipart/form-data">
 
 <section class="logo-license">
 <div class="half">
@@ -60,12 +60,7 @@
 	   </div>
 	   <div class="clear"></div>
    </li>
-     <li>
-	   <div class="left">
-		 <a href="toUpdateUserPWD.do">修改密码></a>
-	   </div>
-	   <div class="clear"></div>
-   </li>
+
    <li>
 	   <div class="left">
 		   性别:

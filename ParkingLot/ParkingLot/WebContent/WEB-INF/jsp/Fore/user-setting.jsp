@@ -7,7 +7,7 @@
 <html>
 <head>
 <meta charset="utf-8">
-<title>用户个人信息</title>
+<title>个人设置</title>
 <link href="${path}/static/headlib/css/style.css" rel="stylesheet" type="text/css">
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui" />
@@ -19,76 +19,23 @@
 </head>
 <body>
 <header>
-<img src="${path}/static/headlib/images/rpw_back_n.png"> 
-<span>个人信息</span>
+<img src="${path}/static/headlib/images/rpw_back_n.png">
+<span>个人设置</span>
 <div class="clear"></div>
 </header>
-<form action="${path}/userinformation/UpdateUserInformation.do" onsubmit="return checkform()" theme="simple" method="post" enctype="multipart/form-data">
+<form action="${path}/userinformation/addPicture.action" theme="simple" method="post" enctype="multipart/form-data">
 
-<section class="logo-license">
-<div class="half">
-	<a class="logo" id="logox">
-		<img id="bgl" src="${path}/static/headlib/images/logo_n.png">
 
-	</a>
-	<p>企业LOGO</p>
-</div>
-
-<div class="clear"></div>
-</section>
-
-<article class="htmleaf-container">
-<div id="clipArea" ></div>
-<div class="foot-use">
-	<div class="uploader1 blue">
-		<input type="button" name="file" class="button" value="打开">
-		<input id="file" type="file" onchange="javascript:setImagePreview();" accept="image/*" multiple  />
-	</div>
-	<button id="clipBtn">截取</button>
-</div>
-<div id="view"></div>
-</article>
 
 <article class="info">
 <ul>
-   <li>
-	   <div class="left">
-		  昵称:
-	   </div>
-	   <div class="right">
-		 <input value="${ FuserInf.cust_acc}" id="cust_acc" name="cust_acc">
-		 <span id="nametip" style="font-size: 1.8rem"></span>
-	  	<input type="text"  id="namekey" style="display: none;">
-	  	<input type="text" value="${ FuserInf.cust_acc}" style="display: none;" id="oldname">
-	   </div>
-	   <div class="clear"></div>
-   </li>
-   <li>
-	   <div class="left">
-		   性别:
-	   </div>
-	   <div class="right">
-		  
-			<select id="cust_sex" name="cust_sex">
-				<option value="${ FuserInf.cust_sex}">${ FuserInf.cust_sex}</option>
-				<option value="男">男</option>
-				<option value="女">女</option>
-			</select>
 
+     <li>
+      <a href="toUpdateUserPWD.do">
+	   <div class="left" style="font-size:1.8rem">
+		修改密码>
 	   </div>
-	   <div class="clear"></div>
-   </li>
-   <li>
-	   <div class="left">
-		   手机号码:
-	   </div>
-	   <div class="right">
-	   	  	<input type="text" value="${ FuserInf.cust_phone}" style="display: none;" id="oldphone">
-	   	  		   
-		   <input value="${ FuserInf.cust_phone}" id="cust_phone" name="cust_phone" onkeyup="this.value=this.value.replace(/\D/g,'')"
-				onafterpaste="this.value=this.value.replace(/\D/g,'')" maxlength="11"><span id="phonetip" style="font-size: 1.8rem">
-	   	  	<input type="text" style="display: none;" id="phonekey">
-	   </div>
+	   </a>
 	   <div class="clear"></div>
    </li>
 
@@ -96,9 +43,7 @@
 
 </ul>
 </article>
-<article class="btn-1">
-<button type="submit">确认修改</button>
-</article>
+
 </form>
 
 
@@ -130,99 +75,6 @@ $("#clipArea").photoClip({
 });
 </script>
 <script>
-function checkform(){
-	var namekey=document.getElementById("namekey").value;
-	var phonekey=document.getElementById("phonekey").value;
-	var cust_acc=document.getElementById("cust_acc").value;
-	var cust_phone=document.getElementById("cust_phone").value;
-	
-	if(cust_acc!=''&&cust_acc!=null&&cust_phone!=''&&cust_phone!=null){
-		
-		if(namekey=="该昵称可以使用"){
-			
-			if(phonekey=="该号码可以使用"){
-				return true;
-			}else{
-				alert("请填入正确手机号码");
-				return false;
-			}
-		}else{
-			alert("请填入正确昵称");
-			return false;
-		}
-		
-	}else{
-		alert("请输入信息");
-		return false;
-	}
-
-
-}
-
-$(function() {
-	
-	$("#cust_acc").on("blur",function(){
-	
-		var cust_acc=document.getElementById("cust_acc").value;
-		var oldname=document.getElementById("oldname").value;
-		
-		if(cust_acc!=''&&cust_acc!=null){
-			if(cust_acc!=oldname){
-				
-				$.ajax({
-					url :"FuserNamecheckAjax.do" ,
-					type :"post",
-					dataType:"text", 
-					data :"cust_acc="+cust_acc,
-					success:function(redata){
-						
-						document.getElementById("nametip").innerHTML =redata;
-						document.getElementById("namekey").value=redata;
-					}
-				});
-			}else{
-				document.getElementById("namekey").value="该昵称可以使用";
-			}
-		}else{
-			document.getElementById("namekey").value="请填入昵称";
-		}
-	});		
-	
- 	
-});
-
-$(function() {
- 	$("#cust_phone").on("blur",function(){
-		
-		var cust_phone=document.getElementById("cust_phone").value;
-		var oldphone=document.getElementById("oldphone").value;
-		
-		if(cust_phone!=''&&cust_phone!=null){
-			if(cust_phone!=oldphone){
-				
-				$.ajax({
-					url :"FuserPhonecheckAjax.do" ,
-					type :"post",
-					dataType:"text", 
-					data :"cust_phone="+cust_phone,
-					success:function(redata){
-						
-						document.getElementById("phonetip").innerHTML =redata;
-						document.getElementById("phonekey").value=redata;
-					}
-				});
-			}else{
-				document.getElementById("phonekey").value="该号码可以使用";
-			}
-		}else{
-			document.getElementById("phonekey").value="请填入号码";
-
-		}
-	});	
-	
-});
-
-
 $(function(){
 $("#logox").click(function(){
 $(".htmleaf-container").show();

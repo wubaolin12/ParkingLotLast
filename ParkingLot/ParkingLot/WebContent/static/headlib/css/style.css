@@ -665,8 +665,8 @@ input[type=text]::-webkit-focus-inner {
     border-top: solid 1px #ddd;
 }
 .info ul li{list-style-type: none;padding: 1.5rem 0 ;border-bottom: solid 1px #eee;width: 98%;margin: auto}
-.info ul li .left{width: 25%;float: left;position: relative;text-align: right;font-size: 1.5rem;color: #999}
-.info ul li .right{width: 72%;float: right;position: relative;text-align: left;font-size: 1.5rem}
+.info ul li .left{width: 25%;float: left;position: relative;text-align: right;font-size: 1.8rem;color: #999}
+.info ul li .right{width: 72%;float: right;position: relative;text-align: left;font-size: 1.8rem}
 .info ul li .right input{outline: none;border:0}
 .btn-1{margin-top: 3rem;margin-bottom: 2rem;text-align: center}
 .btn-1 button{width: 90%;outline: none;border: none;background: #18b4ed;color: #fff;height: 5rem;display: inline-block;border-radius: 0.4rem;font-size: 2rem}
