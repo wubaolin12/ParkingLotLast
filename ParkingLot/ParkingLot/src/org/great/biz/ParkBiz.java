@@ -40,4 +40,19 @@ public interface ParkBiz {
 	 * @return
 	 */
 	public boolean SetCarParkX(Park park);
+	
+	/**
+	 * 查询停车的车位根据车ID
+	 * 
+	 * @param park
+	 * @return
+	 */
+	public List<Park> FindOneCanStopX(int c_id);
+	/**
+	 * 修改车id 车位状态ID 车辆出场专业
+	 * 
+	 * @param park
+	 * @return
+	 */
+	public boolean SetCarParkbackX(Park park);
 }

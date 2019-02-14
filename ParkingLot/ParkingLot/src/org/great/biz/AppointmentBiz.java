@@ -28,4 +28,19 @@ public interface AppointmentBiz {
 	 * @return
 	 */
 	public boolean delAppointmentByCnumX(String c_num);
+	
+	/**
+	 * 查询所有预约记录
+	 * 
+	 * @param id
+	 * @return
+	 */
+	public List<Appointment> findCarAppoinmentX();
+	
+	/**
+	 * 查询一条预约记录根据车ID
+	 * 
+	 * @return
+	 */
+	public List<Appointment> findCarAppoinmentByCarIDX(int c_id);
 }

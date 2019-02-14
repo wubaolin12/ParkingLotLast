@@ -20,7 +20,10 @@
 	<update id="SetCarParkX" parameterType="org.great.bean.Park">
 		update tb_park set c_id=#{c_id} , pm_id = #{pm_id} where p_id=#{p_id}
 	</update>
-
+<!-- 	修改车id 车位状态ID 车辆出场专业 -->
+	<update id="SetCarParkbackX" parameterType="org.great.bean.Park">
+		update tb_park set c_id=null , pm_id = #{pm_id} where p_id=#{p_id}
+	</update>
 	<!-- 初始多表查询 -->
 	<select id="FindAll" parameterType="org.great.bean.Park"
 		resultMap="FindAllMap">
@@ -172,4 +175,9 @@
 	<update id="addPicture" parameterType="org.great.bean.Park">
 		update tb_park set p_imgpath=#{p_imgpath} where p_id=#{p_id}
 	</update>
+	
+		<!-- 查询停车的车位根据车ID -->
+	<select id="FindOneCanStopX" parameterType="int" resultType="org.great.bean.Park">
+		select * from tb_park where c_id =#{c_id} 
+	</select>
 </mapper>

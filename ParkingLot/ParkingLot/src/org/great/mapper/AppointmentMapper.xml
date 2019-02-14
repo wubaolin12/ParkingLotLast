@@ -36,9 +36,20 @@
 			<result property="c_null1" column="c_null1" />
 		</collection>
 	</resultMap>
-<!-- 	删除一条预约表记录根据车牌号 -->
+	<!-- 删除一条预约表记录根据车牌号 -->
 	<delete id="delAppointmentByCnumX" parameterType="String">
-		DELETE FROM tb_appointment where c_id = (SELECT c_id FROM tb_car where c_num
+		DELETE FROM
+		tb_appointment where c_id = (SELECT c_id FROM tb_car where c_num
 		=#{c_num})
 	</delete>
+	<!-- 查询所有预约记录 -->
+	<select id="findCarAppoinmentX"
+		resultType="org.great.bean.Appointment">
+		select * from tb_appointment
+	</select>
+	<!-- 查询一条预约记录根据车ID -->
+	<select id="findCarAppoinmentByCarIDX" parameterType="int"
+		resultType="org.great.bean.Appointment">
+		select * from tb_appointment where c_id = #{c_id}
+	</select>
 </mapper>

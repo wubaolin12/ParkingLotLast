@@ -22,6 +22,7 @@ import org.great.bean.Car;
 import org.great.bean.Countrules;
 import org.great.bean.Cust;
 import org.great.bean.Param;
+import org.great.bean.Park;
 import org.great.bean.RoleRel;
 import org.great.bean.Stopcartime;
 import org.great.bean.User;
@@ -30,6 +31,7 @@ import org.great.biz.CarBiz;
 import org.great.biz.CountrulesBiz;
 import org.great.biz.CustBiz;
 import org.great.biz.ParamBiz;
+import org.great.biz.ParkBiz;
 import org.great.biz.RoleRelBiz;
 import org.great.biz.StopcartimeBiz;
 import org.great.biz.VipBiz;
@@ -59,6 +61,8 @@ public class AppearanceLicensePlateRecognition {
 	CountrulesBiz countrulesBiz;
 	@Resource
 	ParamBiz paramBiz;
+	@Resource
+	ParkBiz parkBiz;
 	// 设置APPID/AK/SK
 	public static final String APP_ID = "15429813";
 	public static final String API_KEY = "mEMqLxA8KSG7U69GpMjwlSOU";
@@ -242,10 +246,10 @@ public class AppearanceLicensePlateRecognition {
 				}
 				System.out.println("相差时间: " + m1);
 				Map<String, Object> map = new HashMap<String, Object>();
-				map.put("time",m1);
+				map.put("time", m1);
 				map.put("pmtype", "规则状态");
 				map.put("pmname", "启用");
-				//在此处查询该车辆是不是预约车辆。。。做一个判断
+				// 在此处查询该车辆是不是预约车辆。。。做一个判断
 				// 查询计费规则
 				Countrules countrules = countrulesBiz.findCountrulRoleX(map);
 				if (countrules == null) {
@@ -256,9 +260,9 @@ public class AppearanceLicensePlateRecognition {
 //				int t = Integer.parseInt(time);
 //				System.out.println("t=" + t);
 				int t = 0;
-				if(countrules.getCr_starttime()<0.5) {
+				if (countrules.getCr_starttime() < 0.5) {
 					t = 0;
-				}else {
+				} else {
 					t = (int) countrules.getCr_starttime();
 				}
 				int tt = (int) m1;
@@ -268,8 +272,8 @@ public class AppearanceLicensePlateRecognition {
 				Stopcartime sctz = new Stopcartime(stopcartime.getSct_id(), money);
 				System.out.println("sctz=" + sctz);
 				flag = stopcartimeBiz.UpdateSctMoneyX(sctz);
-				//宏琪  需要缴费的标识  0是不用缴费 1 是要跳转二维码支付
-				int moneyFlag=0;
+				// 宏琪 需要缴费的标识 0是不用缴费 1 是要跳转二维码支付
+				int moneyFlag = 0;
 				if (flag) {
 					Param param = new Param("白名单", "车辆角色");
 					Param param1 = paramBiz.GetPmIDByTypeNmaeX(param);
@@ -286,7 +290,7 @@ public class AppearanceLicensePlateRecognition {
 						System.out.println("-------这货是白名单，放他走!!!-------");
 					} else if (car1.getPm_id() == param22.getPm_id()) {
 						Car car2 = carBiz.findCustCarNumberByCarIDX(car1.getC_id());
-						List<Vip> Viplist = vipBiz.findVipX(car1.getC_id());//宏琪 改了此处 car1.getC_id() 原来为20
+						List<Vip> Viplist = vipBiz.findVipX(car1.getC_id());// 宏琪 改了此处 car1.getC_id() 原来为20
 						if (Viplist != null && Viplist.size() != 0) {
 							System.out.println("-------这货曾经是月缴会员快提醒他续费充值!!!-------");
 						} else {
@@ -301,10 +305,10 @@ public class AppearanceLicensePlateRecognition {
 								System.out.println("-------这货是注册会员卡里有钱自动扣掉，放他走!!!-------");
 							} else {
 								System.out.println("-------这货是注册会员卡里有钱自动扣掉的时候发生了以外，扣除失败了!!!-------");
-								moneyFlag=1;
+								moneyFlag = 1;
 							}
 						} else {
-							moneyFlag=1;
+							moneyFlag = 1;
 							System.out.println("-------这货是注册会员卡里钱不够 ，不放!!!-------");
 						}
 					} else if (car1.getPm_id() == param33.getPm_id()) {
@@ -328,7 +332,7 @@ public class AppearanceLicensePlateRecognition {
 										}
 									} else {
 										System.out.println("-------这货是会员还未生效，卡里钱不够 ，不放!!!-------");
-										moneyFlag=1;
+										moneyFlag = 1;
 									}
 								} else {
 
@@ -338,13 +342,16 @@ public class AppearanceLicensePlateRecognition {
 						}
 					} else if (car1.getPm_id() == param44.getPm_id()) {
 						System.out.println("-------这货要交钱的 ，不放!!!-------");
-						moneyFlag=1;
+						moneyFlag = 1;
+					}
+					if (money == 0) {
+						moneyFlag = 1;
 					}
 					// 查询该出场车辆的信息
 					Stopcartime sct2 = stopcartimeBiz.FindByID(stopcartime.getSct_id());
 					// 该信息传输到页面
 					session.setAttribute("Stopkxj", sct2);
-					//宏琪 session 存放缴费标记
+					// 宏琪 session 存放缴费标记
 					session.setAttribute("moneyFlag", moneyFlag);
 					User user = (User) request.getAttribute("User");
 					List<RoleRel> RoleRelList = roleRelBiz.FindRoleIDbyUserIDX(user.getU_id());
@@ -359,6 +366,13 @@ public class AppearanceLicensePlateRecognition {
 					System.out.println("——————————————修改出场时间成功————————————————————————");
 				}
 			}
+		}
+		List<Park> parkList = parkBiz.FindOneCanStopX(car.getC_id());
+		System.out.println("parkList=" + parkList);
+		if (parkList != null && parkList.size() != 0) {
+			Park park = new Park(parkList.get(0).getP_id(), 9);
+			boolean flag = parkBiz.SetCarParkbackX(park);
+			System.out.println("flag=" + flag);
 		}
 		session.setAttribute("Carkxj", car);
 		return result;
@@ -399,13 +413,4 @@ public class AppearanceLicensePlateRecognition {
 			}
 		}
 	}
-	
-	/**跳到月缴退费的界面
-	 * 
-	 * @return
-	 */
-	@RequestMapping("/VipReturnsJsp.action")
-	public String  VipReturnsJsp() {
-		return "charge/VipReturns";
-	} 
 }

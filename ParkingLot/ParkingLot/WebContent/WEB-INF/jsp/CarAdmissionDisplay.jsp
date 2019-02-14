@@ -67,7 +67,14 @@
             style="FILTER: glow(color=red); LINE-HEIGHT: 60px; WIDTH: 100%; FONT-FAMILY: '黑体','黑体_GB2312','黑体';
 			 COLOR: #ffff00; FONT-SIZE: 50px; text-shadow: #ff0000 1px 1px 0px" 
             scrollAmount=8><B><FONT 
-            face=Verdana>车牌：${Carkxj.c_num}      欢迎光临！</FONT></B>
+            face=Verdana>
+            <% int flagPark =(int)session.getAttribute("flagPark");
+               if(flagPark==1){%>
+            		车牌：${Carkxj.c_num}      欢迎光临！
+            <%} else { %>
+            		车位已满！！欢迎次光临！
+            <%} %>
+            		</FONT></B>
 			</MARQUEE>
 		  </TD>
 		</TR>

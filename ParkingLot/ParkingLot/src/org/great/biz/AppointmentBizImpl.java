@@ -18,8 +18,9 @@ import org.great.bean.Appointment;
 import org.great.mapper.AppointmentMapper;
 import org.great.mapper.Mapper;
 import org.springframework.stereotype.Service;
+
 @Service("appointmentBiz")
-public class AppointmentBizImpl implements AppointmentBiz{
+public class AppointmentBizImpl implements AppointmentBiz {
 	@Resource
 	private AppointmentMapper appointmentMapper;
 
@@ -41,8 +42,16 @@ public class AppointmentBizImpl implements AppointmentBiz{
 		return appointmentMapper.delAppointmentByCnumX(c_num);
 	}
 
-	
+	@Override
+	public List<Appointment> findCarAppoinmentX() {
+		// TODO Auto-generated method stub
+		return appointmentMapper.findCarAppoinmentX();
+	}
 
-	
-	
+	@Override
+	public List<Appointment> findCarAppoinmentByCarIDX(int c_id) {
+		// TODO Auto-generated method stub
+		return appointmentMapper.findCarAppoinmentByCarIDX(c_id);
+	}
+
 }

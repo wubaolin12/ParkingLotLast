@@ -35,6 +35,16 @@ public class Park {
 	}
 	
 	
+	public Park(int p_id, int pm_id) {
+		super();
+		this.p_id = p_id;
+		this.pm_id = pm_id;
+	}
+
+
+
+
+
 	public Park(int p_id, int pm_id, int c_id) {
 		super();
 		this.p_id = p_id;

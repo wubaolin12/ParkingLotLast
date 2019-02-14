@@ -124,5 +124,15 @@ public class ParkBizImpl implements ParkBiz{
 		// TODO Auto-generated method stub
 		return parkMapper.SetCarParkX(park);
 	}
+	@Override
+	public List<Park> FindOneCanStopX(int c_id) {
+		// TODO Auto-generated method stub
+		return parkMapper.FindOneCanStopX(c_id);
+	}
+	@Override
+	public boolean SetCarParkbackX(Park park) {
+		// TODO Auto-generated method stub
+		return parkMapper.SetCarParkbackX(park);
+	}
 	
 }
