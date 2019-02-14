@@ -78,9 +78,9 @@ public class FileUpload {
 	 * 
 	 * 
 	 */
-	@RequestMapping("/test")
+	@RequestMapping("/test.action")
 	public String uploadTest() {
-
+		System.out.println("--------upload:test");
 		return "test-upload";
 	}
 

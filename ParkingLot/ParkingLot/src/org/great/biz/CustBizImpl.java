@@ -55,4 +55,15 @@ public class CustBizImpl implements CustBiz {
 		return custMapper.FindByAcc(cust_acc);
 	}
 
+	/**
+	 * 验证用户
+	 * @param cust
+	 * @return
+	 */
+	@Override
+	public Cust checkUser(Cust cust)
+	{
+		return custMapper.checkUser(cust);
+		
+	}
 }

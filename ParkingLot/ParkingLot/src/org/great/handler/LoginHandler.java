@@ -1,5 +1,6 @@
 package org.great.handler;
 
+import java.io.File;
 import java.io.IOException;
 import java.util.UUID;
 
@@ -21,6 +22,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.ModelAndView;
 
 import net.sf.json.JSONObject;
 
@@ -146,4 +149,31 @@ public class LoginHandler {
 		}
 	}
 
+
+	@RequestMapping("/head.action")
+	public String tohead() {
+
+		System.out.println("跳转到头像页面--------");
+		return "Fore/user-updatePWD";
+	}
+	
+	@RequestMapping("addPicture.action")
+	public ModelAndView addPicture(
+	                           MultipartFile pic
+	                           )
+	            throws IllegalStateException, IOException
+	{
+		System.out.println("*---------addPicture");
+	if (!pic.isEmpty()) {
+	            String path = "F:\\项目实战\\image\\";
+	            String originalFileName = pic.getOriginalFilename();
+	            // 新的图片名称
+	            String newFileName = UUID.randomUUID() + originalFileName.substring(originalFileName.lastIndexOf("."));
+	            // 新的图片
+	            File newFile = new File(path + newFileName);
+	            // 将内存中的数据写入磁盘
+	            pic.transferTo(newFile);
+	        }
+	return null;
+	}
 }

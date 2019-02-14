@@ -54,4 +54,9 @@
 		resultType="org.great.bean.Cust">
 		select * from tb_cust where cust_acc =#{cust_acc}
 	</select>
+	
+	<select id="checkUser" parameterType="org.great.bean.Cust"
+		resultType="org.great.bean.Cust">
+		select * from tb_cust where cust_acc =#{cust_phone} and cust_pwd=#{cust_pwd}
+	</select>
 </mapper>

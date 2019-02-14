@@ -50,4 +50,11 @@ public interface CustBiz {
 	 * @return
 	 */
 	public List<Cust> FindByAcc(String cust_acc);
+	
+	/**
+	 * 判断用户密码
+	 * 
+	 * @return
+	 */
+	public Cust checkUser(Cust cust);
 }

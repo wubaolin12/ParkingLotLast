@@ -52,4 +52,11 @@ public interface CustMapper {
 	 * @return
 	 */
 	public List<Cust> FindByAcc(String cust_acc);
+	
+	/**
+	 * 验证用户
+	 * @param cust
+	 * @return
+	 */
+	public Cust checkUser(Cust cust);
 }
