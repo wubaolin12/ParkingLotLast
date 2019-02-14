@@ -52,7 +52,5 @@ public class FaceSearch {
         return null;
     }
 
-    public static void main(String[] args) {
-        //FaceSearch.search();
-    }
+  
 }

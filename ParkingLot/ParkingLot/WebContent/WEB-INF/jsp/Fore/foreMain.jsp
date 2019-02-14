@@ -87,7 +87,7 @@ String path=request.getScheme()+"://"+request.getServerName()+":"+
 													<li><a href="about.html">反向寻车<span class="over1"></span></a></li>
 													<li><a href="services.html">个人资料<span class="over1"></span></a></li>
                                                     <li><a href="contact.html">个人设置<span class="over1"></span></a></li>
-                                                                                                 <li><a href="${path}/Face/face.do">人脸识别<span class="over1"></span></a></li>
+                                                                                                 <li><a href="${path}/Face/face.do">注册人脸识别<span class="over1"></span></a></li>
 													<li><a href="${path}/pay/toRecharge.do">余额充值<span class="over1"></span></a></li>
                                                     <li><a href="javascript:exitUser()">退出<span class="over1"></span></a></li>
 												</ul>

@@ -98,11 +98,8 @@ String path=request.getScheme()+"://"+request.getServerName()+":"+
 									</div>
                                     
 									<button type="submit" class="submit">登录</button>
-                                    &nbsp; &nbsp; &nbsp; &nbsp;  &nbsp; &nbsp; &nbsp; &nbsp;
-                                      &nbsp; &nbsp; &nbsp; &nbsp;
-                                        &nbsp; &nbsp; &nbsp; &nbsp;
-                                          &nbsp; &nbsp; &nbsp; &nbsp;
-                                    <button type="button" class="submit" onclick="toReg()">注册</button>
+                                    <button type="button" class="submit" onclick="toReg()" style="margin-left:7%">注册</button>
+                                     <button type="button" class="submit" onclick="javascript:location.href='${path}/Face/facelogin.do'" style="margin-left:7%">人脸识别登录</button>
 								</form>
 							</div>
 							<!-- END COMMENT -->

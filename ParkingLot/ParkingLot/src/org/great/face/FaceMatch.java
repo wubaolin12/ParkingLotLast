@@ -69,7 +69,5 @@ public class FaceMatch {
         return null;
     }
 
-    public static void main(String[] args) {
-        FaceMatch.match();
-    }
+  
 }

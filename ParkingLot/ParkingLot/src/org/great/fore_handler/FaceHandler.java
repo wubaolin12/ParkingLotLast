@@ -1,4 +1,4 @@
-package org.great.handler;
+package org.great.fore_handler;
 
 
 import java.io.FileOutputStream;
@@ -58,7 +58,7 @@ public class FaceHandler {
 	 */
 	private static final long serialVersionUID = 1L;
 
-	@RequestMapping("/face.action")
+	@RequestMapping("/face.do")
 	protected void FaceAction(HttpServletRequest request, HttpServletResponse response,String img,String username,String tag)
 			throws ServletException, IOException {
 		//设置编码格式
@@ -104,7 +104,7 @@ public class FaceHandler {
 			
 		    Gson g = new Gson();
     		MsgSearch msg = g.fromJson(FaceSearch.search(image), MsgSearch.class);
-        	System.out.println("返回码:"+msg.error_code+msg.error_msg+"唯一标识"+msg.log_id);
+        	System.out.println("返回码:"+msg.error_code+msg.error_msg+"唯一标识"+msg.result);
         	int result=msg.error_code;
         	System.out.println("对比分值"+msg.showScore());
 	    	if(result==0){

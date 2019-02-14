@@ -12,12 +12,19 @@ public class Face {
 
 	
 	/**
-	 *  登录成功跳转
+	 *  登录成功跳转到人脸识别
+	 *  孔大帅
 	 */
 	
 	@RequestMapping("/face.do")
 	public String JumpFace() {
 		
 		return "Fore/FaceRegiest";
+	}
+	
+	@RequestMapping("/facelogin.do")
+	public String JumpFaceLogin() {
+		
+		return "Fore/FaceLogin";
 	}
 }
