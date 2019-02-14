@@ -3,6 +3,7 @@ package org.great.mapper;
 import java.util.List;
 
 import org.apache.ibatis.annotations.Param;
+import org.great.bean.Car;
 import org.great.bean.Park;
 import org.springframework.stereotype.Repository;
 
@@ -83,4 +84,11 @@ public interface ParkMapper {
 	 * @return
 	 */
 	public boolean SetCarParkbackX(Park park);
+
+	/**
+	 * 通过车牌号找车停在车位的信息
+	 * @param car
+	 * @return
+	 */
+	public Park findCar(Car car);
 }

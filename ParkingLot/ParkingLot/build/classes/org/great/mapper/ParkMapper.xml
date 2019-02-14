@@ -180,4 +180,11 @@
 	<select id="FindOneCanStopX" parameterType="int" resultType="org.great.bean.Park">
 		select * from tb_park where c_id =#{c_id} 
 	</select>
+	
+	<!-- 根据车牌号查找对应停车位信息 -->
+	<select id="findCar" parameterType="org.great.bean.Car" resultMap="parkMap"> 
+		select p.*,tb1.* from tb_park p,
+		 (select c.c_id cid,c.c_num from tb_car c where c_num=#{c_num})tb1
+		 where p.c_id=tb1.cid
+	</select>
 </mapper>

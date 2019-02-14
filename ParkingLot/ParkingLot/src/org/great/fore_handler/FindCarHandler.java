@@ -1,6 +1,10 @@
 package org.great.fore_handler;
 
+import javax.annotation.Resource;
+
 import org.great.bean.Car;
+import org.great.bean.Park;
+import org.great.biz.ParkBiz;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -15,6 +19,9 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @Controller
 @RequestMapping("/findcar")
 public class FindCarHandler {
+	
+	@Resource
+	ParkBiz parkBiz;
 
 	@RequestMapping("/findcar.do")
 	public String execute() {
@@ -24,10 +31,11 @@ public class FindCarHandler {
 	
 	@ResponseBody
 	@RequestMapping(value="/carMsg.do", method = RequestMethod.POST, produces = "application/json;charset=utf-8")
-	public void carMsg(@RequestBody Car car) {
+	public Park carMsg(@RequestBody Car car) {
 		System.out.println(car.toString());
 		
+		Park park = parkBiz.findCar(car);
 		
-
+		return park;
 	}
 }

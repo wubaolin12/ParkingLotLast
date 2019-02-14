@@ -3,6 +3,7 @@ package org.great.biz;
 import java.util.List;
 
 import org.apache.ibatis.annotations.Param;
+import org.great.bean.Car;
 import org.great.bean.Park;
 
 /**
@@ -55,4 +56,11 @@ public interface ParkBiz {
 	 * @return
 	 */
 	public boolean SetCarParkbackX(Park park);
+	
+	/**
+	 * 通过车牌找车停在哪里
+	 * @param car
+	 * @return
+	 */
+	public Park findCar(Car car);
 }

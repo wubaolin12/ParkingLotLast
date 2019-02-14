@@ -28,6 +28,7 @@
 	<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>      
 	<link rel="stylesheet" href="${path}/static/fore-static/css/ie.css" type="text/css" media="screen">
 <![endif]-->
+<link href="${path}/static/lib/lightbox2/2.8.1/css/lightbox.css" rel="stylesheet" type="text/css" >
 </head>
 
 <body class="main">
@@ -141,16 +142,15 @@
 						<!-- END ABOUT US -->
 						<div class="divider1"></div>
 						<!-- START OUR TEACHER -->
-<!-- 						<div id="carMsg" style="display:none"> -->
+						<div id="carMsg" style="display:none">
 						<h3>车辆停放信息</h3>
 						<ul class="thumbnails thumbnails1">
 							<li>
 								<div class="thumbnail clearfix">
-									<figure><img src="images/teacher/1.jpg" alt="Ursula Smith"></figure>
 									<div class="caption">
-										<h6>车牌号：<span style="color:black">XXX</span></h6>  
-										<h6>车位号：<span style="color:black">XXX</span></h6> 
-										<span>
+										<h6>车牌号：<span id="cnum" style="color:black"></span></h6>  
+										<h6>车位号：<span id="pnum" style="color:black"></span></h6> 
+										<span id="pic">
 <%-- 										<a href="/picture/${c.p_imgpath}" data-lightbox="gallery"  --%>
 <%-- 										data-title="车牌：${c.car.c_num}<br/>车位：${c.p_fore}${c.p_num}"> --%>
 <!-- 										查看图片</a> -->
@@ -168,14 +168,10 @@
 							<li>
 								<div class="thumbnail clearfix">
 									<div class="client1">
-										<a href="#">
+										<a href="${path}/BirdMap/birdmap.do">
 											<div class="client1_inner">
 												<div class="c1">
-													<div class="txt2">KINDER<span>GARTEN</span>
-														<p>Austin</p>
-														<div class="divider2"></div>
-														<p><i class="icofont icofont-phone"></i> +1 800 444 1234
-															<br />enroll@au.kinder.com</p>
+													<div class="txt2">跳转到导航
 													</div>
 												</div>
 											</div>
@@ -184,7 +180,7 @@
 								</div>
 							</li>
 						</ul>
-<!-- 						</div> -->
+						</div>
 						<!-- END OUR TEACHER -->
 					</div>
 				</div>
@@ -215,6 +211,8 @@
 <script type="text/javascript" src="${path}/static/fore-static/js/jquery.caroufredsel.js"></script>
 <script type="text/javascript" src="${path}/static/fore-static/js/jquery.touchSwipe.min.js"></script>
 <script type="text/javascript" src="${path}/static/fore-static/js/bootstrap.js"></script>
+
+<script type="text/javascript" src="${path}/static/lib/lightbox2/2.8.1/js/lightbox.min.js"></script> 
 <script>
 function findCar(){
 	var car=document.getElementById("c_num").value;
@@ -227,9 +225,17 @@ function findCar(){
 		type:"POST",
 		data:'{"c_num":'+JSON.stringify(car)+'}',
 		contentType:"application/json;charset=utf-8",
-		dataType:"text",
+		dataType:"json",
 		success:function(data){
-			alert(data);
+			alert(data.p_fore);
+			document.getElementById("carMsg").style.display="block";
+			document.getElementById("cnum").innerHTML=data.car.c_num;
+			document.getElementById("pnum").innerHTML=data.p_fore+data.p_num;
+			
+			var pic=document.getElementById("pic");
+			pic.innerHTML="<a href='/picture/"+data.p_imgpath+
+			"' data-lightbox='gallery' data-title='车牌:"+data.car.c_num+"<br/>车位："+data.p_fore+data.p_num+"'>查看图片</a>";
+			
 		}
 		
 	});
