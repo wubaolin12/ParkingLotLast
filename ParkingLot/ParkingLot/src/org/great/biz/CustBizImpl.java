@@ -66,4 +66,10 @@ public class CustBizImpl implements CustBiz {
 		return custMapper.checkUser(cust);
 		
 	}
+	
+	@Override
+	public Cust FindByPhone(String Pnumber) {
+		// TODO Auto-generated method stub
+		return custMapper.FindByPhone(Pnumber);
+	}
 }

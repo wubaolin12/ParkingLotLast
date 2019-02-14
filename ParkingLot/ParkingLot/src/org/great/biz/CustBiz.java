@@ -23,6 +23,7 @@ public interface CustBiz {
 	 * @return
 	 */
 	public List<Cust> FindByPhoneX(String Pnumber);
+	public Cust FindByPhone(String Pnumber);
 	/**
 	 * 查询客户所有
 	 * 

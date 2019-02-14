@@ -6,13 +6,18 @@ import java.io.IOException;
 import java.io.OutputStream;
 import java.io.PrintWriter;
 
+import javax.annotation.Resource;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
+import org.great.bean.Cust;
 import org.great.bean.Msg;
 import org.great.bean.MsgSearch;
+import org.great.bean.SearchUser;
+import org.great.biz.CustBiz;
 import org.great.face.FaceAdd;
 import org.great.face.FaceSearch;
 import org.springframework.stereotype.Controller;
@@ -25,11 +30,16 @@ import com.google.gson.Gson;
 @Controller
 @RequestMapping("/faceServlte")
 public class FaceHandler {
+	
+	
+	@Resource
+	public CustBiz custBiz; // 用户dao接口
 
 	/**
 	 * 保存照片
 	 * @param imgStr
 	 * @param imgFilePath
+	 * 孔大帅
 	 * @return
 	 */
 	public static boolean GenerateImage(String imgStr, String imgFilePath) {
@@ -104,12 +114,26 @@ public class FaceHandler {
 			
 		    Gson g = new Gson();
     		MsgSearch msg = g.fromJson(FaceSearch.search(image), MsgSearch.class);
-        	System.out.println("返回码:"+msg.error_code+msg.error_msg+"唯一标识"+msg.result);
+        	System.out.println("返回码:"+msg.error_code+msg.error_msg+"唯一标识"+msg.result.user_list);
+        	
+        	String Phone = "";
+        	
+        	//获得用户手机号
+        	for(SearchUser su:msg.result.user_list) {
+        		
+        		Phone = su.user_id;
+        		System.out.println("该用户的电话号码是"+Phone);
+        	}
+        	
         	int result=msg.error_code;
         	System.out.println("对比分值"+msg.showScore());
 	    	if(result==0){
 	    		if(msg.showScore()>90){
 	    			out.print("登陆成功");
+	    			//把用户存进session中
+	    			Cust cust = custBiz.FindByPhone(Phone);
+	    			HttpSession session = request.getSession();
+	    			session.setAttribute("ForeUser", cust);
 	    		}else{
 	    			out.print("");	
 	    		}

@@ -51,6 +51,7 @@ public interface CarBiz {
 	 * @return
 	 */
 	public Car findCustCarNumberByPhoneX(String Number);
+	
 	/**根据车ID查询车辆信息和用户信息
 	 * 
 	 * @param cid

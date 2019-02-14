@@ -1,13 +1,14 @@
 package org.great.handler;
 
 import java.io.IOException;
+import java.util.List;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 
-import org.great.util.CookieUtils;
-import org.great.util.JedisClient;
+
+import org.great.bean.Park;
+import org.great.biz.ParkBiz;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -20,12 +21,17 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("/BirdMap")
 public class BirdMap {
 	
-	
+	@Resource
+	public ParkBiz parkBiz; 
 
 	@RequestMapping("/birdmap.action")
 	public String JumpBirdMap(HttpServletRequest request) {
 		
-		//request.setAttribute("",);
+		//获得已停车的车位ID
+		
+		 List<Park> parklist = parkBiz.FindAllCanStopX("开放", 9);
+		 
+		 request.setAttribute("ParkList",parklist);
 		
 		return "BirdMap";
 	}

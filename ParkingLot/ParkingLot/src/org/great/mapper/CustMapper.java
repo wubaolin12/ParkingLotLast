@@ -33,6 +33,14 @@ public interface CustMapper {
 	 * @return
 	 */
 	public List<Cust> FindByPhoneX(String Pnumber);
+	
+
+	/**
+	 * 通过手机号找到客户信息
+	 * 
+	 * @return
+	 */
+	public Cust FindByPhone(String Pnumber);
 
 	/**
 	 * 查询客户所有

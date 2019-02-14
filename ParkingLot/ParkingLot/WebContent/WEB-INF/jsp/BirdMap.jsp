@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=utf-8"
+<%@ page language="java"  import="java.util.*, org.great.bean.Park" contentType="text/html; charset=utf-8"
     %>
 
     <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
@@ -671,9 +671,26 @@
   	        data:[70136]
   	    })
   	    
-  	   
+  	   <%   List<Park> parklist =(List<Park>)request.getAttribute("ParkList");
+  		 
+  		 for(Park park:parklist){
+  			 
+  			 if(park.getPm_id()==8){ %>
+  				 
   		//改变方块房子颜色,id,name二选择一，都可以是数组, fnum可选择，参数color:'#FF0000'
-  	    map.changeModelColor({id:[70136],fnum:[1],color:'#FF0000'}) 
+  	    map.changeModelColor({id:<%=park.getP_mapid()%>,fnum:[1],color:'#FF0000'}) 
+  				 
+  				 
+  			<% }else {%>
+  				
+  			//改变方块房子颜色,id,name二选择一，都可以是数组, fnum可选择，参数color:'#FF0000'
+  	  	    map.changeModelColor({id:<%=park.getP_mapid()%>,fnum:[1],color:'#00FFFF'}) 
+  				
+  			<%}
+  			 
+  		 
+  		 
+  		 } %>
   	    
   	    
   	

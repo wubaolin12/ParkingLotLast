@@ -46,7 +46,7 @@ public class MsgSearch {
 	}
 	
 }
-class ResultSearch{
+/*class ResultSearch{
 	public String face_token;
 	public ArrayList<SearchUser> user_list;
 	public ResultSearch(String face_token, ArrayList<SearchUser> user_list) {
@@ -56,8 +56,8 @@ class ResultSearch{
 	}
 	
 }
-
-class SearchUser{
+*/
+/*class SearchUser{
 	public String group_id;
 	public String user_id;
 	public String user_info;
@@ -70,5 +70,5 @@ class SearchUser{
 		this.score = score;
 	}
 	
-}
+}*/
 

@@ -81,7 +81,7 @@ String path=request.getScheme()+"://"+request.getServerName()+":"+
 	<div id="ajax-contact-form" class="form-horizontal">								
 	<video id="video" width="300px" height="300px" autoplay="autoplay" style="margin-left:7%"></video>
 	<canvas id="canvas" width="300px" height="300px"></canvas>
-	<button id="snap" class="submit" onclick="takePhoto()">拍照</button>	
+	<button id="snap" class="submit" onclick="takePhoto()" style="margin-left:7%">拍照</button>	
 		<button id="snap" class="submit" onclick="back()">返回</button>	
 	
 					</div>			

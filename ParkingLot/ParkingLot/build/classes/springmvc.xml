@@ -46,13 +46,13 @@
 		<!-- 配置拦截器 -->
 		<mvc:interceptors>
 			<mvc:interceptor>
-				<!-- 拦截请求所有路径 -->
+			<!-- 	拦截请求所有路径 -->
 				<mvc:mapping path="/**"/>
-				<!-- 不拦截的资源 -->
+			<!-- 	不拦截的资源 -->
 				<mvc:exclude-mapping path="/**/*fore*"/>
 				<mvc:exclude-mapping path="/**/*.action"/>
 				
-			<!-- 指定拦截器位置 -->
+		<!-- 	指定拦截器位置 -->
 			<bean class="org.great.interceptor.ForeInterceptor"/>
 			</mvc:interceptor>
 			
