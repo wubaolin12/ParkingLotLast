@@ -22,7 +22,7 @@ public class Face {
 		return "Fore/FaceRegiest";
 	}
 	
-	@RequestMapping("/facelogin.do")
+	@RequestMapping("/forefacelogin.do")
 	public String JumpFaceLogin() {
 		
 		return "Fore/FaceLogin";
