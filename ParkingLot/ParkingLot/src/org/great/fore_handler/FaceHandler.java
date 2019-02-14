@@ -5,6 +5,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.io.PrintWriter;
+import java.util.UUID;
 
 import javax.annotation.Resource;
 import javax.servlet.ServletException;
@@ -20,6 +21,8 @@ import org.great.bean.SearchUser;
 import org.great.biz.CustBiz;
 import org.great.face.FaceAdd;
 import org.great.face.FaceSearch;
+import org.great.util.CookieUtils;
+import org.great.util.JedisClient;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -27,14 +30,19 @@ import sun.misc.BASE64Decoder;
 
 import com.google.gson.Gson;
 
+import net.sf.json.JSONObject;
+
 @Controller
-@RequestMapping("/faceServlte")
+@RequestMapping("/forefaceServlte")
 public class FaceHandler {
 	
 	
 	@Resource
 	public CustBiz custBiz; // 用户dao接口
 
+	
+	@Resource
+	JedisClient jedisClient;//redis连接类
 	/**
 	 * 保存照片
 	 * @param imgStr
@@ -118,22 +126,41 @@ public class FaceHandler {
         	
         	String Phone = "";
         	
+        	if(msg.result.user_list!=null) {
         	//获得用户手机号
         	for(SearchUser su:msg.result.user_list) {
         		
         		Phone = su.user_id;
         		System.out.println("该用户的电话号码是"+Phone);
+        		
+        		//把用户存进session中
+    			Cust cust = custBiz.FindByPhone(Phone);
+    			// 登录成功的用户 保存到session里
+    			request.getSession().setAttribute("ForeUser", cust);
+    		
+    			// 生成token
+    			String token = UUID.randomUUID().toString();
+    			cust.setCust_pwd(null);// 清空密码
+    			JSONObject json = JSONObject.fromObject(cust);
+
+    			// 把用户信息保存到redis，key=token;value=user
+    			jedisClient.set("CUST_SESSION:" + token, json.toString());
+
+    			// 设置key过期时间
+    			jedisClient.expire("CUST_SESSION:" + token, 1800);
+
+    			// 返回登录成功，token写入到cookie
+    			CookieUtils.setCookie(request, response, "CUST_TOKEN", token);
+    			
+    			System.out.println(cust);
         	}
-        	
+        	}
         	int result=msg.error_code;
         	System.out.println("对比分值"+msg.showScore());
 	    	if(result==0){
 	    		if(msg.showScore()>90){
+	    	
 	    			out.print("登陆成功");
-	    			//把用户存进session中
-	    			Cust cust = custBiz.FindByPhone(Phone);
-	    			HttpSession session = request.getSession();
-	    			session.setAttribute("ForeUser", cust);
 	    		}else{
 	    			out.print("");	
 	    		}

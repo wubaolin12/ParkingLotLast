@@ -212,7 +212,7 @@ String path=request.getScheme()+"://"+request.getServerName()+":"+
 				var username = ${ForeUser.cust_phone};
 				$.ajax({
 						type: "post",
-						url: "<%=path%>faceServlte/face.do?tag=reg",
+						url: "<%=path%>forefaceServlte/face.do?tag=reg",
 						data: {"img":imgData1,"username":username},
 						success: function(data){
 							alert(data);

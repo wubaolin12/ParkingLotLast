@@ -139,7 +139,7 @@ var imgData = canvas.toDataURL();
 	var username = $("#username").val();
 	$.ajax({
 			type: "post",
-			url: "<%=path%>faceServlte/face.do?tag=login",
+			url: "<%=path%>forefaceServlte/face.do?tag=login",
 			data: {"img":imgData1,"username":username},
 			success: function(data){
 			if(data=="登陆成功"){
