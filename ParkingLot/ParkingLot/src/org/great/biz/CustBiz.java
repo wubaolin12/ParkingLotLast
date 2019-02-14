@@ -42,7 +42,7 @@ public interface CustBiz {
 	 * 
 	 * @return
 	 */
-	public List<Cust> ForeLogin(Cust cust);
+	public Cust ForeLogin(Cust cust);
 	
 	/**
 	 * 判断有没有重复 用户名  宏琪大哥

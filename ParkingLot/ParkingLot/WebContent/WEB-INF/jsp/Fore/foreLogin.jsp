@@ -83,7 +83,8 @@ String path=request.getScheme()+"://"+request.getServerName()+":"+
 											<div class="control-group">
 												<label class="control-label" for="cust_acc">用户名</label>
 												<div class="controls">
-													用户名：<input type="text" id="cust_acc" name="cust_acc">	
+													手机号：<input type="text" id="cust_phone" name="cust_phone"  onkeyup="this.value=this.value.replace(/\D/g,'')"
+														onafterpaste="this.value=this.value.replace(/\D/g,'')" maxlength="11"   >		
 														 </div>
 											
 											</div>
@@ -166,10 +167,10 @@ String path=request.getScheme()+"://"+request.getServerName()+":"+
 	
 	function nonull(){
 		var flag=true;
-		var telV=document.getElementById("cust_acc").value;
+		var telV=document.getElementById("cust_phone").value;
 		var emaV=document.getElementById("cust_pwd").value;
-		if(telV==""){
-		 alert("请输入用户号");
+		if(telV==""||telV.length!=11){
+		 alert("请输入11位手机号");
 		 flag=false;
 		}
 		if(emaV==""){

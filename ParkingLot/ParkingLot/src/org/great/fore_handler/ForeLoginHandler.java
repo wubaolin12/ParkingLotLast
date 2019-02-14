@@ -2,6 +2,8 @@ package org.great.fore_handler;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.security.MessageDigest;
+import java.util.List;
 import java.util.UUID;
 
 import javax.annotation.Resource;
@@ -73,22 +75,24 @@ public class ForeLoginHandler {
 	@RequestMapping("/foreLoginSubmit.do")
 	public void foreLoginSubmit(HttpServletRequest request, HttpServletResponse response, Cust cust)
 			throws IOException {
-		System.out.println("用户=====" + cust.getCust_acc());
+		System.out.println("手机号=====" + cust.getCust_phone());
 		System.out.println("密码=====" + cust.getCust_pwd());
+		cust.setCust_pwd(getStrrMD5(cust.getCust_pwd()));;
 		response.setContentType("text/html;charset=utf-8");
 		PrintWriter out = response.getWriter();
 		String path = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort()
 				+ request.getContextPath() + "/";
 		System.out.println("path===" + path);
-		if (custBiz.ForeLogin(cust) != null && custBiz.ForeLogin(cust).size() == 1) {
+		Cust loginCust=custBiz.ForeLogin(cust) ;
+		if (loginCust != null) {
 
 			// 登录成功的用户 保存到session里
-			request.getSession().setAttribute("ForeUser", custBiz.ForeLogin(cust).get(0));
+			request.getSession().setAttribute("ForeUser", loginCust);
 
 			// 生成token
 			String token = UUID.randomUUID().toString();
 			cust.setCust_pwd(null);// 清空密码
-			JSONObject json = JSONObject.fromObject(cust);
+			JSONObject json = JSONObject.fromObject(loginCust);
 
 			// 把用户信息保存到redis，key=token;value=user
 			jedisClient.set("CUST_SESSION:" + token, json.toString());
@@ -131,20 +135,24 @@ public class ForeLoginHandler {
 		System.out.println("年龄=====" + cust.getCust_age());
 		System.out.println("用户名=====" + cust.getCust_acc());
 		// 先判断手机号是否重复
-		if (custBiz.FindByPhoneX(cust.getCust_phone()) != null
-				&& custBiz.FindByPhoneX(cust.getCust_phone()).size() > 0) {
+		List <Cust> FindByPhoneXList=custBiz.FindByPhoneX(cust.getCust_phone());
+		List <Cust> FindByAccList=custBiz.FindByAcc(cust.getCust_acc());
+
+		if (FindByPhoneXList!= null
+				&&FindByPhoneXList.size() > 0) {
 			out.println("<script type='text/javascript'>alert('注册失败，该手机号已经被注册');location.href='" + path
 					+ "fore/foreReg.do';</script>");
 //			url="Fore/foreReg";
 		}
 		// 再判断用户名是否重复
-		else if (custBiz.FindByAcc(cust.getCust_acc()) != null && custBiz.FindByAcc(cust.getCust_acc()).size() > 0) {
+		else if (FindByAccList!= null && FindByAccList.size() > 0) {
 			out.println("<script type='text/javascript'>alert('注册失败，该用户名已经被注册');location.href='" + path
 					+ "fore/foreReg.do';</script>");
 //			url="Fore/foreReg";
 		}
 		// 注册成功 添加消费者信息
 		else {
+			cust.setCust_pwd(getStrrMD5(cust.getCust_pwd()));;
 			custBiz.AddCustX(cust);
 			out.println("<script type='text/javascript'>alert('注册成功，即将跳转登录界面');location.href='" + path
 					+ "fore/foreLogin.do';</script>");
@@ -167,6 +175,32 @@ public class ForeLoginHandler {
 		String token = CookieUtils.getCookieValue(request, "CUST_TOKEN");
 		jedisClient.del("CUST_SESSION:"+token);
 		return "Fore/foreLogin";
+	}
+
+	
+	
+	//md5
+	public static String getStrrMD5(String password) {
+		 
+		char hexDigits[] = { '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'a', 'b', 'c', 'd', 'e', 'f' };
+		try {
+			byte strTemp[] = password.getBytes("UTF-8");
+			MessageDigest mdTemp = MessageDigest.getInstance("MD5");
+			mdTemp.update(strTemp);
+			byte md[] = mdTemp.digest();
+			int j = md.length;
+			char str[] = new char[j * 2];
+			int k = 0;
+			for (int i = 0; i < j; i++) {
+				byte byte0 = md[i];
+				str[k++] = hexDigits[byte0 >>> 4 & 15];
+				str[k++] = hexDigits[byte0 & 15];
+			}
+ 
+			return new String(str);
+		} catch (Exception e) {
+			return null;
+		}
 	}
 
 }

@@ -44,7 +44,7 @@ public class CustBizImpl implements CustBiz {
 	}
 
 	@Override
-	public List<Cust> ForeLogin(Cust cust) {
+	public Cust ForeLogin(Cust cust) {
 		// TODO Auto-generated method stub
 		return custMapper.ForeLogin(cust);
 	}
