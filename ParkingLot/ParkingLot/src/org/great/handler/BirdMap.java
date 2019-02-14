@@ -23,7 +23,9 @@ public class BirdMap {
 	
 
 	@RequestMapping("/birdmap.action")
-	public String JumpBirdMap() {
+	public String JumpBirdMap(HttpServletRequest request) {
+		
+		//request.setAttribute("",);
 		
 		return "BirdMap";
 	}
