@@ -237,43 +237,9 @@ public class AppearanceLicensePlateRecognition {
 				String fTime = stopct.getSct_starttime();
 				String oTime = stopct.getSct_overtime();
 				System.out.println("fTime=" + fTime + "oTime=" + oTime);
-				// 计算时间停车时间
-//				SimpleDateFormat myFormatter = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
-//				double m1 = 0;
-//				try {
-//					double m2 = myFormatter.parse(oTime).getTime() - myFormatter.parse(fTime).getTime();
-//					m1 = m2 / (60 * 60 * 1000);
-//				} catch (ParseException e) {
-//					// TODO Auto-generated catch block
-//					e.printStackTrace();
-//				}
-//				System.out.println("相差时间: " + m1);
-//				Map<String, Object> map = new HashMap<String, Object>();
-//				map.put("time", m1);
-//				map.put("pmtype", "规则状态");
-//				map.put("pmname", "启用");
-//				// 在此处查询该车辆是不是预约车辆。。。做一个判断
-//				// 查询计费规则
-//				Countrules countrules = countrulesBiz.findCountrulRoleX(map);
-//				if (countrules == null) {
-//					countrules = countrulesBiz.findCountrulRoleEqualsX(map);
-//				}
-//				System.out.println("countrules=" + countrules);
-//				// 根据查询的计费规则计算费用
-////				int t = Integer.parseInt(time);
-////				System.out.println("t=" + t);
-//				int t = 0;
-//				if (countrules.getCr_starttime() < 0.5) {
-//					t = 0;
-//				} else {
-//					t = (int) countrules.getCr_starttime();
-//				}
-//				int tt = (int) m1;
-//				System.out.println(t);
-//				int money = countrules.getCr_fristmoney() + (tt - t) * countrules.getCr_addmoney();
-//				System.out.println("money=" + money);
-				
+				//调用公共计算停车费方法
 				int money=baseUtil.count(fTime, oTime);
+				System.out.println("money=" + money);
 				Stopcartime sctz = new Stopcartime(stopcartime.getSct_id(), money);
 				System.out.println("sctz=" + sctz);
 				flag = stopcartimeBiz.UpdateSctMoneyX(sctz);
