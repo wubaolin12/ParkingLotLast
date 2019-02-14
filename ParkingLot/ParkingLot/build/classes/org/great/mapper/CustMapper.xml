@@ -64,4 +64,34 @@
 		resultType="org.great.bean.Cust">
 		select * from tb_cust where cust_acc =#{cust_phone} and cust_pwd=#{cust_pwd}
 	</select>
+	
+		<!-- 通过id找到客户信息 -->
+	<select id="FindByID" parameterType="org.great.bean.Cust"
+		resultType="org.great.bean.Cust">
+		select * from tb_cust where cust_id =#{cust_id}
+	</select>
+	
+	<select id="checkUser" parameterType="org.great.bean.Cust"
+		resultType="org.great.bean.Cust">
+		select * from tb_cust where cust_phone =#{cust_phone} and cust_pwd=#{cust_pwd}
+	</select>
+	
+	<!-- 验证用户信息 -->
+	<select id="checkCust"  resultType="org.great.bean.Cust" parameterType="java.util.Map">
+			<if test="dataMap!=null">
+			 select cc.* from
+			</if>			
+				(select * from tb_cust ORDER BY '' DESC )
+ 			<if test="dataMap!=null">
+ 				cc
+ 			</if>
+ 			<where>
+ 				<if test="dataMap!=null">				
+				<foreach collection="dataMap.keys"  item="key" separator="or"  >      	    
+         	  	 ${key} =  #{dataMap[${key}]}
+        		   
+        		 </foreach>    		
+        		 </if>
+        	 </where> 	
+	</select>
 </mapper>

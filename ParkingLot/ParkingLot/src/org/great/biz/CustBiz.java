@@ -1,6 +1,7 @@
 package org.great.biz;
 
 import java.util.List;
+import java.util.Map;
 
 import org.great.bean.Cust;
 
@@ -54,8 +55,25 @@ public interface CustBiz {
 	
 	/**
 	 * 判断用户密码
-	 * 
+	 * @author ASUS yf
 	 * @return
 	 */
 	public Cust checkUser(Cust cust);
+
+	
+	/**
+	 * 用以验证用户信息唯一性
+	 * @param map
+	 * @return
+	 * @author ASUS yf
+	 */
+	public List<Cust>checkCust(Map map);
+	
+	/**
+	 * 通过id找对象
+	 * @param cust
+	 * @return
+	 * @author ASUS yf
+	 */
+	public Cust FindByID(Cust cust);
 }

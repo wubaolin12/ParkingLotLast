@@ -1,7 +1,9 @@
 package org.great.mapper;
 
 import java.util.List;
+import java.util.Map;
 
+import org.apache.ibatis.annotations.Param;
 import org.great.bean.Cust;
 import org.springframework.stereotype.Repository;
 
@@ -67,4 +69,20 @@ public interface CustMapper {
 	 * @return
 	 */
 	public Cust checkUser(Cust cust);
+	
+
+	
+	/**
+	 *验证用户唯一性
+	 * @param map
+	 * @return
+	 */
+	public List<Cust>checkCust(@Param("dataMap")Map map);
+	
+	/**
+	 * 通过id找到用户
+	 * @param cust
+	 * @return
+	 */
+	public Cust FindByID(Cust cust);
 }

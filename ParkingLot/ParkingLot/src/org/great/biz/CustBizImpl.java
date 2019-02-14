@@ -1,6 +1,7 @@
 package org.great.biz;
 
 import java.util.List;
+import java.util.Map;
 
 import javax.annotation.Resource;
 
@@ -72,4 +73,28 @@ public class CustBizImpl implements CustBiz {
 		// TODO Auto-generated method stub
 		return custMapper.FindByPhone(Pnumber);
 	}
+	
+
+
+	/**
+	 * 验证唯一性
+	 * @author ASUS yf
+	 */
+	@Override
+	public List<Cust> checkCust(Map map) {
+		// TODO Auto-generated method stub
+		return custMapper.checkCust(map);
+	}
+
+	/**
+	 * 通过用户Id找到用户对象
+	 * @author ASUS yf
+	 */
+	@Override
+	public Cust FindByID(Cust cust) {
+		// TODO Auto-generated method stub
+		return custMapper.FindByID(cust);
+	}
+
+
 }
