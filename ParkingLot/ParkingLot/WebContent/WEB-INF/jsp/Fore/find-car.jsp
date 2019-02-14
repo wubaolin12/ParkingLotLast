@@ -227,7 +227,11 @@ function findCar(){
 		contentType:"application/json;charset=utf-8",
 		dataType:"json",
 		success:function(data){
-			alert(data.p_fore);
+			alert(data);
+			if(data==null||data==""){
+				alert("找不到这辆车");
+				return;
+			}
 			document.getElementById("carMsg").style.display="block";
 			document.getElementById("cnum").innerHTML=data.car.c_num;
 			document.getElementById("pnum").innerHTML=data.p_fore+data.p_num;

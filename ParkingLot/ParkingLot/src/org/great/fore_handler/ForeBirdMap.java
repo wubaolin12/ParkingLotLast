@@ -22,7 +22,7 @@ public class ForeBirdMap {
 	
 	
 
-	@RequestMapping("/birdmap.action")
+	@RequestMapping("/birdmap.do")
 	public String JumpBirdMap(HttpServletRequest request) {
 		
 		//request.setAttribute("",);

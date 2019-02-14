@@ -84,7 +84,7 @@ String path=request.getScheme()+"://"+request.getServerName()+":"+
 											<div class="nav-collapse nav-collapse_ collapse">
 												<ul class="nav sf-menu clearfix">
 													<li ><a href="${path}/appointmentParkLotHandler/appointmentParkLotJsp.do">预约停车<span class="over1"></span></a></li>
-													<li><a href="about.html">反向寻车<span class="over1"></span></a></li>
+													<li><a href="${path}/findcar/findcar.do">反向寻车<span class="over1"></span></a></li>
 													<li><a href="services.html">个人资料<span class="over1"></span></a></li>
                                                     <li><a href="contact.html">个人设置<span class="over1"></span></a></li>
                                                                                                  <li><a href="${path}/Face/face.do">注册人脸识别<span class="over1"></span></a></li>
