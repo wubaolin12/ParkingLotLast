@@ -35,6 +35,7 @@ public interface ParkBiz {
 	 * 查询可以停车的车位
 	 */
 	public List<Park> FindAllCanStopX(@Param("p_state")String p_state,@Param("pm_id")int pm_id);
+	public List<Park> FindAllList();
 	/**
 	 * 修改车id 车位状态ID
 	 * @param park

@@ -139,5 +139,10 @@ public class ParkBizImpl implements ParkBiz{
 		Park park = parkMapper.findCar(car);
 		return park;
 	}
+	@Override
+	public List<Park> FindAllList() {
+		// TODO Auto-generated method stub
+		return parkMapper.FindAllList();
+	}
 	
 }
