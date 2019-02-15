@@ -52,8 +52,14 @@
         location.href="<%=path%>AppearanceLicensePlate/AppearanceCarAdmissionDisplay.action";
       },//上传成功回调函数
       errorFunc: function(res) {
-        console.log('失败回调', res);
-        alert('停车场无此车')
+		       alert(res)
+    	  if(res==300){
+		       console.log('来到这里了', res);
+    		  location.href="<%=path%>AppearanceLicensePlate/JumpCarAdmissionGetMoneyPJSP.action";
+    	  }else {
+		       console.log('失败回调', res);
+		       alert('停车场无此车')
+    	  }
       },//上传失败回调函数
       deleteFunc: function(res) {
         console.log('删除回调', res);

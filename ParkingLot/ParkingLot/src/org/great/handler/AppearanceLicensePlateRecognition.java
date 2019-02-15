@@ -119,6 +119,14 @@ public class AppearanceLicensePlateRecognition {
 
 		return "AppearanceCarAdmissionDisplay";
 	}
+	/**
+	 * 跳转到收费人员显示收费信息界面 野比欣之助
+	 */
+	@RequestMapping("/JumpCarAdmissionGetMoneyPJSP.action")
+	public String JumpCarAdmissionGetMoneyPJSP() {
+		
+		return "charge/CarBackPakInfo";
+	}
 
 	/**
 	 * 车辆入场扫描 孔大爷
@@ -341,7 +349,7 @@ public class AppearanceLicensePlateRecognition {
 							result.put("code", "200");
 						}
 					}
-					result.put("code", "200");
+//					result.put("code", "200");
 					System.out.println("——————————————修改出场时间成功————————————————————————");
 				}
 			}
