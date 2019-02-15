@@ -29,12 +29,12 @@ public class TEst1 {
 		Date date = null; // 定义时间类型
 		SimpleDateFormat inputFormat = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
 		try {
-		date = inputFormat.parse(inVal); // 将字符型转换成日期型
+			date = inputFormat.parse(inVal); // 将字符型转换成日期型
 		} catch (Exception e) {
-		e.printStackTrace();
+			e.printStackTrace();
 		}
 		return date.getTime(); // 返回毫秒数
-		}
+	}
 
 	public static void main(String[] args) {
 
@@ -74,13 +74,22 @@ public class TEst1 {
 //				CountrulesBiz countrulesBiz = (CountrulesBiz) ct.getBean("countrulesBiz");
 ////	/ParkingLot/src/org/great/biz/CountrulesBiz.java
 //		Receipt re = new Receipt(1,"%2019-01-22%");
+
+		int c = 161;
+		for (int i = 70083; i <= 70177; i++) {
+			Park park = new Park(9, "D", c, "开放", "" + i, 1);
+			boolean flag = parkBiz.AddPark(park);
+			c++;
+			System.out.println("flag="+flag+c);
+		}
 		
-		
-		
-//		for (int i = 0; i < args.length; i++) {
-//		Park park = new Park();
-//		 boolean flag =parkBiz.AddPark(park);
+//		for (int i = 6; i <= 50; i++) {
+////			Park park = new Park(9, "A", c, "开放", "" + i, 2);
+////			boolean flag = parkBiz.AddPark(park);
+//			boolean flag=parkBiz.SetCarParkX11(2, i);
+//			System.out.println("flag="+flag+i);
 //		}
+		
 //		 System.out.println("list="+list);
 //		SimpleDateFormat myFormatter = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
 //		double m1 = 0;
