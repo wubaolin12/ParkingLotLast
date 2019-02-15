@@ -31,7 +31,9 @@ public interface ParkMapper {
 	 * 查询可以停车的车位
 	 */
 	public List<Park> FindAllCanStopX(@Param("p_state") String p_state, @Param("pm_id") int pm_id);
+	public List<Park> FindAllList();
 
+	
 	public int SetState(Park park);
 
 	/*

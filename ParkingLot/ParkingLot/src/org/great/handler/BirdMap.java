@@ -29,7 +29,7 @@ public class BirdMap {
 		
 		//获得已停车的车位ID
 		
-		 List<Park> parklist = parkBiz.FindAllCanStopX("开放", 9);
+		 List<Park> parklist = parkBiz.FindAllList();
 		 
 		 System.out.println("所有车位信息"+parklist);
 		 

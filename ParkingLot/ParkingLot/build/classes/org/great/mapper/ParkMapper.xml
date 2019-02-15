@@ -15,6 +15,10 @@
 		select * from tb_park
 		where p_state =#{p_state} and pm_id= #{pm_id}
 	</select>
+	
+	<select id="FindAllList" resultType="org.great.bean.Park">
+		select * from tb_park
+	</select>
 
 <!-- 	修改车id 车位状态ID -->
 	<update id="SetCarParkX" parameterType="org.great.bean.Park">
