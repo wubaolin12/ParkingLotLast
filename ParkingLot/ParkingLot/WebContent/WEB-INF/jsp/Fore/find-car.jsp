@@ -70,7 +70,7 @@
 							<header>
 								<!-- START LOGO -->
 								<div class="logo_wrapper">
-									<a href="index.html" class="logo"><img src="${path}/static/fore-static/images/logo.png" alt="Kinder Garten Logo"></a>
+									<a href="${path}/fore/success1.do" class="logo"><img src="${path}/static/fore-static/images/logo.png" alt="Kinder Garten Logo"></a>
 								</div>
 								<!-- END LOGO -->
 							</header>
@@ -83,10 +83,11 @@
 											<div class="nav-collapse nav-collapse_ collapse">
 												<ul class="nav sf-menu clearfix">
 													<li ><a href="${path}/appointmentParkLotHandler/appointmentParkLotJsp.do">预约停车<span class="over1"></span></a></li>
-													<li class="active"><a href="${path}/findcar/findcar.do">反向寻车<span class="over1"></span></a></li>
-													<li><a href="services.html">个人资料<span class="over1"></span></a></li>
-                                                    <li><a href="contact.html">个人设置<span class="over1"></span></a></li>
-                                                    <li><a href="${path}/Face/face.do">注册人脸识别<span class="over1"></span></a></li>
+													<li><a href="${path}/carManagHandler/jumpCarMangerJSP.do">车辆管理<span class="over1"></span></a></li>												
+													<li><a href="${path}/userinformation/toUserInformation.do">个人资料<span class="over1"></span></a></li>
+                                                    <li><a href="${path}/userinformation/toUserSetting.do">个人设置<span class="over1"></span></a></li>
+													<li  class="active"><a href="${path}/findcar/findcar.do">反向寻车<span class="over1"></span></a></li>
+													<li><a href="${path}/Face/face.do">注册人脸识别<span class="over1"></span></a></li>
 													<li><a href="${path}/pay/toRecharge.do">余额充值<span class="over1"></span></a></li>
                                                     <li><a href="javascript:exitUser()">退出<span class="over1"></span></a></li>
 												</ul>
@@ -191,19 +192,19 @@
 		</div>
 	</div>
 	<!-- START FOOTER -->
-	<footer>
-		<div class="social_wrapper">
-			<ul class="social clearfix">
-				<li><a href="index.html#"><i class="fa fa-facebook"></i></a></li>
-				<li><a href="index.html#"><i class="fa fa-twitter"></i></a></li>
-				<li><a href="index.html#"><i class="fa fa-instagram"></i></a></li>
-				<li><a href="index.html#"><i class="fa fa-youtube"></i></a></li>
-				<li><a href="index.html#"><i class="fa fa-pinterest"></i></a></li>
-			</ul>
-		</div>
-		<div class="copyright">Copyright &copy; 2018.Company name All rights reserved.<a target="_blank" href="http://sc.chinaz.com/moban/">&#x7F51;&#x9875;&#x6A21;&#x677F;</a></div>
-	</footer>
-	<!-- END FOOTER -->
+		<footer>
+			<div class="social_wrapper">
+				<ul class="social clearfix">
+					<li><a href="${path}/fore/success1.do"><i class="fa fa-facebook"></i></a></li>
+					<li><a href="${path}/fore/success1.do"><i class="fa fa-twitter"></i></a></li>
+					<li><a href="${path}/fore/success1.do"><i class="fa fa-instagram"></i></a></li>
+					<li><a href="${path}/fore/success1.do"><i class="fa fa-youtube"></i></a></li>
+					<li><a href="${path}/fore/success1.do"><i class="fa fa-pinterest"></i></a></li>
+				</ul>
+			</div>
+			<div class="copyright">Copyright &copy;传一智能停车场</div>
+		</footer>
+		<!-- END FOOTER -->
 </div>                            
 <!-- JS -->
 <script type="text/javascript" src="${path}/static/fore-static/js/jquery.js"></script>

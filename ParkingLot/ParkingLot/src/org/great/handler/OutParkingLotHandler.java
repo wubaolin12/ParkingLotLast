@@ -2,6 +2,7 @@ package org.great.handler;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.io.UnsupportedEncodingException;
 import java.security.MessageDigest;
 import java.util.List;
 import java.util.UUID;
@@ -51,10 +52,11 @@ public class OutParkingLotHandler {
 	
 	/**
 	 *  跳转提交金额到二维码（出场缴费//套餐缴费）
+	 * @throws UnsupportedEncodingException 
 	 */
 	
 	@RequestMapping("/moneyTo_out.action")
-	public String moneyTo_recharge(HttpServletRequest request,HttpServletResponse response,String WIDsubject, String WIDout_trade_no,String WIDbody,String WIDtotal_amount) {
+	public String moneyTo_recharge(HttpServletRequest request,String WIDsubject, String WIDout_trade_no,String WIDbody,String WIDtotal_amount) throws UnsupportedEncodingException {
 		System.out.println("订单名称="+WIDsubject);
 		System.out.println("商户订单号="+WIDout_trade_no);
 		System.out.println("商品描述="+WIDbody);
@@ -64,12 +66,16 @@ public class OutParkingLotHandler {
 		request.setAttribute("WIDbody", WIDbody);
 		request.setAttribute("WIDtotal_amount", WIDtotal_amount);
 		request.getSession().setAttribute("PayType", "出场缴费");
-		response.setContentType("text/html;charset=utf-8");
+		
+		//防止乱码
+		request.setCharacterEncoding("utf-8");
+		
 		String path=request.getScheme()+"://"+request.getServerName()+":"+
 				request.getServerPort()+request.getContextPath()+"/";
 		return "../../"+"alipay.trade.page.pay";
+		
+		
 	}
-	
 	
 	/**
 	 *   支付成功后，跳转开闸界面
