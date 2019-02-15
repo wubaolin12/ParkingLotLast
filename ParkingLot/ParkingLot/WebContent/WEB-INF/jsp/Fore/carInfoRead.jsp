@@ -162,26 +162,30 @@
 						<div class="pages">
 							<!-- START COMMENT -->
 							<h3>我的订单</h3>
-							<h5></h5>
+							<h5><input class="btn btn-warning" type="button" value="&nbsp;&nbsp;添加车辆&nbsp;&nbsp;" onclick="window.location='${path}/carManagHandler/JumpCarAddJSP.do'"></h5>
 							<div id="note"></div>
-							<c:forEach items="${appointmentsList}" var="app">
+							<br />
+							<c:forEach items="${CarList}" var="c">
+							
 								<div>
-									<form
-										action="${path}/appointmentParkLotHandler/appointmentParkLotCancel.do">
+									<form action="${path}/carManagHandler/Carunbind.do">
 										<div>
-											<div style="border: 1px solid #000">
+											<div style="border: 1px solid #FFF">
+											<br />
 												<ul>
-													<li>车牌号：${app.car. c_num} <input type="hidden"
-														value="${app.car.c_num}" id="c_num" name="c_num"></li>
+													<li>车牌号：${c.c_num} <input type="hidden"
+														value="${c.c_num}" id="c_num" name="c_num"></li>
 													<br />
-													<li>预约时间：${app.app_time}</li>
+													<li>车辆角色：${c.param.pm_name} </li>
+													<br />
+													<li>车主手机号：${c.cust.cust_phone}</li>
 													<br />
 												</ul>
 												<div
 													class="col-xs-8 col-sm-9 col-xs-offset-4 col-sm-offset-3">
 													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input
 														class="btn btn-warning" type="submit"
-														value="&nbsp;&nbsp;取消订单&nbsp;&nbsp;">
+														value="&nbsp;&nbsp;取消绑定&nbsp;&nbsp;">
 												</div>
 											</div>
 										</div>

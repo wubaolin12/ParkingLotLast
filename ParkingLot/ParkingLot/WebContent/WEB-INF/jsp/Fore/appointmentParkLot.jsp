@@ -107,7 +107,7 @@
 													<li><a href="contact.html">个人设置<span class="over1"></span></a></li>
 													<li><a href="${path}/pay/toRecharge.do">余额充值<span
 															class="over1"></span></a></li>
-													<li><a href="javascript:exitUser()">退出<span
+													<li><a href="${path}/carManagHandler/jumpCarMangerJSP.do">车辆管理<span
 															class="over1"></span></a></li>
 												</ul>
 											</div>
@@ -160,7 +160,7 @@
 							<!-- START COMMENT -->
 							<h3>预约停车订单</h3>
 							<h5>
-							<input class="btn btn-primary radius" type="button" value="&nbsp;&nbsp;我的预约订单&nbsp;&nbsp;" onclick="window.location='${path}/appointmentParkLotHandler/appointmentParkLotListJsp.do'"></h5>
+							<input class="btn btn-warning" type="button" value="&nbsp;&nbsp;我的预约订单&nbsp;&nbsp;" onclick="window.location='${path}/appointmentParkLotHandler/appointmentParkLotListJsp.do'"></h5>
 							<div id="note"></div>
 							<div>
 								<form action="${path}/appointmentParkLotHandler/appointmentParkLot.do">
@@ -185,7 +185,7 @@
 									<br/>
 									</div>
 									<div class="col-xs-8 col-sm-9 col-xs-offset-4 col-sm-offset-3">
-										<input class="btn btn-primary radius" type="submit"
+										<input class="btn btn-warning" type="submit"
 											value="&nbsp;&nbsp;预约&nbsp;&nbsp;">
 									</div>
 								</form>

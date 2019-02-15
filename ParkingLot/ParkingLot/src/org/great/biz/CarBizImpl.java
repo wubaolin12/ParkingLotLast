@@ -107,4 +107,16 @@ public class CarBizImpl implements CarBiz {
 		// TODO Auto-generated method stub
 		return carMapper.chagerPmIDCustIDByCarNumberX(car);
 	}
+
+	@Override
+	public boolean chagerCustIDNULLByCarNumberX(String c_num, int pm_id) {
+		// TODO Auto-generated method stub
+		return carMapper.chagerCustIDNULLByCarNumberX(c_num, pm_id);
+	}
+
+	@Override
+	public List<Car> FindCarByCaridX(String c_num) {
+		// TODO Auto-generated method stub
+		return carMapper.FindCarByCaridX(c_num);
+	}
 }

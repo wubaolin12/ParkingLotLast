@@ -5,7 +5,7 @@
 
 <mapper namespace="org.great.mapper.CarMapper">
 
-	<!-- 通过用户CustID找到车信息 -->
+	<!-- 通过用户CustID找到预约车信息 -->
 	<select id="FindByCarcustidX" parameterType="int"
 		resultType="org.great.bean.Car">
 		select * from tb_car where cust_id =#{number} and c_id not
@@ -31,6 +31,11 @@
 		where c_num =
 		#{c_num}
 	</update>
+		<!-- 根据车牌号更改车主ID 主要是设为空  取消绑定的-->
+	<update id="chagerCustIDNULLByCarNumberX">
+		update tb_car set cust_id=null, pm_id= #{pm_id}
+		 where c_num = #{c_num}
+	</update>
 
 
 
@@ -43,7 +48,7 @@
 	<!-- 增加车信息 -->
 	<insert id="AddCarCX" parameterType="org.great.bean.Car">
 		insert into
-		tb_car(cust_id,pm_id,c_num) values (${cust_id},${pm_id},#{c_num})
+		tb_car(cust_id,pm_id,c_num) values (#{cust_id},#{pm_id},#{c_num})
 	</insert>
 
 	<!-- 通过车牌找到车Vip表信息 -->
@@ -243,5 +248,9 @@
 		</collection>
 	</resultMap>
 
-
+	<!-- 通过用户CarID找到车信息 -->
+	<select id="FindCarByCaridX" parameterType="String"
+		resultType="org.great.bean.Car">
+		select * from tb_car where c_num =#{c_num}
+	</select>
 </mapper>

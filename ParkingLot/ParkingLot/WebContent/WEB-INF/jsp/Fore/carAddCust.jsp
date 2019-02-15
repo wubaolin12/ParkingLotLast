@@ -161,33 +161,32 @@
 						<!-- START CONTACT US -->
 						<div class="pages">
 							<!-- START COMMENT -->
-							<h3>我的订单</h3>
+							<h3>车辆添加</h3>
 							<h5></h5>
 							<div id="note"></div>
-							<c:forEach items="${appointmentsList}" var="app">
-								<div>
-									<form
-										action="${path}/appointmentParkLotHandler/appointmentParkLotCancel.do">
-										<div>
-											<div style="border: 1px solid #000">
-												<ul>
-													<li>车牌号：${app.car. c_num} <input type="hidden"
-														value="${app.car.c_num}" id="c_num" name="c_num"></li>
-													<br />
-													<li>预约时间：${app.app_time}</li>
-													<br />
-												</ul>
-												<div
+							<div>
+								<form
+									action="${path}/carManagHandler/JumpCarAdd.do"
+									onsubmit="return cnumflag()">
+									<div class="row cl">
+										<label class="form-label col-xs-4 col-sm-3"><span
+											class="c-red">*</span>车牌号：</label>
+										<div class="formControls col-xs-8 col-sm-9">
+											<input type="text" class="input-text" value="" placeholder=""
+												id="c_num" name="c_num"> <label id="phoneFlag"
+												style="color: red"></label>
+										</div>
+										<div
 													class="col-xs-8 col-sm-9 col-xs-offset-4 col-sm-offset-3">
 													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input
 														class="btn btn-warning" type="submit"
-														value="&nbsp;&nbsp;取消订单&nbsp;&nbsp;">
+														value="&nbsp;&nbsp;添加&nbsp;&nbsp;">
 												</div>
-											</div>
-										</div>
-									</form>
-								</div>
-							</c:forEach>
+									</div>
+								</form>
+							</div>
+							<!-- END COMMENT -->
+						</div>
 							<!-- END COMMENT -->
 						</div>
 						<!-- END CONTACT US -->
@@ -215,7 +214,16 @@
 		</footer>
 		<!-- END FOOTER -->
 	</div>
+	<script type="text/javascript">
+	function cnumflag(){
+		var c_num = $("c_num").val;
+		if(c_num==null){
+		return false;
+		}
+		return ture;
+	}
 
+</script>
 	<!-- JS -->
 	<script type="text/javascript"
 		src="${path}/static/fore-static/js/jquery.js"></script>

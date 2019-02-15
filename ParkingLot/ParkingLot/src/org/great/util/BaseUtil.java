@@ -94,7 +94,7 @@ public class BaseUtil {
 	 */
 	public  int count(String fTime, String oTime) {
 		// 计算时间停车时间
-		SimpleDateFormat myFormatter = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
+		SimpleDateFormat myFormatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 		double m1 = 0;
 		try {
 			double m2 = myFormatter.parse(oTime).getTime() - myFormatter.parse(fTime).getTime();
