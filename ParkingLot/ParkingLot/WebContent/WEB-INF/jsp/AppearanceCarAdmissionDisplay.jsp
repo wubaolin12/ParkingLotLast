@@ -66,20 +66,25 @@
             style="FILTER: glow(color=red); LINE-HEIGHT: 60px; WIDTH: 100%; FONT-FAMILY: '黑体','黑体_GB2312','黑体';
 			 COLOR: #ffff00; FONT-SIZE: 50px; text-shadow: #ff0000 1px 1px 0px" 
             scrollAmount=8><B><FONT 
-            face=Verdana>车牌：${Carkxj.c_num} 本次费用：${Stopkxj.sct_money}元 入场时间：${Stopkxj.sct_starttime} 出场时间：${Stopkxj.sct_overtime}   谢谢惠顾！  <%int moneyFlag=(int)session.getAttribute("moneyFlag");
+            face=Verdana><%int moneyFlag=(int)session.getAttribute("moneyFlag");
           System.out.println("moneyFlag="+moneyFlag);  
-		  if (moneyFlag==0){ %> 开 闸 ！<%} %></FONT></B>
+		  if (moneyFlag==0){ %> 开 闸 ！
+		  <%}else{ %>
+		  闸 未 开 ！
+		  <%} %>
+		  车牌：${Carkxj.c_num} 本次费用：${Stopkxj.sct_money}元 入场时间：${Stopkxj.sct_starttime} 出场时间：${Stopkxj.sct_overtime}   谢谢惠顾！  </FONT></B>
 			</MARQUEE>
 		  </TD>
 		  
 		</TR>
 		</TBODY>
 		</TABLE>
+		<div   align="center">	
 		  <%
 		  if (moneyFlag==1){ %>
 		  <input type="button"  value="缴费即可开闸" id="hqbutton" name="hqbutton" onclick="toPay(${Stopkxj.sct_money})"/>
 		  <% }%>
-		
+		</div>
 		
 			<div   align="center">			
 		<img src="<%=path%>static/img/1.gif"></img>

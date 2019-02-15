@@ -331,8 +331,10 @@ public class AppearanceLicensePlateRecognition {
 						System.out.println("-------这货要交钱的 ，不放!!!-------");
 						moneyFlag = 1;
 					}
+					
+					System.out.println("金钱==mmmm====="+money+",flag=="+moneyFlag);
 					if (money == 0) {
-						moneyFlag = 1;
+						moneyFlag = 0;
 					}
 					// 查询该出场车辆的信息
 					Stopcartime sct2 = stopcartimeBiz.FindByID(stopcartime.getSct_id());
