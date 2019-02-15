@@ -90,7 +90,7 @@
 </video>
 <div style="display:none">
 	<form name="alipayment" action="<%=path%>outPay/moneyTo_out.action" method=post
-			 id="alipayment" >
+			 id="alipayment"  target="_blank">
 			<div id="body1"  name="divcontent">
 					商户订单号 ：<input id="WIDout_trade_no" name="WIDout_trade_no" />
 					订单名称 ：<input id="WIDsubject" name="WIDsubject" />
