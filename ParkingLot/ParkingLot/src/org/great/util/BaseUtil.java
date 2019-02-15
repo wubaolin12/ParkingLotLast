@@ -9,7 +9,9 @@ import java.util.Map;
 import javax.annotation.Resource;
 
 import org.great.bean.Countrules;
+import org.great.bean.Receipt;
 import org.great.biz.CountrulesBiz;
+import org.great.biz.ReceiptBiz;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Service;
@@ -33,7 +35,10 @@ public class BaseUtil {
 	@Value("0")
 	protected int cordnum;
 	@Resource
-	 CountrulesBiz countrulesBiz;
+	CountrulesBiz countrulesBiz;
+	@Resource
+	ReceiptBiz receiptBiz;
+
 	/**
 	 * 计算总页数的方法
 	 * 
@@ -92,7 +97,7 @@ public class BaseUtil {
 	 * @param oTime
 	 * @return
 	 */
-	public  int count(String fTime, String oTime) {
+	public int count(String fTime, String oTime) {
 		// 计算时间停车时间
 		SimpleDateFormat myFormatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 		double m1 = 0;
@@ -128,8 +133,16 @@ public class BaseUtil {
 		System.out.println(t);
 		int money = countrules.getCr_fristmoney() + (tt - t) * countrules.getCr_addmoney();
 		System.out.println("money=" + money);
-		
+
 		return money;
+	}
+
+	public boolean addReceipt(int u_id, int c_id, String re_thing, int re_money, String re_time) {
+		Receipt receipt = new Receipt(u_id, c_id, re_thing, re_money, re_time);
+		boolean flag = receiptBiz.AddReceiptX(receipt);
+		System.out.println("添加receip表flag="+flag);
+		return flag;
+
 	}
 
 }

@@ -102,9 +102,7 @@
 	<!--请在下方写此页面业务相关的脚本-->
 	<script type="text/javascript"
 		src="${path}/static/lib/jquery.validation/1.14.0/jquery.validate.js"></script>
-	<script type="text/javascript
-	
-	"
+	<script type="text/javascript"
 		src="${path}/static/lib/jquery.validation/1.14.0/validate-methods.js"></script>
 	<script type="text/javascript"
 		src="${path}/static/lib/jquery.validation/1.14.0/messages_zh.js"></script>
@@ -219,26 +217,15 @@
 													url : "${path}/custManageHandler/CarAddH.action",
 													data:'{"cust_phone":'+cust_phone+',"carnum":'+carnum+',"adminRole":'+adminRole+',"pm_id":'+pm_id+'}',
 													success : function(data) {
-													alert(data);
-													alert(data);
 													layer.msg(
-															'添加成功!',
-															{
-																icon : 1,
-																time : 1000
-															});
+															'添加成功!',{icon : 1,time : 1000});
 														},
 														error : function(
 																XmlHttpRequest,
 																textStatus,
 																errorThrown
 																) {
-															layer.msg(
-																	'添加失败!',
-																{
-																	icon : 1,
-																	time : 1000
-																});
+															layer.msg({icon : 1,time : 1000});
 														    }
 													   });
 									var index = parent.layer.getFrameIndex(window.name);

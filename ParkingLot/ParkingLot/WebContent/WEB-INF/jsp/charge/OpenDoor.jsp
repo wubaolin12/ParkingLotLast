@@ -37,39 +37,13 @@
 	content="H-ui.admin v3.1，是一款由国人开发的轻量级扁平化网站后台模板，完全免费开源的网站后台管理系统模版，适合中小型CMS后台系统。">
 </head>
 <body>
-<article class="page-container">
-	<form action="${path}/custManageHandler/OpenDoorJSP.action" class="form form-horizontal" id="form-admin-add">
-	<div class="row cl">
-		<label class="form-label col-xs-4 col-sm-3"><span class="c-red">*</span>车牌号：</label>
-		<div class="formControls col-xs-8 col-sm-9">
-			${Carkxj.c_num}
+	<article class="page-container">
+		<form class="form form-horizontal" id="form-admin-add">
+			<div class="row cl" align="center">				
+		<img src="${path}/static/img/333.gif"></img>
 		</div>
-	</div>
-	<div class="row cl">
-		<label class="form-label col-xs-4 col-sm-3"><span class="c-red">*</span>金额：</label>
-		<div class="formControls col-xs-8 col-sm-9">
-			${Stopkxj.sct_money}元
-		</div>
-	</div>
-	<div class="row cl">
-		<label class="form-label col-xs-4 col-sm-3"><span class="c-red">*</span>进场时间：</label>
-		<div class="formControls col-xs-8 col-sm-9">
-			${Stopkxj.sct_starttime}
-		</div>
-	</div>
-	<div class="row cl">
-		<label class="form-label col-xs-4 col-sm-3"><span class="c-red">*</span>出场时间：</label>
-		<div class="formControls col-xs-8 col-sm-9">
-			${Stopkxj.sct_overtime}
-		</div>
-	</div>
-	<div class="row cl">
-		<div class="col-xs-8 col-sm-9 col-xs-offset-4 col-sm-offset-3">
-			<input class="btn btn-primary radius" type="submit" value="&nbsp;&nbsp;开闸&nbsp;&nbsp;">
-		</div>
-	</div>
-	</form>
-</article>
+		</form>
+	</article>
 
 	<!--_footer 作为公共模版分离出去-->
 	<script type="text/javascript"
@@ -85,12 +59,14 @@
 	<!--请在下方写此页面业务相关的脚本-->
 	<script type="text/javascript"
 		src="${path}/static/lib/jquery.validation/1.14.0/jquery.validate.js"></script>
-	<script type="text/javascript
-	
-	"
+	<script type="text/javascript"
 		src="${path}/static/lib/jquery.validation/1.14.0/validate-methods.js"></script>
 	<script type="text/javascript"
 		src="${path}/static/lib/jquery.validation/1.14.0/messages_zh.js"></script>
 	<!--/请在上方写此页面业务相关的脚本-->
-</body>
+	
+	
+	
+	
+	</body>
 </html>

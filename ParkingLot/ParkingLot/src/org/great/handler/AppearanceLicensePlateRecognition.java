@@ -360,8 +360,9 @@ public class AppearanceLicensePlateRecognition {
 								UserRoleFlag = 0;
 							}
 						}
+						boolean ff = baseUtil.addReceipt(user.getU_id(), car1.getC_id(), "停车收费", money, currendate);
+						System.out.println("ff="+ff);
 						session.setAttribute("UserRoleFlag", UserRoleFlag);
-//					result.put("code", "200");
 						System.out.println("——————————————修改出场时间成功————————————————————————");
 					}
 				} else {

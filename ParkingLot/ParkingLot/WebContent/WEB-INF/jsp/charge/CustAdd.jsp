@@ -203,24 +203,14 @@
 													',"cust_age":'+cust_age+',"cust_phone":'+cust_phone+'}',
 													success : function(data) {
 														alert(cust_phone);
-													layer.msg(
-															'添加成功!',
-															{
-																icon : 1,
-																time : 1000
-															});
+													layer.msg('添加成功!',{icon : 1,time : 1000});
 														},
 														error : function(
 																XmlHttpRequest,
 																textStatus,
 																errorThrown
 																) {
-															layer.msg(
-																	'添加失败!',
-																{
-																	icon : 1,
-																	time : 1000
-																});
+															layer.msg('添加失败!',{icon : 1,time : 1000});
 														    }
 													   });
 									var index = parent.layer
