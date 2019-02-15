@@ -8,7 +8,7 @@
 <html lang="en">
 
 <head>
-<title>登陆</title>
+<title>登录</title>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
@@ -113,12 +113,12 @@
 						</div>
 					</div>
 					<div style="float: right; padding-right: 10%;">
-						<div style="float: left; margin-top: 3px; margin-right: 2px;">
+						<!-- <div style="float: left; margin-top: 3px; margin-right: 2px;">
 							<font color="white">记住密码</font>
-						</div>
+						</div> -->
 						<div style="float: left;">
-							<input name="form-field-checkbox" id="saveid" type="checkbox"
-								onclick="savePaw();" style="padding-top: 0px;" />
+							<!-- <input name="form-field-checkbox" id="saveid" type="checkbox"
+								onclick="savePaw();" style="padding-top: 0px;" /> -->
 						</div>
 					</div>
 					<div class="form-actions">
@@ -362,8 +362,8 @@
 	<script type="text/javascript" src="${path}/static/js/jquery.cookie.js"></script>
 
 	<!-- 软键盘控件start -->
-	<script type="text/javascript" src="${path}/static/login/keypad/js/keypad.js"></script>
-	<script type="text/javascript" src="${path}/static/login/keypad/js/framework.js"></script>
+	<%-- <script type="text/javascript" src="${path}/static/login/keypad/js/keypad.js"></script>
+	<script type="text/javascript" src="${path}/static/login/keypad/js/framework.js"></script> --%>
 	<!-- 软键盘控件end -->
 	
 	<!-- 登录拦截返回登录页面时全屏 -->

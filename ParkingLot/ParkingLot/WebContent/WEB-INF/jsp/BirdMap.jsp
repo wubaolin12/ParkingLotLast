@@ -690,10 +690,10 @@
   			 }
   		 }
   			 %>
-  				 
+  			  
   		
   			 //改变方块房子颜色,id,name二选择一，都可以是数组, fnum可选择，参数color:'#FF0000'
-  	  	    map.changeModelColor({id:<%=list1%>,fnum:[1],color:'#FF0000'}) 	 
+  	  	    map.changeModelColor({id:<%=list1%>,fnum:[2],color:'#FF0000'}) 	 
   	
   	    
   	    	 //改变方块房子颜色,id,name二选择一，都可以是数组, fnum可选择，参数color:'#FF0000'
