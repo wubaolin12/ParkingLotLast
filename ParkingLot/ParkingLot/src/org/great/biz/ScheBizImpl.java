@@ -25,4 +25,10 @@ public class ScheBizImpl implements ScheBiz {
 		// TODO Auto-generated method stub
 		return scheMapper.getScheByUserID(uid);
 	}
+
+	@Override
+	public Sche checkWork(Sche sche) {
+		// TODO Auto-generated method stub
+		return scheMapper.checkWork(sche);
+	}
 }

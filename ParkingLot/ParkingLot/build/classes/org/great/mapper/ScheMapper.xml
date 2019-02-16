@@ -7,8 +7,24 @@
 
 	<!-- 	根据员工ID查询排班 -->
 	<select id="getScheByUserID" parameterType="int"
-		resultType="org.great.bean.Sche">
+		resultMap="schemap">
 		select * from tb_sche where u_id = #{uid}
 	</select>
 
+	 <select id="selectSchestate" parameterType="org.great.bean.Sche"
+		resultType="org.great.bean.Schestate">
+		select * from 	tb_schestate where ss_id =#{ss_id}
+	</select>
+	
+  	<resultMap type="org.great.bean.Sche" id="schemap">	
+		<association property="sstate" column="ss_id"
+			javaType="org.great.bean.Schestate" select="selectSchestate">			
+		</association>		
+	</resultMap> 
+
+	<select id="checkWork" parameterType="org.great.bean.Sche"
+		resultType="org.great.bean.Sche">
+		select * from tb_sche where s_date = #{s_date} and u_id=#{u_id}
+	</select>
+	
 </mapper>

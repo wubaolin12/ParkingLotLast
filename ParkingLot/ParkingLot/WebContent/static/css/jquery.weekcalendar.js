@@ -839,7 +839,7 @@
             $calendarBody, $calendarTableTbody;
         // create the structure
         $calendarBody = '<div class=\"wc-scrollable-grid\">';
-        $calendarBody += '<table class=\"wc-time-slots\">';
+        $calendarBody += '<table id=\"maintable\" class=\"wc-time-slots\">';
         $calendarBody += '<tbody>';
         $calendarBody += '</tbody>';
         $calendarBody += '</table>';

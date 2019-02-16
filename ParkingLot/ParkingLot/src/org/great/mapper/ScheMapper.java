@@ -18,4 +18,10 @@ public interface ScheMapper {
 	 * @return
 	 */
 	public List<Sche> getScheByUserID(int uid);
+	
+	/**
+	 * 检察某天员工是否有排班
+	 * @return
+	 */
+	public Sche checkWork(Sche sche);
 }

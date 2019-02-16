@@ -15,4 +15,11 @@ public interface ScheBiz {
 	 * @return
 	 */
 	public List<Sche> getScheByUserID(int uid);
+	
+	/**
+	 * 检察排班
+	 * @param sche
+	 * @return
+	 */
+	public Sche checkWork(Sche sche);
 }

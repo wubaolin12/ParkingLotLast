@@ -10,6 +10,7 @@ public class Sche {
 	private int ss_id;// 排班参数ID（外键）
 	private int u_id;// 工作人员（外键）
 	private String s_date;// 工作日期
+	private Schestate sstate;
 
 	public Sche() {
 		super();
@@ -30,9 +31,22 @@ public class Sche {
 		this.s_date = s_date;
 	}
 
+
+
+	
+	
 	@Override
 	public String toString() {
-		return "Sche [s_id=" + s_id + ", ss_id=" + ss_id + ", u_id=" + u_id + ", s_date=" + s_date + "]";
+		return "Sche [s_id=" + s_id + ", ss_id=" + ss_id + ", u_id=" + u_id + ", s_date=" + s_date + ", sstate="
+				+ sstate + "]";
+	}
+
+	public Schestate getSstate() {
+		return sstate;
+	}
+
+	public void setSstate(Schestate sstate) {
+		this.sstate = sstate;
 	}
 
 	public int getS_id() {

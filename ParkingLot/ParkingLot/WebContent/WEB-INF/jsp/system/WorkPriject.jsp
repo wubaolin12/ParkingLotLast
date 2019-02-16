@@ -1,6 +1,12 @@
+<%@page import="java.util.Map"%>
+<%@page import="java.util.HashMap"%>
+<%@page import="java.util.ArrayList"%>
+<%@page import="java.util.List"%>
+<%@page import="org.great.bean.Sche"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8" %>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
 <c:set value="${pageContext.request.contextPath}" var="path"
 	scope="page" />
 <!DOCTYPE html>
@@ -48,25 +54,47 @@
 
   <script type="text/javascript" src="${path}/static/css/date.js"></script>
   <script type='text/javascript' src='${path}/static/css/jquery.weekcalendar.js'></script>
+  <script type="text/javascript" src="${path}/static/lib/layer/2.4/layer.js"></script>
+  <script type="text/javascript" src="${path}/static/lib/laypage/1.2/laypage.js"></script>
+  
+  <script type="text/javascript">
+
+
+
+</script>
   <script type='text/javascript'>
   var year = new Date().getFullYear();
   var month = new Date().getMonth();
   var day = new Date().getDate();
-  
-  var eventData = {
-    events : [
-      {'id':1, 'start': new Date(year, month, day, 12), 'end': new Date(year, month, day, 13, 35),'title':'Lunch with Mike'},
-      {'id':2, 'start': new Date(year, month, day, 14), 'end': new Date(year, month, day, 14, 45),'title':'Dev Meeting'},
-      {'id':3, 'start': new Date(year, month, day + 1, 18), 'end': new Date(year, month, day + 1, 18, 45),'title':'Hair cut'},
-      {'id':4, 'start': new Date(year, month, day - 1, 8), 'end': new Date(year, month, day - 1, 9, 30),'title':'Team breakfast'},
-      {'id':5, 'start': new Date(year, month, day + 1, 14), 'end': new Date(year, month, day + 1, 15),'title':'Product showcase'}
-    ]
-  };
 
+  var jlist= ${Jlist};
+
+  var events=[];
+  for (var i = 0; i < jlist.length; i++) {
+		var rm = jlist[i];
+		var sdate=jlist[i].s_date;
+		var end=parseInt(rm.sstate.ss_overtime);
+		var start=parseInt(rm.sstate.ss_starttime);
+		var ndate=new Date(sdate);
+         var syear =ndate.getFullYear();//获取完整的年份(4位,1970-????)
+         var smonth = ndate.getMonth() ;//获取当前月份(0-11,0代表1月)
+         var sday = ndate.getDate();//获取当前日(1-31)
+		events.push({
+
+ 			"id" :rm.s_id,
+			"start":new Date(syear, smonth, sday, start),
+			"end":new Date(syear, smonth, sday, end),
+			"title" : "工作"  
+		})
+	} 
+   var eventData=events ; 
   $(document).ready(function() {
-    $('#calendar').weekCalendar({
-      timeslotsPerHour: 6,
-      timeslotHeigh: 30,
+   
+
+	  
+	 $('#calendar').weekCalendar({
+      timeslotsPerHour: 2,
+      timeslotHeigh:30,
       hourLine: true,
       data: eventData,
       
@@ -81,20 +109,22 @@
         }
         
       },
-      eventNew: function(calEvent, $event) {
-        alert(calEvent.start);
+    
+
+       eventNew: function(calEvent, $event) {
+
         var time = new Date(calEvent.start);
-        alert(time);
-        alert(1);
+        var time2 = new Date(calEvent.end);
+
          var year =time.getFullYear();//获取完整的年份(4位,1970-????)
          var month = time.getMonth() + 1;//获取当前月份(0-11,0代表1月)
          var day = time.getDate();//获取当前日(1-31)
          var hours = time.getHours();
+        
+        var hours2 = time2.getHours();
+        var Minutes= time2.getMinutes();
+        
         var getUserID = document.getElementById("getUserID").value;
-        alert("年"+year);
-        alert("月"+month);
-        alert("日"+day);
-        alert("時"+hours);
         var state =0;
         if(hours>=0&&hours<8){
         	state=1;
@@ -103,43 +133,108 @@
         }else if(hours>=16&&hours<24){
         	state=3;
         }
-        alert("狀態"+state);
-        alert(typeof state);
-        alert(typeof year);
-        alert(typeof month);
-        alert(typeof day);
-        alert(getUserID);
-        $.ajax({
-            url:'${path}/workPrijectHandler/SetWorkProject.action',
-			data:'{"state":'+state+',"year":'+year+',"month":'+month+',"day":'+day+',"getUserID":'+getUserID+'}',
-			type:'post',
-			contentType:"application/json;charset=utf-8",
-			sussccess:function(data){
-                 alert("完成");
-            }
-        });
+        var s_date=year+"-"+month+"-"+day;
+        var u_id=document.getElementById("getUserID").value;
+ 
+        var currentDate = new Date();
+        var currentnyear=currentDate.getFullYear();    //获取完整的年份(4位,1970-????)
+        var currentmonth =currentDate.getMonth();       //获取当前月份(0-11,0代表1月)
+        var currentday=currentDate.getDate();        //获取当前日(1-31)
+        
+        if(year>=currentnyear){
+        	
+        	if(month>=currentmonth){
+        		
+        		if(day>=currentday){
+        	        $.ajax({
+        	            url:'${path}/workPrijectHandler/CheckWorkAjax.action',
+        				dataType:"text", 
+        				data:{"ss_id":state,"s_date":s_date,"u_id":u_id},
+        				type:"post",
+        				
+        				success:function(data){
+        					alert(data);
+        					if(data=="该日期已有排班"){
+         							
+         							var r=confirm("该日期已有排班,是否修改!");
+         							if (r==true)
+         							  {
+         							  alert("修改排班!");
+         							 $.ajax({
+          		        	            url:'${path}/workPrijectHandler/updateWorkAjax.action',
+          		        				dataType:"text", 
+          		        				data:{"ss_id":state,"s_date":s_date,"u_id":u_id},
+          		        				type:"post",
+          		        				success:function(data){
+          		        	                 location.href="${path}/workPrijectHandler/FindWorkProject.action?getUserID="+u_id;
+
+          		        				},
+          		        				error:function(data) {
+          		        					console.log(data.msg);
+          		        				}
+          							});
+         							  
+         							  }
+         							else
+         							  {
+         							  	alert("取消修改!");
+     		        	                 location.href="${path}/workPrijectHandler/FindWorkProject.action?getUserID="+u_id;
+
+         							  }
+         							
+        						
+        					}else{
+        					      $.ajax({
+        		        	            url:'${path}/workPrijectHandler/AddWorkTestAjax.action',
+        		        				dataType:"text", 
+        		        				data:{"ss_id":state,"s_date":s_date,"u_id":u_id},
+        		        				type:"post",
+        		        				
+        		        				success:function(data){
+        		        	                 location.href="${path}/workPrijectHandler/FindWorkProject.action?getUserID="+u_id;
+
+        		        				}
+        							});
+        					}
+        					
+        	            }
+        	        });
+        	        
+        	 
+        		}else{
+        			alert("该日期已过，不能排班");
+	                 location.href="${path}/workPrijectHandler/FindWorkProject.action?getUserID="+u_id;
+
+        		}
+        	}else{
+        		alert("该月已过，不能排班");
+        	}
+        	
+        }else{
+        	alert("该年已过");
+        } 
+        
+
         alert('You\'ve added a new event. You would capture this event, add the logic for creating a new event with your own fields, data and whatever backend persistence you require.');
       },
+      
     });
 
-    function displayMessage(message) {
+     function displayMessage(message) {
       $('#message').html(message).fadeIn();
-    }
+    } 
 
     $('<div id="message" class="ui-corner-all"></div>').prependTo($('body'));
   });
 
 </script>
+
 </head>
 <body>
-  <h1>Week Calendar Demo</h1>
-  <p class="description">
-    This calendar demonstrates a basic calendar. Events triggered are
-    displayed in the message area. Appointments in the past are shaded grey.
-  </p>
+
 <!-- 容器 -->
 	<div>
-		<form action="${path}/workPrijectHandler/FindWorkProject.action" method="get"
+		<form action="${path}/workPrijectHandler/FindWorkProject.action" method="post"
 			onsubmit="return checkForm()">
 			<div id="searchdiv" style="margin-bottom: 20px;">
 				<input type="hidden" name="getUserID2" id="getUserID2"
