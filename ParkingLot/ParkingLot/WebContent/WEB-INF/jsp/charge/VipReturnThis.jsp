@@ -105,17 +105,14 @@
 									data:{
 										carnum:function(){
 										var p = $("#carnum").val();
-										alert(p);
 										return p;
 									},
 									cust_phone:function(){
 									var p1 = $("#cust_phone").val();
-									alert(p1);
 									return p1;
 								}
 							},
 							dataFilter : function(data) {
-								alert(data);
 								if (data == "true") {
 									document.getElementById("carNumFlag").innerHTML="";
 									return true;
@@ -137,12 +134,10 @@
 									data:{
 										cust_phone:function(){
 											var p = $("#cust_phone").val();
-											alert(p);
 											return p;
 										}
 									},
 									dataFilter : function(data) {
-									 alert(data);
 										//和之前的一个电话号码验证用同一个action方法
 //										只不过之前的结果需求刚好相反，之前的是查询有结果时data是false，
 //                      				         但要空的时候添加注册客户CUST，需要data是true是通过，
@@ -172,7 +167,6 @@
 						submitHandler : function(form) {
 							var cust_phone = $("#cust_phone").val();
 							var carnum = $("#carnum").val();
-							alert(carnum);
 							var adminRole = $("#adminRole").val();
 							var pm_id = $("#pm_id").val();
 								$(form).ajaxSubmit({
@@ -182,7 +176,6 @@
 													success : function(data) {
 													layer.msg('删除成功!',{icon : 1,time : 1000});
 														},dataFilter : function(data) {
-															alert(data);
 														},
 														error : function(
 																XmlHttpRequest,

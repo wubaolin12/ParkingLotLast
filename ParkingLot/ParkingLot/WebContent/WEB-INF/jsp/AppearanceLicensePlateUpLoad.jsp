@@ -49,7 +49,6 @@
       okCode: '200',//与后端返回数据code值一致时执行成功回调，不配置默认200
       successFunc: function(res) {
         console.log('成功回调', res);
-        alert(res.role);
   	  if(res.role=='300'){
 		       console.log('来到这里了', res);
   		  location.href="<%=path%>AppearanceLicensePlate/JumpCarAdmissionGetMoneyPJSP.action";
@@ -58,11 +57,6 @@
   	  }
   	  },//上传成功回调函数
       errorFunc: function(res) {
-		  alert(res.code);
-//     	  if(res.code=='300'){
-// 		       console.log('来到这里了', res);
-<%--     		  location.href="<%=path%>AppearanceLicensePlate/JumpCarAdmissionGetMoneyPJSP.action"; --%>
-//     	  }else {
 		       console.log('失败回调', res);
 		       alert('停车场无此车')
 //     	  }
