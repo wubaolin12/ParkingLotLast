@@ -119,4 +119,10 @@ public class CarBizImpl implements CarBiz {
 		// TODO Auto-generated method stub
 		return carMapper.FindCarByCaridX(c_num);
 	}
+
+	@Override
+	public Car FindVipByCarNumber18X(String number) {
+		// TODO Auto-generated method stub
+		return carMapper.FindVipByCarNumber18X(number);
+	}
 }

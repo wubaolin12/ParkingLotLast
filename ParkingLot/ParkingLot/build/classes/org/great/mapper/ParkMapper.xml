@@ -65,7 +65,7 @@
 	</resultMap>
 
 	<update id="SetCarParkX11" >
-		update tb_park set p_feum=#{p_feum} where p_id=#{p_id}
+		update tb_park set p_num=#{p_num} where p_mapid=#{p_id}
 	</update>
 
 

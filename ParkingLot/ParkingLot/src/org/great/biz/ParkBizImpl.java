@@ -145,9 +145,9 @@ public class ParkBizImpl implements ParkBiz{
 		return parkMapper.FindAllList();
 	}
 	@Override
-	public boolean SetCarParkX11(int p_feum, int p_id) {
+	public boolean SetCarParkX11(int p_num, int p_id) {
 		// TODO Auto-generated method stub
-		return parkMapper.SetCarParkX11(p_feum, p_id);
+		return parkMapper.SetCarParkX11(p_num, p_id);
 	}
 	
 }

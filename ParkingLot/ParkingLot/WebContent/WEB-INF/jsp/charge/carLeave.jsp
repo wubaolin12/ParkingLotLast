@@ -37,6 +37,14 @@
 	content="H-ui.admin v3.1，是一款由国人开发的轻量级扁平化网站后台模板，完全免费开源的网站后台管理系统模版，适合中小型CMS后台系统。">
 </head>
 <body>
+	<c:if test="${FLAG=='SUCCESS'}">
+		<script type="text/javascript">
+			alert("操作成功！！");
+			var index = parent.layer.getFrameIndex(window.name);
+			window.parent.location.replace(window.parent.location.href);
+			parent.layer.close(index);
+		</script>
+	</c:if>
 	<article class="page-container">
 		<form class="form form-horizontal" id="form-admin-add">
 <div class="row cl">
@@ -221,9 +229,13 @@
 															layer.msg('添加失败!',{icon : 1,time : 1000});
 														    }
 													   });
-									var index = parent.layer.getFrameIndex(window.name);
-									parent.$('.btn-refresh').click();
-									parent.layer.close(index);
+//									var index = parent.layer.getFrameIndex(window.name);
+//									parent.$('.btn-refresh').click();
+//									parent.layer.close(index);
+								alert("操作结束！！");
+								var index = parent.layer.getFrameIndex(window.name);
+								window.parent.location.replace(window.parent.location.href);
+								parent.layer.close(index);
 								}
 							});
 		});

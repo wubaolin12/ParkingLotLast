@@ -87,7 +87,7 @@ public interface ParkMapper {
 	 */
 	public boolean SetCarParkbackX(Park park);
 	
-	public boolean SetCarParkX11(@Param("p_feum") int p_feum,@Param("p_id") int p_id);
+	public boolean SetCarParkX11(@Param("p_num") int p_feum,@Param("p_id") int p_id);
 
 	/**
 	 * 通过车牌号找车停在车位的信息
