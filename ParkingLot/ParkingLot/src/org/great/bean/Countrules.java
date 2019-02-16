@@ -18,7 +18,14 @@ public class Countrules {
 		super();
 	}
 
-
+	public Countrules(int cr_id, double cr_starttime, double cr_overtime, int cr_fristmoney, int cr_addmoney) {
+		super();
+		this.cr_id = cr_id;
+		this.cr_starttime = cr_starttime;
+		this.cr_overtime = cr_overtime;
+		this.cr_fristmoney = cr_fristmoney;
+		this.cr_addmoney = cr_addmoney;
+	}
 
 	public Countrules(int cr_id, int pm_id, double cr_starttime, double cr_overtime, int cr_fristmoney,
 			int cr_addmoney) {

@@ -40,4 +40,11 @@ public class ReceiptBizImpl implements ReceiptBiz {
 		return receiptMapper.AddReceiptX(receipt);
 	}
 
+	//获取收支明细列表
+	@Override
+	public List<Receipt> findReceiptList() {
+		// TODO Auto-generated method stub
+		return receiptMapper.findReceiptList();
+	}
+
 }

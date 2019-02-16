@@ -138,8 +138,7 @@ public class WriteListHandler {
 				session.setAttribute("writeList", writeList);	
 				
 				System.out.println("writeList="+writeList);
-		
-		
+				
 		return "writeList";
 	}
 	

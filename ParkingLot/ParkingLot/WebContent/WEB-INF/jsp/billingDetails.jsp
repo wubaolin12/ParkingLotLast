@@ -25,187 +25,148 @@
 <script type="text/javascript" src="lib/DD_belatedPNG_0.0.8a-min.js" ></script>
 <script>DD_belatedPNG.fix('*');</script>
 <![endif]-->
-<title>我的桌面</title>
+<title>用户管理</title>
 </head>
 <body>
+<nav class="breadcrumb"><i class="Hui-iconfont">&#xe67f;</i> 首页 <span class="c-gray en">&gt;</span> 用户中心 <span class="c-gray en">&gt;</span> 用户管理 <a class="btn btn-success radius r" style="line-height:1.6em;margin-top:3px" href="javascript:location.replace(location.href);" title="刷新" ><i class="Hui-iconfont">&#xe68f;</i></a></nav>
 <div class="page-container">
-	<p class="f-20 text-success">欢迎使用H-ui.admin <span class="f-14">v3.1</span>后台模版！</p>
-	<p>登录次数：18 </p>
-	<p>上次登录IP：222.35.131.79.1  上次登录时间：2014-6-14 11:19:55</p>
-	<table class="table table-border table-bordered table-bg">
-		<thead>
-			<tr>
-				<th colspan="7" scope="col">信息统计</th>
-			</tr>
-			<tr class="text-c">
-				<th>统计</th>
-				<th>资讯库</th>
-				<th>图片库</th>
-				<th>产品库</th>
-				<th>用户</th>
-				<th>管理员</th>
-			</tr>
-		</thead>
-		<tbody>
-			<tr class="text-c">
-				<td>总数</td>
-				<td>92</td>
-				<td>9</td>
-				<td>0</td>
-				<td>8</td>
-				<td>20</td>
-			</tr>
-			<tr class="text-c">
-				<td>今日</td>
-				<td>0</td>
-				<td>0</td>
-				<td>0</td>
-				<td>0</td>
-				<td>0</td>
-			</tr>
-			<tr class="text-c">
-				<td>昨日</td>
-				<td>0</td>
-				<td>0</td>
-				<td>0</td>
-				<td>0</td>
-				<td>0</td>
-			</tr>
-			<tr class="text-c">
-				<td>本周</td>
-				<td>2</td>
-				<td>0</td>
-				<td>0</td>
-				<td>0</td>
-				<td>0</td>
-			</tr>
-			<tr class="text-c">
-				<td>本月</td>
-				<td>2</td>
-				<td>0</td>
-				<td>0</td>
-				<td>0</td>
-				<td>0</td>
-			</tr>
-		</tbody>
-	</table>
-	<table class="table table-border table-bordered table-bg mt-20">
-		<thead>
-			<tr>
-				<th colspan="2" scope="col">服务器信息</th>
-			</tr>
-		</thead>
-		<tbody>
-			<tr>
-				<th width="30%">服务器计算机名</th>
-				<td><span id="lbServerName">http://127.0.0.1/</span></td>
-			</tr>
-			<tr>
-				<td>服务器IP地址</td>
-				<td>192.168.1.1</td>
-			</tr>
-			<tr>
-				<td>服务器域名</td>
-				<td>www.h-ui.net</td>
-			</tr>
-			<tr>
-				<td>服务器端口 </td>
-				<td>80</td>
-			</tr>
-			<tr>
-				<td>服务器IIS版本 </td>
-				<td>Microsoft-IIS/6.0</td>
-			</tr>
-			<tr>
-				<td>本文件所在文件夹 </td>
-				<td>D:\WebSite\HanXiPuTai.com\XinYiCMS.Web\</td>
-			</tr>
-			<tr>
-				<td>服务器操作系统 </td>
-				<td>Microsoft Windows NT 5.2.3790 Service Pack 2</td>
-			</tr>
-			<tr>
-				<td>系统所在文件夹 </td>
-				<td>C:\WINDOWS\system32</td>
-			</tr>
-			<tr>
-				<td>服务器脚本超时时间 </td>
-				<td>30000秒</td>
-			</tr>
-			<tr>
-				<td>服务器的语言种类 </td>
-				<td>Chinese (People's Republic of China)</td>
-			</tr>
-			<tr>
-				<td>.NET Framework 版本 </td>
-				<td>2.050727.3655</td>
-			</tr>
-			<tr>
-				<td>服务器当前时间 </td>
-				<td>2014-6-14 12:06:23</td>
-			</tr>
-			<tr>
-				<td>服务器IE版本 </td>
-				<td>6.0000</td>
-			</tr>
-			<tr>
-				<td>服务器上次启动到现在已运行 </td>
-				<td>7210分钟</td>
-			</tr>
-			<tr>
-				<td>逻辑驱动器 </td>
-				<td>C:\D:\</td>
-			</tr>
-			<tr>
-				<td>CPU 总数 </td>
-				<td>4</td>
-			</tr>
-			<tr>
-				<td>CPU 类型 </td>
-				<td>x86 Family 6 Model 42 Stepping 1, GenuineIntel</td>
-			</tr>
-			<tr>
-				<td>虚拟内存 </td>
-				<td>52480M</td>
-			</tr>
-			<tr>
-				<td>当前程序占用内存 </td>
-				<td>3.29M</td>
-			</tr>
-			<tr>
-				<td>Asp.net所占内存 </td>
-				<td>51.46M</td>
-			</tr>
-			<tr>
-				<td>当前Session数量 </td>
-				<td>8</td>
-			</tr>
-			<tr>
-				<td>当前SessionID </td>
-				<td>gznhpwmp34004345jz2q3l45</td>
-			</tr>
-			<tr>
-				<td>当前系统用户名 </td>
-				<td>NETWORK SERVICE</td>
-			</tr>
-		</tbody>
-	</table>
-</div>
-<footer class="footer mt-20">
-	<div class="container">
-		<p>感谢jQuery、layer、laypage、Validform、UEditor、My97DatePicker、iconfont、Datatables、WebUploaded、icheck、highcharts、bootstrap-Switch<br>
-			Copyright &copy;2015-2017 H-ui.admin v3.1 All Rights Reserved.<br>
-			本后台系统由<a href="http://www.h-ui.net/" target="_blank" title="H-ui前端框架">H-ui前端框架</a>提供前端技术支持</p>
+	<div class="text-c"> 日期范围：
+		<input type="text" onfocus="WdatePicker({ maxDate:'#F{$dp.$D(\'datemax\')||\'%y-%M-%d\'}' })" id="datemin" class=" " style="width:120px;">
+		-
+		<input type="text" onfocus="WdatePicker({ minDate:'#F{$dp.$D(\'datemin\')}',maxDate:'%y-%M-%d' })" id="datemax" class="input-text Wdate" style="width:120px;">
+		<input type="text" class="input-text" style="width:250px" placeholder="输入会员名称、电话、邮箱" id="" name="">
+		<button type="submit" class="btn btn-success radius" id="" name=""><i class="Hui-iconfont">&#xe665;</i> 搜用户</button>
 	</div>
-</footer>
+	<div class="cl pd-5 bg-1 bk-gray mt-20"> <span class="l"><a href="javascript:;" onclick="datadel()" class="btn btn-danger radius"><i class="Hui-iconfont">&#xe6e2;</i> 导出收支明细</a> <a href="javascript:;" onclick="member_add('数据统计','${path}/billingDetails/DataStatistics.action','','510')" class="btn btn-primary radius"><i class="Hui-iconfont">&#xe600;</i> 数据统计</a></span> <span class="r">共有数据：<strong>88</strong> 条</span> </div>
+	<div class="mt-20">
+	<table class="table table-border table-bordered table-hover table-bg table-sort">
+		<thead>
+      <tr class="text-c">
+        <th width="25"><input type="checkbox" name="" value=""></th>
+        <th width="80">ID</th>
+        <th width="100">执行人</th>
+        <th width="40">车牌号</th>
+        <th width="90">事件</th>
+        <th width="150">金额</th>
+        <th width="200">时间</th>
+<!--         <th width="130">加入时间</th> -->
+<!--         <th width="70">状态</th> -->
+<!--         <th width="100">操作</th> -->
+      </tr>
+		</thead>
+		<tbody>
+			      <c:forEach items="${receiptList}" var="r" >
+      <tr class="text-c">
+        <td><input type="checkbox" value="1" name=""></td>
+        <td>${r.re_id}</td> 
+        <td><u style="cursor:pointer" class="text-primary" onclick="user_show('10001','360','','张三','user-show.html')">${r.user.u_name }</u></td>
+        <td>${r.car.c_num}</td>
+        <td>${r.re_thing}</td>
+        <td>${r.re_money}</td>
+        <td class="text-l">${r.re_time}</td>
+<!--         <td>2014-6-11 11:11:42</td> -->
+<!--         <td class="user-status"><span class="label label-success">已启用</span></td> -->
+<!--         <td class="f-14 user-manage"><a style="text-decoration:none" onClick="user_stop(this,'10001')" href="javascript:;" title="停用"><i class="icon-hand-down"></i></a> <a title="编辑" href="javascript:;" onclick="user_edit('4','550','','编辑','user-add.html')" class="ml-5" style="text-decoration:none"><i class="icon-edit"></i></a> <a style="text-decoration:none" class="ml-5" onClick="user_password_edit('10001','370','228','修改密码','user-password-edit.html')" href="javascript:;" title="修改密码"><i class="icon-key"></i></a> <a title="删除" href="javascript:;" onclick="user_del(this,'1')" class="ml-5" style="text-decoration:none"><i class="icon-trash"></i></a></td> -->
+      </tr>
+      </c:forEach>
+		</tbody>
+	</table>
+	</div>
+</div>
+<!--_footer 作为公共模版分离出去-->
 <script type="text/javascript" src="${path}/static/lib/jquery/1.9.1/jquery.min.js"></script> 
+<script type="text/javascript" src="${path}/static/lib/layer/2.4/layer.js"></script>
 <script type="text/javascript" src="${path}/static/static/h-ui/js/H-ui.min.js"></script> 
-<!--此乃百度统计代码，请自行删除-->
-<script>
-var _hmt = _hmt || [];
-(function() {
-  var hm = document.createElement("script");
-  hm.src = "https://hm.baidu.com/hm.js?080836300300be57b7f34f4b3e97d911";
-  var s = document.getElementsByTagName("script")[0]; 
-  s.parentNode.insertBefore(hm, s);
-})();
+<script type="text/javascript" src="${path}/static/static/h-ui.admin/js/H-ui.admin.js"></script> <!--/_footer 作为公共模版分离出去-->
+
+<!--请在下方写此页面业务相关的脚本-->
+<script type="text/javascript" src="${path}/static/lib/My97DatePicker/4.8/WdatePicker.js"></script> 
+<script type="text/javascript" src="${path}/static/lib/datatables/1.10.0/jquery.dataTables.min.js"></script> 
+<script type="text/javascript" src="${path}/static/lib/laypage/1.2/laypage.js"></script>
+<script type="text/javascript">
+$(function(){
+	$('.table-sort').dataTable({
+		"aaSorting": [[ 1, "desc" ]],//默认第几个排序
+		"bStateSave": true,//状态保存
+		"aoColumnDefs": [
+		  //{"bVisible": false, "aTargets": [ 3 ]} //控制列的隐藏显示
+		  {"orderable":false,"aTargets":[]}// 制定列不参与排序
+		]
+	});
+	
+});
+/*用户-添加*/
+function member_add(title,url,w,h){
+	layer_show(title,url,w,h);
+}
+/*用户-查看*/
+function member_show(title,url,id,w,h){
+	layer_show(title,url,w,h);
+}
+/*用户-停用*/
+function member_stop(obj,id){
+	layer.confirm('确认要停用吗？',function(index){
+		$.ajax({
+			type: 'POST',
+			url: '',
+			dataType: 'json',
+			success: function(data){
+				$(obj).parents("tr").find(".td-manage").prepend('<a style="text-decoration:none" onClick="member_start(this,id)" href="javascript:;" title="启用"><i class="Hui-iconfont">&#xe6e1;</i></a>');
+				$(obj).parents("tr").find(".td-status").html('<span class="label label-defaunt radius">已停用</span>');
+				$(obj).remove();
+				layer.msg('已停用!',{icon: 5,time:1000});
+			},
+			error:function(data) {
+				console.log(data.msg);
+			},
+		});		
+	});
+}
+
+/*用户-启用*/
+function member_start(obj,id){
+	layer.confirm('确认要启用吗？',function(index){
+		$.ajax({
+			type: 'POST',
+			url: '',
+			dataType: 'json',
+			success: function(data){
+				$(obj).parents("tr").find(".td-manage").prepend('<a style="text-decoration:none" onClick="member_stop(this,id)" href="javascript:;" title="停用"><i class="Hui-iconfont">&#xe631;</i></a>');
+				$(obj).parents("tr").find(".td-status").html('<span class="label label-success radius">已启用</span>');
+				$(obj).remove();
+				layer.msg('已启用!',{icon: 6,time:1000});
+			},
+			error:function(data) {
+				console.log(data.msg);
+			},
+		});
+	});
+}
+/*用户-编辑*/
+function member_edit(title,url,id,w,h){
+	layer_show(title,url,w,h);
+}
+/*密码-修改*/
+function change_password(title,url,id,w,h){
+	layer_show(title,url,w,h);	
+}
+/*用户-删除*/
+function member_del(obj,id){
+	layer.confirm('确认要删除吗？',function(index){
+		$.ajax({
+			type: 'POST',
+			url: '',
+			dataType: 'json',
+			success: function(data){
+				$(obj).parents("tr").remove();
+				layer.msg('已删除!',{icon:1,time:1000});
+			},
+			error:function(data) {
+				console.log(data.msg);
+			},
+		});		
+	});
+}
+</script> 
+</body>
+</html>

@@ -31,4 +31,10 @@ public interface ReceiptBiz {
 	 * @return
 	 */
 	public boolean AddReceiptX(Receipt receipt);
+	
+	/**
+	 * 	查找收支明细
+	 * @param date
+	 */
+	public List<Receipt> findReceiptList();
 }
