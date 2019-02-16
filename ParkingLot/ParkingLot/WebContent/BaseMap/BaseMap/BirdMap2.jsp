@@ -149,8 +149,8 @@
     <div class="parking fix" id="parking"><span id="carid"></span>车位情况：<span id="YorN"></span></div>
     <div class="codition fix">
         <ul>
-            <li><span class="codition-first"></span>空闲车位</li>
-            <li><span class="codition-second"></span>占用车位</li>
+            <li><span class="codition-first"></span>占用车位</li>
+            <li><span class="codition-second"></span>空闲车位</li>
             <li><span class="codition-third"></span>固定车位</li>
         </ul>
     </div>
@@ -213,8 +213,10 @@
 
       var parkData = null,
           pos = 0;
-      var color = ["#7eacca", "#ff0000", "#00ff00"];
+      var color = ["#7eacca", "#00ff00", "#ff0000"];
       var statusname=["固定车位","有车","无车"];
+	
+    
       //地图加载完成回调
       map.on("loadComplete", function () {
           floorControl = new esmap.ESScrollFloorsControl(map, ctlOpt);
@@ -225,16 +227,21 @@
           setTimeout(function () {CallLoadData(0)},10);
           //开启定时器从后台获取数据
           setInterval(function () {
-              CallLoadData((++pos % 2));
+              CallLoadData();
           }, 5000);
       });
 
-      function CallLoadData(pos) {
-          var id = [];
-          var fileName = 'data' + pos + '.json'; //json数据切换
-          $.getJSON(fileName, function (data) {
-          	var mydata=new Map();
-       
+      function CallLoadData() {
+    	  var id = [];
+			$.ajax({
+				type: "POST",
+				url: '<%=path%>Face/foremap.do',
+				dataType:"json",
+				contentType : "application/json;charset=utf-8", //如果采用requestbody那么一定要加
+				cache: false,
+				success: function(data){
+               	var mydata=new Map();
+               
               parkData = data.put;
              
               //1.解析数据,将数据按每层进行整理
@@ -242,15 +249,17 @@
               var total =  0;
               for (var i = 0, len = parkData.length; i < len; ++i) { 
                   var m = parkData[i];
-                  var d=mydata.get(m.fnum);
+              
+                  var d=mydata.get(m.p_feum);
                  /* alert(m.status==1?8:9) */
                   if(d==null)
                   {
                       d = {"idlist":[[],[],[]]};
                   }
                   total++;
-                  d.idlist[m.status].push(m.ID);
-                  mydata.set(m.fnum,d);
+                  d.idlist[m.pm_id==8?1:2].push(m.p_mapid);
+                  mydata.set(m.p_feum,d);
+                
               }
 
               var showtext="";
@@ -258,14 +267,18 @@
               for (var d1 of mydata) {
                   var fnum = d1[0];
                   var d = d1[1];
+             
                   for(var j=0;j<color.length;j++)
                   {
+                	 
                   	//调用批量修改颜色接口来修改
                       map.changeModelColor({
                           id:d.idlist[j],
                           fnum,
                           color: color[j]
-                      });
+                      })
+                      
+                    /*  map.changeModelColor({id:d.idlist[j],fnum,color:color[j]})   */
                   }
                   showtext += map.floorNames[fnum-1]+":"+d.idlist[2].length+"个  ";
               }               
@@ -273,6 +286,7 @@
               //3.显示更新统计
               $("#freedata").html(showtext); //滚动字幕 相应楼层剩余停车位数           
               $("#total").html(total);
+          }
           });
       }
       //地图点击事件
@@ -285,9 +299,9 @@
           $("#carid").css("color", "rgb(255, 255, 0)").html(event.name); //停车位ID
        
           for (var i = 0; i < parkData.length; ++i) {
-              if (event.ID == parkData[i].ID) {
-            	  alert(parkData[i].status)
-                  $("#YorN").html(statusname[parkData[i].status]);                   
+              if (event.ID == parkData[i].p_mapid) {
+            	
+                  $("#YorN").html(statusname[parkData[i].pm_id==8?1:2]);                   
               }
           }
       });

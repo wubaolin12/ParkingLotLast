@@ -231,7 +231,7 @@
 
       function CallLoadData(pos) {
           var id = [];
-          var fileName = 'data' + pos + '.json'; //json数据切换
+          var fileName = 'data0.json'; //json数据切换
           $.getJSON(fileName, function (data) {
           	var mydata=new Map();
        
@@ -242,6 +242,7 @@
               var total =  0;
               for (var i = 0, len = parkData.length; i < len; ++i) { 
                   var m = parkData[i];
+              
                   var d=mydata.get(m.fnum);
                  /* alert(m.status==1?8:9) */
                   if(d==null)
@@ -260,6 +261,7 @@
                   var d = d1[1];
                   for(var j=0;j<color.length;j++)
                   {
+                	
                   	//调用批量修改颜色接口来修改
                       map.changeModelColor({
                           id:d.idlist[j],
@@ -286,7 +288,7 @@
        
           for (var i = 0; i < parkData.length; ++i) {
               if (event.ID == parkData[i].ID) {
-            	  alert(parkData[i].status)
+            	 
                   $("#YorN").html(statusname[parkData[i].status]);                   
               }
           }
