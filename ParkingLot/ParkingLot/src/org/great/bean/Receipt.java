@@ -22,9 +22,19 @@ public class Receipt {
 	// 增加用户类，车类为属性，用于查询收支明细--吴宝林
 	private Car car;
 	private User user;
+	private Param param;
 
 	public Receipt() {
 		super();
+	}
+
+	public Receipt(int u_id, int c_id, String re_thing, int re_money, String re_time) {
+		super();
+		this.u_id = u_id;
+		this.c_id = c_id;
+		this.re_thing = re_thing;
+		this.re_money = re_money;
+		this.re_time = re_time;
 	}
 
 	public Receipt(int u_id, String re_time) {
@@ -58,6 +68,22 @@ public class Receipt {
 		this.re_null3 = re_null3;
 		this.car = car;
 		this.user = user;
+	}
+
+	public Receipt(int re_id, int u_id, int c_id, String re_thing, int re_money, String re_time, String re_null2,
+			String re_null3, Car car, User user, Param param) {
+		super();
+		this.re_id = re_id;
+		this.u_id = u_id;
+		this.c_id = c_id;
+		this.re_thing = re_thing;
+		this.re_money = re_money;
+		this.re_time = re_time;
+		this.re_null2 = re_null2;
+		this.re_null3 = re_null3;
+		this.car = car;
+		this.user = user;
+		this.param = param;
 	}
 
 	public int getRe_id() {
@@ -140,11 +166,19 @@ public class Receipt {
 		this.user = user;
 	}
 
+	public Param getParam() {
+		return param;
+	}
+
+	public void setParam(Param param) {
+		this.param = param;
+	}
+
 	@Override
 	public String toString() {
 		return "Receipt [re_id=" + re_id + ", u_id=" + u_id + ", c_id=" + c_id + ", re_thing=" + re_thing
 				+ ", re_money=" + re_money + ", re_time=" + re_time + ", re_null2=" + re_null2 + ", re_null3="
-				+ re_null3 + ", car=" + car + ", user=" + user + "]";
+				+ re_null3 + ", car=" + car + ", user=" + user + ", param=" + param + "]";
 	}
 
 }

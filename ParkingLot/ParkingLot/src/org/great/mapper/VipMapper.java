@@ -63,4 +63,10 @@ public interface VipMapper {
 	 * @return
 	 */
 	public boolean VipReturnX(int v_id);
+
+	/**
+	 * 月缴套餐自动生效
+	 * @return
+	 */
+	public boolean activeVip();
 }

@@ -102,17 +102,13 @@
 	<!--请在下方写此页面业务相关的脚本-->
 	<script type="text/javascript"
 		src="${path}/static/lib/jquery.validation/1.14.0/jquery.validate.js"></script>
-	<script type="text/javascript
-	
-	"
+	<script type="text/javascript"
 		src="${path}/static/lib/jquery.validation/1.14.0/validate-methods.js"></script>
 	<script type="text/javascript"
 		src="${path}/static/lib/jquery.validation/1.14.0/messages_zh.js"></script>
 	<script type="text/javascript">
 	function chose(){
 		var radios = document.getElementById("form-admin-add").pm_id;//获取id为list下的所有name为user的值的集合
-		alert(radios);
-		alert(radios.length);
 		for(var i=0;i<radios.length;i++){//循环值得集合
 				if(radios[i].checked){//通过checked属性判断是否被选中
 				var radid = radios[i].value//将被选择的radio的值赋给变量userid
@@ -144,17 +140,14 @@
 									data:{
 										carnum:function(){
 										var p = $("#carnum").val();
-										alert(p);
 										return p;
 									},
 									cust_phone:function(){
 									var p1 = $("#cust_phone").val();
-									alert(p1);
 									return p1;
 								}
 							},
 							dataFilter : function(data) {
-								alert(data);
 								if (data == "true") {
 									document.getElementById("carNumFlag").innerHTML="";
 									return true;
@@ -176,12 +169,10 @@
 									data:{
 										cust_phone:function(){
 											var p = $("#cust_phone").val();
-											alert(p);
 											return p;
 										}
 									},
 									dataFilter : function(data) {
-									 alert(data);
 										// 									 和之前的一个电话号码验证用同一个action方法
 //										只不过之前的结果需求刚好相反，之前的是查询有结果时data是false，
 //                      				         但要空的时候添加注册客户CUST，需要data是true是通过，
@@ -211,7 +202,6 @@
 						submitHandler : function(form) {
 							var cust_phone = $("#cust_phone").val();
 							var carnum = $("#carnum").val();
-							alert(carnum);
 							var adminRole = $("#adminRole").val();
 							var pm_id = $("#pm_id").val();
 								$(form).ajaxSubmit({
@@ -219,26 +209,15 @@
 													url : "${path}/custManageHandler/CarAddH.action",
 													data:'{"cust_phone":'+cust_phone+',"carnum":'+carnum+',"adminRole":'+adminRole+',"pm_id":'+pm_id+'}',
 													success : function(data) {
-													alert(data);
-													alert(data);
 													layer.msg(
-															'添加成功!',
-															{
-																icon : 1,
-																time : 1000
-															});
+															'添加成功!',{icon : 1,time : 1000});
 														},
 														error : function(
 																XmlHttpRequest,
 																textStatus,
 																errorThrown
 																) {
-															layer.msg(
-																	'添加失败!',
-																{
-																	icon : 1,
-																	time : 1000
-																});
+															layer.msg({icon : 1,time : 1000});
 														    }
 													   });
 									var index = parent.layer.getFrameIndex(window.name);

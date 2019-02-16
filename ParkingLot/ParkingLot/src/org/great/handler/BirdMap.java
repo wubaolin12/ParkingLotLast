@@ -31,10 +31,19 @@ public class BirdMap {
 		
 		 List<Park> parklist = parkBiz.FindAllList();
 		 
-		 System.out.println("所有车位信息"+parklist);
+		// System.out.println("所有车位信息"+parklist);
 		 
 		 request.setAttribute("ParkList",parklist);
 		
 		return "BirdMap";
 	}
+	
+	@RequestMapping("/Parkbirdmap.action")
+	public String JumpParkBirdMap() {
+		
+
+		
+		return "BirdMap2";
+	}
+	
 }

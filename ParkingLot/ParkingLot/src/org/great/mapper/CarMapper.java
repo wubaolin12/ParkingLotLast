@@ -91,10 +91,28 @@ public interface CarMapper {
 	 */
 	public List<Car> FindByCarcustidX(int number);
 
-
-	/**根据车牌号更改车辆角色和车主ID
+	/**
+	 * 根据车牌号更改车辆角色和车主ID
 	 * 
 	 * @return
 	 */
 	public boolean chagerPmIDCustIDByCarNumberX(Car car);
+
+	/**
+	 * 根据车牌号更改车主ID 主要是设为空 取消绑定的-
+	 * 
+	 * @param car
+	 * @return
+	 */
+	public boolean chagerCustIDNULLByCarNumberX(@Param("c_num") String c_num, @Param("pm_id") int pm_id);
+
+	/**
+	 * 通过用户CarID找到车信息
+	 * 
+	 * @param c_num
+	 * @param pm_id
+	 * @return
+	 */
+	public List<Car> FindCarByCaridX(String c_num);
+
 }

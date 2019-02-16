@@ -1,5 +1,6 @@
 package org.great.handler;
 
+import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -25,6 +26,7 @@ import org.great.biz.CustBiz;
 import org.great.biz.ParamBiz;
 import org.great.biz.ReceiptBiz;
 import org.great.biz.VipBiz;
+import org.great.util.BaseUtil;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -47,6 +49,8 @@ public class CustManageHandler {
 	CarBiz carBiz;
 	@Resource
 	VipBiz vipBiz;
+	@Resource
+	BaseUtil baseUtil;
 	private boolean flag = false;
 
 	/**
@@ -184,7 +188,7 @@ public class CustManageHandler {
 	 * @return
 	 */
 	@RequestMapping("/CarAddH.action")
-	public @ResponseBody String CarAdd(AnyX anyX) {
+	public @ResponseBody String CarAdd(AnyX anyX, HttpServletRequest request) {
 		System.out.println("--------------------------------------");
 		String str = null;
 		int pid = 0;
@@ -220,12 +224,19 @@ public class CustManageHandler {
 				flag = carBiz.AddCarCX(car2);
 				System.out.println("Cflag=" + flag);
 				car2 = carBiz.FindByCarNumber(anyX.getCarnum());
-
 				Vip vip = new Vip(co_id, car2.getC_id(), map.get("today"), map.get("finday"), param1.getPm_id());
 				System.out.println("vip=" + vip);
 				flag = vipBiz.AddvipX(vip);
 				System.out.println("Vflag=" + flag);
 				str = "添加成为包月会员车辆了";
+				Combo combo = comboBiz.FindComboByIDX(co_id);
+				int money = Integer.parseInt(combo.getCo_price());
+				DateFormat dff = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+				Date currenime = new Date();
+				String currendate = dff.format(currenime);
+				User user = (User) request.getAttribute("User");
+				boolean ff = baseUtil.addReceipt(user.getU_id(), car1.getC_id(), "月缴收费", money, currendate);
+				System.out.println("ff=" + ff);
 				System.err.println("**************************************");
 			}
 		} // 临时车辆
@@ -234,9 +245,11 @@ public class CustManageHandler {
 				pid = 6;
 				List<Cust> list = custBiz.FindByPhoneX(anyX.getCust_phone());
 				Car car2 = new Car(list.get(0).getCust_id(), pid, anyX.getCarnum());
-				System.out.println("car2="+car2);
+				
+				System.out.println("car2=" + car2);
 				flag = carBiz.chagerPmIDCustIDByCarNumberX(car2);
 				str = "临时车辆添加成为注册车辆了";
+				
 			} else if (anyX.getPm_id().equals("包月会员")) {
 				pid = 7;
 				List<Cust> list = custBiz.FindByPhoneX(anyX.getCust_phone());
@@ -246,12 +259,19 @@ public class CustManageHandler {
 				flag = carBiz.chagerPmIDCustIDByCarNumberX(car2);
 				System.out.println("Cflag=" + flag);
 				car2 = carBiz.FindByCarNumber(anyX.getCarnum());
-
 				Vip vip = new Vip(co_id, car2.getC_id(), map.get("today"), map.get("finday"), param1.getPm_id());
 				System.out.println("vip=" + vip);
 				flag = vipBiz.AddvipX(vip);
 				System.out.println("Vflag=" + flag);
 				str = "临时车辆添加成为包月会员车辆了";
+				Combo combo = comboBiz.FindComboByIDX(co_id);
+				int money = Integer.parseInt(combo.getCo_price());
+				DateFormat dff = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+				Date currenime = new Date();
+				String currendate = dff.format(currenime);
+				User user = (User) request.getAttribute("User");
+				boolean ff = baseUtil.addReceipt(user.getU_id(), car1.getC_id(), "月缴收费", money, currendate);
+				System.out.println("ff=" + ff);
 				System.err.println("**************************************");
 			}
 		} // 注册会员车辆
@@ -265,13 +285,20 @@ public class CustManageHandler {
 					System.err.println("car3=" + car3);
 					flag = carBiz.chagerPmIDByCarNumberX(car3);
 					System.err.println("cflag=" + flag);
-
 					Vip vip = new Vip(co_id, car1.getC_id(), map.get("today"), map.get("finday"), param1.getPm_id());
 					System.err.println("vip=" + vip);
 					flag = vipBiz.AddvipX(vip);
 					System.err.println("vip123==" + vip);
 					System.err.println("vflag=" + flag);
 					str = "添加成为包月会员车辆了";
+					Combo combo = comboBiz.FindComboByIDX(co_id);
+					int money = Integer.parseInt(combo.getCo_price());
+					DateFormat dff = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+					Date currenime = new Date();
+					String currendate = dff.format(currenime);
+					User user = (User) request.getAttribute("User");
+					boolean ff = baseUtil.addReceipt(user.getU_id(), car1.getC_id(), "月缴收费", money, currendate);
+					System.out.println("ff=" + ff);
 					System.err.println("***************");
 				}
 			} else if (car1.getPm_id() == 7) {
@@ -298,6 +325,14 @@ public class CustManageHandler {
 					System.out.println("finday=" + finday);
 					Vip vip1 = new Vip(vid, finday);
 					flag = vipBiz.chageOvertimeByVidX(vip1);
+					Combo combo = comboBiz.FindComboByIDX(co_id);
+					int money = Integer.parseInt(combo.getCo_price());
+					DateFormat dff = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+					Date currenime = new Date();
+					String currendate = dff.format(currenime);
+					User user = (User) request.getAttribute("User");
+					boolean ff = baseUtil.addReceipt(user.getU_id(), car1.getC_id(), "月缴收费", money, currendate);
+					System.out.println("ff=" + ff);
 					str = "续费会员成功了";
 				}
 			} else if (car1.getPm_id() == 14) {
@@ -418,7 +453,7 @@ public class CustManageHandler {
 	 * @return
 	 */
 	@RequestMapping("/CarVipReturn.action")
-	public @ResponseBody String CarVipReturn(AnyX anyX) {
+	public @ResponseBody String CarVipReturn(AnyX anyX, HttpServletRequest request) {
 		System.out.println("--------------------------------------");
 		System.out.println("anyX=" + anyX);
 		String str = "";
@@ -428,9 +463,22 @@ public class CustManageHandler {
 		if (flag == true) {
 			int pid = 6;
 			Car car1 = new Car(pid, car1List.get(0).getC_num());
+			System.out.println("car1="+car1);
 			boolean flag1 = carBiz.chagerPmIDByCarNumberX(car1);
 			if (flag1 == true) {
 				str = "退费成功！！";
+				// 获取当前时间算出场时间
+				Combo combo = comboBiz.FindComboByIDX(car1List.get(0).getVip().getCo_id());
+				System.out.println("combo="+combo);
+				int money = Integer.parseInt(combo.getCo_price());
+				DateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+				Date currenime = new Date();
+				String currendate = df.format(currenime);
+				User user = (User) request.getAttribute("User");
+				System.out.println("currendate="+currendate);
+				System.out.println("user="+user);
+				boolean ff = baseUtil.addReceipt(user.getU_id(), car1List.get(0).getC_id(), "月缴退费", money, currendate);
+				System.out.println("ff=" + ff);
 			} else {
 				str = "退费失败！！";
 			}
@@ -462,6 +510,7 @@ public class CustManageHandler {
 		Date day = new Date();
 		SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd");
 		System.out.println(df.format(day));
+//		String time = "%" + "2019-01-22" + "%";
 		String time = "%" + df.format(day) + "%";
 		System.out.println(time);
 		User user = (User) request.getAttribute("User");
@@ -473,6 +522,62 @@ public class CustManageHandler {
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("charge/DailyStatement");
 //		要打印接下去写
+		return mav;
+	}
+
+	/**
+	 * 跳到停车场开闸动画界面收费段的
+	 * 
+	 * @param request
+	 * @return
+	 */
+	@RequestMapping("/OpenDoorJSP.action")
+	public String OpenDoorJSP() {
+		return "charge/OpenDoor";
+	}
+
+	/**
+	 * 跳到缴费渠道统计JSP
+	 * 
+	 * @param request
+	 * @return
+	 */
+	@RequestMapping("/countGetMoneyWayJSP.action")
+	public ModelAndView countGetMoneyWayJSP(HttpServletRequest request) {
+		String re_time1 = null;
+		String re_time2 = null;
+		List<Receipt> ReceiptList = receiptBiz.findCountMoneyReX(re_time1, re_time2);
+
+		request.setAttribute("ReceiptList", ReceiptList);
+		ModelAndView mav = new ModelAndView();
+		mav.setViewName("charge/countGetMoneyWay");
+		return mav;
+	}
+
+	/**
+	 * 缴费渠道统计日期查看
+	 * 
+	 * @param anyX
+	 * @return
+	 */
+	@RequestMapping("/countGetMoneyWayAjax.action")
+	public ModelAndView countGetMoneyWayAjax(String re_time1, String re_time2, HttpServletRequest request) {
+		System.out.println("------re_time2--------------------------------");
+		String re_time3 = null;
+		String re_time4 = null;
+		System.out.println("re_time1=" + re_time1 + "---re_time2=" + re_time2);
+		if (re_time1 != null && re_time1 != "") {
+			re_time3 = re_time1;
+			System.out.println("re_time3=" + re_time3);
+			if (re_time2 != null && re_time2 != "") {
+				re_time4 = re_time2;
+			}
+		}
+		System.out.println("re_time3=" + re_time3 + "---re_time4=" + re_time4);
+		List<Receipt> ReceiptList = receiptBiz.findCountMoneyReX(re_time3, re_time4);
+		request.setAttribute("ReceiptList", ReceiptList);
+		ModelAndView mav = new ModelAndView();
+		mav.setViewName("charge/countGetMoneyWay");
 		return mav;
 	}
 }

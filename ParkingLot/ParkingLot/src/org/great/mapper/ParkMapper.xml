@@ -6,8 +6,8 @@
 <mapper namespace="org.great.mapper.ParkMapper">
 	<!-- 添加车位 -->
 	<insert id="AddPark" parameterType="org.great.bean.Park">
-		insert into tb_park(pm_id,p_fore,p_num,p_state,p_mapid) values
-		(#{pm_id},#{p_fore},#{p_num},#{p_state},#{p_mapid})
+		insert into tb_park(pm_id,p_fore,p_num,p_state,p_mapid,p_feum) values
+		(#{pm_id},#{p_fore},#{p_num},#{p_state},#{p_mapid},#{p_feum})
 	</insert>
 
 	<!-- 查询可以停车的车位 -->
@@ -64,7 +64,9 @@
 
 	</resultMap>
 
-
+	<update id="SetCarParkX11" >
+		update tb_park set p_feum=#{p_feum} where p_id=#{p_id}
+	</update>
 
 
 

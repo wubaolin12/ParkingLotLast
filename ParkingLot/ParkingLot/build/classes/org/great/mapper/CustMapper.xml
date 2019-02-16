@@ -44,7 +44,11 @@
 		resultType="org.great.bean.Cust">
 		select * from tb_cust where cust_phone =#{Pnumber}
 	</select>
-
+	
+	<select id="FindByPhone" parameterType="String"
+		resultType="org.great.bean.Cust">
+		select * from tb_cust where cust_phone =#{Pnumber}
+	</select>
 	<!-- 前端登录 （手机+密码） -->
 	<select id="ForeLogin" parameterType="org.great.bean.Cust"
 		resultType="org.great.bean.Cust">

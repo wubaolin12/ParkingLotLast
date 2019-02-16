@@ -56,18 +56,25 @@ String path=request.getScheme()+"://"+request.getServerName()+":"+
 	
 		//付款金额
 		String total_amount = new String(request.getParameter("total_amount").getBytes("ISO-8859-1"),"UTF-8");
-		System.out.println("类型======"+session.getAttribute("PayType")); 
 		String PayType=(String)session.getAttribute("PayType");
 		if(PayType.equals("充值")){
 			response.sendRedirect(path+"pay/successToRecharge.do?out_trade_no="+out_trade_no+"&trade_no="+trade_no+"&total_amount="+total_amount);
 		}else if(PayType.equals("出场缴费")){
 			response.sendRedirect(path+"outPay/successToOut.action?out_trade_no="+out_trade_no+"&trade_no="+trade_no+"&total_amount="+total_amount);
 		}else if(PayType.equals("套餐缴费")){
-			response.sendRedirect(path+"pay/successToRecharge.do?out_trade_no="+out_trade_no+"&trade_no="+trade_no+"&total_amount="+total_amount);
+			response.sendRedirect(path+"Combination/successToCombination.action?out_trade_no="+out_trade_no+"&trade_no="+trade_no+"&total_amount="+total_amount);
 		}
 		//out.println("trade_no:"+trade_no+"<br/>out_trade_no:"+out_trade_no+"<br/>total_amount:"+total_amount);
 	}else {
-		out.println("验签失败");
+		String PayType=(String)session.getAttribute("PayType");
+		if(PayType.equals("充值")){
+			response.sendRedirect(path+"pay/failedToRecharge.do");
+		}else if(PayType.equals("出场缴费")){
+			response.sendRedirect(path+"outPay/failedToOut.action");
+		}else if(PayType.equals("套餐缴费")){
+			response.sendRedirect(path+"Combination/failedToCom.action");
+		}
+		//out.println("验签失败");
 	}
 	//——请在这里编写您的程序（以上代码仅作参考）——
 %>

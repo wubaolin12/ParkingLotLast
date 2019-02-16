@@ -77,7 +77,7 @@ String path=request.getScheme()+"://"+request.getServerName()+":"+
 							
 							<div id="note"></div>
 							<div id="fields">
-								<form id="ajax-contact-form" class="form-horizontal" action="<%=path%>fore/foreLoginSubmit.do" onSubmit="return nonull()">
+								<form id="ajax-contact-form" class="form-horizontal" action="<%=path%>fore/foreLoginSubmit.do" onSubmit="return nonull()" method="post">
 									<div class="block1 clearfix">
 										<div class="block3">
 											<div class="control-group">

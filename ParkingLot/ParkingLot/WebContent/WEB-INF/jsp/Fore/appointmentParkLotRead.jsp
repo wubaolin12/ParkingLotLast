@@ -82,7 +82,7 @@
 							<header>
 								<!-- START LOGO -->
 								<div class="logo_wrapper">
-									<a href="index.html" class="logo"><img
+									<a href="${path}/fore/success1.do" class="logo"><img
 										src="${path}/static/fore-static/images/logo.png"
 										alt="Kinder Garten Logo"></a>
 								</div>
@@ -99,17 +99,14 @@
 											</a>
 											<div class="nav-collapse nav-collapse_ collapse">
 												<ul class="nav sf-menu clearfix">
-													<li class="active"><a
-														href="${path}/appointmentParkLotHandler/appointmentParkLotJsp.do">预约停车<span
-															class="over1"></span></a></li>
-													<li><a href="about.html">反向寻车<span class="over1"></span></a></li>
-													<li><a href="services.html">个人资料<span
-															class="over1"></span></a></li>
-													<li><a href="contact.html">个人设置<span class="over1"></span></a></li>
-													<li class="active"><a href="${path}/pay/toRecharge.do">余额充值<span
-															class="over1"></span></a></li>
-													<li><a href="javascript:exitUser()">退出<span
-															class="over1"></span></a></li>
+													<li class="active"><a href="${path}/appointmentParkLotHandler/appointmentParkLotJsp.do">预约停车<span class="over1"></span></a></li>
+													<li><a href="${path}/carManagHandler/jumpCarMangerJSP.do">车辆管理<span class="over1"></span></a></li>													
+													<li><a href="${path}/userinformation/toUserInformation.do">个人资料<span class="over1"></span></a></li>
+                                                    <li><a href="${path}/userinformation/toUserSetting.do">个人设置<span class="over1"></span></a></li>
+													<li><a href="${path}/findcar/findcar.do">反向寻车<span class="over1"></span></a></li>
+													<li><a href="${path}/Face/face.do">注册人脸识别<span class="over1"></span></a></li>
+													<li><a href="${path}/pay/toRecharge.do">余额充值<span class="over1"></span></a></li>
+                                                    <li><a href="javascript:exitUser()">退出<span class="over1"></span></a></li>
 												</ul>
 											</div>
 										</div>
@@ -162,15 +159,15 @@
 							<h3>我的订单</h3>
 							<h5></h5>
 							<div id="note"></div>
-							<c:forEach items="${appointmentsList}" var="app" >
+							<c:forEach items="${appointmentsList}" var="app">
 								<div>
 									<form
 										action="${path}/appointmentParkLotHandler/appointmentParkLotCancel.do">
 										<div>
-											<div style="border: 1px solid #000">
+											<div style="border: 1px solid #FFF">
 												<ul>
-													<li>车牌号：${app.car. c_num}
-													<input type="hidden" value="${app.car.c_num}" id="c_num" name="c_num"></li>
+													<li>车牌号：${app.car. c_num} <input type="hidden"
+														value="${app.car.c_num}" id="c_num" name="c_num"></li>
 													<br />
 													<li>预约时间：${app.app_time}</li>
 													<br />
@@ -178,7 +175,7 @@
 												<div
 													class="col-xs-8 col-sm-9 col-xs-offset-4 col-sm-offset-3">
 													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input
-														class="btn btn-primary radius" type="submit"
+														class="btn btn-warning" type="submit"
 														value="&nbsp;&nbsp;取消订单&nbsp;&nbsp;">
 												</div>
 											</div>
@@ -194,22 +191,18 @@
 				</div>
 			</div>
 		</div>
-
 		<!-- START FOOTER -->
 		<footer>
 			<div class="social_wrapper">
 				<ul class="social clearfix">
-					<li><a href="index.html#"><i class="fa fa-facebook"></i></a></li>
-					<li><a href="index.html#"><i class="fa fa-twitter"></i></a></li>
-					<li><a href="index.html#"><i class="fa fa-instagram"></i></a></li>
-					<li><a href="index.html#"><i class="fa fa-youtube"></i></a></li>
-					<li><a href="index.html#"><i class="fa fa-pinterest"></i></a></li>
+					<li><a href="${path}/fore/success1.do"><i class="fa fa-facebook"></i></a></li>
+					<li><a href="${path}/fore/success1.do"><i class="fa fa-twitter"></i></a></li>
+					<li><a href="${path}/fore/success1.do"><i class="fa fa-instagram"></i></a></li>
+					<li><a href="${path}/fore/success1.do"><i class="fa fa-youtube"></i></a></li>
+					<li><a href="${path}/fore/success1.do"><i class="fa fa-pinterest"></i></a></li>
 				</ul>
 			</div>
-			<div class="copyright">
-				Copyright &copy; 2018.Company name All rights reserved.<a
-					target="_blank" href="http://sc.chinaz.com/moban/">&#x7F51;&#x9875;&#x6A21;&#x677F;</a>
-			</div>
+			<div class="copyright">Copyright &copy;传一智能停车场</div>
 		</footer>
 		<!-- END FOOTER -->
 	</div>

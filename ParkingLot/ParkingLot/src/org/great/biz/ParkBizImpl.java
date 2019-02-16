@@ -144,5 +144,10 @@ public class ParkBizImpl implements ParkBiz{
 		// TODO Auto-generated method stub
 		return parkMapper.FindAllList();
 	}
+	@Override
+	public boolean SetCarParkX11(int p_feum, int p_id) {
+		// TODO Auto-generated method stub
+		return parkMapper.SetCarParkX11(p_feum, p_id);
+	}
 	
 }

@@ -35,7 +35,7 @@
       allowFileTypes: '*.jpg;*.doc;*.pdf',//允许上传文件类型，格式';*.doc;*.pdf'
       allowFileSize: 100000,//允许上传文件大小(KB)
       selectText: '选择文件',//选择文件按钮文案
-      multi: true,//是否允许多文件上传
+      multi: false,//是否允许多文件上传
       multiNum: 5,//多文件上传时允许的文件数
       showNote: true,//是否展示文件上传说明
       note: '提示：请上传一张jpg格式的车牌图片',//文件上传说明
@@ -49,11 +49,17 @@
       okCode: '200',//与后端返回数据code值一致时执行成功回调，不配置默认200
       successFunc: function(res) {
         console.log('成功回调', res);
+  	  if(res.role=='300'){
+		       console.log('来到这里了', res);
+  		  location.href="<%=path%>AppearanceLicensePlate/JumpCarAdmissionGetMoneyPJSP.action";
+  	  }else {
         location.href="<%=path%>AppearanceLicensePlate/AppearanceCarAdmissionDisplay.action";
-      },//上传成功回调函数
+  	  }
+  	  },//上传成功回调函数
       errorFunc: function(res) {
-        console.log('失败回调', res);
-        alert('停车场无此车')
+		       console.log('失败回调', res);
+		       alert('停车场无此车')
+//     	  }
       },//上传失败回调函数
       deleteFunc: function(res) {
         console.log('删除回调', res);

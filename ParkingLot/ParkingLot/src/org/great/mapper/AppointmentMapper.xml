@@ -52,4 +52,9 @@
 		resultType="org.great.bean.Appointment">
 		select * from tb_appointment where c_id = #{c_id}
 	</select>
+	
+	<!-- 判断如果预约超期了就改为过期状态 -->
+	<delete id="pastDue" parameterType="String">
+		delete from tb_appointment where app_time &lt; #{time}
+	</delete>
 </mapper>

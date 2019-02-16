@@ -1,12 +1,10 @@
 package org.great.handler;
 
-import java.io.ByteArrayInputStream;
-import java.io.ByteArrayOutputStream;
-import java.io.FileOutputStream;
-import java.io.InputStream;
+import java.io.OutputStream;
 import java.util.List;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletResponse;
 
 import org.apache.poi.hssf.usermodel.HSSFCell;
 import org.apache.poi.hssf.usermodel.HSSFCellStyle;
@@ -16,17 +14,21 @@ import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.apache.poi.ss.usermodel.HorizontalAlignment;
 import org.great.bean.Receipt;
 import org.great.biz.ReceiptBiz;
+import org.great.log.OperationLog;
 import org.great.util.DateTool;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 /**
- * springMVC 定时任务处理； 定时打印订单
+ * 打印昨日订单
  * 
  * @author Administrator
  *
  */
 @Controller
+@RequestMapping("/export")
 public class DailyBillHandler {
 	@Resource
 	ReceiptBiz receiptBiz;
@@ -34,11 +36,12 @@ public class DailyBillHandler {
 	@Resource
 	Receipt receipt;
 
-	@Scheduled(cron = "0 00 00 * * ?")
-	public void cron() throws Exception {
+	@RequestMapping("/excel.action")
+	@OperationLog(operationType = "收支明细", operationName = "下载昨天收支明细")
+	@ResponseBody
+	public void execute(HttpServletResponse response) throws Exception {
 
-		String date = DateTool.getDate(); // 获取当天日期
-//		String date = "2019-01-22";
+		String date = DateTool.getYesterdayDate(); // 获取昨天日期
 		
 		receipt.setRe_time(date);
 
@@ -86,19 +89,32 @@ public class DailyBillHandler {
 
 				row.createCell(4).setCellValue(re.getRe_time());// 时间
 			}
+			
+			// 将文件导出到用户前端保存
+			String fileName = date+"收支明细.xls";
+			fileName = new String(fileName.getBytes(),"ISO8859-1");
+			response.setContentType("application/octet-stream;charset=ISO8859-1");
+            response.setHeader("Content-Disposition", "attachment;filename="+ fileName);
+            response.addHeader("Pargam", "no-cache");
+            response.addHeader("Cache-Control", "no-cache");
+            
+            OutputStream os = response.getOutputStream();
+            workbook.write(os);
+            os.flush();
+            os.close();
 
 			// 7，将文件输出到服务器
 //			ByteArrayOutputStream baos = new ByteArrayOutputStream();
-			FileOutputStream fos = new FileOutputStream("D:/file_file/demo/recipt-"+date+".xls");//指定路径与名字和格式
-			try {
-				workbook.write(fos);
-				fos.flush();
-			} catch (Exception e) {
-				e.printStackTrace();
-			}finally {
-				fos.close();
-				
-			}
+//			FileOutputStream fos = new FileOutputStream("D:/file_file/demo/recipt-"+date+".xls");//指定路径与名字和格式
+//			try {
+//				workbook.write(fos);
+//				fos.flush();
+//			} catch (Exception e) {
+//				e.printStackTrace();
+//			}finally {
+//				fos.close();
+//				
+//			}
 						
 		} catch (Exception e) {
 			e.printStackTrace();

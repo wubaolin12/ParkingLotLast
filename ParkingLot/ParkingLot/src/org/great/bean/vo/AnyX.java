@@ -16,9 +16,17 @@ public class AnyX {
 	int month;
 	int day;
 	String getUserID;
+	String re_time1;
+	String re_time2;
 
 	public AnyX() {
 		super();
+	}
+
+	public AnyX(String re_time1, String re_time2) {
+		super();
+		this.re_time1 = re_time1;
+		this.re_time2 = re_time2;
 	}
 
 	public AnyX(String cust_phone, String carnum, String adminRole) {
@@ -59,11 +67,27 @@ public class AnyX {
 		this.getUserID = getUserID;
 	}
 
+	public AnyX(String cust_phone, String carnum, String adminRole, String pm_id, int state, int year, int month,
+			int day, String getUserID, String re_time1, String re_time2) {
+		super();
+		this.cust_phone = cust_phone;
+		this.carnum = carnum;
+		this.adminRole = adminRole;
+		this.pm_id = pm_id;
+		this.state = state;
+		this.year = year;
+		this.month = month;
+		this.day = day;
+		this.getUserID = getUserID;
+		this.re_time1 = re_time1;
+		this.re_time2 = re_time2;
+	}
+
 	@Override
 	public String toString() {
 		return "AnyX [cust_phone=" + cust_phone + ", carnum=" + carnum + ", adminRole=" + adminRole + ", pm_id=" + pm_id
 				+ ", state=" + state + ", year=" + year + ", month=" + month + ", day=" + day + ", getUserID="
-				+ getUserID + "]";
+				+ getUserID + ", re_time1=" + re_time1 + ", re_time2=" + re_time2 + "]";
 	}
 
 	public String getCust_phone() {
@@ -138,6 +162,20 @@ public class AnyX {
 		this.day = day;
 	}
 
+	public String getRe_time1() {
+		return re_time1;
+	}
 
+	public void setRe_time1(String re_time1) {
+		this.re_time1 = re_time1;
+	}
+
+	public String getRe_time2() {
+		return re_time2;
+	}
+
+	public void setRe_time2(String re_time2) {
+		this.re_time2 = re_time2;
+	}
 
 }

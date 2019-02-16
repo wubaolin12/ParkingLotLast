@@ -43,4 +43,9 @@ public interface AppointmentBiz {
 	 * @return
 	 */
 	public List<Appointment> findCarAppoinmentByCarIDX(int c_id);
+	
+	/**
+	 * 判断预约是否过期
+	 */
+	public boolean pastDue(String time);
 }

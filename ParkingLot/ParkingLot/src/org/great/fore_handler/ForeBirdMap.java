@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
  */
 @Controller
 @Scope("prototype")
-@RequestMapping("/BirdMap")
+@RequestMapping("/fore")
 public class ForeBirdMap {
 	
 	
@@ -27,6 +27,6 @@ public class ForeBirdMap {
 		
 		//request.setAttribute("",);
 		
-		return "BirdMap";
+		return "Fore/ForeMap";
 	}
 }

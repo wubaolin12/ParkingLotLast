@@ -62,6 +62,13 @@
 				条
 			</span>
 		</div>
+		<div class="cl pd-5 bg-1 bk-gray mt-20">
+			<span class="l"> <a href="${path}/Combination/toPay.action"
+				class="btn btn-primary radius" target="_blank"><i class="Hui-iconfont">&#xe600;</i>
+					支付窗口 </a></span> <span class="r">
+			</span>
+		</div>
+		
 		<div class="mt-20">
 			<table
 				class="table table-border table-bordered table-hover table-bg table-sort">

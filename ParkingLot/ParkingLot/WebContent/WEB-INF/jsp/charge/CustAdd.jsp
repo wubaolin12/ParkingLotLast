@@ -161,12 +161,10 @@
 									dataType : "text",
 									data:{cust_phone:function(){
 											var p = $("#cust_phone").val();
-											alert(p);
 											return p;
 										}
 									},
 									dataFilter : function(data) {
-									 alert(data);
 										 if (data == "true") {
 											 document.getElementById("phoneFlag").innerHTML="";
 											 return true;
@@ -195,32 +193,20 @@
 							var cust_sex = $("#cust_sex").val();
 							var cust_age = $("#cust_age").val();
 							var cust_phone = $("#cust_phone").val();
-							alert(cust_acc);
 								$(form).ajaxSubmit({
 													type : 'post',
 													url : "${path}/custManageHandler/CustAdd.action",
 													data:'{"cust_acc":'+cust_acc+',"cust_pwd":'+cust_pwd+',"cust_sex":'+cust_sex+
 													',"cust_age":'+cust_age+',"cust_phone":'+cust_phone+'}',
 													success : function(data) {
-														alert(cust_phone);
-													layer.msg(
-															'添加成功!',
-															{
-																icon : 1,
-																time : 1000
-															});
+													layer.msg('添加成功!',{icon : 1,time : 1000});
 														},
 														error : function(
 																XmlHttpRequest,
 																textStatus,
 																errorThrown
 																) {
-															layer.msg(
-																	'添加失败!',
-																{
-																	icon : 1,
-																	time : 1000
-																});
+															layer.msg('添加失败!',{icon : 1,time : 1000});
 														    }
 													   });
 									var index = parent.layer
