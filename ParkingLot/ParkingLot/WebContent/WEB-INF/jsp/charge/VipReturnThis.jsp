@@ -60,7 +60,7 @@
 			<div class="row cl">
 				<div class="col-xs-8 col-sm-9 col-xs-offset-4 col-sm-offset-3">
 					<input class="btn btn-primary radius" type="submit"
-						value="&nbsp;&nbsp;添加&nbsp;&nbsp;">
+						value="&nbsp;&nbsp;月缴退费&nbsp;&nbsp;">
 				</div>
 			</div>
 		</form>
@@ -180,14 +180,7 @@
 													url : "${path}/custManageHandler/CarVipReturn.action",
 													data:'{"cust_phone":'+cust_phone+',"carnum":'+carnum+'}',
 													success : function(data) {
-													alert(data);
-													alert(data);
-													layer.msg(
-															'删除成功!',
-															{
-																icon : 1,
-																time : 1000
-															});
+													layer.msg('删除成功!',{icon : 1,time : 1000});
 														},dataFilter : function(data) {
 															alert(data);
 														},
@@ -195,13 +188,7 @@
 																XmlHttpRequest,
 																textStatus,
 																errorThrown
-																) {
-															layer.msg(
-																	'删除失败!',
-																{
-																	icon : 1,
-																	time : 1000
-																});
+																) {layer.msg('删除失败!',{icon : 1,time : 1000});
 														    }
 													   });
 									var index = parent.layer.getFrameIndex(window.name);

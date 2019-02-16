@@ -90,13 +90,13 @@ String path=request.getScheme()+"://"+request.getServerName()+":"+
 											<div class="control-group">
 												<label class="control-label" for="cust_pwd">密码</label>
 												<div class="controls">
-													<input type="text" id="cust_pwd" name="cust_pwd" value="密码" onBlur="if(this.value=='') this.value='密码'" onFocus="if(this.value =='密码' ) this.value=''">
+													<input type="password" id="cust_pwd" name="cust_pwd"  placeholder="请输入密码">
 												 </div>
 											</div>
 											<div class="control-group">
 												<label class="control-label" for="inputEmail">确认密码</label>
 												<div class="controls">
-													<input type="text" id="inputEmail2" name="email2" value="确认密码" onBlur="if(this.value=='') this.value='确认密码'" onFocus="if(this.value =='确认密码' ) this.value=''">
+													<input type="password" id="inputEmail2" name="email2" placeholder="请再次输入密码">
 												 </div>
 											</div>
 											<div class="control-group">

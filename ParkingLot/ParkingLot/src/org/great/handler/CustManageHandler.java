@@ -463,17 +463,21 @@ public class CustManageHandler {
 		if (flag == true) {
 			int pid = 6;
 			Car car1 = new Car(pid, car1List.get(0).getC_num());
+			System.out.println("car1="+car1);
 			boolean flag1 = carBiz.chagerPmIDByCarNumberX(car1);
 			if (flag1 == true) {
 				str = "退费成功！！";
 				// 获取当前时间算出场时间
-				Combo combo = comboBiz.FindComboByIDX(car1List.get(0).getVip().getV_id());
+				Combo combo = comboBiz.FindComboByIDX(car1List.get(0).getVip().getCo_id());
+				System.out.println("combo="+combo);
 				int money = Integer.parseInt(combo.getCo_price());
 				DateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 				Date currenime = new Date();
 				String currendate = df.format(currenime);
 				User user = (User) request.getAttribute("User");
-				boolean ff = baseUtil.addReceipt(user.getU_id(), car1.getC_id(), "月缴退费", money, currendate);
+				System.out.println("currendate="+currendate);
+				System.out.println("user="+user);
+				boolean ff = baseUtil.addReceipt(user.getU_id(), car1List.get(0).getC_id(), "月缴退费", money, currendate);
 				System.out.println("ff=" + ff);
 			} else {
 				str = "退费失败！！";

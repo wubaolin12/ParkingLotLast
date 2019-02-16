@@ -28,7 +28,6 @@
 	href="${path}/static/static/h-ui.admin/skin/default/skin.css" id="skin" />
 <link rel="stylesheet" type="text/css"
 	href="${path}/static/static/h-ui.admin/css/style.css" />
-
 <!--[if IE 6]>
 <script type="text/javascript" src="lib/DD_belatedPNG_0.0.8a-min.js" ></script>
 <script>DD_belatedPNG.fix('*');</script>
@@ -45,50 +44,52 @@
 			class="Hui-iconfont">&#xe68f;</i></a>
 	</nav>
 	<div class="page-container">
-		<article class="page-container">
-			<form class="form form-horizontal" id="form-admin-find" action="${path}/custManageHandler/countGetMoneyWayAjax.action">
-				<div class="row cl">
-					<label class="form-label col-xs-4 col-sm-3"><span
-						class="c-red">*</span>导入日期：</label>
-					<div class="formControls col-xs-8 col-sm-9">
-						<input type="date" id="re_time1" name="re_time1"
-							style="margin-left: 30px">至：<input type="date"
-							id="re_time2" name="re_time2" style="margin-left: 30px">
-					</div>
-				</div>
-				<div class="row cl">
-					<div class="col-xs-8 col-sm-9 col-xs-offset-4 col-sm-offset-3">
+		<div class="text-c">
+			<div class="page-container">
+				<article class="page-container">
+					<form class="form form-horizontal" id="form-admin-find"
+						action="${path}/custManageHandler/countGetMoneyWayAjax.action">
+						<div class="row cl">
+							<div class="formControls col-xs-8 col-sm-9">
+							<label class="form-label col-xs-4 col-sm-3"><span
+								class="c-red">*</span>导入日期：</label>
+								<input type="date" id="re_time1" name="re_time1"
+									style="margin-left: 30px">至：<input type="date"
+									id="re_time2" name="re_time2" style="margin-left: 30px">
 						<input class="btn btn-primary radius" type="submit"
-							value="&nbsp;&nbsp;添加&nbsp;&nbsp;">
-					</div>
-				</div>
-			</form>
-		</article>
-	</div>
-	<div class="mt-20">
-		<table
-			class="table table-border table-bordered table-hover table-bg table-sort">
-			<thead>
-				<tr class="text-c">
-					<th width="80">记录ID</th>
-					<th width="100">车辆牌照</th>
-					<th width="80">付款方式</th>
-					<th width="80">金额</th>
-					<th width="150">时间</th>
-				</tr>
-			</thead>
-			<tbody id="tdoy">
-				<c:forEach items="${ReceiptList}" var="c" varStatus="cc">
+									value="&nbsp;&nbsp;查询&nbsp;&nbsp;">
+							</div>
+						</div>
+					</form>
+				</article>
+			</div>
+		</div>
+
+		<div class="mt-20">
+			<table
+				class="table table-border table-bordered table-hover table-bg table-sort">
+				<thead>
 					<tr class="text-c">
-						<td>${c.re_id}</td>
-						<td>${c.car.c_num}</td>
-						<td>${c.param.pm_name}</td>
-						<td>${c.re_money}</td>
-						<td>${c.re_time}</td>
+						<th width="80">记录ID</th>
+						<th width="100">车辆牌照</th>
+						<th width="80">付款方式</th>
+						<th width="80">金额</th>
+						<th width="150">时间</th>
 					</tr>
-				</c:forEach>
-			</tbody>
-		</table>
+				</thead>
+				<tbody id="tdoy">
+					<c:forEach items="${ReceiptList}" var="c" varStatus="cc">
+						<tr class="text-c">
+							<td>${c.re_id}</td>
+							<td>${c.car.c_num}</td>
+							<td>${c.param.pm_name}</td>
+							<td>${c.re_money}</td>
+							<td>${c.re_time}</td>
+						</tr>
+					</c:forEach>
+				</tbody>
+			</table>
+		</div>
 	</div>
 	<!--_footer 作为公共模版分离出去-->
 	<script type="text/javascript"
@@ -109,13 +110,6 @@
 	<script type="text/javascript"
 		src="${path}/static/lib/laypage/1.2/laypage.js"></script>
 	<script type="text/javascript">
-	$(function() {
-		$('.skin-minimal input').iCheck({
-			checkboxClass : 'icheckbox-blue',
-			radioClass : 'iradio-blue',
-			increaseArea : '20%'
-		});
-
 		$(function() {
 			$('.table-sort').dataTable({
 				"aaSorting" : [ [ 1, "desc" ] ],//默认第几个排序
@@ -214,6 +208,26 @@
 		/*密码-修改*/
 		function change_password(title, url, id, w, h) {
 			layer_show(title, url, w, h);
+		}
+		/*用户-删除*/
+		function member_del(obj, id) {
+			layer.confirm('确认要删除吗？', function(index) {
+				$.ajax({
+					type : 'POST',
+					url : '',
+					dataType : 'json',
+					success : function(data) {
+						$(obj).parents("tr").remove();
+						layer.msg('已删除!', {
+							icon : 1,
+							time : 1000
+						});
+					},
+					error : function(data) {
+						console.log(data.msg);
+					},
+				});
+			});
 		}
 	</script>
 </body>

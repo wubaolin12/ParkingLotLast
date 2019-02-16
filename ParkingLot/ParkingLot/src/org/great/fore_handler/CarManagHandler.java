@@ -40,7 +40,9 @@ public class CarManagHandler {
 		System.out.println("cust=" + cust);
 		List<Car> CarList = carBiz.findCustCarX(cust);
 		System.out.println("CarList=" + CarList);
-		request.setAttribute("CarList", CarList);
+		if (CarList != null && CarList.size() != 0 && CarList.size() != 1 && CarList.get(0).getC_id() != 0) {
+			request.setAttribute("CarList", CarList);
+		}
 		return "Fore/carInfoRead";
 	}
 

@@ -11,7 +11,7 @@
 <html lang="zxx">
 
 <head>
-<title>预约停车订单查看</title>
+<title>预约停车</title>
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -99,8 +99,8 @@
 											</a>
 											<div class="nav-collapse nav-collapse_ collapse">
 												<ul class="nav sf-menu clearfix">
-													<li  class="active"><a href="${path}/appointmentParkLotHandler/appointmentParkLotJsp.do">预约停车<span class="over1"></span></a></li>
-													<li ><a href="${path}/carManagHandler/jumpCarMangerJSP.do">车辆管理<span class="over1"></span></a></li>													
+													<li class="active"><a href="${path}/appointmentParkLotHandler/appointmentParkLotJsp.do">预约停车<span class="over1"></span></a></li>
+													<li><a href="${path}/carManagHandler/jumpCarMangerJSP.do">车辆管理<span class="over1"></span></a></li>													
 													<li><a href="${path}/userinformation/toUserInformation.do">个人资料<span class="over1"></span></a></li>
                                                     <li><a href="${path}/userinformation/toUserSetting.do">个人设置<span class="over1"></span></a></li>
 													<li><a href="${path}/findcar/findcar.do">反向寻车<span class="over1"></span></a></li>
@@ -154,14 +154,19 @@
 				<div class="row">
 					<div class="span8">
 						<!-- START CONTACT US -->
-						<div class="pages">
+<div class="pages">
 							<!-- START COMMENT -->
 							<h3>预约停车订单</h3>
 							<h5>
-							<input class="btn btn-warning" type="button" value="&nbsp;&nbsp;我的预约订单&nbsp;&nbsp;" onclick="window.location='${path}/appointmentParkLotHandler/appointmentParkLotListJsp.do'"></h5>
+								<input class="btn btn-warning" type="button"
+									value="&nbsp;&nbsp;我的预约订单&nbsp;&nbsp;"
+									onclick="window.location='${path}/appointmentParkLotHandler/appointmentParkLotListJsp.do'">
+							</h5>
 							<div id="note"></div>
 							<div>
-								<form action="${path}/appointmentParkLotHandler/appointmentParkLot.do">
+								<form
+									action="${path}/appointmentParkLotHandler/appointmentParkLot.do"
+									onsubmit="return GetAppFlag()">
 									<div>
 										<select class="select" name="time2" id="time2">
 											<c:forEach items="${timeList}" var="p">
@@ -170,7 +175,7 @@
 										</select>
 									</div>
 									<div>
-										<br /> 
+										<br />
 									</div>
 									<div>
 										<select class="select" name="c_id" id="c_id">
@@ -180,7 +185,7 @@
 										</select>
 									</div>
 									<div>
-									<br/>
+										<br />
 									</div>
 									<div class="col-xs-8 col-sm-9 col-xs-offset-4 col-sm-offset-3">
 										<input class="btn btn-warning" type="submit"
@@ -192,11 +197,9 @@
 						</div>
 						<!-- END CONTACT US -->
 					</div>
-
 				</div>
 			</div>
 		</div>
-
 		<!-- START FOOTER -->
 		<footer>
 			<div class="social_wrapper">
@@ -230,6 +233,19 @@
 		src="${path}/static/fore-static/js/bootstrap.js"></script>
 	<script>
 	// CAROUFSEDSEL SLIDER 
+		function GetAppFlag() {
+		var time2 =document.getElementById("time2").value;
+		var c_id =document.getElementById("c_id").value;
+		if(time2==null||time2==""){
+			alert("时间不能为空！！！")
+			return false;
+		}
+		if(c_id==null||c_id==""){
+			alert("车牌号不能为空！！！")
+			return false;
+		}
+		return true;
+	}
 	$(document).ready(function () {
 		$('#caroufredsel_slider1').carouFredSel({
 			auto: {
