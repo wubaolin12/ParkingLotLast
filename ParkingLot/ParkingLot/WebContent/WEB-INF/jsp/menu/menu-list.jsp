@@ -40,8 +40,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		<button type="submit" class="btn btn-success radius" id="" name=""><i class="Hui-iconfont">&#xe665;</i> 搜菜单</button>
 	</form> -->
 	</div>
-	<div class="cl pd-5 bg-1 bk-gray mt-20"> <span class="l"><a href="javascript:;" onclick="datadel()" class="btn btn-danger radius"><i class="Hui-iconfont">&#xe6e2;</i> 批量删除</a> <a href="javascript:;" onclick="member_add('添加菜单','toInsertMenu.action','','510')" class="btn btn-primary radius"><i class="Hui-iconfont">&#xe600;</i> 添加菜单</a></span> </div>
+	<div class="cl pd-5 bg-1 bk-gray mt-20"> <span class="l">
+	<!-- <a href="javascript:;" onclick="datadel()" class="btn btn-danger radius"><i class="Hui-iconfont">&#xe6e2;</i> 批量删除</a>  -->
+	<a href="javascript:;" onclick="member_add('添加菜单','toInsertMenu.action','','510')" class="btn btn-primary radius"><i class="Hui-iconfont">&#xe600;</i> 添加菜单</a></span> </div>
 	<div class="mt-20">
+	
 	<table class="table table-border table-bordered table-hover table-bg table-sort">
 		<thead>
 
