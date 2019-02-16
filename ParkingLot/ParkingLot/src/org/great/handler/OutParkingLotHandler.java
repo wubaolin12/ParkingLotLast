@@ -55,20 +55,23 @@ public class OutParkingLotHandler {
 	 * @throws UnsupportedEncodingException 
 	 */
 	
-	@RequestMapping("/moneyTo_out.action")
+	@RequestMapping("/moneyTo_out.pay")
 	public String moneyTo_recharge(HttpServletRequest request,String WIDsubject, String WIDout_trade_no,String WIDbody,String WIDtotal_amount) throws UnsupportedEncodingException {
 		System.out.println("订单名称="+WIDsubject);
 		System.out.println("商户订单号="+WIDout_trade_no);
 		System.out.println("商品描述="+WIDbody);
 		System.out.println("金额="+WIDtotal_amount);
+		
+//		WIDsubject = new String(WIDsubject.getBytes("ISO-8859-1"));
 		request.setAttribute("WIDsubject", WIDsubject);
+		System.out.println(WIDsubject);
 		request.setAttribute("WIDout_trade_no", WIDout_trade_no);
 		request.setAttribute("WIDbody", WIDbody);
 		request.setAttribute("WIDtotal_amount", WIDtotal_amount);
 		request.getSession().setAttribute("PayType", "出场缴费");
 		
 		//防止乱码
-		request.setCharacterEncoding("utf-8");
+//		request.setCharacterEncoding("gbk");
 		
 		String path=request.getScheme()+"://"+request.getServerName()+":"+
 				request.getServerPort()+request.getContextPath()+"/";
@@ -76,7 +79,7 @@ public class OutParkingLotHandler {
 		
 		
 	}
-	
+
 	/**
 	 *   支付成功后，跳转开闸界面
 	 */
@@ -89,16 +92,43 @@ public class OutParkingLotHandler {
 		System.out.println("付款金额="+total_amount);
 		
 		request.getSession().setAttribute("moneyFlag", 0);
+		
+//		try {
+//			response.setContentType("text/html;charset=utf-8");
+//			String path = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort()
+//					+ request.getContextPath() + "/";
+//			PrintWriter out = response.getWriter();
+//			out.println("<script type='text/javascript'>alert('支付成功，开闸！'); location.href='" + path
+//					+ "AppearanceCarAdmissionDisplay.jsp';</script>");
+//			out.close();
+//			} catch (IOException e) {
+//				// TODO Auto-generated catch block
+//				e.printStackTrace();
+//			}
+		
 		return "AppearanceCarAdmissionDisplay";
 	}
 	
 	/**
-	 *   支付失败后，跳转回个人充值界面
+	 *   支付失败后，跳转回出场
 	 */
 	
-	@RequestMapping("/failedToRecharge.do")
+	@RequestMapping("/failedToOut.do")
 	public String failedToRecharge(HttpServletRequest request,HttpServletResponse response) {
 		System.out.println("失败");
+//		try {
+//			response.setContentType("text/html;charset=utf-8");
+//			String path = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort()
+//					+ request.getContextPath() + "/";
+//			PrintWriter out = response.getWriter();
+//			out.println("<script type='text/javascript'>alert('支付失败，闸未开！'); location.href='" + path
+//					+ "AppearanceCarAdmissionDisplay.jsp';</script>");
+//			out.close();
+//			} catch (IOException e) {
+//				// TODO Auto-generated catch block
+//				e.printStackTrace();
+//			}
+//		
 		return "AppearanceCarAdmissionDisplay";
 	}
 }

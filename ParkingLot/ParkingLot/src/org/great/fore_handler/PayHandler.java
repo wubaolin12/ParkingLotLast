@@ -74,7 +74,7 @@ public class PayHandler {
 		
 		request.getSession().setAttribute("PayType", "充值");
 		
-		response.setContentType("text/html;charset=utf-8");
+		 //response.setContentType("text/html;charset=utf-8");
 		String path=request.getScheme()+"://"+request.getServerName()+":"+
 				request.getServerPort()+request.getContextPath()+"/";
 		return "../../"+"alipay.trade.page.pay";
@@ -100,6 +100,19 @@ public class PayHandler {
 		System.out.println(cust);
 		//修改数据库的余额
 		custBiz.chageCustMoneyByIDX(cust);
+		
+//		try {
+//			response.setContentType("text/html;charset=utf-8");
+//			String path = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort()
+//					+ request.getContextPath() + "/";
+//			PrintWriter out = response.getWriter();
+//			out.println("<script type='text/javascript'>alert('充值"+total_amount+"元成功！'); location.href='" + path
+//					+ "pay/toRecharge.do';</script>");
+//			out.close();
+//			} catch (IOException e) {
+//				// TODO Auto-generated catch block
+//				e.printStackTrace();
+//			}
 		return "Fore/Recharge";
 	}
 	
@@ -108,8 +121,24 @@ public class PayHandler {
 	 */
 	
 	@RequestMapping("/failedToRecharge.do")
-	public String failedToRecharge() {
+	public String failedToRecharge(HttpServletRequest request,HttpServletResponse response) {
 		System.out.println("失败");
+//		try {
+//			response.setContentType("text/html;charset=utf-8");
+//			String path = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort()
+//					+ request.getContextPath() + "/";
+//			PrintWriter out = response.getWriter();
+//			out.println("<script type='text/javascript'>alert('充值失败！'); location.href='" + path
+//					+ "pay/toRecharge.do';</script>");
+//			out.close();
+//			} catch (IOException e) {
+//				// TODO Auto-generated catch block
+//				e.printStackTrace();
+//			}
+//		
+		
 		return "Fore/Recharge";
+		
+		
 	}
 }

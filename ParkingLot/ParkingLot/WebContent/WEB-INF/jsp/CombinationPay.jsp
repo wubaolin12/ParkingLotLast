@@ -1,264 +1,209 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=utf-8"
+    pageEncoding="utf-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>  
+
+<%
+String path = request.getContextPath();
+String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
+%>  
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<c:set value="${pageContext.request.contextPath}" var="path"
-	scope="page" />
-<!DOCTYPE html>
+<c:set value="${pageContext.request.contextPath}" var="path" scope="page" />
+
+<!DOCTYPE HTML>
 <html>
 <head>
 <meta charset="utf-8">
 <meta name="renderer" content="webkit|ie-comp|ie-stand">
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-<meta name="viewport"
-	content="width=device-width,initial-scale=1,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
 <meta http-equiv="Cache-Control" content="no-siteapp" />
 <!--[if lt IE 9]>
 <script type="text/javascript" src="lib/html5shiv.js"></script>
 <script type="text/javascript" src="lib/respond.min.js"></script>
 <![endif]-->
-<link rel="stylesheet" type="text/css"
-	href="${path}/static/static/h-ui/css/H-ui.min.css" />
-<link rel="stylesheet" type="text/css"
-	href="${path}/static/static/h-ui.admin/css/H-ui.admin.css" />
-<link rel="stylesheet" type="text/css"
-	href="${path}/static/lib/Hui-iconfont/1.0.8/iconfont.css" />
-<link rel="stylesheet" type="text/css"
-	href="${path}/static/static/h-ui.admin/skin/default/skin.css" id="skin" />
-<link rel="stylesheet" type="text/css"
-	href="${path}/static/static/h-ui.admin/css/style.css" />
+<link rel="stylesheet" type="text/css" href="${path}/static/static/h-ui/css/H-ui.min.css" />
+<link rel="stylesheet" type="text/css" href="${path}/static/static/h-ui.admin/css/H-ui.admin.css" />
+<link rel="stylesheet" type="text/css" href="${path}/static/lib/Hui-iconfont/1.0.8/iconfont.css" />
+<link rel="stylesheet" type="text/css" href="${path}/static/static/h-ui.admin/skin/default/skin.css" id="skin" />
+<link rel="stylesheet" type="text/css" href="${path}/static/static/h-ui.admin/css/style.css" />
 <!--[if IE 6]>
 <script type="text/javascript" src="lib/DD_belatedPNG_0.0.8a-min.js" ></script>
 <script>DD_belatedPNG.fix('*');</script>
 <![endif]-->
-<title>套餐缴费</title>
-<meta name="keywords"
-	content="H-ui.admin v3.1,H-ui网站后台模版,后台模版下载,后台管理系统模版,HTML后台模版下载">
-<meta name="description"
-	content="H-ui.admin v3.1，是一款由国人开发的轻量级扁平化网站后台模板，完全免费开源的网站后台管理系统模版，适合中小型CMS后台系统。">
+<title>套餐缴费支付</title>
 </head>
 <body>
-	<article class="page-container">
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-		<form class="form form-horizontal" id="form-admin-add">
-<div class="row cl">
-				<label class="form-label col-xs-4 col-sm-3"><span
-					class="c-red">*</span>手机：</label>
-				<div class="formControls col-xs-8 col-sm-9">
-					<input type="text" class="input-text" value="" placeholder=""
-						id="cust_phone" name="cust_phone">
-						<label id="phoneFlag" style="color: red"></label>
-				</div>
-			</div>
-		<div class="row cl">
-				<label class="form-label col-xs-4 col-sm-3"><span
-					class="c-red">*车牌号:</span></label>
-				<div class="formControls col-xs-8 col-sm-9">
-					<input type="text" class="input-text" value="" placeholder=""
-						id="carnum" name="carnum">
-						<label id="carNumFlag" style="color: red"></label>
-				</div>
-			</div>
-		<div class="row cl">
-				<label class="form-label col-xs-4 col-sm-3"><span
-					class="c-red">*选择套餐:</span></label>
-				<div class="formControls col-xs-8 col-sm-9">
-					<div class="radio-box">
-						<input name="pm_id" type="radio" value="注册会员" id="pm_id" onclick="chose()" checked > <label
-							for="sex-1">注册会员</label>
-					</div>
-						<input type="radio" id="pm_id" name="pm_id" value="包月会员"  onclick="chose()"> <label
-							for="sex-2">包月套餐</label>
-				</div>
-				<div class="radio-box">
-				<span class="select-box" id="vipchose" style="width:150px;visibility: hidden;">
-					<select class="select" name="adminRole" id="adminRole" >
-						<option value="0"></option>
-					<c:forEach items="${comList}" var="c" varStatus="cc">
-						<option value="${c.co_id}">${c.co_standard}天-${c.co_price}</option>
-					</c:forEach>
-					</select>
-				</span> 
-					</div>
-			</div>
-			<div class="row cl">
-				<div class="col-xs-8 col-sm-9 col-xs-offset-4 col-sm-offset-3">
-					<input class="btn btn-primary radius" type="submit"
-						value="&nbsp;&nbsp;添加&nbsp;&nbsp;">
-				</div>
-			</div>
+<nav class="breadcrumb"><i class="Hui-iconfont">&#xe67f;</i> 首页 <span class="c-gray en">&gt;</span> 收费管理 <span class="c-gray en">&gt;</span>套餐缴费支付 <a class="btn btn-success radius r" style="line-height:1.6em;margin-top:3px" href="javascript:location.replace(location.href);" title="刷新" ><i class="Hui-iconfont">&#xe68f;</i></a></nav>
+<div class="page-container">
+	</div>
+	<div class="mt-20">
+	<table class="table table-border table-bordered table-hover table-bg table-sort">
+		<thead>
+
+			<tr class="text-c">
+				<th width="90">套餐规格/天</th>
+				<th width="90">套餐价格/元</th>
+				<th width="100">操作</th>
+			</tr>
+		</thead>
+		<tbody>
+		<c:forEach items="${comListhq}" var="ul" varStatus="uu">
+			<tr class="text-c" id="${ul.co_id}">
+				<td class="co_standard">${ul.co_standard}</td>
+				<td class="co_price">${ul.co_price}</td>
+				<td class="td-manage">
+				<c:if test="${ul.co_price>0}">
+				<a title="选择支付" href="javascript:;" onclick="toPay(${ul.co_price})" >选择支付</a>
+				</c:if>
+				 
+				 </td>
+			</tr>
+		</c:forEach>
+		</tbody>
+		
+	</table>
+	</div>
+	<!-- 下面的input为隐藏区域 -->
+	<div style="display:none">
+		<form name="alipayment" action="${path}/Combination/moneyTo_Combination.action" method=post
+			 id="alipayment" class="form-horizontal" >
+		订单名称:<input id="WIDsubject" name="WIDsubject" />
+		商户订单号:<input id="WIDout_trade_no" name="WIDout_trade_no" />
+		商品描述:<input id="WIDbody" name="WIDbody" />
+		商品价格:<input id="WIDtotal_amount" name="WIDtotal_amount" />
 		</form>
-	</article>
+	</div>
+<!--_footer 作为公共模版分离出去-->
+<script type="text/javascript" src="${path}/static/lib/jquery/1.9.1/jquery.min.js"></script> 
+<script type="text/javascript" src="${path}/static/lib/layer/2.4/layer.js"></script>
+<script type="text/javascript" src="${path}/static/static/h-ui/js/H-ui.min.js"></script> 
+<script type="text/javascript" src="${path}/static/static/h-ui.admin/js/H-ui.admin.js"></script> <!--/_footer 作为公共模版分离出去-->
 
-	<!--_footer 作为公共模版分离出去-->
-	<script type="text/javascript"
-		src="${path}/static/lib/jquery/1.9.1/jquery.min.js"></script>
-	<script type="text/javascript"
-		src="${path}/static/lib/layer/2.4/layer.js"></script>
-	<script type="text/javascript"
-		src="${path}/static/static/h-ui/js/H-ui.min.js"></script>
-	<script type="text/javascript"
-		src="${path}/static/static/h-ui.admin/js/H-ui.admin.js"></script>
-	<!--/_footer 作为公共模版分离出去-->
-
-	<!--请在下方写此页面业务相关的脚本-->
-	<script type="text/javascript"
-		src="${path}/static/lib/jquery.validation/1.14.0/jquery.validate.js"></script>
-	<script type="text/javascript
+<!--请在下方写此页面业务相关的脚本-->
+<script type="text/javascript" src="${path}/static/lib/My97DatePicker/4.8/WdatePicker.js"></script> 
+<script type="text/javascript" src="${path}/static/lib/datatables/1.10.0/jquery.dataTables.min.js"></script> 
+<script type="text/javascript" src="${path}/static/lib/laypage/1.2/laypage.js"></script>
+<script type="text/javascript">
+$(function(){
+	$('.table-sort').dataTable({
+		"aaSorting": [[ 1, "desc" ]],//默认第几个排序
+		"bStateSave": true,//状态保存
+		"aoColumnDefs": [
+		  //{"bVisible": false, "aTargets": [ 3 ]} //控制列的隐藏显示
+		  {"orderable":false,"aTargets":[]}// 制定列不参与排序
+		]
+	});
 	
-	"
-		src="${path}/static/lib/jquery.validation/1.14.0/validate-methods.js"></script>
-	<script type="text/javascript"
-		src="${path}/static/lib/jquery.validation/1.14.0/messages_zh.js"></script>
-	<script type="text/javascript">
-	function chose(){
-		var radios = document.getElementById("form-admin-add").pm_id;//获取id为list下的所有name为user的值的集合
-		alert(radios);
-		alert(radios.length);
-		for(var i=0;i<radios.length;i++){//循环值得集合
-				if(radios[i].checked){//通过checked属性判断是否被选中
-				var radid = radios[i].value//将被选择的radio的值赋给变量userid
-				}
-		}
-		if(radid=="包月会员"){
-			document.getElementById("vipchose").style.visibility = "visible";
-		}else{
-			document.getElementById("vipchose").style.visibility = "hidden"; 
-		}
-	}
-	</script>
-	<script type="text/javascript">
-		$(function() {
-			$('.skin-minimal input').iCheck({
-				checkboxClass : 'icheckbox-blue',
-				radioClass : 'iradio-blue',
-				increaseArea : '20%'
-			});
+});
+/*用户-添加*/
+function member_add(title,url,w,h){
+	/* layer_show(title,url,w,h); */
+	  parent.layer.open({
+	        type: 2,
+	        title: title,
+	        shadeClose: false, //点击遮罩关闭
+	        shade: 0.8,
+	        area: ['50%', '70%'],
+	        maxmin: true,
+	        closeBtn: 1,
+	         content: '${path}/combomanage/toInsertCombo.action',  //iframe的url，yes是否有滚动条
+	        end: function () {
+	        
+	            location.reload();
+	        }
+	    });
+}
+/*用户-查看*/
+function member_show(title,url,id,w,h){
+	layer_show(title,url,w,h);
+}
+/*用户-停用*/
+function member_stop(obj,id){
+	layer.confirm('确认要停用吗？',function(index){
+		$.ajax({
+			type: 'POST',
+			url: '',
+			dataType: 'json',
+			success: function(data){
+				$(obj).parents("tr").find(".td-manage").prepend('<a style="text-decoration:none" onClick="member_start(this,id)" href="javascript:;" title="启用"><i class="Hui-iconfont">&#xe6e1;</i></a>');
+				$(obj).parents("tr").find(".td-status").html('<span class="label label-defaunt radius">已停用</span>');
+				$(obj).remove();
+				layer.msg('已停用!',{icon: 5,time:1000});
+			},
+			error:function(data) {
+				console.log(data.msg);
+			},
+		});		
+	});
+}
 
-			$("#form-admin-add").validate({
-						rules : {
-							carnum : {
-								required : true,
-								remote:{
-									url:"${path}/custManageHandler/CarAddNumV.action",
-									type : "post",
-									dataType : "text",
-									data:{
-										carnum:function(){
-										var p = $("#carnum").val();
-										alert(p);
-										return p;
-									},
-									cust_phone:function(){
-									var p1 = $("#cust_phone").val();
-									alert(p1);
-									return p1;
-								}
-							},
-							dataFilter : function(data) {
-								alert(data);
-								if (data == "true") {
-									document.getElementById("carNumFlag").innerHTML="";
-									return true;
-								} else {
-									document.getElementById("carNumFlag").innerHTML="*该车牌已被注册！";
-									return false;
-								}
-							}
-						}
-					},
-							cust_phone : {
-								required : true,
-								minlength : 11,
-								maxlength : 11,
-								remote:{
-									url:"${path}/custManageHandler/CustPhoneValidate.action",
-									type : "post",
-									dataType : "text",
-									data:{
-										cust_phone:function(){
-											var p = $("#cust_phone").val();
-											alert(p);
-											return p;
-										}
-									},
-									dataFilter : function(data) {
-									 alert(data);
-										// 									 和之前的一个电话号码验证用同一个action方法
-//										只不过之前的结果需求刚好相反，之前的是查询有结果时data是false，
-//                      				         但要空的时候添加注册客户CUST，需要data是true是通过，
-//										现在是需要查询的到才能为其添加车联所以返回data是false是通过
-										 if (data == "false") {
-											 document.getElementById("phoneFlag").innerHTML="";
-											 return true;
-										 } else {
-											document.getElementById("phoneFlag").innerHTML="*该手机号不存在！";
-												return false;
-										 }
-									}
-									
-								}
-							},
-							email : {
-								required : true,
-								email : true,
-							},
-								adminRole : {
-								required : true,
-							},
-						},
-						onkeyup : false,
-						focusCleanup : true,
-						success : "valid",
-						submitHandler : function(form) {
-							var cust_phone = $("#cust_phone").val();
-							var carnum = $("#carnum").val();
-							alert(carnum);
-							var adminRole = $("#adminRole").val();
-							var pm_id = $("#pm_id").val();
-								$(form).ajaxSubmit({
-													type : 'post',
-													url : "${path}/custManageHandler/CarAddH.action",
-													data:'{"cust_phone":'+cust_phone+',"carnum":'+carnum+',"adminRole":'+adminRole+',"pm_id":'+pm_id+'}',
-													success : function(data) {
-													alert(data);
-													alert(data);
-													layer.msg(
-															'添加成功!',
-															{
-																icon : 1,
-																time : 1000
-															});
-														},
-														error : function(
-																XmlHttpRequest,
-																textStatus,
-																errorThrown
-																) {
-															layer.msg(
-																	'添加失败!',
-																{
-																	icon : 1,
-																	time : 1000
-																});
-														    }
-													   });
-									var index = parent.layer.getFrameIndex(window.name);
-									parent.$('.btn-refresh').click();
-									parent.layer.close(index);
-								}
-							});
+/*用户-启用*/
+function member_start(obj,id){
+	layer.confirm('确认要启用吗？',function(index){
+		$.ajax({
+			type: 'POST',
+			url: '',
+			dataType: 'json',
+			success: function(data){
+				$(obj).parents("tr").find(".td-manage").prepend('<a style="text-decoration:none" onClick="member_stop(this,id)" href="javascript:;" title="停用"><i class="Hui-iconfont">&#xe631;</i></a>');
+				$(obj).parents("tr").find(".td-status").html('<span class="label label-success radius">已启用</span>');
+				$(obj).remove();
+				layer.msg('已启用!',{icon: 6,time:1000});
+			},
+			error:function(data) {
+				console.log(data.msg);
+			},
 		});
-	</script>
-	<!--/请在上方写此页面业务相关的脚本-->
+	});
+}
+
+/*用户-删除*/
+function member_del(obj,id){
+	layer.confirm('确认要删除吗？',function(index){
+		$.ajax({
+			type: 'POST',
+			url: 'delCombo.action',
+			dataType: 'text',
+			data :"co_id="+id,
+			success: function(data){
+/* 				$(obj).parents("tr").remove();*/
+				layer.msg('已删除!',{icon:1,time:1000});
+			 	location.href="comboList.action"
+
+			},
+			error:function(data) {
+				console.log(data.msg);
+			},
+		});		
+	});
+}
+function GetDateNow() {
+	var vNow = new Date();
+	var sNow = "";
+	sNow += String(vNow.getFullYear());
+	sNow += String(vNow.getMonth() + 1);
+	sNow += String(vNow.getDate());
+	sNow += String(vNow.getHours());
+	sNow += String(vNow.getMinutes());
+	sNow += String(vNow.getSeconds());
+	sNow += String(vNow.getMilliseconds());
+	document.getElementById("WIDout_trade_no").value =  sNow;
+	document.getElementById("WIDsubject").value = "传一智能停车场系统套餐缴费";
+}
+GetDateNow();
+
+function toPay(hqMoney){
+	document.getElementById('WIDtotal_amount').value=hqMoney;
+	var str="确定要支付"+hqMoney+"元吗？";
+	if(hqMoney>0){
+		 if(confirm(str)==true){
+			 var form = document.getElementById('alipayment');
+		     form.submit();
+		}
+	}else{
+		alert("请选择价格大于0的套餐");
+	}
+}
+</script> 
 </body>
 </html>

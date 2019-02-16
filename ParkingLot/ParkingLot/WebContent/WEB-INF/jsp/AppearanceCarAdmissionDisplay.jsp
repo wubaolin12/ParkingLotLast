@@ -94,7 +94,7 @@
 		<source src="<%=path%>static/images/Rallye.mp4" type="video/mp4">
 </video>
 <div style="display:none">
-	<form name="alipayment" action="<%=path%>outPay/moneyTo_out.action" method=post
+	<form name="alipayment" action="<%=path%>outPay/moneyTo_out.pay" method="post"
 			 id="alipayment"  target="_blank">
 			<div id="body1"  name="divcontent">
 					商户订单号 ：<input id="WIDout_trade_no" name="WIDout_trade_no" />

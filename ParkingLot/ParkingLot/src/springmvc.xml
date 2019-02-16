@@ -51,6 +51,7 @@
 			<!-- 	不拦截的资源 -->
 				<mvc:exclude-mapping path="/**/*fore*"/>
 				<mvc:exclude-mapping path="/**/*.action"/>
+				<mvc:exclude-mapping path="/**/*.pay"/>
 				
 		<!-- 	指定拦截器位置 -->
 			<bean class="org.great.interceptor.ForeInterceptor"/>
@@ -63,6 +64,7 @@
 				<!-- 不拦截的资源 -->
 				<mvc:exclude-mapping path="/**/*login*"/>
 				<mvc:exclude-mapping path="/**/*.do"/>
+				<mvc:exclude-mapping path="/**/*.pay"/>
 				
 				<!-- 指定拦截器位置 -->
 				<bean class="org.great.interceptor.LoginInterceptor"/>
