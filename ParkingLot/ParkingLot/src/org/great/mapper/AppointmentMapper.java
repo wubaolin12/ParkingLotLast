@@ -49,4 +49,11 @@ public interface AppointmentMapper {
 	 * @return
 	 */
 	public List<Appointment> findCarAppoinmentByCarIDX(int c_id);
+
+	/**
+	 * 自动判断是否预约已经过期
+	 * @param time
+	 * @return
+	 */
+	public boolean pastDue(String time);
 }

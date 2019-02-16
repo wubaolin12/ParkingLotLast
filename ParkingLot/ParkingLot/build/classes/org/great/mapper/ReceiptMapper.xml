@@ -11,16 +11,11 @@
 	</insert>
 	<select id="findDailyRecp"
 		parameterType="org.great.bean.Receipt" resultMap="receiptMap">
-		select
-		re_id,u_name,c_num,re_thing,re_money,re_time,c.c_id,u_id from
-		(select
-		tb1.*,u.u_name FROM(select *
-		from tb_receipt re where re.re_time like
-		#{re_time})tb1
-		LEFT JOIN tb_user u
-		on u.u_id= tb1.u_id)tb2
-		LEFT JOIN
-		tb_car c on c.c_id=tb2.c_id
+		select re_id,u_name,c_num,re_thing,re_money,re_time,c.c_id,u_id from 
+		(select tb1.*,u.u_name FROM(select * 
+		from tb_receipt re where re.re_time like CONCAT('%','${re_time}','%' ))tb1
+		LEFT JOIN tb_user u on u.u_id= tb1.u_id)tb2 
+		LEFT JOIN tb_car c on c.c_id=tb2.c_id
 	</select>
 	<resultMap type="org.great.bean.Receipt" id="receiptMap">
 		<id property="re_id" column="re_id" />

@@ -54,4 +54,11 @@ public class AppointmentBizImpl implements AppointmentBiz {
 		return appointmentMapper.findCarAppoinmentByCarIDX(c_id);
 	}
 
+	@Override
+	public boolean pastDue(String time) {
+		
+		return appointmentMapper.pastDue(time);
+	}
+
+
 }

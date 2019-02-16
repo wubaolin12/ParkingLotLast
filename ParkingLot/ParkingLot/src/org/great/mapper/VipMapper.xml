@@ -23,8 +23,15 @@
 		update tb_vip v set v.pm_id =
 		(select pm_id from tb_param where pm_name="已过期")
 		where v.v_overtime=#{date}
-
 	</update>
+	
+	<!-- 自动将未生效的月缴套餐生效 -->
+	<update id="activeVip" >
+		update tb_vip v set v.pm_id =
+		(select pm_id from tb_param where pm_name="生效中")
+		where v.pm_id=(select pm_id from tb_param where pm_name="待生效")
+	</update>
+	
 	<!-- 根据车id查询vip表信息 -->
 	<select id="findVipX" parameterType="int"
 		resultType="org.great.bean.Vip">

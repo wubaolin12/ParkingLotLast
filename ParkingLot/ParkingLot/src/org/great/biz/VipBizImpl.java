@@ -49,4 +49,9 @@ public class VipBizImpl implements VipBiz{
 		// TODO Auto-generated method stub
 		return VipMapper.VipReturnX(v_id);
 	}
+	@Override
+	public boolean activeVip() {
+		
+		return VipMapper.activeVip();
+	}
 }

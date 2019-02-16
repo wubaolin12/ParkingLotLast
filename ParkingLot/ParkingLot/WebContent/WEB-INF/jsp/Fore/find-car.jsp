@@ -139,7 +139,7 @@
 						<p>输入车牌号</p>
 						<input type="text" name="c_num" id="c_num" class="form-default"/>
 						
-						<input type="button" value="查看车辆" onclick="findCar()"/>
+						<input type="button" value="查看车辆" onclick="findCar()" class="btn btn-success"/>
 				
 						
 						<!-- END ABOUT US -->
@@ -171,7 +171,7 @@
 							<li>
 								<div class="thumbnail clearfix">
 									<div class="client1">
-										<a href="${path}/BirdMap/birdmap.do">
+										<a href="${path}/fore/birdmap.do">
 											<div class="client1_inner">
 												<div class="c1">
 													<div class="txt2">跳转到导航

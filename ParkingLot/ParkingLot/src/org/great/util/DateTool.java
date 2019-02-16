@@ -1,6 +1,8 @@
 package org.great.util;
 
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 
 
@@ -34,9 +36,41 @@ public class DateTool {
 		return date;
 	}
 	
-//	public static void main(String[] args) {
-//		getDate();
+	/**
+	 * 获取昨天的日期
+	 * @return
+	 */
+	public static String getYesterdayDate() {
+		
+		//使用默认时区和语言环境获得一个日历
+		Calendar calendar = Calendar.getInstance();
+		
+		//根据日历的规则，为给定的日历字段添加或减去指定的时间量
+		calendar.add(Calendar.DATE, -1);
+		
+		//返回一个Date对象
+		Date date = calendar.getTime();
+		String yesterday = new SimpleDateFormat("yyyy-MM-dd").format(date);
+		
+		return yesterday;
+	}
+	
+//	public static void main(String[] args) throws Exception {
+////		getDate();
 //		System.out.println("---------");
-//		getTime();
+////		getYesterdayDate();
+//		String t1 = getTime();
+//		String t2 = "2019-02-16 08:30:00";
+//		System.out.println(t1);
+//		
+//		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+//		
+//		long m1=sdf.parse(t1).getTime()-sdf.parse(t2).getTime();
+//		
+//		if(m1>=0) {
+//			//预约到期
+//			System.out.println("预约到期");
+//		}
+//		
 //	}
 }
