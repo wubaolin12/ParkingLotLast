@@ -164,7 +164,7 @@
 									<form
 										action="${path}/appointmentParkLotHandler/appointmentParkLotCancel.do">
 										<div>
-											<div style="border: 1px solid #000">
+											<div style="border: 1px solid #FFF">
 												<ul>
 													<li>车牌号：${app.car. c_num} <input type="hidden"
 														value="${app.car.c_num}" id="c_num" name="c_num"></li>

@@ -211,7 +211,7 @@ public class LicensePlateRecognition {
 		String currendate = df.format(currenime);
 		int pm_id = 1;
 		// 查询车牌出是否为预约车辆
-		List<Appointment> AppointmentList = appointmentBiz.findCarAppoinmentX();
+		List<Appointment> AppointmentList = appointmentBiz.findCarAppoinmentByCarIDX(car.getC_id());
 		System.out.println("AppointmentList=" + AppointmentList);
 		System.out.println("AppointmentList大小=" + AppointmentList.size());
 		Param param = new Param("停车中", "停车状态");
@@ -220,10 +220,10 @@ public class LicensePlateRecognition {
 		Param param22 = paramBiz.GetPmIDByTypeNmaeX(param2);
 		if (AppointmentList != null && AppointmentList.size() != 0) {
 			pm_id = param22.getPm_id();
-		}else {
-			pm_id=param1.getPm_id();
+		} else {
+			pm_id = param1.getPm_id();
 		}
-		Stopcartime sct = new Stopcartime(car.getC_id(),pm_id, currendate);
+		Stopcartime sct = new Stopcartime(car.getC_id(), pm_id, currendate);
 
 		// 先查询该车是否在停车了，如果在停车了就不要重复添加数据
 		List<Stopcartime> sctlist = stopcartimeBiz.FindSctByNumber(car.getC_id());
