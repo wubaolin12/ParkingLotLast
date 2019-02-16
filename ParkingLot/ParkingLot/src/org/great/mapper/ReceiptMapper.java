@@ -39,5 +39,11 @@ public interface ReceiptMapper {
 	 * @return
 	 */
 	public boolean AddReceiptX(Receipt receipt);
+	
+	/**
+	 * 	查找收支明细
+	 * @param 
+	 */
+	public List<Receipt> findReceiptList();
 
 }

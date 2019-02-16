@@ -19,5 +19,53 @@
 		tb_param where pm_type =
 		#{pmtype} and pm_name = #{pmname} )
 	</select>
+	
+	
+	<select id="findRuleList" 
+		resultType="org.great.bean.Countrules">
+		SELECT * FROM tb_countrules
+	</select>
+	
+	<select id="findRuleListA" 
+		resultType="org.great.bean.Countrules">
+		SELECT * FROM tb_countrules where crpm_id = 12
+	</select>
+	
+	<select id="findRuleListB" 
+		resultType="org.great.bean.Countrules">
+		SELECT * FROM tb_countrules where crpm_id = 13
+	</select>
 
+	
+	<select id="findSelect" 
+		resultType="org.great.bean.Param">
+		SELECT * from tb_param where pm_type = "规则类型"
+	</select>
+	
+	<select id="findSelectRuleList" parameterType="String"
+		resultType="org.great.bean.Countrules">
+		SELECT * from tb_countrules where crpm_id = #{select}
+	</select>
+	
+	
+	 <update id="updateRule" parameterType="org.great.bean.Countrules">
+ 
+	 update tb_countrules set cr_starttime=#{cr_starttime},cr_overtime=#{cr_overtime},cr_fristmoney=#{cr_fristmoney},cr_addmoney=#{cr_addmoney} where cr_id = #{cr_id} 
+	 </update>
+	 
+	 <insert id="planNameAdd" parameterType="String">
+	  	insert into
+		tb_param(pm_name,pm_type)
+		values
+		(#{planName},"规则类型") 
+	 </insert>
+	 
+	  <update id="start" parameterType="String">
+	 UPDATE tb_countrules SET pm_id = 11 WHERE crpm_id = #{crpm_id};
+	 </update>
+	 
+	 <update id="start2" parameterType="String">
+	 UPDATE tb_countrules SET pm_id = 10 WHERE crpm_id != #{crpm_id}
+	 </update>
+	 
 </mapper>
