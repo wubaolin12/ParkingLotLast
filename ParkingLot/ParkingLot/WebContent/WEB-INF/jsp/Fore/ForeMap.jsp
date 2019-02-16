@@ -197,6 +197,8 @@
 		</div>
 	
   </nav>
+  
+  
   <div id="description">
     暂无导航提示信息
   </div>
@@ -204,7 +206,7 @@
    <!-- 搜索 -->
     <div class="search">
         <span id="btnSearch" class="glyphicon glyphicon-search" aria-hidden="true"></span>
-        <input id="searchText" type="text" class="searchText" placeholder="搜索关键字">
+        <input id="searchText" type="text" class="searchText" placeholder="输入车位号">
        
     </div>
 
@@ -218,9 +220,9 @@
     <input type="button" class="btn btn-default btnclass" onclick="clearNavi()" value="清除" />
     <input type="button" class="btn btn-default btnclass" onclick="startNavi1()" value="开始第一人称导航" />
     <input type="button" class="btn btn-default btnclass" onclick="startNavi2()" value="开始第三人称导航" />
-      <input type="button" id="btnPick"  class="btn btn-default btnclass"  value="开启模型拾取" />
+    <!--   <input type="button" id="btnPick"  class="btn btn-default btnclass"  value="开启模型拾取" />
     <input type="button" id="btnPickend" class="btn btn-default btnclass"  value="关闭模型拾取" />
- 
+  -->
   </div>
  
  
@@ -390,7 +392,7 @@
         // 位置x,y的偏移量
         offset: {
           x: 20,
-          y: 70
+          y: 60
         },
         imgURL: '<%=path%>BaseMap/BaseMap/image/wedgets/'
       })
@@ -405,7 +407,10 @@
         focusAlpha: 0.9, //对不聚焦图层启用透明设置，当focusAlphaMode = true时有效
         viewModeAnimateMode: true, //开启2维，3维切换的动画显示
         defaultScaleLevel: 3,
-        moveToAnimateMode: true //开启moveTo动画效果
+        moveToAnimateMode: true, //开启moveTo动画效果
+       
+        // visibleFloors: "all",
+        themeID: styleid //自定义样式主题ID
       });
 
       map.openMapById(10005);
@@ -672,6 +677,35 @@
   	    })
   	    
   	   
+  	<%--     
+  	   <%   List<Park> parklist =(List<Park>)request.getAttribute("ParkList");
+  		 
+  		 List list1 = new ArrayList();
+  		 List list2 = new ArrayList();
+  		 
+  		 for(Park park:parklist){
+  			 
+  			 if(park.getPm_id()==8){ 
+  			 
+  				 list1.add(park.getP_mapid());
+  			 
+  			 }else{
+  				 
+  				list2.add(park.getP_mapid());
+  			 }
+  		 }
+  			 %>
+  			  
+  		
+  			 //改变方块房子颜色,id,name二选择一，都可以是数组, fnum可选择，参数color:'#FF0000'
+  	  	    map.changeModelColor({id:<%=list1%>,fnum:[2],color:'#FF0000'}) 	 
+  	
+  	    
+  	    	 //改变方块房子颜色,id,name二选择一，都可以是数组, fnum可选择，参数color:'#FF0000'
+  	  	    map.changeModelColor({id:<%=list2%>,fnum:[1],color:'#00FFFF'}) 
+  	 --%>
+  	    
+  	    
   	    
   	    
   	   var lm = new esmap.ESLocationMarker({
@@ -718,7 +752,7 @@
   	var startPick = true; // 控制是否弹出信息框
 
   	//点击事件
-  	map.on('mapClickNode', function(event) {
+  	map.on('ClickNode', function(event) {
   		console.log(event);
   		if (event.nodeType == esmap.ESNodeType.NONE
   				|| event.nodeType == esmap.ESNodeType.FLOOR)

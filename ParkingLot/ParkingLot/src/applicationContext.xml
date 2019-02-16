@@ -51,9 +51,16 @@
 		
 	<context:annotation-config/>
 	<!-- redis -->
+	<bean id="jedisPoolConfig" class="redis.clients.jedis.JedisPoolConfig">
+        <property name="maxIdle" value="100" /> <!-- 最大能够保持idel状态的对象数  -->
+        <property name="maxTotal" value="10000" /> <!-- 最大连接数 -->
+        <property name="MaxWaitMillis" value="10000"/><!-- 最大建立连接等待时间 -->
+        <property name="testOnBorrow" value="true" /> <!-- 当调用borrow Object方法时，是否进行有效性检查 -->
+    </bean>
 	<bean id="jedisPool" class="redis.clients.jedis.JedisPool">
 		<constructor-arg name="host" value="45.40.255.33"/>	
 		<constructor-arg name="port" value="6379"/>	
+	
 	</bean>
 	<bean id="jedisClientPool" class="org.great.util.JedisClientPool"/>
 			

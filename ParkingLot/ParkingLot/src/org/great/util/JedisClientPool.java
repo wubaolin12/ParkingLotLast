@@ -20,7 +20,9 @@ public class JedisClientPool implements JedisClient{
 
 	@Override
 	public String set(String key, String value) {
+		
 		Jedis jedis = jedisPool.getResource();
+		
 		String result = jedis.set(key, value);
 		jedis.close();
 		return result;
