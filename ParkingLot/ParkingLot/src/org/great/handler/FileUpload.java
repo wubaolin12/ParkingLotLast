@@ -44,7 +44,8 @@ public class FileUpload {
 		String orgFilename = file.getOriginalFilename();
 
 		// 图片存放路径
-		String path = "D:\\file_file\\test\\upload\\" + orgFilename;
+//		String path = "D:\\file_file\\test\\upload\\" + orgFilename;
+		String path = "/home/wbl/upload/picture/"+orgFilename;
 		try {
 			file.transferTo(new File(path));
 		} catch (IllegalStateException e) {
