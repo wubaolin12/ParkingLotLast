@@ -98,5 +98,12 @@ public interface CarBiz {
 	 * @return
 	 */
 	public List<Car> FindCarByCaridX(String c_num);
+	/**
+	 * 通过车牌找到车Vip表信息 18 待生效
+	 * 
+	 * @param number
+	 * @return
+	 */
+	public Car FindVipByCarNumber18X(String number);
 
 }

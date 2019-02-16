@@ -76,19 +76,20 @@ public class TEst1 {
 //		Receipt re = new Receipt(1,"%2019-01-22%");
 
 		int c = 161;
-		for (int i = 70083; i <= 70177; i++) {
-			Park park = new Park(9, "D", c, "开放", "" + i, 1);
-			boolean flag = parkBiz.AddPark(park);
-			c++;
-			System.out.println("flag="+flag+c);
-		}
-		
-//		for (int i = 6; i <= 50; i++) {
-////			Park park = new Park(9, "A", c, "开放", "" + i, 2);
-////			boolean flag = parkBiz.AddPark(park);
-//			boolean flag=parkBiz.SetCarParkX11(2, i);
-//			System.out.println("flag="+flag+i);
+//		for (int i = 70083; i <= 70177; i++) {
+//			Park park = new Park(9, "D", c, "开放", "" + i, 1);
+//			boolean flag = parkBiz.AddPark(park);
+//			c++;
+//			System.out.println("flag="+flag+c);
 //		}
+		int aa = 2001;
+		for (int i = 70083; i <= 70177; i++) {
+//			Park park = new Park(9, "A", c, "开放", "" + i, 2);
+//			boolean flag = parkBiz.AddPark(park);
+			boolean flag=parkBiz.SetCarParkX11(aa, i);
+			aa++;
+			System.out.println("flag="+flag+i);
+		}
 		
 //		 System.out.println("list="+list);
 //		SimpleDateFormat myFormatter = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");

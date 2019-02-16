@@ -64,5 +64,5 @@ public interface ParkBiz {
 	 * @return
 	 */
 	public Park findCar(Car car);
-	public boolean SetCarParkX11(@Param("p_feum") int p_feum,@Param("p_id") int p_id);
+	public boolean SetCarParkX11(@Param("p_num") int p_num,@Param("p_id") int p_id);
 }

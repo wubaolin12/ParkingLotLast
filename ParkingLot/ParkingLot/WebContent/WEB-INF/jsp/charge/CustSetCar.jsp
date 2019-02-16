@@ -250,8 +250,7 @@
 					dataType : 'json',
 					success : function(data) {
 						$(obj).parents("tr").remove();
-						layer.msg('已删除!', {
-							icon : 1,
+						layer.msg('已删除!', {icon : 1,
 							time : 1000
 						});
 					},
