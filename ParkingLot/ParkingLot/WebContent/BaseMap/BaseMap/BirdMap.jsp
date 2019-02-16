@@ -261,7 +261,7 @@
                   var d = d1[1];
                   for(var j=0;j<color.length;j++)
                   {
-                	
+                	  console.log(d.idlist[j]);
                   	//调用批量修改颜色接口来修改
                       map.changeModelColor({
                           id:d.idlist[j],

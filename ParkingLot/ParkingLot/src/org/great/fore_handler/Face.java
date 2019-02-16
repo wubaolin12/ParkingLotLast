@@ -53,7 +53,7 @@ public class Face {
 		
 		map.put("put", parklist);
 		 
-		 System.out.println("所有车位信息"+map);
+		// System.out.println("所有车位信息"+map);
 		
 		return map;
 	}
