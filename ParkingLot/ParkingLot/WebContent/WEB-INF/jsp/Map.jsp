@@ -128,10 +128,10 @@ var html = ["<div class='infoBoxContent'><div class='title'><strong>出售胡红
 //监听，可以将自己的停车场放到这边
 marker.addEventListener("click", function(){  
 
-    alert("孔大爷的停车场");    
+   
 	//infoBox.open(marker);
     
-    location.href="<%=path%>BirdMap/birdmap.action";
+    location.href="<%=path%>BirdMap/Parkbirdmap.action";
 });  
 
 
