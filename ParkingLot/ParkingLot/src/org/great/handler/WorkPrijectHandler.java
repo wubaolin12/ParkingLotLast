@@ -142,6 +142,14 @@ public class WorkPrijectHandler {
 		
 	}
 	
+	/**
+	 * 修改排班
+	 * @param response
+	 * @param request
+	 * @param map
+	 * @param sche
+	 * @return
+	 */
 	@ResponseBody
 	@RequestMapping(value = "/updateWorkAjax.action", method = RequestMethod.POST, produces = "application/json;charset=utf-8")
 	public String updateWorkAjax(HttpServletResponse response,HttpServletRequest request,@RequestParam Map<String,String> map,Sche sche) 
@@ -159,7 +167,14 @@ public class WorkPrijectHandler {
 		
 	}
 	
-	
+	/**
+	 * 检察排班是否存在
+	 * @param response
+	 * @param request
+	 * @param map
+	 * @param sche
+	 * @return
+	 */
 	@ResponseBody
 	@RequestMapping(value = "/CheckWorkAjax.action", method = RequestMethod.POST, produces = "application/json;charset=utf-8")
 	public String CheckWorkAjax(HttpServletResponse response,HttpServletRequest request,@RequestParam Map<String,String> map,Sche sche) 
