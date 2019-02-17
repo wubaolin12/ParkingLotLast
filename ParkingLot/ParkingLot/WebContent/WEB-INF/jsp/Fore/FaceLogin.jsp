@@ -1,8 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<c:set value="${pageContext.request.contextPath}" var="path"
-	scope="page" />
+
 <%
 String path=request.getScheme()+"://"+request.getServerName()+":"+
 		request.getServerPort()+request.getContextPath()+"/";
@@ -18,11 +17,11 @@ String path=request.getScheme()+"://"+request.getServerName()+":"+
 <link href="https://fonts.googleapis.com/css?family=Baloo+Bhaijaan" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css?family=Didact+Gothic" rel="stylesheet">
 <!-- CSS -->
-<link rel="stylesheet" href="${path}/static/fore-static/css/bootstrap.css" type="text/css" media="screen">
-<link rel="stylesheet" href="${path}/static/fore-static/css/bootstrap-responsive.css" type="text/css" media="screen">
-<link rel="stylesheet" href="${path}/static/fore-static/css/style.css" type="text/css" media="screen">
+<link rel="stylesheet" href="<%=path%>static/fore-static/css/bootstrap.css" type="text/css" media="screen">
+<link rel="stylesheet" href="<%=path%>static/fore-static/css/bootstrap-responsive.css" type="text/css" media="screen">
+<link rel="stylesheet" href="<%=path%>static/fore-static/css/style.css" type="text/css" media="screen">
 <script type="text/javascript" src="<%=path%>static/js/jquery-1.8.3.min.js"></script>
-<link rel="stylesheet" href="${path}/static/fore-static/css/font-awesome.css" type="text/css" media="screen">
+<link rel="stylesheet" href="<%=path%>static/fore-static/css/font-awesome.css" type="text/css" media="screen">
 <!--[if lt IE 8]>
 	<div><a href="http://www.microsoft.com/windows/internet-explorer/default.aspx?ocid=ie6_countdown_bannercode"><img src="http://www.theie6countdown.com/images/upgrade.jpg"border="0"></a></div>  
 <![endif]-->
@@ -58,7 +57,7 @@ String path=request.getScheme()+"://"+request.getServerName()+":"+
 				</div>
 			</div>
 			<div class="cloud"></div>
-			<div class="hot-air-balloon"><img src="${path}/static/fore-static/images/bicycle.png" alt=""></div>
+			<div class="hot-air-balloon"><img src="<%=path%>static/fore-static/images/bicycle.png" alt=""></div>
 		</div>
 	</div>
 	<!-- END MOUNTAIN EFFECT -->
@@ -100,13 +99,13 @@ String path=request.getScheme()+"://"+request.getServerName()+":"+
 	</div>
 
 <!-- JS -->
-<script type="text/javascript" src="${path}/static/fore-static/js/jquery.js"></script>
-<script type="text/javascript" src="${path}/static/fore-static/js/jquery.easing.1.3.js"></script>
-<script type="text/javascript" src="${path}/static/fore-static/js/superfish.js"></script>
-<script type="text/javascript" src="${path}/static/fore-static/js/jquery.ui.totop.js"></script>
-<script type="text/javascript" src="${path}/static/fore-static/js/jquery.caroufredsel.js"></script>
-<script type="text/javascript" src="${path}/static/fore-static/js/jquery.touchSwipe.min.js"></script>
-<script type="text/javascript" src="${path}/static/fore-static/js/bootstrap.js"></script>
+<script type="text/javascript" src="<%=path%>static/fore-static/js/jquery.js"></script>
+<script type="text/javascript" src="<%=path%>static/fore-static/js/jquery.easing.1.3.js"></script>
+<script type="text/javascript" src="<%=path%>static/fore-static/js/superfish.js"></script>
+<script type="text/javascript" src="<%=path%>static/fore-static/js/jquery.ui.totop.js"></script>
+<script type="text/javascript" src="<%=path%>static/fore-static/js/jquery.caroufredsel.js"></script>
+<script type="text/javascript" src="<%=path%>static/fore-static/js/jquery.touchSwipe.min.js"></script>
+<script type="text/javascript" src="<%=path%>static/fore-static/js/bootstrap.js"></script>
 <script>
 
 window.onload = function (){
