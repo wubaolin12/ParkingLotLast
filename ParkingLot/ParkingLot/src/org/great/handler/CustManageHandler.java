@@ -587,10 +587,9 @@ public class CustManageHandler {
 		System.out.println("re_time1=" + re_time1 + "---re_time2=" + re_time2);
 		if (re_time1 != null && re_time1 != "") {
 			re_time3 = re_time1;
-			System.out.println("re_time3=" + re_time3);
-			if (re_time2 != null && re_time2 != "") {
-				re_time4 = re_time2;
-			}
+		}
+		if (re_time2 != null && re_time2 != "") {
+			re_time4 = re_time2;
 		}
 		System.out.println("re_time3=" + re_time3 + "---re_time4=" + re_time4);
 		List<Receipt> ReceiptList = receiptBiz.findCountMoneyReX(re_time3, re_time4);
