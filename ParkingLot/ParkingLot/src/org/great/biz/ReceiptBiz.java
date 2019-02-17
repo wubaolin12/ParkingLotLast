@@ -43,4 +43,51 @@ public interface ReceiptBiz {
 	 * @param date
 	 */
 	public List<Receipt> findQueryReceiptList(@Param("datemin") String datemin,@Param("datemax") String datemax,@Param("carNum") String carNum);
+	
+	/**
+	 * 	收入
+	 * @param date
+	 */
+	public int InCome();
+	/**
+	 * 	退费
+	 * @param date
+	 */
+	public int Refund();
+	/**
+	 * 	停车总场次
+	 * @param date
+	 */
+	public int ParkinBout();
+	/**
+	 * 	月缴用户收入
+	 * @param date
+	 */
+	public int monthUserInCome();
+	/**
+	 * 	月缴用户收入
+	 * @param date
+	 */
+	public int temporaryUserInCome();
+	
+	/**
+	 * 	月缴用户套餐1
+	 * @param date
+	 */
+	public int temporaryUserInCome1();
+	/**
+	 * 	月缴用户套餐2
+	 * @param date
+	 */
+	public int temporaryUserInCome2();
+	/**
+	 * 	月缴用户套餐3
+	 * @param date
+	 */
+	public int temporaryUserInCome3();
+	/**
+	 * 	月缴用户套餐4
+	 * @param date
+	 */
+	public int temporaryUserInCome4();
 }

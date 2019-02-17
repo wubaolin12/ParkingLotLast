@@ -116,5 +116,47 @@
 			<result property="u_name" column="u_name" />
 		</association>
 	</resultMap>
+	
+	
 
+    <select id="InCome" resultType="int">
+    SELECT sum(m.re_money) from tb_receipt m 
+    </select>
+
+	<select id="Refund" resultType="int">
+	SELECT sum(m.re_money) from
+(SELECT * FROM tb_receipt where re_thing = "月缴退费")m  
+    </select>
+
+	<select id="ParkinBout" resultType="int">
+select count(*) from tb_stopcartime 
+    </select>
+
+	<select id="monthUserInCome" resultType="int">
+	SELECT sum(m.re_money) from
+(SELECT * FROM tb_receipt where re_thing = "月缴收费")m  
+    </select>
+
+	<select id="temporaryUserInCome" resultType="int">
+	SELECT sum(m.re_money) from
+(SELECT * FROM tb_receipt where re_thing = "停车收费")m 
+    </select>
+	
+
+	<select id="temporaryUserInCome1" resultType="int">
+	SELECT COUNT(*) from tb_vip v where v.co_id = 1 
+    </select>
+
+	<select id="temporaryUserInCome2" resultType="int">
+	SELECT COUNT(*) from tb_vip v where v.co_id = 2 
+    </select>
+    
+    <select id="temporaryUserInCome3" resultType="int">
+    SELECT COUNT(*) from tb_vip v where v.co_id = 3 
+    </select>
+    
+    <select id="temporaryUserInCome4" resultType="int">
+    SELECT COUNT(*) from tb_vip v where v.co_id = 4 
+    </select>
+    
 </mapper>

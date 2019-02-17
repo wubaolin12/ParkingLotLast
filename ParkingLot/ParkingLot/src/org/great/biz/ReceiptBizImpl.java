@@ -53,6 +53,60 @@ public class ReceiptBizImpl implements ReceiptBiz {
 		return receiptMapper.findQueryReceiptList(datemin, datemax, carNum);
 	}
 
+	@Override
+	public int InCome() {
+		// TODO Auto-generated method stub
+		return receiptMapper.InCome();
+	}
+
+	@Override
+	public int Refund() {
+		// TODO Auto-generated method stub
+		return receiptMapper.Refund();
+	}
+
+	@Override
+	public int ParkinBout() {
+		// TODO Auto-generated method stub
+		return receiptMapper.ParkinBout();
+	}
+
+	@Override
+	public int monthUserInCome() {
+		// TODO Auto-generated method stub
+		return receiptMapper.monthUserInCome();
+	}
+
+	@Override
+	public int temporaryUserInCome() {
+		// TODO Auto-generated method stub
+		return receiptMapper.temporaryUserInCome();
+	}
+
+	@Override
+	public int temporaryUserInCome1() {
+		// TODO Auto-generated method stub
+		return receiptMapper.temporaryUserInCome1();
+	}
+
+	@Override
+	public int temporaryUserInCome2() {
+		// TODO Auto-generated method stub
+		return receiptMapper.temporaryUserInCome2();
+	}
+
+	@Override
+	public int temporaryUserInCome3() {
+		// TODO Auto-generated method stub
+		return receiptMapper.temporaryUserInCome3();
+	}
+
+	@Override
+	public int temporaryUserInCome4() {
+		// TODO Auto-generated method stub
+		return receiptMapper.temporaryUserInCome4();
+	}
+
 
 
 }
