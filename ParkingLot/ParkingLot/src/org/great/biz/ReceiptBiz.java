@@ -37,4 +37,10 @@ public interface ReceiptBiz {
 	 * @param date
 	 */
 	public List<Receipt> findReceiptList();
+	
+	/**
+	 * 	条件带参数查询收支明细
+	 * @param date
+	 */
+	public List<Receipt> findQueryReceiptList(@Param("datemin") String datemin,@Param("datemax") String datemax,@Param("carNum") String carNum);
 }

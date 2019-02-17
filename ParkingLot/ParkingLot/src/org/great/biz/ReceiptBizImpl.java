@@ -47,4 +47,12 @@ public class ReceiptBizImpl implements ReceiptBiz {
 		return receiptMapper.findReceiptList();
 	}
 
+	@Override
+	public List<Receipt> findQueryReceiptList(String datemin, String datemax, String carNum) {
+		// TODO Auto-generated method stub
+		return receiptMapper.findQueryReceiptList(datemin, datemax, carNum);
+	}
+
+
+
 }

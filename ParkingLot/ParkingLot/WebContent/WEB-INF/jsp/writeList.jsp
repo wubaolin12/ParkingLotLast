@@ -52,7 +52,6 @@
 				<th width="80">ID</th>
 				<th width="100">车牌号</th>
 				<th width="100">用户名</th>
-				<th width="50">密码</th>
 				<th width="90">性别</th>
 				<th width="150">年龄</th>			
 				<th width="130">车主电话</th>
@@ -66,8 +65,7 @@
 <!-- 			<td><input type="checkbox" value="1" name=""></td> -->
 				<td>${car.rownum}</td>
 				<td>${car.c_num }</td>
-				<td><u style="cursor:pointer" class="text-primary" onclick="member_show('张三','member-show.html','10001','360','400')">${write.cust_acc }</u></td>
-				<td>${write.cust_pwd }</td>				
+				<td><u style="cursor:pointer" class="text-primary" onclick="member_show('张三','member-show.html','10001','360','400')">${write.cust_acc }</u></td>			
 				<td>${write.cust_sex }</td>
 				<td>${write.cust_age }</td>
 				<td class="text-l">${write.cust_phone}</td>			

@@ -67,13 +67,41 @@
 	</resultMap>
 	
 	<!-- 	查找收支明细列表 -->
-	<select id="findReceiptList" parameterType="org.great.bean.Receipt"
+	<select id="findReceiptList" 
 		resultMap="ReceiptListMap">
 		select * from 
 		(select rec.*,u.u_name   from tb_receipt rec LEFT JOIN tb_user u on rec.u_id= u.u_id ) rec1 
 		LEFT JOIN tb_car c ON rec1.c_id =c.c_id
 	</select>
 	<resultMap type="org.great.bean.Receipt" id="ReceiptListMap" >
+		<id property="re_id" column="re_id" />
+		<result property="re_thing" column="re_thing" />
+		<result property="re_money" column="re_money" />
+		<result property="re_time" column="re_time" />
+	
+		<association property="car" javaType="org.great.bean.Car">
+			<id property="c_id" column="c_id" />
+			<result property="c_num" column="c_num" />
+		</association>
+		<association property="user" javaType="org.great.bean.User">
+			<id property="u_id" column="u_id" />
+			<result property="u_name" column="u_name" />
+		</association>
+	</resultMap>
+	
+	
+		<!-- 	条件查询收支明细表 -->
+	<select id="findQueryReceiptList" resultMap="ReceiptListMap1">
+		select * from 
+		(select rec.*,u.u_name u from tb_receipt rec LEFT JOIN tb_user u on rec.u_id= u.u_id ) rec1 
+		LEFT JOIN tb_car c ON rec1.c_id =c.c_id
+		 where  1=1
+		<if test="datemin!=null">  and rec1.re_time &gt; #{datemin} </if>
+		<if test="datemax!=null">  and rec1.re_time &lt; #{datemax} </if>
+		<if test="carNum!=null">   and c.c_num LIKE CONCAT('%',#{carNum},'%') </if>
+	</select>
+	
+	<resultMap type="org.great.bean.Receipt" id="ReceiptListMap1" >
 		<id property="re_id" column="re_id" />
 		<result property="re_thing" column="re_thing" />
 		<result property="re_money" column="re_money" />
