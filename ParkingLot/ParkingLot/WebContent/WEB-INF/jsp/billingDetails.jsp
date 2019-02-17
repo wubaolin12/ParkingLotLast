@@ -43,7 +43,7 @@
 </form>	
 	
 	
-	<div class="cl pd-5 bg-1 bk-gray mt-20"> <span class="l"><a href="javascript:;" onclick="datadel()" class="btn btn-danger radius"><i class="Hui-iconfont">&#xe6e2;</i> 导出昨日收支明细</a> <a href="javascript:;" onclick="member_add('数据统计','${path}/billingDetails/DataStatistics.action','','510')" class="btn btn-primary radius"><i class="Hui-iconfont">&#xe600;</i> 数据统计</a></span>  </div>
+	<div class="cl pd-5 bg-1 bk-gray mt-20"> <span class="l"><a href="${path}/export/excel.action" class="btn btn-danger radius"><i class="Hui-iconfont">&#xe6e2;</i> 导出昨日收支明细</a> <a href="javascript:;" onclick="member_add('数据统计','${path}/billingDetails/DataStatistics.action','','510')" class="btn btn-primary radius"><i class="Hui-iconfont">&#xe600;</i> 数据统计</a></span>  </div>
 	<div class="mt-20">
 	<table class="table table-border table-bordered table-hover table-bg table-sort">
 		<thead>
