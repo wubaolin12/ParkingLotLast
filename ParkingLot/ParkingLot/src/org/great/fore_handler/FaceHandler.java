@@ -1,6 +1,7 @@
 package org.great.fore_handler;
 
 
+import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
@@ -94,7 +95,18 @@ public class FaceHandler {
 		if(tag.equals("reg")){
 			System.out.println("a");
 			String fileName = System.currentTimeMillis()+".jpg";
-			String basePath = request.getSession().getServletContext().getRealPath("picture");
+			String basePath = request.getSession().getServletContext().getRealPath("/picture");
+			
+			System.out.println("人脸服务器地址路径=" + basePath);
+
+			File file = new File(basePath +File.separator+ fileName);
+			/**
+			 * 判断路径是否存在，如果不存在就创建一个
+			 */
+			if (!file.getParentFile().exists()) {
+
+				file.getParentFile().mkdirs();
+			}
 			
 			GenerateImage(img,basePath +"\\"+ fileName);
 			System.out.println(basePath + "\\" + fileName);
@@ -114,7 +126,21 @@ public class FaceHandler {
 		else if(tag.equals("login")){
 			
 			String fileName = System.currentTimeMillis()+".jpg";
-			String basePath = request.getSession().getServletContext().getRealPath("picture");
+			String basePath = request.getSession().getServletContext().getRealPath("/picture");
+			
+			
+			
+			System.out.println("人脸登录服务器地址路径=" + basePath);
+
+			File file = new File(basePath +File.separator+ fileName);
+			/**
+			 * 判断路径是否存在，如果不存在就创建一个
+			 */
+			if (!file.getParentFile().exists()) {
+
+				file.getParentFile().mkdirs();
+			}
+			
 			GenerateImage(img,basePath +"\\"+ fileName);
 			
 			System.out.println(basePath + "\\" + fileName);
