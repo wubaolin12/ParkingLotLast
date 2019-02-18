@@ -114,6 +114,7 @@
 		<result property="p_state" column="p_state" />
 		<result property="p_mapid" column="p_mapid" />
 		<result property="p_imgpath" column="p_imgpath" />
+		<result property="p_feum" column="p_feum" />
 
 		<association property="param" column="pm_id"
 			javaType="org.great.bean.Param">

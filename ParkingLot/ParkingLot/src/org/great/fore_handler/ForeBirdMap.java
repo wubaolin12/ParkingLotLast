@@ -6,6 +6,7 @@ import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.great.bean.Park;
 import org.great.util.CookieUtils;
 import org.great.util.JedisClient;
 import org.springframework.context.annotation.Scope;
@@ -17,15 +18,16 @@ import org.springframework.web.bind.annotation.RequestMapping;
  */
 @Controller
 @Scope("prototype")
-@RequestMapping("/fore")
+@RequestMapping("/find")
 public class ForeBirdMap {
 	
 	
 
 	@RequestMapping("/birdmap.do")
-	public String JumpBirdMap(HttpServletRequest request) {
+	public String JumpBirdMap(HttpServletRequest request, Park park) {
 		
-		//request.setAttribute("",);
+		request.setAttribute("park",park);
+		System.out.println("park" + park);
 		
 		return "Fore/ForeMap";
 	}
