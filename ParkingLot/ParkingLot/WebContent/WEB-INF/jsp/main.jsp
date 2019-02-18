@@ -64,7 +64,7 @@
 				</c:if>
 					<ul class="dropDown-menu menu radius box-shadow">
 						<li><a href="javascript:;" onClick="myselfinfo()">个人信息</a></li>
-						<li><a href="#">切换账户</a></li>
+						<li><a href="${path}/Exit/exit.action">切换账户</a></li>
 						<li><a href="${path}/Exit/exit.action">退出</a></li>
 				</ul>
 			</li>

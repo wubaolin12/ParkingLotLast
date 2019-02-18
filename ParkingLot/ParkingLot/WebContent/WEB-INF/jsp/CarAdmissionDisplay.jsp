@@ -72,7 +72,7 @@
                if(flagPark==1){%>
             		车牌：${Carkxj.c_num}      欢迎光临！
             <%} else { %>
-            		车位已满！！欢迎次光临！
+            		车位已满！！欢迎再次光临！
             <%} %>
             		</FONT></B>
 			</MARQUEE>
