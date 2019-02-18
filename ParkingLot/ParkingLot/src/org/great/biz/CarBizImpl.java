@@ -125,4 +125,16 @@ public class CarBizImpl implements CarBiz {
 		// TODO Auto-generated method stub
 		return carMapper.FindVipByCarNumber18X(number);
 	}
+
+	@Override
+	public List<Car> FindCarRoleByCarNumberPmtypeNameX(String number, String pm_type, String pm_name) {
+		// TODO Auto-generated method stub
+		return carMapper.FindCarRoleByCarNumberPmtypeNameX(number, pm_type, pm_name);
+	}
+
+	@Override
+	public boolean chagerCustIDByCarNumberX(String c_num, int cust_id) {
+		// TODO Auto-generated method stub
+		return carMapper.chagerCustIDByCarNumberX(c_num, cust_id);
+	}
 }

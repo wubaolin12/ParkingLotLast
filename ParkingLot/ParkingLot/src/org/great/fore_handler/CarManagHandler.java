@@ -123,7 +123,13 @@ public class CarManagHandler {
 				System.out.println("-----这只野生临时的汽车人已经是我麾下的了----");
 				System.out.println("flag=" + flag);
 			} else {
-				System.out.println("-----什么都不做------他已经很牛逼了----他是会员还是白名单来着的----");
+				if (CarList.get(0).getCust_id() == 0) {
+					boolean flag = carBiz.chagerCustIDByCarNumberX(c_num, cust.getCust_id());
+					System.out.println("----------这是一只无主的包月还是白名单车辆-----现在他被我承包了-----");
+					System.out.println("flag="+flag);
+				} else {
+					System.out.println("-----什么都不做------他已经很牛逼了----他是会员还是白名单来着的----");
+				}
 			}
 		} else {
 			Car car = new Car(cust.getCust_id(), param22.getPm_id(), c_num);

@@ -123,4 +123,20 @@ public interface CarMapper {
 	 */
 	public Car FindVipByCarNumber18X(String number);
 
+	/**
+	 * 通过车牌找到车信息 包括车辆角色XXX
+	 * 
+	 * @param cust
+	 * @return
+	 */
+	public List<Car> FindCarRoleByCarNumberPmtypeNameX(@Param("number") String number, @Param("pm_type") String pm_type,
+			@Param("pm_name") String pm_name);
+
+	/**
+	 * 根据车牌号更改车主ID
+	 * 
+	 * @return
+	 */
+	public boolean chagerCustIDByCarNumberX(@Param("c_num") String c_num, @Param("cust_id") int cust_id);
+
 }

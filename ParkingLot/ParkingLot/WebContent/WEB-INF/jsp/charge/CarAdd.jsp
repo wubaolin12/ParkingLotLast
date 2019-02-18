@@ -143,6 +143,8 @@
 							{
 								rules : {
 									carnum : {
+										minlength : 7,
+										maxlength : 7,
 										required : true,
 										remote : {
 											url : "${path}/custManageHandler/CarAddNumV.action",
@@ -154,8 +156,7 @@
 													return p;
 												},
 												cust_phone : function() {
-													var p1 = $("#cust_phone")
-															.val();
+													var p1 = $("#cust_phone").val();
 													return p1;
 												}
 											},
@@ -164,7 +165,7 @@
 													document.getElementById("carNumFlag").innerHTML = "";
 													return true;
 												} else {
-													document.getElementById("carNumFlag").innerHTML = "*该车牌已被注册！";
+													document.getElementById("carNumFlag").innerHTML = "*该车牌无法使用！";
 													return false;
 												}
 											}

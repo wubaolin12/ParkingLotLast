@@ -43,24 +43,28 @@
 		<label class="form-label col-xs-4 col-sm-3"><span class="c-red">*</span>车牌号：</label>
 		<div class="formControls col-xs-8 col-sm-9">
 			${Carkxj.c_num}
+		<input type="hidden" id="c_num" name="c_num" value="${Carkxj.c_num}">
 		</div>
 	</div>
 	<div class="row cl">
 		<label class="form-label col-xs-4 col-sm-3"><span class="c-red">*</span>金额：</label>
 		<div class="formControls col-xs-8 col-sm-9">
 			${Stopkxj.sct_money}元
+		<input type="hidden" id="sct_money" name="sct_money" value="${Stopkxj.sct_money}">
 		</div>
 	</div>
 	<div class="row cl">
 		<label class="form-label col-xs-4 col-sm-3"><span class="c-red">*</span>进场时间：</label>
 		<div class="formControls col-xs-8 col-sm-9">
 			${Stopkxj.sct_starttime}
+		<input type="hidden" id="sct_starttime" name="sct_starttime" value="${Stopkxj.sct_starttime}">
 		</div>
 	</div>
 	<div class="row cl">
 		<label class="form-label col-xs-4 col-sm-3"><span class="c-red">*</span>出场时间：</label>
 		<div class="formControls col-xs-8 col-sm-9">
 			${Stopkxj.sct_overtime}
+			<input type="hidden" id="sct_overtime" name="sct_overtime" value="${Stopkxj.sct_overtime}">
 		</div>
 	</div>
 	<div class="row cl">

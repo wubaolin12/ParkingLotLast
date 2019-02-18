@@ -243,13 +243,11 @@ public class AppearanceLicensePlateRecognition {
 			for (Stopcartime stopcartime : sctlist) {
 				// 修改为不等于2 原来是等于一判断车是否在停车
 				if (stopcartime.getPm_id() != 2) {
-					Stopcartime sct = new Stopcartime(2, currendate, stopcartime.getSct_id());
-					// 修改出场时间
-					flag = stopcartimeBiz.UpdateSctTimeandState(sct);
+					
 					Stopcartime stopct = stopcartimeBiz.FindByID(stopcartime.getSct_id());
 					System.err.println("stopct=" + stopct);
 					String fTime = stopct.getSct_starttime();
-					String oTime = stopct.getSct_overtime();
+					String oTime = currendate;
 					System.out.println("fTime=" + fTime + "oTime=" + oTime);
 					// 调用公共计算停车费方法
 					int money = baseUtil.count(fTime, oTime);
@@ -260,14 +258,10 @@ public class AppearanceLicensePlateRecognition {
 						money = money + 10;
 					}
 					System.out.println("money=" + money);
-					Stopcartime sctz = new Stopcartime(stopcartime.getSct_id(), money);
-					System.out.println("sctz=" + sctz);
-					flag = stopcartimeBiz.UpdateSctMoneyX(sctz);
+
 					// 宏琪 需要缴费的标识 0是不用缴费 1 是要跳转二维码支付
 					int moneyFlag = 0;
-					// 野比欣之助 需要跳转页面的标识 0是不用闸道端LED界面 1 是要收费端界面
-					int UserRoleFlag = 0;
-					if (flag) {
+//					if (flag) {
 						Param param = new Param("白名单", "车辆角色");
 						Param param1 = paramBiz.GetPmIDByTypeNmaeX(param);
 						Param param2 = new Param("注册会员", "车辆角色");
@@ -305,7 +299,6 @@ public class AppearanceLicensePlateRecognition {
 								System.out.println("-------这货是注册会员卡里钱不够 ，不放!!!-------");
 							}
 						} else if (car1.getPm_id() == param33.getPm_id()) {
-
 							Param param5 = new Param("待生效", "月缴状态");
 							Param param55 = paramBiz.GetPmIDByTypeNmaeX(param5);
 							Car car2 = carBiz.findCustCarNumberByCarIDX(car1.getC_id());
@@ -341,10 +334,21 @@ public class AppearanceLicensePlateRecognition {
 						if (money == 0) {
 							moneyFlag = 0;
 						}
+						if (moneyFlag == 0) {
+							// 修改出场时间
+							Stopcartime sct = new Stopcartime(2, currendate, stopcartime.getSct_id());
+							flag = stopcartimeBiz.UpdateSctTimeandState(sct);
+							System.out.println("——————————————修改出场时间成功————————————————————————");
+							Stopcartime sctz = new Stopcartime(stopcartime.getSct_id(), money);
+							System.out.println("sctz=" + sctz);
+							flag = stopcartimeBiz.UpdateSctMoneyX(sctz);
+						}
 						// 查询该出场车辆的信息
 						Stopcartime sct2 = stopcartimeBiz.FindByID(stopcartime.getSct_id());
+						Stopcartime sct3 = new Stopcartime(stopcartime.getSct_id(),sct2.getC_id(),sct2.getPm_id(),sct2.getSct_starttime(),currendate,money);
+					System.out.println("sct3="+sct3);
 						// 该信息传输到页面
-						session.setAttribute("Stopkxj", sct2);
+						session.setAttribute("Stopkxj", sct3);
 						// 宏琪 session 存放缴费标记
 						session.setAttribute("moneyFlag", moneyFlag);
 						User user = (User) request.getAttribute("User");
@@ -353,18 +357,14 @@ public class AppearanceLicensePlateRecognition {
 							if (RoleRelList.get(0).getRole().getRole_name().equals("收费员")) {
 								result.put("role", "300");
 								result.put("code", "200");
-								UserRoleFlag = 1;
 							} else {
 								result.put("role", "200");
 								result.put("code", "200");
-								UserRoleFlag = 0;
 							}
 						}
 						boolean ff = baseUtil.addReceipt(user.getU_id(), car1.getC_id(), "停车收费", money, currendate);
-						System.out.println("ff="+ff);
-						session.setAttribute("UserRoleFlag", UserRoleFlag);
-						System.out.println("——————————————修改出场时间成功————————————————————————");
-					}
+						System.out.println("ff=" + ff);
+//					}
 				} else {
 					result.put("code", "400");
 				}
