@@ -138,19 +138,24 @@ String path=request.getScheme()+"://"+request.getServerName()+":"+
 					   <!-- START CONTACT US -->
 						<div class="pages">
 							<!-- START COMMENT -->
-						<h2>注册</h2>
-	<!-- 用户名：
-	<input type="text" name="username" id="username"/> -->
-	<br /> 录入头像：
+						<div class="pages_title">注册人脸</div>
+								
+							
+							<!-- START COMMENT -->
+							
+							<div id="note"></div>
+							<div id="fields">
+	<div id="ajax-contact-form" class="form-horizontal">	
 	<!-- <input type="button" title="开启摄像头" value="开启摄像头" onclick="getMedia()" /> -->
 	<video id="video" width="300px" height="300px" autoplay="autoplay"style="margin-right:40px"></video>
 	<canvas id="canvas" width="300px" height="300px" ></canvas>
-	<button id="snap" onclick="takePhoto()">拍照</button>
+	<button id="snap" class="submit" onclick="takePhoto()" style="margin-right:40px">拍照</button>	
 							<!-- END COMMENT -->
 						</div>
 						<!-- END CONTACT US -->
 					</div>
-				
+			</div>
+			</div>	
 			</div>
 			</div>
 			

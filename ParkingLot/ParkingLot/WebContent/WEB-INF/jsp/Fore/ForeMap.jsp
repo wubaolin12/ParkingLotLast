@@ -220,9 +220,10 @@
     <input type="button" class="btn btn-default btnclass" onclick="clearNavi()" value="清除" />
     <input type="button" class="btn btn-default btnclass" onclick="startNavi1()" value="开始第一人称导航" />
     <input type="button" class="btn btn-default btnclass" onclick="startNavi2()" value="开始第三人称导航" />
-    <!--   <input type="button" id="btnPick"  class="btn btn-default btnclass"  value="开启模型拾取" />
-    <input type="button" id="btnPickend" class="btn btn-default btnclass"  value="关闭模型拾取" />
-  -->
+    
+      <input type="button"  class="btn btn-default btnclass"  value="返回主页面"  onclick="javascript:history.go(-1)" />
+<!--     <input type="button" id="btnPickend" class="btn btn-default btnclass"  value="关闭模型拾取" />
+ --> 
   </div>
  
  
