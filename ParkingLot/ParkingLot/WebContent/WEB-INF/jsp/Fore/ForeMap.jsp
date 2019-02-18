@@ -706,7 +706,8 @@
   	  	    map.changeModelColor({id:<%=list2%>,fnum:[1],color:'#00FFFF'}) 
   	 --%>
   	    
-  	    
+  	  	 //改变方块房子颜色,id,name二选择一，都可以是数组, fnum可选择，参数color:'#FF0000'
+  	  	    map.changeModelColor({id:parseInt(${park.p_mapid}),fnum:${park.p_feum},color:'#FF0000'}) 
   	    
   	    
   	   var lm = new esmap.ESLocationMarker({
