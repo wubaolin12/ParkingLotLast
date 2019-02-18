@@ -125,4 +125,11 @@ public class CarBizImpl implements CarBiz {
 		// TODO Auto-generated method stub
 		return carMapper.FindVipByCarNumber18X(number);
 	}
+
+	@Override
+	public boolean updatePic(Car car) {
+		
+		flag = carMapper.updatePic(car);
+		return flag;
+	}
 }

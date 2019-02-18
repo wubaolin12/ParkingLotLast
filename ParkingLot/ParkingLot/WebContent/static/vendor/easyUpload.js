@@ -6,7 +6,7 @@ https://github.com/funnyque
 ; (function ($) {
   $.fn.easyUpload = function (opts) {
     var defaults = {
-      allowFileTypes: '*.pdf;*.doc;*.docx;*.jpg',//允许上传文件类型，格式'*.pdf;*.doc;'
+      allowFileTypes: '*.pdf;*.doc;*.docx;*.jpg;*.jpeg',//允许上传文件类型，格式'*.pdf;*.doc;'
       allowFileSize: 100000,
       selectText: '选择文件',//上传按钮文案
       multi: true,//是否允许多文件上传

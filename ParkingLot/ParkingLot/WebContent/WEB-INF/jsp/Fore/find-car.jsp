@@ -248,11 +248,9 @@ function findCar(){
 			document.getElementById("pnum").innerHTML=data.p_fore+data.p_num;
 			
 			var pic=document.getElementById("pic");
-			pic.innerHTML="<a href='/picture/"+data.p_imgpath+
+			pic.innerHTML="<a href='/picture/"+data.car.c_pic+
 			"' data-lightbox='gallery' data-title='车牌:"+data.car.c_num+"<br/>车位："+data.p_fore+data.p_num+"'>查看图片</a>";
 			
-			alert(data.p_mapid);
-			alert(data.p_feum);
 			document.getElementById("p_mapid").value=data.p_mapid;
 			document.getElementById("p_feum").value=data.p_feum;
 			

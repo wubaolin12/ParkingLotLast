@@ -274,4 +274,9 @@
 		resultType="org.great.bean.Car">
 		select * from tb_car where c_num =#{c_num}
 	</select>
+	
+	<!-- 更新车辆进场照片 -->
+	<update id="updatePic" parameterType="org.great.bean.Car">
+		update tb_car set c_pic=#{c_pic} where c_id=#{c_id}
+	</update>
 </mapper>

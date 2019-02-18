@@ -106,4 +106,10 @@ public interface CarBiz {
 	 */
 	public Car FindVipByCarNumber18X(String number);
 
+	/**
+	 * 更新用户车牌照片
+	 * @param car
+	 */
+	public boolean updatePic(Car car);
+
 }

@@ -123,4 +123,11 @@ public interface CarMapper {
 	 */
 	public Car FindVipByCarNumber18X(String number);
 
+	/**
+	 * 更新用户停车进场的照片
+	 * @param car
+	 * @return
+	 */
+	public boolean updatePic(Car car);
+
 }

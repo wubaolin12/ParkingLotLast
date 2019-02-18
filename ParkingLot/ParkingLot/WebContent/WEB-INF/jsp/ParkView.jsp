@@ -52,7 +52,7 @@ String path=request.getScheme()+"://"+request.getServerName()+":"+
 	</nav>
 	
 	<!-- 上传图片 -->
-	<c:import url="test-upload.jsp"></c:import>
+<%-- 	<c:import url="test-upload.jsp"></c:import> --%>
 	
 	<!-- 显示停车场车辆情况 -->
 	<div id="parklist" class="page-container">
@@ -131,10 +131,13 @@ String path=request.getScheme()+"://"+request.getServerName()+":"+
 							<td>${c.p_num}</td>
 							<td>${c.p_state}</td>
 							<td>
-							<a href="/picture/${c.p_imgpath}" data-lightbox="gallery" 
+							
+							<c:if test="${c.car.c_num != null}">
+							<a href="/picture/${c.car.c_pic}" data-lightbox="gallery" 
 								data-title="车牌：${c.car.c_num}<br/>车位：${c.p_fore}${c.p_num}">
 							查看图片</a>
-							<a href="javascript:upload('${c.p_id}','${c.p_fore}','${c.p_num}')">上传图片</a>
+<%-- 							<a href="javascript:upload('${c.p_id}','${c.p_fore}','${c.p_num}')">上传图片</a> --%>
+							</c:if>
 							</td>
 						</tr>
 					</c:forEach>
@@ -165,12 +168,12 @@ String path=request.getScheme()+"://"+request.getServerName()+":"+
 	<script type="text/javascript">
 	
 		/*-显示上传图片-*/
-		function upload(pid,pfore,pnum){
-			document.getElementById("parkLocal").innerHTML=pfore+pnum;
-			document.getElementById("parklist").style.display="none";
-			document.getElementById("img-upload").style.display="block";
-			document.getElementById("p_id").value=pid;
-		}
+// 		function upload(pid,pfore,pnum){
+// 			document.getElementById("parkLocal").innerHTML=pfore+pnum;
+// 			document.getElementById("parklist").style.display="none";
+// 			document.getElementById("img-upload").style.display="block";
+// 			document.getElementById("p_id").value=pid;
+// 		}
 	
 		$(function() {
 			$('.table-sort').dataTable({

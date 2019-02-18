@@ -31,7 +31,7 @@
 	<!-- 初始多表查询 -->
 	<select id="FindAll" parameterType="org.great.bean.Park"
 		resultMap="FindAllMap">
-		select a.*,c.c_num from(select
+		select a.*,c.c_num,c_pic from(select
 		p.p_id,p.pm_id,p.c_id,p.p_fore,p.p_num,p.p_state,p_mapid,p_imgpath,pm.pm_name,pm.pm_type
 		from (select * from tb_park where 1=1
 		<if test="p_fore!=null"> and p_fore = #{p_fore} </if>
@@ -49,7 +49,6 @@
 		<result property="p_num" column="p_num" />
 		<result property="p_state" column="p_state" />
 		<result property="p_mapid" column="p_mapid" />
-		<result property="p_imgpath" column="p_imgpath" />
 		<association property="param" column="pm_id"
 			javaType="org.great.bean.Param">
 			<id property="pm_id" column="pm_id" />
@@ -60,6 +59,7 @@
 			javaType="org.great.bean.Car">
 			<id property="c_id" column="c_id" />
 			<result property="c_num" column="c_num" />
+			<result property="c_pic" column="c_pic" />
 		</association>
 
 	</resultMap>
@@ -79,7 +79,7 @@
 	<select id="FindList" parameterType="org.great.bean.Park"
 		resultMap="parkMap">
 		<if test='c_num!="x"'>
-			select a.*,c.c_num from(
+			select a.*,c.c_num,c_pic from(
 			select
 			p.p_id,p.pm_id,p.c_id,p.p_fore,p.p_num,p.p_state,p_imgpath,pm.pm_name,pm.pm_type,p_mapid
 			from (select * from tb_park where 1=1
@@ -113,7 +113,6 @@
 		<result property="p_num" column="p_num" />
 		<result property="p_state" column="p_state" />
 		<result property="p_mapid" column="p_mapid" />
-		<result property="p_imgpath" column="p_imgpath" />
 		<result property="p_feum" column="p_feum" />
 
 		<association property="param" column="pm_id"
@@ -126,6 +125,7 @@
 			javaType="org.great.bean.Car">
 			<id property="c_id" column="c_id" />
 			<result property="c_num" column="c_num" />
+			<result property="c_pic" column="c_pic" />
 		</association>
 
 	</resultMap>
@@ -179,9 +179,9 @@
 	</select>
 
 	<!-- 上传车位图片addPicture -->
-	<update id="addPicture" parameterType="org.great.bean.Park">
-		update tb_park set p_imgpath=#{p_imgpath} where p_id=#{p_id}
-	</update>
+<!-- 	<update id="addPicture" parameterType="org.great.bean.Park"> -->
+<!-- 		update tb_park set p_imgpath=#{p_imgpath} where p_id=#{p_id} -->
+<!-- 	</update> -->
 	
 		<!-- 查询停车的车位根据车ID -->
 	<select id="FindOneCanStopX" parameterType="int" resultType="org.great.bean.Park">
@@ -191,7 +191,7 @@
 	<!-- 根据车牌号查找对应停车位信息 -->
 	<select id="findCar" parameterType="org.great.bean.Car" resultMap="parkMap"> 
 		select p.*,tb1.* from tb_park p,
-		 (select c.c_id cid,c.c_num from tb_car c where c_num=#{c_num})tb1
+		 (select c.c_id cid,c.c_num,c.c_pic from tb_car c where c_num=#{c_num})tb1
 		 where p.c_id=tb1.cid
 	</select>
 </mapper>
