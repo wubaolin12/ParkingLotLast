@@ -173,10 +173,10 @@ public class MenuHandler extends BaseUtil{
 		
 		rmap.put("menu_id",kmap.get("id"));
 		System.out.println("--------MEnu getMenuID"+kmap);
-		int num2=bbiz.insertData("role_menu", rmap,null);	
+/*		int num2=bbiz.insertData("role_menu", rmap,null);	
+*/		
 		
-		
-		if(num>0&&num2>0) {
+		if(num>0) {
 			result="success";
 		}else {
 			result="error";

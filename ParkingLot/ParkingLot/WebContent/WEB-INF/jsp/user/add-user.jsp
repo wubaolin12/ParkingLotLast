@@ -53,7 +53,8 @@
 		<div class="row cl">
 			<label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>电话：</label>
 			<div class="formControls col-xs-8 col-sm-9">
-				<input type="text" class="input-text" value="" placeholder="" id="u_phone" name="u_phone" style="width: 200px;">
+				<input type="text" class="input-text" value="" placeholder="" id="u_phone" name="u_phone" style="width: 200px;" onkeyup="this.value=this.value.replace(/\D/g,'')"
+				onafterpaste="this.value=this.value.replace(/\D/g,'')" maxlenaigth="11">
 			</div>
 		</div>
 
@@ -106,7 +107,13 @@ function checkform(){
 
 	if(u_name!=''&&u_name!=null&&u_phone!=''&&u_phone!=null){
 		if(tip3=="用户名可以使用"){
+			if(u_phone==11){
 			return true;
+			}else{
+				alert("请输入11位手机号码");
+				return false;
+
+			}
 		}else{
 			alert("用户名已存在，请换一个用户名");
 			return false;

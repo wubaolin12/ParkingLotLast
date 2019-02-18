@@ -34,7 +34,11 @@
 		<div class="row cl">
 			<label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>用户名：</label>
 			<div class="formControls col-xs-8 col-sm-9">
-				<input type="text" style="display: none;" id="u_id" value="${updateuser.user.u_id}"><input type="text" class="input-text" value="${updateuser.user.u_name}" placeholder="" id="u_name" name="u_name">
+				<input type="text" style="display: none;" id="u_id" value="${updateuser.user.u_id}">
+				<input type="text" class="input-text" value="${updateuser.user.u_name}" placeholder="" id="u_name" name="u_name">
+				<input type="text" style="display: none;" id="oldname" value="${updateuser.user.u_name}">
+				<input type="text" style="display: none;" id="tip3" value="">
+				<span id="tip"></span>
 			</div>
 		</div>
 		<div class="row cl">
@@ -52,7 +56,10 @@
 		<div class="row cl">
 			<label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>电话：</label>
 			<div class="formControls col-xs-8 col-sm-9">
-				<input type="text" class="input-text" value="${updateuser.user.u_phone}" placeholder="" id="u_phone" name="u_phone">
+				<input type="text" class="input-text" value="${updateuser.user.u_phone}" placeholder="" id="u_phone" name="u_phone" onkeyup="this.value=this.value.replace(/\D/g,'')"
+				onafterpaste="this.value=this.value.replace(/\D/g,'')" maxlenaigth="11">
+								
+				 
 			</div>
 		</div>
 
@@ -97,6 +104,30 @@ function article_save(){
 	window.parent.location.reload();
 }
 
+$(function() {
+	$("#u_name").on("blur",function(){
+
+	  	var u_name=document.getElementById("u_name").value;
+	  	var oldname=document.getElementById("oldname").value;
+
+		if(u_name!=oldname){
+			$.ajax({
+				url :"UnamecheckAjax.action" ,
+				type :"post",
+				dataType:"text", 
+				data :"u_name="+u_name,
+				success:function(redata){
+					
+					document.getElementById("tip").innerHTML =redata;
+					document.getElementById("tip3").value=redata;
+				}
+			});
+		}
+	});	
+	
+	
+});
+
 $('#bt1').on('click', function(){
 	/* alert(11111); */
 	var index = parent.layer.getFrameIndex(window.name); 
@@ -104,30 +135,36 @@ $('#bt1').on('click', function(){
 	var u_sex=document.getElementById("u_sex").value;
   	var u_phone=document.getElementById("u_phone").value;
   	var role_id=document.getElementById("role_id").value; 	
-  	var u_id=document.getElementById("u_id").value; 
+  	var u_id=document.getElementById("u_id").value;
+  	var tip3=document.getElementById("tip3").value;
 	var utr="#"+u_id;
 
 	if(u_name!=''&&u_name!=null&&u_sex!=''&&u_sex!=null&&u_phone!=''&&u_phone!=null){
-		
-	    $.ajax({
-			url :"updateUserAjax.action" ,
-			type :"post",
-			dataType:"json", 
-			data :{"u_name":u_name,"u_sex":u_sex,"u_phone":u_phone,"role_id":role_id,"u_id":u_id},
-			success:function(redata){
-	/* 			alert(redata.co_price); */	
-				parent.$(utr).find(".u_name").empty();
-				parent.$(utr).find(".u_name").prepend(redata.user.u_name);
-				parent.$(utr).find(".u_sex").empty();
-				parent.$(utr).find(".u_sex").prepend(redata.user.u_sex);
-				parent.$(utr).find(".u_phone").empty();
-				parent.$(utr).find(".u_phone").prepend(redata.user.u_phone);
-				parent.$(utr).find(".role_id").empty();
-				parent.$(utr).find(".role_id").prepend(redata.role.role_name);
-				parent.layer.close(index);
+		if(u_phone==11){
+			if(tip3=="用户名可以使用"){
+			    $.ajax({
+					url :"updateUserAjax.action" ,
+					type :"post",
+					dataType:"json", 
+					data :{"u_name":u_name,"u_sex":u_sex,"u_phone":u_phone,"role_id":role_id,"u_id":u_id},
+					success:function(redata){
+						parent.$(utr).find(".u_name").empty();
+						parent.$(utr).find(".u_name").prepend(redata.user.u_name);
+						parent.$(utr).find(".u_sex").empty();
+						parent.$(utr).find(".u_sex").prepend(redata.user.u_sex);
+						parent.$(utr).find(".u_phone").empty();
+						parent.$(utr).find(".u_phone").prepend(redata.user.u_phone);
+						parent.$(utr).find(".role_id").empty();
+						parent.$(utr).find(".role_id").prepend(redata.role.role_name);
+						parent.layer.close(index);
+					}
+				});
+			}else{
+				alert("用户名已存在，请换一个用户名");
 			}
-		});
-
+		}else{
+			alert("请输入11位手机号码");
+		}
 	}else{
 		alert("请填入数据");
 	}

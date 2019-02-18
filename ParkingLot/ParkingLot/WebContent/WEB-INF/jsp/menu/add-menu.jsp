@@ -61,7 +61,7 @@
 			</div>
 		</div>
 
-		<div class="row cl">
+<%-- 		<div class="row cl">
 			<label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>所属角色：</label>
 			<div class="formControls col-xs-8 col-sm-9">
 					<select name="role_id">
@@ -71,7 +71,7 @@
 					</select>		
 				
 			</div>
-		</div>
+		</div> --%>
 		
 		<div class="row cl">
 			<div class="col-xs-8 col-sm-9 col-xs-offset-4 col-sm-offset-2">
