@@ -37,9 +37,12 @@
 <!-- 		<input type="text" class="input-text" style="width:250px" placeholder="输入会员名称、电话、邮箱" id="" name=""> -->
 <!-- 		<button type="submit" class="btn btn-success radius" id="" name=""><i class="Hui-iconfont">&#xe665;</i> 查询</button> -->
 <!-- 	</div> -->
-	<div class="cl pd-5 bg-1 bk-gray mt-20"> <span class="l"><a href="javascript:;" onclick="member_add('修改计费规则 ','${path}/ChargeRule/jumpAdd.action','','650')" class="btn btn-primary radius"><i class="Hui-iconfont">&#xe600;</i> 新规则添加</a>  <a href="javascript:;" onclick="member_add('修改计费规则 ','${path}/ChargeRule/jumpUpdate.action','','650')" class="btn btn-primary radius"><i class="Hui-iconfont">&#xe600;</i> 修改计费规则</a>   </span>  
+	<div class="cl pd-5 bg-1 bk-gray mt-20"> <span class="l"><a href="javascript:;" onclick="member_add('新规则添加','${path}/ChargeRule/jumpAdd.action','','650')" class="btn btn-primary radius"><i class="Hui-iconfont">&#xe600;</i> 新规则添加</a>  <a href="javascript:;" onclick="member_add('修改计费规则 ','${path}/ChargeRule/jumpUpdate.action','','650')" class="btn btn-primary radius"><i class="Hui-iconfont">&#xe600;</i> 修改计费规则</a>   </span>  
 
 	</div>
+	
+	
+	
 	<div class="mt-20">
 	<table class="table table-border table-bordered table-hover table-bg table-sort">
 		<thead>
@@ -66,12 +69,15 @@
 				<td>${rule.cr_addmoney}</td>
 				
 				<c:if test="${rule.pm_id==11}">
-				<td class="td-status"><span class="label label-success radius" onclick="change()">已启用</span></td>
+				<td class="td-status"><span class="label label-success radius" onclick="change()">已启用</span>
+				<a title="删除" href="javascript:;" onclick="member_del('${rule.cr_id}','已启用')" class="ml-5" style="text-decoration:none"><i class="Hui-iconfont">&#xe6e2;</i></a>
+				</td>
 				</c:if>
 				
 				<c:if test="${rule.pm_id==10}">
 				<td class="td-status">
 				<span class="label label-failed radius" onclick="changeState('${rule.crpm_id}',10,'确认启用吗？ ')">未启用</span>
+				<a title="删除" href="javascript:;" onclick="member_del('${rule.cr_id}','未启用')" class="ml-5" style="text-decoration:none"><i class="Hui-iconfont">&#xe6e2;</i></a>
 				</td>
 				</c:if>
 		
@@ -82,6 +88,15 @@
 	</table>
 	</div>
 </div>
+
+
+<div class="page-container">
+	<div id="container" style="min-width:700px;height:400px"></div>
+</div>
+
+
+
+
 <!--_footer 作为公共模版分离出去-->
 <script type="text/javascript" src="${path}/static/lib/jquery/1.9.1/jquery.min.js"></script> 
 <script type="text/javascript" src="${path}/static/lib/layer/2.4/layer.js"></script>
@@ -147,25 +162,7 @@ function changeState(cr_id,pm_id,talk){
 	});
 }
 
-/*用户-启用*/
-// function member_start(obj,id){
-// 	layer.confirm('确认要启用吗？',function(index){
-// 		$.ajax({
-// 			type: 'POST',
-// 			url: '',
-// 			dataType: 'json',
-// 			success: function(data){
-// 				$(obj).parents("tr").find(".td-manage").prepend('<a style="text-decoration:none" onClick="member_stop(this,id)" href="javascript:;" title="停用"><i class="Hui-iconfont">&#xe631;</i></a>');
-// 				$(obj).parents("tr").find(".td-status").html('<span class="label label-success radius">已启用</span>');
-// 				$(obj).remove();
-// 				layer.msg('已启用!',{icon: 6,time:1000});
-// 			},
-// 			error:function(data) {
-// 				console.log(data.msg);
-// 			},
-// 		});
-// 	});
-// }
+
 /*用户-编辑*/
 function member_edit(title,url,id,w,h){
 	layer_show(title,url,w,h);
@@ -175,22 +172,113 @@ function change_password(title,url,id,w,h){
 	layer_show(title,url,w,h);	
 }
 /*用户-删除*/
-function member_del(obj,id){
-	layer.confirm('确认要删除吗？',function(index){
-		$.ajax({
-			type: 'POST',
-			url: '',
-			dataType: 'json',
-			success: function(data){
-				$(obj).parents("tr").remove();
-				layer.msg('已删除!',{icon:1,time:1000});
-			},
-			error:function(data) {
-				console.log(data.msg);
-			},
-		});		
-	});
+function member_del(cr_id,talk){
+	
+	var aaa = "确认删除吗？";
+	
+	if(talk == "已启用"){
+		alert("方案正在使用中！不可删除");
+	}else{
+		alert(cr_id);
+		
+	 	layer.confirm(aaa,function(index){
+	 		$.ajax({
+	 			type: 'POST',
+	 			url: '${path}/ChargeRule/delRule.action',
+	 			dataType: 'text',
+	 			data:"cr_id="+cr_id,
+	 			success: function(data){	
+	 				if(data == "true"){
+	 					layer.msg('已删除',{icon:6,time:1000});
+		 				location.href="${path}/ChargeRule/jumpshow.action"
+	 				}							
+	 			},
+	 			error:function(data) {
+	 				console.log(data.msg);
+	 			},
+	 		});		
+	 	});
+	}
 }
+
+
+
+
+
+// $(function () {
+//     $('#container').highcharts({
+//         chart: {
+//             type: 'column'
+//         },
+//         title: {
+//             text: 'Monthly Average Rainfall'
+//         },
+//         subtitle: {
+//             text: 'Source: WorldClimate.com'
+//         },
+//         xAxis: {
+//             categories: [
+//                 '一月',
+//                 '二月',
+//                 '三月',
+//                 '四月',
+//                 '五月',
+//                 '六月',
+//                 '七月',
+//                 '八月',
+//                 '九月',
+//                 '十月',
+//                 '十一月',
+//                 '十二月'
+//             ]
+//         },
+//         yAxis: {
+//             min: 0,
+//             title: {
+//                 text: 'Rainfall (mm)'
+//             }
+//         },
+//         tooltip: {
+//             headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
+//             pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
+//                 '<td style="padding:0"><b>{point.y:.1f} mm</b></td></tr>',
+//             footerFormat: '</table>',
+//             shared: true,
+//             useHTML: true
+//         },
+//         plotOptions: {
+//             column: {
+//                 pointPadding: 0.2,
+//                 borderWidth: 0
+//             }
+//         },
+//         series: [{
+//             name: 'Tokyo',
+//             data: [49.9, 71.5, 106.4, 129.2, 144.0, 176.0, 135.6, 148.5, 216.4, 194.1, 95.6, 54.4]
+
+//         }, {
+//             name: 'New York',
+//             data: [83.6, 78.8, 98.5, 93.4, 106.0, 84.5, 105.0, 104.3, 91.2, 83.5, 106.6, 92.3]
+
+//         }, {
+//             name: 'London',
+//             data: [48.9, 38.8, 39.3, 41.4, 47.0, 48.3, 59.0, 59.6, 52.4, 65.2, 59.3, 51.2]
+
+//         }, {
+//             name: 'Berlin',
+//             data: [42.4, 33.2, 34.5, 39.7, 52.6, 75.5, 57.4, 60.4, 47.6, 39.1, 46.8, 51.1]
+
+//         }]
+//     });
+// });			
+
+
+
+
+
+
+
+
 </script> 
 </body>
 </html>

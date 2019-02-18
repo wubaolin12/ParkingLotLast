@@ -5,6 +5,7 @@ import java.util.Map;
 
 import org.great.bean.Countrules;
 import org.great.bean.Param;
+import org.great.bean.vo.NewRule;
 import org.springframework.stereotype.Repository;
 
 /**
@@ -94,4 +95,16 @@ public interface CountrulesMapper {
 	 * @return
 	 */	
 	public boolean start2(String crpm_id);
+	/**
+	 * 添加新规则
+	 * 
+	 * @return
+	 */	
+	public boolean newRule(NewRule n);
+	/**
+	 * 删除规则
+	 * 
+	 * @return
+	 */	
+	public boolean delRule(String cr_id);
 }

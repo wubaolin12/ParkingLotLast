@@ -67,5 +67,18 @@
 	 <update id="start2" parameterType="String">
 	 UPDATE tb_countrules SET pm_id = 10 WHERE crpm_id != #{crpm_id}
 	 </update>
+	 	 
+	 
+	 <insert id="newRule" parameterType="org.great.bean.vo.NewRule">
+	 insert into tb_countrules(pm_id,cr_starttime,cr_overtime,cr_fristmoney,cr_addmoney,crpm_id)
+		values
+		(10,#{start},#{over},#{startPrice},#{addPrice},#{pam})
+	
+	 </insert>
+	 
+	 	<delete id="delRule" parameterType="String">
+		DELETE FROM
+		tb_countrules where cr_id = #{cr_id}
+	</delete>
 	 
 </mapper>

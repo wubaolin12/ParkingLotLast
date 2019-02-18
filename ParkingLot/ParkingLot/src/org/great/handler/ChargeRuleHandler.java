@@ -13,6 +13,7 @@ import javax.servlet.http.HttpSession;
 import org.great.bean.Countrules;
 import org.great.bean.Cust;
 import org.great.bean.Param;
+import org.great.bean.vo.NewRule;
 import org.great.biz.CountrulesBiz;
 import org.great.biz.CustCarBiz;
 import org.springframework.context.annotation.Scope;
@@ -103,6 +104,16 @@ public class ChargeRuleHandler {
 	 */
 	@RequestMapping("/jumpAdd.action")
 	public String jumpAdd(HttpServletRequest request) {	
+		
+		//获取计费规则下拉框取值
+		List<Param> ruleSelect = countrulesBiz.findSelect();
+		
+		System.err.println(".........ruleSelect="+ruleSelect);
+		
+		HttpSession session = request.getSession();				
+		session.setAttribute("ruleSelect", ruleSelect);	
+		
+		
 		return "ChargeRuleAdd";
 	}
 	
@@ -119,20 +130,74 @@ public class ChargeRuleHandler {
 		
 		return ruleList;
 }
+	/**
+	 * 	新增方案中的计费规则
+	 */
+	@RequestMapping("/addNewRule.action")
+	public @ResponseBody String addNewRule(String pam,String start,String over,String startPrice,String addPrice ) {
+			
+		String emm = "false";
+	    
+	    int pamm = Integer.valueOf(pam);
+	    Double startt = Double.valueOf(start);
+	    Double overr = Double.valueOf(over);
+	    int startPricee = Integer.valueOf(startPrice);
+	    int addPricee = Integer.valueOf(addPrice);
+	    
+	    NewRule newrule = new NewRule(pamm,startt,overr,startPricee,addPricee);
+	    
+	    System.err.println("newrule="+newrule);
+	    
+	    //向规则表中添加新规则
+	    
+	   boolean a  =  countrulesBiz.newRule(newrule);
+	    
+	   if(a == true) {
+		   emm = "true";
+	   }
+		
+		return emm;
+	}
+	
+	
 	
 	
 	/**
 	 * 	新增计费规则方案名
 	 */
 	@RequestMapping("/planNameAdd.action")
-	public @ResponseBody String planAdd(String planName) {
+	public String planAdd(String value,String text,HttpServletRequest request) {
 		
-		boolean a  = countrulesBiz.planNameAdd(planName);	
+		System.err.println("要添加方案参数value="+value);
 		
-		System.err.println("新增方案名="+a);
+		System.err.println("要添加方案名text="+text);
+			
+		request.setAttribute("value", value);	
+		request.setAttribute("text", text);
 		
-		return "方案名添加成功";
+		return "ChargeRuleAdd";
 }
+	/**
+	 * 	删除计费规则
+	 */
+	@RequestMapping("/delRule.action")
+	public @ResponseBody String delRule(String cr_id,HttpServletRequest request) {
+		
+		
+		String emm = "false";
+		
+		System.err.println("要删除的规则cr_id="+cr_id);
+		
+		//删除规则方法
+		boolean a  = countrulesBiz.delRule(cr_id);
+		
+		if(a == true) {
+			emm ="true";
+		}
+		
+		
+		return emm;
+	}
 	
 	/**
 	 * 	修改具体规则参数

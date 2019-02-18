@@ -7,6 +7,7 @@ import javax.annotation.Resource;
 
 import org.great.bean.Countrules;
 import org.great.bean.Param;
+import org.great.bean.vo.NewRule;
 import org.great.mapper.CountrulesMapper;
 import org.springframework.stereotype.Service;
 
@@ -85,6 +86,18 @@ public class CountrulesBziImpl implements CountrulesBiz{
 	public boolean start2(String crpm_id) {
 		// TODO Auto-generated method stub
 		return countrulesMapper.start2(crpm_id);
+	}
+
+	@Override
+	public boolean newRule(NewRule n) {
+		// TODO Auto-generated method stub
+		return countrulesMapper.newRule(n);
+	}
+
+	@Override
+	public boolean delRule(String cr_id) {
+		// TODO Auto-generated method stub
+		return countrulesMapper.delRule(cr_id);
 	}
 	
 	
