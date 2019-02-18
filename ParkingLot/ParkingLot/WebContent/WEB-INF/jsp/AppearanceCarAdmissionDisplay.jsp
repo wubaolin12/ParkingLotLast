@@ -127,7 +127,6 @@
 	}
 	GetDateNow();
 	function toPay(money){
-		
 		alert("缴费"+money+"元");
 		document.getElementById("WIDtotal_amount").value = money;
 		var form = document.getElementById('alipayment');

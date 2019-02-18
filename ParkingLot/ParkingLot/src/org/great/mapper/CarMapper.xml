@@ -18,6 +18,13 @@
 		resultType="org.great.bean.Car">
 		select * from tb_car where c_num =#{number}
 	</select>
+	<!-- 通过车牌找到车信息 包括车辆角色XXX -->
+	<select id="FindCarRoleByCarNumberPmtypeNameX"
+		resultType="org.great.bean.Car">
+		select * from tb_car where c_num =#{number} and pm_id
+		=(select pm_id from tb_param where pm_type = #{pm_type} and pm_name
+		=#{pm_name})
+	</select>
 	<!-- 根据车牌号更改车辆角色 -->
 	<update id="chagerPmIDByCarNumberX"
 		parameterType="org.great.bean.Car">
@@ -31,10 +38,16 @@
 		where c_num =
 		#{c_num}
 	</update>
-		<!-- 根据车牌号更改车主ID 主要是设为空  取消绑定的-->
+	<!-- 根据车牌号更改车主ID -->
+	<update id="chagerCustIDByCarNumberX">
+		update tb_car set cust_id=#{cust_id} where c_num =
+		#{c_num}
+	</update>
+	<!-- 根据车牌号更改车主ID 主要是设为空 取消绑定的 -->
 	<update id="chagerCustIDNULLByCarNumberX">
 		update tb_car set cust_id=null, pm_id= #{pm_id}
-		 where c_num = #{c_num}
+		where
+		c_num = #{c_num}
 	</update>
 
 
@@ -72,7 +85,7 @@
 			<result property="v_overtime" column="v_overtime" />
 		</collection>
 	</resultMap>
-	<!-- 通过车牌找到车Vip表信息  18 待生效 -->
+	<!-- 通过车牌找到车Vip表信息 18 待生效 -->
 	<select id="FindVipByCarNumber18X" parameterType="String"
 		resultMap="findCarVip18Map">
 		select * from tb_car c LEFT JOIN tb_vip v on c.c_id = v.c_id
