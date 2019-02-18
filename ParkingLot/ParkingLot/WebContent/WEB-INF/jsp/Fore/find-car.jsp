@@ -230,7 +230,7 @@ function findCar(){
 		contentType:"application/json;charset=utf-8",
 		dataType:"json",
 		success:function(data){
-			alert(data);
+			//alert(data);
 			if(data==null||data==""){
 				alert("找不到这辆车");
 				return;

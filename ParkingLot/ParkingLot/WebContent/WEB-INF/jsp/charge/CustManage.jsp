@@ -44,19 +44,6 @@
 			class="Hui-iconfont">&#xe68f;</i></a>
 	</nav>
 	<div class="page-container">
-		<div class="text-c">
-			日期范围： <input type="text"
-				onfocus="WdatePicker({ maxDate:'#F{$dp.$D(\'datemax\')||\'%y-%M-%d\'}' })"
-				id="datemin" class="input-text Wdate" style="width: 120px;">
-			- <input type="text"
-				onfocus="WdatePicker({ minDate:'#F{$dp.$D(\'datemin\')}',maxDate:'%y-%M-%d' })"
-				id="datemax" class="input-text Wdate" style="width: 120px;">
-			<input type="text" class="input-text" style="width: 250px"
-				placeholder="输入会员名称、电话、邮箱" id="" name="">
-			<button type="submit" class="btn btn-success radius" id="" name="">
-				<i class="Hui-iconfont">&#xe665;</i> 搜用户
-			</button>
-		</div>
 		<div class="cl pd-5 bg-1 bk-gray mt-20">
 			<span class="l"> <a href="javascript:;"
 				onclick="member_add('添加用户','${path}/custManageHandler/CustAddJsp.action','','510')"

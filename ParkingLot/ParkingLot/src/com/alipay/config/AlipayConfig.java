@@ -26,11 +26,11 @@ public class AlipayConfig {
 	// 支付宝公钥,查看地址：https://openhome.alipay.com/platform/keyManage.htm 对应APPID下的支付宝公钥。
     public static String alipay_public_key = "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAyM59BDVwELGGpw6dfGwAa6IZkoRE0+lmmfN2enGntm4n076zD+0WDXz9JJCfrJh83XzbVNtAfEI1eSgxtjO8L2Uk6mddXh5U8hQvYG3Zh2bBJruSAI8xD65sv8ge6IwL0YwuhFTTIoHBqUGGiIlUZBketY30oyjOpS4riT5HPSuFTjh6QoLXt60Rr7slLVLVvhXu804HVjA+95OutvZkTFA2BtAR6d6oY0E9pQsAqBYm/NAiKckSuqVBg33rpgVAeJJHCpTy8nG8LaKurSFJIgnspgMYKwWaj6Qa4qARo0PjR8CbbI43EkqQRILe+c/w1zzLdozbgObh2KhGlADfkwIDAQAB";
 	// 服务器异步通知页面路径  需http://格式的完整路径，不能加?id=123这类自定义参数，必须外网可以正常访问
-	public static String notify_url = "http://localhost:8080/ParkingLot/notify_url.jsp";
-
+	public static String notify_url = "";
+//	http://localhost:8080/ParkingLot/notify_url.jsp
 	// 页面跳转同步通知页面路径 需http://格式的完整路径，不能加?id=123这类自定义参数，必须外网可以正常访问
-	public static String return_url = "http://localhost:8080/ParkingLot/return_url.jsp";
-
+	public static String return_url = "";
+//	http://localhost:8080/ParkingLot/return_url.jsp
 	// 签名方式
 	public static String sign_type = "RSA2";
 	

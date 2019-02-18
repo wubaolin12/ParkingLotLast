@@ -209,10 +209,13 @@
 															layer.msg('添加失败!',{icon : 1,time : 1000});
 														    }
 													   });
-									var index = parent.layer
-											.getFrameIndex(window.name);
-									parent.$('.btn-refresh').click();
-									parent.layer.close(index);
+//									var index = parent.layer.getFrameIndex(window.name);
+//									parent.$('.btn-refresh').click();
+//									parent.layer.close(index);
+								alert("操作结束！！");
+								var index = parent.layer.getFrameIndex(window.name);
+								window.parent.location.replace(window.parent.location.href);
+								parent.layer.close(index);
 								}
 							});
 		});

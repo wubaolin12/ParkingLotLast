@@ -72,6 +72,27 @@
 			<result property="v_overtime" column="v_overtime" />
 		</collection>
 	</resultMap>
+	<!-- 通过车牌找到车Vip表信息  18 待生效 -->
+	<select id="FindVipByCarNumber18X" parameterType="String"
+		resultMap="findCarVip18Map">
+		select * from tb_car c LEFT JOIN tb_vip v on c.c_id = v.c_id
+		where c_num = #{number} and v.pm_id = 18
+	</select>
+	<resultMap type="org.great.bean.Car" id="findCarVip18Map">
+		<id property="c_id" column="c_id" />
+		<result property="cust_id" column="cust_id" />
+		<result property="pm_id" column="pm_id" />
+		<result property="c_num" column="c_num" />
+		<result property="c_null1" column="c_null1" />
+		<collection property="vip" column="v_id"
+			javaType="org.great.bean.Vip">
+			<id property="v_id" column="v_id" />
+			<result property="co_id" column="co_id" />
+			<result property="c_id" column="c_id" />
+			<result property="v_starttime" column="v_starttime" />
+			<result property="v_overtime" column="v_overtime" />
+		</collection>
+	</resultMap>
 	<!-- 根据手机号查询该用户名下车辆VIP信息 -->
 	<select id="findCustCarVipStateX"
 		resultMap="findCustCarVipStateMap">
