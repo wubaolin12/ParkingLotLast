@@ -65,7 +65,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	</div>
 	<!-- 下面的input为隐藏区域 -->
 	<div style="display:none">
-		<form name="alipayment" action="${path}/Combination/moneyTo_Combination.action" method=post
+		<form name="alipayment" action="${path}/Combination/moneyTo_Combination.pay" method=post
 			 id="alipayment" class="form-horizontal" >
 		订单名称:<input id="WIDsubject" name="WIDsubject" />
 		商户订单号:<input id="WIDout_trade_no" name="WIDout_trade_no" />

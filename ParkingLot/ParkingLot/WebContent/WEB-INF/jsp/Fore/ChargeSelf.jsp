@@ -11,7 +11,7 @@ String path=request.getScheme()+"://"+request.getServerName()+":"+
 <html lang="zxx">
 
 <head>
-<title>传一智能停车场</title>
+<title>自助缴费</title>
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -71,7 +71,7 @@ String path=request.getScheme()+"://"+request.getServerName()+":"+
 							<header>
 								<!-- START LOGO -->
 								<div class="logo_wrapper">
-									<a href="${path}/fore/success1.do" class="logo"><img src="${path}/static/fore-static/images/logo.png" alt="Kinder Garten Logo"></a>
+									<a href="index.html" class="logo"><img src="${path}/static/fore-static/images/logo.png" alt="Kinder Garten Logo"></a>
 								</div>
 								<!-- END LOGO -->
 							</header>
@@ -84,13 +84,13 @@ String path=request.getScheme()+"://"+request.getServerName()+":"+
 											<div class="nav-collapse nav-collapse_ collapse">
 												<ul class="nav sf-menu clearfix">
 													<li ><a href="${path}/appointmentParkLotHandler/appointmentParkLotJsp.do">预约停车<span class="over1"></span></a></li>
-													<li><a href="${path}/carManagHandler/jumpCarMangerJSP.do">车辆管理<span class="over1"></span></a></li>						
-                                                  <li><a href="${path}/userinformation/toUserInformation.do">个人资料<span class="over1"></span></a></li>
+													<li  ><a href="${path}/carManagHandler/jumpCarMangerJSP.do">车辆管理<span class="over1"></span></a></li>													
+													<li><a href="${path}/userinformation/toUserInformation.do">个人资料<span class="over1"></span></a></li>
                                                     <li><a href="${path}/userinformation/toUserSetting.do">个人设置<span class="over1"></span></a></li>
 													<li><a href="${path}/findcar/findcar.do">反向寻车<span class="over1"></span></a></li>
-													<li><a href="${path}/self/foreToSelf.do">自助缴费<span class="over1"></span></a></li>
+													<li class="active"><a href="${path}/self/foreToSelf.do">自助缴费<span class="over1"></span></a></li>
 													<li><a href="${path}/Face/face.do">注册人脸识别<span class="over1"></span></a></li>
-													<li><a href="${path}/pay/toRecharge.do">余额充值<span class="over1"></span></a></li>
+													<li ><a href="${path}/pay/toRecharge.do">余额充值<span class="over1"></span></a></li>
                                                     <li><a href="javascript:exitUser()">退出<span class="over1"></span></a></li>
 												</ul>
 											</div>
@@ -105,8 +105,6 @@ String path=request.getScheme()+"://"+request.getServerName()+":"+
 						<!-- START CAROUFREDSEL SLIDER -->
 						<div class="box2 "  >
 							<div class="caroufredsel_slider1_wrapper">
-								<a class="prev1" href="index.html#"></a>
-								<a class="next1" href="index.html#"></a>
 								<ul id="caroufredsel_slider1" class="clearfix">
 									<li>
 										<div class="caroufredsel_slide1"> <img src="${path}/static/fore-static/images/slider/遮车布.PNG" alt="Slider2" class="img"  >
@@ -130,8 +128,69 @@ String path=request.getScheme()+"://"+request.getServerName()+":"+
 				</div>
 			</div>
 		</div>
-	
-		
+	<div class="pages_wrapper" >
+			<div class="container">
+				<div class="row">
+					<div class="span8">
+					   <!-- START CONTACT US -->
+						<div class="pages">
+							<!-- START COMMENT -->
+							<h3>自助缴费</h3>
+                            <h5>缴费成功后，30分钟内出场不再计费，超出30分钟则重新计费</h5>
+							<div id="note"></div>
+							<div id="fields">
+							<form name="ajax-contact-form" action="<%=path %>/self/foreCar.do" method=post
+			 id="ajax-contact-form" class="form-horizontal" onSubmit="return Recharge()">
+										<div class="block3">
+											<div class="control-group">
+												<div class="controls" align="left">
+													<input type="text" id="number" name="number" value="车牌号" onBlur="if(this.value=='') this.value='车牌号'" onFocus="if(this.value =='车牌号' ) this.value=''"
+									                 ></div>
+											</div>
+										<button type="submit" class="submit" >查询车牌号</button>	
+									</div>
+						    </form>
+							</div>
+							<!-- END COMMENT -->
+						</div>
+						<!-- END CONTACT US -->
+					</div>
+				
+				 </div>
+				 <br/>
+				  <div>
+						    <% int selfFlag=0;
+						      int selfMoney=0;
+						    if(request.getAttribute("selfFlag")!=null){
+						    selfFlag=(int)request.getAttribute("selfFlag"); 
+						    selfMoney=(int)request.getAttribute("selfMoney"); 
+						    if(selfFlag==0){%>
+						    <h5>缴费情况：已缴费 </h5>
+						    <%}{ %>
+						   <h5>缴费情况： 未缴费 </h5> <br/> <h5>本次停车费用：  <%=selfMoney %>元</h5>
+						    <%} %>
+						   
+						    <%if(selfFlag==1){ %>
+						   <div class="col-xs-8 col-sm-9 col-xs-offset-4 col-sm-offset-3">
+										<input class="btn btn-warning" type="button"
+											value="&nbsp;&nbsp;缴费&nbsp;&nbsp;" onclick="moneyToSelf()">
+									</div> 
+						    <%}
+						    } %>
+						    
+						   		 <div style="display:none">
+									    <form name="alipayment" action="${path}/self/foreMoneyTo_Self.pay" method=post
+											 id="alipayment" class="form-horizontal" >
+										订单名称:<input id="WIDsubject" name="WIDsubject" />
+										商户订单号:<input id="WIDout_trade_no" name="WIDout_trade_no" />
+										商品描述:<input id="WIDbody" name="WIDbody" />
+										商品价格:<input id="WIDtotal_amount" name="WIDtotal_amount"  value="<%=selfFlag==1?selfMoney:0 %>"/>
+										</form>
+								</div>
+							</div>
+			</div>
+		</div>
+		  
 		<!-- START FOOTER -->
 		<footer>
 			<div class="social_wrapper">
@@ -200,6 +259,37 @@ String path=request.getScheme()+"://"+request.getServerName()+":"+
 		 if(confirm("你确定要退出吗？")==true){
 				location.href='<%=path%>fore/foreExit.do';
 		}
+	}
+	
+	function GetDateNow() {
+		var vNow = new Date();
+		var sNow = "";
+		sNow += String(vNow.getFullYear());
+		sNow += String(vNow.getMonth() + 1);
+		sNow += String(vNow.getDate());
+		sNow += String(vNow.getHours());
+		sNow += String(vNow.getMinutes());
+		sNow += String(vNow.getSeconds());
+		sNow += String(vNow.getMilliseconds());
+		document.getElementById("WIDout_trade_no").value =  sNow;
+		document.getElementById("WIDsubject").value = "传一智能停车场系统自助缴费";
+	}
+	GetDateNow();
+	//充值提交
+	function Recharge(){
+		var flag=false;
+		var number= document.getElementById('car').value;
+		if(number!=""){
+			flag=true;
+		}
+		return flag;
+	}
+	function moneyToSelf(){
+		 if(confirm("确定要自助缴费吗？")==true){
+			 var form = document.getElementById('alipayment');
+			form.submit();
+		}
+		
 	}
 </script>
 </body>

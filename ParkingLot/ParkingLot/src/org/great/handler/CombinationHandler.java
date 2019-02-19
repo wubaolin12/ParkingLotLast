@@ -39,7 +39,7 @@ public class CombinationHandler {
 	}
 	
 	//提交 缴费表单
-		@RequestMapping("/moneyTo_Combination.action")
+		@RequestMapping("/moneyTo_Combination.pay")
 		public String moneyTo_Combination(HttpServletRequest request,HttpServletResponse response,String WIDsubject, String WIDout_trade_no,String WIDbody,String WIDtotal_amount) {
 			System.out.println("订单名称="+WIDsubject);
 			System.out.println("商户订单号="+WIDout_trade_no);

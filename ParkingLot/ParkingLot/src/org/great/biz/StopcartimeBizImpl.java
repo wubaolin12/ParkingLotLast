@@ -87,5 +87,22 @@ public class StopcartimeBizImpl implements StopcartimeBiz {
 		return stopcartimeMapper.FindByCarIDX(c_id,pm_id);
 	}
 
+	@Override
+	public boolean UpdateSctTimeandStateHq(Stopcartime sct) {
+		// TODO Auto-generated method stub
+		
+		int count = stopcartimeMapper.UpdateSctTimeandStateHq(sct);
+
+		if (count > 0) {
+
+			flag = true;
+		} else {
+
+			flag = false;
+		}
+
+		return flag;
+	}
+
 
 }
