@@ -20,18 +20,18 @@
 <body>
 <header>
 <a href="#" onClick="javascript :history.back(-1);"><img src="${path}/static/headlib/images/rpw_back_n.png"></a>
-<span>个人信息</span>
+<span>修改信息</span>
 <div class="clear"></div>
 </header>
 <form action="${path}/userinformation/UpdateUserInformation.do" onsubmit="return checkform()" theme="simple" method="post" enctype="multipart/form-data">
-
+<%-- 
 <section class="logo-license">
 <div class="half">
 	<a class="logo" id="logox">
 		<img id="bgl" src="${path}/static/headlib/images/logo_n.png">
 
 	</a>
-	<p>企业LOGO</p>
+	
 </div>
 
 <div class="clear"></div>
@@ -47,7 +47,7 @@
 	<button id="clipBtn">截取</button>
 </div>
 <div id="view"></div>
-</article>
+</article> --%>
 
 <article class="info">
 <ul>
@@ -56,10 +56,10 @@
 		  昵称:
 	   </div>
 	   <div class="right">
-		 <input value="${ FuserInf.cust_acc}" id="cust_acc" name="cust_acc">
+		 <input value="${ ForeUser.cust_acc}" id="cust_acc" name="cust_acc">
 		 <span id="nametip" style="font-size: 1.8rem"></span>
 	  	<input type="text"  id="namekey" style="display: none;" value="该昵称可以使用">
-	  	<input type="text" value="${ FuserInf.cust_acc}" style="display: none;" id="oldname">
+	  	<input type="text" value="${ ForeUser.cust_acc}" style="display: none;" id="oldname">
 	   </div>
 	   <div class="clear"></div>
    </li>
@@ -83,9 +83,9 @@
 		   手机号码:
 	   </div>
 	   <div class="right">
-	   	  	<input type="text" value="${ FuserInf.cust_phone}" style="display: none;" id="oldphone">
+	   	  	<input type="text" value="${ ForeUser.cust_phone}" style="display: none;" id="oldphone">
 	   	  		   
-		   <input value="${ FuserInf.cust_phone}" id="cust_phone" name="cust_phone" onkeyup="this.value=this.value.replace(/\D/g,'')"
+		   <input value="${ ForeUser.cust_phone}" id="cust_phone" name="cust_phone" onkeyup="this.value=this.value.replace(/\D/g,'')"
 				onafterpaste="this.value=this.value.replace(/\D/g,'')" maxlenaigth="11"><span id="phonetip" style="font-size: 1.8rem">
 	   	  	<input type="text" style="display: none;" id="phonekey" value="该号码可以使用">
 	   </div>

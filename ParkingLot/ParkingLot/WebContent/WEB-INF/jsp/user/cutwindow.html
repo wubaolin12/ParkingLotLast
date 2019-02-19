@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Cropper</title>
+    <link rel="stylesheet" href="cropper.min.css">
+    <style>
+
+    </style>
+    <link rel="stylesheet" href="cropperbyself.css">
+</head>
+<body>
+<button id="opencutWin" onclick="opencutWin()">上传图片</button>
+
+<!-- Scripts -->
+<script src="https://code.jquery.com/jquery-3.1.1.slim.min.js"></script>
+<script src="cropper.min.js"></script>
+<script src="html2canvas.min.js"></script>
+<script src="uploadpic.js"></script>
+
+<script>
+
+    function takeScreenshot() {
+        html2canvas(document.getElementById('cropper-view'), {
+            allowTaint: true,//允许跨域
+            taintTest: false,//是否在渲染前测试图片
+            onrendered: function(canvas) {
+                console.log(canvas);
+                document.body.appendChild(canvas);
+//                canvas.id = "mycanvas";
+                //生成base64图片数据
+                var dataUrl = canvas.toDataURL("image/jpeg");
+//                var newImg = document.createElement("img");
+//                newImg.src = dataUrl;
+                console.log(dataUrl);
+//                $('.cropper-Pupop').hide()
+                $('.cropper-Pupop').remove();
+            },
+        });
+    }
+</script>
+</body>
+</html>

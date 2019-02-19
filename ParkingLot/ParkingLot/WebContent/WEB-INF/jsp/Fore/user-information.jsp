@@ -23,15 +23,20 @@
 <span>个人信息</span>
 <div class="clear"></div>
 </header>
-<form action="${path}/userinformation/toUpdateUserInformation.do" theme="simple" method="post" enctype="multipart/form-data">
+<form action="${path}/userinformation/headUpload.do" theme="simple" method="post" enctype="multipart/form-data">
 
 <section class="logo-license">
 <div class="half">
 	<a class="logo" id="logox">
+<%-- 	<c:if test="${FuserInf.head_path==null}">
 		<img id="bgl" src="${path}/static/headlib/images/logo_n.png">
-
+	</c:if> --%>
+	
+		<img id="bgl" src="/picture/${ForeUser.head_path}" align="absmiddle" style=" width: 8rem;height: 8rem; margin-left:0rem;margin-top: 0rem">
+	
 	</a>
-	<p>企业LOGO</p>
+	
+<p>点击头像以修改头像</p>	
 </div>
 
 <div class="clear"></div>
@@ -40,11 +45,12 @@
 <article class="htmleaf-container">
 <div id="clipArea" ></div>
 <div class="foot-use">
-	<div class="uploader1 blue">
+	
+	<div class="uploader1 blue">	
 		<input type="button" name="file" class="button" value="打开">
-		<input id="file" type="file" onchange="javascript:setImagePreview();" accept="image/*" multiple  />
+		<input id="file"  type="file" onchange="javascript:setImagePreview();" accept="image/*" multiple  />
 	</div>
-	<button id="clipBtn">截取</button>
+	<button id="clipBtn" type="button">截取</button>
 </div>
 <div id="view"></div>
 </article>
@@ -56,7 +62,7 @@
 		  昵称:
 	   </div>
 	   <div class="right">
-		 <input value="${ FuserInf.cust_acc}" readonly="readonly">
+		 <input value="${ ForeUser.cust_acc}" readonly="readonly">
 	   </div>
 	   <div class="clear"></div>
    </li>
@@ -66,7 +72,7 @@
 		   性别:
 	   </div>
 	   <div class="right">
-		   <input value="${ FuserInf.cust_sex}" readonly="readonly">
+		   <input value="${ ForeUser.cust_sex}" readonly="readonly">
 	   </div>
 	   <div class="clear"></div>
    </li>
@@ -75,7 +81,7 @@
 		   手机号码:
 	   </div>
 	   <div class="right">
-		   <input value="${ FuserInf.cust_phone}" readonly="readonly">
+		   <input value="${ ForeUser.cust_phone}" readonly="readonly">
 	   </div>
 	   <div class="clear"></div>
    </li>
@@ -84,7 +90,7 @@
 		   账号余额:
 	   </div>
 	   <div class="right">
-		   <input value="${ FuserInf.cust_money}" readonly="readonly">
+		   <input value="${ ForeUser.cust_money}" readonly="readonly">
 	   </div>
 	   <div class="clear"></div>
    </li>
@@ -93,7 +99,7 @@
 </ul>
 </article>
 <article class="btn-1">
-<button type="submit">编辑</button>
+<a href="${path}/userinformation/toUpdateUserInformation.do"><button type="button">编辑</button></a>
 </article>
 </form>
 
@@ -122,6 +128,20 @@ $("#clipArea").photoClip({
 	},
 	clipFinish: function(dataURL) {
 		console.log(dataURL);
+		alert("qqqqqqqq");
+		 $.ajax({
+	            type: "POST",
+	            url: '${path}/userinformation/headUploadAjax.do',
+	            dataType: 'json',
+	            data: { "imgStr": dataURL},
+	            success: function(msg) {
+	                if(msg.state == 1){
+	                    alert(msg.msg);
+	                }else{
+	                    alert(msg.msg);
+	                }
+	            }
+	        });
 	}
 });
 </script>
@@ -132,8 +152,10 @@ $(".htmleaf-container").show();
 })
 	$("#clipBtn").click(function(){
 		$("#logox").empty();
-		$('#logox').append('<img src="' + imgsource + '" align="absmiddle" style=" width: 8rem;height: 8rem; margin-left:0rem;margin-top: 0rem">');
+		$('#logox').append('<img name="headfile" src="' + imgsource + '" align="absmiddle" style=" width: 8rem;height: 8rem; margin-left:0rem;margin-top: 0rem">');
 		$(".htmleaf-container").hide();
+		alert("sssss");
+       
 	})
 });
 </script>

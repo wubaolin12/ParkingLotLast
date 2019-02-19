@@ -22,14 +22,15 @@ public class Cust implements Serializable{
 	private int cust_age;// 年龄
 	private String cust_phone;// 电话（唯一性）
 	private int cust_money;// 余额
-	private String cus_null1;// 空字段
+	private String cust_head;// 空字段
 	private String cus_null2;// 空字段
 	private String cus_null3;// 空字段
 	private Param param;// 参数表
 	private Car car;// 车辆表
 	// 2019-1-21刘子健添加新字段
 	private List<Car> cars;
-
+	private String head_path;
+	
 	public Cust() {
 		super();
 	}
@@ -58,7 +59,7 @@ public class Cust implements Serializable{
 		this.cust_age = cust_age;
 		this.cust_phone = cust_phone;
 		this.cust_money = cust_money;
-		this.cus_null1 = cus_null1;
+		this.cust_head = cus_null1;
 		this.cus_null2 = cus_null2;
 		this.cus_null3 = cus_null3;
 		this.param = param;
@@ -66,12 +67,24 @@ public class Cust implements Serializable{
 		this.cars = cars;
 	}
 
+
+
 	@Override
 	public String toString() {
 		return "Cust [cust_id=" + cust_id + ", pm_id=" + pm_id + ", cust_acc=" + cust_acc + ", cust_pwd=" + cust_pwd
 				+ ", cust_sex=" + cust_sex + ", cust_age=" + cust_age + ", cust_phone=" + cust_phone + ", cust_money="
-				+ cust_money + ", cus_null1=" + cus_null1 + ", cus_null2=" + cus_null2 + ", cus_null3=" + cus_null3
-				+ ", param=" + param + ", car=" + car + ", cars=" + cars + "]";
+				+ cust_money + ", cust_head=" + cust_head + ", param=" + param + ", car=" + car + ", cars=" + cars
+				+ ", head_path=" + head_path + "]";
+	}
+
+	
+	
+	public String getHead_path() {
+		return head_path;
+	}
+
+	public void setHead_path(String head_path) {
+		this.head_path = head_path;
 	}
 
 	public int getCust_id() {
@@ -138,12 +151,13 @@ public class Cust implements Serializable{
 		this.cust_money = cust_money;
 	}
 
-	public String getCus_null1() {
-		return cus_null1;
+	
+	public String getCust_head() {
+		return cust_head;
 	}
 
-	public void setCus_null1(String cus_null1) {
-		this.cus_null1 = cus_null1;
+	public void setCust_head(String cus_null1) {
+		this.cust_head = cus_null1;
 	}
 
 	public String getCus_null2() {

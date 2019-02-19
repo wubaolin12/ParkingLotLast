@@ -1,5 +1,9 @@
 package org.great.fore_handler;
 
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.OutputStream;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -22,6 +26,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.commons.CommonsMultipartFile;
+
+import sun.misc.BASE64Decoder;
 
 /**
  * 前端个人信息显示
@@ -53,7 +60,9 @@ public class UserInformationHandler {
 	{
 		Cust cust=(Cust)request.getSession().getAttribute("ForeUser");
 		
-		request.setAttribute("FuserInf", cust);
+		cust=cbiz.FindByID(cust);
+		
+		request.setAttribute("ForeUser", cust);
 		result="Fore/user-information";
 		return result;
 		
@@ -70,7 +79,7 @@ public class UserInformationHandler {
 		System.out.println("--------toUpdateUserInformation");
 		Cust cust=(Cust)request.getSession().getAttribute("ForeUser");
 		
-		request.setAttribute("FuserInf", cust);
+		request.setAttribute("ForeUser", cust);
 		result="Fore/user-update";
 		return result;
 		
@@ -261,6 +270,96 @@ public class UserInformationHandler {
 		}else {
 			result="该号码可以使用";
 		}
+		return result;
+		
+	}
+	
+    @RequestMapping("headUpload.do")
+    public String  headUpload(@RequestParam("headfile") CommonsMultipartFile file) throws IOException {
+         long  startTime=System.currentTimeMillis();
+        System.out.println("------------headUpload");
+        System.out.println("-----------fileName："+file.getOriginalFilename());
+        String path="F:/测试文件夹/"+file.getOriginalFilename();
+         
+        File newFile=new File(path);
+        //通过CommonsMultipartFile的方法直接写文件（注意这个时候）
+        file.transferTo(newFile);
+        long  endTime=System.currentTimeMillis();
+        System.out.println("方法二的运行时间："+String.valueOf(endTime-startTime)+"ms");
+        
+       
+        
+        return "/success"; 
+    }
+    
+    /**
+     * 头像上传
+     * @param request
+     * @return
+     */
+	@ResponseBody
+	@RequestMapping(value = "/headUploadAjax.do", method = RequestMethod.POST, produces = "application/json;charset=utf-8")
+	public String headUploadAjax(HttpServletRequest request) 
+	{
+		System.out.println("+++------headUploadAjax");
+		String base64Pic=request.getParameter("imgStr");
+		System.out.println("+++----headUploadAjax"+base64Pic);
+		BASE64Decoder decoder = new BASE64Decoder();
+		// String path="F:/测试文件夹/11.jpg";
+		
+		String fileName = System.currentTimeMillis()+".jpg";
+//		String basePath = request.getSession().getServletContext().getRealPath("/cust_head");
+		// 图片存放路径
+		String path = "D:\\file_file\\test\\upload" ;
+//		String path = "/home/wbl/upload/picture/"+orgFilename;
+		
+		String headname = path+"\\"+fileName;
+		
+		System.out.println("用户头像地址路径=" + headname);
+
+		File file = new File(headname);
+		
+		/**
+		 * 判断路径是否存在，如果不存在就创建一个
+		 */
+		if (!file.getParentFile().exists()) {
+
+			file.getParentFile().mkdirs();
+		}
+
+
+		try {
+			String baseValue = base64Pic.replaceAll(" ", "+");//前台在用Ajax传base64值的时候会把base64中的+换成空格，所以需要替换回来。
+			byte[] b = decoder.decodeBuffer(baseValue.replace("data:image/jpeg;base64,", ""));//去除base64中无用的部分
+			 base64Pic = base64Pic.replace("base64,", "");
+			//byte[] b = decoder.decodeBuffer(imgStr);
+				for (int i = 0; i < b.length; ++i) {
+					if (b[i] < 0) {
+						b[i] += 256;
+					}
+				}
+		OutputStream out = new FileOutputStream(headname);
+		out.write(b);
+		out.flush();
+		out.close();
+		
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	
+		//路径写入数据库
+		Map map=new HashMap<>();
+		map.put("head_path", fileName);
+		Cust cust=(Cust)request.getSession().getAttribute("ForeUser");
+		if(cust!=null) {
+			System.out.println("-----------++++"+cust.toString());
+			bbiz.updateData("tb_cust", map, "cust_id", ""+cust.getCust_id());
+		}
+		result="用户头像已保存";
+		
+			
+		
 		return result;
 		
 	}
