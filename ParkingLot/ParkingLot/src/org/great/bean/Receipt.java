@@ -1,5 +1,7 @@
 package org.great.bean;
 
+import java.io.Serializable;
+
 import org.springframework.stereotype.Component;
 
 /**
@@ -9,7 +11,11 @@ import org.springframework.stereotype.Component;
  *
  */
 @Component
-public class Receipt {
+public class Receipt implements Serializable {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private int re_id;// id(主键)
 	private int u_id;// 执行人ID（外键）
 	private int c_id;// 车ID（外键）

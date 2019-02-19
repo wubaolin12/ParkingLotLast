@@ -8,7 +8,6 @@ import javax.annotation.Resource;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 import org.great.bean.User;
 import org.great.biz.MenuBiz;
@@ -17,6 +16,7 @@ import org.great.util.BaseUtil;
 import org.great.util.CaptchaUtil;
 import org.great.util.CookieUtils;
 import org.great.util.JedisClient;
+import org.great.util.RedisSession;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -43,8 +43,8 @@ public class LoginHandler {
 	private MenuBiz menuBiz;
 	
 	@Resource
-	JedisClient jedisClient;//吴宝林修改，用于单点登录
-	
+	BaseUtil baseUtil;
+
 	String result = "usererror";
 
 	/**
@@ -75,10 +75,10 @@ public class LoginHandler {
 	 */
 	@ResponseBody
 	@RequestMapping(value = "/loginAjax.action", method = RequestMethod.POST, produces = "application/json;charset=utf-8")
-	public String LoginAjax(HttpServletResponse response,HttpServletRequest request,@RequestBody User user) {
+	public String LoginAjax(HttpServletResponse response, HttpServletRequest request, @RequestBody User user) {
 
 		System.out.println("账号=" + user.getU_name() + "密码=" + user.getU_pwd() + "验证码=" + user.getCode());
-		HttpSession session = request.getSession();
+//		HttpSession session = request.getSession();
 
 		// 判断验证码
 //		String code1 = (String) session.getAttribute("Code");
@@ -94,34 +94,35 @@ public class LoginHandler {
 		User users = (User) userBiz.findUserByName(user);
 		System.out.println("找到的用户=" + users);
 
-		//如果用户不存在，登录失败
+		// 如果用户不存在，登录失败
 		if (users == null) {
 			result = "usererror";
 			System.out.println("用户名错误");
 			return result;
 		}
 
+		RedisSession session = baseUtil.getSession(response, request);
 
-		request.setAttribute("User", users);
+		session.setAttribute("User", users);
 		session.setAttribute("loginuser", users);
 //		session.setAttribute("User", users);
 		result = "success";
 		System.out.println("验证成功");
 
-		// 生成token
-		String token = UUID.randomUUID().toString();
-		users.setU_pwd(null);//清空密码
-		JSONObject json = JSONObject.fromObject(users);
-						
-		// 把用户信息保存到redis，key=token;value=user
-		jedisClient.set("USER_SESSION:"+token,json.toString());
-		
-		// 设置key过期时间
-		jedisClient.expire("USER_SESSION:"+token, 1800);
-		
-		// 返回登录成功，token写入到cookie
-		CookieUtils.setCookie(request, response, "PL_TOKEN", token);
-	
+//		// 生成token
+//		String token = UUID.randomUUID().toString();
+//		users.setU_pwd(null);//清空密码
+//		JSONObject json = JSONObject.fromObject(users);
+//						
+//		// 把用户信息保存到redis，key=token;value=user
+//		jedisClient.set("USER_SESSION:"+token,json.toString());
+//		
+//		// 设置key过期时间
+//		jedisClient.expire("USER_SESSION:"+token, 1800);
+//		
+//		// 返回登录成功，token写入到cookie
+//		CookieUtils.setCookie(request, response, "PL_TOKEN", token);
+
 		return result;
 	}
 
@@ -149,31 +150,26 @@ public class LoginHandler {
 		}
 	}
 
-
 	@RequestMapping("/head.action")
 	public String tohead() {
 
 		System.out.println("跳转到头像页面--------");
 		return "Fore/user-updatePWD";
 	}
-	
+
 	@RequestMapping("addPicture.action")
-	public ModelAndView addPicture(
-	                           MultipartFile pic
-	                           )
-	            throws IllegalStateException, IOException
-	{
+	public ModelAndView addPicture(MultipartFile pic) throws IllegalStateException, IOException {
 		System.out.println("*---------addPicture");
-	if (!pic.isEmpty()) {
-	            String path = "F:\\项目实战\\image\\";
-	            String originalFileName = pic.getOriginalFilename();
-	            // 新的图片名称
-	            String newFileName = UUID.randomUUID() + originalFileName.substring(originalFileName.lastIndexOf("."));
-	            // 新的图片
-	            File newFile = new File(path + newFileName);
-	            // 将内存中的数据写入磁盘
-	            pic.transferTo(newFile);
-	        }
-	return null;
+		if (!pic.isEmpty()) {
+			String path = "F:\\项目实战\\image\\";
+			String originalFileName = pic.getOriginalFilename();
+			// 新的图片名称
+			String newFileName = UUID.randomUUID() + originalFileName.substring(originalFileName.lastIndexOf("."));
+			// 新的图片
+			File newFile = new File(path + newFileName);
+			// 将内存中的数据写入磁盘
+			pic.transferTo(newFile);
+		}
+		return null;
 	}
 }

@@ -1,6 +1,12 @@
 package org.great.bean;
 
-public class Staff_rel {
+import java.io.Serializable;
+
+public class Staff_rel implements Serializable {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private int u_id;
 	private int role_id;
 	private Role role;

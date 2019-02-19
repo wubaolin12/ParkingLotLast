@@ -1,5 +1,7 @@
 package org.great.bean;
 
+import java.io.Serializable;
+
 import org.springframework.stereotype.Component;
 
 /**
@@ -9,8 +11,12 @@ import org.springframework.stereotype.Component;
  *
  */
 @Component
-public class Param {
+public class Param implements Serializable {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private int pm_id;// id(主键)
 	private String pm_name;// 参数名称
 	private String pm_type;// 参数类型

@@ -11,7 +11,6 @@ import java.util.Map;
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 import org.great.bean.Cust;
 import org.great.bean.Menu;
@@ -19,6 +18,7 @@ import org.great.bean.User;
 import org.great.biz.BaseBiz;
 import org.great.biz.CustBiz;
 import org.great.util.BaseUtil;
+import org.great.util.RedisSession;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
@@ -49,6 +49,9 @@ public class UserInformationHandler {
 	@Value("tb_cust")
 	private String tb_name;
 	
+	@Resource
+	BaseUtil baseUtil;
+	
 	private String result;
 	/**
 	 * 跳转显示用户个人信息
@@ -56,9 +59,11 @@ public class UserInformationHandler {
 	 * @return
 	 */
 	@RequestMapping("/toUserInformation.do")
-	public String toUserInformation(HttpServletRequest request) 
+	public String toUserInformation(HttpServletRequest request,HttpServletResponse response) 
 	{
-		Cust cust=(Cust)request.getSession().getAttribute("ForeUser");
+		// 获取redissession，得到key对应 的值
+		RedisSession session = baseUtil.getSession(response, request);
+		Cust cust = (Cust) session.getAttribute("ForeUser", Cust.class);
 		
 		cust=cbiz.FindByID(cust);
 		
@@ -74,10 +79,12 @@ public class UserInformationHandler {
 	 * @return
 	 */
 	@RequestMapping("/toUpdateUserInformation.do")
-	public String toUpdateUserInformation(HttpServletRequest request) 
+	public String toUpdateUserInformation(HttpServletRequest request,HttpServletResponse response) 
 	{
 		System.out.println("--------toUpdateUserInformation");
-		Cust cust=(Cust)request.getSession().getAttribute("ForeUser");
+		// 获取redissession，得到key对应 的值
+		RedisSession session = baseUtil.getSession(response, request);
+		Cust cust = (Cust) session.getAttribute("ForeUser", Cust.class);
 		
 		request.setAttribute("ForeUser", cust);
 		result="Fore/user-update";
@@ -91,10 +98,12 @@ public class UserInformationHandler {
 	 * @return
 	 */
 	@RequestMapping("/toUpdateUserPWD.do")
-	public String toUpdateUserPWD(HttpServletRequest request) 
+	public String toUpdateUserPWD(HttpServletRequest request,HttpServletResponse response) 
 	{
 		System.out.println("------------toUpdateUserPWD");
-		Cust cust=(Cust)request.getSession().getAttribute("ForeUser");
+		// 获取redissession，得到key对应 的值
+		RedisSession session = baseUtil.getSession(response, request);
+		Cust cust = (Cust) session.getAttribute("ForeUser", Cust.class);
 		
 		request.setAttribute("FuserInf", cust);
 		result="Fore/user-updatePWD";
@@ -123,12 +132,15 @@ public class UserInformationHandler {
 	 * @return
 	 */
 	@RequestMapping("/UpdateUserInformation.do")
-	public String UpdateUserInformation(HttpServletRequest request,@RequestParam Map<String,String> map) 
+	public String UpdateUserInformation(HttpServletRequest request,	HttpServletResponse response,
+			@RequestParam Map<String,String> map) 
 	{
 		System.out.println("--------UpdateUserInformation");
 		System.out.println("--------MAp"+map.toString());
 
-		Cust cust=(Cust)request.getSession().getAttribute("ForeUser");
+		// 获取redissession，得到key对应 的值
+		RedisSession session = baseUtil.getSession(response, request);
+		Cust cust = (Cust) session.getAttribute("ForeUser", Cust.class);
 		
 		if(cust!=null){
 			int num=bbiz.updateData(tb_name, map, "cust_id",""+ cust.getCust_id());
@@ -152,12 +164,14 @@ public class UserInformationHandler {
 	
 	@ResponseBody
 	@RequestMapping(value = "/UpdateFUserPWD.do", method = RequestMethod.POST, produces = "application/json;charset=utf-8")
-	public String UpdateFUserPWD(HttpServletRequest request) 
+	public String UpdateFUserPWD(HttpServletRequest request,HttpServletResponse response) 
 	{
 		System.out.println("--------UpdateUserInformation");
 		
 
-		Cust cust=(Cust)request.getSession().getAttribute("ForeUser");
+		// 获取redissession，得到key对应 的值
+		RedisSession session = baseUtil.getSession(response, request);
+		Cust cust = (Cust) session.getAttribute("ForeUser", Cust.class);
 		Map map=new HashMap<>();
 		String newpwd=request.getParameter("cust_pwd");
 		map.put("cust_pwd", BaseUtil.getStrrMD5(newpwd));
@@ -197,8 +211,9 @@ public class UserInformationHandler {
 		String oldpwd=request.getParameter("checkpwd");
 		System.out.println("--------FuserPWDcheckAjax："+oldpwd);
 		
-		HttpSession session = request.getSession();
-		Cust cust=(Cust)session.getAttribute("ForeUser");
+		//获取redissession，得到key对应 的值
+		RedisSession session = baseUtil.getSession(response, request);
+		Cust cust=(Cust)session.getAttribute("ForeUser",Cust.class);
 		System.out.println("--------"+cust.toString());
 		if(cust!=null) {
 			System.out.println("++++---------cust"+cust.toString());
@@ -299,7 +314,7 @@ public class UserInformationHandler {
      */
 	@ResponseBody
 	@RequestMapping(value = "/headUploadAjax.do", method = RequestMethod.POST, produces = "application/json;charset=utf-8")
-	public String headUploadAjax(HttpServletRequest request) 
+	public String headUploadAjax(HttpServletRequest request, HttpServletResponse response) 
 	{
 		System.out.println("+++------headUploadAjax");
 		String base64Pic=request.getParameter("imgStr");
@@ -310,8 +325,8 @@ public class UserInformationHandler {
 		String fileName = System.currentTimeMillis()+".jpg";
 //		String basePath = request.getSession().getServletContext().getRealPath("/cust_head");
 		// 图片存放路径
-		String path = "D:\\file_file\\test\\upload" ;
-//		String path = "/home/wbl/upload/picture/"+orgFilename;
+//		String path = "D:\\file_file\\test\\upload" ;
+		String path = "/home/wbl/upload/picture/";
 		
 		String headname = path+"\\"+fileName;
 		
@@ -351,7 +366,10 @@ public class UserInformationHandler {
 		//路径写入数据库
 		Map map=new HashMap<>();
 		map.put("head_path", fileName);
-		Cust cust=(Cust)request.getSession().getAttribute("ForeUser");
+		
+		// 获取redissession，得到key对应 的值
+		RedisSession session = baseUtil.getSession(response, request);
+		Cust cust = (Cust) session.getAttribute("ForeUser", Cust.class);
 		if(cust!=null) {
 			System.out.println("-----------++++"+cust.toString());
 			bbiz.updateData("tb_cust", map, "cust_id", ""+cust.getCust_id());

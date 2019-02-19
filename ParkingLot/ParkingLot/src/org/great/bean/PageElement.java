@@ -1,5 +1,7 @@
 package org.great.bean;
 
+import java.io.Serializable;
+
 import org.springframework.beans.factory.annotation.Value;
 
 /**
@@ -7,8 +9,12 @@ import org.springframework.beans.factory.annotation.Value;
  * @author yf
  *
  */
-public class PageElement {
+public class PageElement implements Serializable {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	protected int currentpage;
 	@Value("1")
 	protected int totalpage;		

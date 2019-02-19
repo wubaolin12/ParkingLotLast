@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import org.great.bean.Car;
 import org.great.bean.Cust;
@@ -11,6 +12,8 @@ import org.great.bean.Param;
 import org.great.biz.CarBiz;
 import org.great.biz.CustBiz;
 import org.great.biz.ParamBiz;
+import org.great.util.BaseUtil;
+import org.great.util.RedisSession;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -26,6 +29,8 @@ public class CarManagHandler {
 	CustBiz custBiz;
 	@Resource
 	ParamBiz paramBiz;
+	@Resource
+	BaseUtil baseUtil;
 
 	/**
 	 * 跳到车辆管理JSP前端————野比欣之助
@@ -34,10 +39,12 @@ public class CarManagHandler {
 	 * @return
 	 */
 	@RequestMapping("/jumpCarMangerJSP.do")
-	public String JumpCarMangerJSP(HttpServletRequest request) {
-		// 查询该用户名下车辆信息
-		Cust cust = (Cust) request.getSession().getAttribute("ForeUser");
+	public String JumpCarMangerJSP(HttpServletRequest request,HttpServletResponse response) {
+		//获取redissession，得到key对应 的值
+		RedisSession session = baseUtil.getSession(response, request);
+		Cust cust = (Cust) session.getAttribute("ForeUser",Cust.class);
 		System.out.println("cust=" + cust);
+		
 		List<Car> CarList = carBiz.findCustCarX(cust);
 		System.out.println("CarList=" + CarList);
 		if (CarList != null && CarList.size() != 0 && CarList.size() != 1 && CarList.get(0).getC_id() != 0) {
@@ -54,12 +61,16 @@ public class CarManagHandler {
 	 * @return
 	 */
 	@RequestMapping("/Carunbind.do")
-	public String Carunbind(String c_num, HttpServletRequest request) {
+	public String Carunbind(String c_num, HttpServletRequest request,
+											HttpServletResponse response) {
 
 		System.out.println("c_num=" + c_num);
-//		查询用户信息根据用户手机号
-		Cust cust = (Cust) request.getSession().getAttribute("ForeUser");
+		//获取redissession，得到key对应 的值
+		RedisSession session = baseUtil.getSession(response, request);
+		Cust cust = (Cust) session.getAttribute("ForeUser",Cust.class);
 		System.out.println("cust=" + cust);
+		
+//		查询用户信息根据用户手机号
 		List<Car> CarListOne = carBiz.FindCarByCaridX(c_num);
 		System.out.println("CarListOne=" + CarListOne);
 		Param param = new Param("白名单", "车辆角色");
@@ -106,10 +117,13 @@ public class CarManagHandler {
 	 * @return
 	 */
 	@RequestMapping("/JumpCarAdd.do")
-	public String JumpCarAdd(String c_num, HttpServletRequest request) {
-		// 查询该用户名下车辆信息
-		Cust cust = (Cust) request.getSession().getAttribute("ForeUser");
+	public String JumpCarAdd(String c_num, HttpServletRequest request, HttpServletResponse response) {
+		//获取redissession，得到key对应 的值
+		RedisSession session = baseUtil.getSession(response, request);
+		Cust cust = (Cust) session.getAttribute("ForeUser",Cust.class);
 		System.out.println("cust=" + cust);
+		
+		// 查询该用户名下车辆信息
 		List<Car> CarList = carBiz.FindCarByCaridX(c_num);
 		System.out.println("CarList=" + CarList);
 		Param param2 = new Param("注册会员", "车辆角色");

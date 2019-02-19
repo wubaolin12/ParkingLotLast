@@ -24,6 +24,8 @@ import org.great.biz.MenuBiz;
 import org.great.biz.ParkBiz;
 import org.great.biz.StopcartimeBiz;
 import org.great.biz.UserBiz;
+import org.great.util.BaseUtil;
+import org.great.util.RedisSession;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -46,6 +48,8 @@ public class OutParkingLotHandler {
 	public CustBiz custBiz; // 用户dao接口
 	@Resource
 	public StopcartimeBiz stopcartimeBiz; // 用户dao接口
+	@Resource
+	BaseUtil baseUtil;
 
 //	public List<Park>parkList;//所有的车位列表;
 //	//public Park updatePark; //查询条件的车位;
@@ -59,8 +63,8 @@ public class OutParkingLotHandler {
 	 */
 
 	@RequestMapping("/moneyTo_out.pay")
-	public String moneyTo_recharge(HttpServletRequest request, String WIDsubject, String WIDout_trade_no,
-			String WIDbody, String WIDtotal_amount) throws UnsupportedEncodingException {
+	public String moneyTo_recharge(HttpServletResponse response, HttpServletRequest request, String WIDsubject,
+			String WIDout_trade_no, String WIDbody, String WIDtotal_amount) throws UnsupportedEncodingException {
 		System.out.println("订单名称=" + WIDsubject);
 		System.out.println("商户订单号=" + WIDout_trade_no);
 		System.out.println("商品描述=" + WIDbody);
@@ -72,7 +76,9 @@ public class OutParkingLotHandler {
 		request.setAttribute("WIDout_trade_no", WIDout_trade_no);
 		request.setAttribute("WIDbody", WIDbody);
 		request.setAttribute("WIDtotal_amount", WIDtotal_amount);
-		request.getSession().setAttribute("PayType", "出场缴费");
+
+		RedisSession session = baseUtil.getSession(response, request);
+		session.setAttribute("PayType", "出场缴费");
 
 		// 防止乱码
 //		request.setCharacterEncoding("gbk");
@@ -101,12 +107,12 @@ public class OutParkingLotHandler {
 		System.out.println("stc=" + stc);
 		boolean flag = stopcartimeBiz.UpdateSctTimeandState(stc);
 		System.out.println("——————————————修改出场时间成功————————————————————————");
-		System.out.println("——————————————"+flag+"————————————————————————");
+		System.out.println("——————————————" + flag + "————————————————————————");
 
 		Stopcartime sctz = new Stopcartime(stc.getSct_id(), stc.getSct_money());
 		System.out.println("sctz=" + sctz);
 		flag = stopcartimeBiz.UpdateSctMoneyX(sctz);
-		System.out.println("——————————————"+flag+"————————————————————————");
+		System.out.println("——————————————" + flag + "————————————————————————");
 
 		// try {
 //			response.setContentType("text/html;charset=utf-8");

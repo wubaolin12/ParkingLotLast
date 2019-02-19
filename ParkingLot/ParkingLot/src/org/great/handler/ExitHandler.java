@@ -6,8 +6,10 @@ import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.great.util.BaseUtil;
 import org.great.util.CookieUtils;
 import org.great.util.JedisClient;
+import org.great.util.RedisSession;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -19,8 +21,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Scope("prototype")
 @RequestMapping("/Exit")
 public class ExitHandler {
+//	@Resource
+//	JedisClient jedisClient;
+
 	@Resource
-	JedisClient jedisClient;
+	BaseUtil baseUtil;
 
 	@RequestMapping("exit.action")
 	public void Exit(HttpServletRequest request, HttpServletResponse response) throws IOException {
@@ -33,8 +38,8 @@ public class ExitHandler {
 		request.getSession().invalidate();
 		
 		//清除redis
-		String token = CookieUtils.getCookieValue(request, "PL_TOKEN");
-		jedisClient.del("USER_SESSION:"+token);
+		RedisSession session = baseUtil.getSession(response, request);
+		session.removeSession("User");
 
 		// 重定向回登录界面
 		response.sendRedirect(path + "login/login.action");

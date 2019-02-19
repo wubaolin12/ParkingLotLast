@@ -13,7 +13,6 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 import org.great.bean.Cust;
 import org.great.bean.Msg;
@@ -22,8 +21,10 @@ import org.great.bean.SearchUser;
 import org.great.biz.CustBiz;
 import org.great.face.FaceAdd;
 import org.great.face.FaceSearch;
+import org.great.util.BaseUtil;
 import org.great.util.CookieUtils;
 import org.great.util.JedisClient;
+import org.great.util.RedisSession;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -41,9 +42,8 @@ public class FaceHandler {
 	@Resource
 	public CustBiz custBiz; // 用户dao接口
 
-	
 	@Resource
-	JedisClient jedisClient;//redis连接类
+	BaseUtil baseUtil;
 	/**
 	 * 保存照片
 	 * @param imgStr
@@ -161,23 +161,11 @@ public class FaceHandler {
         		
         		//把用户存进session中
     			Cust cust = custBiz.FindByPhone(Phone);
-    			// 登录成功的用户 保存到session里
-    			request.getSession().setAttribute("ForeUser", cust);
-    		
-    			// 生成token
-    			String token = UUID.randomUUID().toString();
-    			cust.setCust_pwd(null);// 清空密码
-    			JSONObject json = JSONObject.fromObject(cust);
-
-    			// 把用户信息保存到redis，key=token;value=user
-    			jedisClient.set("CUST_SESSION:" + token, json.toString());
-
-    			// 设置key过期时间
-    			jedisClient.expire("CUST_SESSION:" + token, 1800);
-
-    			// 返回登录成功，token写入到cookie
-    			CookieUtils.setCookie(request, response, "CUST_TOKEN", token);
     			
+    			// 登录成功的用户 保存到session里
+    			RedisSession session = baseUtil.getSession(response, request);
+    			session.setAttribute("ForeUser", cust);
+    		
     			System.out.println(cust);
         	}
         	}

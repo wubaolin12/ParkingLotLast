@@ -1,9 +1,14 @@
 package org.great.bean;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class ResultSearch {
+public class ResultSearch implements Serializable {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	public String face_token;
 	public ArrayList<SearchUser> user_list;
 	public ResultSearch(String face_token, ArrayList<SearchUser> user_list) {

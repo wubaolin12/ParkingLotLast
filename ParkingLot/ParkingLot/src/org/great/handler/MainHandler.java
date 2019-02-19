@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.great.bean.Menu;
@@ -12,6 +13,8 @@ import org.great.bean.User;
 import org.great.biz.MenuBiz;
 import org.great.biz.UserBiz;
 import org.great.log.OperationLog;
+import org.great.util.BaseUtil;
+import org.great.util.RedisSession;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -36,15 +39,15 @@ public class MainHandler {
 	 */
 	@RequestMapping("/main.action")
 	@OperationLog(operationType = "登录操作", operationName = "进入主页")
-	public String mainJsp(HttpServletRequest request) {
+	public String mainJsp(HttpServletRequest request,HttpServletResponse response) {
 		
 		
 		char ch = 'a';
 		String a1 =""+ch;
 		
-//		HttpSession session = request.getSession(); 
-//		User users = (User) session.getAttribute("User");
-		User users = (User) request.getAttribute("User");
+//		RedisSession session = BaseUtil.getSession(response, request); 
+		HttpSession session = request.getSession();
+		User users = (User) session.getAttribute("User");
 		
 		// 角色关系
 		RoleRel re = userBiz.FindStaffRole(users.getU_id());

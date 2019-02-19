@@ -7,6 +7,7 @@ import java.util.Map;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.great.bean.Menu;
@@ -16,6 +17,8 @@ import org.great.biz.MenuBiz;
 import org.great.biz.RoleBiz;
 import org.great.biz.RoleMenuBiz;
 import org.great.log.OperationLog;
+import org.great.util.BaseUtil;
+import org.great.util.RedisSession;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -43,17 +46,20 @@ public class PermissionMenuHandler {
 	@Resource
 	private RoleMenuBiz roleMenuBiz;
 
+	@Resource
+	BaseUtil baseUtil;
 	/**
 	 * 跳转到权限管理页面
 	 * 
 	 * @return
 	 */
 	@RequestMapping("/grant.action")
-	public String grant(HttpServletRequest request) {
+	public String grant(HttpServletRequest request,HttpServletResponse response) {
 
 		//获取角色名称
 		List<Role> roleList = roleBiz.findAll();
-		HttpSession session = request.getSession();
+
+		RedisSession session = baseUtil.getSession(response, request);
 		
 		session.setAttribute("roleList", roleList);
 		

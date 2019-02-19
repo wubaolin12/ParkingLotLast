@@ -1,11 +1,17 @@
 package org.great.bean;
 
+import java.io.Serializable;
+
 /**
  * 停车时间表（tb_stopcartime）								
  * @author 野比欣之助
  *
  */
-public class Stopcartime {
+public class Stopcartime implements Serializable {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private int sct_id;// id(主键)
 	private int c_id;// 车ID（外键）
 	private int pm_id;// 停车状态（外键）

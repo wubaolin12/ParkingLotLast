@@ -1,12 +1,19 @@
 package org.great.bean;
 
+import java.io.Serializable;
+
 /**
  * 车位表(tb_park)
  * 
  * @author 野比欣之助
  *
  */
-public class Park {
+public class Park implements Serializable {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	
 	private int p_id;// id(主键)
 	private int pm_id;// 车位状态ID（外键）
 	private int c_id;// 车辆ID（外键）

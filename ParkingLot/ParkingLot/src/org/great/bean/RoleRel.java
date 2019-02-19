@@ -1,5 +1,7 @@
 package org.great.bean;
 
+import java.io.Serializable;
+
 import org.springframework.stereotype.Component;
 
 /**
@@ -8,7 +10,11 @@ import org.springframework.stereotype.Component;
  *
  */
 @Component
-public class RoleRel {
+public class RoleRel implements Serializable {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private int sr_id;// id（主键）
 	private int u_id;// 员工id（外键）
 	private int role_id;// 角色id（外键）

@@ -1,12 +1,18 @@
 package org.great.bean;
 
+import java.io.Serializable;
 
 /**
  * 员工表(tb_user)								
  * @author 野比欣之助
  *
  */
-public class User {
+public class User implements Serializable{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	
 	private int u_id;// id（主键）
 	private String u_name;// 账号
 	private String u_pwd;// 密码

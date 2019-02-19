@@ -19,6 +19,8 @@ import org.great.bean.Cust;
 import org.great.bean.Park;
 import org.great.biz.ComboBiz;
 import org.great.biz.ParkBiz;
+import org.great.util.BaseUtil;
+import org.great.util.RedisSession;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -29,7 +31,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class CombinationHandler {
 	@Resource
 	ComboBiz comboBiz;
-	
+	@Resource
+	BaseUtil baseUtil;
 	
 	@RequestMapping("/toPay.action")
 	public String toPay(HttpServletRequest request) {
@@ -55,7 +58,10 @@ public class CombinationHandler {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-			request.getSession().setAttribute("PayType", "套餐缴费");
+			
+
+			RedisSession session = baseUtil.getSession(response, request);
+			session.setAttribute("PayType", "套餐缴费");
 			
 			String path=request.getScheme()+"://"+request.getServerName()+":"+
 					request.getServerPort()+request.getContextPath()+"/";
