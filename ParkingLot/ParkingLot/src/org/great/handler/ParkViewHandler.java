@@ -20,6 +20,8 @@ import org.great.bean.User;
 import org.great.biz.MenuBiz;
 import org.great.biz.ParkBiz;
 import org.great.biz.UserBiz;
+import org.great.util.BaseUtil;
+import org.great.util.RedisSession;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -40,6 +42,8 @@ public class ParkViewHandler {
 
 	@Resource
 	public ParkBiz parkBiz; 
+	@Resource
+	BaseUtil baseUtil;
 	
 	public List<Park>parkList;//所有的车位列表;
 	//public Park updatePark; //查询条件的车位;
@@ -50,13 +54,15 @@ public class ParkViewHandler {
 	 */
 	
 	@RequestMapping("/allList.action")
-	public String LookCar(HttpServletRequest request) {
+	public String LookCar(HttpServletRequest request,HttpServletResponse response) {
 		Park p=new Park(0, null, 0, null,null);
 		parkList=parkBiz.FindAll(p);
 		System.out.println("长度"+parkList.size());
 		request.setAttribute("parkList", parkList);
 		pForeList=parkBiz.FindGroup();
-		request.getSession().setAttribute("pForeList", pForeList);
+		
+		RedisSession session = baseUtil.getSession(response, request);
+		session.setAttribute("pForeList", pForeList);
 		return "ParkView";
 	}
 

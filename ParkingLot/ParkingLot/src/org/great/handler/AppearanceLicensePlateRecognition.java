@@ -16,6 +16,7 @@ import java.util.Map;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.great.bean.Car;
@@ -36,6 +37,7 @@ import org.great.biz.RoleRelBiz;
 import org.great.biz.StopcartimeBiz;
 import org.great.biz.VipBiz;
 import org.great.util.BaseUtil;
+import org.great.util.RedisSession;
 import org.json.JSONObject;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
@@ -135,7 +137,7 @@ public class AppearanceLicensePlateRecognition {
 
 	@ResponseBody
 	@RequestMapping(value = "/AppearanceCarAdmission.action", method = RequestMethod.POST, produces = "application/json;charset=utf-8")
-	public Map LicensePlates(HttpServletRequest request, MultipartFile myfile) {
+	public Map LicensePlates(HttpServletResponse response, HttpServletRequest request, MultipartFile myfile) {
 
 		// 获得文件名字
 		String filename = myfile.getOriginalFilename();
@@ -192,20 +194,6 @@ public class AppearanceLicensePlateRecognition {
 		JSONObject res = client.plateLicense(path + filename, options);
 		System.out.println(res.toString(2));
 
-		// 参数为二进制数组
-//    byte[] file = null;
-//    
-//	try {
-//		
-//		file = readFileByBytes("C:\\Users\\Administrator\\Desktop\\timg2.jpg");
-//		
-//	} catch (IOException e) {
-//		// TODO Auto-generated catch block
-//		e.printStackTrace();
-//	}
-//    res = client.plateLicense(file, options);
-//    System.out.println(res.toString(2));
-
 //取到车牌
 
 		String str = res.toString().split(":")[3];
@@ -231,7 +219,7 @@ public class AppearanceLicensePlateRecognition {
 		// 先查询该车的正在停车的那条数据，然后改变状态成出场
 		List<Stopcartime> sctlist = stopcartimeBiz.FindSctByNumber(car.getC_id());
 
-		HttpSession session = request.getSession();// 获取session
+		RedisSession session = baseUtil.getSession(response, request);// 获取session
 
 		System.out.println(car.getC_id() + "ID下的所有停车记录：" + sctlist);
 

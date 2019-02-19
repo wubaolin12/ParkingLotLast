@@ -1,12 +1,18 @@
 package org.great.bean;
 
+import java.io.Serializable;
+
 /**
  * 车辆套餐表(tb_vip)							
  * @author 野比欣之助
  *
  */
-public class Vip {
+public class Vip implements Serializable {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private int v_id;// id(主键)
 	private int co_id;// 套餐表ID（外键）
 	private int c_id;// 车辆ID（外键）

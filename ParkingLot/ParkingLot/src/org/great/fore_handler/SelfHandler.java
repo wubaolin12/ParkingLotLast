@@ -2,44 +2,32 @@ package org.great.fore_handler;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.security.MessageDigest;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
-import java.util.UUID;
 
 import javax.annotation.Resource;
-import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 import org.great.bean.Car;
 import org.great.bean.Cust;
-import org.great.bean.Menu;
 import org.great.bean.Param;
-import org.great.bean.Park;
-import org.great.bean.RoleRel;
 import org.great.bean.Stopcartime;
-import org.great.bean.User;
 import org.great.bean.Vip;
 import org.great.biz.CarBiz;
 import org.great.biz.CustBiz;
-import org.great.biz.MenuBiz;
 import org.great.biz.ParamBiz;
 import org.great.biz.ParkBiz;
 import org.great.biz.RoleRelBiz;
 import org.great.biz.StopcartimeBiz;
-import org.great.biz.UserBiz;
 import org.great.biz.VipBiz;
 import org.great.util.BaseUtil;
+import org.great.util.RedisSession;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
 
 /**
  * 自助缴费
@@ -81,7 +69,9 @@ public class SelfHandler {
 	
 	@RequestMapping("/foreToSelf.do")
 	public String toRecharge(HttpServletRequest request,HttpServletResponse response) {
-		request.getSession().setAttribute("selfType", "loginYes");
+		
+		RedisSession session = baseUtil.getSession(response, request);
+		session.setAttribute("selfType", "loginYes");
 		return "Fore/ChargeSelf";
 	}
 	
@@ -91,7 +81,8 @@ public class SelfHandler {
 	
 	@RequestMapping("/foreToSelf_withoutLogin.do")
 	public String foreToSelf_withoutLogin(HttpServletRequest request,HttpServletResponse response) {
-		request.getSession().setAttribute("selfType", "loginNo");
+		RedisSession session = baseUtil.getSession(response, request);
+		session.setAttribute("selfType", "loginNo");
 		return "Fore/ChargeSelf_withoutLogin";
 	}
 
@@ -127,8 +118,9 @@ public class SelfHandler {
 		System.out.println("查询车辆信息" + car1);
 		
 		//跳转的页面
-				String jumpTo="";
-				String selfType=(String)request.getSession().getAttribute("selfType");
+		String jumpTo="";
+		RedisSession session = baseUtil.getSession(response, request);
+		String selfType = session.getAttribute("selfType",String.class).toString();
 				if(selfType.equals("loginYes")) {
 					jumpTo="self/foreToSelf.do";
 				}else if(selfType.equals("loginNo")) {
@@ -235,7 +227,7 @@ public class SelfHandler {
 					System.out.println("-------这货要交钱的 ，不放!!!-------");
 				}
 				System.out.println("flag ="+flag);
-				request.getSession().setAttribute("selfStop", wantStopInfo);
+				session.setAttribute("selfStop", wantStopInfo);
 				request.setAttribute("selfFlag",flag );
 				request.setAttribute("selfMoney",money );
 			}//停车场无此车
@@ -281,7 +273,8 @@ public class SelfHandler {
 		request.setAttribute("WIDbody", WIDbody);
 		request.setAttribute("WIDtotal_amount", WIDtotal_amount);
 		
-		request.getSession().setAttribute("PayType", "自助缴费");
+		RedisSession session = baseUtil.getSession(response, request);
+		session.setAttribute("PayType", "自助缴费");
 		
 		 //response.setContentType("text/html;charset=utf-8");
 		String path=request.getScheme()+"://"+request.getServerName()+":"+
@@ -301,7 +294,8 @@ public class SelfHandler {
 		System.out.println("支付宝交易号="+trade_no);
 		System.out.println("付款金额="+total_amount);
 		//改变停车记录
-		Stopcartime wantStopInfo=(Stopcartime)request.getSession().getAttribute("selfStop");
+		RedisSession session = baseUtil.getSession(response, request);
+		Stopcartime wantStopInfo=(Stopcartime)session.getAttribute("selfStop",Stopcartime.class);
 		
 		// 获取当前时间算出场时间
 		DateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
@@ -318,7 +312,7 @@ public class SelfHandler {
 		
 		//跳转的页面
 				String jumpTo="";
-				String selfType=(String)request.getSession().getAttribute("selfType");
+				String selfType=(String)session.getAttribute("selfType",String.class);
 				if(selfType.equals("loginYes")) {
 					jumpTo="self/foreToSelf.do";
 				}else if(selfType.equals("loginNo")) {
@@ -376,7 +370,8 @@ public class SelfHandler {
 		
 		//跳转的页面
 		String jumpTo="";
-		String selfType=(String)request.getSession().getAttribute("selfType");
+		RedisSession session = baseUtil.getSession(response, request);
+		String selfType=(String)session.getAttribute("selfType", String.class);
 		if(selfType.equals("loginYes")) {
 			jumpTo="self/foreToSelf.do";
 		}else if(selfType.equals("loginNo")) {

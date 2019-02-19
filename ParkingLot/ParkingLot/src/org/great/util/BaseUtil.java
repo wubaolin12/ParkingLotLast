@@ -5,8 +5,11 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.UUID;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import org.great.bean.Countrules;
 import org.great.bean.Receipt;
@@ -15,6 +18,7 @@ import org.great.biz.ReceiptBiz;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Service;
+import org.great.util.RedisSession;
 
 /**
  * UTIL父类,提供共有属性给子类继承
@@ -38,6 +42,9 @@ public class BaseUtil {
 	CountrulesBiz countrulesBiz;
 	@Resource
 	ReceiptBiz receiptBiz;
+
+	@Resource
+	RedisSession session;
 
 	/**
 	 * 计算总页数的方法
@@ -140,9 +147,29 @@ public class BaseUtil {
 	public boolean addReceipt(int u_id, int c_id, String re_thing, int re_money, String re_time) {
 		Receipt receipt = new Receipt(u_id, c_id, re_thing, re_money, re_time);
 		boolean flag = receiptBiz.AddReceiptX(receipt);
-		System.out.println("添加receip表flag="+flag);
+		System.out.println("添加receip表flag=" + flag);
 		return flag;
 
+	}
+
+	/**
+	 * 获取RedisSession
+	 */
+	public RedisSession getSession(HttpServletResponse response, HttpServletRequest request) {
+
+		/**
+		 * token如果是空的,就创建一个token,设置到cookie
+		 */
+		String token = CookieUtils.getCookieValue(request, "PL_TOKEN");
+		if (token == null) {
+			token = UUID.randomUUID().toString();
+			CookieUtils.setCookie(request, response, "PL_TOKEN", token);
+		}
+
+		session.setToken(token);
+		session.setRequest(request);
+		// 生成一个session
+		return session;
 	}
 
 }

@@ -16,6 +16,8 @@ import org.great.bean.Param;
 import org.great.bean.vo.NewRule;
 import org.great.biz.CountrulesBiz;
 import org.great.biz.CustCarBiz;
+import org.great.util.BaseUtil;
+import org.great.util.RedisSession;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -34,15 +36,19 @@ public class ChargeRuleHandler {
 	//装配bean包
 	@Resource
 	private CountrulesBiz countrulesBiz;
+	@Resource
+	BaseUtil baseUtil;
 	
 	/**
 	 * 	跳转计费规则界面
 	 */
 	@RequestMapping("/jumpshow.action")
-	public String jumpbilling(HttpServletRequest request) {	
+	public String jumpbilling(HttpServletRequest request,HttpServletResponse response) {	
 		//计费规则列表
 		List<Countrules> ruleList = countrulesBiz.findRuleList();
-		HttpSession session = request.getSession();				
+//		HttpSession session = request.getSession();	
+		
+		RedisSession session = baseUtil.getSession(response, request);
 		session.setAttribute("ruleList", ruleList);	
 		System.out.println("ruleList="+ruleList);
 

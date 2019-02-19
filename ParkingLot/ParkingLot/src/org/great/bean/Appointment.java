@@ -1,13 +1,20 @@
 package org.great.bean;
 
+import java.io.Serializable;
+
 /**
  * 预约停车的预约表
  * 
  * @author 野比欣之助
  *
  */
-public class Appointment {
+public class Appointment implements  Serializable {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	
 	int app_id;
 	int cust_id;
 	int c_id;

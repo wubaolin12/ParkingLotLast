@@ -1,11 +1,17 @@
 package org.great.bean;
 
+import java.io.Serializable;
+
 /**
  * 排班表(tb_sche)			
  * @author 野比欣之助
  *
  */
-public class Sche {
+public class Sche implements Serializable {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private int s_id;// id（主键）
 	private int ss_id;// 排班参数ID（外键）
 	private int u_id;// 工作人员（外键）

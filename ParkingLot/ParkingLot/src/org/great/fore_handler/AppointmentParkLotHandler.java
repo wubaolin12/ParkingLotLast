@@ -7,6 +7,7 @@ import java.util.List;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import org.great.bean.Appointment;
 import org.great.bean.Car;
@@ -22,6 +23,8 @@ import org.great.biz.ComboBiz;
 import org.great.biz.ParamBiz;
 import org.great.biz.ParkBiz;
 import org.great.biz.StopcartimeBiz;
+import org.great.util.BaseUtil;
+import org.great.util.RedisSession;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -42,12 +45,17 @@ public class AppointmentParkLotHandler {
 	ParamBiz paramBiz;
 	@Resource
 	StopcartimeBiz stopcartimeBiz;
+	@Resource
+	BaseUtil baseUtil;
 
 	@RequestMapping("/appointmentParkLotJsp.do")
-	public ModelAndView appointmentParkLotJsp(HttpServletRequest request) {
+	public ModelAndView appointmentParkLotJsp(HttpServletRequest request, HttpServletResponse response) {
 
-		Cust cust = (Cust) request.getSession().getAttribute("ForeUser");
+		// 获取redissession，得到key对应 的值
+		RedisSession session = baseUtil.getSession(response, request);
+		Cust cust = (Cust) session.getAttribute("ForeUser", Cust.class);
 		System.out.println("cust=" + cust);
+
 //		查询改CUST下有多少量车 获得车牌 车ID 等信息
 		List<Car> carList = carBiz.FindByCarcustidX(cust.getCust_id());
 		System.out.println("carList=" + carList);
@@ -79,23 +87,28 @@ public class AppointmentParkLotHandler {
 	 * @return
 	 */
 	@RequestMapping("/appointmentParkLot.do")
-	public ModelAndView appointmentParkLot(int c_id, int time2, HttpServletRequest request) {
+	public ModelAndView appointmentParkLot(int c_id, int time2, HttpServletRequest request,
+			HttpServletResponse response) {
 		System.err.println("---------打印传过来的值-----------------");
 		System.out.println("c_id=" + c_id);
 		System.out.println("time2=" + time2);
 //		获得系统时间
 		Date day = new Date();
 		SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd " + time2 + ":00:00");
-		if(time2<10) {
-			 df = new SimpleDateFormat("yyyy-MM-dd " + "0"+time2 + ":00:00");
-		}else {
-			 df = new SimpleDateFormat("yyyy-MM-dd " + time2 + ":00:00");
+		if (time2 < 10) {
+			df = new SimpleDateFormat("yyyy-MM-dd " + "0" + time2 + ":00:00");
+		} else {
+			df = new SimpleDateFormat("yyyy-MM-dd " + time2 + ":00:00");
 		}
 		System.out.println(df.format(day));
 		String time = df.format(day);
 		System.out.println("time=" + time);
-		Cust cust = (Cust) request.getSession().getAttribute("ForeUser");
+
+		// 获取redissession，得到key对应 的值
+		RedisSession session = baseUtil.getSession(response, request);
+		Cust cust = (Cust) session.getAttribute("ForeUser", Cust.class);
 		System.out.println("cust=" + cust);
+
 		Appointment appointment = new Appointment(cust.getCust_id(), c_id, time);
 		boolean falg = appointmentBiz.AddAppointmentX(appointment);
 		System.out.println("falg=" + falg);
@@ -125,10 +138,12 @@ public class AppointmentParkLotHandler {
 	}
 
 	@RequestMapping("/appointmentParkLotListJsp.do")
-	public ModelAndView appointmentParkLotListJsp(HttpServletRequest request) {
-		// 获得客户信息在session
-		Cust cust = (Cust) request.getSession().getAttribute("ForeUser");
+	public ModelAndView appointmentParkLotListJsp(HttpServletRequest request, HttpServletResponse response) {
+		// 获取redissession，得到key对应 的值
+		RedisSession session = baseUtil.getSession(response, request);
+		Cust cust = (Cust) session.getAttribute("ForeUser", Cust.class);
 		System.out.println("cust=" + cust);
+
 		// 根据用户ID查询该用户名下预约信息
 		List<Appointment> appointmentsList = appointmentBiz.findCustCarAppoinmentX(cust.getCust_id());
 		System.out.println("appointmentsList=" + appointmentsList);
@@ -140,13 +155,17 @@ public class AppointmentParkLotHandler {
 	}
 
 	@RequestMapping("/appointmentParkLotCancel.do")
-	public ModelAndView appointmentParkLotCancel(String c_num, HttpServletRequest request) {
+	public ModelAndView appointmentParkLotCancel(String c_num, HttpServletRequest request,
+			HttpServletResponse response) {
 		System.out.println("c_num=" + c_num);
 		boolean flag = appointmentBiz.delAppointmentByCnumX(c_num);
 		System.out.println("flag");
-		// 获得客户信息在session
-		Cust cust = (Cust) request.getSession().getAttribute("ForeUser");
+
+		// 获取redissession，得到key对应 的值
+		RedisSession session = baseUtil.getSession(response, request);
+		Cust cust = (Cust) session.getAttribute("ForeUser", Cust.class);
 		System.out.println("cust=" + cust);
+
 		// 根据用户ID查询该用户名下预约信息
 		List<Appointment> appointmentsList = appointmentBiz.findCustCarAppoinmentX(cust.getCust_id());
 		System.out.println("appointmentsList=" + appointmentsList);

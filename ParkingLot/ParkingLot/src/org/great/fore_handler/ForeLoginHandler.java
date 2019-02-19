@@ -12,8 +12,10 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.great.bean.Cust;
 import org.great.biz.CustBiz;
+import org.great.util.BaseUtil;
 import org.great.util.CookieUtils;
 import org.great.util.JedisClient;
+import org.great.util.RedisSession;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -35,12 +37,7 @@ public class ForeLoginHandler {
 	public CustBiz custBiz; // 用户dao接口
 	
 	@Resource
-	JedisClient jedisClient;//redis连接类
-
-//	public List<Park>parkList;//所有的车位列表;
-//	//public Park updatePark; //查询条件的车位;
-//	String result = "usererror";
-//	public List<Park>pForeList;//车位区号列表;
+	BaseUtil baseUtil;
 
 	/**
 	 * 登录成功跳转
@@ -87,21 +84,10 @@ public class ForeLoginHandler {
 		if (loginCust != null) {
 
 			// 登录成功的用户 保存到session里
-			request.getSession().setAttribute("ForeUser", loginCust);
+//			request.getSession().setAttribute("ForeUser", loginCust);
+			RedisSession session = baseUtil.getSession(response, request);
 
-			// 生成token
-			String token = UUID.randomUUID().toString();
-			cust.setCust_pwd(null);// 清空密码
-			JSONObject json = JSONObject.fromObject(loginCust);
-
-			// 把用户信息保存到redis，key=token;value=user
-			jedisClient.set("CUST_SESSION:" + token, json.toString());
-
-			// 设置key过期时间
-			jedisClient.expire("CUST_SESSION:" + token, 1800);
-
-			// 返回登录成功，token写入到cookie
-			CookieUtils.setCookie(request, response, "CUST_TOKEN", token);
+			session.setAttribute("ForeUser", loginCust);
 
 			out.println("<script type='text/javascript'>alert('登录成功'); location.href='" + path
 					+ "fore/success1.do';</script>");
@@ -157,7 +143,6 @@ public class ForeLoginHandler {
 			out.println("<script type='text/javascript'>alert('注册成功，即将跳转登录界面');location.href='" + path
 					+ "fore/foreLogin.do';</script>");
 
-//			url="Fore/foreLogin";
 		}
 		//
 		out.close();
@@ -168,12 +153,13 @@ public class ForeLoginHandler {
 	 * 退出用户
 	 */
 	@RequestMapping("/foreExit.do")
-	public String foreExit(HttpServletRequest request) {
+	public String foreExit(HttpServletRequest request,HttpServletResponse response) {
 		request.getSession().invalidate();
 		
-		//清除redis
-		String token = CookieUtils.getCookieValue(request, "CUST_TOKEN");
-		jedisClient.del("CUST_SESSION:"+token);
+//		jedisClient.del("CUST_SESSION:"+token);
+		RedisSession session = baseUtil.getSession(response, request);
+		session.removeSession("ForeUser");
+		
 		return "Fore/foreLogin";
 	}
 

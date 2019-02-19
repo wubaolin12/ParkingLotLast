@@ -1,11 +1,17 @@
 package org.great.bean;
 
+import java.io.Serializable;
+
 /**
  * 套餐表
  * @author 野比欣之助
  *
  */
-public class Combo {
+public class Combo implements Serializable {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private int co_id;// id(主键)
 	private String co_standard;// 套餐规格
 	private String co_price;// 套餐价格

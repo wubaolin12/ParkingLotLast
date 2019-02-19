@@ -1,9 +1,16 @@
 package org.great.bean;
+
+import java.io.Serializable;
+
 /*
  * 宏琪大哥
  * 车位实时状态类
  */
-public class ParkState {
+public class ParkState implements Serializable {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private String p_fore ;//车区号
 	private int emptyCount_open;//空车位 开放 数
 	private int occupiedCount;//已占用 数

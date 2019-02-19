@@ -1,11 +1,17 @@
 package org.great.bean;
 
+import java.io.Serializable;
+
 /**
  * 计费规则表(tb_countrules)				
  * @author 野比欣之助
  *
  */
-public class Countrules {
+public class Countrules implements Serializable {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private int cr_id;// id(主键)
 	private int pm_id;// 规则类型
 	private double cr_starttime;// 开始时间

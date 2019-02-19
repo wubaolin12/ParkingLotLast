@@ -6,8 +6,10 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.great.bean.Cust;
 import org.great.bean.User;
+import org.great.util.BaseUtil;
 import org.great.util.CookieUtils;
 import org.great.util.JedisClient;
+import org.great.util.RedisSession;
 import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -20,8 +22,11 @@ import net.sf.json.JSONObject;
  */
 public class ForeInterceptor implements HandlerInterceptor{
 
+//	@Resource
+//	JedisClient jedisClient;
+	
 	@Resource
-	JedisClient jedisClient;
+	BaseUtil baseUtil;
 
 	@Override
 	public void postHandle(HttpServletRequest request, HttpServletResponse response, Object handler,
@@ -42,22 +47,11 @@ public class ForeInterceptor implements HandlerInterceptor{
 		}
 
 		// 判断是否是已经登录，登录放行，否则跳转到登录界面
-		String token = CookieUtils.getCookieValue(request, "CUST_TOKEN");
-		String json = jedisClient.get("CUST_SESSION:"+token);
-		
-		System.out.println("----车主端登录拦截-----token=="+token);
-		System.out.println("----车主端登录拦截-----json=="+json);
-
-		if (json != null && json.length()>0) {
-			
-			//重置过期时间
-			jedisClient.expire("CUST_SESSION:"+token, 1800);
-			
-			JSONObject jsonObject = JSONObject.fromObject(json);
-			Cust cust = (Cust) JSONObject.toBean(jsonObject,Cust.class);
-			System.out.println(cust.toString());
-			
-			request.getSession().setAttribute("ForeUser", cust);
+		//获取redissession，得到key对应 的值
+		RedisSession session = baseUtil.getSession(response, request);
+		Cust user = (Cust) session.getAttribute("ForeUser", Cust.class);
+		if (user != null) {
+			System.out.println("用户----" + user.toString());
 			
 			return true;
 		}

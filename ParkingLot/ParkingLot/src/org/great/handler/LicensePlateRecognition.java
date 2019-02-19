@@ -15,7 +15,7 @@ import java.util.Map;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
+import javax.servlet.http.HttpServletResponse;
 
 import org.apache.commons.io.FileUtils;
 import org.great.bean.Appointment;
@@ -28,6 +28,8 @@ import org.great.biz.CarBiz;
 import org.great.biz.ParamBiz;
 import org.great.biz.ParkBiz;
 import org.great.biz.StopcartimeBiz;
+import org.great.util.BaseUtil;
+import org.great.util.RedisSession;
 import org.json.JSONObject;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
@@ -69,6 +71,9 @@ public class LicensePlateRecognition {
 	private AppointmentBiz appointmentBiz;
 	@Resource
 	private ParamBiz paramBiz;
+	
+	@Resource
+	BaseUtil baseUtil;
 
 	static AipOcr client = null;
 	static {
@@ -111,7 +116,7 @@ public class LicensePlateRecognition {
 
 	@ResponseBody
 	@RequestMapping(value = "/CarAdmission.action", method = RequestMethod.POST)
-	public Map LicensePlates(HttpServletRequest request, MultipartFile myfile) {
+	public Map LicensePlates(HttpServletResponse response, HttpServletRequest request, MultipartFile myfile) {
 //		作为车位慢满不满的标识
 		int flagPark = 1;
 		// 获得文件名字
@@ -276,7 +281,7 @@ public class LicensePlateRecognition {
 
 		}
 
-		HttpSession session = request.getSession();
+		RedisSession session = baseUtil.getSession(response, request);
 
 		session.setAttribute("Carkxj", car);
 
@@ -370,8 +375,8 @@ public class LicensePlateRecognition {
 	 */
 	private void savePic(String carNum,File orgFile) {
 		String newFileName = carNum +".jpg";
-		String path = "D:\\file_file\\test\\upload\\";
-//		String path = "/home/wbl/upload/picture/";
+//		String path = "D:\\file_file\\test\\upload\\";
+		String path = "/home/wbl/upload/picture/";
 		
 		car.setC_pic(newFileName);
 		try {

@@ -14,6 +14,10 @@ import org.springframework.stereotype.Component;
 @Component
 public class Cust implements Serializable{
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private int cust_id;// id(主键)
 	private int pm_id;// 用户状态
 	private String cust_acc;// 昵称(账号即用户名)

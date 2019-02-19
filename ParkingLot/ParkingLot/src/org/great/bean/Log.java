@@ -1,12 +1,18 @@
 package org.great.bean;
 
+import java.io.Serializable;
+
 /**
  * 日志表(log)
  * 
  * @author 野比欣之助
  *	吴宝林修改，2019.1.29
  */
-public class Log {
+public class Log implements Serializable {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private int log_id;// id(主键)
 	private int u_id;// 操作人（外键）
 	private String log_date;// 操作时间

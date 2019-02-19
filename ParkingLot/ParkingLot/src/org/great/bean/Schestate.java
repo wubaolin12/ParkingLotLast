@@ -1,11 +1,17 @@
 package org.great.bean;
 
+import java.io.Serializable;
+
 /**
  * 排班参数表(tb_scheState)			
  * @author 野比欣之助
  *
  */
-public class Schestate {
+public class Schestate implements Serializable {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	int ss_id;// id（主键）
 	String ss_name;// 班次名称
 	String ss_starttime;// 开始时间

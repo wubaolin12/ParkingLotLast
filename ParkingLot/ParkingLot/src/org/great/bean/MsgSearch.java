@@ -1,5 +1,6 @@
 package org.great.bean;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
@@ -7,7 +8,11 @@ import java.util.ArrayList;
  * @author  孔大帅人脸识别返回值
  *
  */
-public class MsgSearch {
+public class MsgSearch implements Serializable {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	public int error_code;
 	public String error_msg;
 	public long log_id;
