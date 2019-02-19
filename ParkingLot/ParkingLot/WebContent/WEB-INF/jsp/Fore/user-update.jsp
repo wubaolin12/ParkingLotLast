@@ -19,7 +19,7 @@
 </head>
 <body>
 <header>
-<a href="#" onClick="javascript :history.back(-1);"><img src="${path}/static/headlib/images/rpw_back_n.png"></a>
+<a href="${path}/userinformation/toUserInformation.do" ><img src="${path}/static/headlib/images/rpw_back_n.png"></a>
 <span>修改信息</span>
 <div class="clear"></div>
 </header>

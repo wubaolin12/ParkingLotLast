@@ -50,6 +50,23 @@ public class UserInformationHandler {
 	private String tb_name;
 	
 	private String result;
+	
+	
+	/**
+	 * 刷新主页面
+	 */
+
+	@RequestMapping("/reToforMain.do")
+	public String reToforMain(HttpServletRequest request) {
+		Cust cust=(Cust)request.getSession().getAttribute("ForeUser");
+		
+		cust=cbiz.FindByID(cust);
+		System.out.println("++---------reToforMain:"+cust.toString());
+		request.setAttribute("ForeUser", cust);
+		return "Fore/foreMain";
+	}
+	
+	
 	/**
 	 * 跳转显示用户个人信息
 	 * @param request
@@ -61,7 +78,7 @@ public class UserInformationHandler {
 		Cust cust=(Cust)request.getSession().getAttribute("ForeUser");
 		
 		cust=cbiz.FindByID(cust);
-		
+		System.out.println("++---------toUserInformation:"+cust.toString());
 		request.setAttribute("ForeUser", cust);
 		result="Fore/user-information";
 		return result;

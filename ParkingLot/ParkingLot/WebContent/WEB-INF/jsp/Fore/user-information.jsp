@@ -19,7 +19,7 @@
 </head>
 <body>
 <header>
-<a href="${path}/fore/success1.do"><img src="${path}/static/headlib/images/rpw_back_n.png"></a>
+<a href="${path}/userinformation/reToforMain.do"><img src="${path}/static/headlib/images/rpw_back_n.png"></a>
 <span>个人信息</span>
 <div class="clear"></div>
 </header>
