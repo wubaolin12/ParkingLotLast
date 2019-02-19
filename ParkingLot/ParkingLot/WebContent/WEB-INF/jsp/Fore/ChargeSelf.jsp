@@ -136,7 +136,7 @@ String path=request.getScheme()+"://"+request.getServerName()+":"+
 						<div class="pages">
 							<!-- START COMMENT -->
 							<h3>自助缴费</h3>
-                            <h5>缴费成功后，30分钟内出场不再计费，超出30分钟则重新计费</h5>
+                            <h5>缴费成功后，请迅速出场，否则将重新计费</h5>
 							<div id="note"></div>
 							<div id="fields">
 							<form name="ajax-contact-form" action="<%=path %>/self/foreCar.do" method=post
@@ -166,11 +166,11 @@ String path=request.getScheme()+"://"+request.getServerName()+":"+
 						    selfMoney=(int)request.getAttribute("selfMoney"); 
 						    if(selfFlag==0){%>
 						    <h5>缴费情况：已缴费 </h5>
-						    <%}{ %>
+						    <%}else{ %>
 						   <h5>缴费情况： 未缴费 </h5> <br/> <h5>本次停车费用：  <%=selfMoney %>元</h5>
 						    <%} %>
 						   
-						    <%if(selfFlag==1){ %>
+						    <%if(selfFlag==1&&selfMoney>0){ %>
 						   <div class="col-xs-8 col-sm-9 col-xs-offset-4 col-sm-offset-3">
 										<input class="btn btn-warning" type="button"
 											value="&nbsp;&nbsp;缴费&nbsp;&nbsp;" onclick="moneyToSelf()">
