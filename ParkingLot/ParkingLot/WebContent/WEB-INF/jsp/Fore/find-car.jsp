@@ -3,7 +3,10 @@
     
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <c:set value="${pageContext.request.contextPath}" var="path" scope="page" />
-
+<%
+String path=request.getScheme()+"://"+request.getServerName()+":"+
+		request.getServerPort()+request.getContextPath()+"/";
+%>
     
 <!DOCTYPE html>
 <html lang="zxx" style="">
@@ -87,6 +90,7 @@
 													<li><a href="${path}/userinformation/toUserInformation.do">个人资料<span class="over1"></span></a></li>
                                                     <li><a href="${path}/userinformation/toUserSetting.do">个人设置<span class="over1"></span></a></li>
 													<li  class="active"><a href="${path}/findcar/findcar.do">反向寻车<span class="over1"></span></a></li>
+													<li><a href="<%=path%>/self/foreToSelf.do">自助缴费<span class="over1"></span></a></li>
 													<li><a href="${path}/Face/face.do">注册人脸识别<span class="over1"></span></a></li>
 													<li><a href="${path}/pay/toRecharge.do">余额充值<span class="over1"></span></a></li>
                                                     <li><a href="javascript:exitUser()">退出<span class="over1"></span></a></li>

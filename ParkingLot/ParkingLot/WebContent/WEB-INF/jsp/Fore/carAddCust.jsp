@@ -112,6 +112,7 @@
 															class="over1"></span></a></li>
 													<li><a href="${path}/findcar/findcar.do">反向寻车<span
 															class="over1"></span></a></li>
+													<li><a href="${path}/self/foreToSelf.do">自助缴费<span class="over1"></span></a></li>
 													<li><a href="${path}/Face/face.do">注册人脸识别<span
 															class="over1"></span></a></li>
 													<li><a href="${path}/pay/toRecharge.do">余额充值<span
