@@ -117,7 +117,7 @@
 									document.getElementById("carNumFlag").innerHTML="";
 									return true;
 								} else {
-									document.getElementById("carNumFlag").innerHTML="*该车牌已被注册！";
+									document.getElementById("carNumFlag").innerHTML="*该车牌无法退费！";
 									return false;
 								}
 							}
