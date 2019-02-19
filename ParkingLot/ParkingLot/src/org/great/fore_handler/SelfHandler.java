@@ -312,7 +312,7 @@ public class SelfHandler {
 		Param stopP_19 = new Param("停车中", "停车状态");
 		Param stopP19 = paramBiz.GetPmIDByTypeNmaeX(stopP_19);
 		wantStopInfo.setPm_id(stopP19.getPm_id());
-		wantStopInfo.setSct_overtime(currendate);
+		wantStopInfo.setSct_starttime(currendate);
 		
 		stopcartimeBiz.UpdateSctTimeandStateHq(wantStopInfo);
 		
