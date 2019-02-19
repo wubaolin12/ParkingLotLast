@@ -33,7 +33,6 @@
 			javaType="org.great.bean.Car">
 			<id property="c_id" column="c_id" />
 			<result property="c_num" column="c_num" />
-			<result property="c_null1" column="c_null1" />
 		</collection>
 	</resultMap>
 	<!-- 删除一条预约表记录根据车牌号 -->

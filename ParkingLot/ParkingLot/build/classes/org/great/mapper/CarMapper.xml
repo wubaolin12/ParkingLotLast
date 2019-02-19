@@ -75,7 +75,6 @@
 		<result property="cust_id" column="cust_id" />
 		<result property="pm_id" column="pm_id" />
 		<result property="c_num" column="c_num" />
-		<result property="c_null1" column="c_null1" />
 		<collection property="vip" column="v_id"
 			javaType="org.great.bean.Vip">
 			<id property="v_id" column="v_id" />
@@ -96,7 +95,6 @@
 		<result property="cust_id" column="cust_id" />
 		<result property="pm_id" column="pm_id" />
 		<result property="c_num" column="c_num" />
-		<result property="c_null1" column="c_null1" />
 		<collection property="vip" column="v_id"
 			javaType="org.great.bean.Vip">
 			<id property="v_id" column="v_id" />
@@ -134,9 +132,6 @@
 			<result property="cust_age" column="cust_age" />
 			<result property="cust_phone" column="cust_phone" />
 			<result property="cust_money" column="cust_money" />
-			<result property="cus_null1" column="cus_null1" />
-			<result property="cus_null2" column="cus_null2" />
-			<result property="cus_null3" column="cus_null3" />
 		</collection>
 		<collection property="vip" column="v_id"
 			javaType="org.great.bean.Vip">
@@ -153,10 +148,7 @@
 	<select id="findCustCarX" parameterType="org.great.bean.Cust"
 		resultMap="findCustCarMap">
 		select * from (select cc.cust_id,cc.pm_id ccpmid,cc.cust_acc
-		,
-		cc.cust_pwd ,cc.cust_sex ,cc.cust_phone ,cc.cust_money ,cc.cus_null1
-		,cc.cus_null2
-		,cc.cus_null3 ,c.c_id ,c.pm_id cpmid,c.c_num ,c.c_null1
+		,cc.cust_pwd ,cc.cust_sex ,cc.cust_phone ,cc.cust_money,c.c_id ,c.pm_id cpmid,c.c_num 
 		from tb_cust cc LEFT JOIN
 		tb_car c on
 		cc.cust_id=c.cust_id where
@@ -169,7 +161,6 @@
 		<result property="cust_id" column="cust_id" />
 		<result property="pm_id" column="ccpmid" />
 		<result property="c_num" column="c_num" />
-		<result property="c_null1" column="c_null1" />
 		<collection property="cust" column="cust_id"
 			javaType="org.great.bean.Cust">
 			<id property="cust_id" column="cust_id" />
@@ -180,9 +171,6 @@
 			<result property="cust_age" column="cust_age" />
 			<result property="cust_phone" column="cust_phone" />
 			<result property="cust_money" column="cust_money" />
-			<result property="cus_null1" column="cus_null1" />
-			<result property="cus_null2" column="cus_null2" />
-			<result property="cus_null3" column="cus_null3" />
 		</collection>
 		<collection property="param" column="pm_id"
 			javaType="org.great.bean.Param">
@@ -206,7 +194,6 @@
 		<result property="cust_id" column="cust_id" />
 		<result property="pm_id" column="pm_id" />
 		<result property="c_num" column="c_num" />
-		<result property="c_null1" column="c_null1" />
 		<collection property="cust" column="cust_id"
 			javaType="org.great.bean.Cust">
 			<id property="cust_id" column="cust_id" />
@@ -217,9 +204,6 @@
 			<result property="cust_age" column="cust_age" />
 			<result property="cust_phone" column="cust_phone" />
 			<result property="cust_money" column="cust_money" />
-			<result property="cus_null1" column="cus_null1" />
-			<result property="cus_null2" column="cus_null2" />
-			<result property="cus_null3" column="cus_null3" />
 		</collection>
 	</resultMap>
 
@@ -238,7 +222,6 @@
 		<result property="cust_id" column="cust_id" />
 		<result property="pm_id" column="pm_id" />
 		<result property="c_num" column="c_num" />
-		<result property="c_null1" column="c_null1" />
 		<collection property="cust" column="cust_id"
 			javaType="org.great.bean.Cust">
 			<id property="cust_id" column="cust_id" />
@@ -249,9 +232,6 @@
 			<result property="cust_age" column="cust_age" />
 			<result property="cust_phone" column="cust_phone" />
 			<result property="cust_money" column="cust_money" />
-			<result property="cus_null1" column="cus_null1" />
-			<result property="cus_null2" column="cus_null2" />
-			<result property="cus_null3" column="cus_null3" />
 		</collection>
 	</resultMap>
 
@@ -259,7 +239,7 @@
 	<select id="findCarVipStateX" parameterType="String"
 		resultMap="findCarVipStateXMap">
 		select c.c_id,c.cust_id,c.pm_id
-		,c.c_num,c.c_null1,v.v_id,v.co_id,v.c_id
+		,c.c_num,v.v_id,v.co_id,v.c_id
 		vcid,v.v_starttime,v.v_overtime,v.pm_id vpmid from tb_car c LEFT JOIN
 		tb_vip v on c.c_id = v.c_id
 		where c.c_num
@@ -270,7 +250,6 @@
 		<result property="cust_id" column="cust_id" />
 		<result property="pm_id" column="pm_id" />
 		<result property="c_num" column="c_num" />
-		<result property="c_null1" column="c_null1" />
 		<collection property="vip" column="v_id"
 			javaType="org.great.bean.Vip">
 			<id property="v_id" column="v_id" />
