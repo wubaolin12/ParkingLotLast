@@ -72,7 +72,7 @@ public class CarManagHandler {
 		if (CarListOne.get(0).getPm_id() == param1.getPm_id()) {
 			pid = 5;
 		} else if (CarListOne.get(0).getPm_id() == param22.getPm_id()) {
-			pid = 6;
+			pid = 14;
 		} else if (CarListOne.get(0).getPm_id() == param33.getPm_id()) {
 			pid = 7;
 		} else {
