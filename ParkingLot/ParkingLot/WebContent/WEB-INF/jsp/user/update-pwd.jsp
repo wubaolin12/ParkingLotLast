@@ -40,13 +40,15 @@
 				<input id="oldpwd" name="oldpwd" class="inp" type="password" style="width: 150px" placeholder="请输入旧密码"/>
 				<span id="pwdtip"></span>
 			</div>
+			<div></div>
 			<div id="d_npwd">新密码：
 				<input id="newpwd" name="newpwd" class="inp" type="password" style="width: 150px" placeholder="请输入新密码"/>				
 			</div>
-			
+			<div></div>
 			<div id="d_cpwd">确认密码：
 				<input id="cpwd" name="cpwd" class="inp" type="password" style="width:150px" placeholder="请确认密码" onblur="checkpwd()"/>							
 			</div>
+			<div></div>
 			<div><label id="lbtip" value=""></label></div>
 			<table>
 				<tr>

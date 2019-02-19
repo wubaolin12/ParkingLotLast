@@ -40,11 +40,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 function article_save(){
 	/* alert("combo-success。") */
 	/* parent.replace(location.href); */
-		parent.location.reload(); 
+// 		parent.location.reload(); 
 
  	var index = parent.layer.getFrameIndex(window.name); 
-	parent.layer.close(index); 
-
+	parent.layer.close(index);  
+	//history.back(-1).reload();
 	
 }
 

@@ -39,6 +39,7 @@
 				<span id="tip"></span>				
 			</div>
 		</div>
+		<div class="row cl" style="height: 20px"></div>
 		<div class="row cl">
 			<label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>用户性别：</label>
 			<div class="formControls col-xs-8 col-sm-9">
@@ -48,16 +49,18 @@
 					</select>						
 			</div>
 		</div>
-
+		<div class="row cl" style="height: 20px"></div>
 
 		<div class="row cl">
 			<label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>电话：</label>
 			<div class="formControls col-xs-8 col-sm-9">
 				<input type="text" class="input-text" value="" placeholder="" id="u_phone" name="u_phone" style="width: 200px;" onkeyup="this.value=this.value.replace(/\D/g,'')"
 				onafterpaste="this.value=this.value.replace(/\D/g,'')" maxlenaigth="11">
+				<input type="text" style="display: none;" id="tip4" value="">				
+				<span id="tip5"></span>
 			</div>
 		</div>
-
+		<div class="row cl" style="height: 20px"></div>
 
 		<div class="row cl">
 			<label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>所属角色：</label>
@@ -69,7 +72,7 @@
 					</select>						
 			</div>
 		</div>
-		
+		<div class="row cl" style="height: 20px"></div>
 		<div class="row cl">
 			<div class="col-xs-8 col-sm-9 col-xs-offset-4 col-sm-offset-2">
 				<button onClick="article_save_submit();" class="btn btn-primary radius" type="submit"><i class="Hui-iconfont">&#xe632;</i> 提交</button>
@@ -103,12 +106,20 @@ function checkform(){
 	var u_sex=document.getElementById("u_sex").value;
   	var u_phone=document.getElementById("u_phone").value;
   	var tip3=document.getElementById("tip3").value;
-
+  	var tip4=document.getElementById("tip4").value;
+  	var length=u_phone.length;
 
 	if(u_name!=''&&u_name!=null&&u_phone!=''&&u_phone!=null){
 		if(tip3=="用户名可以使用"){
-			if(u_phone==11){
-			return true;
+			if(length==11){
+				if(tip4=="电话号码可以使用"){
+					return true;
+				}else{
+					alert("电话号码重复");
+					return false;
+				}
+				
+				
 			}else{
 				alert("请输入11位手机号码");
 				return false;
@@ -126,6 +137,29 @@ function checkform(){
 }
 
 
+ $(function() {
+	$("#u_phone").on("blur",function(){
+
+	  	var u_phone=document.getElementById("u_phone").value;
+	  
+		
+		
+			$.ajax({
+				url :"UphonecheckAjax.action" ,
+				type :"post",
+				dataType:"text", 
+				data :"u_phone="+u_phone,
+				success:function(redata){
+					
+					document.getElementById("tip5").innerHTML =redata;
+					document.getElementById("tip4").value=redata;
+				}
+			});
+	
+	});	
+	
+ });
+ 
 $(function() {
 	$("#u_name").on("blur",function(){
 
@@ -145,6 +179,7 @@ $(function() {
 		});
 	});		
 });
+
 
 
 $(function(){

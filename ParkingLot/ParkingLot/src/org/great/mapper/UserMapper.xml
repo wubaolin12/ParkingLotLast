@@ -9,6 +9,9 @@
 		resultType="org.great.bean.User">
 		select * from tb_user where u_name = #{u_name} 
 	</select>
+	
+	
+	
 <!-- 查询所有员工 -->
 	<select id="getUserListAllX" resultType="org.great.bean.User">
 		select * from tb_user
@@ -128,7 +131,7 @@
 			<if test="dataMap!=null">
 			 select cc.* from
 			</if>			
-				(select * from tb_user ORDER BY '' DESC )
+				(select * from tb_user where pm_id <![CDATA[<>]]>4 )
  			<if test="dataMap!=null">
  				cc
  			</if>

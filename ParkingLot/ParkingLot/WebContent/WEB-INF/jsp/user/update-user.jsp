@@ -29,18 +29,20 @@
 <link href="${path}/static/lib/webuploader/0.1.5/webuploader.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
+	
 <div class="page-container">
 	<form  id="form-article-add" action="updateUser.action?u_id=${updateuser.user.u_id}" method="post">
 		<div class="row cl">
 			<label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>用户名：</label>
 			<div class="formControls col-xs-8 col-sm-9">
 				<input type="text" style="display: none;" id="u_id" value="${updateuser.user.u_id}">
-				<input type="text" class="input-text" value="${updateuser.user.u_name}" placeholder="" id="u_name" name="u_name">
+				<input type="text" style="width: 200px" class="input-text" value="${updateuser.user.u_name}" placeholder="" id="u_name" name="u_name">
 				<input type="text" style="display: none;" id="oldname" value="${updateuser.user.u_name}">
-				<input type="text" style="display: none;" id="tip3" value="">
+				<input type="text" style="display: none;" id="tip3" value="用户名可以使用">
 				<span id="tip"></span>
 			</div>
 		</div>
+		<div class="row cl" style="height: 20px"></div>
 		<div class="row cl">
 			<label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>用户性别：</label>
 			<div class="formControls col-xs-8 col-sm-9">
@@ -51,19 +53,20 @@
 					</select>						
 			</div>
 		</div>
-
+		<div class="row cl" style="height: 20px"></div>
 
 		<div class="row cl">
 			<label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>电话：</label>
 			<div class="formControls col-xs-8 col-sm-9">
-				<input type="text" class="input-text" value="${updateuser.user.u_phone}" placeholder="" id="u_phone" name="u_phone" onkeyup="this.value=this.value.replace(/\D/g,'')"
+				<input type="text" class="input-text" style="width: 200px"  value="${updateuser.user.u_phone}" placeholder="" id="u_phone" name="u_phone" onkeyup="this.value=this.value.replace(/\D/g,'')"
 				onafterpaste="this.value=this.value.replace(/\D/g,'')" maxlenaigth="11">
-								
-				 
+				<input type="text" style="display: none;" id="oldphone" value="${updateuser.user.u_phone}">
+				<input type="text" style="display: none;" id="tip4" value="电话号码可以使用">				
+				<span id="tip5"></span>
 			</div>
 		</div>
 
-
+		<div class="row cl" style="height: 20px"></div>
 		<div class="row cl">
 			<label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>所属角色：</label>
 			<div class="formControls col-xs-8 col-sm-9">
@@ -75,7 +78,7 @@
 					</select>						
 			</div>
 		</div>
-		
+		<div class="row cl" style="height: 20px"></div>
 		<div class="row cl">
 			<div class="col-xs-8 col-sm-9 col-xs-offset-4 col-sm-offset-2">
 				<button id="bt1" class="btn btn-primary radius" type="button"><i class="Hui-iconfont">&#xe632;</i> 提交</button>
@@ -109,7 +112,7 @@ $(function() {
 
 	  	var u_name=document.getElementById("u_name").value;
 	  	var oldname=document.getElementById("oldname").value;
-
+		
 		if(u_name!=oldname){
 			$.ajax({
 				url :"UnamecheckAjax.action" ,
@@ -122,11 +125,42 @@ $(function() {
 					document.getElementById("tip3").value=redata;
 				}
 			});
+		}else{
+			document.getElementById("tip").innerHTML ="";
+			document.getElementById("tip3").value="用户名可以使用";
 		}
 	});	
 	
 	
 });
+
+$(function() {
+	$("#u_phone").on("blur",function(){
+
+	  	var u_phone=document.getElementById("u_phone").value;
+	  	var oldphone=document.getElementById("oldphone").value;
+		
+		if(u_phone!=oldphone){
+			$.ajax({
+				url :"UphonecheckAjax.action" ,
+				type :"post",
+				dataType:"text", 
+				data :"u_phone="+u_phone,
+				success:function(redata){
+					
+					document.getElementById("tip5").innerHTML =redata;
+					document.getElementById("tip4").value=redata;
+				}
+			});
+		}else{
+			document.getElementById("tip5").innerHTML ="";
+			document.getElementById("tip4").value="电话号码可以使用";
+		}
+	});	
+	
+	
+});
+
 
 $('#bt1').on('click', function(){
 	/* alert(11111); */
@@ -137,28 +171,34 @@ $('#bt1').on('click', function(){
   	var role_id=document.getElementById("role_id").value; 	
   	var u_id=document.getElementById("u_id").value;
   	var tip3=document.getElementById("tip3").value;
-	var utr="#"+u_id;
+  	var tip4=document.getElementById("tip4").value;
 
+	var utr="#"+u_id;
+	var length=u_phone.length;
 	if(u_name!=''&&u_name!=null&&u_sex!=''&&u_sex!=null&&u_phone!=''&&u_phone!=null){
-		if(u_phone==11){
+		if(length==11){
 			if(tip3=="用户名可以使用"){
-			    $.ajax({
-					url :"updateUserAjax.action" ,
-					type :"post",
-					dataType:"json", 
-					data :{"u_name":u_name,"u_sex":u_sex,"u_phone":u_phone,"role_id":role_id,"u_id":u_id},
-					success:function(redata){
-						parent.$(utr).find(".u_name").empty();
-						parent.$(utr).find(".u_name").prepend(redata.user.u_name);
-						parent.$(utr).find(".u_sex").empty();
-						parent.$(utr).find(".u_sex").prepend(redata.user.u_sex);
-						parent.$(utr).find(".u_phone").empty();
-						parent.$(utr).find(".u_phone").prepend(redata.user.u_phone);
-						parent.$(utr).find(".role_id").empty();
-						parent.$(utr).find(".role_id").prepend(redata.role.role_name);
-						parent.layer.close(index);
-					}
-				});
+				if(tip4=="电话号码可以使用"){
+				    $.ajax({
+						url :"updateUserAjax.action" ,
+						type :"post",
+						dataType:"json", 
+						data :{"u_name":u_name,"u_sex":u_sex,"u_phone":u_phone,"role_id":role_id,"u_id":u_id},
+						success:function(redata){
+							parent.$(utr).find(".u_name").empty();
+							parent.$(utr).find(".u_name").prepend(redata.user.u_name);
+							parent.$(utr).find(".u_sex").empty();
+							parent.$(utr).find(".u_sex").prepend(redata.user.u_sex);
+							parent.$(utr).find(".u_phone").empty();
+							parent.$(utr).find(".u_phone").prepend(redata.user.u_phone);
+							parent.$(utr).find(".role_id").empty();
+							parent.$(utr).find(".role_id").prepend(redata.role.role_name);
+							parent.layer.close(index);
+						}
+					});
+				}else{
+					alert("该号码已存在，请更换");
+				}
 			}else{
 				alert("用户名已存在，请换一个用户名");
 			}

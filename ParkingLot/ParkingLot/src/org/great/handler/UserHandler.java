@@ -166,6 +166,35 @@ public class UserHandler extends BaseUtil{
 	
 	
 	/**
+	 * 验证用户名是否存在
+	 * @param response
+	 * @param request
+	 * @return
+	 */
+	@ResponseBody
+	@RequestMapping(value = "/UphonecheckAjax.action", method = RequestMethod.POST, produces = "application/json;charset=utf-8")
+	public String UphonecheckAjax(HttpServletResponse response,HttpServletRequest request) 
+	{
+		String u_phone=request.getParameter("u_phone");
+		System.out.println("--------UphonecheckAjax："+u_phone);
+
+		Map map=new HashMap<>();
+		map.put("u_phone", u_phone);
+		List<User>list=ubiz.checkUname(map);
+
+		//如果用户不存在输入的旧密码不正确
+		if (list.size()>0) {
+			result = "电话号码存在";
+		}else {
+			result ="电话号码可以使用";
+		}
+		
+		
+		return result;
+		
+	}
+	
+	/**
 	 * 用户启用
 	 */
 	//@OperationLog(operationType = "系统管理", operationName = "用户启用")	
@@ -364,16 +393,16 @@ public class UserHandler extends BaseUtil{
 	public String delUser(HttpServletRequest request, HttpServletResponse resp) {
 		System.out.println("----------UserUtil：删除用户");
 		//currentpage=Integer.valueOf(request.getParameter("currentpage"));
-		int id=Integer.valueOf(request.getParameter("u_id"));
+		String id=request.getParameter("u_id");
 /*		HttpSession session = request.getSession();
 		Map usmap=(Map)session.getAttribute("userseachmap");*/
 		Map map=new HashMap<>();
-		map.put("u_id", id);
+		map.put("pm_id", 4);
 		
-		int num2=bbiz.delData("staff_rel", map);
-		int num=bbiz.delData(tb_name, map);
+		//int num2=bbiz.delData("staff_rel", map);
+		int num=bbiz.updateData(tb_name, map, "u_id", id);
 		
-		if(num>0&&num2>0) {
+		if(num>0) {
 
 			result="success";
 		}
