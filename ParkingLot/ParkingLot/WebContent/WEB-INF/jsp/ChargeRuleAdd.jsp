@@ -38,16 +38,37 @@
 	<div class="cl pd-5 bg-1 bk-gray"> 
 	<span class="l"> 
 <!-- 	<a href="javascript:;" onclick="selectA()" class="btn btn-danger radius"><i class="Hui-iconfont">&#xe6e2;</i> A规则</a>  --> 
-		<input type="text" id = "planName" name = "planName" placeholder="请输入新方案名">
-		<a class="btn btn-primary radius" href="javascript:;" onclick="getRuleData()"><i class="Hui-iconfont">&#xe600;</i>确认添加</a> </span>  </div>
+<!-- 		<input type="text" id = "planName" name = "planName" placeholder="请输入新方案名"> -->
+<!-- 		<a class="btn btn-primary radius" href="javascript:;" onclick="getRuleData()"><i class="Hui-iconfont">&#xe600;</i>添加新方案名</a> </span>  </div> -->
+	
+	
+	
+		<div class="cl pd-5 bg-1 bk-gray"> 
+	<span class="l"> 
+<!-- 	<a href="javascript:;" onclick="selectA()" class="btn btn-danger radius"><i class="Hui-iconfont">&#xe6e2;</i> A规则</a>  --> 
+		
+		
+		<select id = "select" name="select"> 
+		<c:forEach items="${ruleSelect}" var="r">
+		<option value="${r.pm_id}">${r.pm_name} </option> 
+		
+		</c:forEach>
+		</select>  
+		
+		
+		<a class="btn btn-primary radius" href="javascript:;" onclick="getRuleData()"><i class="Hui-iconfont">&#xe600;</i>选择方案添加规则</a> </span>  </div>
+	
+	
 	<table class="table table-border table-bordered table-hover table-bg">
 		<thead>
+
+			
 			<tr>
 				<th scope="col" colspan="6">计费规则添加</th>
 			</tr>
 			<tr class="text-c">
-				<th width="25"><input type="checkbox" value="" name=""></th>
-				<th width="40">规则id</th>
+				<th width="25">操作</th>
+				<th width="40">方案规则</th>
 				<th width="100">开始时间</th>
 				<th width="100">结束时间</th>
 				<th width="100">起步价</th>
@@ -56,52 +77,12 @@
 		</thead>
 		<tbody id="tbody1">
 			<tr class="text-c">
-				<td><input type="checkbox" value="" name=""></td>
-				<td></td>
-				<td><input type="text" value="" name=""></td>
-				<td><input type="text" value="" name=""></td>
-				<td><input type="text" value="" name=""></td>
-				<td class="f-14"><input type="text" value="" name=""></td>
-			</tr>			
-		</tbody>
-		<tbody id="tbody2">
-			<tr class="text-c">
-				<td><input type="checkbox" value="" name=""></td>
-				<td></td>
-				<td><input type="text" value="" name=""></td>
-				<td><input type="text" value="" name=""></td>
-				<td><input type="text" value="" name=""></td>
-				<td class="f-14"><input type="text" value="" name=""></td>
-			</tr>			
-		</tbody>
-		<tbody id="tbody3">
-			<tr class="text-c">
-				<td><input type="checkbox" value="" name=""></td>
-				<td></td>
-				<td><input type="text" value="" name=""></td>
-				<td><input type="text" value="" name=""></td>
-				<td><input type="text" value="" name=""></td>
-				<td class="f-14"><input type="text" value="" name=""></td>
-			</tr>			
-		</tbody>
-		<tbody id="tbody4">
-			<tr class="text-c">
-				<td><input type="checkbox" value="" name=""></td>
-				<td></td>
-				<td><input type="text" value="" name=""></td>
-				<td><input type="text" value="" name=""></td>
-				<td><input type="text" value="" name=""></td>
-				<td class="f-14"><input type="text" value="" name=""></td>
-			</tr>			
-		</tbody>
-		<tbody id="tbody5">
-			<tr class="text-c">
-				<td><input type="checkbox" value="" name=""></td>
-				<td></td>
-				<td><input type="text" value="" name=""></td>
-				<td><input type="text" value="" name=""></td>
-				<td><input type="text" value="" name=""></td>
-				<td class="f-14"><input type="text" value="" name=""></td>
+				<td><input type="button" value="添加"  id = "add" name="add" onclick="addNewRule()"  ></td>
+				<td><input type="hidden" id = "pam"  value="${value}" name="">${text}</td>
+				<td><input type="text"   id = "start"  value="" name="startTime"></td>
+				<td><input type="text"   id = "over"  value="" name="overTime"></td>
+				<td><input type="text"   id = "startPrice"  value="" name="startPrice"></td>
+				<td class="f-14"><input  id = "addPrice" type="text" value="" name="addPrice"></td>
 			</tr>			
 		</tbody>
 		
@@ -127,49 +108,122 @@
 <script type="text/javascript" src="${path}/static/lib/jquery.validation/1.14.0/messages_zh.js"></script>
 <script type="text/javascript">
 
+function addNewRule(){
+	
+	var pam = document.getElementById("pam").value;
+	
+	if(pam == ""){
+		alert("请先选择方案再添加规则！");
+	}else{
+	var start = document.getElementById("start").value;
+
+	var over = document.getElementById("over").value;
+
+	var startPrice = document.getElementById("startPrice").value;
+
+	var addPrice = document.getElementById("addPrice").value;
+	
+	$.ajax({
+		url:"${path}/ChargeRule/addNewRule.action",
+		type: "post",
+		dataType:"text",
+		data:{"pam":pam,
+			"start":start,
+			"over":over,
+			"startPrice":startPrice,
+			"addPrice":addPrice		
+		},
+		success:function(result){
+	
+			if(result == "true"){
+				alert("添加成功");
+				window.parent.location.reload(); //刷新父页面
+				var index = parent.layer.getFrameIndex(window.name); //获取窗口索引
+				parent.layer.close(index);  // 关闭layer
+				
+			}else{
+				alert("错误！")
+			}
+			
+		}
+	})
+	
+	}
+	
+	
+}
 
 
 function getRuleData(){
-	var planName = document.getElementById("planName").value;	
 
-		$.ajax({
-		url :"${path}/ChargeRule/planNameAdd.action",
-		type : "post",
-		dataType : "text",
-		data : "planName=" + planName,
-		success : function(redata) {
-		
-			alert(redata);
-// 			$("#tbody").empty();
-// 			var str = "";
-// 			for (var i = 0; i < redata.length; i++) {
-// 				var trobj = document.createElement("tr");
-// 				str = 
-// 					  "<td><input type='text' value='"+redata[i].cr_id+"' name=''></td>"+
-// 					  "<td><input type='text' value='"+redata[i].cr_starttime+"' name=''></td>"+
-// 					  "<td><input type='text' value='"+redata[i].cr_overtime+"' name=''></td>"+
-// 					  "<td><input type='text' value='"+redata[i].cr_fristmoney+"' name=''></td>"+
-// 					  "<td><input type='text' value='"+redata[i].cr_addmoney+"' name=''></td>"+	
-					  
-// 					  '<td><input type="button" value="确认修改" name=""></td>'+
-// 					  '<td><input type="text" value="'+redata[i].cr_id+'" name=""></td>'+
-// 					  '<td><input type="text" value="'+redata[i].cr_starttime+'" name=""></td>'+
-// 					  '<td><input type="text" value="'+redata[i].cr_overtime+'" name=""></td>'+
-// 					  '<td><input type="text" value="'+redata[i].cr_fristmoney+'" name=""></td>'+
-// 					  '<td><input type="text" value="'+redata[i].cr_addmoney+'" name=""></td>';
-
-// 						trobj.innerHTML(str);
-						
-// 						trobj.innerHTML = str ;
-						
-// 						$("#tbody").append(trobj);
-// 					}
-				},
-				error : function() {
-					alert("ajax出错");
-				}
-			});
+	var myselect=document.getElementById("select");
+	
+	var index=myselect.selectedIndex ;
+	//方案规则参数id 
+	var value = myselect.options[index].value;
+	//方案规则名
+	var text = myselect.options[index].text;
+	
+	window.location.href="${path}/ChargeRule/planNameAdd.action?value="+value+"&text="+text;
 }
+
+
+// function getRuleData(){
+
+	
+// 	var myselect=document.getElementById("select");
+	
+// 	var index=myselect.selectedIndex ;
+// 	//方案规则参数id 
+// 	var value = myselect.options[index].value;
+// 	//方案规则名
+// 	var text = myselect.options[index].text;
+	
+// 	alert(value);
+	
+// 	alert(text);
+		
+// 		$.ajax({
+// 		url :"${path}/ChargeRule/planNameAdd.action",
+// 		type : "post",
+// 		dataType : "text",
+// 		data : "planName=" + planName,
+// 		success : function(redata) {
+		
+// 			alert(redata);
+// // 			$("#tbody").empty();
+// // 			var str = "";
+// // 			for (var i = 0; i < redata.length; i++) {
+// // 				var trobj = document.createElement("tr");
+// // 				str = 
+// // 					  "<td><input type='text' value='"+redata[i].cr_id+"' name=''></td>"+
+// // 					  "<td><input type='text' value='"+redata[i].cr_starttime+"' name=''></td>"+
+// // 					  "<td><input type='text' value='"+redata[i].cr_overtime+"' name=''></td>"+
+// // 					  "<td><input type='text' value='"+redata[i].cr_fristmoney+"' name=''></td>"+
+// // 					  "<td><input type='text' value='"+redata[i].cr_addmoney+"' name=''></td>"+	
+					  
+// // 					  '<td><input type="button" value="确认修改" name=""></td>'+
+// // 					  '<td><input type="text" value="'+redata[i].cr_id+'" name=""></td>'+
+// // 					  '<td><input type="text" value="'+redata[i].cr_starttime+'" name=""></td>'+
+// // 					  '<td><input type="text" value="'+redata[i].cr_overtime+'" name=""></td>'+
+// // 					  '<td><input type="text" value="'+redata[i].cr_fristmoney+'" name=""></td>'+
+// // 					  '<td><input type="text" value="'+redata[i].cr_addmoney+'" name=""></td>';
+
+// // 						trobj.innerHTML(str);
+						
+// // 						trobj.innerHTML = str ;
+						
+// // 						$("#tbody").append(trobj);
+// // 					}
+// 				},
+// 				error : function() {
+// 					alert("ajax出错");
+// 				}
+// 			});
+// }
+
+
+
 
 </script>
 </body>

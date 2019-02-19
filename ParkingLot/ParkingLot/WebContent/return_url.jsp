@@ -63,7 +63,11 @@ String path=request.getScheme()+"://"+request.getServerName()+":"+
 			response.sendRedirect(path+"outPay/successToOut.action?out_trade_no="+out_trade_no+"&trade_no="+trade_no+"&total_amount="+total_amount);
 		}else if(PayType.equals("套餐缴费")){
 			response.sendRedirect(path+"Combination/successToCombination.action?out_trade_no="+out_trade_no+"&trade_no="+trade_no+"&total_amount="+total_amount);
+		}else if(PayType.equals("自助缴费")){
+			response.sendRedirect(path+"self/foreSuccessToSelf.do?out_trade_no="+out_trade_no+"&trade_no="+trade_no+"&total_amount="+total_amount);
 		}
+		
+		
 		//out.println("trade_no:"+trade_no+"<br/>out_trade_no:"+out_trade_no+"<br/>total_amount:"+total_amount);
 	}else {
 		String PayType=(String)session.getAttribute("PayType");
@@ -73,6 +77,8 @@ String path=request.getScheme()+"://"+request.getServerName()+":"+
 			response.sendRedirect(path+"outPay/failedToOut.action");
 		}else if(PayType.equals("套餐缴费")){
 			response.sendRedirect(path+"Combination/failedToCom.action");
+		}else if(PayType.equals("自助缴费")){
+			response.sendRedirect(path+"self/foreFailedToSelf.do?");
 		}
 		//out.println("验签失败");
 	}

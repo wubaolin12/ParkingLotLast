@@ -18,6 +18,13 @@
 		resultType="org.great.bean.Car">
 		select * from tb_car where c_num =#{number}
 	</select>
+	<!-- 通过车牌找到车信息 包括车辆角色XXX -->
+	<select id="FindCarRoleByCarNumberPmtypeNameX"
+		resultType="org.great.bean.Car">
+		select * from tb_car where c_num =#{number} and pm_id
+		=(select pm_id from tb_param where pm_type = #{pm_type} and pm_name
+		=#{pm_name})
+	</select>
 	<!-- 根据车牌号更改车辆角色 -->
 	<update id="chagerPmIDByCarNumberX"
 		parameterType="org.great.bean.Car">
@@ -31,10 +38,16 @@
 		where c_num =
 		#{c_num}
 	</update>
-		<!-- 根据车牌号更改车主ID 主要是设为空  取消绑定的-->
+	<!-- 根据车牌号更改车主ID -->
+	<update id="chagerCustIDByCarNumberX">
+		update tb_car set cust_id=#{cust_id} where c_num =
+		#{c_num}
+	</update>
+	<!-- 根据车牌号更改车主ID 主要是设为空 取消绑定的 -->
 	<update id="chagerCustIDNULLByCarNumberX">
 		update tb_car set cust_id=null, pm_id= #{pm_id}
-		 where c_num = #{c_num}
+		where
+		c_num = #{c_num}
 	</update>
 
 
@@ -62,7 +75,6 @@
 		<result property="cust_id" column="cust_id" />
 		<result property="pm_id" column="pm_id" />
 		<result property="c_num" column="c_num" />
-		<result property="c_null1" column="c_null1" />
 		<collection property="vip" column="v_id"
 			javaType="org.great.bean.Vip">
 			<id property="v_id" column="v_id" />
@@ -72,7 +84,7 @@
 			<result property="v_overtime" column="v_overtime" />
 		</collection>
 	</resultMap>
-	<!-- 通过车牌找到车Vip表信息  18 待生效 -->
+	<!-- 通过车牌找到车Vip表信息 18 待生效 -->
 	<select id="FindVipByCarNumber18X" parameterType="String"
 		resultMap="findCarVip18Map">
 		select * from tb_car c LEFT JOIN tb_vip v on c.c_id = v.c_id
@@ -83,7 +95,6 @@
 		<result property="cust_id" column="cust_id" />
 		<result property="pm_id" column="pm_id" />
 		<result property="c_num" column="c_num" />
-		<result property="c_null1" column="c_null1" />
 		<collection property="vip" column="v_id"
 			javaType="org.great.bean.Vip">
 			<id property="v_id" column="v_id" />
@@ -121,9 +132,6 @@
 			<result property="cust_age" column="cust_age" />
 			<result property="cust_phone" column="cust_phone" />
 			<result property="cust_money" column="cust_money" />
-			<result property="cus_null1" column="cus_null1" />
-			<result property="cus_null2" column="cus_null2" />
-			<result property="cus_null3" column="cus_null3" />
 		</collection>
 		<collection property="vip" column="v_id"
 			javaType="org.great.bean.Vip">
@@ -140,10 +148,7 @@
 	<select id="findCustCarX" parameterType="org.great.bean.Cust"
 		resultMap="findCustCarMap">
 		select * from (select cc.cust_id,cc.pm_id ccpmid,cc.cust_acc
-		,
-		cc.cust_pwd ,cc.cust_sex ,cc.cust_phone ,cc.cust_money ,cc.cus_null1
-		,cc.cus_null2
-		,cc.cus_null3 ,c.c_id ,c.pm_id cpmid,c.c_num ,c.c_null1
+		,cc.cust_pwd ,cc.cust_sex ,cc.cust_phone ,cc.cust_money,c.c_id ,c.pm_id cpmid,c.c_num 
 		from tb_cust cc LEFT JOIN
 		tb_car c on
 		cc.cust_id=c.cust_id where
@@ -156,7 +161,6 @@
 		<result property="cust_id" column="cust_id" />
 		<result property="pm_id" column="ccpmid" />
 		<result property="c_num" column="c_num" />
-		<result property="c_null1" column="c_null1" />
 		<collection property="cust" column="cust_id"
 			javaType="org.great.bean.Cust">
 			<id property="cust_id" column="cust_id" />
@@ -167,9 +171,6 @@
 			<result property="cust_age" column="cust_age" />
 			<result property="cust_phone" column="cust_phone" />
 			<result property="cust_money" column="cust_money" />
-			<result property="cus_null1" column="cus_null1" />
-			<result property="cus_null2" column="cus_null2" />
-			<result property="cus_null3" column="cus_null3" />
 		</collection>
 		<collection property="param" column="pm_id"
 			javaType="org.great.bean.Param">
@@ -193,7 +194,6 @@
 		<result property="cust_id" column="cust_id" />
 		<result property="pm_id" column="pm_id" />
 		<result property="c_num" column="c_num" />
-		<result property="c_null1" column="c_null1" />
 		<collection property="cust" column="cust_id"
 			javaType="org.great.bean.Cust">
 			<id property="cust_id" column="cust_id" />
@@ -204,9 +204,6 @@
 			<result property="cust_age" column="cust_age" />
 			<result property="cust_phone" column="cust_phone" />
 			<result property="cust_money" column="cust_money" />
-			<result property="cus_null1" column="cus_null1" />
-			<result property="cus_null2" column="cus_null2" />
-			<result property="cus_null3" column="cus_null3" />
 		</collection>
 	</resultMap>
 
@@ -225,7 +222,6 @@
 		<result property="cust_id" column="cust_id" />
 		<result property="pm_id" column="pm_id" />
 		<result property="c_num" column="c_num" />
-		<result property="c_null1" column="c_null1" />
 		<collection property="cust" column="cust_id"
 			javaType="org.great.bean.Cust">
 			<id property="cust_id" column="cust_id" />
@@ -236,9 +232,6 @@
 			<result property="cust_age" column="cust_age" />
 			<result property="cust_phone" column="cust_phone" />
 			<result property="cust_money" column="cust_money" />
-			<result property="cus_null1" column="cus_null1" />
-			<result property="cus_null2" column="cus_null2" />
-			<result property="cus_null3" column="cus_null3" />
 		</collection>
 	</resultMap>
 
@@ -246,7 +239,7 @@
 	<select id="findCarVipStateX" parameterType="String"
 		resultMap="findCarVipStateXMap">
 		select c.c_id,c.cust_id,c.pm_id
-		,c.c_num,c.c_null1,v.v_id,v.co_id,v.c_id
+		,c.c_num,v.v_id,v.co_id,v.c_id
 		vcid,v.v_starttime,v.v_overtime,v.pm_id vpmid from tb_car c LEFT JOIN
 		tb_vip v on c.c_id = v.c_id
 		where c.c_num
@@ -257,7 +250,6 @@
 		<result property="cust_id" column="cust_id" />
 		<result property="pm_id" column="pm_id" />
 		<result property="c_num" column="c_num" />
-		<result property="c_null1" column="c_null1" />
 		<collection property="vip" column="v_id"
 			javaType="org.great.bean.Vip">
 			<id property="v_id" column="v_id" />
@@ -274,4 +266,9 @@
 		resultType="org.great.bean.Car">
 		select * from tb_car where c_num =#{c_num}
 	</select>
+	
+	<!-- 更新车辆进场照片 -->
+	<update id="updatePic" parameterType="org.great.bean.Car">
+		update tb_car set c_pic=#{c_pic} where c_id=#{c_id}
+	</update>
 </mapper>

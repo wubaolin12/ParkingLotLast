@@ -8,6 +8,7 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.regex.Pattern;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
@@ -17,6 +18,7 @@ import org.great.bean.Combo;
 import org.great.bean.Cust;
 import org.great.bean.Param;
 import org.great.bean.Receipt;
+import org.great.bean.Stopcartime;
 import org.great.bean.User;
 import org.great.bean.Vip;
 import org.great.bean.vo.AnyX;
@@ -25,6 +27,7 @@ import org.great.biz.ComboBiz;
 import org.great.biz.CustBiz;
 import org.great.biz.ParamBiz;
 import org.great.biz.ReceiptBiz;
+import org.great.biz.StopcartimeBiz;
 import org.great.biz.VipBiz;
 import org.great.util.BaseUtil;
 import org.springframework.context.annotation.Scope;
@@ -49,6 +52,8 @@ public class CustManageHandler {
 	CarBiz carBiz;
 	@Resource
 	VipBiz vipBiz;
+	@Resource
+	StopcartimeBiz stopcartimeBiz;
 	@Resource
 	BaseUtil baseUtil;
 	private boolean flag = false;
@@ -117,7 +122,7 @@ public class CustManageHandler {
 	 * @return
 	 */
 	@RequestMapping("/CustAdd.action")
-	public @ResponseBody boolean CustAdd(Cust cust,HttpServletRequest request) {
+	public @ResponseBody boolean CustAdd(Cust cust, HttpServletRequest request) {
 		System.out.println("--------------------------------------");
 		System.out.println("cust=" + cust);
 		flag = custBiz.AddCustX(cust);
@@ -139,13 +144,21 @@ public class CustManageHandler {
 		System.out.println("cust_phone=" + cust_phone);
 		Car car1 = carBiz.findCustCarNumberByPhoneX(carnum);
 		System.out.println("car1=" + car1);
-		if (car1 == null) {
-			flag = true;
-		} else if (car1 != null && !car1.getCust().getCust_phone().equals(cust_phone)) {
+		String pattern = "([京津沪渝冀豫云辽黑湘皖鲁新苏浙赣鄂桂甘晋蒙陕吉闽贵粤青藏川宁琼]{1}(([A-HJ-Z]{1}[A-HJ-NP-Z0-9]{5})|([A-HJ-Z]{1}(([DF]{1}[A-HJ-NP-Z0-9]{1}[0-9]{4})|([0-9]{5}[DF]{1})))|([A-HJ-Z]{1}[A-D0-9]{1}[0-9]{3}警)))|([0-9]{6}使)|((([沪粤川云桂鄂陕蒙藏黑辽渝]{1}A)|鲁B|闽D|蒙E|蒙H)[0-9]{4}领)|(WJ[京津沪渝冀豫云辽黑湘皖鲁新苏浙赣鄂桂甘晋蒙陕吉闽贵粤青藏川宁琼·•]{1}[0-9]{4}[TDSHBXJ0-9]{1})|([VKHBSLJNGCE]{1}[A-DJ-PR-TVY]{1}[0-9]{5})";
+		boolean flag1 = Pattern.matches(pattern, carnum);
+		if (flag1 == true) {
+
+			if (car1 == null) {
+				flag = true;
+			} else if (car1 != null && !car1.getCust().getCust_phone().equals(cust_phone)) {
+				flag = false;
+			} else if (car1 != null && car1.getCust().getCust_phone().equals(cust_phone)) {
+				flag = true;
+			}
+		} else {
 			flag = false;
-		} else if (car1 != null && car1.getCust().getCust_phone().equals(cust_phone)) {
-			flag = true;
 		}
+		System.out.println("flag=" + flag);
 		return flag;
 	}
 
@@ -363,7 +376,7 @@ public class CustManageHandler {
 		System.out.println("str=" + str);
 		String FLAG = "SUCCESS";
 		request.setAttribute("FLAG", FLAG);
-		System.out.println("FLAG="+FLAG);
+		System.out.println("FLAG=" + FLAG);
 		return str;
 	}
 
@@ -552,9 +565,25 @@ public class CustManageHandler {
 	 * @return
 	 */
 	@RequestMapping("/OpenDoorJSP.action")
-	public String OpenDoorJSP() {
+	public String OpenDoorJSP(String c_num, int sct_money, String sct_starttime, String sct_overtime) {
+		System.out.println("c_num=" + c_num + "sct_money=" + sct_money + "sct_starttime=" + sct_starttime
+				+ "sct_overtime=" + sct_overtime);
+		Param par = new Param("停车结束", "停车状态");
+		Param par1 = paramBiz.GetPmIDByTypeNmaeX(par);
+		System.out.println(par1);
+		// 查找该车牌是否已经有记录
+		Car car = carBiz.FindByCarNumber(c_num);
+		System.out.println("找到的车记录" + car);
+		Stopcartime sct1 = stopcartimeBiz.FindByCarIDX(car.getC_id(), par1.getPm_id());
+		Stopcartime sct = new Stopcartime(2, sct_overtime, sct1.getSct_id());
+		flag = stopcartimeBiz.UpdateSctTimeandState(sct);
+		System.out.println("——————————————修改出场时间成功————————————————————————");
+		Stopcartime sctz = new Stopcartime(sct1.getSct_id(), sct_money);
+		System.out.println("sctz=" + sctz);
+		flag = stopcartimeBiz.UpdateSctMoneyX(sctz);
 		return "charge/OpenDoor";
 	}
+
 	/**
 	 * 跳到缴费渠道统计JSP
 	 * 

@@ -3,7 +3,10 @@
     
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <c:set value="${pageContext.request.contextPath}" var="path" scope="page" />
-
+<%
+String path=request.getScheme()+"://"+request.getServerName()+":"+
+		request.getServerPort()+request.getContextPath()+"/";
+%>
     
 <!DOCTYPE html>
 <html lang="zxx" style="">
@@ -87,6 +90,7 @@
 													<li><a href="${path}/userinformation/toUserInformation.do">个人资料<span class="over1"></span></a></li>
                                                     <li><a href="${path}/userinformation/toUserSetting.do">个人设置<span class="over1"></span></a></li>
 													<li  class="active"><a href="${path}/findcar/findcar.do">反向寻车<span class="over1"></span></a></li>
+													<li><a href="<%=path%>/self/foreToSelf.do">自助缴费<span class="over1"></span></a></li>
 													<li><a href="${path}/Face/face.do">注册人脸识别<span class="over1"></span></a></li>
 													<li><a href="${path}/pay/toRecharge.do">余额充值<span class="over1"></span></a></li>
                                                     <li><a href="javascript:exitUser()">退出<span class="over1"></span></a></li>
@@ -167,11 +171,15 @@
 						<div class="divider1"></div>
 						<!-- START OUR CLIENTS -->
 						<h3>导航到车位</h3>
+						<form id="mapform" action="${path}/find/birdmap.do" method="post">
+							<input type="hidden" id="p_mapid" name="p_mapid"/>
+							<input type="hidden" id="p_feum" name="p_feum"/>
+						</form>
 						<ul class="thumbnails thumbnails1">
 							<li>
 								<div class="thumbnail clearfix">
 									<div class="client1">
-										<a href="${path}/fore/birdmap.do">
+										<a href="javascript:;" onclick="gotoMap()">
 											<div class="client1_inner">
 												<div class="c1">
 													<div class="txt2">跳转到导航
@@ -217,6 +225,10 @@
 
 <script type="text/javascript" src="${path}/static/lib/lightbox2/2.8.1/js/lightbox.min.js"></script> 
 <script>
+function gotoMap(){
+	document.getElementById("mapform").submit();
+}
+
 function findCar(){
 	var car=document.getElementById("c_num").value;
 	if(car==""||car==null){
@@ -240,8 +252,11 @@ function findCar(){
 			document.getElementById("pnum").innerHTML=data.p_fore+data.p_num;
 			
 			var pic=document.getElementById("pic");
-			pic.innerHTML="<a href='/picture/"+data.p_imgpath+
+			pic.innerHTML="<a href='/picture/"+data.car.c_pic+
 			"' data-lightbox='gallery' data-title='车牌:"+data.car.c_num+"<br/>车位："+data.p_fore+data.p_num+"'>查看图片</a>";
+			
+			document.getElementById("p_mapid").value=data.p_mapid;
+			document.getElementById("p_feum").value=data.p_feum;
 			
 		}
 		

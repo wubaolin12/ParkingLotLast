@@ -17,6 +17,7 @@ import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import org.apache.commons.io.FileUtils;
 import org.great.bean.Appointment;
 import org.great.bean.Car;
 import org.great.bean.Param;
@@ -118,6 +119,9 @@ public class LicensePlateRecognition {
 
 		System.out.println("获取到的文件名:" + filename);
 
+		org.springframework.core.io.Resource f = myfile.getResource();
+		
+		File newFile=null;
 		try {
 			/**
 			 * 项目服务器地址路径
@@ -142,7 +146,8 @@ public class LicensePlateRecognition {
 			/**
 			 * 创建文件
 			 */
-			myfile.transferTo(new File(path + File.separator + filename));
+			newFile =new File(path + File.separator + filename);
+			myfile.transferTo(newFile);
 			/**
 			 * 返回服务器文件地址
 			 */
@@ -317,6 +322,10 @@ public class LicensePlateRecognition {
 		}
 		// 野比欣之助 session 存放车位满不满的标记标记
 		session.setAttribute("flagPark", flagPark);
+		
+		//吴宝林，将车牌照片保存到数据库
+		savePic(number, newFile);
+		
 		return result;
 	}
 
@@ -354,5 +363,26 @@ public class LicensePlateRecognition {
 				bos.close();
 			}
 		}
+	}
+	
+	/**
+	 * 将车牌照片保存到数据库，便于用户查看车辆
+	 */
+	private void savePic(String carNum,File orgFile) {
+		String newFileName = carNum +".jpg";
+		String path = "D:\\file_file\\test\\upload\\";
+//		String path = "/home/wbl/upload/picture/";
+		
+		car.setC_pic(newFileName);
+		try {
+			FileUtils.copyFile(orgFile,new File(path+newFileName));
+			System.out.println("图片上传路径："+ path+newFileName);
+		} catch (IllegalStateException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		
+		carBiz.updatePic(car);
 	}
 }

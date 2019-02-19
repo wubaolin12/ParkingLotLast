@@ -23,7 +23,8 @@ public interface StopcartimeMapper {
 
 	// 修改停车状态和停车时间
 	public int UpdateSctTimeandState(Stopcartime sct);
-
+	// 修改停车状态和停车时间 宏琪
+		public int UpdateSctTimeandStateHq(Stopcartime sct);
 	/**
 	 * 修改停车金额
 	 * 

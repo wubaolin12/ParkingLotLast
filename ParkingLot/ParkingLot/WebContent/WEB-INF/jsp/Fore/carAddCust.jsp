@@ -99,14 +99,26 @@
 											</a>
 											<div class="nav-collapse nav-collapse_ collapse">
 												<ul class="nav sf-menu clearfix">
-													<li ><a href="${path}/appointmentParkLotHandler/appointmentParkLotJsp.do">预约停车<span class="over1"></span></a></li>
-													<li  class="active"><a href="${path}/carManagHandler/jumpCarMangerJSP.do">车辆管理<span class="over1"></span></a></li>													
-													<li><a href="${path}/userinformation/toUserInformation.do">个人资料<span class="over1"></span></a></li>
-                                                    <li><a href="${path}/userinformation/toUserSetting.do">个人设置<span class="over1"></span></a></li>
-													<li><a href="${path}/findcar/findcar.do">反向寻车<span class="over1"></span></a></li>
-													<li><a href="${path}/Face/face.do">注册人脸识别<span class="over1"></span></a></li>
-													<li><a href="${path}/pay/toRecharge.do">余额充值<span class="over1"></span></a></li>
-                                                    <li><a href="javascript:exitUser()">退出<span class="over1"></span></a></li>
+													<li><a
+														href="${path}/appointmentParkLotHandler/appointmentParkLotJsp.do">预约停车<span
+															class="over1"></span></a></li>
+													<li class="active"><a
+														href="${path}/carManagHandler/jumpCarMangerJSP.do">车辆管理<span
+															class="over1"></span></a></li>
+													<li><a
+														href="${path}/userinformation/toUserInformation.do">个人资料<span
+															class="over1"></span></a></li>
+													<li><a href="${path}/userinformation/toUserSetting.do">个人设置<span
+															class="over1"></span></a></li>
+													<li><a href="${path}/findcar/findcar.do">反向寻车<span
+															class="over1"></span></a></li>
+													<li><a href="${path}/self/foreToSelf.do">自助缴费<span class="over1"></span></a></li>
+													<li><a href="${path}/Face/face.do">注册人脸识别<span
+															class="over1"></span></a></li>
+													<li><a href="${path}/pay/toRecharge.do">余额充值<span
+															class="over1"></span></a></li>
+													<li><a href="javascript:exitUser()">退出<span
+															class="over1"></span></a></li>
 												</ul>
 											</div>
 										</div>
@@ -160,8 +172,7 @@
 							<h5></h5>
 							<div id="note"></div>
 							<div>
-								<form
-									action="${path}/carManagHandler/JumpCarAdd.do"
+								<form action="${path}/carManagHandler/JumpCarAdd.do"
 									onsubmit="return cnumflag()">
 									<div class="row cl">
 										<label class="form-label col-xs-4 col-sm-3"><span
@@ -171,48 +182,62 @@
 												id="c_num" name="c_num"> <label id="phoneFlag"
 												style="color: red"></label>
 										</div>
-										<div
-													class="col-xs-8 col-sm-9 col-xs-offset-4 col-sm-offset-3">
-													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input
-														class="btn btn-warning" type="submit"
-														value="&nbsp;&nbsp;添加&nbsp;&nbsp;">
-												</div>
+										<div class="col-xs-8 col-sm-9 col-xs-offset-4 col-sm-offset-3">
+											&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input class="btn btn-warning"
+												type="submit" value="&nbsp;&nbsp;添加&nbsp;&nbsp;">
+										</div>
 									</div>
 								</form>
 							</div>
 							<!-- END COMMENT -->
 						</div>
-							<!-- END COMMENT -->
-						</div>
-						<!-- END CONTACT US -->
+						<!-- END COMMENT -->
 					</div>
-
+					<!-- END CONTACT US -->
 				</div>
+
 			</div>
 		</div>
-
-		<!-- START FOOTER -->
-		<footer>
-			<div class="social_wrapper">
-				<ul class="social clearfix">
-					<li><a href="${path}/fore/success1.do"><i class="fa fa-facebook"></i></a></li>
-					<li><a href="${path}/fore/success1.do"><i class="fa fa-twitter"></i></a></li>
-					<li><a href="${path}/fore/success1.do"><i class="fa fa-instagram"></i></a></li>
-					<li><a href="${path}/fore/success1.do"><i class="fa fa-youtube"></i></a></li>
-					<li><a href="${path}/fore/success1.do"><i class="fa fa-pinterest"></i></a></li>
-				</ul>
-			</div>
-			<div class="copyright">Copyright &copy;传一智能停车场</div>
-		</footer>
-		<!-- END FOOTER -->
+	</div>
+<div>
+	<!-- START FOOTER -->
+	<footer>
+		<div class="social_wrapper">
+			<ul class="social clearfix">
+				<li><a href="${path}/fore/success1.do"><i
+						class="fa fa-facebook"></i></a></li>
+				<li><a href="${path}/fore/success1.do"><i
+						class="fa fa-twitter"></i></a></li>
+				<li><a href="${path}/fore/success1.do"><i
+						class="fa fa-instagram"></i></a></li>
+				<li><a href="${path}/fore/success1.do"><i
+						class="fa fa-youtube"></i></a></li>
+				<li><a href="${path}/fore/success1.do"><i
+						class="fa fa-pinterest"></i></a></li>
+			</ul>
+		</div>
+		<div class="copyright">Copyright &copy;传一智能停车场</div>
+	</footer>
+	<!-- END FOOTER -->
 	</div>
 	<script type="text/javascript">
 	function cnumflag(){
-		var c_num = $("c_num").val;
-		if(c_num==null){
-		return false;
+		var c_num = document.getElementById("c_num").value;
+			alert(c_num);
+		var result = false;
+		if (c_num.length == 7){
+			var express = /^[京津沪渝冀豫云辽黑湘皖鲁新苏浙赣鄂桂甘晋蒙陕吉闽贵粤青藏川宁琼使领A-Z]{1}[A-Z]{1}[A-Z0-9]{4}[A-Z0-9挂学警港澳]{1}$/;
+			if(express.test(c_num)){
+				result = true;
+			} else{
+			alert("车牌格式不正确！！")
+			result = false;
+			}
+		}else{
+			alert("车牌过短！！")
+			result = false;
 		}
-		return ture;
+		return result;
 	}
 
 </script>

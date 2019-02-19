@@ -21,16 +21,12 @@ from (select @rownum:=0)aaa , tb_cust c ,tb_car car where c.cust_id = car.cust_i
 		<result property="cust_age" column="cust_age"/>
 		<result property="cust_phone" column="cust_phone"/>
 		<result property="cust_money" column="cust_money"/>
-		<result property="cus_null1" column="cus_null1"/>
-		<result property="cus_null2" column="cus_null2"/>
-		<result property="cus_null3" column="cus_null3"/>
 <!-- 	</collection> -->
 	<collection property="cars"  ofType="org.great.bean.Car" >
 		<id property="c_id" column="c_id"/>
 <!-- 	<result property="cust_id" column="cust_id"/> -->
 		<result property="pm_id" column="pm_id"/>
 		<result property="c_num" column="c_num"/>
-		<result property="c_null1" column="c_null1"/>
 		<result property="rownum" column="rownum"/>
 	</collection>
 	</resultMap>
@@ -68,16 +64,12 @@ from (select @rownum:=0)aaa , tb_cust c ,tb_car car where c.cust_id = car.cust_i
 		<result property="cust_age" column="cust_age"/>
 		<result property="cust_phone" column="cust_phone"/>
 		<result property="cust_money" column="cust_money"/>
-		<result property="cus_null1" column="cus_null1"/>
-		<result property="cus_null2" column="cus_null2"/>
-		<result property="cus_null3" column="cus_null3"/>
 <!-- 	</collection> -->
 	<collection property="cars"  ofType="org.great.bean.Car" >
 		<id property="c_id" column="c_id"/>
 <!-- 	<result property="cust_id" column="cust_id"/> -->
 		<result property="pm_id" column="pm_id"/>
 		<result property="c_num" column="c_num"/>
-		<result property="c_null1" column="c_null1"/>
 		<result property="rownum" column="rownum"/>
 	</collection>
 	</resultMap>

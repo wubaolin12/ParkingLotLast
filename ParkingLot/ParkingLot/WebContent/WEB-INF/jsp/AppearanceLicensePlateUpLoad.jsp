@@ -32,7 +32,7 @@
   <script src="${path}/static/vendor/easyUpload.js"></script>
   <script>
     $('#easyContainer').easyUpload({
-      allowFileTypes: '*.jpg;*.doc;*.pdf',//允许上传文件类型，格式';*.doc;*.pdf'
+      allowFileTypes: '*.jpg;*.jpeg;*.doc;*.pdf',//允许上传文件类型，格式';*.doc;*.pdf'
       allowFileSize: 100000,//允许上传文件大小(KB)
       selectText: '选择文件',//选择文件按钮文案
       multi: false,//是否允许多文件上传

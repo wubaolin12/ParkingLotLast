@@ -21,7 +21,8 @@ public interface StopcartimeBiz {
 
 	// 修改停车状态和停车时间
 	public boolean UpdateSctTimeandState(Stopcartime sct);
-
+	// 修改停车状态和停车时间 宏琪
+			public boolean UpdateSctTimeandStateHq(Stopcartime sct);
 	// 通过主键ID查找该停车表的信息
 	public Stopcartime FindByID(int id);
 

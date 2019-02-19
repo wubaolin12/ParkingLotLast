@@ -27,6 +27,14 @@
 		= #{sct_id}
 	</update>
 
+	<!--宏琪 修改停车状态和停车时间 -->
+	<update id="UpdateSctTimeandStateHq"
+		parameterType="org.great.bean.Stopcartime">
+		update tb_stopcartime set sct_starttime
+		=#{sct_starttime},pm_id=#{pm_id} where sct_id
+		= #{sct_id}
+	</update>
+
 	<!-- 修改停车费用 -->
 	<update id="UpdateSctMoneyX"
 		parameterType="org.great.bean.Stopcartime">
