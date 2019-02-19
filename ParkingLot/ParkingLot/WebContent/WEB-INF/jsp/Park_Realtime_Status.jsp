@@ -76,8 +76,8 @@ String path=request.getScheme()+"://"+request.getServerName()+":"+
 				<thead>
 					<tr class="text-c">
 						<th width="91">车区号</th>
-						<th width="102">空车位数(开放状态)</th>
-						<th width="102">空车位数(维护状态)</th>
+						<th width="102">空车位数</th>
+						<th width="102">维护车位数</th>
 						<th width="101">已占有车位数</th>
 					</tr>
 				</thead>
