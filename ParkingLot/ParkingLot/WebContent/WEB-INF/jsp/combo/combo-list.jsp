@@ -50,7 +50,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		<thead>
 
 			<tr class="text-c">
-				<th width="25"><input type="checkbox" name="" value=""></th>
+				<th width="25">序号</th>
 				<th width="40">ID</th>
 				<th width="90">套餐规格/天</th>
 				<th width="90">套餐价格/元</th>
@@ -62,7 +62,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		<tbody>
 		<c:forEach items="${clist}" var="ul" varStatus="uu">
 			<tr class="text-c" id="${ul.co_id}">
-				<td><input type="checkbox" value="1" name=""></td>
+				<td>${uu.index+1}</td>
 				<td>${ul.co_id}</td>
 				<td class="co_standard">${ul.co_standard}</td>
 				<td class="co_price">${ul.co_price}</td>

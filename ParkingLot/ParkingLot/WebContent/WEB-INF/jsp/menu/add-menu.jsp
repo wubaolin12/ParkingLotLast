@@ -37,7 +37,7 @@
 				<input type="text" style="display: none;" value=""><input type="text" class="input-text" value="" placeholder="" id="menu_name" name="menu_name">
 			</div>
 		</div>
-
+	<div class="row cl" style="height: 20px"></div>
 
 
 		<div class="row cl">
@@ -47,7 +47,7 @@
 			</div>
 		</div>
 		
-		
+			<div class="row cl" style="height: 20px"></div>
 		<div class="row cl">
 			<label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>上级菜单：</label>
 			<div class="formControls col-xs-8 col-sm-9">
@@ -61,18 +61,8 @@
 			</div>
 		</div>
 
-<%-- 		<div class="row cl">
-			<label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>所属角色：</label>
-			<div class="formControls col-xs-8 col-sm-9">
-					<select name="role_id">
-						<c:forEach items="${rlist}" varStatus="rr" var="rl">
-							<option value="${rl.role_id}">${rl.role_name}</option>
-						</c:forEach>
-					</select>		
-				
-			</div>
-		</div> --%>
-		
+
+		<div class="row cl" style="height: 20px"></div>	
 		<div class="row cl">
 			<div class="col-xs-8 col-sm-9 col-xs-offset-4 col-sm-offset-2">
 				<button onClick="article_save_submit();" class="btn btn-primary radius" type="submit"><i class="Hui-iconfont">&#xe632;</i> 提交</button>

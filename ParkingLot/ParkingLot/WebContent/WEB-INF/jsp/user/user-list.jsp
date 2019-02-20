@@ -52,7 +52,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<table class="table table-border table-bordered table-hover table-bg table-sort">
 		<thead>
 			<tr class="text-c">
-				<th width="25"><input type="checkbox" name="" value=""></th>
+				<th width="25">序号</th>
 				<th width="30">ID</th>
 				<th width="50">用户名</th>
 				 <th width="40">性别</th>
@@ -66,7 +66,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		<%-- ------${ulist}-----${currentpage} --%>
 		<c:forEach items="${ulist}" var="ul" varStatus="uu">
 			<tr class="text-c" id="${ul.user.u_id}">
-				<td><input type="checkbox" value="1" name=""></td>
+				<td>${uu.index+1}</td>
 				<td>${ul.user.u_id}</td>
 				<td class="u_name"><u style="cursor:pointer" class="text-primary" >${ul.user.u_name}</u></td>
 				<td class="u_sex">${ul.user.u_sex}</td>

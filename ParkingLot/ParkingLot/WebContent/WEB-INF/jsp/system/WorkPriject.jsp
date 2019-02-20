@@ -215,7 +215,6 @@
         } 
         
 
-        alert('You\'ve added a new event. You would capture this event, add the logic for creating a new event with your own fields, data and whatever backend persistence you require.');
       },
       
     });

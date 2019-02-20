@@ -48,7 +48,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		<thead>
 
 			<tr class="text-c" >
-				<th width="25"><input type="checkbox" name="" value=""></th>
+				<th width="25">序号</th>
 				<th width="40">ID</th>
 				<th width="90">参数名</th>
 				<th width="90">参数类型</th>
@@ -60,7 +60,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		<tbody>
 		<c:forEach items="${plist}" var="ul" varStatus="uu">
 			<tr class="text-c" id="${ul.pm_id}">
-				<td><input type="checkbox" value="1" name=""></td>
+				<td>${uu.index+1}</td>
 				<td >${ul.pm_id}</td>
 				<td class="pm_name">${ul.pm_name}</td>
 				<td class="pm_type">${ul.pm_type}</td>
@@ -171,7 +171,7 @@ function admin_edit(title,url,id,w,h){
 	layer_show(title,url,w,h);
 }
 /*密码-修改*/
-function change_password(title,url,id,w,h){
+function change_prd(title,url,id,w,h){
 	layer_show(title,url,w,h);	
 }
 /*用户-删除*/

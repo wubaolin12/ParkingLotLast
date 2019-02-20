@@ -49,7 +49,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		<thead>
 
 			<tr class="text-c">
-				<th width="25"><input type="checkbox" name="" value=""></th>
+				<th width="25">序号</th>
 				<th width="40">ID</th>
 				<th width="90">菜单名</th>
 				<th width="150">菜单路径</th>
@@ -61,7 +61,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		<tbody>
 		<c:forEach items="${mlist}" var="ul" varStatus="uu">
 			<tr class="text-c" id="${ul.menu_id}">
-				<td><input type="checkbox" value="1" name=""></td>
+				<td>${uu.index+1}</td>
 				<td>${ul.menu_id}</td>
 				<td class="menu_name">${ul.menu_name}</td>
 				<td class="menu_link">${ul.menu_link}</td>
@@ -157,10 +157,7 @@ function admin_edit(title,url,id,w,h){
 	<%-- location.href="<%=basePath %>menumanage/toUpdateMenu.action?menu_id="+id --%>
 	layer_show(title,url,w,h);
 }
-/*密码-修改*/
-function change_password(title,url,id,w,h){
-	layer_show(title,url,w,h);	
-}
+
 /*用户-删除*/
 function member_del(obj,id){
 	layer.confirm('确认要删除吗？',function(index){
