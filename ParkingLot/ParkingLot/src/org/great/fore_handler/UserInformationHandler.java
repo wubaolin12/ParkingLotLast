@@ -335,7 +335,7 @@ public class UserInformationHandler {
 		String fileName = System.currentTimeMillis() + ".jpg";
 //		String basePath = request.getSession().getServletContext().getRealPath("/cust_head");
 		// 图片存放路径
-//		String path = "D:\\file_file\\test\\upload\\" ;
+///		String path = "D:\\file_file\\test\\upload\\" ;
 		String path = "/home/wbl/upload/picture/";
 
 		String headname = path + fileName;

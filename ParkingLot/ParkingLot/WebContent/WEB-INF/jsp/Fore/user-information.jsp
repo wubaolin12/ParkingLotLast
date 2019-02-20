@@ -28,10 +28,10 @@
 <section class="logo-license">
 <div class="half">
 	<a class="logo" id="logox">
- 	<c:if test="${FuserInf.head_path==null}">
-		<img id="bgl" src="${path}/static/headlib/images/logo_n.png">
+ 	<c:if test="${ForeUser.head_path==null}">
+		<img id="bgl" src="${path}/static/headlib/images/head.jpg" align="absmiddle" style=" width: 8rem;height: 8rem; margin-left:0rem;margin-top: 0rem">
 	</c:if> 
-	<c:if test="${FuserInf.head_path!=null}">
+	<c:if test="${ForeUser.head_path!=null}">
 		<img id="bgl" src="/picture/${ForeUser.head_path}" align="absmiddle" style=" width: 8rem;height: 8rem; margin-left:0rem;margin-top: 0rem">
 	</c:if>
 	</a>
