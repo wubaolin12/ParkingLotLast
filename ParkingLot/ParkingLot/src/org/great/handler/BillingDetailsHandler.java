@@ -1,5 +1,9 @@
 package org.great.handler;
 
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -14,6 +18,7 @@ import org.great.bean.vo.DataStatistics;
 import org.great.biz.CountrulesBiz;
 import org.great.biz.ReceiptBiz;
 import org.great.util.BaseUtil;
+import org.great.util.DateTool;
 import org.great.util.RedisSession;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
@@ -85,7 +90,37 @@ public class BillingDetailsHandler {
 		if (carNum != null && carNum != "") {
 			carNum1 = carNum;
 		}
-
+		
+		
+		try {
+			datemax1 = DateTool.getNextDate(datemax1);
+		} catch (ParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+//		
+//		DateFormat f = new SimpleDateFormat("yyyy-mm-dd");
+//		
+//		try {
+//			Date date = f.parse(datemax1);
+//		} catch (ParseException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
+//		
+//		Calendar calendar = Calendar.getInstance();
+//		
+//		Calendar calendar1 = Calendar.getInstance();
+//		
+//		calendar.setTime(datemax1);
+//		
+//		calendar1.setTime(datemax1);
+//
+//		System.out.println(calendar.get(Calendar.DAY_OF_MONTH));
+		
+//		calendar1.set(Calendar.DAY_OF_MONTH, calendar.get(Calendar.DAY_OF_MONTH) + 1);// 让日期加1
+		
 		System.err.println("-------------最小时间：" + datemin1 + "最大时间：" + datemax1 + "车牌号：" + carNum1);
 
 		List<Receipt> receiptList = receiptBiz.findQueryReceiptList(datemin1, datemax1, carNum1);
