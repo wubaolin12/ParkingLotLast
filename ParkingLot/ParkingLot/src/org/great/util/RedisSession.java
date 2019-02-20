@@ -38,11 +38,12 @@ public class RedisSession {
 	public void setAttribute(String key, Object value) {
 
 		request.getSession().setAttribute(key, value);
-		if (value.toString().contains("{")) {
+		if (value.toString().contains("[")||value.toString().contains("{")) {
 			JSONObject json = JSONObject.fromObject(value);
 			jedisClient.set(key + ":" + token, json.toString());
+		}else {
+			jedisClient.set(key + ":" + token, value.toString());
 		}
-		jedisClient.set(key + ":" + token, value.toString());
 		jedisClient.expire(key + ":" + token, 1800);// 设置过期时间
 
 	}
@@ -59,7 +60,10 @@ public class RedisSession {
 
 		System.out.println("value---" + value);
 		Object obj=null;
-		if (value.toString().contains("{")) {
+		if(value==null) {
+			return null;
+		}
+		if (value.contains("[")||value.contains("{")) {
 			JSONObject json = JSONObject.fromObject(value);
 			obj = JSONObject.toBean(json, clazz);
 		}else {
