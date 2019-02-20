@@ -50,9 +50,6 @@
 <script type="text/javascript" src="${path}/static/lib/hcharts/Highcharts/5.0.6/js/modules/exporting.js"></script>
 <script type="text/javascript">
 $(function () {
-	
-	
-	
     $('#container').highcharts({
         chart: {
             plotBackgroundColor: null,

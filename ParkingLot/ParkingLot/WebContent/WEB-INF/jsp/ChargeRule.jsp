@@ -47,7 +47,7 @@
 	<table class="table table-border table-bordered table-hover table-bg table-sort">
 		<thead>
 			<tr class="text-c">
-				<th width="25"><input type="checkbox" name="" value=""></th>
+<!-- 				<th width="25"><input type="checkbox" name="" value=""></th> -->
 				<th width="150">规则类型ID</th>
 				<th width="150">开始时间</th>
 				<th width="150">结束时间</th>
@@ -61,7 +61,7 @@
 			
 			 <c:forEach items="${ruleList}" var="rule" >
 			<tr class="text-c">
-				<td><input type="checkbox" value="1" name=""></td>
+<!-- 				<td><input type="checkbox" value="1" name=""></td> -->
 				<td>${rule.crpm_id}</td>
 				<td>${rule.cr_starttime}</td>
 				<td>${rule.cr_overtime}</td>

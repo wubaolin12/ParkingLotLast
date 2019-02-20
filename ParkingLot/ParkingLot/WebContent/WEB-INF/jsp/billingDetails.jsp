@@ -48,7 +48,7 @@
 	<table class="table table-border table-bordered table-hover table-bg table-sort">
 		<thead>
       <tr class="text-c">
-        <th width="25"><input type="checkbox" name="" value=""></th>
+<!--         <th width="25"><input type="checkbox" name="" value=""></th> -->
         <th width="80">ID</th>
         <th width="100">执行人</th>
         <th width="40">车牌号</th>
@@ -63,7 +63,7 @@
 		<tbody>
 			      <c:forEach items="${receiptList}" var="r" >
       <tr class="text-c">
-        <td><input type="checkbox" value="1" name=""></td>
+<!--         <td><input type="checkbox" value="1" name=""></td> -->
         <td>${r.re_id}</td> 
         <td><u style="cursor:pointer" class="text-primary" onclick="user_show('10001','360','','张三','user-show.html')">${r.user.u_name }</u></td>
         <td>${r.car.c_num}</td>
