@@ -125,11 +125,12 @@ public interface CarMapper {
 
 	/**
 	 * 更新用户停车进场的照片
+	 * 
 	 * @param car
 	 * @return
 	 */
 	public boolean updatePic(Car car);
-	
+
 	/**
 	 * 通过车牌找到车信息 包括车辆角色XXX
 	 * 
@@ -146,4 +147,14 @@ public interface CarMapper {
 	 */
 	public boolean chagerCustIDByCarNumberX(@Param("c_num") String c_num, @Param("cust_id") int cust_id);
 
+	/**
+	 * 根据车牌号手机号查询车辆VIP信息
+	 * 
+	 * @param number
+	 * @param pm_type
+	 * @param pm_name
+	 * @return
+	 */
+	public List<Car> findCarVipStatebyCarIDCustPhoneX(@Param("c_num") String c_num,
+			@Param("cust_phone") String cust_phone);
 }

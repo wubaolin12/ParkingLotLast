@@ -144,4 +144,10 @@ public class CarBizImpl implements CarBiz {
 		// TODO Auto-generated method stub
 		return carMapper.chagerCustIDByCarNumberX(c_num, cust_id);
 	}
+
+	@Override
+	public List<Car> findCarVipStatebyCarIDCustPhoneX(String c_num, String cust_phone) {
+		// TODO Auto-generated method stub
+		return carMapper.findCarVipStatebyCarIDCustPhoneX(c_num, cust_phone);
+	}
 }

@@ -266,7 +266,7 @@ public class CustManageHandler {
 				Date currenime = new Date();
 				String currendate = dff.format(currenime);
 //				获得所登录的员工信息
-				User user = (User) request.getAttribute("User");
+				User user = (User) request.getSession().getAttribute("User");
 //				添加一条收支明细表ID
 				boolean ff = baseUtil.addReceipt(user.getU_id(), car2.getC_id(), "月缴收费", money, currendate);
 				System.out.println("ff=" + ff);
@@ -312,7 +312,7 @@ public class CustManageHandler {
 				Date currenime = new Date();
 				String currendate = dff.format(currenime);
 //				获得登录员工ID
-				User user = (User) request.getAttribute("User");
+				User user = (User) request.getSession().getAttribute("User");
 //				在收支明细表添加一条数据
 				boolean ff = baseUtil.addReceipt(user.getU_id(), car3.getC_id(), "月缴收费", money, currendate);
 				System.out.println("ff=" + ff);
@@ -345,7 +345,7 @@ public class CustManageHandler {
 					DateFormat dff = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 					Date currenime = new Date();
 					String currendate = dff.format(currenime);
-					User user = (User) request.getAttribute("User");
+					User user = (User) request.getSession().getAttribute("User");
 //					添加一条收支明细表信息
 					boolean ff = baseUtil.addReceipt(user.getU_id(), car4.getC_id(), "月缴收费", money, currendate);
 					System.out.println("ff=" + ff);
@@ -395,7 +395,7 @@ public class CustManageHandler {
 					DateFormat dff = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 					Date currenime = new Date();
 					String currendate = dff.format(currenime);
-					User user = (User) request.getAttribute("User");
+					User user = (User) request.getSession().getAttribute("User");
 					boolean ff = baseUtil.addReceipt(user.getU_id(), car5.getC_id(), "月缴收费", money, currendate);
 					System.out.println("ff=" + ff);
 					str = "续费会员成功了";
@@ -495,7 +495,7 @@ public class CustManageHandler {
 		System.out.println("carnum=" + carnum);
 		System.out.println("cust_phone=" + cust_phone);
 //		根据车牌号号查询车辆VIP信息
-		List<Car> car1List = carBiz.findCarVipStateX(carnum);
+		List<Car> car1List = carBiz.findCarVipStatebyCarIDCustPhoneX(carnum, cust_phone);
 		System.out.println("car1List=" + car1List);
 //		判断车辆是否可以退月缴会员  flag= false 不行 ，flag= true可以
 		if (car1List == null || car1List.size() == 0) {
@@ -507,7 +507,6 @@ public class CustManageHandler {
 		} else if (car1List.get(0).getPm_id() == 7) {
 			if (car1List.get(0).getVip().getPm_id() == 18) {
 				flag = true;
-
 			} else {
 				flag = false;
 			}
@@ -550,7 +549,7 @@ public class CustManageHandler {
 				Date currenime = new Date();
 				String currendate = df.format(currenime);
 //				获得登录员工信息
-				User user = (User) request.getAttribute("User");
+				User user = (User) request.getSession().getAttribute("User");
 				System.out.println("currendate=" + currendate);
 				System.out.println("user=" + user);
 //				添加收支明细表信息
@@ -593,7 +592,7 @@ public class CustManageHandler {
 		String time = "%" + df.format(day) + "%";
 		System.out.println(time);
 //		获得登录员工信息
-		User user = (User) request.getAttribute("User");
+		User user = (User) request.getSession().getAttribute("User");
 		System.out.println("user=" + user);
 		Receipt re = new Receipt(user.getU_id(), time);
 //		根据员工ID时间查询收支明细表信息

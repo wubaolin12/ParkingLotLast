@@ -339,7 +339,7 @@ public class AppearanceLicensePlateRecognition {
 						session.setAttribute("Stopkxj", sct3);
 						// 宏琪 session 存放缴费标记
 						session.setAttribute("moneyFlag", moneyFlag);
-						User user = (User) request.getAttribute("User");
+						User user = (User) request.getSession().getAttribute("User");
 						List<RoleRel> RoleRelList = roleRelBiz.FindRoleIDbyUserIDX(user.getU_id());
 						if (RoleRelList != null && RoleRelList.size() != 0) {
 							if (RoleRelList.get(0).getRole().getRole_name().equals("收费员")) {

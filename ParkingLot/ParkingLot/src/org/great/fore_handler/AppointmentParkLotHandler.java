@@ -73,6 +73,9 @@ public class AppointmentParkLotHandler {
 			timeList.add(i);
 		}
 		System.out.println("timeList=" + timeList);
+//		查询可以停车的车位
+//		List<Park> parkListCanStopCar =parkBiz.FindAllCanStopX("开放", 9);
+//		System.out.println("parkListCanStopCar="+parkListCanStopCar);
 		request.setAttribute("timeList", timeList);
 		request.setAttribute("CustCarList", carList);
 		ModelAndView mav = new ModelAndView();
