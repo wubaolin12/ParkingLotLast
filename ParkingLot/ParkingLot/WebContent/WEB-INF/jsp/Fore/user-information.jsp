@@ -300,6 +300,7 @@ $(".file-3").parents(".uploader").find(".filename").val(subUrl);
 </script>
 <script type="text/javascript">
 function setImagePreview() {
+	alert("llllllllll");
 	var preview, img_txt, localImag, file_head = document.getElementById("file_head"),
 			picture = file_head.value;
 	if (!picture.match(/.jpg|.gif|.png|.bmp/i)) return alert("您上传的图片格式不正确，请重新选择！"),
