@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN" 
+"http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
+
+
+<mapper namespace="org.great.mapper.RoleRelMapper">
+
+	<!-- 根据员工ID查找角色-->
+	<select id="FindRoleIDbyUserIDX" parameterType="int"
+		resultMap="FindRoleIDbyUserIDXMap">
+		select * from staff_rel s LEFT JOIN tb_role r on s.role_id = r.role_id
+		where s.u_id = #{id}
+	</select>
+	<resultMap type="org.great.bean.RoleRel"
+		id="FindRoleIDbyUserIDXMap">
+		<id property="u_id" column="u_id" />
+		<result property="role_id" column="role_id" />
+		<collection property="role" column="role_id"
+			javaType="org.great.bean.Role">
+			<id property="role_id" column="role_id" />
+			<result property="role_name" column="role_name" />
+		</collection>
+	</resultMap>
+
+</mapper>
