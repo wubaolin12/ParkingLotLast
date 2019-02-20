@@ -47,6 +47,7 @@ public class CarManagHandler {
 		
 		List<Car> CarList = carBiz.findCustCarX(cust);
 		System.out.println("CarList=" + CarList);
+		
 		if (CarList != null && CarList.size() != 0 && CarList.size() != 1 && CarList.get(0).getC_id() != 0) {
 			request.setAttribute("CarList", CarList);
 		}
@@ -79,6 +80,7 @@ public class CarManagHandler {
 		Param param22 = paramBiz.GetPmIDByTypeNmaeX(param2);
 		Param param3 = new Param("包月套餐", "车辆角色");
 		Param param33 = paramBiz.GetPmIDByTypeNmaeX(param3);
+		
 		int pid = 14;
 		if (CarListOne.get(0).getPm_id() == param1.getPm_id()) {
 			pid = 5;
@@ -89,8 +91,8 @@ public class CarManagHandler {
 		} else {
 			pid = 14;
 		}
-		boolean flag = carBiz.chagerCustIDNULLByCarNumberX(c_num, pid);
 //		根据车牌号取消车辆绑定用户信息
+		boolean flag = carBiz.chagerCustIDNULLByCarNumberX(c_num, pid);
 		System.out.println("flag=" + flag);
 		List<Car> CarList = carBiz.findCustCarX(cust);
 		System.out.println("CarList=" + CarList);
@@ -130,6 +132,7 @@ public class CarManagHandler {
 		Param param22 = paramBiz.GetPmIDByTypeNmaeX(param2);
 		Param param4 = new Param("临时车辆", "车辆角色");
 		Param param44 = paramBiz.GetPmIDByTypeNmaeX(param4);
+		
 		if (CarList != null && CarList.size() != 0) {
 			if (CarList.get(0).getPm_id() == param44.getPm_id()) {
 				Car car = new Car(cust.getCust_id(), param22.getPm_id(), c_num);

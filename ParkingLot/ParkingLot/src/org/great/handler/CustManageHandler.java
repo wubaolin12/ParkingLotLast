@@ -356,6 +356,7 @@ public class CustManageHandler {
 					str = "已经是包月会员了";
 				} else if (anyX.getPm_id().equals("包月会员")) {
 					pid = 7;
+//					通过车牌找到车Vip表信息
 					Car car3 = carBiz.FindVipByCarNumberX(anyX.getCarnum());
 					System.out.println("car3=" + car3);
 					int vid = 0;
@@ -369,6 +370,7 @@ public class CustManageHandler {
 						vid = car11.getVip().getV_id();
 						overday = car11.getVip().getV_overtime();
 					}
+//					获得添加完的时间
 					Calendar calendar = Calendar.getInstance();
 					SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd");
 					Date day = null;
@@ -384,8 +386,10 @@ public class CustManageHandler {
 					String finday = df.format(dt2);
 					System.out.println("finday=" + finday);
 					Vip vip1 = new Vip(vid, finday);
+//					根据video更改结束时间即续费包月
 					flag = vipBiz.chageOvertimeByVidX(vip1);
 					Car car5 = carBiz.FindByCarNumber(anyX.getCarnum());
+//					根据video更改结束时间即续费包月
 					Combo combo = comboBiz.FindComboByIDX(co_id);
 					int money = Integer.parseInt(combo.getCo_price());
 					DateFormat dff = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
