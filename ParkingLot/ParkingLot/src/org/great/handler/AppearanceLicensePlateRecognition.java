@@ -334,7 +334,7 @@ public class AppearanceLicensePlateRecognition {
 						// 查询该出场车辆的信息
 						Stopcartime sct2 = stopcartimeBiz.FindByID(stopcartime.getSct_id());
 						Stopcartime sct3 = new Stopcartime(stopcartime.getSct_id(),sct2.getC_id(),sct2.getPm_id(),sct2.getSct_starttime(),currendate,money);
-					System.out.println("sct3="+sct3);
+						System.out.println("sct3="+sct3);
 						// 该信息传输到页面
 						session.setAttribute("Stopkxj", sct3);
 						// 宏琪 session 存放缴费标记

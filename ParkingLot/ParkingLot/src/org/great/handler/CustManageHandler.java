@@ -67,6 +67,7 @@ public class CustManageHandler {
 	@RequestMapping("/CustManageJsp.action")
 	public ModelAndView CustManageJsp(HttpServletRequest request) {
 		System.out.println("**********************************");
+//		查询所有客户信息LIST
 		List<Cust> custParamList = custBiz.findCustAllX();
 		System.out.println("custParamList=" + custParamList);
 		request.setAttribute("custParamList", custParamList);
@@ -95,6 +96,7 @@ public class CustManageHandler {
 	@RequestMapping("/CustPhoneValidate.action")
 	public @ResponseBody boolean CustPhoneValidate(Cust cust) {
 		System.out.println("cust=" + cust);
+//		根据手机号查询客户信息是否正确————主要验证手机号是否正确
 		List<Cust> CustList = custBiz.FindByPhoneX(cust.getCust_phone());
 		System.out.println("CustList=" + CustList);
 		if (CustList == null || CustList.size() == 0) {
@@ -125,6 +127,7 @@ public class CustManageHandler {
 	public @ResponseBody boolean CustAdd(Cust cust, HttpServletRequest request) {
 		System.out.println("--------------------------------------");
 		System.out.println("cust=" + cust);
+//		添加一个新的客户
 		flag = custBiz.AddCustX(cust);
 		String FLAG = "SUCCESS";
 		request.setAttribute("FLAG", FLAG);
@@ -142,12 +145,13 @@ public class CustManageHandler {
 		System.out.println("--------------------------------------");
 		System.out.println("carnum=" + carnum);
 		System.out.println("cust_phone=" + cust_phone);
-		Car car1 = carBiz.findCustCarNumberByPhoneX(carnum);
-		System.out.println("car1=" + car1);
+//		验证车牌号格式是否正确
 		String pattern = "([京津沪渝冀豫云辽黑湘皖鲁新苏浙赣鄂桂甘晋蒙陕吉闽贵粤青藏川宁琼]{1}(([A-HJ-Z]{1}[A-HJ-NP-Z0-9]{5})|([A-HJ-Z]{1}(([DF]{1}[A-HJ-NP-Z0-9]{1}[0-9]{4})|([0-9]{5}[DF]{1})))|([A-HJ-Z]{1}[A-D0-9]{1}[0-9]{3}警)))|([0-9]{6}使)|((([沪粤川云桂鄂陕蒙藏黑辽渝]{1}A)|鲁B|闽D|蒙E|蒙H)[0-9]{4}领)|(WJ[京津沪渝冀豫云辽黑湘皖鲁新苏浙赣鄂桂甘晋蒙陕吉闽贵粤青藏川宁琼·•]{1}[0-9]{4}[TDSHBXJ0-9]{1})|([VKHBSLJNGCE]{1}[A-DJ-PR-TVY]{1}[0-9]{5})";
 		boolean flag1 = Pattern.matches(pattern, carnum);
 		if (flag1 == true) {
-
+//		根据车牌号查询车辆信息————查询车辆是否存在
+			Car car1 = carBiz.findCustCarNumberByPhoneX(carnum);
+			System.out.println("car1=" + car1);
 			if (car1 == null) {
 				flag = true;
 			} else if (car1 != null && !car1.getCust().getCust_phone().equals(cust_phone)) {
@@ -172,6 +176,7 @@ public class CustManageHandler {
 	public ModelAndView FindCustCar(Cust cust, HttpServletRequest request) {
 		System.out.println("***********************");
 		System.out.println("cust=" + cust);
+//		查询该客户名下所有的车辆信息
 		List<Car> CustCarList = carBiz.findCustCarX(cust);
 		System.out.println("CustCarList=" + CustCarList);
 		request.setAttribute("CustCarList", CustCarList);
@@ -188,6 +193,7 @@ public class CustManageHandler {
 	 */
 	@RequestMapping("/CarAddJsp.action")
 	public ModelAndView CarAddJsp(HttpServletRequest request) {
+//		查询所有月缴套餐的list
 		List<Combo> comList = comboBiz.FindCombo();
 		request.setAttribute("comList", comList);
 		ModelAndView mav = new ModelAndView();
@@ -216,8 +222,11 @@ public class CustManageHandler {
 		Map<String, String> map = new HashMap<>();
 		int dauNum = 0;
 		if (co_id != 0) {
+//			获得具体是那套月缴套餐
 			Combo comBo = comboBiz.FindComboByIDX(co_id);
+//			取出涛谈天数
 			dauNum = Integer.parseInt(comBo.getCo_standard());
+//			调用计算时间日期的一个方法
 			map = VipTime(dauNum);
 		}
 //		判断车辆有无被注册
@@ -225,16 +234,22 @@ public class CustManageHandler {
 		if (car1 == null) {
 			if (anyX.getPm_id().equals("注册会员")) {
 				pid = 6;
+//				查询客户信息
 				List<Cust> list = custBiz.FindByPhoneX(anyX.getCust_phone());
+//				定义需要的一个car对象——客户ID，车辆角色的参数ID，车牌号
 				Car car2 = new Car(list.get(0).getCust_id(), pid, anyX.getCarnum());
+//				添加一辆车辆
 				flag = carBiz.AddCarCX(car2);
 				str = "添加成为注册车辆了";
 			} else if (anyX.getPm_id().equals("包月会员")) {
 				pid = 7;
+//				查询客户信息
 				List<Cust> list = custBiz.FindByPhoneX(anyX.getCust_phone());
 				System.out.println("list=" + list);
+//				定义需要的一个car对象——客户ID，车辆角色的参数ID，车牌号
 				Car car2 = new Car(list.get(0).getCust_id(), pid, anyX.getCarnum());
 				System.out.println("car2=" + car2);
+//				添加一辆车辆
 				flag = carBiz.AddCarCX(car2);
 				System.out.println("Cflag=" + flag);
 				car2 = carBiz.FindByCarNumber(anyX.getCarnum());
@@ -243,12 +258,16 @@ public class CustManageHandler {
 				flag = vipBiz.AddvipX(vip);
 				System.out.println("Vflag=" + flag);
 				str = "添加成为包月会员车辆了";
+//				查询所需要的月缴套餐
 				Combo combo = comboBiz.FindComboByIDX(co_id);
+//				获得所选套餐的金额
 				int money = Integer.parseInt(combo.getCo_price());
 				DateFormat dff = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 				Date currenime = new Date();
 				String currendate = dff.format(currenime);
+//				获得所登录的员工信息
 				User user = (User) request.getAttribute("User");
+//				添加一条收支明细表ID
 				boolean ff = baseUtil.addReceipt(user.getU_id(), car2.getC_id(), "月缴收费", money, currendate);
 				System.out.println("ff=" + ff);
 				System.err.println("**************************************");
@@ -257,34 +276,44 @@ public class CustManageHandler {
 		else if (car1.getCust_id() == 0) {
 			if (anyX.getPm_id().equals("注册会员")) {
 				pid = 6;
+//				查询客户信息
 				List<Cust> list = custBiz.FindByPhoneX(anyX.getCust_phone());
+//				定义需要的一个car对象——客户ID，车辆角色的参数ID，车牌号
 				Car car2 = new Car(list.get(0).getCust_id(), pid, anyX.getCarnum());
-
 				System.out.println("car2=" + car2);
+//				根据车牌号更改车辆角色和车主ID
 				flag = carBiz.chagerPmIDCustIDByCarNumberX(car2);
 				str = "临时车辆添加成为注册车辆了";
 
 			} else if (anyX.getPm_id().equals("包月会员")) {
 				pid = 7;
+//				查询客户信息
 				List<Cust> list = custBiz.FindByPhoneX(anyX.getCust_phone());
 				System.out.println("list=" + list);
+//				定义需要的一个car对象——客户ID，车辆角色的参数ID，车牌号
 				Car car2 = new Car(list.get(0).getCust_id(), pid, anyX.getCarnum());
 				System.out.println("car2=" + car2);
+//				根据车牌号更改车辆角色和车主ID
 				flag = carBiz.chagerPmIDCustIDByCarNumberX(car2);
 				System.out.println("Cflag=" + flag);
 				car2 = carBiz.FindByCarNumber(anyX.getCarnum());
+//				定义一个VIP对象————月缴套餐ID，车辆ID,起始时间,结束时间,参数表状态ID
 				Vip vip = new Vip(co_id, car2.getC_id(), map.get("today"), map.get("finday"), param1.getPm_id());
 				System.out.println("vip=" + vip);
+//				在VIP表添加一条VIP记录
 				flag = vipBiz.AddvipX(vip);
 				System.out.println("Vflag=" + flag);
 				str = "临时车辆添加成为包月会员车辆了";
 				Car car3 = carBiz.FindByCarNumber(anyX.getCarnum());
+//				根据主键查套餐信息 
 				Combo combo = comboBiz.FindComboByIDX(co_id);
 				int money = Integer.parseInt(combo.getCo_price());
 				DateFormat dff = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 				Date currenime = new Date();
 				String currendate = dff.format(currenime);
+//				获得登录员工ID
 				User user = (User) request.getAttribute("User");
+//				在收支明细表添加一条数据
 				boolean ff = baseUtil.addReceipt(user.getU_id(), car3.getC_id(), "月缴收费", money, currendate);
 				System.out.println("ff=" + ff);
 				System.err.println("**************************************");
@@ -298,14 +327,18 @@ public class CustManageHandler {
 					pid = 7;
 					Car car3 = new Car(pid, anyX.getCarnum());
 					System.err.println("car3=" + car3);
+//					根据车牌号更改车辆角色
 					flag = carBiz.chagerPmIDByCarNumberX(car3);
 					System.err.println("cflag=" + flag);
+//					定义一个VIP对象————月缴套餐ID，车辆ID,起始时间,结束时间,参数表状态ID
 					Vip vip = new Vip(co_id, car1.getC_id(), map.get("today"), map.get("finday"), param1.getPm_id());
 					System.err.println("vip=" + vip);
+//					在VIP表添加一条VIP记录
 					flag = vipBiz.AddvipX(vip);
 					System.err.println("vip123==" + vip);
 					System.err.println("vflag=" + flag);
 					str = "添加成为包月会员车辆了";
+//					根据车牌号查询车辆信息
 					Car car4 = carBiz.FindByCarNumber(anyX.getCarnum());
 					Combo combo = comboBiz.FindComboByIDX(co_id);
 					int money = Integer.parseInt(combo.getCo_price());
@@ -313,6 +346,7 @@ public class CustManageHandler {
 					Date currenime = new Date();
 					String currendate = dff.format(currenime);
 					User user = (User) request.getAttribute("User");
+//					添加一条收支明细表信息
 					boolean ff = baseUtil.addReceipt(user.getU_id(), car4.getC_id(), "月缴收费", money, currendate);
 					System.out.println("ff=" + ff);
 					System.err.println("***************");
@@ -335,7 +369,6 @@ public class CustManageHandler {
 						vid = car11.getVip().getV_id();
 						overday = car11.getVip().getV_overtime();
 					}
-
 					Calendar calendar = Calendar.getInstance();
 					SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd");
 					Date day = null;
@@ -425,6 +458,7 @@ public class CustManageHandler {
 	@RequestMapping("/VipReturnsReadJSP.action")
 	public ModelAndView VipReturnsReadJSP(String cust_phone, HttpServletRequest request) {
 		System.out.println("cust_phone=" + cust_phone);
+//		根据手机号查询该用户名下车辆VIP信息
 		List<Car> CustCarList = carBiz.findCustCarVipStateX(cust_phone, 7, "月缴状态", "待生效");
 		System.out.println("==CustCarList=" + CustCarList + "==================");
 		request.setAttribute("CustCarList", CustCarList);
@@ -456,8 +490,10 @@ public class CustManageHandler {
 		System.out.println("--------------------------------------");
 		System.out.println("carnum=" + carnum);
 		System.out.println("cust_phone=" + cust_phone);
+//		根据车牌号号查询车辆VIP信息
 		List<Car> car1List = carBiz.findCarVipStateX(carnum);
 		System.out.println("car1List=" + car1List);
+//		判断车辆是否可以退月缴会员  flag= false 不行 ，flag= true可以
 		if (car1List == null || car1List.size() == 0) {
 			flag = false;
 		} else if (car1List.get(0).getPm_id() == 5) {
@@ -488,26 +524,32 @@ public class CustManageHandler {
 		System.out.println("--------------------------------------");
 		System.out.println("anyX=" + anyX);
 		String str = "";
+//		根据车牌号号查询车辆VIP信息
 		List<Car> car1List = carBiz.findCarVipStateX(anyX.getCarnum());
 		System.out.println("car1List=" + car1List);
+//		根据车牌号号查询车辆VIP信息
 		flag = vipBiz.VipReturnX(car1List.get(0).getVip().getV_id());
 		if (flag == true) {
 			int pid = 6;
 			Car car1 = new Car(pid, car1List.get(0).getC_num());
 			System.out.println("car1=" + car1);
+//			根据车牌号更改车辆角色
 			boolean flag1 = carBiz.chagerPmIDByCarNumberX(car1);
 			if (flag1 == true) {
 				str = "退费成功！！";
-				// 获取当前时间算出场时间
+				// 根据主键查套餐信息
 				Combo combo = comboBiz.FindComboByIDX(car1List.get(0).getVip().getCo_id());
 				System.out.println("combo=" + combo);
+//				获得月缴套餐金额
 				int money = Integer.parseInt(combo.getCo_price());
 				DateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 				Date currenime = new Date();
 				String currendate = df.format(currenime);
+//				获得登录员工信息
 				User user = (User) request.getAttribute("User");
 				System.out.println("currendate=" + currendate);
 				System.out.println("user=" + user);
+//				添加收支明细表信息
 				boolean ff = baseUtil.addReceipt(user.getU_id(), car1List.get(0).getC_id(), "月缴退费", money, currendate);
 				System.out.println("ff=" + ff);
 			} else {
@@ -540,15 +582,17 @@ public class CustManageHandler {
 	 */
 	@RequestMapping("/DailyMail.action")
 	public ModelAndView DailyMail(HttpServletRequest request) {
+//		获得系统时间
 		Date day = new Date();
 		SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd");
 		System.out.println(df.format(day));
-//		String time = "%" + "2019-01-22" + "%";
 		String time = "%" + df.format(day) + "%";
 		System.out.println(time);
+//		获得登录员工信息
 		User user = (User) request.getAttribute("User");
 		System.out.println("user=" + user);
 		Receipt re = new Receipt(user.getU_id(), time);
+//		根据员工ID时间查询收支明细表信息
 		List<Receipt> receiptList = receiptBiz.findDailyRecp(re);
 		System.out.println("receiptList=" + receiptList);
 		request.setAttribute("receiptList", receiptList);
@@ -574,12 +618,15 @@ public class CustManageHandler {
 		// 查找该车牌是否已经有记录
 		Car car = carBiz.FindByCarNumber(c_num);
 		System.out.println("找到的车记录" + car);
+//		根据时间查询收支明细表记录
 		Stopcartime sct1 = stopcartimeBiz.FindByCarIDX(car.getC_id(), par1.getPm_id());
 		Stopcartime sct = new Stopcartime(2, sct_overtime, sct1.getSct_id());
+//		修改停车时间表记录——修改停车状态，结束时间————根据主件ID scrID
 		flag = stopcartimeBiz.UpdateSctTimeandState(sct);
 		System.out.println("——————————————修改出场时间成功————————————————————————");
 		Stopcartime sctz = new Stopcartime(sct1.getSct_id(), sct_money);
 		System.out.println("sctz=" + sctz);
+//		修改停车金额
 		flag = stopcartimeBiz.UpdateSctMoneyX(sctz);
 		return "charge/OpenDoor";
 	}
@@ -594,8 +641,8 @@ public class CustManageHandler {
 	public ModelAndView countGetMoneyWayJSP(HttpServletRequest request) {
 		String re_time1 = null;
 		String re_time2 = null;
+//		根据时间查询收支明细表记录
 		List<Receipt> ReceiptList = receiptBiz.findCountMoneyReX(re_time1, re_time2);
-
 		request.setAttribute("ReceiptList", ReceiptList);
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("charge/countGetMoneyWay");
@@ -610,10 +657,11 @@ public class CustManageHandler {
 	 */
 	@RequestMapping("/countGetMoneyWayAjax.action")
 	public ModelAndView countGetMoneyWayAjax(String re_time1, String re_time2, HttpServletRequest request) {
-		System.out.println("------re_time2--------------------------------");
+		System.out.println("--------------------------------------");
 		String re_time3 = null;
 		String re_time4 = null;
 		System.out.println("re_time1=" + re_time1 + "---re_time2=" + re_time2);
+//		判断传过来的参数是否为空 ,
 		if (re_time1 != null && re_time1 != "") {
 			re_time3 = re_time1;
 		}
@@ -621,6 +669,7 @@ public class CustManageHandler {
 			re_time4 = re_time2;
 		}
 		System.out.println("re_time3=" + re_time3 + "---re_time4=" + re_time4);
+//		根据时间查询收支明细表记录
 		List<Receipt> ReceiptList = receiptBiz.findCountMoneyReX(re_time3, re_time4);
 		request.setAttribute("ReceiptList", ReceiptList);
 		ModelAndView mav = new ModelAndView();
