@@ -65,6 +65,7 @@
 		 <input value="${ ForeUser.cust_acc}" readonly="readonly">
 	   </div>
 	   <div class="clear"></div>
+	   <input id="status" type="text" value="loading" style="display:none; ">
    </li>
 
    <li>
@@ -129,6 +130,7 @@ $("#clipArea").photoClip({
 	clipFinish: function(dataURL) {
 		console.log(dataURL);
 		alert("qqqqqqqq");
+		document.getElementById("status").value="ready";
 		 $.ajax({
 	            type: "POST",
 	            url: '${path}/userinformation/headUploadAjax.do',
@@ -153,9 +155,15 @@ $(".htmleaf-container").show();
 	$("#clipBtn").click(function(){
 		$("#logox").empty();
 		$('#logox').append('<img name="headfile" src="' + imgsource + '" align="absmiddle" style=" width: 8rem;height: 8rem; margin-left:0rem;margin-top: 0rem">');
-		$(".htmleaf-container").hide();
-		alert("sssss");
-       
+
+		var status=document.getElementById("status").value;
+		if(status=="ready"){
+			$(".htmleaf-container").hide();
+			alert("sssss");
+		}else{
+			alert("请打开一张图片");
+		}
+		
 	})
 });
 </script>
@@ -301,6 +309,7 @@ $(".file-3").parents(".uploader").find(".filename").val(subUrl);
 <script type="text/javascript">
 function setImagePreview() {
 	alert("llllllllll");
+	
 	var preview, img_txt, localImag, file_head = document.getElementById("file_head"),
 			picture = file_head.value;
 	if (!picture.match(/.jpg|.gif|.png|.bmp/i)) return alert("您上传的图片格式不正确，请重新选择！"),
@@ -309,6 +318,7 @@ function setImagePreview() {
 			preview.style.width = "63px",
 			preview.style.height = "63px",
 			preview.src = window.navigator.userAgent.indexOf("Chrome") >= 1 || window.navigator.userAgent.indexOf("Safari") >= 1 ? window.webkitURL.createObjectURL(file_head.files[0]) : window.URL.createObjectURL(file_head.files[0]);
+
 	else {
 		file_head.select(),
 				file_head.blur(),
@@ -316,10 +326,13 @@ function setImagePreview() {
 				localImag = document.getElementById("localImag"),
 				localImag.style.width = "63px",
 				localImag.style.height = "63px";
+
 		try {
 			localImag.style.filter = "progid:DXImageTransform.Microsoft.AlphaImageLoader(sizingMethod=scale)",
 					localImag.filters.item("DXImageTransform.Microsoft.AlphaImageLoader").src = img_txt
+					
 		} catch(f) {
+			document.getElementById("status").value="error";
 			return alert("您上传的图片格式不正确，请重新选择！"),
 					!1
 		}
