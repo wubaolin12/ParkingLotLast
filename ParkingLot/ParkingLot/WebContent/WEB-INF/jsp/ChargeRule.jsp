@@ -179,8 +179,6 @@ function member_del(cr_id,talk){
 	if(talk == "已启用"){
 		alert("方案正在使用中！不可删除");
 	}else{
-		alert(cr_id);
-		
 	 	layer.confirm(aaa,function(index){
 	 		$.ajax({
 	 			type: 'POST',

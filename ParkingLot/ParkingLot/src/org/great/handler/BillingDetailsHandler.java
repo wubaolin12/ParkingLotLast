@@ -48,8 +48,8 @@ public class BillingDetailsHandler {
 		System.err.println("收支明细表receiptList=" + receiptList);
 
 //		HttpSession session = request.getSession();
-		RedisSession session = baseUtil.getSession(response, request);
-		session.setAttribute("receiptList", receiptList);
+//		RedisSession session = baseUtil.getSession(response, request);
+		request.setAttribute("receiptList", receiptList);
 
 		return "billingDetails";
 	}
@@ -92,8 +92,8 @@ public class BillingDetailsHandler {
 
 		System.err.println("模糊查询收支明细表" + receiptList);
 
-		HttpSession session = request.getSession();
-		session.setAttribute("receiptList", receiptList);
+//		HttpSession session = request.getSession();
+		request.setAttribute("receiptList", receiptList);
 
 		return "billingDetails";
 	}
@@ -135,8 +135,8 @@ public class BillingDetailsHandler {
 		System.out.println("月缴套餐收入4" + temporaryUserInCome4);
 		DataStatistics d = new DataStatistics(allCome, parkinbout, monthUserInCome, temporaryUserInCome,
 				temporaryUserInCome1, temporaryUserInCome2, temporaryUserInCome3, temporaryUserInCome4);
-		HttpSession session = request.getSession();
-		session.setAttribute("dataStatistics", d);
+//		HttpSession session = request.getSession();
+		request.setAttribute("dataStatistics", d);
 		return "billingDetailsStatistics";
 	}
 }

@@ -96,11 +96,15 @@
 		(select rec.*,u.u_name u from tb_receipt rec LEFT JOIN tb_user u on rec.u_id= u.u_id ) rec1 
 		LEFT JOIN tb_car c ON rec1.c_id =c.c_id
 		 where  1=1
-		<if test="datemin!=null">  and rec1.re_time &gt; #{datemin} </if>
-		<if test="datemax!=null">  and rec1.re_time &lt; #{datemax} </if>
+		<if test="datemin!=null">  and rec1.re_time &gt;=  #{datemin} </if>
+		<if test="datemax!=null">  and rec1.re_time &lt;=  #{datemax} </if>
 		<if test="carNum!=null">   and c.c_num LIKE CONCAT('%',#{carNum},'%') </if>
 	</select>
 	
+<!-- <![CDATA[ >=]]> -->
+<!-- date_add({日期参数}, interval 1 day) -->
+ 
+
 	<resultMap type="org.great.bean.Receipt" id="ReceiptListMap1" >
 		<id property="re_id" column="re_id" />
 		<result property="re_thing" column="re_thing" />

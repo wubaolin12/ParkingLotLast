@@ -48,8 +48,8 @@ public class ChargeRuleHandler {
 		List<Countrules> ruleList = countrulesBiz.findRuleList();
 //		HttpSession session = request.getSession();	
 		
-		RedisSession session = baseUtil.getSession(response, request);
-		session.setAttribute("ruleList", ruleList);	
+//		RedisSession session = baseUtil.getSession(response, request);
+		request.setAttribute("ruleList", ruleList);	
 		System.out.println("ruleList="+ruleList);
 
 		return "ChargeRule";
@@ -98,8 +98,8 @@ public class ChargeRuleHandler {
 		
 		System.err.println(".........ruleSelect="+ruleSelect);
 		
-		HttpSession session = request.getSession();				
-		session.setAttribute("ruleSelect", ruleSelect);	
+//		HttpSession session = request.getSession();				
+		request.setAttribute("ruleSelect", ruleSelect);	
 		
 		return "ChargeRuleUpdate";
 		}
@@ -116,8 +116,8 @@ public class ChargeRuleHandler {
 		
 		System.err.println(".........ruleSelect="+ruleSelect);
 		
-		HttpSession session = request.getSession();				
-		session.setAttribute("ruleSelect", ruleSelect);	
+//		HttpSession session = request.getSession();				
+		request.setAttribute("ruleSelect", ruleSelect);	
 		
 		
 		return "ChargeRuleAdd";

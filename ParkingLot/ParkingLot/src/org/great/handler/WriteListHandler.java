@@ -49,8 +49,8 @@ public class WriteListHandler {
 		List<Cust> writeList = custCarBiz.findWriteList();
 
 		// 获取redissession
-		RedisSession session = baseUtil.getSession(response, request);
-		session.setAttribute("writeList", writeList);
+//		RedisSession session = baseUtil.getSession(response, request);
+		request.setAttribute("writeList", writeList);
 		System.out.println("writeList=" + writeList);
 
 		return "writeList";
@@ -73,8 +73,8 @@ public class WriteListHandler {
 		// 获得白名单列表
 		List<Cust> writeList = custCarBiz.findWriteList();
 		// 获取redissession
-		RedisSession session = baseUtil.getSession(response, request);
-		session.setAttribute("writeList", writeList);
+//		RedisSession session = baseUtil.getSession(response, request);
+		request.setAttribute("writeList", writeList);
 		System.out.println("writeList=" + writeList);
 
 		return "writeList";
@@ -138,9 +138,9 @@ public class WriteListHandler {
 		List<Cust> writeList = custCarBiz.queryWriteList(query);
 
 		// 获取redissession
-		RedisSession session = baseUtil.getSession(response, request);
+//		RedisSession session = baseUtil.getSession(response, request);
 
-		session.setAttribute("writeList", writeList);
+		request.setAttribute("writeList", writeList);
 
 		System.out.println("writeList=" + writeList);
 
