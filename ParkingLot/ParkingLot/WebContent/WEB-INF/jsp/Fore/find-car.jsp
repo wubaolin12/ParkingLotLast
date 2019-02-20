@@ -71,9 +71,11 @@ String path=request.getScheme()+"://"+request.getServerName()+":"+
 					<div class="span3">
 						<div class="box1">
 							<header>
-								<!-- START LOGO -->
+						<!-- START LOGO -->
 								<div class="logo_wrapper">
-									<a href="${path}/fore/success1.do" class="logo"><img src="${path}/static/fore-static/images/logo.png" alt="Kinder Garten Logo"></a>
+									<a href="#" class="logo"><img id="bgl" src="/picture/${ForeUser.head_path}" align="left" style="padding-left:1rem;padding-top:4rem; width: 6rem;height: 6rem; margin-left:0rem;margin-top: 0rem">
+									</a>
+										<div style="width:80%; padding-left: 22%;padding-top: 48%"><p style="font-size:1.6rem;width:100px; white-space:nowrap; text-overflow:ellipsis; overflow:hidden;">${ForeUser.cust_acc}</p></div>
 								</div>
 								<!-- END LOGO -->
 							</header>
