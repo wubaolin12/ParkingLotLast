@@ -65,8 +65,9 @@ public class UserHandler extends BaseUtil{
 	 * @return
 	 * @author ASUS yf
 	 */
+	@ResponseBody
 	@OperationLog(operationType = "系统管理", operationName = "修改密码")	
-	@RequestMapping("/updateUserPwd.action")
+	@RequestMapping(value = "/updateUserPwd.action", method = RequestMethod.POST, produces = "application/json;charset=utf-8")
 	public String updateUserPwd(HttpServletRequest request, HttpServletResponse resp) {
 		System.out.println("----------UserUtil：修改用户密码");
 		//int id=Integer.valueOf(request.getParameter("u_id"));
@@ -74,7 +75,7 @@ public class UserHandler extends BaseUtil{
 		Map map=new HashMap<>();
 		map.put("u_pwd", BaseUtil.getStrrMD5(newpwd));
 		HttpSession session = request.getSession();
-		User loginuser=(User)session.getAttribute("loginuser");
+		User loginuser=(User)session.getAttribute("User");
 		if(loginuser!=null) {
 		
 		int num1=bbiz.updateData(tb_name, map, "u_id",""+loginuser.getU_id());

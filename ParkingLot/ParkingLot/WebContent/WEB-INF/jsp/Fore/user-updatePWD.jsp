@@ -110,7 +110,7 @@ $('#bt1').on('click', function(){
 						
 						layer.confirm(redata,function(index)
 						{
-							location.href="${path}/fore/foreLogin.do";
+							location.href="${path}/fore/foreExit.do";
 						});
 						
 					}				

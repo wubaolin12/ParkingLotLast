@@ -159,20 +159,20 @@
          							var r=confirm("该日期已有排班,是否修改!");
          							if (r==true)
          							  {
-         							  alert("修改排班!");
-         							 $.ajax({
-          		        	            url:'${path}/workPrijectHandler/updateWorkAjax.action',
-          		        				dataType:"text", 
-          		        				data:{"ss_id":state,"s_date":s_date,"u_id":u_id},
-          		        				type:"post",
-          		        				success:function(data){
-          		        	                 location.href="${path}/workPrijectHandler/FindWorkProject.action?getUserID="+u_id;
-
-          		        				},
-          		        				error:function(data) {
-          		        					console.log(data.msg);
-          		        				}
-          							});
+	         							  alert("修改排班!");
+	         							 $.ajax({
+	          		        	            url:'${path}/workPrijectHandler/updateWorkAjax.action',
+	          		        				dataType:"text", 
+	          		        				data:{"ss_id":state,"s_date":s_date,"u_id":u_id},
+	          		        				type:"post",
+	          		        				success:function(data){
+	          		        	                 location.href="${path}/workPrijectHandler/FindWorkProject.action?getUserID="+u_id;
+	
+	          		        				},
+	          		        				error:function(data) {
+	          		        					console.log(data.msg);
+	          		        				}
+	          							});
          							  
          							  }
          							else

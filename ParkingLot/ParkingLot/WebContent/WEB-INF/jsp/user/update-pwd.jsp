@@ -35,9 +35,10 @@
 
 	<div class="main">
 	<div class="top" style="font-size: 25px ;margin:0% auto; ">修改密码</div>
-		<form action="updateUserPwd.action" onsubmit="return check()" method=post">
+		<form action=""  method=post">
 			<div id="d_opwd">旧密码：
 				<input id="oldpwd" name="oldpwd" class="inp" type="password" style="width: 150px" placeholder="请输入旧密码"/>
+				<input id="pwdtip3" type="text" style="display: none;" value="">
 				<span id="pwdtip"></span>
 			</div>
 			<div></div>
@@ -52,10 +53,10 @@
 			<div><label id="lbtip" value=""></label></div>
 			<table>
 				<tr>
-					<td><div><span id="pwdtip2" value="1"><input id="pwdtip3" type="hidden" value="0"></div></span></td>
+					<td><div><span id="pwdtip2" value="1"></div></span></td>
 				</tr>
 				<tr>
-					<div id="sub"><input type="submit" value="修改密码"  name="action" onsubmit="return check()"/></div>
+					<div id="sub"><input type="button" value="修改密码" id="bt1" name="action"/></div>
 				</tr>
 			</table>
 <!-- 			<div id="sub"><input type="submit" value="提交"  name="action" onsubmit="return check()"/><input type="reset" value="返回"/></div> -->
@@ -103,14 +104,51 @@
 				}
 		}else{
 		
-			document.getElementById("pwdtip2").innerHTML = "提示：账户或密码都不能为空！";
+			document.getElementById("pwdtip2").innerHTML = "提示：密码不能为空！";
 			
 		}
 	};
+	
+	$('#bt1').on('click', function(){
+		var pwd1 = document.getElementById("newpwd").value;
+		var pwd2 = document.getElementById("cpwd").value;
+		var tip  = document.getElementById("pwdtip3").value;
+	
+		if(tip=="旧密码正确"){
+			if(pwd1!=""&&pwd1!=null){
+				
+				if(pwd2!=""&&pwd2!=null){
+					if(pwd1==pwd2){
+						$.ajax({
+							url :"updateUserPwd.action" ,
+							type :"post",
+							dataType:"text", 
+							data :"newpwd="+pwd1,
+							success:function(redata){
+								alert("密码已修改，请重新登录！");
+								location.href="${path}/Exit/exit.action";
+							}
+						});
+					}else{
+						alert("两次密码不一致");
+					}
+				}else{
+					alert("请重复输入密码");
+				}
+				
+			}else{
+				alert("请填入新密码");
+			}
+			
+			
+		}else{
+			alert("请填入正确旧密码");
+		}
+		
+		
+	});
 
 
-
- 
 	$(function() {
 		$("#oldpwd").on("blur",function(){
 		
@@ -126,6 +164,7 @@
 					
 					document.getElementById("pwdtip").innerHTML =redata;
 					document.getElementById("pwdtip3").value=redata;
+					
 				}
 			});
 		});		
