@@ -24,8 +24,11 @@
     <!-- 设置不过滤内容，比如:css,jquery,img 等资源文件 -->
     <mvc:resources location="/static/css/*" mapping="/static/css/**" />
     <mvc:resources location="/static/js/*" mapping="/static/js/**" />
+    <mvc:resources location="/static/static/*" mapping="/static/static/**" />
     <mvc:resources location="/static/images/*" mapping="/static/images/**" />
       <mvc:resources location="/BaseMap/*" mapping="/BaseMap/**" />
+        <mvc:resources location="/static/img/*" mapping="/static/img/**" />
+          <mvc:resources location="/static/login/*" mapping="/static/login/**" />
     	
         <context:component-scan base-package="org.great"/>
 		

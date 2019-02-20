@@ -2,32 +2,19 @@ package org.great.handler;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.security.MessageDigest;
 import java.util.List;
-import java.util.UUID;
 
 import javax.annotation.Resource;
-import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
-import org.great.bean.Menu;
 import org.great.bean.Park;
-import org.great.bean.RoleRel;
-import org.great.bean.User;
-import org.great.biz.MenuBiz;
 import org.great.biz.ParkBiz;
-import org.great.biz.UserBiz;
 import org.great.log.OperationLog;
 import org.great.util.BaseUtil;
-import org.great.util.RedisSession;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
 
 /**
  * 车位管理
@@ -70,6 +57,10 @@ public class ParkHandler {
 		}
 			parkList=parkBiz.FindAll(updatePark);
 		request.setAttribute("parkList", parkList);
+		pForeList=parkBiz.FindGroup();
+		System.out.println("区号长度"+pForeList.size());
+		
+		request.setAttribute("pForeList", pForeList);
 		return "ParkManage";
 	}
 	
@@ -96,7 +87,10 @@ public class ParkHandler {
 		parkList=parkBiz.FindAll(p);
 		System.out.println("长度"+parkList.size());
 		request.setAttribute("parkList", parkList);
+		pForeList=parkBiz.FindGroup();
+		System.out.println("区号长度"+pForeList.size());
 		
+		request.setAttribute("pForeList", pForeList);
 		return "ParkManage";
 	}
 	
@@ -116,8 +110,9 @@ public class ParkHandler {
 		pForeList=parkBiz.FindGroup();
 		System.out.println("区号长度"+pForeList.size());
 		
-		RedisSession session = baseUtil.getSession(response, request);
-		session.setAttribute("pForeList", pForeList);
+		request.setAttribute("pForeList", pForeList);
+//		RedisSession session = baseUtil.getSession(response, request);
+//		session.setAttribute("pForeList", pForeList);
 		
 		return "ParkManage";
 	}
@@ -136,6 +131,11 @@ public class ParkHandler {
 	@RequestMapping("/addPark.action")
 	public String addPark(HttpServletRequest request,HttpServletResponse response,Park addPark) throws IOException {
 		System.out.println("添加的车位是"+addPark);
+		pForeList=parkBiz.FindGroup();
+		System.out.println("区号长度"+pForeList.size());
+		
+		request.setAttribute("pForeList", pForeList);
+		
 		String url="";
 		addPark.setPm_id(9);
 		response.setContentType("text/html;charset=utf-8");
@@ -177,6 +177,10 @@ public class ParkHandler {
 		System.out.println("p="+p);
 		request.getSession().setAttribute("updatePark", p);
 		}
+		pForeList=parkBiz.FindGroup();
+		System.out.println("区号长度"+pForeList.size());
+		
+		request.setAttribute("pForeList", pForeList);
 		return "ParkUpdate";
 	}
 	
@@ -188,7 +192,14 @@ public class ParkHandler {
 	@RequestMapping("/updatePark.action")
 	public String updatePark(HttpServletRequest request,HttpServletResponse response,Park addPark) throws IOException {
 		System.out.println("添加的车位是"+addPark);
+		
+		pForeList=parkBiz.FindGroup();
+		System.out.println("区号长度"+pForeList.size());
+		request.setAttribute("pForeList", pForeList);
+		
+		
 		String url="";
+		
 		addPark.setPm_id(9);
 		response.setContentType("text/html;charset=utf-8");
 		PrintWriter out = response.getWriter();

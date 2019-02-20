@@ -4,30 +4,18 @@ import java.io.IOException;
 import java.security.MessageDigest;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.UUID;
 
 import javax.annotation.Resource;
-import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
-import org.great.bean.Menu;
 import org.great.bean.Park;
 import org.great.bean.ParkState;
-import org.great.bean.RoleRel;
-import org.great.bean.User;
-import org.great.biz.MenuBiz;
 import org.great.biz.ParkBiz;
-import org.great.biz.UserBiz;
 import org.great.util.BaseUtil;
-import org.great.util.RedisSession;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
 
 /**
  * 停车场里 车辆查看
@@ -61,8 +49,9 @@ public class ParkViewHandler {
 		request.setAttribute("parkList", parkList);
 		pForeList=parkBiz.FindGroup();
 		
-		RedisSession session = baseUtil.getSession(response, request);
-		session.setAttribute("pForeList", pForeList);
+		pForeList=parkBiz.FindGroup();
+		System.out.println("区号长度"+pForeList.size());
+		request.setAttribute("pForeList", pForeList);
 		return "ParkView";
 	}
 
@@ -92,6 +81,11 @@ public class ParkViewHandler {
 		parkList=parkBiz.FindList(updatePark);
 		}
 		request.setAttribute("parkList", parkList);
+		
+		
+		pForeList=parkBiz.FindGroup();
+		System.out.println("区号长度"+pForeList.size());
+		request.setAttribute("pForeList", pForeList);
 		return "ParkView";
 	}
 	/**
@@ -103,7 +97,7 @@ public class ParkViewHandler {
 		List<ParkState> stateList=new ArrayList<ParkState>();
 		pForeList=parkBiz.FindGroup();
 		System.out.println("区号长度"+pForeList.size());
-		request.getSession().setAttribute("pForeList", pForeList);
+		request.setAttribute("pForeList", pForeList);
 		for (int i = 0; i < pForeList.size(); i++) {
 			//查空车位数 开放
 			int emptyCount=parkBiz.EmptyCount(pForeList.get(i).getP_fore());
@@ -124,9 +118,12 @@ public class ParkViewHandler {
 	@RequestMapping("/findForeInfo.action")
 	public String findForeInfo(HttpServletRequest request,String p_fore ) {
 		List<ParkState> stateList=new ArrayList<ParkState>();
+
 		pForeList=parkBiz.FindGroup();
 		System.out.println("区号长度"+pForeList.size());
-		request.getSession().setAttribute("pForeList", pForeList);
+		request.setAttribute("pForeList", pForeList);
+		
+		
 			//查空车位数 开放
 			int emptyCount=parkBiz.EmptyCount(p_fore);
 			//查空车位数 维护
