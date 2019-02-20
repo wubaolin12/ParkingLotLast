@@ -28,12 +28,12 @@
 <section class="logo-license">
 <div class="half">
 	<a class="logo" id="logox">
-<%-- 	<c:if test="${FuserInf.head_path==null}">
+ 	<c:if test="${FuserInf.head_path==null}">
 		<img id="bgl" src="${path}/static/headlib/images/logo_n.png">
-	</c:if> --%>
-	
+	</c:if> 
+	<c:if test="${FuserInf.head_path!=null}">
 		<img id="bgl" src="/picture/${ForeUser.head_path}" align="absmiddle" style=" width: 8rem;height: 8rem; margin-left:0rem;margin-top: 0rem">
-	
+	</c:if>
 	</a>
 	
 <p>点击头像以修改头像</p>	
@@ -129,7 +129,7 @@ $("#clipArea").photoClip({
 	},
 	clipFinish: function(dataURL) {
 		console.log(dataURL);
-		alert("qqqqqqqq");
+		//alert("qqqqqqqq");
 		document.getElementById("status").value="ready";
 		 $.ajax({
 	            type: "POST",
@@ -159,7 +159,7 @@ $(".htmleaf-container").show();
 		var status=document.getElementById("status").value;
 		if(status=="ready"){
 			$(".htmleaf-container").hide();
-			alert("sssss");
+			//alert("sssss");
 		}else{
 			alert("请打开一张图片");
 		}
@@ -308,7 +308,7 @@ $(".file-3").parents(".uploader").find(".filename").val(subUrl);
 </script>
 <script type="text/javascript">
 function setImagePreview() {
-	alert("llllllllll");
+	//alert("llllllllll");
 	
 	var preview, img_txt, localImag, file_head = document.getElementById("file_head"),
 			picture = file_head.value;
