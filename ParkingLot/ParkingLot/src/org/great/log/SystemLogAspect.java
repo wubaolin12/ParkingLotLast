@@ -80,12 +80,9 @@ public class SystemLogAspect {
 		User user = (User) session.getAttribute("User");
 //		User user = (User) request.getAttribute("User");
 		// 获取操作人ip地址
-//		String ip = request.getRemoteAddr();
+		String ip = request.getRemoteAddr();
 
 		try {
-			// 获取操作人ip地址
-			InetAddress inet = InetAddress.getLocalHost();
-			String ip = inet.getHostAddress();
 			
 			//操作的类名
 			String targetName = joinPoint.getTarget().getClass().getName();
