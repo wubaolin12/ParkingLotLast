@@ -243,7 +243,7 @@
 		vcid,v.v_starttime,v.v_overtime,v.pm_id vpmid from tb_car c LEFT JOIN
 		tb_vip v on c.c_id = v.c_id
 		where c.c_num
-		=#{c_num}
+		=#{c_num} 
 	</select>
 	<resultMap type="org.great.bean.Car" id="findCarVipStateXMap">
 		<id property="c_id" column="c_id" />
@@ -271,4 +271,32 @@
 	<update id="updatePic" parameterType="org.great.bean.Car">
 		update tb_car set c_pic=#{c_pic} where c_id=#{c_id}
 	</update>
+	
+	
+	<!-- 根据车牌号手机号查询车辆VIP信息 -->
+	<select id="findCarVipStatebyCarIDCustPhoneX" 
+		resultMap="findCarVipStatebyCarIDCustPhoneXMap">
+		select c.c_id,c.cust_id,c.pm_id
+		,c.c_num,v.v_id,v.co_id,v.c_id
+		vcid,v.v_starttime,v.v_overtime,v.pm_id vpmid from tb_car c LEFT JOIN
+		tb_vip v on c.c_id = v.c_id
+		where c.c_num
+		=#{c_num} and c.cust_id = (select cust_id from tb_cust where cust_phone = #{cust_phone})
+	</select>
+	<resultMap type="org.great.bean.Car" id="findCarVipStatebyCarIDCustPhoneXMap">
+		<id property="c_id" column="c_id" />
+		<result property="cust_id" column="cust_id" />
+		<result property="pm_id" column="pm_id" />
+		<result property="c_num" column="c_num" />
+		<collection property="vip" column="v_id"
+			javaType="org.great.bean.Vip">
+			<id property="v_id" column="v_id" />
+			<result property="co_id" column="co_id" />
+			<result property="c_id" column="c_id" />
+			<result property="v_starttime" column="v_starttime" />
+			<result property="v_overtime" column="v_overtime" />
+			<result property="pm_id" column="vpmid" />
+		</collection>
+	</resultMap>
+	
 </mapper>

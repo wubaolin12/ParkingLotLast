@@ -142,5 +142,14 @@ public interface CarBiz {
 	 * @return
 	 */
 	public boolean chagerCustIDByCarNumberX(@Param("c_num") String c_num, @Param("cust_id") int cust_id);
-
+	/**
+	 * 根据车牌号手机号查询车辆VIP信息
+	 * 
+	 * @param number
+	 * @param pm_type
+	 * @param pm_name
+	 * @return
+	 */
+	public List<Car> findCarVipStatebyCarIDCustPhoneX(@Param("c_num") String c_num,
+			@Param("cust_phone") String cust_phone);
 }

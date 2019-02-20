@@ -334,12 +334,12 @@ public class AppearanceLicensePlateRecognition {
 						// 查询该出场车辆的信息
 						Stopcartime sct2 = stopcartimeBiz.FindByID(stopcartime.getSct_id());
 						Stopcartime sct3 = new Stopcartime(stopcartime.getSct_id(),sct2.getC_id(),sct2.getPm_id(),sct2.getSct_starttime(),currendate,money);
-					System.out.println("sct3="+sct3);
+						System.out.println("sct3="+sct3);
 						// 该信息传输到页面
 						session.setAttribute("Stopkxj", sct3);
 						// 宏琪 session 存放缴费标记
 						session.setAttribute("moneyFlag", moneyFlag);
-						User user = (User) request.getAttribute("User");
+						User user = (User) request.getSession().getAttribute("User");
 						List<RoleRel> RoleRelList = roleRelBiz.FindRoleIDbyUserIDX(user.getU_id());
 						if (RoleRelList != null && RoleRelList.size() != 0) {
 							if (RoleRelList.get(0).getRole().getRole_name().equals("收费员")) {

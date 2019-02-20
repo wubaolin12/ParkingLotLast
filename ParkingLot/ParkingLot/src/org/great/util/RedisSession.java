@@ -1,8 +1,6 @@
 package org.great.util;
 
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Set;
+import java.util.List;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
@@ -11,6 +9,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Controller;
 import org.springframework.stereotype.Repository;
 
+import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
 
 /**
@@ -38,12 +37,24 @@ public class RedisSession {
 	public void setAttribute(String key, Object value) {
 
 		request.getSession().setAttribute(key, value);
-		if (value.toString().contains("[")||value.toString().contains("{")) {
-			JSONObject json = JSONObject.fromObject(value);
-			jedisClient.set(key + ":" + token, json.toString());
-		}else {
-			jedisClient.set(key + ":" + token, value.toString());
+		
+		if(value==null){
+				return;
 		}
+		if(value instanceof List<?>) {
+			System.out.println("这是list类型---");
+			JSONArray jsonList = JSONArray.fromObject(value);
+			value=jsonList;
+		} else if (value instanceof String) {
+			System.out.println("这是String类型---");
+//			jedisClient.set(key + ":" + token, value.toString());
+			
+		}else {
+			System.out.println("这是bean类型---"+value.toString());
+			JSONObject json = JSONObject.fromObject(value);
+			value = json;
+		}
+		jedisClient.set(key + ":" + token, value.toString());
 		jedisClient.expire(key + ":" + token, 1800);// 设置过期时间
 
 	}
@@ -63,7 +74,10 @@ public class RedisSession {
 		if(value==null) {
 			return null;
 		}
-		if (value.contains("[")||value.contains("{")) {
+		if(value.contains("[")&&value.contains("{")) {
+			JSONArray json = JSONArray.fromObject(value);
+			obj = JSONArray.toArray(json, clazz);
+		} else if (value.contains("[")||value.contains("{")) {
 			JSONObject json = JSONObject.fromObject(value);
 			obj = JSONObject.toBean(json, clazz);
 		}else {

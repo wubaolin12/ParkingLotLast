@@ -59,6 +59,7 @@ public class AppointmentParkLotHandler {
 //		查询改CUST下有多少量车 获得车牌 车ID 等信息
 		List<Car> carList = carBiz.FindByCarcustidX(cust.getCust_id());
 		System.out.println("carList=" + carList);
+		
 //		获得系统时间
 		Date day = new Date();
 		SimpleDateFormat df = new SimpleDateFormat("HH");
@@ -66,6 +67,7 @@ public class AppointmentParkLotHandler {
 		String time = df.format(day);
 		System.out.println("time=" + time);
 		int time1 = Integer.parseInt(time);
+		
 		List<Integer> timeList = new ArrayList<Integer>();
 		for (int i = time1 + 1; i <= 23; i++) {
 			timeList.add(i);
