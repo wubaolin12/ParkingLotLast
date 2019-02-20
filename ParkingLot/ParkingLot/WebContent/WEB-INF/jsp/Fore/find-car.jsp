@@ -242,11 +242,6 @@ function findCar(){
 		contentType:"application/json;charset=utf-8",
 		dataType:"json",
 		success:function(data){
-			//alert(data);
-			if(data==null||data==""){
-				alert("找不到这辆车");
-				return;
-			}
 			document.getElementById("carMsg").style.display="block";
 			document.getElementById("cnum").innerHTML=data.car.c_num;
 			document.getElementById("pnum").innerHTML=data.p_fore+data.p_num;
@@ -257,9 +252,10 @@ function findCar(){
 			
 			document.getElementById("p_mapid").value=data.p_mapid;
 			document.getElementById("p_feum").value=data.p_feum;
-			
-		}
-		
+		},
+	error:function(data){
+		alert("对不起！查无此车");
+	}
 	});
 }
 

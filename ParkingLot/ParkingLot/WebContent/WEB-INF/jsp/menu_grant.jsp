@@ -169,7 +169,7 @@ var r_id;
 				alert(data);
 			},
 			error:function(data){
-				alert("添加异常");
+				alert("网络异常！添加失败");
 			}
 		});
 	}

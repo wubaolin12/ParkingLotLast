@@ -74,10 +74,10 @@ public class RedisSession {
 		if(value==null) {
 			return null;
 		}
-		if(value.contains("[")&&value.contains("{")) {
+		if(value.startsWith("[")) {
 			JSONArray json = JSONArray.fromObject(value);
 			obj = JSONArray.toArray(json, clazz);
-		} else if (value.contains("[")||value.contains("{")) {
+		} else if (value.startsWith("{")) {
 			JSONObject json = JSONObject.fromObject(value);
 			obj = JSONObject.toBean(json, clazz);
 		}else {
