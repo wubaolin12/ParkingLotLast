@@ -58,6 +58,41 @@ public class BillingDetailsHandler {
 
 		return "billingDetails";
 	}
+	/**
+	 * 跳转图表
+	 */
+	@RequestMapping("/jumpChart.action")
+	public String jumpChart(HttpServletRequest request,HttpServletResponse response) {
+		int a = 1;
+		int b = 2;
+		int c = 3;
+		int d = 4;
+
+		// 月缴套餐收入1
+		int temporaryUserInCome1 = (receiptBiz.temporaryUserInCome1()) * 300;
+		System.out.println("月缴套餐收入1" + temporaryUserInCome1);
+		// 月缴套餐收入2
+		int temporaryUserInCome2 = (receiptBiz.temporaryUserInCome2()) * 600;
+		System.out.println("月缴套餐收入2" + temporaryUserInCome2);
+		// 月缴套餐收入3
+		int temporaryUserInCome3 = (receiptBiz.temporaryUserInCome3()) * 800;
+		System.out.println("月缴套餐收入3" + temporaryUserInCome3);
+		// 月缴套餐收入4
+		int temporaryUserInCome4 = (receiptBiz.temporaryUserInCome4()) * 1200;
+		System.out.println("月缴套餐收入4" + temporaryUserInCome4);
+		DataStatistics m = new DataStatistics(a, b, c, d,
+				temporaryUserInCome1, temporaryUserInCome2, temporaryUserInCome3, temporaryUserInCome4);
+//		HttpSession session = request.getSession();
+		request.setAttribute("dataStatistics", m);	
+		
+		
+		
+		
+		return "Chart";
+	}
+	
+	
+	
 
 	/**
 	 * 跳转数据统计界面

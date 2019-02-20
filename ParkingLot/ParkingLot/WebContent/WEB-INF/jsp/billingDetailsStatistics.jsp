@@ -92,12 +92,26 @@
           </div>
         </div>
     </div>
+    
+    
+    
+    <div class="page-container">
+	<div id="container" style="min-width:700px;height:400px"></div>
+</div>
+    
+    
+    
 </body>
 
 
 <script type="text/javascript">
 function checkNum(){
 	 window.location.href="${path}/billingDetails/findDataStatistics.action";
+}
+
+
+function chart(){
+	 window.location.href="${path}/billingDetails/jumpChart.action";
 }
 
 </script>
