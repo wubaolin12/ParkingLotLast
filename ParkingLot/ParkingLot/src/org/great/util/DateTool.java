@@ -50,6 +50,7 @@ public class DateTool {
 		
 		//返回一个Date对象
 		Date date = calendar.getTime();
+//		calendar.setTime(date);
 		String yesterday = new SimpleDateFormat("yyyy-MM-dd").format(date);
 		
 		return yesterday;
