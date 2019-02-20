@@ -36,6 +36,10 @@ public class FindCarHandler {
 		
 		Park park = parkBiz.findCar(car);
 		
+		if(park==null) {
+			System.out.println("查不到车");
+			return null;
+		}
 		return park;
 	}
 }
