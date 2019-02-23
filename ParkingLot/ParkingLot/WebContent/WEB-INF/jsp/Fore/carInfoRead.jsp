@@ -84,12 +84,13 @@
 								<div class="logo_wrapper">
 									
 									<a href="#" class="logo">
-										<c:if test="${ForeUser.head_path!=null}">
+										<c:if test="${ForeUser.head_path==null || ForeUser.head_path==''}">
+											<img id="bgl" src="${path}/static/headlib/images/head.jpg" align="left" style="padding-left:1rem;padding-top:4rem; width: 6rem;height: 6rem; margin-left:0rem;margin-top: 0rem">
+										</c:if> 									
+										<c:if test="${ForeUser.head_path!=null && ForeUser.head_path!=''}">
 											<img id="bgl" src="/picture/${ForeUser.head_path}" align="left" style="padding-left:1rem;padding-top:4rem; width: 6rem;height: 6rem; margin-left:0rem;margin-top: 0rem">
 										</c:if>
-										<c:if test="${ForeUser.head_path==null}">
-											<img id="bgl" src="${path}/static/headlib/images/head.jpg" align="left" style="padding-left:1rem;padding-top:4rem; width: 6rem;height: 6rem; margin-left:0rem;margin-top: 0rem">
-										</c:if> 
+
 									</a>
 
 									<div style="width:80%; padding-left: 22%;padding-top: 48%"><p style="font-size:1.6rem;width:100px; white-space:nowrap; text-overflow:ellipsis; overflow:hidden;">${ForeUser.cust_acc}</p></div>

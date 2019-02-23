@@ -117,8 +117,11 @@ public class AppearanceLicensePlateRecognition {
 	 * 跳转到LED显示界面 孔大帅
 	 */
 	@RequestMapping("/AppearanceCarAdmissionDisplay.action")
-	public String JumpCarAdmissionDisplay() {
-
+	public String JumpCarAdmissionDisplay(HttpServletResponse response, HttpServletRequest request) {
+		RedisSession session = baseUtil.getSession(response, request);// 获取session
+		session.getAttribute("Stopkxj", Stopcartime.class);
+		session.getAttribute("moneyFlag", Integer.class);
+		session.getAttribute("Carkxj", Car.class);
 		return "AppearanceCarAdmissionDisplay";
 	}
 
@@ -126,8 +129,11 @@ public class AppearanceLicensePlateRecognition {
 	 * 跳转到收费人员显示收费信息界面 野比欣之助
 	 */
 	@RequestMapping("/JumpCarAdmissionGetMoneyPJSP.action")
-	public String JumpCarAdmissionGetMoneyPJSP() {
-
+	public String JumpCarAdmissionGetMoneyPJSP(HttpServletResponse response, HttpServletRequest request) {
+		RedisSession session = baseUtil.getSession(response, request);// 获取session
+		session.getAttribute("Stopkxj", Stopcartime.class);
+		session.getAttribute("moneyFlag", Integer.class);
+		session.getAttribute("Carkxj", Car.class);
 		return "charge/CarBackPakInfo";
 	}
 
@@ -231,7 +237,7 @@ public class AppearanceLicensePlateRecognition {
 			for (Stopcartime stopcartime : sctlist) {
 				// 修改为不等于2 原来是等于一判断车是否在停车
 				if (stopcartime.getPm_id() != 2) {
-					
+
 					Stopcartime stopct = stopcartimeBiz.FindByID(stopcartime.getSct_id());
 					System.err.println("stopct=" + stopct);
 					String fTime = stopct.getSct_starttime();
@@ -250,108 +256,109 @@ public class AppearanceLicensePlateRecognition {
 					// 宏琪 需要缴费的标识 0是不用缴费 1 是要跳转二维码支付
 					int moneyFlag = 0;
 //					if (flag) {
-						Param param = new Param("白名单", "车辆角色");
-						Param param1 = paramBiz.GetPmIDByTypeNmaeX(param);
-						Param param2 = new Param("注册会员", "车辆角色");
-						Param param22 = paramBiz.GetPmIDByTypeNmaeX(param2);
-						Param param3 = new Param("包月套餐", "车辆角色");
-						Param param33 = paramBiz.GetPmIDByTypeNmaeX(param3);
-						Param param4 = new Param("临时车辆", "车辆角色");
-						Param param44 = paramBiz.GetPmIDByTypeNmaeX(param4);
-						// 查找该车牌是否已经有记录
-						Car car1 = carBiz.FindByCarNumber(number);
-						System.out.println("查询车辆信息" + car1);
-						if (car1.getPm_id() == param1.getPm_id()) {
-							System.out.println("-------这货是白名单，放他走!!!-------");
-						} else if (car1.getPm_id() == param22.getPm_id()) {
-							Car car2 = carBiz.findCustCarNumberByCarIDX(car1.getC_id());
-							List<Vip> Viplist = vipBiz.findVipX(car1.getC_id());// 宏琪 改了此处 car1.getC_id() 原来为20
-							if (Viplist != null && Viplist.size() != 0) {
-								System.out.println("-------这货曾经是月缴会员快提醒他续费充值!!!-------");
+					Param param = new Param("白名单", "车辆角色");
+					Param param1 = paramBiz.GetPmIDByTypeNmaeX(param);
+					Param param2 = new Param("注册会员", "车辆角色");
+					Param param22 = paramBiz.GetPmIDByTypeNmaeX(param2);
+					Param param3 = new Param("包月套餐", "车辆角色");
+					Param param33 = paramBiz.GetPmIDByTypeNmaeX(param3);
+					Param param4 = new Param("临时车辆", "车辆角色");
+					Param param44 = paramBiz.GetPmIDByTypeNmaeX(param4);
+					// 查找该车牌是否已经有记录
+					Car car1 = carBiz.FindByCarNumber(number);
+					System.out.println("查询车辆信息" + car1);
+					if (car1.getPm_id() == param1.getPm_id()) {
+						System.out.println("-------这货是白名单，放他走!!!-------");
+					} else if (car1.getPm_id() == param22.getPm_id()) {
+						Car car2 = carBiz.findCustCarNumberByCarIDX(car1.getC_id());
+						List<Vip> Viplist = vipBiz.findVipX(car1.getC_id());// 宏琪 改了此处 car1.getC_id() 原来为20
+						if (Viplist != null && Viplist.size() != 0) {
+							System.out.println("-------这货曾经是月缴会员快提醒他续费充值!!!-------");
+						} else {
+							System.out.println("-------这货没充过月缴会员，你也可以提醒他充值哦!!!-------");
+						}
+						if (car2.getCust().getCust_money() >= money) {
+							int money2 = car2.getCust().getCust_money() - money;
+							Cust cust = new Cust(car2.getCust().getCust_id(), money2);
+							boolean flag2 = custBiz.chageCustMoneyByIDX(cust);
+							System.out.println("flag2=" + flag2);
+							if (flag2 == true) {
+								System.out.println("-------这货是注册会员卡里有钱自动扣掉，放他走!!!-------");
 							} else {
-								System.out.println("-------这货没充过月缴会员，你也可以提醒他充值哦!!!-------");
-							}
-							if (car2.getCust().getCust_money() >= money) {
-								int money2 = car2.getCust().getCust_money() - money;
-								Cust cust = new Cust(car2.getCust().getCust_id(), money2);
-								boolean flag2 = custBiz.chageCustMoneyByIDX(cust);
-								System.out.println("flag2=" + flag2);
-								if (flag2 == true) {
-									System.out.println("-------这货是注册会员卡里有钱自动扣掉，放他走!!!-------");
-								} else {
-									System.out.println("-------这货是注册会员卡里有钱自动扣掉的时候发生了以外，扣除失败了!!!-------");
-									moneyFlag = 1;
-								}
-							} else {
+								System.out.println("-------这货是注册会员卡里有钱自动扣掉的时候发生了以外，扣除失败了!!!-------");
 								moneyFlag = 1;
-								System.out.println("-------这货是注册会员卡里钱不够 ，不放!!!-------");
 							}
-						} else if (car1.getPm_id() == param33.getPm_id()) {
-							Param param5 = new Param("待生效", "月缴状态");
-							Param param55 = paramBiz.GetPmIDByTypeNmaeX(param5);
-							Car car2 = carBiz.findCustCarNumberByCarIDX(car1.getC_id());
-							List<Vip> Viplist1 = vipBiz.findVipX(car2.getC_id());
-							if (Viplist1 != null && Viplist1.size() != 0) {
-								for (int j = 0; j < Viplist1.size(); j++) {
-									if (Viplist1.get(0).getPm_id() == param55.getPm_id()) {
-										if (car2.getCust().getCust_money() >= money) {
-											int money2 = car2.getCust().getCust_money() - money;
-											Cust cust = new Cust(car2.getCust().getCust_id(), money2);
-											boolean flag2 = custBiz.chageCustMoneyByIDX(cust);
-											System.out.println("flag2=" + flag2);
-											if (flag2 == true) {
-												System.out.println("-------这货是会员还未生效，卡里有钱自动扣掉，放他走!!!-------");
-											} else {
-												System.out.println("-------这货是会员还未生效，卡里钱自动扣掉的时候发生了意外，扣除失败了!!!-------");
-											}
+						} else {
+							moneyFlag = 1;
+							System.out.println("-------这货是注册会员卡里钱不够 ，不放!!!-------");
+						}
+					} else if (car1.getPm_id() == param33.getPm_id()) {
+						Param param5 = new Param("待生效", "月缴状态");
+						Param param55 = paramBiz.GetPmIDByTypeNmaeX(param5);
+						Car car2 = carBiz.findCustCarNumberByCarIDX(car1.getC_id());
+						List<Vip> Viplist1 = vipBiz.findVipX(car2.getC_id());
+						if (Viplist1 != null && Viplist1.size() != 0) {
+							for (int j = 0; j < Viplist1.size(); j++) {
+								if (Viplist1.get(0).getPm_id() == param55.getPm_id()) {
+									if (car2.getCust().getCust_money() >= money) {
+										int money2 = car2.getCust().getCust_money() - money;
+										Cust cust = new Cust(car2.getCust().getCust_id(), money2);
+										boolean flag2 = custBiz.chageCustMoneyByIDX(cust);
+										System.out.println("flag2=" + flag2);
+										if (flag2 == true) {
+											System.out.println("-------这货是会员还未生效，卡里有钱自动扣掉，放他走!!!-------");
 										} else {
-											System.out.println("-------这货是会员还未生效，卡里钱不够 ，不放!!!-------");
-											moneyFlag = 1;
+											System.out.println("-------这货是会员还未生效，卡里钱自动扣掉的时候发生了意外，扣除失败了!!!-------");
 										}
 									} else {
-
-										System.out.println("-------这货是月缴会员，放他走!!!-------");
+										System.out.println("-------这货是会员还未生效，卡里钱不够 ，不放!!!-------");
+										moneyFlag = 1;
 									}
+								} else {
+
+									System.out.println("-------这货是月缴会员，放他走!!!-------");
 								}
 							}
-						} else if (car1.getPm_id() == param44.getPm_id()) {
-							System.out.println("-------这货要交钱的 ，不放!!!-------");
-							moneyFlag = 1;
 						}
-						System.out.println("金钱==mmmm=====" + money + ",flag==" + moneyFlag);
-						if (money == 0) {
-							moneyFlag = 0;
+					} else if (car1.getPm_id() == param44.getPm_id()) {
+						System.out.println("-------这货要交钱的 ，不放!!!-------");
+						moneyFlag = 1;
+					}
+					System.out.println("金钱==mmmm=====" + money + ",flag==" + moneyFlag);
+					if (money == 0) {
+						moneyFlag = 0;
+					}
+					if (moneyFlag == 0) {
+						// 修改出场时间
+						Stopcartime sct = new Stopcartime(2, currendate, stopcartime.getSct_id());
+						flag = stopcartimeBiz.UpdateSctTimeandState(sct);
+						System.out.println("——————————————修改出场时间成功————————————————————————");
+						Stopcartime sctz = new Stopcartime(stopcartime.getSct_id(), money);
+						System.out.println("sctz=" + sctz);
+						flag = stopcartimeBiz.UpdateSctMoneyX(sctz);
+					}
+					// 查询该出场车辆的信息
+					Stopcartime sct2 = stopcartimeBiz.FindByID(stopcartime.getSct_id());
+					Stopcartime sct3 = new Stopcartime(stopcartime.getSct_id(), sct2.getC_id(), sct2.getPm_id(),
+							sct2.getSct_starttime(), currendate, money);
+					System.out.println("sct3=" + sct3);
+					// 该信息传输到页面
+					session.setAttribute("Stopkxj", sct3);
+					// 宏琪 session 存放缴费标记
+					session.setAttribute("moneyFlag", moneyFlag);
+					User user = (User) request.getSession().getAttribute("User");
+					List<RoleRel> RoleRelList = roleRelBiz.FindRoleIDbyUserIDX(user.getU_id());
+					if (RoleRelList != null && RoleRelList.size() != 0) {
+						if (RoleRelList.get(0).getRole().getRole_name().equals("收费员")) {
+							result.put("role", "300");
+							result.put("code", "200");
+						} else {
+							result.put("role", "200");
+							result.put("code", "200");
 						}
-						if (moneyFlag == 0) {
-							// 修改出场时间
-							Stopcartime sct = new Stopcartime(2, currendate, stopcartime.getSct_id());
-							flag = stopcartimeBiz.UpdateSctTimeandState(sct);
-							System.out.println("——————————————修改出场时间成功————————————————————————");
-							Stopcartime sctz = new Stopcartime(stopcartime.getSct_id(), money);
-							System.out.println("sctz=" + sctz);
-							flag = stopcartimeBiz.UpdateSctMoneyX(sctz);
-						}
-						// 查询该出场车辆的信息
-						Stopcartime sct2 = stopcartimeBiz.FindByID(stopcartime.getSct_id());
-						Stopcartime sct3 = new Stopcartime(stopcartime.getSct_id(),sct2.getC_id(),sct2.getPm_id(),sct2.getSct_starttime(),currendate,money);
-						System.out.println("sct3="+sct3);
-						// 该信息传输到页面
-						session.setAttribute("Stopkxj", sct3);
-						// 宏琪 session 存放缴费标记
-						session.setAttribute("moneyFlag", moneyFlag);
-						User user = (User) request.getSession().getAttribute("User");
-						List<RoleRel> RoleRelList = roleRelBiz.FindRoleIDbyUserIDX(user.getU_id());
-						if (RoleRelList != null && RoleRelList.size() != 0) {
-							if (RoleRelList.get(0).getRole().getRole_name().equals("收费员")) {
-								result.put("role", "300");
-								result.put("code", "200");
-							} else {
-								result.put("role", "200");
-								result.put("code", "200");
-							}
-						}
-						boolean ff = baseUtil.addReceipt(user.getU_id(), car1.getC_id(), "停车收费", money, currendate);
-						System.out.println("ff=" + ff);
+					}
+					boolean ff = baseUtil.addReceipt(user.getU_id(), car1.getC_id(), "停车收费", money, currendate);
+					System.out.println("ff=" + ff);
 //					}
 				} else {
 					result.put("code", "400");

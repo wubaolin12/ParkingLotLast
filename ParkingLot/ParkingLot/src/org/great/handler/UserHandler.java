@@ -74,8 +74,8 @@ public class UserHandler extends BaseUtil{
 		String newpwd=request.getParameter("newpwd");
 		Map map=new HashMap<>();
 		map.put("u_pwd", BaseUtil.getStrrMD5(newpwd));
-		HttpSession session = request.getSession();
-		User loginuser=(User)session.getAttribute("User");
+//		HttpSession session = request.getSession();
+		User loginuser=(User)request.getAttribute("User");
 		if(loginuser!=null) {
 		
 		int num1=bbiz.updateData(tb_name, map, "u_id",""+loginuser.getU_id());

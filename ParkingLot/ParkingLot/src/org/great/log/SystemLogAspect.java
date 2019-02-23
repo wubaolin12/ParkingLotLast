@@ -80,7 +80,7 @@ public class SystemLogAspect {
 		User user = (User) session.getAttribute("User");
 //		User user = (User) request.getAttribute("User");
 		// 获取操作人ip地址
-		String ip = request.getRemoteAddr();
+		String ip = getIpAddress(request);
 
 		try {
 			
@@ -189,6 +189,11 @@ public class SystemLogAspect {
 		 */
 		// 获取用户请求方法的参数并序列化为JSON格式字符串
 		System.out.println("异常通知开始------------------------------------------");
+		long end = System.currentTimeMillis();
+		if (logger.isInfoEnabled()) {
+			logger.info("around " + joinPoint + "\tUse time : " + (end) + " ms with exception : "
+					+ e.getMessage());
+		}
 		
 	}
 	
@@ -201,16 +206,20 @@ public class SystemLogAspect {
 	    String ip = request.getHeader("x-forwarded-for");
 	    
 	    if(ip == null || ip.length() == 0 || "unknown".equalsIgnoreCase(ip)) {
+	    	System.out.println("X-Real-IP-------"+ip);
 	    	ip = request.getHeader("X-Real-IP");
 	    }
 	    if (ip == null || ip.length() == 0 || "unknown".equalsIgnoreCase(ip)) {
 	        ip = request.getHeader("Proxy-Client-IP");
+	        System.out.println("Proxy-Client-IP-------"+ip);
 	    }
 	    if (ip == null || ip.length() == 0 || "unknown".equalsIgnoreCase(ip)) {
-	        ip = request.getHeader("WL-Proxy-Client-IP");
+	        ip = request.getHeader("WL-Proxy-Client-IP"+ip);
+	        System.out.println("WL-Proxy-Client-IP-------"+ip);
 	    }
 	    if (ip == null || ip.length() == 0 || "unknown".equalsIgnoreCase(ip)) {
 	        ip = request.getRemoteAddr();
+	        System.out.println("getRemoteAddr-------"+ip);
 	    }
 	    if (ip.contains(",")) {
 	        return ip.split(",")[0];

@@ -105,15 +105,17 @@ public class LicensePlateRecognition {
 	 * 跳转到LED显示界面 孔大帅
 	 */
 	@RequestMapping("/CarAdmissionDisplay.action")
-	public String JumpCarAdmissionDisplay() {
+	public String JumpCarAdmissionDisplay(HttpServletResponse response, HttpServletRequest request) {
 
+		RedisSession session = baseUtil.getSession(response, request);
+		session.getAttribute("flagPark", Integer.class);
+		session.getAttribute("Carkxj", Car.class);
 		return "CarAdmissionDisplay";
 	}
 
 	/**
 	 * 车辆入场扫描 孔大爷
 	 */
-
 	@ResponseBody
 	@RequestMapping(value = "/CarAdmission.action", method = RequestMethod.POST)
 	public Map LicensePlates(HttpServletResponse response, HttpServletRequest request, MultipartFile myfile) {

@@ -4,6 +4,7 @@ import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.catalina.core.ApplicationContext;
 import org.great.bean.Cust;
 import org.great.biz.CustBiz;
 import org.great.util.BaseUtil;

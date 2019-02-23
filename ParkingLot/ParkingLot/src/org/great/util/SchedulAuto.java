@@ -4,11 +4,8 @@ import javax.annotation.Resource;
 
 import org.great.biz.AppointmentBiz;
 import org.great.biz.VipBiz;
-import org.junit.Test;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
-import org.springframework.stereotype.Controller;
-
 /**
  * 	自动判断月缴是否到期
  * @author 吴宝林
