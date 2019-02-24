@@ -288,9 +288,11 @@ String path=request.getScheme()+"://"+request.getServerName()+":"+
 	//充值提交
 	function Recharge(){
 		var flag=false;
-		var number= document.getElementById('car').value;
-		if(number!=""){
+		var number= document.getElementById('number').value;
+		if(number!='车牌号'&&number!=''){
 			flag=true;
+		}else{
+			alert("请输入车牌号");
 		}
 		return flag;
 	}
