@@ -196,7 +196,7 @@ function member_stop(obj,id,page){
 function member_start(obj,id,page){
 	
 	var pnum=page;
-	alert(pnum);
+
 	layer.confirm('确认要启用吗？',function(index){
 		$.ajax({
 			type: 'POST',

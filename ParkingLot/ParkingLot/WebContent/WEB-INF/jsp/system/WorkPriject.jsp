@@ -208,10 +208,14 @@
         		}
         	}else{
         		alert("该月已过，不能排班");
+                location.href="${path}/workPrijectHandler/FindWorkProject.action?getUserID="+u_id;
+
         	}
         	
         }else{
         	alert("该年已过");
+            location.href="${path}/workPrijectHandler/FindWorkProject.action?getUserID="+u_id;
+
         } 
         
 

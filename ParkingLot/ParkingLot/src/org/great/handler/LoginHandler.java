@@ -96,11 +96,19 @@ public class LoginHandler {
 
 		// 如果用户不存在，登录失败
 		if (users == null) {
+			
 			result = "usererror";
 			System.out.println("用户名错误");
 			return result;
+			
 		}
 
+		if(users.getPm_id()==4) {
+			result = "stateerror";
+			System.out.println("用户被禁用");
+			return result;
+		}
+		
 		RedisSession session = baseUtil.getSession(response, request);
 
 		session.setAttribute("User", users);
