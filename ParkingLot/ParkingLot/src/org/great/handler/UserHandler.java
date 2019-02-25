@@ -398,7 +398,7 @@ public class UserHandler extends BaseUtil{
 /*		HttpSession session = request.getSession();
 		Map usmap=(Map)session.getAttribute("userseachmap");*/
 		Map map=new HashMap<>();
-		map.put("pm_id", 4);
+		map.put("pm_id", 24);
 		
 		//int num2=bbiz.delData("staff_rel", map);
 		int num=bbiz.updateData(tb_name, map, "u_id", id);
