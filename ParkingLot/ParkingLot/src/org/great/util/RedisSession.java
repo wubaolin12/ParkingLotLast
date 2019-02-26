@@ -45,7 +45,7 @@ public class RedisSession {
 			System.out.println("这是list类型---");
 			JSONArray jsonList = JSONArray.fromObject(value);
 			value=jsonList;
-		} else if (value instanceof String) {
+		} else if (value instanceof String||value instanceof Integer) {
 			System.out.println("这是String类型---");
 //			jedisClient.set(key + ":" + token, value.toString());
 			

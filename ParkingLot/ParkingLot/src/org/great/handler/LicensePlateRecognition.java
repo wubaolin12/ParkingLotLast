@@ -71,7 +71,7 @@ public class LicensePlateRecognition {
 	private AppointmentBiz appointmentBiz;
 	@Resource
 	private ParamBiz paramBiz;
-	
+
 	@Resource
 	BaseUtil baseUtil;
 
@@ -128,7 +128,10 @@ public class LicensePlateRecognition {
 
 		org.springframework.core.io.Resource f = myfile.getResource();
 		
-		File newFile=null;
+		RedisSession session = baseUtil.getSession(response, request);
+
+
+		File newFile = null;
 		try {
 			/**
 			 * 项目服务器地址路径
@@ -153,7 +156,7 @@ public class LicensePlateRecognition {
 			/**
 			 * 创建文件
 			 */
-			newFile =new File(path + File.separator + filename);
+			newFile = new File(path + File.separator + filename);
 			myfile.transferTo(newFile);
 			/**
 			 * 返回服务器文件地址
@@ -281,58 +284,56 @@ public class LicensePlateRecognition {
 
 			}
 
-		}
+			session.setAttribute("Carkxj", car);
 
-		RedisSession session = baseUtil.getSession(response, request);
+			List<Park> ParkList = parkBiz.FindAllCanStopX("开放", 9);
+			System.out.println("ParkList=" + ParkList);
+			System.out.println("ParkList大小=" + ParkList.size());
 
-		session.setAttribute("Carkxj", car);
-
-		List<Park> ParkList = parkBiz.FindAllCanStopX("开放", 9);
-		System.out.println("ParkList=" + ParkList);
-		System.out.println("ParkList大小=" + ParkList.size());
-
-		List<Appointment> AppointmentList2 = appointmentBiz.findCarAppoinmentByCarIDX(car.getC_id());
-		if (AppointmentList2 != null && AppointmentList2.size() != 0) {
-			if (ParkList.size() > 0) {
-				System.out.println("车位没满又是预约的可以分配");
-				Park park = new Park(ParkList.get(0).getP_id(), 8, car.getC_id());
-				System.out.println("park=" + park);
-				boolean flag = parkBiz.SetCarParkX(park);
-				System.out.println("flag=" + flag);
-				// 删除选车为成功预约表记录
-				flag = appointmentBiz.delAppointmentByCnumX(car.getC_num());
-				System.out.println("flag=" + flag);
-				flagPark = 1;
-			} else {
-				System.out.println("车位满了");
-				boolean flag = stopcartimeBiz.delStopcartimeByCnumX(car.getC_num(), "停车状态", "停车中");
-				System.out.println("flag=" + flag);
-				flagPark = 2;
-			}
-		} else {
-			if (ParkList.size() > 0) {
-				if (ParkList.size() - AppointmentList.size() <= 0) {
-					System.out.println("车位满了");
-					boolean flag = stopcartimeBiz.delStopcartimeByCnumX(car.getC_num(), "停车状态", "停车中");
-					System.out.println("flag=" + flag);
-					flagPark = 2;
-				} else {
-					System.out.println("车位没满可以分配");
+			List<Appointment> AppointmentList2 = appointmentBiz.findCarAppoinmentByCarIDX(car.getC_id());
+			if (AppointmentList2 != null && AppointmentList2.size() != 0) {
+				if (ParkList.size() > 0) {
+					System.out.println("车位没满又是预约的可以分配");
 					Park park = new Park(ParkList.get(0).getP_id(), 8, car.getC_id());
 					System.out.println("park=" + park);
 					boolean flag = parkBiz.SetCarParkX(park);
 					System.out.println("flag=" + flag);
-
+					// 删除选车为成功预约表记录
+					flag = appointmentBiz.delAppointmentByCnumX(car.getC_num());
+					System.out.println("flag=" + flag);
 					flagPark = 1;
+				} else {
+					System.out.println("车位满了");
+					boolean flag = stopcartimeBiz.delStopcartimeByCnumX(car.getC_num(), "停车状态", "停车中");
+					System.out.println("flag=" + flag);
+					flagPark = 2;
+				}
+			} else {
+				if (ParkList.size() > 0) {
+					if (ParkList.size() - AppointmentList.size() <= 0) {
+						System.out.println("车位满了");
+						boolean flag = stopcartimeBiz.delStopcartimeByCnumX(car.getC_num(), "停车状态", "停车中");
+						System.out.println("flag=" + flag);
+						flagPark = 2;
+					} else {
+						System.out.println("车位没满可以分配");
+						Park park = new Park(ParkList.get(0).getP_id(), 8, car.getC_id());
+						System.out.println("park=" + park);
+						boolean flag = parkBiz.SetCarParkX(park);
+						System.out.println("flag=" + flag);
+
+						flagPark = 1;
+					}
 				}
 			}
 		}
 		// 野比欣之助 session 存放车位满不满的标记标记
+		System.out.println("flagPark=====" + flagPark);
 		session.setAttribute("flagPark", flagPark);
-		
-		//吴宝林，将车牌照片保存到数据库
+
+		// 吴宝林，将车牌照片保存到数据库
 		savePic(number, newFile);
-		
+
 		return result;
 	}
 
@@ -371,25 +372,25 @@ public class LicensePlateRecognition {
 			}
 		}
 	}
-	
+
 	/**
 	 * 将车牌照片保存到数据库，便于用户查看车辆
 	 */
-	private void savePic(String carNum,File orgFile) {
-		String newFileName = carNum +".jpg";
+	private void savePic(String carNum, File orgFile) {
+		String newFileName = carNum + ".jpg";
 //		String path = "D:\\file_file\\test\\upload\\";
 		String path = "/home/wbl/upload/picture/";
-		
+
 		car.setC_pic(newFileName);
 		try {
-			FileUtils.copyFile(orgFile,new File(path+newFileName));
-			System.out.println("图片上传路径："+ path+newFileName);
+			FileUtils.copyFile(orgFile, new File(path + newFileName));
+			System.out.println("图片上传路径：" + path + newFileName);
 		} catch (IllegalStateException e) {
 			e.printStackTrace();
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		
+
 		carBiz.updatePic(car);
 	}
 }

@@ -39,6 +39,7 @@ public class MainHandler {
 	 */
 	@RequestMapping("/main.action")
 	@OperationLog(operationType = "登录操作", operationName = "进入主页")
+	
 	public String mainJsp(HttpServletRequest request,HttpServletResponse response) {
 		
 		

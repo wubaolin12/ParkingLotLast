@@ -7,6 +7,7 @@ import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import org.apache.catalina.tribes.util.Arrays;
 import org.apache.log4j.Logger;
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.ProceedingJoinPoint;
@@ -87,9 +88,12 @@ public class SystemLogAspect {
 			//操作的类名
 			String targetName = joinPoint.getTarget().getClass().getName();
 			//操作的方法名
+//			String methodName = joinPoint.getSignature().getName();
 			String methodName = joinPoint.getSignature().getName();
+			
+			//获取连接点方法运行时的入参列表
 			Object[] arguments = joinPoint.getArgs();
-			System.out.println(targetName + "~~~" + methodName + "~~~~" + arguments);
+			System.out.println(targetName + "~~~" + methodName + "~~~~" + Arrays.toString(arguments));
 			
 			//通过类名反射，获取类实例
 			Class targetclass = Class.forName(targetName);
