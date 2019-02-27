@@ -23,10 +23,24 @@ public class FindCarHandler {
 	@Resource
 	ParkBiz parkBiz;
 
+	/**
+	 * 要登录的
+	 * @return
+	 */
 	@RequestMapping("/findcar.do")
 	public String execute() {
 		
 		return "Fore/find-car";
+	}
+	
+	/**
+	 * 用于快捷找车，免登陆
+	 * @return
+	 */
+	@RequestMapping("/easyfindcar.do")
+	public String easyFindCar() {
+		System.out.println("快捷找车-------");
+		return "Fore/easy-findcar";
 	}
 	
 	@ResponseBody

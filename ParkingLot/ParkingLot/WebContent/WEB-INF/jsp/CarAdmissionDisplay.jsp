@@ -68,8 +68,9 @@
 			 COLOR: #ffff00; FONT-SIZE: 50px; text-shadow: #ff0000 1px 1px 0px" 
             scrollAmount=8><B><FONT 
             face=Verdana>
-            <% int flagPark =(int)request.getAttribute("flagPark");
-               if(flagPark==1){%>
+            <% Object flagPark =session.getAttribute("flagPark");
+            System.out.println("flagPark进场--"+flagPark);
+               if(flagPark.equals("1")){%>
             		车牌：${Carkxj.c_num}      欢迎光临！
             <%} else { %>
             		车位已满！！欢迎再次光临！

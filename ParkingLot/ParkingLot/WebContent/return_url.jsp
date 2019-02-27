@@ -10,6 +10,8 @@
 <%@ page import="com.alipay.config.*"%>
 <%@ page import="com.alipay.api.*"%>
 <%@ page import="com.alipay.api.internal.util.*"%>
+<%@ page import="redis.clients.jedis.*"%>
+<%@ page import="org.great.util.*"%>
 <%
 String path=request.getScheme()+"://"+request.getServerName()+":"+
 		request.getServerPort()+request.getContextPath()+"/";
@@ -26,6 +28,10 @@ String path=request.getScheme()+"://"+request.getServerName()+":"+
  *************************页面功能说明*************************
  * 该页面仅做页面展示，业务逻辑处理请勿在该页面执行
  */
+ String token=CookieUtils.getCookieValue(request, "PL_TOKEN");
+ Jedis jedis = new Jedis("45.40.255.33", 6379);
+ String PayType = jedis.get("PayType:"+token);
+ jedis.close();
  
 	//获取支付宝GET过来反馈信息
 	Map<String,String> params = new HashMap<String,String>();
@@ -56,7 +62,7 @@ String path=request.getScheme()+"://"+request.getServerName()+":"+
 	
 		//付款金额
 		String total_amount = new String(request.getParameter("total_amount").getBytes("ISO-8859-1"),"UTF-8");
-		String PayType=(String)session.getAttribute("PayType");
+		//String PayType=(String)session.getAttribute("PayType");
 		if(PayType.equals("充值")){
 			response.sendRedirect(path+"pay/successToRecharge.do?out_trade_no="+out_trade_no+"&trade_no="+trade_no+"&total_amount="+total_amount);
 		}else if(PayType.equals("出场缴费")){
@@ -70,7 +76,7 @@ String path=request.getScheme()+"://"+request.getServerName()+":"+
 		
 		//out.println("trade_no:"+trade_no+"<br/>out_trade_no:"+out_trade_no+"<br/>total_amount:"+total_amount);
 	}else {
-		String PayType=(String)session.getAttribute("PayType");
+		//String PayType=(String)session.getAttribute("PayType");
 		if(PayType.equals("充值")){
 			response.sendRedirect(path+"pay/failedToRecharge.do");
 		}else if(PayType.equals("出场缴费")){

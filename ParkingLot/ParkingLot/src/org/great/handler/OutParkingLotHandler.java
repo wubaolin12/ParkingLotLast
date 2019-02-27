@@ -100,9 +100,10 @@ public class OutParkingLotHandler {
 		System.out.println("商户订单号=" + out_trade_no);
 		System.out.println("支付宝交易号=" + trade_no);
 		System.out.println("付款金额=" + total_amount);
-
-		request.getSession().setAttribute("moneyFlag", 0);
-		Stopcartime stc = (Stopcartime) request.getSession().getAttribute("Stopkxj");
+		
+		RedisSession session = baseUtil.getSession(response, request);
+		session.setAttribute("moneyFlag", 0);
+		Stopcartime stc = (Stopcartime) session.getAttribute("Stopkxj",Stopcartime.class);
 
 		System.out.println("stc=" + stc);
 		boolean flag = stopcartimeBiz.UpdateSctTimeandState(stc);

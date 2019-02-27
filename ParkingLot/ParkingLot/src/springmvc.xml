@@ -62,6 +62,7 @@
 				<mvc:exclude-mapping path="/**/*fore*"/>
 				<mvc:exclude-mapping path="/**/*.action"/>
 				<mvc:exclude-mapping path="/**/*.pay"/>
+				<mvc:exclude-mapping path="/find*/**"/>
 				
 		<!-- 	指定拦截器位置 -->
 			<bean class="org.great.interceptor.ForeInterceptor"/>
@@ -75,6 +76,7 @@
 				<mvc:exclude-mapping path="/**/*login*"/>
 				<mvc:exclude-mapping path="/**/*.do"/>
 				<mvc:exclude-mapping path="/**/*.pay"/>
+				<mvc:exclude-mapping path="/BirdMap/**"/>
 				
 				<!-- 指定拦截器位置 -->
 				<bean class="org.great.interceptor.LoginInterceptor"/>
@@ -85,7 +87,7 @@
 		<!-- 定时任务 -->
 		<task:annotation-driven/>
 		
-		<!-- 配置使Spring采用CGLIB代理 -->
+		<!-- 配置使Spring采用CGLIB代理,开启注解扫描 -->
 		<aop:aspectj-autoproxy proxy-target-class="true" />
 
 </beans>		
