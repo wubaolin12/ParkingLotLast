@@ -138,14 +138,14 @@
  
         var currentDate = new Date();
         var currentnyear=currentDate.getFullYear();    //获取完整的年份(4位,1970-????)
-        var currentmonth =currentDate.getMonth();       //获取当前月份(0-11,0代表1月)
+        var currentmonth =currentDate.getMonth()+1;       //获取当前月份(0-11,0代表1月)
         var currentday=currentDate.getDate();        //获取当前日(1-31)
-        
+
         if(year>=currentnyear){
         	
-        	if(month>=currentmonth){
+        	if(month>currentmonth){
         		
-        		if(day>=currentday){
+        		
         	        $.ajax({
         	            url:'${path}/workPrijectHandler/CheckWorkAjax.action',
         				dataType:"text", 
@@ -201,12 +201,68 @@
         	        });
         	        
         	 
+        	
+        	}else if(month==currentmonth){
+        		if(day>=currentday){
+        	        $.ajax({
+        	            url:'${path}/workPrijectHandler/CheckWorkAjax.action',
+        				dataType:"text", 
+        				data:{"ss_id":state,"s_date":s_date,"u_id":u_id},
+        				type:"post",
+        				
+        				success:function(data){
+        					alert(data);
+        					if(data=="该日期已有排班"){
+         							
+         							var r=confirm("该日期已有排班,是否修改!");
+         							if (r==true)
+         							  {
+	         							  alert("修改排班!");
+	         							 $.ajax({
+	          		        	            url:'${path}/workPrijectHandler/updateWorkAjax.action',
+	          		        				dataType:"text", 
+	          		        				data:{"ss_id":state,"s_date":s_date,"u_id":u_id},
+	          		        				type:"post",
+	          		        				success:function(data){
+	          		        	                 location.href="${path}/workPrijectHandler/FindWorkProject.action?getUserID="+u_id;
+	
+	          		        				},
+	          		        				error:function(data) {
+	          		        					console.log(data.msg);
+	          		        				}
+	          							});
+         							  
+         							  }
+         							else
+         							  {
+         							  	alert("取消修改!");
+     		        	                 location.href="${path}/workPrijectHandler/FindWorkProject.action?getUserID="+u_id;
+
+         							  }
+         							
+        						
+        					}else{
+        					      $.ajax({
+        		        	            url:'${path}/workPrijectHandler/AddWorkTestAjax.action',
+        		        				dataType:"text", 
+        		        				data:{"ss_id":state,"s_date":s_date,"u_id":u_id},
+        		        				type:"post",
+        		        				
+        		        				success:function(data){
+        		        	                 location.href="${path}/workPrijectHandler/FindWorkProject.action?getUserID="+u_id;
+
+        		        				}
+        							});
+        					}
+        					
+        	            }
+        	        });
         		}else{
         			alert("该日期已过，不能排班");
-	                 location.href="${path}/workPrijectHandler/FindWorkProject.action?getUserID="+u_id;
-
+                    location.href="${path}/workPrijectHandler/FindWorkProject.action?getUserID="+u_id;
         		}
-        	}else{
+        	}
+        	else{
         		alert("该月已过，不能排班");
                 location.href="${path}/workPrijectHandler/FindWorkProject.action?getUserID="+u_id;
 

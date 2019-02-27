@@ -187,7 +187,7 @@ public class WorkPrijectHandler {
 			result="该日期已有排班";
 			System.out.println("---------CheckWorkAjax该日期已有排班");
 		}else {
-			int num=bbiz.insertData(tb_name, map, null);
+			//int num=bbiz.insertData(tb_name, map, null);
 			result="添加排班成功";
 			
 		}

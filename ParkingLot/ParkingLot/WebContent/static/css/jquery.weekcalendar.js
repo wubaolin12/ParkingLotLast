@@ -135,10 +135,10 @@
         eventBody: function(calEvent, calendar) {
           return calEvent.title;
         },
-        shortMonths: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+        shortMonths: ['一月', '二月', '三月', '四月', '五月', '六月', '七月', '八月', '九月', '十月', '十一月', '十二月'],
         longMonths: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
-        shortDays: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
-        longDays: ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'],
+        shortDays: ['星期日', '星期一', '星期二', '星期三', '星期四', '星期五', '星期六'],
+        longDays: ['星期日', '星期一', '星期二', '星期三', '星期四', '星期五', '星期六'],
         /* multi-users options */
         /**
          * the available users for calendar.

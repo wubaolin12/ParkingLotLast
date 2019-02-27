@@ -139,11 +139,11 @@ function checkform(){
 
  $(function() {
 	$("#u_phone").on("blur",function(){
-
+		
 	  	var u_phone=document.getElementById("u_phone").value;
 	  
 		
-		
+	  	if(u_phone!=''&&u_phone!=null){
 			$.ajax({
 				url :"UphonecheckAjax.action" ,
 				type :"post",
@@ -155,6 +155,7 @@ function checkform(){
 					document.getElementById("tip4").value=redata;
 				}
 			});
+		}
 	
 	});	
 	
@@ -164,19 +165,20 @@ $(function() {
 	$("#u_name").on("blur",function(){
 
 	  	var u_name=document.getElementById("u_name").value;
-
+		if(u_name!=''&&u_name!=null){
 		
-		$.ajax({
-			url :"UnamecheckAjax.action" ,
-			type :"post",
-			dataType:"text", 
-			data :"u_name="+u_name,
-			success:function(redata){
-				
-				document.getElementById("tip").innerHTML =redata;
-				document.getElementById("tip3").value=redata;
-			}
-		});
+			$.ajax({
+				url :"UnamecheckAjax.action" ,
+				type :"post",
+				dataType:"text", 
+				data :"u_name="+u_name,
+				success:function(redata){
+					
+					document.getElementById("tip").innerHTML =redata;
+					document.getElementById("tip3").value=redata;
+				}
+			});
+		}
 	});		
 });
 
